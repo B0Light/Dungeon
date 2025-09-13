@@ -1,0 +1,222 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7872359827904312496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5408949194594484007}
+  - component: {fileID: 1995244172814336243}
+  m_Layer: 0
+  m_Name: UnifiedProjectilePoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5408949194594484007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7872359827904312496}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1995244172814336243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7872359827904312496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df743c9c4e09713429a196ba0f231860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileConfigurations:
+  - projectileType: 11
+    projectilePrefab: {fileID: 1564468091806366, guid: 991237e776a92984cb3b668c64d19ae7, type: 3}
+    behavior: 0
+    initialPoolSize: 5
+    particleSystemPrefab: {fileID: 0}
+    projectileSpeed: 10
+    maxRange: 50
+    collisionMask:
+      serializedVersion: 2
+      m_Bits: 193
+    areaOfEffect: 0
+    isStaticByDefault: 0
+    staticDuration: 2
+    physicalDamageRatio: 1
+    magicalDamageRatio: 0
+    damage: 10
+    extraDamage: 10
+    poiseDamage: 10
+    damageModifier: 1
+    piercing: 0
+    maxPierceCount: 0
+    applyStatusEffect: 0
+    statusEffectType: 0
+    statusEffectDuration: 0
+    statusEffectIntensity: 0
+  - projectileType: 4
+    projectilePrefab: {fileID: 5748574596644530908, guid: 07b5b49823c39614fb17944cbbf08e83, type: 3}
+    behavior: 2
+    initialPoolSize: 20
+    particleSystemPrefab: {fileID: 0}
+    projectileSpeed: 30
+    maxRange: 50
+    collisionMask:
+      serializedVersion: 2
+      m_Bits: 193
+    areaOfEffect: 0
+    isStaticByDefault: 0
+    staticDuration: 0
+    physicalDamageRatio: 0.5
+    magicalDamageRatio: 0.5
+    damage: 20
+    extraDamage: 10
+    poiseDamage: 10
+    damageModifier: 1
+    piercing: 0
+    maxPierceCount: 0
+    applyStatusEffect: 0
+    statusEffectType: 0
+    statusEffectDuration: 0
+    statusEffectIntensity: 0
+  - projectileType: 17
+    projectilePrefab: {fileID: 9184144822574408261, guid: 6e4c9f560dca8e24aa9969b7841ea907, type: 3}
+    behavior: 1
+    initialPoolSize: 5
+    particleSystemPrefab: {fileID: 6626617486152347993, guid: 6e4c9f560dca8e24aa9969b7841ea907, type: 3}
+    projectileSpeed: 0
+    maxRange: 0
+    collisionMask:
+      serializedVersion: 2
+      m_Bits: 193
+    areaOfEffect: 0
+    isStaticByDefault: 1
+    staticDuration: 2
+    physicalDamageRatio: 1
+    magicalDamageRatio: 0
+    damage: 50
+    extraDamage: 10
+    poiseDamage: 10
+    damageModifier: 1
+    piercing: 0
+    maxPierceCount: 0
+    applyStatusEffect: 0
+    statusEffectType: 0
+    statusEffectDuration: 0
+    statusEffectIntensity: 0
+  - projectileType: 18
+    projectilePrefab: {fileID: 5022893750800224708, guid: 0709503c7f7571c48a85049547828d22, type: 3}
+    behavior: 1
+    initialPoolSize: 5
+    particleSystemPrefab: {fileID: 2982909773773616353, guid: 0709503c7f7571c48a85049547828d22, type: 3}
+    projectileSpeed: 0
+    maxRange: 0
+    collisionMask:
+      serializedVersion: 2
+      m_Bits: 193
+    areaOfEffect: 0
+    isStaticByDefault: 1
+    staticDuration: 2
+    physicalDamageRatio: 0.5
+    magicalDamageRatio: 0.5
+    damage: 20
+    extraDamage: 10
+    poiseDamage: 10
+    damageModifier: 1
+    piercing: 0
+    maxPierceCount: 0
+    applyStatusEffect: 0
+    statusEffectType: 0
+    statusEffectDuration: 0
+    statusEffectIntensity: 0
+  - projectileType: 19
+    projectilePrefab: {fileID: 4675803050233158134, guid: b25da728dc188da449e75b1cf1bcf39c, type: 3}
+    behavior: 1
+    initialPoolSize: 5
+    particleSystemPrefab: {fileID: 8360756007126381141, guid: b25da728dc188da449e75b1cf1bcf39c, type: 3}
+    projectileSpeed: 0
+    maxRange: 5
+    collisionMask:
+      serializedVersion: 2
+      m_Bits: 193
+    areaOfEffect: 7
+    isStaticByDefault: 1
+    staticDuration: 2
+    physicalDamageRatio: 0.5
+    magicalDamageRatio: 0.5
+    damage: 20
+    extraDamage: 10
+    poiseDamage: 10
+    damageModifier: 1
+    piercing: 1
+    maxPierceCount: 20
+    applyStatusEffect: 0
+    statusEffectType: 0
+    statusEffectDuration: 0
+    statusEffectIntensity: 0
+  - projectileType: 20
+    projectilePrefab: {fileID: 7389343931217079786, guid: 4551a59411f975243ba01a7bbe26af54, type: 3}
+    behavior: 1
+    initialPoolSize: 5
+    particleSystemPrefab: {fileID: 6057888703227840632, guid: 4551a59411f975243ba01a7bbe26af54, type: 3}
+    projectileSpeed: 0
+    maxRange: 5
+    collisionMask:
+      serializedVersion: 2
+      m_Bits: 193
+    areaOfEffect: 3
+    isStaticByDefault: 1
+    staticDuration: 2
+    physicalDamageRatio: 0
+    magicalDamageRatio: 1
+    damage: 50
+    extraDamage: 10
+    poiseDamage: 10
+    damageModifier: 1
+    piercing: 1
+    maxPierceCount: 20
+    applyStatusEffect: 0
+    statusEffectType: 0
+    statusEffectDuration: 0
+    statusEffectIntensity: 0
+  - projectileType: 3
+    projectilePrefab: {fileID: 222606773043661352, guid: f93dc381719c4a442b533333fe065aaf, type: 3}
+    behavior: 1
+    initialPoolSize: 5
+    particleSystemPrefab: {fileID: 1057565708712919143, guid: ee058ea86ac1e1f4a99e79d557e62270, type: 3}
+    projectileSpeed: 10
+    maxRange: 5
+    collisionMask:
+      serializedVersion: 2
+      m_Bits: 193
+    areaOfEffect: 3
+    isStaticByDefault: 0
+    staticDuration: 2
+    physicalDamageRatio: 0
+    magicalDamageRatio: 1
+    damage: 50
+    extraDamage: 10
+    poiseDamage: 10
+    damageModifier: 1
+    piercing: 1
+    maxPierceCount: 20
+    applyStatusEffect: 0
+    statusEffectType: 0
+    statusEffectDuration: 0
+    statusEffectIntensity: 0

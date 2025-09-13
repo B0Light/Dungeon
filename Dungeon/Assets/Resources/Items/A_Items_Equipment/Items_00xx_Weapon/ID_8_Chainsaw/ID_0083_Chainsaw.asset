@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc86e08c4c1e96842aab0ce98628eb8f, type: 3}
+  m_Name: ID_0083_Chainsaw
+  m_EditorClassIdentifier: 
+  itemCode: 83
+  itemName: "\uB808\uC774\uC800 \uCEE4\uD305\uAE30"
+  itemIcon: {fileID: 21300000, guid: aa3b659c685048a40b595ae0e5bb0184, type: 3}
+  itemTier: 4
+  itemDescription: "\uADF9\uB3C4\uC758 \uD30C\uC6CC\uB97C \uAC00\uC9C4 \uC804\uBB38\uAC00\uAE09
+    \uC804\uAE30\uD1B1"
+  purchaseCost: 90000
+  costItemList: 
+  width: 5
+  height: 3
+  itemType: 0
+  saleCost: 81000
+  purChaseWithItem: 0
+  itemModel: {fileID: 4347629222902420614, guid: e9ad7a1c5b44b244fa7ced9b8766638f, type: 3}
+  itemAbilities:
+  - itemEffect: 0
+    value: 500
+  - itemEffect: 1
+    value: 0
+  weight: 60
+  weaponAnimator: {fileID: 22100000, guid: 1c5f1bb1037221c40b6842010baa2e14, type: 2}
+  weaponEquipSprite: {fileID: 21300000, guid: 540ec601d033c674cbdd0bc1dae5df18, type: 3}
+  physicalDamage: 0
+  magicalDamage: 0
+  poiseDamage: 0
+  attackSpeed: 1
+  hAtkMod01: 1
+  hAtkMod02: 1.2
+  hAtkMod03: 1.4
+  vAtkMod01: 1.3
+  vAtkMod02: 1.7
+  vAtkMod03: 2
+  runningAtkMod: 1.5
+  rollingAtkMod: 1
+  backStepAtkMod: 1
+  jumpingAtkMod: 1
+  baseActionCost: 1
+  physicalDamageAbsorption: 30
+  magicalDamageAbsorption: 0
+  stability: 50
+  lightAttackAction: {fileID: 0}
+  heavyAttackAction: {fileID: 0}
+  blockAction: {fileID: 0}
+  weaponSkill: {fileID: 0}

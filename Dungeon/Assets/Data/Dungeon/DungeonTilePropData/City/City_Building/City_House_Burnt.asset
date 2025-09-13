@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940ddffc8ec8b9c4ea37009436d876cd, type: 3}
+  m_Name: City_House_Burnt
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1767028435199558499, guid: 0c23317823eebe64f8d3ac45e92cc969, type: 3}
+  weight: 1
+  size: {x: 1, y: 1}

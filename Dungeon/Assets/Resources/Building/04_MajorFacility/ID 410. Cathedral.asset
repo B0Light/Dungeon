@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc0e6685a77e3f48bc873f4f6566496, type: 3}
+  m_Name: ID 410. Cathedral
+  m_EditorClassIdentifier: 
+  itemCode: 410
+  itemName: "\uB300\uC131\uB2F9"
+  itemIcon: {fileID: 21300000, guid: fe9a2a5a673d64943b93d488f08cda44, type: 3}
+  itemTier: 5
+  itemDescription: "\uB450\uB465!"
+  purchaseCost: 1000000
+  costItemList: 3804000038040000380400003804000038040000
+  width: 8
+  height: 12
+  isForbidden: 1
+  prefab: {fileID: 4760457124313966837, guid: 700f1b83db61145458dc1ed42ea72c3f, type: 3}
+  tileCategory: 4
+  tileType: 4
+  maxLevel: 10
+  baseFee: 100
+  upgradeStages: []

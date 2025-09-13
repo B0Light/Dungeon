@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ID 020. FireAxe
+  m_Controller: {fileID: 9100000, guid: 4ce4a1e0c7b93494eadd8ad7ec4fdb00, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 1827226128182048838, guid: af884942fd6454a75b208510fd998901, type: 3}
+    m_OverrideClip: {fileID: 1375766457120316241, guid: b94969b4c36c3c94284f72888ad9289d, type: 3}
+  - m_OriginalClip: {fileID: -8890989884591690541, guid: cd2b62e55d0d92e4ba0b7656c67819a6, type: 3}
+    m_OverrideClip: {fileID: -3829734982352317823, guid: fc4d27a6f9253a3449b3ad12ef5adcbb, type: 3}

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df6798a02992b142825a2c8843499dd, type: 3}
+  m_Name: ID_0113_Squid
+  m_EditorClassIdentifier: 
+  itemCode: 113
+  itemName: "\uC624\uC9D5\uC5B4 \uBAA8\uC790"
+  itemIcon: {fileID: 21300000, guid: b474180eb6d4317499d8a2429be412d6, type: 3}
+  itemTier: 2
+  itemDescription: "\uC9C0\uB098\uAC00\uB358 \uC120\uBC15\uC5D0\uC11C \uD6D4\uCCD0\uC628
+    \uC624\uC9D5\uC5B4"
+  purchaseCost: 50000
+  costItemList: 
+  width: 3
+  height: 2
+  itemType: 2
+  saleCost: 30000
+  purChaseWithItem: 0
+  itemModel: {fileID: 5157254357255978906, guid: 0e7f92ee9ff6c9a42b5b86f3af5e9bf5, type: 3}
+  itemAbilities:
+  - itemEffect: 2
+    value: 50
+  - itemEffect: 3
+    value: 20
+  weight: 40
+  extraPhysicalAbsorption: 50
+  extraMagicalAbsorption: 20
+  extraActionPoint: 2

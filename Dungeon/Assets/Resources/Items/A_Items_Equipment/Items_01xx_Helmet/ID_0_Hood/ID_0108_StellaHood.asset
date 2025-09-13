@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df6798a02992b142825a2c8843499dd, type: 3}
+  m_Name: ID_0108_StellaHood
+  m_EditorClassIdentifier: 
+  itemCode: 108
+  itemName: "\uC2A4\uD154\uB77C \uD6C4\uB4DC"
+  itemIcon: {fileID: 21300000, guid: 7753f86a25bbb1346b0502a8cfe4da23, type: 3}
+  itemTier: 5
+  itemDescription: "\uC6B0\uC8FC\uC758 \uAE30\uC6B4\uC744 \uB2F4\uC740 \uD6C4\uB4DC "
+  purchaseCost: 0
+  costItemList: 
+  width: 2
+  height: 2
+  itemType: 2
+  saleCost: 0
+  purChaseWithItem: 0
+  itemModel: {fileID: 2576927464921180834, guid: 5709a82eba69e8d48849d15c092b5d77, type: 3}
+  itemAbilities:
+  - itemEffect: 2
+    value: 90
+  - itemEffect: 3
+    value: 90
+  weight: 0
+  extraPhysicalAbsorption: 90
+  extraMagicalAbsorption: 90
+  extraActionPoint: 0

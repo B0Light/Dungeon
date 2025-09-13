@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90318195176c938498a42248e66fa607, type: 3}
+  m_Name: 1_Coffee
+  m_EditorClassIdentifier: 
+  recipe:
+    ingredients:
+    - itemData: {fileID: 11400000, guid: fc75ec0bfeee61842891b53e057be6ef, type: 2}
+      quantity: 1
+      position: {x: 0, y: 0}
+    - itemData: {fileID: 11400000, guid: dc73ce732cfb1e843971ef55e87b6901, type: 2}
+      quantity: 1
+      position: {x: 0, y: 0}
+    resultItem: {fileID: 11400000, guid: bc3728833f5d12e458fcbcc6d0e569e2, type: 2}
+    resultQuantity: 2
+    requiresExactPosition: 0

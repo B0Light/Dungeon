@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c6e7fe83ba9a849923650ba55a9a37, type: 3}
+  m_Name: 04. Dungeon_BrokenCity_R
+  m_EditorClassIdentifier: 
+  dungeonID: 4
+  dungeonKey: 1312
+  difficulty: 3
+  dungeonSceneName: 21.BrokenCity_Static
+  dungeonName: "\uBD80\uC11C\uC9C4 \uB3C4\uC2DC "
+  enemyList: 0000000000000000
+  mainResourceList: 4204000038040000
+  bossSpawnTimer: 10
+  dungeonInfoBackground: {fileID: 21300000, guid: 308cb003a9fbd0143befb2cdbb370e2e, type: 3}
+  bgm: {fileID: 0}

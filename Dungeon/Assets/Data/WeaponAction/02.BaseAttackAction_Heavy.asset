@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3115956785cc54d469aaa08ec07ad3bf, type: 3}
+  m_Name: 02.BaseAttackAction_Heavy
+  m_EditorClassIdentifier: 
+  actionID: 2
+  heavy_Attack_01: OH_Charge_Attack_01_Charge
+  heavy_Attack_02: OH_Charge_Attack_02_Charge

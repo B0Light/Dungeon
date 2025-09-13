@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e451fadd03abe2f46ae56bf96de0bd9b, type: 3}
+  m_Name: 21.BrokenCity
+  m_EditorClassIdentifier: 
+  spawnData:
+  - characterPrefab: {fileID: 233800046579812756, guid: 52971af78006b02439ebbca197a0ac13, type: 3}
+    maxHealth: 250
+    spawnWeight: 6
+  - characterPrefab: {fileID: 4958018969940711488, guid: 3f39b03a859bda843b05aee37ef28d8c, type: 3}
+    maxHealth: 300
+    spawnWeight: 5
+  - characterPrefab: {fileID: 8730186827176264980, guid: 615745aa191e4bb44918e7e248b69ba3, type: 3}
+    maxHealth: 400
+    spawnWeight: 5
+  - characterPrefab: {fileID: 212086306796114560, guid: f0601f6fbb3c41d4da9c489b31dd9fd4, type: 3}
+    maxHealth: 100
+    spawnWeight: 5
+  stageBossData:
+    characterPrefab: {fileID: 4429322039340291972, guid: e9e3e11792bd1594ea6c497ee80be852, type: 3}
+    maxHealth: 100
+    spawnWeight: 1

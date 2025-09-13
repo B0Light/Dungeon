@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd2be48f5a491e248a996629a57e3ad6, type: 3}
+  m_Name: TestDungeonMap
+  m_EditorClassIdentifier: 
+  tileMappings:
+  - cellType: 0
+    tileData: {fileID: 11400000, guid: 244c99d7e467bc447b1fc326b5eaa687, type: 2}
+  - cellType: 1
+    tileData: {fileID: 11400000, guid: c241b59ab56d560428c0d1ad77fc343b, type: 2}
+  - cellType: 2
+    tileData: {fileID: 11400000, guid: f5204939765025348bce9c1fc1b77f20, type: 2}
+  - cellType: 3
+    tileData: {fileID: 11400000, guid: ad39a1cb2cde83a4180062076904b7da, type: 2}
+  - cellType: 4
+    tileData: {fileID: 11400000, guid: aed668f27b5726743852ed3e101e3e6f, type: 2}
+  - cellType: 5
+    tileData: {fileID: 11400000, guid: aed668f27b5726743852ed3e101e3e6f, type: 2}

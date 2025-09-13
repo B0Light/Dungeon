@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 38c80816d5648374bbfe926339b82a04
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 199700
+  packageName: Wireframe Shader Effect
+  packageVersion: 1.0
+  assetPath: Assets/Azerilo/Wireframe Shader/WireframeShader.cs
+  uploadId: 445503

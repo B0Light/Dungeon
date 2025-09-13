@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae41e0ff7e201d74080011bb6ec25138, type: 3}
+  m_Name: ARY Combat Stance State Gun
+  m_EditorClassIdentifier: 
+  aiCharacterAttacks:
+  - {fileID: 11400000, guid: 27b9b0bd69442f9429cbff5ba4d573c7, type: 2}
+  - {fileID: 11400000, guid: 82b742053b5f78e4fb56521be61d785f, type: 2}
+  - {fileID: 11400000, guid: bd93ca6fa87776d429b87273431c8582, type: 2}
+  chanceToPerformCombo: 25
+  maximumEngagementDistance: 9

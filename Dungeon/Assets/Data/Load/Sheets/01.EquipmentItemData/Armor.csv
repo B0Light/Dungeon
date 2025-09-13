@@ -1,0 +1,21 @@
+Category,ItemCode,ItemName,ItemTier,Item Description,PurchaseCost,Height,Width,Weight,extraHealth,backpackX,backpackY,KorName
+ID_0_Armor,200,BasicDefenseVest,0,얇은 가죽으로 만든 갑옷 ,1000,2,2,10,50,0,0,기본 방어 조끼
+ID_0_Armor,201,ReinforcedTacticalVest,2,어깨까지 덮는 디자인으로 보호 범위가 넓어진 중급형 전술 조끼,10000,3,3,30,100,2,2,강화 전술 조끼
+ID_0_Armor,202,HeavyCombatVest,4,전면 포켓과 어깨 보호 장비가 포함된 풀세트 전투용 조끼,15000,3,3,50,200,4,4,중무장 전투 조끼
+,203,,,,,,,,,,,
+,204,,,,,,,,,,,
+,205,,,,,,,,,,,
+,206,,,,,,,,,,,
+,207,,,,,,,,,,,
+,208,,,,,,,,,,,
+,209,,,,,,,,,,,
+ID_1_Backpack,210,UrbanDaypack,0,심플하고 실용적인 디자인으로 출퇴근이나 일상에서 쓰기 좋은 가방,1000,2,2,10,10,4,4,도시용 백팩
+ID_1_Backpack,211,PandaCutiePack,1,귀여운 동물 얼굴이 포인트인 한정판 가방,4000,2,2,20,20,6,4,핑크 팬더 가방
+ID_1_Backpack,212,NomadGearPack,2,다양한 수납공간과 스트랩으로 구성된 긴 여행을 위한 실용적인 가방,10000,4,4,40,40,5,5,여행자의 짐가방
+ID_1_Backpack,213,ExplorerBackPack,3,튼튼하고 간단한 구조의 백팩,50000,4,4,30,50,6,5,탐험가의 배낭
+ID_1_Backpack,214,SurvivorLoadout,4,어디서든 생존할 수 있을거 같은 생존전문가의 백팩,100000,4,4,50,100,6,6,생존가의 풀세트 배낭
+,215,,,,,,,,,,,
+,216,,,,,,,,,,,
+,217,,,,,,,,,,,
+,218,,,,,,,,,,,
+,219,,,,,,,,,,,

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e451fadd03abe2f46ae56bf96de0bd9b, type: 3}
+  m_Name: 01.BoraCity_Tutorial
+  m_EditorClassIdentifier: 
+  spawnData:
+  - characterPrefab: {fileID: 4083727470466395897, guid: fe4aedf278b28854184af29ee46a57e6, type: 3}
+    maxHealth: 50
+    spawnWeight: 2
+  - characterPrefab: {fileID: 3012649716397571200, guid: 1f732252acf0dc04cadec61073518fb2, type: 3}
+    maxHealth: 50
+    spawnWeight: 1
+  - characterPrefab: {fileID: 212086306796114560, guid: f0601f6fbb3c41d4da9c489b31dd9fd4, type: 3}
+    maxHealth: 50
+    spawnWeight: 1
+  stageBossData:
+    characterPrefab: {fileID: 3012649716397571200, guid: 1f732252acf0dc04cadec61073518fb2, type: 3}
+    maxHealth: 100
+    spawnWeight: 1

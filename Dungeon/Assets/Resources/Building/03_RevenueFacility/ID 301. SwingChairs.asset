@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc0e6685a77e3f48bc873f4f6566496, type: 3}
+  m_Name: ID 301. SwingChairs
+  m_EditorClassIdentifier: 
+  itemCode: 301
+  itemName: "\uD68C\uC804\uC758\uC790"
+  itemIcon: {fileID: 21300000, guid: f591c52bde81e3346a99aa8ddfebd526, type: 3}
+  itemTier: 3
+  itemDescription: "\uD68C\uC804\uD558\uB294 \uC758\uC790\uC785\uB2C8\uB2E4"
+  purchaseCost: 50000
+  costItemList: 3804000043040000ba040000bb040000
+  width: 3
+  height: 3
+  isForbidden: 0
+  prefab: {fileID: 1528818639043606945, guid: 934350f249a1643b1a4e21e707241954, type: 3}
+  tileCategory: 3
+  tileType: 3
+  maxLevel: 10
+  baseFee: 100
+  upgradeStages: []

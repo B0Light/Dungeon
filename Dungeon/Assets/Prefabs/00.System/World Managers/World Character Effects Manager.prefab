@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8434947954114554572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6217015445525701524}
+  - component: {fileID: 5405071501287983554}
+  m_Layer: 0
+  m_Name: World Character Effects Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6217015445525701524
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8434947954114554572}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5405071501287983554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8434947954114554572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5866b38a29c6562428080488ad4092b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodSplatterVFX: {fileID: 4202206135331129983, guid: 6ac5a931375b698478b707035744f9cd, type: 3}
+  blockVFX: {fileID: 7718982900555060542, guid: 40b586548560bab4886a9ac7950000b6, type: 3}
+  parriedVFX: {fileID: 2457867943376072350, guid: 5570607cde339e74897c11fa48dfa85d, type: 3}
+  healVFX: {fileID: 3569205304004334262, guid: ffc38233d4253394a80ff28b9e3c3140, type: 3}
+  horizontalSwordSlashAura: []
+  verticalSwordSlashAura: []
+  swordPickAura: []
+  leapingAttackAura: []
+  takeDamageEffect: {fileID: 11400000, guid: 8dc9d4686487015458813242945e9019, type: 2}
+  takeBlockDamageEffect: {fileID: 0}
+  restoreHealthEffect: {fileID: 0}
+  slowMotionDuration: 0.5
+  slowMotionScale: 0.2
+  instantEffects: []

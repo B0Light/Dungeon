@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd2be48f5a491e248a996629a57e3ad6, type: 3}
+  m_Name: ShadowGrove_MapData
+  m_EditorClassIdentifier: 
+  tileMappings:
+  - cellType: 0
+    tileData: {fileID: 11400000, guid: fb8d2777f29575a4a99c57c5f1ca4862, type: 2}
+  - cellType: 1
+    tileData: {fileID: 11400000, guid: d5d0636daf840c34e85b943e02e9f4cf, type: 2}
+  - cellType: 2
+    tileData: {fileID: 11400000, guid: e9951580e1c99044980712716dd8dada, type: 2}
+  - cellType: 3
+    tileData: {fileID: 11400000, guid: 83593d10b85e1534c8a30ab1730f20da, type: 2}
+  - cellType: 4
+    tileData: {fileID: 11400000, guid: 3970147c874dfac428c9ad0575ce0e54, type: 2}
+  - cellType: 5
+    tileData: {fileID: 11400000, guid: 3970147c874dfac428c9ad0575ce0e54, type: 2}

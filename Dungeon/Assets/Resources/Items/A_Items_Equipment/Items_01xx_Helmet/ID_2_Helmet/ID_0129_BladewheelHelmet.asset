@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df6798a02992b142825a2c8843499dd, type: 3}
+  m_Name: ID_0129_BladewheelHelmet
+  m_EditorClassIdentifier: 
+  itemCode: 129
+  itemName: "\uCE7C\uB0A0\uBC14\uD034 \uD22C\uAD6C"
+  itemIcon: {fileID: 21300000, guid: 905a701d671c43d4fbd0c5c1134ec54a, type: 3}
+  itemTier: 4
+  itemDescription: "\uD1B5\uD569\uB41C \uBC29\uC5B4 \uBA54\uCEE4\uB2C8\uC998\uC744
+    \uAC00\uC9C4 \uD601\uC2E0\uC801\uC778 \uD5EC\uBA67"
+  purchaseCost: 85000
+  costItemList: 
+  width: 3
+  height: 3
+  itemType: 2
+  saleCost: 51000
+  purChaseWithItem: 0
+  itemModel: {fileID: 5622275599236284007, guid: 6f17b27dd83e7d24a817622c36dcdc29, type: 3}
+  itemAbilities:
+  - itemEffect: 2
+    value: 60
+  - itemEffect: 3
+    value: 40
+  weight: 45
+  extraPhysicalAbsorption: 60
+  extraMagicalAbsorption: 40
+  extraActionPoint: 3

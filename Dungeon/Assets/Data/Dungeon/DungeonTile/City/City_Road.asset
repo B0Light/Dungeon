@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104abc759d417fb488533d6b2f4b0307, type: 3}
+  m_Name: City_Road
+  m_EditorClassIdentifier: 
+  tilePrefab: {fileID: 1821661207052516616, guid: f9f63bd89adee1647b19838c68d354de, type: 3}
+  objectPercent: 0
+  treePercent: 65
+  grassPercent: 75
+  objectPrefabs: []
+  treePrefabs:
+  - {fileID: 11400000, guid: c65c6f66accfa6e43ac3d21a61fecebf, type: 2}
+  - {fileID: 11400000, guid: 79037e5c23977a041bc1960761ffbc8d, type: 2}
+  - {fileID: 11400000, guid: f46ee76515224c843a5ea84a64095487, type: 2}
+  - {fileID: 11400000, guid: 974ccd14e00b3764e8ad40f5c09f69fd, type: 2}
+  - {fileID: 11400000, guid: eaa57bc148c00ed4c8cf95f84fd9369d, type: 2}
+  - {fileID: 11400000, guid: b677e324c6339024cbe52b5638a20295, type: 2}
+  - {fileID: 11400000, guid: 5d27c7db13bbede4fbccc585dc93de44, type: 2}
+  - {fileID: 11400000, guid: e4195d42c361ed645a4fd6d14e4efe43, type: 2}
+  - {fileID: 11400000, guid: ed7ed7993b88052468b51f45a5abf1cc, type: 2}
+  - {fileID: 11400000, guid: db4d61115aeb3a54e927a77f79f306ee, type: 2}
+  grassPrefabs:
+  - {fileID: 11400000, guid: c0a403513a7798c4ea3e40d98a15fa29, type: 2}
+  - {fileID: 11400000, guid: d2ffbc9bd8dca3a45b57aec6588db9d0, type: 2}
+  - {fileID: 11400000, guid: ad08db9ebe88bcf45930f7bf4c1e81a0, type: 2}
+  - {fileID: 11400000, guid: fa6d069d4952a114088dd2d291b1fc5f, type: 2}
+  - {fileID: 11400000, guid: c1fb238b2256ccf47bfba9e4c410872c, type: 2}
+  - {fileID: 11400000, guid: 82acf94fd7c7dc94cb4da248c692945f, type: 2}
+  - {fileID: 11400000, guid: 0312df66cf614664a94c8f340eeb6b74, type: 2}
+  - {fileID: 11400000, guid: f8352824352f789428acc6e2093d191a, type: 2}
+  - {fileID: 11400000, guid: 2f0976fec003c244f8f1d049b4ebd01e, type: 2}

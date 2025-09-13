@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df6798a02992b142825a2c8843499dd, type: 3}
+  m_Name: ID_0125_ElvenHelmet
+  m_EditorClassIdentifier: 
+  itemCode: 125
+  itemName: "\uC5D8\uD504 \uD22C\uAD6C"
+  itemIcon: {fileID: 21300000, guid: 002bd48b71392da4c9f36ac1f1876b12, type: 3}
+  itemTier: 4
+  itemDescription: "\uB9C8\uBC95\uC801\uC774\uACE0 \uBB3C\uB9AC\uC801 \uBC29\uC5B4\uB825\uC73C\uB85C
+    \uC81C\uC791\uB41C \uC6B0\uC544\uD55C \uC5D8\uD504 \uD5EC\uBA67"
+  purchaseCost: 100000
+  costItemList: 
+  width: 2
+  height: 3
+  itemType: 2
+  saleCost: 60000
+  purChaseWithItem: 0
+  itemModel: {fileID: 7534511625839615161, guid: ba40d5f97cabf9f4cb5e9693289836ff, type: 3}
+  itemAbilities:
+  - itemEffect: 2
+    value: 30
+  - itemEffect: 3
+    value: 50
+  weight: 25
+  extraPhysicalAbsorption: 30
+  extraMagicalAbsorption: 50
+  extraActionPoint: 3

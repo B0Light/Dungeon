@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc86e08c4c1e96842aab0ce98628eb8f, type: 3}
+  m_Name: ID_0004_SpikeSlasher
+  m_EditorClassIdentifier: 
+  itemCode: 4
+  itemName: "\uB0A0\uC774 \uC120 \uB098\uBB34\uBC30\uD2B8"
+  itemIcon: {fileID: 21300000, guid: c832a5edc70fb2a4ca990adb7caa5cdc, type: 3}
+  itemTier: 2
+  itemDescription: "\uC2EC\uAC01\uD55C \uAD00\uD1B5 \uB2A5\uB825\uC744 \uAC00\uC9C4
+    \uACE0\uAE09 \uC2A4\uD30C\uC774\uD06C \uBB34\uAE30"
+  purchaseCost: 10000
+  costItemList: 
+  width: 5
+  height: 2
+  itemType: 0
+  saleCost: 9000
+  purChaseWithItem: 0
+  itemModel: {fileID: 9098958498521780634, guid: 7afa4f55a7224d4478fe5220121eb611, type: 3}
+  itemAbilities:
+  - itemEffect: 0
+    value: 50
+  - itemEffect: 1
+    value: 0
+  weight: 20
+  weaponAnimator: {fileID: 22100000, guid: d1720dba861229a42b930f82b8258b4f, type: 2}
+  weaponEquipSprite: {fileID: 21300000, guid: 5b6a2aa3e63206746925c6f58caeb75a, type: 3}
+  physicalDamage: 0
+  magicalDamage: 0
+  poiseDamage: 0
+  attackSpeed: 1
+  hAtkMod01: 1
+  hAtkMod02: 1.2
+  hAtkMod03: 1.4
+  vAtkMod01: 1.3
+  vAtkMod02: 1.7
+  vAtkMod03: 2
+  runningAtkMod: 1.5
+  rollingAtkMod: 1
+  backStepAtkMod: 1
+  jumpingAtkMod: 1
+  baseActionCost: 1
+  physicalDamageAbsorption: 30
+  magicalDamageAbsorption: 0
+  stability: 50
+  lightAttackAction: {fileID: 0}
+  heavyAttackAction: {fileID: 0}
+  blockAction: {fileID: 0}
+  weaponSkill: {fileID: 0}

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65657fafdadc2404980b5da75b028de6, type: 3}
+  m_Name: ID 130. ExtraAttackPower
+  m_EditorClassIdentifier: 
+  perkId: 130
+  perkIcon: {fileID: 21300000, guid: 09ebda79cc6da7f45a1689f1d978a396, type: 3}
+  perkName: "\uCD94\uAC00 \uACE0\uC815 \uD53C\uD574"
+  perkDescription: "\uC774\uC81C \uB9E4 \uD0C0\uACA9\uC2DC \uCD94\uAC00\uB85C \uACE0\uC815
+    \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
+  cost: 1
+  perkTier: 0
+  requiredPerkId: 0

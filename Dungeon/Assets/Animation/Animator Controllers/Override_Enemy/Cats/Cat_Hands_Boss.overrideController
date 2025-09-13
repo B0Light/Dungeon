@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Cat_Hands_Boss
+  m_Controller: {fileID: 9100000, guid: 29ded45ec9bd1bd49beb1d8c4d479ad3, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 1827226128182048838, guid: 409fda99ffa11e1489bf1e376ef299d0, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: cbda963bf40240749ab864946ff20988, type: 2}
+  - m_OriginalClip: {fileID: 1827226128182048838, guid: 5be6301300489cc4191b8e0db232a754, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: f00dfbb89d3cc754387e2014f464fa0f, type: 2}

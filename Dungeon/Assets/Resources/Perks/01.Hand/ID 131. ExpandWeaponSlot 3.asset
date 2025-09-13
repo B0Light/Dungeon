@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8904bbd655e04c442bdf1877e35404c3, type: 3}
+  m_Name: ID 131. ExpandWeaponSlot 3
+  m_EditorClassIdentifier: 
+  perkId: 131
+  perkIcon: {fileID: 21300000, guid: c4f5720aed49de04f8f911129e824ca0, type: 3}
+  perkName: "\uBB34\uAE30 \uC2AC\uB86F \uD655\uC7A5"
+  perkDescription: "\uBB34\uAE30 \uC2AC\uB86F\uC774 \uCD5C\uB300\uB85C \uB298\uC5B4\uB0A9\uB2C8\uB2E4."
+  cost: 1
+  extraGridSize: {x: 1, y: 1}
