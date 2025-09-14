@@ -81,7 +81,7 @@ public class WeaponDataImporter : MonoBehaviour
             item.heavyAttackAction = ScriptableObject.CreateInstance<BaseAttackAction_Heavy>();
             item.blockAction = ScriptableObject.CreateInstance<BlockAction>();
             
-            item.itemName = values[13]; // 한국어 이름 으로 저장 
+            //item.itemName = values[13]; // 한국어 이름 으로 저장 
 
             // ScriptableObject를 애셋으로 저장
             string assetPath = "Assets/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/" + itemInfoPath + ".asset";

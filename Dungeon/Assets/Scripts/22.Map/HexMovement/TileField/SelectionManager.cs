@@ -22,8 +22,7 @@ public class SelectionManager : MonoBehaviour
 
     public void HandleClick(Vector3 mousePosition)
     {
-        GameObject result;
-        if (FindTarget(mousePosition, out result))
+        if (FindTarget(mousePosition, out GameObject result))
         {
             if (UnitSelected(result))
             {
@@ -43,9 +42,8 @@ public class SelectionManager : MonoBehaviour
 
     private bool FindTarget(Vector3 mousePosition, out GameObject result)
     {
-        RaycastHit hit;
         Ray ray = hexCamera.ScreenPointToRay(mousePosition);
-        if (Physics.Raycast(ray, out hit, 100, selectionMask))
+        if (Physics.Raycast(ray, out RaycastHit hit, 100, selectionMask))
         {
             result = hit.collider.gameObject;
             return true;

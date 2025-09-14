@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class PlayerInput_Hex : MonoBehaviour
 {
-    public UnityEvent<Vector3> PointerClick;
-    
     public LayerMask selectionMask;
     private Hex hex = null;
     GameObject originObj = null;
+    
+    public UnityEvent<Vector3> pointerClick;
 
     void Update()
     {
@@ -22,7 +23,7 @@ public class PlayerInput_Hex : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = Input.mousePosition;
-            PointerClick?.Invoke(mousePos);
+            pointerClick?.Invoke(mousePos);
         }
     }
     

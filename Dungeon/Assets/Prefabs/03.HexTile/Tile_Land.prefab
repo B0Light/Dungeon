@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6826292661237344583}
-  m_Layer: 14
+  m_Layer: 27
   m_Name: Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7169142438468590128}
   - component: {fileID: 2980912636721168481}
   - component: {fileID: 7927532021975420725}
-  m_Layer: 14
+  m_Layer: 27
   m_Name: Tile_Land
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 2726146759776017730}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 20}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -104,7 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b0d5f21593dea546a4df49d8f458980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlight: {fileID: 0}
   hexType: 7
   hexMapName: 
 --- !u!114 &7927532021975420725
@@ -129,7 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5430396400494553295}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: Selection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1557342306194047333}
   - component: {fileID: 6890257199598962092}
-  m_Layer: 14
+  m_Layer: 27
   m_Name: HexagonFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,6 +200,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -247,7 +249,7 @@ GameObject:
   - component: {fileID: 8447956290426225042}
   - component: {fileID: 6504967589117697393}
   - component: {fileID: 2607768762656169882}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: Selection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,6 +296,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -329,7 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6606380539292483699}
   - component: {fileID: 7999005133322693110}
-  m_Layer: 16
+  m_Layer: 27
   m_Name: SelectionObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,6 +373,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -412,7 +420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2167352991804330045}
-  m_Layer: 14
+  m_Layer: 27
   m_Name: OnMouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +453,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7784768542170548504}
-  m_Layer: 14
+  m_Layer: 27
   m_Name: Prop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +487,7 @@ GameObject:
   - component: {fileID: 8896575935380973161}
   - component: {fileID: 8886352145092730227}
   - component: {fileID: 8814136155405673017}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Tile_Hex_Flat_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -526,6 +534,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -553,7 +564,7 @@ MeshRenderer:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!95 &8814136155405673017
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -567,6 +578,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1

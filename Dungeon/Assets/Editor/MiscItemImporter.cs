@@ -51,7 +51,7 @@ public class MiscItemImporter : MonoBehaviour
             item.itemType = ItemType.Misc;
             item.itemAbilities.Add(new ItemAbility(ItemEffect.Resource, 0));
 
-            item.itemName = values[9]; // 한국어 이름 으로 저장 
+            //item.itemName = values[9]; // 한국어 이름 으로 저장 
             
             // ScriptableObject를 애셋으로 저장
             string assetPath = "Assets/Resources/Items/C_Items_Misc/" + itemInfoPath + ".asset";

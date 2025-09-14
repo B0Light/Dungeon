@@ -6,19 +6,14 @@ using UnityEngine;
 [SelectionBase]
 public class Hex : MonoBehaviour
 {
-    [SerializeField]
-    private GlowHighlight highlight;
+    private GlowHighlight _highlight;
 
     [SerializeField]
     private HexType hexType;
 
     public string hexMapName;
     
-    public HexCoordinate HexCoords {
-        get {
-            return HexCoordinate.ConvertFromVector3(transform.position);
-        }
-    }
+    public HexCoordinate HexCoords => HexCoordinate.ConvertFromVector3(transform.position);
 
     public int GetCost()
         => hexType switch
@@ -45,35 +40,35 @@ public class Hex : MonoBehaviour
 
     private void Awake()
     {
-        highlight = GetComponent<GlowHighlight>();
+        _highlight = GetComponent<GlowHighlight>();
         
         HexGrid.Instance.AddTile(this);
     }
     public void EnableHighlight()
     {
-        highlight.ToggleGlow(true);
+        _highlight.ToggleGlow(true);
     }
 
     public void DisableHighlight()
     {
-        highlight.ToggleGlow(false);
+        _highlight.ToggleGlow(false);
     }
 
     internal void ResetHighlight()
     {
-        highlight.ResetGlowHighlight();
+        _highlight.ResetGlowHighlight();
     }
 
     internal void HighlightPath()
     {
-        highlight.HighlightValidPath();
+        _highlight.HighlightValidPath();
     }
     
     public void OnMouseToggle()
     {
         if (IsObstacle()) return;
-        if(highlight)
-            highlight.OnMouseToggleGlow();
+        if(_highlight)
+            _highlight.OnMouseToggleGlow();
     }
 }
 

@@ -54,7 +54,7 @@ public class HelmetDataImporter : MonoBehaviour
             item.extraPhysicalAbsorption = physicalDefense;
             item.extraMagicalAbsorption = magicalDefense;
             item.extraActionPoint = int.Parse(values[11]); 
-            item.itemName = values[12]; // 한국어 이름 으로 저장 
+            //item.itemName = values[12]; // 한국어 이름 으로 저장 
 
             // ScriptableObject를 애셋으로 저장
             string assetPath = "Assets/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/" + itemInfoPath + ".asset";

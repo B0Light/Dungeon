@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9089490848990615953}
   - component: {fileID: 1061586156055628182}
   - component: {fileID: 6813251810788843901}
-  m_Layer: 14
+  m_Layer: 27
   m_Name: Tile_Dungeon_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 617582945613587362}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.872647, y: 0, z: 7.434212}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5813171249559203387}
   - component: {fileID: 888839519594563947}
   - component: {fileID: 5159076166892198414}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Pirate_Fort_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,6 +146,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -182,7 +185,7 @@ GameObject:
   - component: {fileID: 1485930166812068484}
   - component: {fileID: 6786709315500492223}
   - component: {fileID: 6116465365971596842}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Env_Pirate_Palm_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,6 +232,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -265,7 +271,7 @@ GameObject:
   - component: {fileID: 1828888145385460984}
   - component: {fileID: 1803617763361740452}
   - component: {fileID: 1812034475715253324}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Pirate_Fort_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,6 +318,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -348,7 +357,7 @@ GameObject:
   - component: {fileID: 5273193302708539955}
   - component: {fileID: 4806013055308824652}
   - component: {fileID: 3111516430065726505}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Env_Pirate_Palm_02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,6 +404,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -429,7 +441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4711912434172330748}
-  m_Layer: 14
+  m_Layer: 27
   m_Name: Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +473,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8000695138260541423}
-  m_Layer: 14
+  m_Layer: 27
   m_Name: Prop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +522,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3356592470866596403}
-  m_Layer: 14
+  m_Layer: 27
   m_Name: OnMouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +557,7 @@ GameObject:
   - component: {fileID: 798421295039309820}
   - component: {fileID: 2175946780095700183}
   - component: {fileID: 8216311266213755179}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Env_Pirate_Palm_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,6 +604,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -628,7 +643,7 @@ GameObject:
   - component: {fileID: 7603216574813969687}
   - component: {fileID: 9012116361700452542}
   - component: {fileID: 7241873649732041365}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Pirate_Fort_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,6 +690,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -711,7 +729,7 @@ GameObject:
   - component: {fileID: 6286435402720750934}
   - component: {fileID: 8443515090471778927}
   - component: {fileID: 1116913969631422829}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Pirate_Fort_03 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -758,6 +776,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -794,7 +815,7 @@ GameObject:
   - component: {fileID: 6498320009161387388}
   - component: {fileID: 1274235969832186042}
   - component: {fileID: 3063109396145543845}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Pirate_Fort_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,6 +862,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -877,7 +901,7 @@ GameObject:
   - component: {fileID: 5347982390718195450}
   - component: {fileID: 7317094175891827515}
   - component: {fileID: 5913979164796709561}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Flag_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -924,6 +948,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -960,7 +987,7 @@ GameObject:
   - component: {fileID: 6950049989983489178}
   - component: {fileID: 982888318591639937}
   - component: {fileID: 2867576891458022658}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Prop_Pirate_Cannon_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1007,6 +1034,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1043,7 +1073,7 @@ GameObject:
   - component: {fileID: 4869510579923669499}
   - component: {fileID: 8081767010475372871}
   - component: {fileID: 3802662222892732110}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Env_Generic_Cloud_03 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1090,6 +1120,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1126,7 +1159,7 @@ GameObject:
   - component: {fileID: 8360166642787908641}
   - component: {fileID: 8434601297200419240}
   - component: {fileID: 2544347142368704002}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Env_Pirate_Palm_02 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1173,6 +1206,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1209,7 +1245,7 @@ GameObject:
   - component: {fileID: 1909361427356206577}
   - component: {fileID: 7305576586536808069}
   - component: {fileID: 477777215803880240}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Env_Pirate_Palm_03 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1256,6 +1292,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1292,7 +1331,7 @@ GameObject:
   - component: {fileID: 2836304709858094223}
   - component: {fileID: 5833611215444228101}
   - component: {fileID: 6770611853160033086}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Env_Generic_Cloud_02 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1339,6 +1378,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1375,7 +1417,7 @@ GameObject:
   - component: {fileID: 4344601416839779446}
   - component: {fileID: 8254180764182218883}
   - component: {fileID: 5485919508315851820}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Pirate_Fort_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1422,6 +1464,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1457,7 +1502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 355249442952037208}
   - component: {fileID: 4079246269597230248}
-  m_Layer: 14
+  m_Layer: 27
   m_Name: HexagonFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1496,6 +1541,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1528,7 +1576,7 @@ SpriteRenderer:
   m_Size: {x: 7.68, y: 7.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6739707832667771185
@@ -1540,7 +1588,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1634722972840876692}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: Selection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1574,7 +1622,7 @@ GameObject:
   - component: {fileID: 3916340156395636682}
   - component: {fileID: 588327722860686115}
   - component: {fileID: 2240031133074752845}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Tile_Hex_Flat_02 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1621,6 +1669,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1657,7 +1708,7 @@ GameObject:
   - component: {fileID: 3909145448164162070}
   - component: {fileID: 5520681835457124686}
   - component: {fileID: 2211768607725811294}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: Selection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1704,6 +1755,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1739,7 +1793,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2166377577003180225}
   - component: {fileID: 1986807524358893543}
-  m_Layer: 16
+  m_Layer: 27
   m_Name: SelectionObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1778,6 +1832,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1810,7 +1867,7 @@ SpriteRenderer:
   m_Size: {x: 20, y: 20}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7683113809875043187
@@ -1824,7 +1881,7 @@ GameObject:
   - component: {fileID: 1231076260236258328}
   - component: {fileID: 2016564811465839764}
   - component: {fileID: 4114621433833522675}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Env_Pirate_Palm_03 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1871,6 +1928,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1907,7 +1967,7 @@ GameObject:
   - component: {fileID: 8767204520892407646}
   - component: {fileID: 5566828378981350975}
   - component: {fileID: 3839127098824867672}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Pirate_Fort_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1954,6 +2014,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1990,7 +2053,7 @@ GameObject:
   - component: {fileID: 3016948513693862174}
   - component: {fileID: 4361533204931567475}
   - component: {fileID: 3986956265631639828}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Pirate_Fort_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2037,6 +2100,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

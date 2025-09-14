@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8398320108324238722}
   - component: {fileID: 2426616887185972950}
   - component: {fileID: 3219206582889634022}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Tile_Hex_Path_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,6 +58,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -94,7 +97,7 @@ GameObject:
   - component: {fileID: 112997534351126524}
   - component: {fileID: 140775764505258760}
   - component: {fileID: 132252205235225876}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,6 +144,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -177,7 +183,7 @@ GameObject:
   - component: {fileID: 2256286601434967294}
   - component: {fileID: 7764448520446103200}
   - component: {fileID: 4707889379158551162}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Env_Generic_Rock_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,6 +230,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -260,7 +269,7 @@ GameObject:
   - component: {fileID: 9182953775366415265}
   - component: {fileID: 1643385479830474116}
   - component: {fileID: 8567769639071740225}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_Flag_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,6 +316,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -343,7 +355,7 @@ GameObject:
   - component: {fileID: 806163488983995257}
   - component: {fileID: 813772561524605281}
   - component: {fileID: 823376149708794517}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,6 +403,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -427,7 +442,7 @@ GameObject:
   - component: {fileID: 4609237751692601198}
   - component: {fileID: 1132844846132603327}
   - component: {fileID: 3082129870081777832}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_05 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,6 +492,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -513,7 +531,7 @@ GameObject:
   - component: {fileID: 905836035102911404}
   - component: {fileID: 933404291083664764}
   - component: {fileID: 925014655638398008}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_Flag_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,6 +578,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -596,7 +617,7 @@ GameObject:
   - component: {fileID: 1025785817841270162}
   - component: {fileID: 1033860489687365990}
   - component: {fileID: 1042859027261773690}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,6 +664,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -679,7 +703,7 @@ GameObject:
   - component: {fileID: 3138750158788122641}
   - component: {fileID: 4917914183173868931}
   - component: {fileID: 6923788899509429650}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -726,6 +750,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -760,7 +787,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6826292661237344583}
-  m_Layer: 14
+  m_Layer: 27
   m_Name: Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -794,7 +821,7 @@ GameObject:
   - component: {fileID: 2589946206108216433}
   - component: {fileID: 2560963669246017129}
   - component: {fileID: 2570569163187639709}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,6 +869,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -879,7 +909,7 @@ GameObject:
   - component: {fileID: 7169142438468590128}
   - component: {fileID: 2980912636721168481}
   - component: {fileID: 7927532021975420725}
-  m_Layer: 14
+  m_Layer: 27
   m_Name: Tile_BaseCamp_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -895,7 +925,7 @@ Transform:
   m_GameObject: {fileID: 2726146759776017730}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 20}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -963,7 +993,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4508037554405847170}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: BaseCamp_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1012,7 +1042,7 @@ GameObject:
   - component: {fileID: 8910534927069812721}
   - component: {fileID: 5467233853605385063}
   - component: {fileID: 1951880846942859077}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1059,6 +1089,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1093,7 +1126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5430396400494553295}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: Selection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1126,7 +1159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1557342306194047333}
   - component: {fileID: 6890257199598962092}
-  m_Layer: 14
+  m_Layer: 27
   m_Name: HexagonFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1165,6 +1198,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1197,7 +1233,7 @@ SpriteRenderer:
   m_Size: {x: 7.68, y: 7.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4939905937688665152
@@ -1211,7 +1247,7 @@ GameObject:
   - component: {fileID: 6839793951941991398}
   - component: {fileID: 9148540103422477250}
   - component: {fileID: 4981234178610381950}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Env_Generic_Tree_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1258,6 +1294,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1294,7 +1333,7 @@ GameObject:
   - component: {fileID: 9195608204155651338}
   - component: {fileID: 6942878482595008832}
   - component: {fileID: 8946658307985589518}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_05 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1345,6 +1384,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1381,7 +1423,7 @@ GameObject:
   - component: {fileID: 8447956290426225042}
   - component: {fileID: 6504967589117697393}
   - component: {fileID: 2607768762656169882}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: Selection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1428,6 +1470,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1464,7 +1509,7 @@ GameObject:
   - component: {fileID: 8603273023421495366}
   - component: {fileID: 7701922758572516124}
   - component: {fileID: 1169767186332367943}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Env_Generic_Tree_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1511,6 +1556,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1546,7 +1594,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6606380539292483699}
   - component: {fileID: 7999005133322693110}
-  m_Layer: 16
+  m_Layer: 27
   m_Name: SelectionObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1585,6 +1633,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1617,7 +1668,7 @@ SpriteRenderer:
   m_Size: {x: 20, y: 20}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6495106065735305221
@@ -1631,7 +1682,7 @@ GameObject:
   - component: {fileID: 5392982668587427825}
   - component: {fileID: 3466353668553536301}
   - component: {fileID: 4605077906840170390}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Env_Generic_Tree_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1678,6 +1729,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1714,7 +1768,7 @@ GameObject:
   - component: {fileID: 3882025940631384197}
   - component: {fileID: 1389171534036274863}
   - component: {fileID: 2492327232164749798}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1761,6 +1815,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1795,7 +1852,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2167352991804330045}
-  m_Layer: 14
+  m_Layer: 27
   m_Name: OnMouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1830,7 +1887,7 @@ GameObject:
   - component: {fileID: 8973713164888860309}
   - component: {fileID: 7130772886754222383}
   - component: {fileID: 5476829099763763927}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_07 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1877,6 +1934,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1913,7 +1973,7 @@ GameObject:
   - component: {fileID: 7563129548099090461}
   - component: {fileID: 7530689434825526569}
   - component: {fileID: 7541782239381425957}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1961,6 +2021,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1997,7 +2060,7 @@ GameObject:
   - component: {fileID: 7680583137634685695}
   - component: {fileID: 7701482808672708555}
   - component: {fileID: 7695104845837559239}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2044,6 +2107,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2080,7 +2146,7 @@ GameObject:
   - component: {fileID: 2331049690237433170}
   - component: {fileID: 1746671465840569757}
   - component: {fileID: 5216293618175204179}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_Flag_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2127,6 +2193,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2163,7 +2232,7 @@ GameObject:
   - component: {fileID: 8891128337586827007}
   - component: {fileID: 6915354359529114241}
   - component: {fileID: 8735751978468166573}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_07 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2210,6 +2279,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2246,7 +2318,7 @@ GameObject:
   - component: {fileID: 3379565979693288544}
   - component: {fileID: 2949895050611450309}
   - component: {fileID: 4870493338762186236}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_Flag_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2293,6 +2365,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2329,7 +2404,7 @@ GameObject:
   - component: {fileID: 8628944068945616077}
   - component: {fileID: 7866267827257102}
   - component: {fileID: 5002598635949646176}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: SM_Bld_Knights_Castle_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2376,6 +2451,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2409,6 +2487,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7563129548099090461}
     m_Modifications:
+    - target: {fileID: 1744382316800572, guid: da4fc3ed7dcb49a4ebb4508c4fb0b4f6, type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 4988139218819526, guid: da4fc3ed7dcb49a4ebb4508c4fb0b4f6, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2442,7 +2524,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 23011400642910930, guid: da4fc3ed7dcb49a4ebb4508c4fb0b4f6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a16b7b85a356b7d469067849a165dcff, type: 2}
     m_RemovedComponents: []
@@ -2463,6 +2545,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2589946206108216433}
     m_Modifications:
+    - target: {fileID: 1072275587183118, guid: 45ebd1f008d1ccb469bb41a81a4d5e6c, type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 4457184196990762, guid: 45ebd1f008d1ccb469bb41a81a4d5e6c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2496,7 +2582,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 23570732199469074, guid: 45ebd1f008d1ccb469bb41a81a4d5e6c, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a16b7b85a356b7d469067849a165dcff, type: 2}
     m_RemovedComponents: []
@@ -2517,6 +2603,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 806163488983995257}
     m_Modifications:
+    - target: {fileID: 1072275587183118, guid: 45ebd1f008d1ccb469bb41a81a4d5e6c, type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 4457184196990762, guid: 45ebd1f008d1ccb469bb41a81a4d5e6c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2550,7 +2640,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 23570732199469074, guid: 45ebd1f008d1ccb469bb41a81a4d5e6c, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a16b7b85a356b7d469067849a165dcff, type: 2}
     m_RemovedComponents: []

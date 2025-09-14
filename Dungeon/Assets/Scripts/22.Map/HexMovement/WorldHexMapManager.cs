@@ -7,15 +7,15 @@ public class WorldHexMapManager : Singleton<WorldHexMapManager>
 
     [SerializeField] private GameObject unitObject;
     
-    public HexCoordinate CurUnitPos = new HexCoordinate(0,0);
+    public HexCoordinate curUnitPos = new HexCoordinate(0,0);
 
     private void OnEnable()
     {
-        unitObject.transform.position = CurUnitPos.ConvertToVector3();
+        unitObject.transform.position = curUnitPos.ConvertToVector3();
     }
 
     private void EnterTile()
     {
-        CurUnitPos = HexCoordinate.ConvertFromVector3(unitObject.transform.position);
+        curUnitPos = HexCoordinate.ConvertFromVector3(unitObject.transform.position);
     }
 }
