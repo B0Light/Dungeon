@@ -1,22 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class UnitManager : MonoBehaviour
 {
-    [SerializeField]
-    private HexGrid hexGrid;
-
-    [SerializeField]
-    private MovementSystem movementSystem;
+    [SerializeField] private HexGrid hexGrid;
+    [SerializeField] private MovementSystem movementSystem;
 
     public bool PlayersTurn { get; private set; } = true;
-
-    [SerializeField]
-    private Unit unitShip;
-    private Hex previouslySelectedHex;
+    
+    private Unit _unitShip;
+    private Hex _previouslySelectedHex;
 
     public void HandleUnitSelected(GameObject unit)
     {
@@ -24,7 +16,7 @@ public class UnitManager : MonoBehaviour
             return;
 
         Unit unitReference = unit.GetComponent<Unit>();
-
+        
         if (CheckIfTheSameUnitSelected(unitReference))
             return;
 
@@ -33,7 +25,7 @@ public class UnitManager : MonoBehaviour
 
     private bool CheckIfTheSameUnitSelected(Unit unitReference)
     {
-        if (unitShip == unitReference)
+        if (_unitShip == unitReference)
         {
             ClearOldSelection();
             return true;
@@ -41,14 +33,14 @@ public class UnitManager : MonoBehaviour
         return false;
     }
 
-    public void HandleTerrainSelected(GameObject hexGO)
+    public void HandleTerrainSelected(GameObject hexGameObject)
     {
-        if (unitShip == null || PlayersTurn == false)
+        if (_unitShip == null || PlayersTurn == false)
         {
             return;
         }
 
-        Hex selectedHex = hexGO.GetComponent<Hex>();
+        Hex selectedHex = hexGameObject.GetComponent<Hex>();
 
         if (HandleHexOutOfRange(selectedHex.HexCoords) || HandleSelectedHexIsUnitHex(selectedHex.HexCoords))
             return;
@@ -59,47 +51,47 @@ public class UnitManager : MonoBehaviour
 
     private void PrepareUnitForMovement(Unit unitReference)
     {
-        if (unitShip != null)
+        if (_unitShip != null)
         {
             ClearOldSelection();
         }
 
-        unitShip = unitReference;
-        unitShip.Select();
-        movementSystem.ShowRange(unitShip, hexGrid);
+        _unitShip = unitReference;
+        _unitShip.Select();
+        movementSystem.ShowRange(_unitShip, hexGrid);
     }
 
     private void ClearOldSelection()
     {
-        previouslySelectedHex = null;
-        unitShip.Deselect();
+        _previouslySelectedHex = null;
+        _unitShip.Deselect();
         movementSystem.HideRange(hexGrid);
-        unitShip = null;
+        _unitShip = null;
 
     }
 
     private void HandleTargetHexSelected(Hex selectedHex)
     {
-        if (previouslySelectedHex == null || previouslySelectedHex != selectedHex)
+        Debug.Log("HandelTargetHexSelected");
+        if (_previouslySelectedHex == null || _previouslySelectedHex != selectedHex)
         {
-            previouslySelectedHex = selectedHex;
+            _previouslySelectedHex = selectedHex;
             movementSystem.ShowPath(selectedHex.HexCoords, hexGrid);
         }
         else
         {
-            movementSystem.MoveUnit(unitShip, hexGrid);
+            movementSystem.MoveUnit(_unitShip, hexGrid);
             PlayersTurn = false;
-            unitShip.MovementFinished += ResetTurn;
+            _unitShip.MovementFinished += ResetTurn;
             ClearOldSelection();
-
         }
     }
 
     private bool HandleSelectedHexIsUnitHex(HexCoordinate hexPosition)
     {
-        if (hexPosition == hexGrid.GetClosestHex(unitShip.transform.position))
+        if (hexPosition == hexGrid.GetClosestHex(_unitShip.transform.position))
         {
-            unitShip.Deselect();
+            _unitShip.Deselect();
             ClearOldSelection();
             return true;
         }
