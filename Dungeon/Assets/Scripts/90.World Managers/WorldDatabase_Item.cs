@@ -22,8 +22,10 @@ public class WorldDatabase_Item : Singleton<WorldDatabase_Item>
     [SerializeField] private List<ItemInfo> miscItems = new List<ItemInfo>();
     [SerializeField] private List<ItemInfo> notSaleItem = new List<ItemInfo>();
     [SerializeField] private List<ItemInfo> onSaleItem = new List<ItemInfo>();
-    private readonly List<Sprite> _defaultItemIcon = new List<Sprite>();
-    private Sprite  _unknownIcon;
+    
+    [Header("Icons")]
+    [SerializeField] private List<Sprite> defaultItemIcon = new List<Sprite>();
+    [SerializeField] private Sprite  unknownIcon;
 
     private Dictionary<ItemTier, List<ItemInfo>> _allItemsByTier;
     private Dictionary<ItemTier, List<ItemInfo>> _miscItemsByTier;
@@ -36,15 +38,8 @@ public class WorldDatabase_Item : Singleton<WorldDatabase_Item>
     {
         base.Awake();
         InitTierLists();
-
-        foreach (EquipmentItemInfo equipmentItem in equipmentItems)
-        {
-            equipmentItem.costItemList.Clear();
-        }
-
-        LoadDefaultIcons();
-        LoadAllItems();
-        SetAllItemList();
+        
+        InitAllItems();
         ClassifyItemsByTier();
     }
 
@@ -68,22 +63,10 @@ public class WorldDatabase_Item : Singleton<WorldDatabase_Item>
         }
     }
 
-    private void LoadDefaultIcons()
-    {
-        Sprite[] itemIcons = Resources.LoadAll<Sprite>("ItemIcons/DefaultItemEffectIcon");
-        foreach (var icon in itemIcons)
-        {
-            _defaultItemIcon.Add(icon);
-        }
-
-        _unknownIcon = Resources.Load<Sprite>("ItemIcons/UnknownIcon");
-    }
-
-    private void LoadAllItems()
+    private void InitAllItems()
     {
         /* Equipment Item */
-        EquipmentItemInfo[] equipmentItemInfos = Resources.LoadAll<EquipmentItemInfo>("Items/A_Items_Equipment");
-        foreach (var itemInfo in equipmentItemInfos)
+        foreach (var itemInfo in equipmentItems)
         {
             if (itemInfo is EquipmentItemInfoWeapon weaponItem)
             {
@@ -92,29 +75,19 @@ public class WorldDatabase_Item : Singleton<WorldDatabase_Item>
                 weaponItem.blockAction = ScriptableObject.CreateInstance<BlockAction>();
             }
             itemInfo.costItemList.Clear();
-            equipmentItems.Add(itemInfo);
         }
         
-        Debug.Log($"Loaded {equipmentItems.Count} equipment items into the item database.");
-
         /* Item Consumable */
-        ItemInfoConsumable[] itemConsumables = Resources.LoadAll<ItemInfoConsumable>("Items/B_Items_Consumable");
 
-        foreach (var itemConsumable in itemConsumables)
+        foreach (var itemConsumable in consumableItems)
         {
             itemConsumable.costItemList.Clear();
-            consumableItems.Add(itemConsumable);
         }
-
-        Debug.Log($"Loaded {consumableItems.Count} consumable items into the item database.");
         
         /* Item Misc */
-        ItemInfo[] micsItemInfo = Resources.LoadAll<ItemInfo>("Items/C_Items_Misc");
-
-        foreach (var item in micsItemInfo)
+        foreach (var item in miscItems)
         {
             item.costItemList.Clear();
-            miscItems.Add(item);
             if(1290 <= item.itemCode) // id 1290 이상은 구매 불가 아이템
             {
                 notSaleItem.Add(item);
@@ -125,12 +98,6 @@ public class WorldDatabase_Item : Singleton<WorldDatabase_Item>
             }
         }
         
-
-        Debug.Log($"Loaded {miscItems.Count} misc items into the item database.");
-    }
-
-    private void SetAllItemList()
-    {
         allItems.AddRange(equipmentItems);
         allItems.AddRange(consumableItems);
         allItems.AddRange(miscItems);
@@ -141,7 +108,6 @@ public class WorldDatabase_Item : Singleton<WorldDatabase_Item>
         Debug.Log("Classify item cnt : " + allItems.Count);
         foreach (ItemInfo item in allItems)
         {
-            // 아이템 코드 0번은 티어별 분류에서 제외
             if (item.itemCode != 0)
             {
                 _allItemsByTier[item.itemTier].Add(item);
@@ -155,13 +121,11 @@ public class WorldDatabase_Item : Singleton<WorldDatabase_Item>
     
         foreach (ItemInfo item in onSaleItem)
         {
-            // onSaleItem : misc 타입 중 판매가능 상품 
             _onSaleItemsByTier[item.itemTier].Add(item);
         }
     
         foreach (EquipmentItemInfo item in equipmentItems)
         {
-            // 아이템 코드 0번은 티어별 분류에서 제외
             if (item.itemCode != 0 && item.itemCode < 100)
             {
                 _weaponItemsByTier[item.itemTier].Add(item);
@@ -170,7 +134,6 @@ public class WorldDatabase_Item : Singleton<WorldDatabase_Item>
 
         foreach (EquipmentItemInfo item in equipmentItems)
         {
-            // 아이템 코드 0번은 티어별 분류에서 제외
             if (item.itemCode != 0)
             {
                 _equipmentItemsByTier[item.itemTier].Add(item);
@@ -186,8 +149,8 @@ public class WorldDatabase_Item : Singleton<WorldDatabase_Item>
     public Sprite GetDefaultIcon(ItemEffect itemEffect)
     {
         int iconIndex = (int)itemEffect;
-        if (iconIndex < 0 || iconIndex >= _defaultItemIcon.Count) return _unknownIcon;
-        return _defaultItemIcon[iconIndex];
+        if (iconIndex < 0 || iconIndex >= defaultItemIcon.Count) return unknownIcon;
+        return defaultItemIcon[iconIndex];
     }
 
     public List<ItemInfo> GetAllItem() => allItems;

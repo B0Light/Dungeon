@@ -17,7 +17,6 @@ public class DungeonMapSetter : MonoBehaviour
     [Header("NavMesh Build Settings")]
     [SerializeField] private bool useAsyncNavMeshBuild = true;
     [SerializeField] private float navMeshBuildDelay = 0.5f;
-    [SerializeField] private int navMeshBuildBatchSize = 10;
     
     public static event Action OnPlayerSpawned;
     public static event Action OnBossStart;

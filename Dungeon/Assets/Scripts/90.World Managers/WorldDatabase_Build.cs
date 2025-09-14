@@ -1,43 +1,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class WorldDatabase_Build : Singleton<WorldDatabase_Build>
 {
     public bool IsDataLoaded { get; private set; }
     
-    private readonly List<BuildObjData> _allBuildObjDataList = new List<BuildObjData>();
+    [SerializeField] private List<BuildObjData> allBuildObjDataList = new List<BuildObjData>();
+    [SerializeField] private List<Sprite> defaultCategoryIcon = new List<Sprite>();
+    
     private readonly Dictionary<ItemTier, List<BuildObjData>> _buildObjByLevel = new Dictionary<ItemTier, List<BuildObjData>>();
-    private readonly List<Sprite> _defaultCategoryIcon = new List<Sprite>();
     
     protected override void Awake()
     {
         base.Awake();
         IsDataLoaded = false;
-        LoadData();
         ClassifyData();
         IsDataLoaded = true;
     }
 
-    private void LoadData()
-    {
-        BuildObjData[] buildingObjects = Resources.LoadAll<BuildObjData>("Building");
-        foreach (var unit in buildingObjects)
-        {
-            if(unit.isForbidden) continue;
-            _allBuildObjDataList.Add(unit);
-        }
-        
-        Sprite[] defaultIcons = Resources.LoadAll<Sprite>("Building/99_DefaultIcon");
-        foreach (var icon in defaultIcons)
-        {
-            _defaultCategoryIcon.Add(icon);
-        }
-    }
-
     private void ClassifyData()
     {
-        foreach (var buildObj in _allBuildObjDataList)
+        foreach (var buildObj in allBuildObjDataList)
         {
             var tier = buildObj.itemTier;
         
@@ -52,9 +37,9 @@ public class WorldDatabase_Build : Singleton<WorldDatabase_Build>
     }
     
     public BuildObjData GetBuildingByID(int id) => 
-        _allBuildObjDataList.FirstOrDefault(buildObjData => buildObjData.itemCode == id);
+        allBuildObjDataList.FirstOrDefault(buildObjData => buildObjData.itemCode == id);
 
-    public Sprite GetCategoryIcon(TileCategory id) => _defaultCategoryIcon[(int)id];
+    public Sprite GetCategoryIcon(TileCategory id) => defaultCategoryIcon[(int)id];
     
     public IReadOnlyList<BuildObjData> GetBuildingsByTierReadOnly(ItemTier tier)
     {

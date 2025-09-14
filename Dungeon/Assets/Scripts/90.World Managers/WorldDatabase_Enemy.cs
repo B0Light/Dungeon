@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class WorldDatabase_Enemy : Singleton<WorldDatabase_Enemy>
 {
     [SerializeField] private GameObject enemyInfoPrefab;
+    [SerializeField] private List<Sprite> itemIcons = new List<Sprite>();
     
     private Dictionary<int, Sprite> iconDictionary;
     private Dictionary<int, string> iconNameDictionary;
@@ -15,7 +16,6 @@ public class WorldDatabase_Enemy : Singleton<WorldDatabase_Enemy>
 
     void LoadItemIcons()
     {
-        Sprite[] itemIcons = Resources.LoadAll<Sprite>("EnemyIcons");
         iconDictionary = new Dictionary<int, Sprite>();
         iconNameDictionary = new Dictionary<int, string>();
 
