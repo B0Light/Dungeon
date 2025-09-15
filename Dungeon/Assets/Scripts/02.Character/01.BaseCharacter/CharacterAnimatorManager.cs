@@ -78,7 +78,6 @@ public class CharacterAnimatorManager : MonoBehaviour
         characterManager.characterLocomotionManager.canRotate = canRotate;
         characterManager.characterLocomotionManager.canMove = canMove;
         characterManager.animator.CrossFade(targetAnimation, 0.2f);
-        
     }
 
     public void UpdateAnimatorController(AnimatorOverrideController weaponController)

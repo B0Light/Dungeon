@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WorldDatabase_Perk : Singleton<WorldDatabase_Perk>
 {
+    [SerializeField] private List<Perk> perks = new List<Perk>();
     public bool IsDataLoaded { get; private set; }
     
     public Dictionary<int, Perk> PerkDict = new Dictionary<int, Perk>();
@@ -18,8 +19,6 @@ public class WorldDatabase_Perk : Singleton<WorldDatabase_Perk>
     
     private void LoadData()
     {
-        Perk[] perks = Resources.LoadAll<Perk>("Perks");
-
         foreach (var perk in perks)
         {
             PerkDict.Add(perk.perkId, perk);

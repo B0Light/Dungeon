@@ -199,10 +199,20 @@ public class InteractableBox : Interactable
     {
         _isAnimating = true;
         
+        Vector3 lidStartPos = Vector3.zero;
         Vector3 leftStartPos = Vector3.zero;
         Vector3 rightStartPos = Vector3.zero;
+        Vector3 lidTargetPos = Vector3.zero;
         Vector3 leftTargetPos = Vector3.zero;
         Vector3 rightTargetPos = Vector3.zero;
+        
+        if (lid != null)
+        {
+            lidStartPos = lid.localPosition;
+            lidTargetPos = opening ? 
+                _lidInitialPosition + Vector3.left * slideDistance : 
+                _lidInitialPosition;
+        }
         
         // 왼쪽 도어 설정
         if (leftDoor != null)
@@ -229,6 +239,9 @@ public class InteractableBox : Interactable
             elapsedTime += Time.deltaTime;
             float t = animationCurve.Evaluate(elapsedTime / animationDuration);
             
+            if (lid != null)
+                lid.localPosition = Vector3.Lerp(lidStartPos, lidTargetPos, t);
+            
             if (leftDoor != null)
                 leftDoor.localPosition = Vector3.Lerp(leftStartPos, leftTargetPos, t);
             
@@ -239,6 +252,9 @@ public class InteractableBox : Interactable
         }
         
         // 최종 위치 설정
+        if (lid != null)
+            lid.localPosition = lidTargetPos;
+        
         if (leftDoor != null)
             leftDoor.localPosition = leftTargetPos;
         

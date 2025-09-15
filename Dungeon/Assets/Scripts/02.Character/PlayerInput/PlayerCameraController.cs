@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Unity.Cinemachine;
 using UnityEngine.Serialization;
@@ -19,6 +20,49 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     [Header("Cinemachine Cameras")]
     [SerializeField] private CinemachineCamera vCam; 
     [SerializeField] private CinemachineInputAxisController cameraController;
+
+    [Header("Occlusion Settings")] 
+    [SerializeField] private bool hideOption = true;
+    [SerializeField] private LayerMask occlusionLayer; 
+    [SerializeField] private float raycastDistanceOffset = 0.5f;
+    
+    private readonly List<Renderer> _hiddenRenderers = new List<Renderer>();
+    
+    public void Update()
+    {
+        HandleOcclusion();
+    }
+
+    private void HandleOcclusion()
+    {
+        if(!hideOption) return;
+        // First, restore any previously hidden objects
+        foreach (var rendererObj in _hiddenRenderers)
+        {
+            if (rendererObj != null) // Check if the object still exists
+            {
+                rendererObj.enabled = true;
+            }
+        }
+        _hiddenRenderers.Clear();
+
+        // Perform a raycast from the camera to the player
+        Vector3 direction = (_playerTarget.position - mainCamera.transform.position).normalized;
+        float distance = Vector3.Distance(mainCamera.transform.position, _playerTarget.position) - raycastDistanceOffset;
+        RaycastHit[] hits = Physics.RaycastAll(mainCamera.transform.position, direction, distance, occlusionLayer);
+
+        foreach (var hit in hits)
+        {
+            // Find the renderer on the hit object and disable it
+            Renderer renderer = hit.collider.GetComponent<Renderer>();
+            if (renderer != null && !_hiddenRenderers.Contains(renderer))
+            {
+                renderer.enabled = false;
+                _hiddenRenderers.Add(renderer);
+            }
+        }
+    }
+    
     public void SetPlayer(PlayerManager player)
     {
         playerManager = player;

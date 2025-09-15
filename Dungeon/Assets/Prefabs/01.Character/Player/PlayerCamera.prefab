@@ -50,6 +50,11 @@ MonoBehaviour:
   mainCamera: {fileID: 1293702231754221909}
   vCam: {fileID: 6913243027895022631}
   cameraController: {fileID: 5957817705818317463}
+  hideOption: 1
+  occlusionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastDistanceOffset: 0.5
 --- !u!1 &6334847189324910192
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,7 +70,7 @@ GameObject:
   - component: {fileID: 8744558084232354022}
   - component: {fileID: 5957817705818317463}
   m_Layer: 3
-  m_Name: FreeLook Camera
+  m_Name: '[VCAM] FreeLook Camera'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +233,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6334847189324910192}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbe43d662878a7c43bcd44d43c9e2094, type: 3}
   m_Name: 
