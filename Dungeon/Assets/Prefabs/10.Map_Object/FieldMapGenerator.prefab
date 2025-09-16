@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6905432225070331219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2917525456856334177}
+  - component: {fileID: 614296772550633286}
+  - component: {fileID: 3728807111837756654}
+  - component: {fileID: 5938771594113182416}
+  - component: {fileID: 985801424618874155}
+  m_Layer: 0
+  m_Name: FieldMapGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2917525456856334177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905432225070331219}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 100, y: 0, z: 100}
+  m_LocalScale: {x: 200, y: 10, z: 200}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &614296772550633286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905432225070331219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 1
+  m_Size: {x: 196, y: 30, z: 196}
+  m_Center: {x: 0, y: 10, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 1824823
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
+--- !u!114 &3728807111837756654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905432225070331219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb4e884163bc02941a1dbf056901088a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dungeonID: 1
+  playerStartPrefab: {fileID: 750229577673184239, guid: 379fdc17289fb344db0cc2c98a4221b3, type: 3}
+  exitPrefab: {fileID: 1611856645545742358, guid: e97d0442082092d4f89616c35f70d2f3, type: 3}
+  useAsyncNavMeshBuild: 1
+  navMeshBuildDelay: 0.5
+--- !u!114 &5938771594113182416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905432225070331219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db15879ae0429f43acab88bc31e4842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGeneratorType: 0
+  autoGenerateOnStart: 1
+  autoMapGenerationMode: 1
+  specificMapType: 3
+  randomMapTypes: 000000000200000003000000
+  gridSize: {x: 86, y: 96}
+  cubeSize: {x: 2, y: 2, z: 2}
+  seed: 0
+  slot: {fileID: 2917525456856334177}
+  tileMappingDataSO: {fileID: 11400000, guid: 0db42af299f35ba48b0df94c4d205c17, type: 2}
+  isaacMaxRooms: 15
+  isaacSpecialRoomCount: 3
+  isaacHorizontalSize: 11
+  isaacVerticalSize: 11
+  isaacPathType: 2
+  isaacPathValue: 0.5
+  delaunayMinRoomSize: 9
+  delaunayMaxRoomSize: 12
+  delaunayPathValue: 0.5
+  delaunayPathType: 0
+  bspMinRoomSize: 6
+  bspMaxRoomSize: 20
+  bspMaxDepth: 5
+  bspPathType: 1
+  bspPathValue: 0.5
+  bspFullMinSplitSize: 6
+  bspFullMaxDepth: 5
+  bspFullPathType: 1
+  bspFullPathValue: 0.5
+--- !u!114 &985801424618874155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905432225070331219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bddf9f1280d1dc45a5b9d595840d693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapGeneratorFactory: {fileID: 5938771594113182416}

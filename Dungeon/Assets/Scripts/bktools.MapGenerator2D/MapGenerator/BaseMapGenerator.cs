@@ -39,7 +39,6 @@ public abstract class BaseMapGenerator : IMapGenerator
     
     [Header("경로 설정")]
     [SerializeField] public PathType pathType = PathType.AStar;
-    [SerializeField, Range(0, 1)] public float pathValue = 0.5f; // A* 경로 생성 확률
     
     [Header("Tile Data Map")]
     protected TileMappingDataSO tileMappingDataSO;
@@ -728,8 +727,8 @@ public abstract class BaseMapGenerator : IMapGenerator
     /// Delaunay 삼각분할과 Kruskal MST를 사용한 경로 생성
     /// </summary>
     /// <param name="delaunay">Delaunay 삼각분할 결과</param>
-    /// <param name="pathValue">추가 경로 생성 확률</param>
-    protected virtual void CreateDelaunayPaths(Delaunay2D delaunay, float pathValue = 0.5f)
+    /// <param name="pathChance">추가 경로 생성 확률</param>
+    protected virtual void CreateDelaunayPaths(Delaunay2D delaunay)
     {
         var edges = delaunay.Edges.Select(edge => new Kruskal.Edge(edge.U, edge.V)).ToList();
         var vertices = delaunay.Vertices;
@@ -738,7 +737,7 @@ public abstract class BaseMapGenerator : IMapGenerator
         // 일부 랜덤한 엣지를 추가하여 더 많은 복도 생성
         foreach (var edge in edges.Where(e => !selectedEdges.Contains(e))) 
         {
-            if (Random.value < pathValue) 
+            if (Random.value < 0.6) 
             {
                 selectedEdges.Add(edge);
             }

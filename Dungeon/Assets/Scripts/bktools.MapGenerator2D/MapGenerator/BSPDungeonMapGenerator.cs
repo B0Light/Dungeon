@@ -12,27 +12,6 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
     private int _maxDepth = 5;
     
     private List<RoomNode> _leafNodes;
-
-    /// <summary>
-    /// 기본 생성자
-    /// </summary>
-    /// <param name="slot">타일을 생성할 부모 Transform</param>
-    /// <param name="tileMappingData">타일 매핑 데이터</param>
-    public BSPDungeonMapGenerator(Transform slot, TileMappingDataSO tileMappingData) : base(slot, tileMappingData)
-    {
-    }
-    
-    /// <summary>
-    /// 그리드 크기와 큐브 크기를 지정하는 생성자
-    /// </summary>
-    /// <param name="slot">타일을 생성할 부모 Transform</param>
-    /// <param name="tileMappingData">타일 매핑 데이터</param>
-    /// <param name="gridSize">그리드 크기</param>
-    /// <param name="cubeSize">큐브 크기</param>
-    public BSPDungeonMapGenerator(Transform slot, TileMappingDataSO tileMappingData, Vector2Int gridSize, Vector3 cubeSize) : base(slot, tileMappingData, gridSize, cubeSize)
-    {
-        
-    }
     
     /// <summary>
     /// 모든 매개변수를 지정하는 생성자
@@ -45,7 +24,9 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
     /// <param name="minRoomSize">최소 방 크기</param>
     /// <param name="maxRoomSize">최대 방 크기</param>
     /// <param name="maxDepth">최대 분할 깊이</param>
-    public BSPDungeonMapGenerator(Transform slot, TileMappingDataSO tileMappingData, Vector2Int gridSize, Vector3 cubeSize, int seed, int minRoomSize, int maxRoomSize, int maxDepth) : base(slot, tileMappingData, gridSize, cubeSize)
+    public BSPDungeonMapGenerator(Transform slot, TileMappingDataSO tileMappingData,
+        Vector2Int gridSize, Vector3 cubeSize, int seed, int minRoomSize, int maxRoomSize, int maxDepth
+        ) : base(slot, tileMappingData, gridSize, cubeSize)
     {
         this.seed = seed;
         this._minRoomSize = minRoomSize;

@@ -18,26 +18,6 @@ public class IsaacMapGenerator : BaseMapGenerator
     private Dictionary<Vector2Int, Room> rooms = new Dictionary<Vector2Int, Room>();
     
     /// <summary>
-    /// 기본 생성자
-    /// </summary>
-    /// <param name="slot">타일을 생성할 부모 Transform</param>
-    /// <param name="tileMappingData">타일 매핑 데이터</param>
-    public IsaacMapGenerator(Transform slot, TileMappingDataSO tileMappingData) : base(slot, tileMappingData)
-    {
-    }
-    
-    /// <summary>
-    /// 그리드 크기와 큐브 크기를 지정하는 생성자
-    /// </summary>
-    /// <param name="slot">타일을 생성할 부모 Transform</param>
-    /// <param name="tileMappingData">타일 매핑 데이터</param>
-    /// <param name="gridSize">그리드 크기</param>
-    /// <param name="cubeSize">큐브 크기</param>
-    public IsaacMapGenerator(Transform slot, TileMappingDataSO tileMappingData, Vector2Int gridSize, Vector3 cubeSize) : base(slot, tileMappingData, gridSize, cubeSize)
-    {
-    }
-    
-    /// <summary>
     /// 모든 매개변수를 지정하는 생성자
     /// </summary>
     /// <param name="slot">타일을 생성할 부모 Transform</param>
@@ -49,7 +29,9 @@ public class IsaacMapGenerator : BaseMapGenerator
     /// <param name="specialRoomCount">특수 방 개수</param>
     /// <param name="horizontalSize">방 가로 크기</param>
     /// <param name="verticalSize">방 세로 크기</param>
-    public IsaacMapGenerator(Transform slot, TileMappingDataSO tileMappingData, Vector2Int gridSize, Vector3 cubeSize, int seed, int maxRooms, int specialRoomCount, int horizontalSize, int verticalSize) : base(slot, tileMappingData, gridSize, cubeSize)
+    public IsaacMapGenerator(Transform slot, TileMappingDataSO tileMappingData,
+        Vector2Int gridSize, Vector3 cubeSize, int seed, int maxRooms, int specialRoomCount, int horizontalSize, int verticalSize
+        ) : base(slot, tileMappingData, gridSize, cubeSize)
     {
         this.seed = seed;
         this.maxRooms = maxRooms;
