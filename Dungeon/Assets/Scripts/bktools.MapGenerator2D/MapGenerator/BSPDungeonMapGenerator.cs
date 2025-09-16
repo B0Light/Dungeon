@@ -25,10 +25,9 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
     /// <param name="maxRoomSize">최대 방 크기</param>
     /// <param name="maxDepth">최대 분할 깊이</param>
     public BSPDungeonMapGenerator(Transform slot, TileMappingDataSO tileMappingData,
-        Vector2Int gridSize, Vector3 cubeSize, int seed, int minRoomSize, int maxRoomSize, int maxDepth
+        Vector2Int gridSize, Vector3 cubeSize, int minRoomSize, int maxRoomSize, int maxDepth
         ) : base(slot, tileMappingData, gridSize, cubeSize)
     {
-        this.seed = seed;
         this._minRoomSize = minRoomSize;
         this._maxRoomSize = maxRoomSize;
         this._maxDepth = maxDepth;
@@ -39,7 +38,7 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
         _leafNodes = new List<RoomNode>();
         
         // BSP는 기본적으로 L자 형태의 복도를 사용
-        pathType = PathType.LShaped;
+        pathType = PathType.Straight;
     }
     
     [ContextMenu("Create Map")]
@@ -55,7 +54,7 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
         RoomNode rootNode = new RoomNode(new RectInt(0, 0, gridSize.x, gridSize.y));
         SplitNode(rootNode, 0);
         PlaceRooms(rootNode);
-        ConnectRooms(rootNode);
+        CreatePathByTriangulate();
         
         foreach (var node in _leafNodes) 
             PlaceRoomOnGrid(node.RoomRect.position, node.RoomRect.size);
@@ -67,7 +66,6 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
         // 맵 데이터 설정
         var mapData = GetMapData();
         mapData.roomCount = _leafNodes.Count;
-        mapData.seed = seed;
         
         OnMapGenerationComplete();
     }
@@ -115,7 +113,6 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
         return true;
     }
 
-
     void PlaceRooms(RoomNode node)
     {
         if (node.Left != null || node.Right != null)
@@ -137,21 +134,6 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
         }
     }
 
-    void ConnectRooms(RoomNode node)
-    {
-        if (node.Left != null && node.Right != null)
-        {
-            ConnectRooms(node.Left);
-            ConnectRooms(node.Right);
-
-            Vector2Int pointA = node.Left.GetRoomCenter();
-            Vector2Int pointB = node.Right.GetRoomCenter();
-            
-            // BaseMapGenerator의 경로 생성 메서드 사용
-            CreatePathBetweenPoints(pointA, pointB);
-        }
-    }
-
     private void PlaceRoomOnGrid(Vector2Int location, Vector2Int size)
     {
         Vector2Int center = new Vector2Int(
@@ -163,7 +145,7 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
         {
             for (int y = location.y; y < location.y + size.y; y++)
             {
-                if (x >= 0 && x < gridSize.x && y >= 0 && y < gridSize.y)
+                if (x >= margin && x < gridSize.x - margin && y >= margin && y < gridSize.y - margin)
                 {
                     Vector2Int pos = new Vector2Int(x, y);
                     _grid[x, y] = (pos == center) ? CellType.FloorCenter : CellType.Floor;
@@ -172,10 +154,7 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
         }
     }
     
-    /// <summary>
-    /// BSP 맵 생성기의 맵 제거 (리프 노드도 초기화)
-    /// </summary>
-    public override void ClearMap()
+    protected override void ClearMap()
     {
         base.ClearMap();
         

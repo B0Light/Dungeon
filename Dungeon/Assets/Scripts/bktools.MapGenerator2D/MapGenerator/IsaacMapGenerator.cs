@@ -30,10 +30,8 @@ public class IsaacMapGenerator : BaseMapGenerator
     /// <param name="horizontalSize">방 가로 크기</param>
     /// <param name="verticalSize">방 세로 크기</param>
     public IsaacMapGenerator(Transform slot, TileMappingDataSO tileMappingData,
-        Vector2Int gridSize, Vector3 cubeSize, int seed, int maxRooms, int specialRoomCount, int horizontalSize, int verticalSize
-        ) : base(slot, tileMappingData, gridSize, cubeSize)
+        Vector2Int gridSize, Vector3 cubeSize, int maxRooms, int specialRoomCount, int horizontalSize, int verticalSize) : base(slot, tileMappingData, gridSize, cubeSize)
     {
-        this.seed = seed;
         this.maxRooms = maxRooms;
         this.specialRoomCount = specialRoomCount;
         this.horizontalSize = horizontalSize;
@@ -60,7 +58,6 @@ public class IsaacMapGenerator : BaseMapGenerator
         // 맵 데이터 설정
         var mapData = GetMapData();
         mapData.roomCount = rooms.Count;
-        mapData.seed = seed;
         
         OnMapGenerationComplete();
     }
@@ -76,7 +73,7 @@ public class IsaacMapGenerator : BaseMapGenerator
         rooms[startPos] = new Room(startPos, horizontalSize, verticalSize, RoomType.Start);
         PlaceRoomOnGrid(startPos, horizontalSize, verticalSize, true);
 
-        System.Random prng = new System.Random(seed == 0 ? System.DateTime.Now.Millisecond : seed);
+        System.Random prng = new System.Random(System.DateTime.Now.Millisecond);
 
         while (frontier.Count > 0 && rooms.Count < maxRooms)
         {

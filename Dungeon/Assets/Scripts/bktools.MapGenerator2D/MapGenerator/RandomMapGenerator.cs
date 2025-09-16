@@ -30,9 +30,8 @@ public class RandomMapGenerator : BaseMapGenerator
     /// <param name="maxRoomSize">최대 방 크기</param>
     /// <param name="pathValue">경로 생성 확률</param>
     public RandomMapGenerator(Transform slot, TileMappingDataSO tileMappingData,
-        Vector2Int gridSize, Vector3 cubeSize, int seed, int minRoomSize, int maxRoomSize) : base(slot, tileMappingData, gridSize, cubeSize)
+        Vector2Int gridSize, Vector3 cubeSize, int minRoomSize, int maxRoomSize) : base(slot, tileMappingData, gridSize, cubeSize)
     {
-        this.seed = seed;
         this.minRoomSize = minRoomSize;
         this.maxRoomSize = maxRoomSize;
     }
@@ -59,8 +58,7 @@ public class RandomMapGenerator : BaseMapGenerator
     {
         InitializeGrid();
         PlaceRooms();
-        Triangulate();
-        CreatePath();
+        CreatePathByTriangulate();
         ExpandPath();
         BuildWalls();
         
@@ -69,7 +67,6 @@ public class RandomMapGenerator : BaseMapGenerator
         // 맵 데이터 설정
         var mapData = GetMapData();
         mapData.roomCount = _floorList.Count;
-        mapData.seed = seed;
         
         OnMapGenerationComplete();
     }
@@ -88,7 +85,8 @@ public class RandomMapGenerator : BaseMapGenerator
             RectInt newRoom = GenerateRoom(currentMinSize, currentMaxSize);
 
             // 경계 밖으로 벗어나면 시도 무효
-            if (newRoom.width >= gridSize.x - 2 || newRoom.height >= gridSize.y - 2)
+            if (newRoom.x < margin || newRoom.x >= gridSize.x - margin ||
+                newRoom.y < margin || newRoom.y >= gridSize.y - margin)
             {
                 maxAttempts--;
                 continue;
@@ -165,24 +163,6 @@ public class RandomMapGenerator : BaseMapGenerator
                 _grid[x, y] = (pos == center) ? CellType.FloorCenter : CellType.Floor;
             }
         }
-    }
-    
-    private void Triangulate()
-    {
-        if (_floorList.Count < 3) return;
-        
-        List<Vertex> vertices = new List<Vertex>();
-        
-        vertices.AddRange(_floorList.Select(floor => 
-            new Vertex<RectInt>(floor.position + ((Vector2)floor.size) / 2, floor)));
-
-        _delaunay = Delaunay2D.Triangulate(vertices);
-    }
-    
-    private void CreatePath()
-    {
-        // BaseMapGenerator의 Delaunay 경로 생성 메서드 사용
-        CreateDelaunayPaths(_delaunay);
     }
     
     private Vector3 ConvertGridPos(Vector2 pos)

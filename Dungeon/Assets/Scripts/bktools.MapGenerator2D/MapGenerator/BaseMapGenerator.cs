@@ -1,77 +1,54 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using bkTools;
+using Random = UnityEngine.Random;
 
-/// <summary>
-/// 경로 생성 타입을 정의하는 열거형
-/// </summary>
 public enum PathType
 {
-    /// <summary>
-    /// A* 알고리즘을 사용한 경로 찾기 (Delaunay 방식)
-    /// </summary>
     AStar,
-    /// <summary>
-    /// L자 형태의 직선 복도 (BSP 방식)
-    /// </summary>
-    LShaped,
-    /// <summary>
-    /// 직선 복도 (Isaac 방식)
-    /// </summary>
     Straight,
-    /// <summary>
-    /// 사용자 정의 경로
-    /// </summary>
-    Custom
 }
 
-/// <summary>
-/// 맵 생성기의 기본 추상 클래스
-/// 공통 기능들을 구현하고 하위 클래스에서 오버라이드할 메서드들을 정의합니다.
-/// </summary>
 public abstract class BaseMapGenerator : IMapGenerator
 {
-    [Header("기본 설정")]
-    public int seed = 0;
     protected Vector2Int gridSize = new Vector2Int(64, 64);
     protected Vector3 cubeSize = new Vector3(2, 2, 2);
+    protected int margin = 3;
     
-    [Header("경로 설정")]
-    [SerializeField] public PathType pathType = PathType.AStar;
-    
-    [Header("Tile Data Map")]
-    protected TileMappingDataSO tileMappingDataSO;
-    protected Dictionary<CellType, TileDataSO> tileDataDict;
+    public PathType pathType = PathType.Straight;
+    private TileMappingDataSO _tileMappingDataSO;
+    private Dictionary<CellType, TileDataSO> _tileDataDict;
     
     [Header("상태")]
-    [SerializeField] protected bool isMapGenerated = false;
+    private bool _isMapGenerated = false;
     
     // 공통 그리드 데이터
     protected CellType[,] _grid;
     protected List<RectInt> _floorList;
-    protected int _startRoomIndex;
-    protected int _exitRoomIndex;
+    private int _startRoomIndex;
+    private int _exitRoomIndex;
 
-    protected Transform _slot;
+    private readonly Transform _slot;
     
     // 웨이포인트 시스템
-    protected WaypointSystemData _waypointSystem;
+    private WaypointSystemData _waypointSystem;
     
     // 프로퍼티
-    public bool IsMapGenerated => isMapGenerated;
+    public bool IsMapGenerated => _isMapGenerated;
 
-    public BaseMapGenerator(Transform slot, TileMappingDataSO tileMappingData)
+    protected BaseMapGenerator(Transform slot, TileMappingDataSO tileMappingData)
     {
         this._slot = slot;
-        this.tileMappingDataSO = tileMappingData;
+        this._tileMappingDataSO = tileMappingData;
         Init();
     }
     
-    public BaseMapGenerator(Transform slot, TileMappingDataSO tileMappingData, Vector2Int gridSize, Vector3 cubeSize)
+    protected BaseMapGenerator(Transform slot, TileMappingDataSO tileMappingData, Vector2Int gridSize, Vector3 cubeSize)
     {
         this._slot = slot;
-        this.tileMappingDataSO = tileMappingData;
+        this._tileMappingDataSO = tileMappingData;
         this.gridSize = gridSize;
         this.cubeSize = cubeSize;
         Init();
@@ -81,39 +58,24 @@ public abstract class BaseMapGenerator : IMapGenerator
     {
         BuildTileDataDictionary();
         InitializeGenerator();
-        
-        if (seed != 0)
-            Random.InitState(seed);
     }
     
-    /// <summary>
-    /// 생성기 초기화 (하위 클래스에서 구현)
-    /// </summary>
     protected virtual void InitializeGenerator() { }
     
-    /// <summary>
-    /// 타일 데이터 딕셔너리를 빌드합니다.
-    /// </summary>
-    protected virtual void BuildTileDataDictionary()
+    private void BuildTileDataDictionary()
     {
-        tileDataDict = new Dictionary<CellType, TileDataSO>();
-        if (tileMappingDataSO == null) return;
+        _tileDataDict = new Dictionary<CellType, TileDataSO>();
+        if (_tileMappingDataSO == null) return;
         
-        foreach (var mapping in tileMappingDataSO.tileMappings)
+        foreach (var mapping in _tileMappingDataSO.tileMappings)
         {
-            if (!tileDataDict.ContainsKey(mapping.cellType) && mapping.tileData != null)
-                tileDataDict.Add(mapping.cellType, mapping.tileData);
+            if (!_tileDataDict.ContainsKey(mapping.cellType) && mapping.tileData != null)
+                _tileDataDict.Add(mapping.cellType, mapping.tileData);
         }
     }
     
-    /// <summary>
-    /// 맵을 생성합니다. (추상 메서드)
-    /// </summary>
     public abstract void GenerateMap();
     
-    /// <summary>
-    /// 그리드를 초기화합니다.
-    /// </summary>
     protected virtual void InitializeGrid()
     {
         _grid = new CellType[gridSize.x, gridSize.y];
@@ -128,9 +90,6 @@ public abstract class BaseMapGenerator : IMapGenerator
         }
     }
     
-    /// <summary>
-    /// 길을 확장합니다.
-    /// </summary>
     protected void ExpandPath()
     {
         // 벽 배치: 바닥 셀 주변이 빈 셀이라면 그곳에 벽을 배치
@@ -150,9 +109,6 @@ public abstract class BaseMapGenerator : IMapGenerator
         }
     }
     
-    /// <summary>
-    /// 벽을 생성합니다.
-    /// </summary>
     protected void BuildWalls()
     {
         for (int x = 1; x < gridSize.x - 1; x++)
@@ -170,9 +126,6 @@ public abstract class BaseMapGenerator : IMapGenerator
         }
     }
     
-    /// <summary>
-    /// 그리드를 렌더링합니다.
-    /// </summary>
     protected virtual void RenderGrid()
     {
         for (int x = 0; x < gridSize.x; x++)
@@ -184,9 +137,6 @@ public abstract class BaseMapGenerator : IMapGenerator
         }
     }
     
-    /// <summary>
-    /// 특정 위치의 타일을 렌더링합니다.
-    /// </summary>
     protected virtual void RenderTileAt(int x, int y)
     {
         if (!TryGetTileData(x, y, out TileDataSO tileData)) return;
@@ -202,12 +152,9 @@ public abstract class BaseMapGenerator : IMapGenerator
         }
     }
     
-    /// <summary>
-    /// 타일 데이터를 가져옵니다.
-    /// </summary>
     protected virtual bool TryGetTileData(int x, int y, out TileDataSO tileData)
     {
-        return tileDataDict.TryGetValue(_grid[x, y], out tileData) && tileData != null;
+        return _tileDataDict.TryGetValue(_grid[x, y], out tileData) && tileData != null;
     }
     
     protected virtual void HandleCenterTileRendering(int x, int y, TileDataSO tileData, Vector3 spawnPos)
@@ -290,9 +237,6 @@ public abstract class BaseMapGenerator : IMapGenerator
         return position;
     }
     
-    /// <summary>
-    /// 맵 데이터를 가져옵니다.
-    /// </summary>
     public virtual MapData GetMapData()
     {
         return new MapData
@@ -300,16 +244,13 @@ public abstract class BaseMapGenerator : IMapGenerator
             grid = _grid,
             floorList = _floorList,
             gridSize = gridSize,
-            isGenerated = isMapGenerated
+            isGenerated = _isMapGenerated
         };
     }
     
-    /// <summary>
-    /// 웨이포인트 시스템을 생성합니다.
-    /// </summary>
     protected virtual void GenerateWaypointSystem()
     {
-        if (!isMapGenerated)
+        if (!_isMapGenerated)
         {
             Debug.LogWarning("맵이 생성되지 않았습니다. 웨이포인트 시스템을 생성할 수 없습니다.");
             return;
@@ -322,17 +263,11 @@ public abstract class BaseMapGenerator : IMapGenerator
         Debug.Log($"웨이포인트 시스템 생성 완료: {_waypointSystem?.waypoints?.Count ?? 0}개 웨이포인트");
     }
     
-    /// <summary>
-    /// 웨이포인트 시스템 데이터를 가져옵니다.
-    /// </summary>
     public virtual WaypointSystemData GetWaypointSystemData()
     {
         return _waypointSystem;
     }
     
-    /// <summary>
-    /// 특정 패트롤 경로를 가져옵니다.
-    /// </summary>
     public virtual PatrolRoute GetPatrolRoute(string routeName)
     {
         if (_waypointSystem?.patrolRoutes == null) return null;
@@ -346,25 +281,16 @@ public abstract class BaseMapGenerator : IMapGenerator
         return null;
     }
     
-    /// <summary>
-    /// 모든 패트롤 경로를 가져옵니다.
-    /// </summary>
     public virtual List<PatrolRoute> GetAllPatrolRoutes()
     {
         return _waypointSystem?.patrolRoutes ?? new List<PatrolRoute>();
     }
     
-    /// <summary>
-    /// 특정 위치에서 가장 가까운 웨이포인트를 찾습니다.
-    /// </summary>
     public virtual int FindNearestWaypoint(Vector3 worldPosition)
     {
         return _waypointSystem?.FindNearestWaypoint(worldPosition) ?? -1;
     }
     
-    /// <summary>
-    /// 시작 방과 출구 방의 인덱스를 초기화합니다.
-    /// </summary>
     protected virtual void InitializeRoomIndices()
     {
         if (_floorList == null || _floorList.Count == 0)
@@ -390,9 +316,6 @@ public abstract class BaseMapGenerator : IMapGenerator
         Debug.Log($"시작 방 인덱스: {_startRoomIndex}, 출구 방 인덱스: {_exitRoomIndex} (총 {_floorList.Count}개 방)");
     }
     
-    /// <summary>
-    /// 가장 멀리 떨어진 두 방을 찾습니다.
-    /// </summary>
     protected virtual void FindFurthestRooms()
     {
         float maxDistance = 0;
@@ -422,16 +345,13 @@ public abstract class BaseMapGenerator : IMapGenerator
             }
         }
     }
-
-    /// <summary>
-    /// 맵 생성 완료를 표시합니다.
-    /// </summary>
+    
     protected virtual void OnMapGenerationComplete()
     {
         // 방 인덱스 초기화
         InitializeRoomIndices();
         
-        isMapGenerated = true;
+        _isMapGenerated = true;
         
         // 웨이포인트 시스템 생성
         GenerateWaypointSystem();
@@ -440,10 +360,7 @@ public abstract class BaseMapGenerator : IMapGenerator
         Debug.Log($"{GetType().Name}: 맵 생성 완료");
     }
     
-    /// <summary>
-    /// 생성된 맵을 제거합니다.
-    /// </summary>
-    public virtual void ClearMap()
+    protected virtual void ClearMap()
     {
         if (_slot != null)
         {
@@ -469,13 +386,10 @@ public abstract class BaseMapGenerator : IMapGenerator
             _floorList.Clear();
         }
         
-        isMapGenerated = false;
+        _isMapGenerated = false;
         Debug.Log($"{GetType().Name}: 맵 제거 완료");
     }
     
-    /// <summary>
-    /// 자식 오브젝트들을 재귀적으로 제거합니다.
-    /// </summary>
     private void ClearChildrenRecursively(Transform parent)
     {
         if (parent == null) return;
@@ -513,12 +427,9 @@ public abstract class BaseMapGenerator : IMapGenerator
         }
     }
     
-    /// <summary>
-    /// 맵이 생성되었는지 확인합니다.
-    /// </summary>
     public bool HasGeneratedMap()
     {
-        return isMapGenerated && _slot != null && _slot.childCount > 0;
+        return _isMapGenerated && _slot != null && _slot.childCount > 0;
     }
     
     public Vector2Int GetStartPos()
@@ -564,39 +475,76 @@ public abstract class BaseMapGenerator : IMapGenerator
             exitRoom.y + (exitRoom.height - 1) / 2
         );
     }
+
+    #region Path Connect Method
+    
+    protected void CreatePathByTriangulate()
+    {
+        if (_floorList.Count < 3) return;
+        
+        List<Vertex> vertices = new List<Vertex>();
+        
+        vertices.AddRange(_floorList.Select(floor => 
+            new Vertex<RectInt>(floor.position + ((Vector2)floor.size) / 2, floor)));
+
+        CreateDelaunayPaths(Delaunay2D.Triangulate(vertices));
+    }
+    
+    /// Delaunay 삼각분할과 Kruskal MST를 사용한 경로 생성
+    private void CreateDelaunayPaths(Delaunay2D delaunay)
+    {
+        var edges = delaunay.Edges.Select(edge => new Kruskal.Edge(edge.U, edge.V)).ToList();
+        var vertices = delaunay.Vertices;
+        var selectedEdges = new HashSet<Kruskal.Edge>(Kruskal.GetMinimumSpanningTree(edges, vertices));
+
+        // 일부 랜덤한 엣지를 추가하여 더 많은 복도 생성
+        foreach (var edge in edges.Where(e => !selectedEdges.Contains(e))) 
+        {
+            if (Random.value < 0.6) 
+            {
+                selectedEdges.Add(edge);
+            }
+        }
+        
+        // 선택된 엣지들로 경로 생성
+        foreach (var edge in selectedEdges) 
+        {
+            var startRoom = (edge.U as Vertex<RectInt>)?.Item;
+            var endRoom = (edge.V as Vertex<RectInt>)?.Item;
+
+            if (startRoom == null || endRoom == null) continue;
+
+            var startPos = new Vector2Int(
+                (int)startRoom?.center.x, 
+                (int)startRoom?.center.y
+            );
+            var endPos = new Vector2Int(
+                (int)endRoom?.center.x, 
+                (int)endRoom?.center.y
+            );
+
+            CreatePathBetweenPoints(startPos, endPos);
+        }
+    }
+
+    #endregion
     
     #region Path Generation Methods
     
-    /// <summary>
-    /// 설정된 PathType에 따라 두 점 사이의 경로를 생성합니다.
-    /// </summary>
-    /// <param name="startPos">시작 위치</param>
-    /// <param name="endPos">끝 위치</param>
-    protected virtual void CreatePathBetweenPoints(Vector2Int startPos, Vector2Int endPos)
+    protected void CreatePathBetweenPoints(Vector2Int startPos, Vector2Int endPos)
     {
         switch (pathType)
         {
             case PathType.AStar:
                 CreateAStarPath(startPos, endPos);
                 break;
-            case PathType.LShaped:
-                CreateLShapedPath(startPos, endPos);
-                break;
             case PathType.Straight:
                 CreateStraightPath(startPos, endPos);
-                break;
-            case PathType.Custom:
-                CreateCustomPath(startPos, endPos);
                 break;
         }
     }
     
-    /// <summary>
-    /// A* 알고리즘을 사용한 경로 생성 (Delaunay 방식)
-    /// </summary>
-    /// <param name="startPos">시작 위치</param>
-    /// <param name="endPos">끝 위치</param>
-    protected virtual void CreateAStarPath(Vector2Int startPos, Vector2Int endPos)
+    private void CreateAStarPath(Vector2Int startPos, Vector2Int endPos)
     {
         DungeonPathfinder2D aStar = new DungeonPathfinder2D(gridSize);
         
@@ -636,50 +584,7 @@ public abstract class BaseMapGenerator : IMapGenerator
         }
     }
     
-    /// <summary>
-    /// L자 형태의 복도 생성 (BSP 방식)
-    /// </summary>
-    /// <param name="startPos">시작 위치</param>
-    /// <param name="endPos">끝 위치</param>
-    protected virtual void CreateLShapedPath(Vector2Int startPos, Vector2Int endPos)
-    {
-        // L자 형태로 복도 생성
-        if (Random.value < 0.5f)
-        {
-            // 가로 먼저, 세로 나중
-            for (int x = Mathf.Min(startPos.x, endPos.x); x <= Mathf.Max(startPos.x, endPos.x); x++)
-            {
-                if (x >= 0 && x < gridSize.x && startPos.y >= 0 && startPos.y < gridSize.y)
-                    _grid[x, startPos.y] = CellType.Path;
-            }
-            for (int y = Mathf.Min(startPos.y, endPos.y); y <= Mathf.Max(startPos.y, endPos.y); y++)
-            {
-                if (endPos.x >= 0 && endPos.x < gridSize.x && y >= 0 && y < gridSize.y)
-                    _grid[endPos.x, y] = CellType.Path;
-            }
-        }
-        else
-        {
-            // 세로 먼저, 가로 나중
-            for (int y = Mathf.Min(startPos.y, endPos.y); y <= Mathf.Max(startPos.y, endPos.y); y++)
-            {
-                if (startPos.x >= 0 && startPos.x < gridSize.x && y >= 0 && y < gridSize.y)
-                    _grid[startPos.x, y] = CellType.Path;
-            }
-            for (int x = Mathf.Min(startPos.x, endPos.x); x <= Mathf.Max(startPos.x, endPos.x); x++)
-            {
-                if (x >= 0 && x < gridSize.x && endPos.y >= 0 && endPos.y < gridSize.y)
-                    _grid[x, endPos.y] = CellType.Path;
-            }
-        }
-    }
-    
-    /// <summary>
-    /// 직선 복도 생성 (Isaac 방식)
-    /// </summary>
-    /// <param name="startPos">시작 위치</param>
-    /// <param name="endPos">끝 위치</param>
-    protected virtual void CreateStraightPath(Vector2Int startPos, Vector2Int endPos)
+    private void CreateStraightPath(Vector2Int startPos, Vector2Int endPos)
     {
         Vector2Int direction = new Vector2Int(
             endPos.x > startPos.x ? 1 : endPos.x < startPos.x ? -1 : 0,
@@ -709,58 +614,6 @@ public abstract class BaseMapGenerator : IMapGenerator
             {
                 current.y += direction.y;
             }
-        }
-    }
-    
-    /// <summary>
-    /// 사용자 정의 경로 생성 (하위 클래스에서 오버라이드)
-    /// </summary>
-    /// <param name="startPos">시작 위치</param>
-    /// <param name="endPos">끝 위치</param>
-    protected virtual void CreateCustomPath(Vector2Int startPos, Vector2Int endPos)
-    {
-        // 기본적으로 L자 형태로 생성 (하위 클래스에서 오버라이드 가능)
-        CreateLShapedPath(startPos, endPos);
-    }
-    
-    /// <summary>
-    /// Delaunay 삼각분할과 Kruskal MST를 사용한 경로 생성
-    /// </summary>
-    /// <param name="delaunay">Delaunay 삼각분할 결과</param>
-    /// <param name="pathChance">추가 경로 생성 확률</param>
-    protected virtual void CreateDelaunayPaths(Delaunay2D delaunay)
-    {
-        var edges = delaunay.Edges.Select(edge => new Kruskal.Edge(edge.U, edge.V)).ToList();
-        var vertices = delaunay.Vertices;
-        var selectedEdges = new HashSet<Kruskal.Edge>(Kruskal.GetMinimumSpanningTree(edges, vertices));
-
-        // 일부 랜덤한 엣지를 추가하여 더 많은 복도 생성
-        foreach (var edge in edges.Where(e => !selectedEdges.Contains(e))) 
-        {
-            if (Random.value < 0.6) 
-            {
-                selectedEdges.Add(edge);
-            }
-        }
-        
-        // 선택된 엣지들로 경로 생성
-        foreach (var edge in selectedEdges) 
-        {
-            var startRoom = (edge.U as Vertex<RectInt>)?.Item;
-            var endRoom = (edge.V as Vertex<RectInt>)?.Item;
-
-            if (startRoom == null || endRoom == null) continue;
-
-            var startPos = new Vector2Int(
-                (int)startRoom?.center.x, 
-                (int)startRoom?.center.y
-            );
-            var endPos = new Vector2Int(
-                (int)endRoom?.center.x, 
-                (int)endRoom?.center.y
-            );
-
-            CreatePathBetweenPoints(startPos, endPos);
         }
     }
     
