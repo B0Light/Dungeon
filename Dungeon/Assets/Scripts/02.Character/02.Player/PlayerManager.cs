@@ -156,7 +156,6 @@ public class PlayerManager : CharacterManager
     
     public void SaveGameDataToCurrentCharacterData(ref SaveGameData currentGameData)
     {
-        currentGameData.sceneIndex = WorldSceneChangeManager.Instance.GetSaveSceneIndex();
         currentGameData.characterName = playerVariableManager.characterName.Value;
         
          currentGameData.balance = WorldPlayerInventory.Instance.balance.Value;

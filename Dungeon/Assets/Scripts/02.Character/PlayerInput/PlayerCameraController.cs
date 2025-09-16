@@ -6,6 +6,7 @@ using UnityEngine.Serialization;
 
 public class PlayerCameraController : Singleton<PlayerCameraController>
 {
+    private bool _enable = false;
     [HideInInspector] public PlayerManager playerManager;
     public Camera mainCamera;
 
@@ -30,6 +31,7 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     
     public void Update()
     {
+        if(!_enable) return;
         HandleOcclusion();
     }
 
@@ -75,6 +77,7 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         vCam.LookAt = _playerTarget;
         
         TurnOnCamera();
+        _enable = true;
     }
     
     public void LockOn(bool enable, Transform newLockOnTarget = null)

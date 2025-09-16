@@ -8,10 +8,8 @@ public class SceneChangeAfterDelay : MonoBehaviour
     [Header("Scene Transition Settings")]
     [SerializeField] private float delayTime = 5.0f;
     [SerializeField] private string targetSceneName = "";
-    [SerializeField] private int targetSceneIndex = -1; // -1이면 씬 이름 사용
     
     [Header("Optional Settings")]
-    [SerializeField] private bool useWorldSceneManager = true; // WorldSceneChangeManager 사용 여부
     [SerializeField] private bool showCountdown = false; // 카운트다운 표시 여부
     [SerializeField] private TextMeshProUGUI countdownText; // 카운트다운 텍스트 (옵션)
     
@@ -190,50 +188,13 @@ public class SceneChangeAfterDelay : MonoBehaviour
             return;
         }
         
-        // WorldSceneChangeManager 사용 여부에 따라 분기
-        if (useWorldSceneManager && WorldSceneChangeManager.Instance != null)
-        {
-            UseWorldSceneManager();
-        }
-        else
-        {
-            UseUnitySceneManager();
-        }
+        UseUnitySceneManager();
+        
     }
     
-    /// <summary>
-    /// WorldSceneChangeManager를 사용한 씬 전환
-    /// </summary>
-    private void UseWorldSceneManager()
-    {
-        try
-        {
-            if (targetSceneIndex >= 0)
-            {
-                WorldSceneChangeManager.Instance.LoadSceneAsync(targetSceneIndex);
-            }
-            else if (!string.IsNullOrEmpty(targetSceneName))
-            {
-                WorldSceneChangeManager.Instance.LoadSceneAsync(targetSceneName);
-            }
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"WorldSceneChangeManager를 사용한 씬 전환 실패: {e.Message}");
-            UseUnitySceneManager(); // 실패 시 기본 방법으로 대체
-        }
-    }
-    
-    /// <summary>
-    /// Unity 기본 SceneManager를 사용한 씬 전환
-    /// </summary>
     private void UseUnitySceneManager()
     {
-        if (targetSceneIndex >= 0)
-        {
-            SceneManager.LoadScene(targetSceneIndex);
-        }
-        else if (!string.IsNullOrEmpty(targetSceneName))
+        if (!string.IsNullOrEmpty(targetSceneName))
         {
             SceneManager.LoadScene(targetSceneName);
         }
@@ -244,7 +205,7 @@ public class SceneChangeAfterDelay : MonoBehaviour
     /// </summary>
     private bool IsValidSceneSettings()
     {
-        return targetSceneIndex >= 0 || !string.IsNullOrEmpty(targetSceneName);
+        return !string.IsNullOrEmpty(targetSceneName);
     }
     
     /// <summary>
@@ -259,24 +220,6 @@ public class SceneChangeAfterDelay : MonoBehaviour
         {
             StartSceneTransition();
         }
-    }
-    
-    /// <summary>
-    /// 대상 씬 설정 (씬 이름)
-    /// </summary>
-    public void SetTargetScene(string sceneName)
-    {
-        targetSceneName = sceneName;
-        targetSceneIndex = -1;
-    }
-    
-    /// <summary>
-    /// 대상 씬 설정 (씬 인덱스)
-    /// </summary>
-    public void SetTargetScene(int sceneIndex)
-    {
-        targetSceneIndex = sceneIndex;
-        targetSceneName = "";
     }
     
     /// <summary>

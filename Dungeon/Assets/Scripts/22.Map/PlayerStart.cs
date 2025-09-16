@@ -13,19 +13,14 @@ public class PlayerStart : MonoBehaviour
         PlayerManager playerManager = GameManager.Instance.SpawnPlayer(gameObject.transform);
         playerManager.LoadGameDataFromCurrentCharacterDataSceneChange(ref WorldSaveGameManager.Instance.currentGameData);
         
-        // 메뉴씬이 아닌경우 마우스 비활성화 
-        PlayerInputManager.Instance.SetControlActive(!WorldSceneChangeManager.Instance.IsMenuScene());
+        PlayerInputManager.Instance.SetControlActive(true);
         PlayerCameraController.Instance.LockOn(false);
         
-        // 탈출맵에서 생성된 루팅가치를 활성화 
-        if (WorldSceneChangeManager.Instance.IsExtractionMap())
-        {
-            WorldPlayerInventory.Instance.SetStartItemValue();
-        }
-        else if(WorldSceneChangeManager.Instance.IsShelter())
-        {
-            WorldTimeManager.Instance.AdvanceTime();
-        }
+        // 추후조정 : 모험시에만 활성화 
+        WorldPlayerInventory.Instance.SetStartItemValue();
+        
+        // 추후 조정 : 복귀시에만 활성화
+        WorldTimeManager.Instance.AdvanceTime();
         
         WorldTimeManager.Instance.ApplySkybox();
     }

@@ -7,9 +7,6 @@ using UnityEngine;
 // SINCE WE WANT TO REFERENCE THIS DATA FOR EVERY SAVE FILE, THIS SCRIPT IS NOT A MONOBEHAVIOR AND IS INSTEAD SERIALIZABLE
 public class SaveGameData
 {
-    [Header("Scene Index")]
-    public int sceneIndex = 3;
-    
     [Header("Character Name")]
     public string characterName = "Gangdodan";
 
@@ -19,6 +16,9 @@ public class SaveGameData
 
     [Header("Status")]
     public float curHealthPercent;
+    
+    [Header("Last Shelter")]
+    public int lastShelterIndex = 0;
 
     [Header("Money")] public int balance;
 

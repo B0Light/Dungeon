@@ -74,12 +74,9 @@ public class PlayerInputManager : Singleton<PlayerInputManager>
 
     public void EnableCharacter()
     {
-        if(!WorldSceneChangeManager.Instance.IsMenuScene())
-        {
-            Instance.enabled = true;
-            if (_playerControls != null)
-                _playerControls.Enable();
-        }
+        Instance.enabled = true;
+        if (_playerControls != null)
+            _playerControls.Enable();
     }
 
     private void OnSceneChange(Scene oldScene, Scene newScene)

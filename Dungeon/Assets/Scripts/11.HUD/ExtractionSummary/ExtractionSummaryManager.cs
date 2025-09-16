@@ -52,7 +52,7 @@ public class ExtractionSummaryManager : GUIComponent
         /* Loot */
         WorldPlayerInventory.Instance.CalculateFinalLoot();
         
-        mapInfoText.text = WorldSceneChangeManager.Instance.GetSceneName();
+        //mapInfoText.text = WorldSceneChangeManager.Instance.GetSceneName();
         lootValue.text = WorldPlayerInventory.Instance.TotalLootValue.ToString();
 
         SetMostValuableItem(WorldPlayerInventory.Instance.GetMostValuableItem());

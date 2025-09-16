@@ -6,8 +6,6 @@ using UnityEngine.Serialization;
 
 public class WorldSaveGameManager : Singleton<WorldSaveGameManager>
 {
-    private int _worldSceneIndex;
-
     [Header("Save Data Writer")]
     private SaveFileDataWriter saveFileDataWriter;
 
@@ -68,7 +66,6 @@ public class WorldSaveGameManager : Singleton<WorldSaveGameManager>
     private void NewGame(string playerName)
     {
         SetDefaultGameData(playerName);
-        _worldSceneIndex = WorldSceneChangeManager.Instance.GetSaveSceneIndex() -1;
         StartCoroutine(LoadWorldScene());
     }
 
@@ -112,7 +109,6 @@ public class WorldSaveGameManager : Singleton<WorldSaveGameManager>
         saveFileDataWriter.saveFileName = _saveFileName;
         
         currentGameData = saveFileDataWriter.LoadSaveFile();
-        _worldSceneIndex = currentGameData.sceneIndex;
         
         //Debug.LogWarning("LOAD GAME");
         PlayerManager player = GameManager.Instance.SpawnPlayer();
@@ -234,7 +230,7 @@ public class WorldSaveGameManager : Singleton<WorldSaveGameManager>
 
     private IEnumerator LoadWorldScene()
     {
-        WorldSceneChangeManager.Instance.LoadSceneAsync(_worldSceneIndex);
+        WorldSceneChangeManager.Instance.LoadShelter();
         
         yield return null;
     }

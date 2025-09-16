@@ -22,18 +22,9 @@ public class WorldSceneChangeManager : Singleton<WorldSceneChangeManager>
     [SerializeField] private bool useProgressSpeedLimit = true; // 속도 제한 사용 여부
     
     private float _currentDisplayProgress = 0f; // 현재 표시되는 진행률
-    [SerializeField] private int shelterIndex = 3;
+    [SerializeField] private string titleSceneName = "01.TitleScene";
+    [SerializeField] private string shelterSceneName = "03.Shelter";
     public static event Action OnSceneChanged;
-    
-    /*
-     * Scene Index
-     * 0. Title
-     * 1. Map Tutorial : BoraCity
-     * 2. Shelter
-     * (3). Sea Route Map
-     * 3-. Extraction Map
-     */
-    
 
     protected override void Awake()
     {
@@ -50,40 +41,32 @@ public class WorldSceneChangeManager : Singleton<WorldSceneChangeManager>
         _canvasGroup.blocksRaycasts = false;
     }
 
-    public void LoadSceneAsync(string sceneName)
-    {
-        int index = GetSceneIndexByName(sceneName);
-        if (index == -1) return;
-        
-        LoadSceneAsync(index);
-    }
-
-    public void LoadSceneAsync(int sceneCode)
+    public void LoadSceneAsync(string sceneCode)
     {
         StartCoroutine(LoadSceneCoroutine(sceneCode));
     }
     
     public void LoadShelter()
     {
-        StartCoroutine(LoadSceneCoroutine(shelterIndex));
+        StartCoroutine(LoadSceneCoroutine(shelterSceneName));
     }
 
-    private IEnumerator LoadSceneCoroutine(int sceneCode)
+    private IEnumerator LoadSceneCoroutine(string sceneToLoad)
     {
         // 씬을 정수 코드로 로드
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneCode);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneToLoad);
 
-        yield return StartCoroutine(HandleSceneLoading(asyncOperation, sceneCode));
+        yield return StartCoroutine(HandleSceneLoading(asyncOperation, sceneToLoad));
         
         OnSceneChanged?.Invoke();
     }
 
-    private IEnumerator HandleSceneLoading(AsyncOperation asyncOperation, int sceneIndex)
+    private IEnumerator HandleSceneLoading(AsyncOperation asyncOperation, string sceneToLoad)
     {
         // 씬 자동 활성화 방지
         asyncOperation.allowSceneActivation = false;
 
-        if (IsStartScene(sceneIndex))
+        if (sceneToLoad == titleSceneName)
         {
             GUIController.Instance.playerUIHudManager.DeactivateHUD();
         }
@@ -137,7 +120,6 @@ public class WorldSceneChangeManager : Singleton<WorldSceneChangeManager>
             yield return null;
         }
         randomTooltipSystem?.StopTooltipSystem();
-        PlayerInputManager.Instance.SetControlActive(!IsMenuScene());
     }
 
     /// <summary>
@@ -211,58 +193,7 @@ public class WorldSceneChangeManager : Singleton<WorldSceneChangeManager>
             loadingText.text = "Ready";
     }
 
-    /// <summary>
-    /// 런타임에 로딩 속도 설정
-    /// </summary>
-    public void SetLoadingSpeed(float maxSpeed, float minSpeed = 0.1f)
-    {
-        maxProgressSpeed = Mathf.Clamp(maxSpeed, 0.01f, 2.0f); // 최대 200%/초로 제한
-        minProgressSpeed = Mathf.Clamp(minSpeed, 0.01f, maxProgressSpeed); // 최소 속도는 최대 속도보다 작아야 함
-    }
-
-    /// <summary>
-    /// 속도 제한 사용 여부 토글
-    /// </summary>
-    public void SetUseProgressSpeedLimit(bool use)
-    {
-        useProgressSpeedLimit = use;
-    }
-
-    public bool IsMenuScene() =>
-        SceneManager.GetActiveScene().buildIndex == 1;
-
-    public bool IsExtractionMap() => SceneManager.GetActiveScene().buildIndex > shelterIndex;
-    
-    public bool IsShelter() => SceneManager.GetActiveScene().buildIndex == shelterIndex;
-    
-    
-    private bool IsStartScene(int sceneIndex)
-    {
-        return sceneIndex == 1;
-    }
-
-    public int GetSaveSceneIndex() => shelterIndex;
-    public int GetCurSceneIndex() => SceneManager.GetActiveScene().buildIndex;
-    public string GetSceneName() => SceneManager.GetActiveScene().name;
-    
-    private int GetSceneIndexByName(string sceneName)
-    {
-        int sceneCount = SceneManager.sceneCountInBuildSettings;
-
-        for (int i = 0; i < sceneCount; i++)
-        {
-            string path = SceneUtility.GetScenePathByBuildIndex(i);
-            string name = System.IO.Path.GetFileNameWithoutExtension(path);
-
-            if (name == sceneName)
-            {
-                return i;
-            }
-        }
-
-        Debug.LogWarning("Scene name not found in Build Settings: " + sceneName);
-        return -1;
-    }
+    public void LoadTitle() => LoadSceneAsync(titleSceneName);
 
     // Button Binding
     public void CloseLoadingScreen()
