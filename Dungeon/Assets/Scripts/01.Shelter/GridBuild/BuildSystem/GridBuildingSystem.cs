@@ -10,7 +10,7 @@ public class GridBuildingSystem : MonoBehaviour
     public static GridBuildingSystem Instance { get; private set; }
     private static GridBuildingSystem _instance;
     
-    [SerializeField, ReadOnly] private BuildObjData objectToPlace;
+   private BuildObjData _objectToPlace;
 
     private GridXZ<GridObject> _grid;
     private BuildObjData.Dir _dir = BuildObjData.Dir.Down;
@@ -95,50 +95,46 @@ public class GridBuildingSystem : MonoBehaviour
                 SetDefaultTile(i,j);
             }
         }
-        objectToPlace = null;
+        _objectToPlace = null;
     }
 
     private void SetDefaultTile(int x, int y)
     {
-        objectToPlace = WorldDatabase_Build.Instance.GetBuildingByID(0);
-        if(objectToPlace == null) return;
+        _objectToPlace = WorldDatabase_Build.Instance.GetBuildingByID(0);
+        if(_objectToPlace == null) return;
         PlaceTile(x,y, BuildObjData.Dir.Down);
-        objectToPlace = null;
+        _objectToPlace = null;
     }
 
     private void LoadEntrance()
     {
-        objectToPlace = WorldDatabase_Build.Instance.GetBuildingByID(1);
-        if(objectToPlace == null) return;
+        _objectToPlace = WorldDatabase_Build.Instance.GetBuildingByID(1);
+        if(_objectToPlace == null) return;
         var placedObject = PlaceTile(entracnePos.x,entracnePos.y,BuildObjData.Dir.Down, 0,true);
         AttractionEntrancePosList.Add(placedObject.GetEntrance());
-        objectToPlace = null;
+        _objectToPlace = null;
     }
 
     public Vector2Int GetEntrancePos() => entracnePos;
     
     private void LoadHeadquarter()
     {
-        objectToPlace = WorldDatabase_Build.Instance.GetBuildingByID(2);
-        if(objectToPlace == null) return;
+        _objectToPlace = WorldDatabase_Build.Instance.GetBuildingByID(2);
+        if(_objectToPlace == null) return;
         var placedObject = PlaceTile(headquarterPos.x,headquarterPos.y,BuildObjData.Dir.Left,
             WorldSaveGameManager.Instance.currentGameData.shelterLevel,true);
         AttractionEntrancePosList.Add(placedObject.GetEntrance());
-        objectToPlace = null;
+        _objectToPlace = null;
     }
 
     public Vector2Int GetHeadquarterPos() => headquarterPos;
     
     private void LoadDefaultRoad()
     {
-        int sX = 20;
-        objectToPlace = WorldDatabase_Build.Instance.GetBuildingByID(3);
-        if(objectToPlace == null) return;
-        for (int i = 1; i <= 3; i++)
-        {
-            PlaceTile(sX,i,BuildObjData.Dir.Down, 0,true);
-        }
-        objectToPlace = null;
+        _objectToPlace = WorldDatabase_Build.Instance.GetBuildingByID(3);
+        if(_objectToPlace == null) return;
+        PlaceTile(3,1,BuildObjData.Dir.Down, 0,true);
+        _objectToPlace = null;
     }
     
     private void LoadSaveBuildingData()
@@ -148,19 +144,19 @@ public class GridBuildingSystem : MonoBehaviour
         {
             int sX = saveData.x;
             int sZ = saveData.y;
-            objectToPlace = WorldDatabase_Build.Instance.GetBuildingByID(saveData.code);
-            if(objectToPlace == null) continue;
-            BuildObjData.Dir dir = objectToPlace.GetTileType() == TileType.Road ? BuildObjData.Dir.Down : (BuildObjData.Dir)saveData.dir;
+            _objectToPlace = WorldDatabase_Build.Instance.GetBuildingByID(saveData.code);
+            if(_objectToPlace == null) continue;
+            BuildObjData.Dir dir = _objectToPlace.GetTileType() == TileType.Road ? BuildObjData.Dir.Down : (BuildObjData.Dir)saveData.dir;
             PlaceTile(sX,sZ, dir, saveData.level);
         }
-        objectToPlace = null;
+        _objectToPlace = null;
     }
 
     private void Update()
     {
         if (!_isActive)
         {
-            objectToPlace = null;
+            _objectToPlace = null;
             selector.SetActive(false);
             return;
         }
@@ -200,7 +196,7 @@ public class GridBuildingSystem : MonoBehaviour
                 return;
             }
 
-            if (objectToPlace != null)
+            if (_objectToPlace != null)
             {
                 _isDragging = true;
             }
@@ -234,7 +230,7 @@ public class GridBuildingSystem : MonoBehaviour
             _dir = BuildObjData.GetNextDir(_dir);
         }
 
-        if (objectToPlace == null || objectToPlace?.GetTileType() == TileType.Road)
+        if (_objectToPlace == null || _objectToPlace?.GetTileType() == TileType.Road)
         {
             _dir = BuildObjData.Dir.Down;
         }
@@ -251,7 +247,7 @@ public class GridBuildingSystem : MonoBehaviour
 
         if (CheckCanBuildAtPos(x,z))
         {
-            if (CheckItemInInventory(objectToPlace) && SpendItemInInventory(objectToPlace))
+            if (CheckItemInInventory(_objectToPlace) && SpendItemInInventory(_objectToPlace))
             {
                 PlaceTile(x, z, _dir);
                 _lastPlacedPosition = currentGridPosition; // 마지막 배치 위치 갱신
@@ -269,14 +265,14 @@ public class GridBuildingSystem : MonoBehaviour
 
     private bool CheckCanBuildAtPos(int x, int z)
     {
-        return IsPlacementValid(x, z) && CanBuildAtPos(objectToPlace.GetGridPositionList(new Vector2Int(x, z), _dir));
+        return IsPlacementValid(x, z) && CanBuildAtPos(_objectToPlace.GetGridPositionList(new Vector2Int(x, z), _dir));
     }
 
     public bool CheckCanBuildAtPos()
     {
         Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
         _grid.GetXZ(mousePosition, out int x, out int z);
-        return IsPlacementValid(x, z) && CanBuildAtPos(objectToPlace.GetGridPositionList(new Vector2Int(x, z), _dir));
+        return IsPlacementValid(x, z) && CanBuildAtPos(_objectToPlace.GetGridPositionList(new Vector2Int(x, z), _dir));
     }
 
     private bool CheckItemInInventory(ItemData buyObject)
@@ -306,7 +302,7 @@ public class GridBuildingSystem : MonoBehaviour
     
     private PlacedObject PlaceTile(int x, int z, BuildObjData.Dir dir, int level = 0, bool isIrremovable = false)
     {
-        var gridPositionList = objectToPlace.GetGridPositionList(new Vector2Int(x, z), dir);
+        var gridPositionList = _objectToPlace.GetGridPositionList(new Vector2Int(x, z), dir);
 
         if(!CanBuildAtPos(gridPositionList)) return null;
         
@@ -318,11 +314,11 @@ public class GridBuildingSystem : MonoBehaviour
         }
         
         PlacedObject placedObject = BuildTile(x, z, dir, level, isIrremovable);
-        if(objectToPlace.itemCode >= 100)
+        if(_objectToPlace.itemCode >= 100)
         {
-            SaveBuildingDataList.Add(new SaveBuildingData(x, z, objectToPlace.itemCode, (int)dir, level));
+            SaveBuildingDataList.Add(new SaveBuildingData(x, z, _objectToPlace.itemCode, (int)dir, level));
         }
-        if(objectToPlace.itemCode >= 300)
+        if(_objectToPlace.itemCode >= 300)
         {
             AttractionEntrancePosList.Add(placedObject.GetEntrance());
         }
@@ -332,13 +328,13 @@ public class GridBuildingSystem : MonoBehaviour
 
     private PlacedObject BuildTile(int x, int z, BuildObjData.Dir dir, int level = 0, bool isIrremovable = false)
     {
-        Vector2Int rotationOffset = objectToPlace.GetRotationOffset(dir);
+        Vector2Int rotationOffset = _objectToPlace.GetRotationOffset(dir);
         Vector3 placedObjectWorldPosition = _grid.GetWorldPosition(x, z) +
                                             new Vector3(rotationOffset.x, 0, rotationOffset.y) * _grid.GetCellSize();
 
-        PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), dir, objectToPlace, level, isIrremovable);
+        PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), dir, _objectToPlace, level, isIrremovable);
 
-        var gridPositionList = objectToPlace.GetGridPositionList(new Vector2Int(x, z), dir);
+        var gridPositionList = _objectToPlace.GetGridPositionList(new Vector2Int(x, z), dir);
         foreach (Vector2Int gridPosition in gridPositionList)
         {
             SetObjectAtGridPosition(gridPosition, placedObject, dir);
@@ -395,7 +391,7 @@ public class GridBuildingSystem : MonoBehaviour
     
     private void IsUpdateSurroundingRoad(PlacedObject placedObject)
     {
-        TileType curTileType = objectToPlace.GetTileType();
+        TileType curTileType = _objectToPlace.GetTileType();
         if (curTileType == TileType.Road)
         {
             UpdateSurroundingRoads(placedObject.GetEntrance());
@@ -414,7 +410,7 @@ public class GridBuildingSystem : MonoBehaviour
     private void RemoveObjectAtMousePosition()
     {
         // 손에 배치할 타일이 있으면 타일 제거 불가 
-        if(objectToPlace) return;
+        if(_objectToPlace) return;
         
         PlacedObject placedObject = GetObjectAtMousePosition();
         
@@ -452,7 +448,7 @@ public class GridBuildingSystem : MonoBehaviour
 
     private void SelectObjectAtMousePosition()
     {
-        if (objectToPlace) return;
+        if (_objectToPlace) return;
         PlacedObject placedObject = GetObjectAtMousePosition();
     
         if (placedObject is RevenueFacilityTile attractionTile)
@@ -474,7 +470,7 @@ public class GridBuildingSystem : MonoBehaviour
     private void SetObjectAtGridPosition(Vector2Int position, PlacedObject placedObject, BuildObjData.Dir dir)
     {
         var gridObject = _grid.GetGridObject(position.x, position.y);
-        gridObject?.SetPlacedObject(placedObject, objectToPlace, dir); // BuildObjData 저장
+        gridObject?.SetPlacedObject(placedObject, _objectToPlace, dir); // BuildObjData 저장
     }
 
     // 특정 위치의 객체 제거
@@ -512,8 +508,8 @@ public class GridBuildingSystem : MonoBehaviour
     
     private bool IsPlacementValid(int x, int z)
     {
-        int objectWidth = objectToPlace.GetWidth(_dir);
-        int objectLength = objectToPlace.GetHeight(_dir);
+        int objectWidth = _objectToPlace.GetWidth(_dir);
+        int objectLength = _objectToPlace.GetHeight(_dir);
 
         return x >= 0 && z >= 0 &&
                x + objectWidth <= _gridWidth &&
@@ -523,7 +519,7 @@ public class GridBuildingSystem : MonoBehaviour
     public void SelectToBuild(BuildObjData buildData)
     {
         _isDeleteMode.Value = false;
-        objectToPlace = buildData;
+        _objectToPlace = buildData;
         OnSelectedChanged?.Invoke(this, EventArgs.Empty);
     }
     
@@ -537,8 +533,8 @@ public class GridBuildingSystem : MonoBehaviour
         _grid.GetXZ(mousePosition, out int x, out int z);
 
         Vector3 placedObjectWorldPosition = _grid.GetWorldPosition(x, z);
-        if (objectToPlace != null) {
-            Vector2Int rotationOffset = objectToPlace.GetRotationOffset(_dir);
+        if (_objectToPlace != null) {
+            Vector2Int rotationOffset = _objectToPlace.GetRotationOffset(_dir);
             placedObjectWorldPosition += new Vector3(rotationOffset.x, 0, rotationOffset.y) * _grid.GetCellSize();
         } 
         
@@ -546,8 +542,8 @@ public class GridBuildingSystem : MonoBehaviour
     }
     
     public Quaternion GetPlacedObjectRotation() {
-        if (objectToPlace != null) {
-            return Quaternion.Euler(0, objectToPlace.GetRotationAngle(_dir), 0);
+        if (_objectToPlace != null) {
+            return Quaternion.Euler(0, _objectToPlace.GetRotationAngle(_dir), 0);
         } else {
             return Quaternion.identity;
         }
@@ -555,7 +551,7 @@ public class GridBuildingSystem : MonoBehaviour
 
     public bool CanBuildObject()
     {
-        return objectToPlace && CheckItemInInventory(objectToPlace);
+        return _objectToPlace && CheckItemInInventory(_objectToPlace);
     }
 
     public void SetDeleteMode()
@@ -566,7 +562,7 @@ public class GridBuildingSystem : MonoBehaviour
     }
     
     public BuildObjData GetPlacedObject() => 
-        objectToPlace?.GetTileCategory() == TileCategory.Headquarter ? null : objectToPlace;
+        _objectToPlace?.GetTileCategory() == TileCategory.Headquarter ? null : _objectToPlace;
 
     
     public GridXZ<GridObject> GetGrid() => _grid;

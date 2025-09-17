@@ -26,8 +26,12 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     [SerializeField] private bool hideOption = true;
     [SerializeField] private LayerMask occlusionLayer; 
     [SerializeField] private float raycastDistanceOffset = 0.5f;
+
+    // Added: Material for replacement and a dictionary to store original materials
+    [Header("Material Replacement")]
+    [SerializeField] private Material replacementMaterial;
     
-    private readonly List<Renderer> _hiddenRenderers = new List<Renderer>();
+    private readonly Dictionary<Renderer, Material[]> _originalMaterials = new Dictionary<Renderer, Material[]>();
     
     public void Update()
     {
@@ -38,29 +42,53 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     private void HandleOcclusion()
     {
         if(!hideOption) return;
-        // First, restore any previously hidden objects
-        foreach (var rendererObj in _hiddenRenderers)
-        {
-            if (rendererObj != null) // Check if the object still exists
-            {
-                rendererObj.enabled = true;
-            }
-        }
-        _hiddenRenderers.Clear();
+
+        // Restore materials of objects that are no longer occluded
+        var renderersToRestore = new List<Renderer>(_originalMaterials.Keys);
 
         // Perform a raycast from the camera to the player
         Vector3 direction = (_playerTarget.position - mainCamera.transform.position).normalized;
         float distance = Vector3.Distance(mainCamera.transform.position, _playerTarget.position) - raycastDistanceOffset;
-        RaycastHit[] hits = Physics.RaycastAll(mainCamera.transform.position, direction, distance, occlusionLayer);
+        RaycastHit[] hits = Physics.RaycastAll(mainCamera.transform.position, direction, distance);
 
         foreach (var hit in hits)
         {
-            // Find the renderer on the hit object and disable it
-            Renderer renderer = hit.collider.GetComponent<Renderer>();
-            if (renderer != null && !_hiddenRenderers.Contains(renderer))
+            // Check the tag of the hit object and ensure it has a Renderer
+            if (hit.collider.CompareTag("Ignore_CamCollision")) 
             {
-                renderer.enabled = false;
-                _hiddenRenderers.Add(renderer);
+                Renderer renderer = hit.collider.GetComponent<Renderer>();
+                if (renderer != null)
+                {
+                    // If the object is currently occluded, remove it from the restore list
+                    if (renderersToRestore.Contains(renderer))
+                    {
+                        renderersToRestore.Remove(renderer);
+                    }
+
+                    // Store original materials if not already stored
+                    if (!_originalMaterials.ContainsKey(renderer))
+                    {
+                        _originalMaterials[renderer] = renderer.materials;
+                    }
+
+                    // Replace all materials with the replacement material
+                    Material[] newMaterials = new Material[renderer.materials.Length];
+                    for (int i = 0; i < newMaterials.Length; i++)
+                    {
+                        newMaterials[i] = replacementMaterial;
+                    }
+                    renderer.materials = newMaterials;
+                }
+            }
+        }
+
+        // Restore materials for objects that are no longer being hit
+        foreach (var renderer in renderersToRestore)
+        {
+            if (_originalMaterials.TryGetValue(renderer, out Material[] originalMats))
+            {
+                renderer.materials = originalMats;
+                _originalMaterials.Remove(renderer);
             }
         }
     }
@@ -72,7 +100,6 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         _originTarget = playerManager.transform.Find("TargetLockOnPos");
         _lockOnTarget = _originTarget;
 
-        // Cinemachine 카메라 설정
         vCam.Follow = _playerTarget;
         vCam.LookAt = _playerTarget;
         
@@ -102,7 +129,6 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
             orbitalFollow.HorizontalAxis.Recentering.Enabled = false;
             orbitalFollow.VerticalAxis.Recentering.Enabled = false;
             cameraController.enabled = true;
-            
         }
             
         _lockOnTarget = newLockOnTarget != null ? newLockOnTarget : _originTarget;

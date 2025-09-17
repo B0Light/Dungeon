@@ -6,13 +6,219 @@
   <component name="ChangeListManager">
     <list default="true" id="1844b18a-d80d-49d6-955e-b57cdcc0bed9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/04.HUD/PlayerUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/04.HUD/PlayerUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/04.HUD/Title/Title.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/04.HUD/Title/Title.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/EscapeZone.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/EscapeZone/ExtractionPoint.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/EscapeZone/ExtractionPoint.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/EscapeZone/InteractableEscape.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/EscapeZone/InteractableEscape.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/FieldMapGenerator.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/FieldMapGenerator.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Acient.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Acient.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_AcientDouble.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_AcientDouble.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Apo_01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Apo_01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Elven_01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Elven_01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Elven_02.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Elven_02.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_02.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_02.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_Double_01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_Double_01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_Double_02.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_Double_02.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_Vertical.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_Vertical.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Interactable Perk Controller.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Interactable Perk Controller.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableArtefact.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableArtefact.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Legendary.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Legendary.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Cardboard.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Cardboard.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_02.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_02.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_03.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_03.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_Treasure.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_Treasure.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Scifi.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Scifi.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misx_Recycle.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misx_Recycle.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Weapon.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Weapon.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableShareBox_Lv.0.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableShareBox_Lv.0.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableShareBox_Lv.1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableShareBox_Lv.1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableShareBox_Lv.2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableShareBox_Lv.2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableShareBox_Tumb.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBox/InteractableShareBox_Tumb.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBuildManager.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableBuildManager.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableDungeon.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableDungeon.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableDungeonManager.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableDungeonManager.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableForge.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableForge.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableHeal.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableHeal.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableNpc.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableNpc.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableObject.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableObject/InteractableResource_Empty.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableObject/InteractableResource_Empty.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableObject/InteractableRock.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableObject/InteractableRock.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableObject/InteractableTree.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableObject/InteractableTree.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableShip.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableShip.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableShop.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableShop.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableShredder.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableShredder.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableSpa.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableSpa/InteractableSpa_Lv1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableSpa/InteractableSpa_Lv1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableSpa/InteractableSpa_Lv2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableSpa/InteractableSpa_Lv2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableSpa/InteractableSpa_Lv3.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/InteractableSpa/InteractableSpa_Lv3.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Interactable_Hologram.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/Interactable_Hologram.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/MasterItemShop.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/MasterItemShop.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/TutoNpc.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Interactable Objects/TutoNpc.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/InteractableItem.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/InteractableItem/InteractableItem.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/InteractableItem/InteractableItem.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/InteractableItem/Models.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/InteractableItem/Models/SM_Item_Meat_01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/InteractableItem/Models/SM_Item_Meat_01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/InteractableItem/Prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/InteractableItem/Prefab/Food.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/InteractableItem/Prefab/Food/Item_Meat.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/InteractableItem/Prefab/Food/Item_Meat.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Loop.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Loop/Elevator_Scifi.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Loop/Elevator_Scifi.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/MiniMapComponent.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/MiniMapComponent/MapComponent.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/MiniMapComponent/MapComponent.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Spawner.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Spawner/AI Spawner.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Spawner/AI Spawner.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Spawner/Network Object Spawner.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Spawner/Network Object Spawner.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Spawner/PlayerStart.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Spawner/PlayerStart.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Spawner/TEST_ObjectPosition.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Spawner/TEST_ObjectPosition.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Spawner/TEST_ObjectPosition_RED.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Object/Spawner/TEST_ObjectPosition_RED.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/00.Default.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/00.Default/ID 000. EmptyPlace.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/00.Default/ID 000. EmptyPlace.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/00.Default/ID 001. Entrance.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/00.Default/ID 001. Entrance.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/00.Default/ID 002. TentHeadquarter.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/00.Default/ID 002. TentHeadquarter.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/01.Road.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/01.Road/Models.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/01.Road/Models/SM_Tile_Cube_Flat_03.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/01.Road/Models/SM_Tile_Cube_Flat_03.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/01.Road/Models/SM_Tile_Cube_Path_01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/01.Road/Models/SM_Tile_Cube_Path_01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/01.Road/Models/SM_Tile_Cube_Path_02.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/01.Road/Models/SM_Tile_Cube_Path_02.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/01.Road/Models/SM_Tile_Cube_Path_03.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/01.Road/Models/SM_Tile_Cube_Path_03.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/01.Road/Models/SM_Tile_Cube_Path_04.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/01.Road/Models/SM_Tile_Cube_Path_04.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/01.Road/Road_01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/01.Road/Road_01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/02.Tree.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/02.Tree/BaseTree_01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/02.Tree/BaseTree_01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/02.Tree/Tomb_01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/02.Tree/Tomb_01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/02.Tree/Tomb_02.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/02.Tree/Tomb_02.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/02.Tree/Tomb_03.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/02.Tree/Tomb_03.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/03.RevenueFacility.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/03.RevenueFacility/ID 300. BaseAttraction.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/03.RevenueFacility/ID 300. BaseAttraction.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/03.RevenueFacility/ID 301. SwingChairs.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/03.RevenueFacility/ID 301. SwingChairs.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/03.RevenueFacility/ID 302. FerrisWheel.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/03.RevenueFacility/ID 302. FerrisWheel.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/03.RevenueFacility/ID 310. WeaponShop.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/03.RevenueFacility/ID 310. WeaponShop.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/03.RevenueFacility/ID 311. Cafe.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/03.RevenueFacility/ID 311. Cafe.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/03.RevenueFacility/ID 320. Spa.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/03.RevenueFacility/ID 320. Spa.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/04.MajorFacility.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/04.MajorFacility/ID 400. Container (Share Box).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/04.MajorFacility/ID 400. Container (Share Box).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/04.MajorFacility/ID 401. Shredder.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/04.MajorFacility/ID 401. Shredder.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/04.MajorFacility/ID 402. PerkManager.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/04.MajorFacility/ID 402. PerkManager.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/04.MajorFacility/ID 403. Forge.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/04.MajorFacility/ID 403. Forge.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/04.MajorFacility/ID 410. Cathedral.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/04.MajorFacility/ID 410. Cathedral.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/@BuildingManager.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/@BuildingManager.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/BaseGrid_1_1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/BaseGrid_1_1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/BaseGrid_2_2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/BaseGrid_2_2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/HUD.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/HUD/Btn_ActionBar_BuilidingItem.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/HUD/Btn_ActionBar_BuilidingItem.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/HUD/Btn_ActionBar_CategoryItem.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/HUD/Btn_ActionBar_CategoryItem.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/HUD/BuildingManager.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/HUD/BuildingManager.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/HUD/ShelterManager.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/HUD/ShelterManager.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/ParkGoer.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Shelter/GridBuildSystem/ParkGoer.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/03_RevenueFacility/ID 300. BaseAttraction.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/03_RevenueFacility/ID 300. BaseAttraction.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/03_RevenueFacility/ID 301. SwingChairs.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/03_RevenueFacility/ID 301. SwingChairs.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Singleton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Singleton.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/00.StartScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/00.StartScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/01.TitleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/01.TitleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/03.Shelter.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/03.Shelter.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestDungeonMaker.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestDungeonMaker.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/BSPDungeonMapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/BSPDungeonMapGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/BSPDungeonMapGeneratorFull.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/BSPDungeonMapGeneratorFull.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/BaseMapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/BaseMapGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/IsaacMapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/IsaacMapGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGeneratorFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGeneratorFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/RandomMapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/RandomMapGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/GridBuild/BuildSystem/GridBuildingSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/GridBuild/BuildSystem/GridBuildingSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/PlayerInput/PlayerCameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/PlayerInput/PlayerCameraController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +239,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "DungeonMaker",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -110,6 +316,7 @@
       <workItem from="1757852214693" duration="3937000" />
       <workItem from="1757909049576" duration="6286000" />
       <workItem from="1758002932180" duration="14943000" />
+      <workItem from="1758079169834" duration="4887000" />
     </task>
     <servers />
   </component>
