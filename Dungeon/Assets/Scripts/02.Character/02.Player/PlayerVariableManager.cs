@@ -150,7 +150,7 @@ public class PlayerVariableManager : CharacterVariableManager
     public void CurrentEquippedWeaponIDChange(int newValue)
     {
         EquipmentItemInfoWeapon newWeaponInfo = Instantiate((EquipmentItemInfoWeapon)WorldDatabase_Item.Instance.GetItemByID(newValue));
-        _playerManager.playerInventoryManager.currentEquippedInfoWeapon = newWeaponInfo;
+        _playerManager.playerEquipmentManger.currentEquippedInfoWeapon = newWeaponInfo;
         _playerManager.playerEquipmentManger.LoadRightWeapon();
         _playerManager.animator.SetInteger(_isEquippedHash, newValue);
         _playerManager.animator.SetFloat(_attackSpeedHash, newWeaponInfo.attackSpeed);
@@ -166,7 +166,7 @@ public class PlayerVariableManager : CharacterVariableManager
     {
         EquipmentItemInfoHelmet newHelmetInfo = 
             newValue != 0 ? Instantiate((EquipmentItemInfoHelmet)WorldDatabase_Item.Instance.GetItemByID(newValue)) : null;
-        _playerManager.playerInventoryManager.currentEquippedInfoHelmet = newHelmetInfo;
+        _playerManager.playerEquipmentManger.currentEquippedInfoHelmet = newHelmetInfo;
         _playerManager.playerEquipmentManger.LoadHelmet();
         
         ResetActionPoint(newHelmetInfo);
@@ -182,7 +182,7 @@ public class PlayerVariableManager : CharacterVariableManager
     
     public void ResetStatus()
     {
-        var helmet = _playerManager.playerInventoryManager.currentEquippedInfoHelmet;
+        var helmet = _playerManager.playerEquipmentManger.currentEquippedInfoHelmet;
         actionPoint.MaxValue = initialActionPoint + (perkExtraActionPoint.Value ? 1 : 0) + (helmet == null ? 0 : helmet.extraActionPoint);
         _playerManager.playerStatsManager.extraPhysicalAbsorption = helmet == null ? 0 : helmet.extraPhysicalAbsorption;
         _playerManager.playerStatsManager.extraMagicalAbsorption = helmet== null ? 0 : helmet.extraMagicalAbsorption;
@@ -202,8 +202,9 @@ public class PlayerVariableManager : CharacterVariableManager
             newArmor = WorldDatabase_Item.Instance.GetItemByID(newValue) as EquipmentItemInfoArmor;
         }
 
-        _playerManager.playerInventoryManager.currentEquippedInfoArmor = newArmor;
+        _playerManager.playerEquipmentManger.currentEquippedInfoArmor = newArmor;
         _playerManager.playerEquipmentManger.LoadBackpack();
+        _playerManager.playerEquipmentManger.SetArmor();
         /* MAX HEALTH */
         // 최대 체력 업데이트
         int baseHealth = initialMaxHealth + (perkExtraHealthPoint.Value ? 100 : 0);

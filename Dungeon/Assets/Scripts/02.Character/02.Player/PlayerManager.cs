@@ -10,7 +10,6 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
     [HideInInspector] public PlayerVariableManager playerVariableManager;
     [HideInInspector] public PlayerStatsManager playerStatsManager;
-    [HideInInspector] public PlayerInventoryManager playerInventoryManager;
     [HideInInspector] public PlayerEquipmentManger playerEquipmentManger;
     [HideInInspector] public PlayerCombatManager playerCombatManager;
     [HideInInspector] public PlayerSoundFXManager playerSoundFXManager;
@@ -35,7 +34,6 @@ public class PlayerManager : CharacterManager
         playerAnimatorManager = characterAnimatorManager as PlayerAnimatorManager;
         playerVariableManager = characterVariableManager as PlayerVariableManager;
         playerStatsManager = characterStatsManager as PlayerStatsManager;
-        playerInventoryManager = GetComponent<PlayerInventoryManager>();
         playerEquipmentManger = characterEquipmentManager as PlayerEquipmentManger;
         playerCombatManager =  characterCombatManager as PlayerCombatManager;
         playerSoundFXManager = characterSoundFXManager as PlayerSoundFXManager;

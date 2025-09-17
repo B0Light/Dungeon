@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -5,11 +7,16 @@ public class PlayerEquipmentManger : CharacterEquipmentMangaer
 {
     PlayerManager player;
 
+    [SerializeField] private List<GameObject> armorList;
     [SerializeField] private ModelInstantiateSlot helmetSlot;
     [SerializeField] private ModelInstantiateSlot backpackSlot;
     [SerializeField] private WeaponModelInstantiateSlot rightHandSlot;
     [SerializeField] private WeaponModelInstantiateSlot leftChainsawSlot;
     private IWeaponManager _weaponManager;
+    
+    [HideInInspector] public EquipmentItemInfoWeapon currentEquippedInfoWeapon;
+    [HideInInspector] public EquipmentItemInfoHelmet currentEquippedInfoHelmet;
+    [HideInInspector] public EquipmentItemInfoArmor currentEquippedInfoArmor;
 
     private GameObject _helmetModel;
     private GameObject _backpackModel;
@@ -18,10 +25,9 @@ public class PlayerEquipmentManger : CharacterEquipmentMangaer
     protected void Awake()
     {
         player = GetComponent<PlayerManager>();
-        //InitializeWeaponSlots();
+        InitializeWeaponSlots();
     }
-
-    // 기존 item slot을 코드에서 자동으로 찾아 활성화 하는 코드 : but player 하나에만 적용 + 바인딩 할게 2개 뿐이라 그냥 인스펙터에서 관리 
+    
     private void InitializeWeaponSlots()
     {
         WeaponModelInstantiateSlot[] weaponSlots = GetComponentsInChildren<WeaponModelInstantiateSlot>();
@@ -46,7 +52,7 @@ public class PlayerEquipmentManger : CharacterEquipmentMangaer
 
     public void LoadRightWeapon()
     {
-        if (player.playerInventoryManager.currentEquippedInfoWeapon == null)
+        if (currentEquippedInfoWeapon == null)
         {
             rightHandSlot.UnloadModel();
             leftChainsawSlot.UnloadModel();
@@ -56,44 +62,56 @@ public class PlayerEquipmentManger : CharacterEquipmentMangaer
         rightHandSlot.UnloadModel();
         leftChainsawSlot.UnloadModel();
         
-        _weaponModel = Instantiate(player.playerInventoryManager.currentEquippedInfoWeapon.itemModel);
+        _weaponModel = Instantiate(currentEquippedInfoWeapon.itemModel);
         rightHandSlot.LoadModel(_weaponModel);
         _weaponManager = _weaponModel.GetComponent<IWeaponManager>();
-        _weaponManager.SetWeapon(player, player.playerInventoryManager.currentEquippedInfoWeapon);
-        player.playerAnimatorManager.UpdateAnimatorController(player.playerInventoryManager.currentEquippedInfoWeapon.weaponAnimator);
+        _weaponManager.SetWeapon(player, currentEquippedInfoWeapon);
+        player.playerAnimatorManager.UpdateAnimatorController(currentEquippedInfoWeapon.weaponAnimator);
     }
 
     public void LoadHelmet()
     {
         helmetSlot.UnloadModel();
-        if(player.playerInventoryManager.currentEquippedInfoHelmet == null) return;
-        _helmetModel = Instantiate(player.playerInventoryManager.currentEquippedInfoHelmet.itemModel);
+        if(currentEquippedInfoHelmet == null) return;
+        _helmetModel = Instantiate(currentEquippedInfoHelmet.itemModel);
         helmetSlot.LoadModel(_helmetModel);
     }
 
     public void LoadBackpack()
     {
         backpackSlot.UnloadModel();
-        if(player.playerInventoryManager.currentEquippedInfoArmor == null ||
-           player.playerInventoryManager.currentEquippedInfoArmor.itemModel == null) return;
-        _backpackModel = Instantiate(player.playerInventoryManager.currentEquippedInfoArmor.itemModel);
+        if(currentEquippedInfoArmor == null || currentEquippedInfoArmor.itemModel == null) return;
+        _backpackModel = Instantiate(currentEquippedInfoArmor.itemModel);
         backpackSlot.LoadModel(_backpackModel);
+    }
+    
+    public void SetArmor()
+    {
+        if(armorList == null || armorList.Count == 0) return; 
+        foreach (var armor in armorList)
+        {
+            armor.SetActive(false);
+        }
+
+        var armorIndex = currentEquippedInfoArmor ? currentEquippedInfoArmor.itemCode % 10 : 0;
+        
+        armorList[armorIndex].SetActive(true);
     }
     
     #region AnimationEvent
     
     public void LoadChainsaw()
     {
-        if(player.playerInventoryManager.currentEquippedInfoWeapon == null) return;
+        if(currentEquippedInfoWeapon == null) return;
         
         rightHandSlot.UnloadModel();
         leftChainsawSlot.UnloadModel();
         
-        _weaponModel = Instantiate(player.playerInventoryManager.currentEquippedInfoWeapon.itemModel);
+        _weaponModel = Instantiate(currentEquippedInfoWeapon.itemModel);
         leftChainsawSlot.LoadModel(_weaponModel);
         _weaponManager = _weaponModel.GetComponent<IWeaponManager>();
-        _weaponManager.SetWeapon(player, player.playerInventoryManager.currentEquippedInfoWeapon);
-        player.playerAnimatorManager.UpdateAnimatorController(player.playerInventoryManager.currentEquippedInfoWeapon.weaponAnimator);
+        _weaponManager.SetWeapon(player, currentEquippedInfoWeapon);
+        player.playerAnimatorManager.UpdateAnimatorController(currentEquippedInfoWeapon.weaponAnimator);
     }
     
     public void OpenDamageCollider()

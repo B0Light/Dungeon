@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Cinemachine;
-using UnityEngine.Serialization;
 
 public class PlayerCameraController : Singleton<PlayerCameraController>
 {
@@ -33,6 +32,10 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     
     private readonly Dictionary<Renderer, Material[]> _originalMaterials = new Dictionary<Renderer, Material[]>();
     
+    // 최적화: Physics.RaycastNonAlloc()을 위한 배열 사전 할당
+    private const int MAX_HITS = 10;
+    private RaycastHit[] _raycastHits = new RaycastHit[MAX_HITS];
+
     public void Update()
     {
         if(!_enable) return;
@@ -49,10 +52,14 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         // Perform a raycast from the camera to the player
         Vector3 direction = (_playerTarget.position - mainCamera.transform.position).normalized;
         float distance = Vector3.Distance(mainCamera.transform.position, _playerTarget.position) - raycastDistanceOffset;
-        RaycastHit[] hits = Physics.RaycastAll(mainCamera.transform.position, direction, distance);
+        
+        // 최적화: RaycastNonAlloc() 사용 및 occlusionLayer 적용
+        int hitCount = Physics.RaycastNonAlloc(mainCamera.transform.position, direction, _raycastHits, distance, occlusionLayer);
 
-        foreach (var hit in hits)
+        for (int i = 0; i < hitCount; i++)
         {
+            var hit = _raycastHits[i];
+
             // Check the tag of the hit object and ensure it has a Renderer
             if (hit.collider.CompareTag("Ignore_CamCollision")) 
             {
@@ -73,9 +80,9 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
 
                     // Replace all materials with the replacement material
                     Material[] newMaterials = new Material[renderer.materials.Length];
-                    for (int i = 0; i < newMaterials.Length; i++)
+                    for (int j = 0; j < newMaterials.Length; j++)
                     {
-                        newMaterials[i] = replacementMaterial;
+                        newMaterials[j] = replacementMaterial;
                     }
                     renderer.materials = newMaterials;
                 }

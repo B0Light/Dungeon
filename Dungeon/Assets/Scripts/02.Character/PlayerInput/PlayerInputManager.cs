@@ -299,7 +299,7 @@ public class PlayerInputManager : Singleton<PlayerInputManager>
 
         if (playerManager.playerVariableManager.currentEquippedWeaponID.Value == 0) return;
 
-        var weapon = playerManager.playerInventoryManager.currentEquippedInfoWeapon;
+        var weapon = playerManager.playerEquipmentManger.currentEquippedInfoWeapon;
         var action = actionType switch
         {
             AttackType.Skill => weapon.weaponSkill,
