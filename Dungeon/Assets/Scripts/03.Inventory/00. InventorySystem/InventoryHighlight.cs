@@ -1,10 +1,17 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryHighlight : MonoBehaviour
 {
-    [SerializeField] RectTransform highlighter; // 위치할 좌표를 표시하는 하얀 박스 
-    [SerializeField] RectTransform selector; // 아이템 선택을 표시하는 노란박스 
-    
+    [SerializeField] RectTransform highlighter; // 새로운 위치 
+    [SerializeField] RectTransform selector; // 기존 위치 
+
+    [SerializeField] private Image highlighterImg;
+
+    [SerializeField] private Color enableColor;
+    [SerializeField] private Color disableColor;
+
     public void ShowHighlighter(bool isShow)
     {
         highlighter.gameObject.SetActive(isShow);
@@ -15,7 +22,24 @@ public class InventoryHighlight : MonoBehaviour
         selector.gameObject.SetActive(isShow);
     }
 
-    public void SetSize(InventoryItem targetItem, bool selectorChange = true)
+    public void HighlightToSelect(InventoryItem targetItem, ItemGrid targetGrid, bool show)
+    {
+        ShowHighlighter(show);
+        SetSize(targetItem);
+        SetPosition(targetGrid, targetItem);
+        SetSelectorParent(targetGrid);
+    }
+
+    public void UpdateHighlight(InventoryItem targetItem, ItemGrid targetGrid, int posX, int posY)
+    {
+        ShowHighlighter(targetGrid.BoundaryCheck(posX, posY, targetItem.Width, targetItem.Height));
+        SetHighlightColor(targetGrid.CheckPlaceItem(targetItem, posX, posY));
+        
+        SetSize(targetItem, false);
+        SetPosition(targetGrid, targetItem, posX, posY);
+    }
+
+    private void SetSize(InventoryItem targetItem, bool selectorChange = true)
     {
         Vector2 size = new Vector2();
         size.x = targetItem.Width * ItemGrid.TileSizeWidth;
@@ -25,7 +49,6 @@ public class InventoryHighlight : MonoBehaviour
             selector.sizeDelta = size;
     }
 
-    //아이템의 크기와 위치를 받아서 highlighter의 위치를 정한다.
     public void SetPosition(ItemGrid targetGrid, InventoryItem targetItem)
     {
         if(targetGrid == null || targetItem == null) return;
@@ -52,7 +75,7 @@ public class InventoryHighlight : MonoBehaviour
         highlighter.SetAsLastSibling();
     }
 
-    public void SetSelectorParent(ItemGrid targetGrid)
+    private void SetSelectorParent(ItemGrid targetGrid)
     {
         if(targetGrid == null){
             return;
@@ -61,9 +84,8 @@ public class InventoryHighlight : MonoBehaviour
         selector.SetParent(targetGrid.GetComponent<RectTransform>());
         selector.SetAsLastSibling();
     }
-
-    // 마우스 위치에 따라 하이라이터 위치 변경 
-    public void SetPosition(ItemGrid targetGrid, InventoryItem targetItem, int posX, int posY){
+    
+    private void SetPosition(ItemGrid targetGrid, InventoryItem targetItem, int posX, int posY){
         Vector2 pos = targetGrid.CalculatePositionOnGrid(
             targetItem,
             posX,
@@ -72,5 +94,10 @@ public class InventoryHighlight : MonoBehaviour
 
         highlighter.localPosition = pos;
         highlighter.SetAsLastSibling();
+    }
+
+    private void SetHighlightColor(bool isAble)
+    {
+        highlighterImg.color = isAble ? enableColor : disableColor;
     }
 }

@@ -6,476 +6,130 @@
   <component name="ChangeListManager">
     <list default="true" id="1844b18a-d80d-49d6-955e-b57cdcc0bed9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/Materials/Simple/HoodMat_Golden.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/Materials/Simple/HoodMat_Golden.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/01.Character/Player/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Shelter/00.Default/ID 002. TentHeadquarter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Shelter/00.Default/ID 002. TentHeadquarter.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/00_HQ_Default.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/00_HQ_Default/ID 000. EmptyPlace.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/00_HQ_Default/ID 000. EmptyPlace.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/00_HQ_Default/ID 001. Entrance.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/00_HQ_Default/ID 001. Entrance.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/00_HQ_Default/ID 002. TentHeadquarter.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/00_HQ_Default/ID 002. TentHeadquarter.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/00_HQ_Default/ID 003. DefaultRoad.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/00_HQ_Default/ID 003. DefaultRoad.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/01_Road.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/01_Road/ID 100. BaseRoad.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/01_Road/ID 100. BaseRoad.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/02_Tree.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/02_Tree/ID 200. BaseTree_01.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/02_Tree/ID 200. BaseTree_01.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/03_RevenueFacility.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/03_RevenueFacility/ID 302. FerrisWheel.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/03_RevenueFacility/ID 302. FerrisWheel.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/03_RevenueFacility/ID 310. WeaponShop.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/03_RevenueFacility/ID 310. WeaponShop.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/03_RevenueFacility/ID 311. Cafe.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/03_RevenueFacility/ID 311. Cafe.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/03_RevenueFacility/ID 320. Spa.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/03_RevenueFacility/ID 320. Spa.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/04_MajorFacility.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/04_MajorFacility/ID 400. ShareBox.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/04_MajorFacility/ID 400. ShareBox.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/04_MajorFacility/ID 401. Shredder.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/04_MajorFacility/ID 401. Shredder.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/04_MajorFacility/ID 402. Perk Manager.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/04_MajorFacility/ID 402. Perk Manager.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/04_MajorFacility/ID 403. Forge.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/04_MajorFacility/ID 403. Forge.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/04_MajorFacility/ID 410. Cathedral.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/04_MajorFacility/ID 410. Cathedral.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/99_DefaultIcon.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/99_DefaultIcon/00.Icon_HQ.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/99_DefaultIcon/00.Icon_HQ.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/99_DefaultIcon/01.Icon_Road.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/99_DefaultIcon/01.Icon_Road.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/99_DefaultIcon/02.Icon_Tree.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/99_DefaultIcon/02.Icon_Tree.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/99_DefaultIcon/03.Icon_RevenueFacility.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/99_DefaultIcon/03.Icon_RevenueFacility.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/99_DefaultIcon/04.Icon_LandMark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/99_DefaultIcon/04.Icon_LandMark.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/99_DefaultIcon/99.Icon_None.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Building/99_DefaultIcon/99.Icon_None.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Crafting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Crafting/10_Irongot.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Crafting/10_Irongot.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Crafting/11_Goldgot.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Crafting/11_Goldgot.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Crafting/1_Coffee.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Crafting/1_Coffee.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Crafting/21_BDYBoom.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Crafting/21_BDYBoom.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/00.Unknown.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/00.Unknown.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/01.Arrnyang.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/01.Arrnyang.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/10.Z_Mutant.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/10.Z_Mutant.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/100.스크래치.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/100.스크래치.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/101.스크래쳐.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/101.스크래쳐.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/102.빠따냥.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/102.빠따냥.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/103.레드스콥.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/103.레드스콥.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/11.Z_Person.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/11.Z_Person.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/12.Z_Police.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/12.Z_Police.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/13.Mutant.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/13.Mutant.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/15.Z_Doberman.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/15.Z_Doberman.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/16.Z_GermanShepherd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/16.Z_GermanShepherd.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/21.휴머노이드.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/21.휴머노이드.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/22.추격자.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/22.추격자.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/25.R_Bot.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/25.R_Bot.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/51.Ant.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/EnemyIcons/51.Ant.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Fonts &amp; Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Fonts &amp; Materials/KorFont.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Fonts &amp; Materials/KorFont.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Fonts &amp; Materials/KorFont_Outline.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Fonts &amp; Materials/KorFont_Outline.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/01. PhysicalAttackIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/01. PhysicalAttackIcon.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/02. MagicalAttackIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/02. MagicalAttackIcon.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/03. PhysicalDefenseIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/03. PhysicalDefenseIcon.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/04. MagicalDefenseIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/04. MagicalDefenseIcon.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/05. HealthIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/05. HealthIcon.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/06. RestoreHealth.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/06. RestoreHealth.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/07.EatingFood.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/07.EatingFood.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/08. BuffAttackIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/08. BuffAttackIcon.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/09. BuffDefensIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/09. BuffDefensIcon.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/10. BuffActionPoint.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/10. BuffActionPoint.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/11. BuffSpeed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/11. BuffSpeed.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/12. BuffWeight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/12. BuffWeight.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/13. ResourceIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/13. ResourceIcon.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/14. StorageSpace.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/14. StorageSpace.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/99. None.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/DefaultItemEffectIcon/99. None.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/UnknownIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/ItemIcons/UnknownIcon.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0000_Unequip.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0000_Unequip.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0001_WoodenBat.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0001_WoodenBat.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0002_StillBinder.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0002_StillBinder.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0003_SpikeBat.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0003_SpikeBat.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0004_SpikeSlasher.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0004_SpikeSlasher.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0005_SkullBreaker.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0005_SkullBreaker.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0006_IronCarnage.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0006_IronCarnage.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0007_JudgmentSaw.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0007_JudgmentSaw.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0008_CraneBreaker.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0008_CraneBreaker.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0009_StellaBat.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_0_Bat/ID_0009_StellaBat.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_1_Axe.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_1_Axe/ID_0010_FireAxe.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_1_Axe/ID_0010_FireAxe.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_1_Axe/ID_0011_SignAxe.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_1_Axe/ID_0011_SignAxe.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_1_Axe/ID_0012_Sawpipe.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_1_Axe/ID_0012_Sawpipe.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_1_Axe/ID_0013_KitchenHatchet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_1_Axe/ID_0013_KitchenHatchet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_5_Mace.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_5_Mace/ID_0050_SawShovel.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_5_Mace/ID_0050_SawShovel.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_5_Mace/ID_0051_NailedCrusher.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_5_Mace/ID_0051_NailedCrusher.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_5_Mace/ID_0052_IronsawCrusher.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_5_Mace/ID_0052_IronsawCrusher.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_5_Mace/ID_0053_Dejavu.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_5_Mace/ID_0053_Dejavu.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_8_Chainsaw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_8_Chainsaw/ID_0080_Chainsaw.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_8_Chainsaw/ID_0080_Chainsaw.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_8_Chainsaw/ID_0081_Chainsaw.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_8_Chainsaw/ID_0081_Chainsaw.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_8_Chainsaw/ID_0082_Chainsaw.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_8_Chainsaw/ID_0082_Chainsaw.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_8_Chainsaw/ID_0083_Chainsaw.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_8_Chainsaw/ID_0083_Chainsaw.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_8_Chainsaw/ID_0084_Chainsaw.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_00xx_Weapon/ID_8_Chainsaw/ID_0084_Chainsaw.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_0_Hood.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_0_Hood/ID_0100_Hood.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_0_Hood/ID_0100_Hood.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_0_Hood/ID_0101_GoldenHood.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_0_Hood/ID_0101_GoldenHood.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_0_Hood/ID_0108_StellaHood.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_0_Hood/ID_0108_StellaHood.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_0_Hood/ID_0109_HoodOrigin.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_0_Hood/ID_0109_HoodOrigin.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_1_Hat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_1_Hat/ID_0110_Bandana.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_1_Hat/ID_0110_Bandana.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_1_Hat/ID_0111_BeerHat.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_1_Hat/ID_0111_BeerHat.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_1_Hat/ID_0112_Captian.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_1_Hat/ID_0112_Captian.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_1_Hat/ID_0113_Squid.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_1_Hat/ID_0113_Squid.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_1_Hat/ID_0114_Tacticle.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_1_Hat/ID_0114_Tacticle.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_1_Hat/ID_0115_BallCap.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_1_Hat/ID_0115_BallCap.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_1_Hat/ID_0116_CybernaticFedora.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_1_Hat/ID_0116_CybernaticFedora.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_1_Hat/ID_0117_PriestHat.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_1_Hat/ID_0117_PriestHat.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0120_Moto.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0120_Moto.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0121_CardboardHelmet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0121_CardboardHelmet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0122_SamuraiHelmet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0122_SamuraiHelmet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0123_SpartanHelmet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0123_SpartanHelmet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0124_ValkyrieHelmet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0124_ValkyrieHelmet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0125_ElvenHelmet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0125_ElvenHelmet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0126_LunaHelmet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0126_LunaHelmet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0127_GemStoneHelmet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0127_GemStoneHelmet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0128_AxecrestHelmet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0128_AxecrestHelmet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0129_BladewheelHelmet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_2_Helmet/ID_0129_BladewheelHelmet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_3_Glasses.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_3_Glasses/ID_0130_Glasses.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_3_Glasses/ID_0130_Glasses.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_3_Glasses/ID_0131_CyberneticMonocular.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_3_Glasses/ID_0131_CyberneticMonocular.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_4_Hair.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_4_Hair/ID_0141_CyberneticGirl.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_4_Hair/ID_0141_CyberneticGirl.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_5_Mask.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_5_Mask/ID_0151_CyberneticMask.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_01xx_Helmet/ID_5_Mask/ID_0151_CyberneticMask.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_0_Armor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_0_Armor/ID_0200_BasicDefenseVest.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_0_Armor/ID_0200_BasicDefenseVest.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_0_Armor/ID_0201_ReinforcedTacticalVest.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_0_Armor/ID_0201_ReinforcedTacticalVest.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_0_Armor/ID_0202_HeavyCombatVest.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_0_Armor/ID_0202_HeavyCombatVest.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_1_Backpack.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_1_Backpack/ID_0210_UrbanDaypack.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_1_Backpack/ID_0210_UrbanDaypack.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_1_Backpack/ID_0211_PandaCutiePack.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_1_Backpack/ID_0211_PandaCutiePack.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_1_Backpack/ID_0212_NomadGearPack.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_1_Backpack/ID_0212_NomadGearPack.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_1_Backpack/ID_0213_ExplorerBackPack.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_1_Backpack/ID_0213_ExplorerBackPack.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_1_Backpack/ID_0214_SurvivorLoadout.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/A_Items_Equipment/Items_02xx_Armor/ID_1_Backpack/ID_0214_SurvivorLoadout.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_0_Drink.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_0_Drink/ID_0300_Water.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_0_Drink/ID_0300_Water.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_0_Drink/ID_0301_Coke.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_0_Drink/ID_0301_Coke.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_0_Drink/ID_0302_EnergyDrink.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_0_Drink/ID_0302_EnergyDrink.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_0_Drink/ID_0303_Milk.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_0_Drink/ID_0303_Milk.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_0_Drink/ID_0304_BananaMilk.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_0_Drink/ID_0304_BananaMilk.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_0_Drink/ID_0305_Coffee.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_0_Drink/ID_0305_Coffee.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_0_Drink/ID_0306_MilkTea.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_0_Drink/ID_0306_MilkTea.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_1_Alc.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_2_Food.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_2_Food/ID_0320_Nurungji.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_2_Food/ID_0320_Nurungji.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_2_Food/ID_0321_CheeseCake.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_2_Food/ID_0321_CheeseCake.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_3_Raw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_3_Raw/ID_0330_CoffeeBean.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_3_Raw/ID_0330_CoffeeBean.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_4_Ingredient.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_4_Ingredient/ID_0340_Sugar.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_4_Ingredient/ID_0340_Sugar.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_4_Ingredient/ID_0341_Salt.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_4_Ingredient/ID_0341_Salt.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_5_Boost.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_5_Boost/ID_0350_vitamin.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_5_Boost/ID_0350_vitamin.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_6_Snack.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/B_Items_Consumable/Items_03xx_Consumable/ID_7_Herb.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1000_Wood.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1000_Wood.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1001_Branch.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1001_Branch.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1002_DriftWood.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1002_DriftWood.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1003_FoxWoodSeed.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1003_FoxWoodSeed.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1004_FoxheartWood.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1004_FoxheartWood.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1005_Sprigroot.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1005_Sprigroot.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1006_Sapling.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1006_Sapling.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1007_ErdSeed.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1007_ErdSeed.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1008_ErdBranch.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1008_ErdBranch.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1009_ErdWood.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1009_ErdWood.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1010_Stone.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1010_Stone.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1080_Diamond.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1080_Diamond.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1081_RawIron.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1081_RawIron.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1082_RawGold.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1082_RawGold.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1089_Coal.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1089_Coal.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1090_Engine.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1090_Engine.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1091_Battery.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_10_NaturalResource/ID_1091_Battery.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1100_SoftPelt.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1100_SoftPelt.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1101_RoughHide.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1101_RoughHide.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1102_SuperiorLeather.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1102_SuperiorLeather.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1110_UniHorn.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1110_UniHorn.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1111_StellaHorn.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1111_StellaHorn.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1112_GoldenHorn.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1112_GoldenHorn.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1113_PureWhiteHorn.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1113_PureWhiteHorn.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1150_Slime.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1150_Slime.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1151_Magnet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1151_Magnet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1190_CosmicStone.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_11_HuntingMaterials/ID_1190_CosmicStone.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1200_GoldenCheese.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1200_GoldenCheese.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1201_Cheese.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1201_Cheese.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1210_IronIngot.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1210_IronIngot.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1211_GoldIngot.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1211_GoldIngot.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1220_Bottle.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1220_Bottle.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1290_Rustykey.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1290_Rustykey.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1291_SilvermoonKey.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1291_SilvermoonKey.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1292_KeyofDawn.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1292_KeyofDawn.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1293_CelestialKey.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1293_CelestialKey.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1295_BDYBoom.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1295_BDYBoom.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1299_MasterKey.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_12_Loot/ID_1299_MasterKey.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_13_Point.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_13_Point/ID_1300_MasterPerkPoint.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_13_Point/ID_1300_MasterPerkPoint.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_13_Point/ID_1301_PerkPoint_Tier01.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_13_Point/ID_1301_PerkPoint_Tier01.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_13_Point/ID_1302_PerkPoint_Tier02.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_13_Point/ID_1302_PerkPoint_Tier02.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_13_Point/ID_1303_PerkPoint_Tier03.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_13_Point/ID_1303_PerkPoint_Tier03.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_13_Point/ID_1310_DungeonLicense_01.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_13_Point/ID_1310_DungeonLicense_01.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_13_Point/ID_1311_DungeonLicense_02.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_13_Point/ID_1311_DungeonLicense_02.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_13_Point/ID_1312_DungeonLicense_03.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Items/C_Items_Misc/ID_13_Point/ID_1312_DungeonLicense_03.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 110. UnlockThirdCombo.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 110. UnlockThirdCombo.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 111. ExpandWeaponSlot.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 111. ExpandWeaponSlot.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 120. UnlockParry.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 120. UnlockParry.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 121. ExpandWeaponSlot 2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 121. ExpandWeaponSlot 2.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 122. UnlockJumpAttack.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 122. UnlockJumpAttack.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 123. UnlockBackStepAttack.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 123. UnlockBackStepAttack.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 130. ExtraAttackPower.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 130. ExtraAttackPower.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 131. ExpandWeaponSlot 3.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 131. ExpandWeaponSlot 3.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 132. UnlockRangeWeapon.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/01.Hand/ID 132. UnlockRangeWeapon.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/02.Head.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/02.Head/ID 210. UnlockHealByFood.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/02.Head/ID 210. UnlockHealByFood.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/02.Head/ID 211. ExpandHelmetSlot.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/02.Head/ID 211. ExpandHelmetSlot.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/02.Head/ID 220. UnlockSandevistan.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/02.Head/ID 220. UnlockSandevistan.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/02.Head/ID 221. ExpandHelmetSlot 1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/02.Head/ID 221. ExpandHelmetSlot 1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/02.Head/ID 230. MoreActionPoint.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/02.Head/ID 230. MoreActionPoint.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/02.Head/ID 231. ExpandHelmetSlot 2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/02.Head/ID 231. ExpandHelmetSlot 2.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/02.Head/ID 232. MoreHealthPoint.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/02.Head/ID 232. MoreHealthPoint.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/03.Body.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/03.Body/ID 310. UnlockDoubleJump.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/03.Body/ID 310. UnlockDoubleJump.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/03.Body/ID 311. ExpandArmorSlot.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/03.Body/ID 311. ExpandArmorSlot.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/03.Body/ID 320. UnlockExtraPhyDefence.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/03.Body/ID 320. UnlockExtraPhyDefence.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/03.Body/ID 321. ExpandArmorSlot 1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/03.Body/ID 321. ExpandArmorSlot 1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/03.Body/ID 330. UnlockExtraMagDefence.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/03.Body/ID 330. UnlockExtraMagDefence.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/03.Body/ID 331. ExpandArmorSlot 2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/03.Body/ID 331. ExpandArmorSlot 2.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/04.Inventory.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/04.Inventory/ID 410. UnlockSafe.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/04.Inventory/ID 410. UnlockSafe.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/04.Inventory/ID 411. ExpandInventory.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/04.Inventory/ID 411. ExpandInventory.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/04.Inventory/ID 420. ExpandSafe.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/04.Inventory/ID 420. ExpandSafe.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/04.Inventory/ID 421. ExpandInventory 1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/04.Inventory/ID 421. ExpandInventory 1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/04.Inventory/ID 422. ExpandWeight.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/04.Inventory/ID 422. ExpandWeight.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/04.Inventory/ID 430. ExpandSafe 1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/04.Inventory/ID 430. ExpandSafe 1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/04.Inventory/ID 431. ExpandInventory 2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/Perks/04.Inventory/ID 431. ExpandInventory 2.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/Materials/TerrainLit.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/Materials/TerrainLit.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/EscapeZone.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/EscapeZone/ExtractionPoint.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/EscapeZone/ExtractionPoint.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/EscapeZone/InteractableEscape.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/EscapeZone/InteractableEscape.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Acient.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Acient.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_AcientDouble.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_AcientDouble.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Apo_01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Apo_01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Elven_01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Elven_01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Elven_02.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Elven_02.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_02.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_02.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_Double_01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_Double_01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_Double_02.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_Double_02.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_Vertical.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Door/InteractableDoor_Scifi_Vertical.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Interactable Perk Controller.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Interactable Perk Controller.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableArtefact.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableArtefact.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Legendary.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Legendary.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Cardboard.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Cardboard.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_02.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_02.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_03.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_03.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_Treasure.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_Treasure.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Scifi.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misc_Scifi.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misx_Recycle.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Misx_Recycle.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Weapon.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableBox_Weapon.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableShareBox_Lv.0.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableShareBox_Lv.0.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableShareBox_Lv.1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableShareBox_Lv.1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableShareBox_Lv.2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableShareBox_Lv.2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableShareBox_Tumb.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBox/InteractableShareBox_Tumb.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBuildManager.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableBuildManager.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableDungeon.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableDungeon.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableDungeonManager.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableDungeonManager.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableForge.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableForge.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableHeal.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableHeal.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableNpc.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableNpc.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableObject.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableObject/InteractableResource_Empty.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableObject/InteractableResource_Empty.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableObject/InteractableRock.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableObject/InteractableRock.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableObject/InteractableTree.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableObject/InteractableTree.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableShip.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableShip.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableShop.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableShop.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableShredder.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableShredder.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableSpa.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableSpa/InteractableSpa_Lv1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableSpa/InteractableSpa_Lv1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableSpa/InteractableSpa_Lv2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableSpa/InteractableSpa_Lv2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableSpa/InteractableSpa_Lv3.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/InteractableSpa/InteractableSpa_Lv3.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Interactable_Hologram.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/Interactable_Hologram.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/MasterItemShop.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/MasterItemShop.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/TutoNpc.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Interactable Objects/TutoNpc.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Loop.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Loop/Elevator_Scifi.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Loop/Elevator_Scifi.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/MiniMapComponent.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/MiniMapComponent/MapComponent.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/MiniMapComponent/MapComponent.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Spawner.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Spawner/AI Spawner.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Spawner/AI Spawner.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Spawner/Network Object Spawner.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Spawner/Network Object Spawner.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Spawner/PlayerStart.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Spawner/PlayerStart.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Spawner/TEST_ObjectPosition.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Spawner/TEST_ObjectPosition.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Spawner/TEST_ObjectPosition_RED.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/Spawner/TEST_ObjectPosition_RED.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Singleton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Singleton.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/00.StartScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/00.StartScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterInventoryManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterInventoryManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerEquipmentManger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerEquipmentManger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerInventoryManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerInventoryManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerVariableManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerVariableManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/03.Shelter.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/03.Shelter.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/PlayerInput/PlayerCameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/PlayerInput/PlayerCameraController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/PlayerInput/PlayerInputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/PlayerInput/PlayerInputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/03.Inventory/00. InventorySystem/InventoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/03.Inventory/00. InventorySystem/InventoryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/03.Inventory/00. InventorySystem/InventoryHighlight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/03.Inventory/00. InventorySystem/InventoryHighlight.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/03.Inventory/00. InventorySystem/ItemGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/03.Inventory/00. InventorySystem/ItemGrid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/03.Inventory/00. InventorySystem/ItemGrid_Equipment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/03.Inventory/00. InventorySystem/ItemGrid_Equipment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/99.Utility/Mouse3D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/99.Utility/Mouse3D.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -494,25 +148,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\jangb\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\jangb\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\jangb\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\jangb\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\jangb\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\jangb\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$USER_HOME$/Desktop/StealAlive\STEAL ALIVE.exe" />
@@ -574,7 +228,8 @@
       <workItem from="1757852214693" duration="3937000" />
       <workItem from="1757909049576" duration="6286000" />
       <workItem from="1758002932180" duration="14943000" />
-      <workItem from="1758079169834" duration="12369000" />
+      <workItem from="1758079169834" duration="15142000" />
+      <workItem from="1758184816952" duration="9929000" />
     </task>
     <servers />
   </component>

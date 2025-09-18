@@ -13,20 +13,6 @@ public class Mouse3D : MonoBehaviour
         Instance = this;
     }
 
-    private void Update()
-    {
-        UpdateMousePosition();
-    }
-
-    private void UpdateMousePosition()
-    {
-        Ray ray = Camera.main?.ScreenPointToRay(Input.mousePosition) ?? default;
-        if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask))
-        {
-            transform.position = raycastHit.point;
-        }
-    }
-
     public static Vector3 GetMouseWorldPosition()
     {
         if (Instance == null)
@@ -48,5 +34,22 @@ public class Mouse3D : MonoBehaviour
         {
             return defaultPosition;
         }
+    }
+
+    public static bool GetRaycastHit(Vector3 screenPosition, out RaycastHit hit)
+    {
+        if (Instance == null)
+        {
+            Debug.LogError("Mouse3D Instance is null. Ensure Mouse3D is attached to an active GameObject.");
+            hit = default;
+            return false;
+        }
+        return Instance.GetRaycastHit_Instance(screenPosition, out hit);
+    }
+
+    private bool GetRaycastHit_Instance(Vector3 screenPosition, out RaycastHit hit)
+    {
+        Ray ray = Camera.main?.ScreenPointToRay(screenPosition) ?? default;
+        return Physics.Raycast(ray, out hit, float.MaxValue, layerMask);
     }
 }

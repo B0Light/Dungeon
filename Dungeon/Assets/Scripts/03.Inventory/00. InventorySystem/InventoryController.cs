@@ -38,14 +38,12 @@ public class InventoryController : MonoBehaviour
     }
     
     private InventoryItem _selectedItem;
-    public event Action<InventoryItem> OnSelectedItemChanged;
-    public InventoryItem SelectedItem
+    private InventoryItem SelectedItem
     {
         get => _selectedItem;
         set
         {
             SetSelectedItemState(_selectedItem, false);
-
             _selectedItem = value;
             SetSelectedItemState(_selectedItem, true);
 
@@ -80,31 +78,20 @@ public class InventoryController : MonoBehaviour
         isActive = false;
     }
     
-    private void Update()
+    private void LateUpdate()
     {
-        if (!isActive)
+        if (SelectedItem)
         {
-            HandleHighlight();
-            if (Input.GetMouseButtonDown(0))
-            {
-                SelectItemOnMousePos();
-            }
+            SelectedItem.gameObject.transform.SetParent(mainInventoryCanvas);
+            SelectedItem.gameObject.transform.position = Input.mousePosition;
         }
-        else
-        {
-            if (SelectedItem)
-            {
-                SelectedItem.gameObject.transform.SetParent(mainInventoryCanvas);
-                SelectedItem.gameObject.transform.position = Input.mousePosition;
-            }
-            
         
-            if (_selectedItemGrid == null) {
-                _inventoryHighlight.ShowHighlighter(false);
-            }
-        
-            HandleHighlight();
+    
+        if (_selectedItemGrid == null) {
+            _inventoryHighlight.ShowHighlighter(false);
         }
+    
+        HandleHighlight();
     }
 
     public void RotateItem()
@@ -128,10 +115,7 @@ public class InventoryController : MonoBehaviour
             // 현재 선택된 아이템이 없는데 내가 있는 마우스 포지션에 선택할 수 있는 아이템이 있음 
             if(_itemToHighlight!= null) 
             {
-                _inventoryHighlight.ShowHighlighter(true);
-                _inventoryHighlight.SetSize(_itemToHighlight);
-                _inventoryHighlight.SetPosition(_selectedItemGrid, _itemToHighlight);
-                _inventoryHighlight.SetSelectorParent(_selectedItemGrid);
+                _inventoryHighlight.HighlightToSelect(_itemToHighlight, _selectedItemGrid, true);
                 
                 GUIController.Instance.inventoryGUIManager.SetItemToolTip(_itemToHighlight.itemInfoData);
             }
@@ -146,29 +130,8 @@ public class InventoryController : MonoBehaviour
         else
         { 
             GUIController.Instance.inventoryGUIManager.CloseItemToolTip();
-            //물건을 잡았을 때 이벤토리에 넣을 수 없으면 highlighter을 숨긴다.
-            _inventoryHighlight.ShowHighlighter(_selectedItemGrid.BoundaryCheck(
-                positionOnGrid.x,
-                positionOnGrid.y,
-                SelectedItem.Width,
-                SelectedItem.Height
-            ));
-            // 물체가 회전한경우 아아템의 도착지점의 하이라이트도 회전해야함 -> 실제 회전이 아니라 width, high 값 변경
-            _inventoryHighlight.SetSize(SelectedItem, false);
-            _inventoryHighlight.SetPosition(_selectedItemGrid, SelectedItem,positionOnGrid.x,positionOnGrid.y);
-        }
-    }
-
-    private void SelectItemOnMousePos()
-    {
-        if (SelectedItemGrid)
-        {
-            var tileGridPosition = GetTileGridPosition();
-            InventoryItem selectedItem = _selectedItemGrid.SelectItemOnGridPos(tileGridPosition.x, tileGridPosition.y);
-            if(selectedItem)
-            {
-                OnSelectedItemChanged?.Invoke(selectedItem);
-            }
+            
+            _inventoryHighlight.UpdateHighlight(SelectedItem, _selectedItemGrid, positionOnGrid.x,positionOnGrid.y);
         }
     }
 

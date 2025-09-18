@@ -8,10 +8,20 @@ public class ItemGrid_Equipment : ItemGrid
     
     [SerializeField] private ItemType itemType;
     private List<InventoryItem> _curEquipItem = new List<InventoryItem>();
-    
+
+    public override bool CheckPlaceItem(InventoryItem inventoryItem, int posX, int posY)
+    {
+        if (base.CheckPlaceItem(inventoryItem, posX, posY))
+        {
+            if (itemType != inventoryItem.itemInfoData.itemType) return false;
+            return true;
+        }
+
+        return false;
+    }
+
     public override bool PlaceItem(InventoryItem inventoryItem, int posX, int posY, bool isLoad = false)
     {
-        if (itemType != inventoryItem.itemInfoData.itemType) return false;
         if (itemType != ItemType.Consumables && _curEquipItem.Count > 0) return false;
         
         if (base.PlaceItem(inventoryItem, posX, posY, isLoad))

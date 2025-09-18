@@ -46,14 +46,11 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     {
         if(!hideOption) return;
 
-        // Restore materials of objects that are no longer occluded
         var renderersToRestore = new List<Renderer>(_originalMaterials.Keys);
 
-        // Perform a raycast from the camera to the player
         Vector3 direction = (_playerTarget.position - mainCamera.transform.position).normalized;
         float distance = Vector3.Distance(mainCamera.transform.position, _playerTarget.position) - raycastDistanceOffset;
         
-        // 최적화: RaycastNonAlloc() 사용 및 occlusionLayer 적용
         int hitCount = Physics.RaycastNonAlloc(mainCamera.transform.position, direction, _raycastHits, distance, occlusionLayer);
 
         for (int i = 0; i < hitCount; i++)

@@ -274,7 +274,7 @@ public class ItemGrid : MonoBehaviour
         return _tileGridPosition;
     }
 
-    private bool CheckPlaceItem(InventoryItem inventoryItem,int posX,int posY)
+    public virtual bool CheckPlaceItem(InventoryItem inventoryItem,int posX,int posY)
     {
         // 인벤의 크기 외부에 있으면 위치 불가 
         if (BoundaryCheck(posX, posY, inventoryItem.Width, inventoryItem.Height) == false)
@@ -406,17 +406,6 @@ public class ItemGrid : MonoBehaviour
 
         SubtractValue(item.itemInfoData.itemCode);
     }
-
-    private bool PositionCheck(int posX,int posY){
-        if(posX < 0 || posY < 0)
-            return false;
-
-        if(posX >= gridSize.x || posY >= gridSize.y)
-            return false;
-        
-        return true;
-    }
-
     public bool BoundaryCheck(int posX, int posY, int width,int height)
     {
         if(!PositionCheck(posX,posY))
@@ -430,7 +419,17 @@ public class ItemGrid : MonoBehaviour
         
         return true;
     }
+    
+    private bool PositionCheck(int posX,int posY){
+        if(posX < 0 || posY < 0)
+            return false;
 
+        if(posX >= gridSize.x || posY >= gridSize.y)
+            return false;
+        
+        return true;
+    }
+    
     [CanBeNull]
     public InventoryItem GetItem(int x, int y)
     {
