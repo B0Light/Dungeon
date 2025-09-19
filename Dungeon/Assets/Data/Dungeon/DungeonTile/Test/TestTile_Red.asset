@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 104abc759d417fb488533d6b2f4b0307, type: 3}
-  m_Name: TestPath_Red
+  m_Name: TestTile_Red
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 1691581078342472967, guid: 8548ccd504dfb8442b65bcce7c9202fe, type: 3}
   objectPercent: 0

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 104abc759d417fb488533d6b2f4b0307, type: 3}
-  m_Name: TestFloorCenter_Browm
+  m_Name: TestTile_Gray
   m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 1691581078342472967, guid: 2b0d2782ad18295428ff7cfeff5e7654, type: 3}
+  tilePrefab: {fileID: 1691581078342472967, guid: f0330ddaa4dbdcf428e12fbfa0a69b26, type: 3}
   objectPercent: 0
   treePercent: 0
   grassPercent: 0

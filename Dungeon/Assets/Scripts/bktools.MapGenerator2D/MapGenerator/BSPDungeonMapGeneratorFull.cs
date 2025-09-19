@@ -1,10 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// BSP(Binary Space Partitioning) Full 알고리즘을 사용한 던전 맵 생성기
-/// 분할된 영역 전체를 방으로 사용합니다.
-/// </summary>
 public class BSPDungeonMapGeneratorFull : BaseMapGenerator
 {
     [Header("BSP Full 설정")]
@@ -13,16 +9,6 @@ public class BSPDungeonMapGeneratorFull : BaseMapGenerator
     
     private List<RoomNode> _leafNodes;
     
-    /// <summary>
-    /// 모든 매개변수를 지정하는 생성자
-    /// </summary>
-    /// <param name="slot">타일을 생성할 부모 Transform</param>
-    /// <param name="tileMappingData">타일 매핑 데이터</param>
-    /// <param name="gridSize">그리드 크기</param>
-    /// <param name="cubeSize">큐브 크기</param>
-    /// <param name="seed">시드 값</param>
-    /// <param name="minSplitSize">최소 분할 크기</param>
-    /// <param name="maxDepth">최대 분할 깊이</param>
     public BSPDungeonMapGeneratorFull(Transform slot, TileMappingDataSO tileMappingData,
         Vector2Int gridSize, Vector3 cubeSize, int minSplitSize, int maxDepth) : base(slot, tileMappingData, gridSize, cubeSize)
     {
@@ -37,7 +23,6 @@ public class BSPDungeonMapGeneratorFull : BaseMapGenerator
         pathType = PathType.Straight;
     }
     
-    [ContextMenu("Create Map")]
     public override void GenerateMap()
     {
         InitializeGrid();
@@ -51,11 +36,12 @@ public class BSPDungeonMapGeneratorFull : BaseMapGenerator
         RoomNode rootNode = new RoomNode(new RectInt(0, 0, gridSize.x, gridSize.y));
         SplitNode(rootNode, 0);
         PlaceRooms(rootNode);
-        CreatePathByTriangulate();
+        ConnectRooms(rootNode);
         
         foreach (var node in _leafNodes)
             PlaceRoomOnGrid(node.RoomRect.position, node.RoomRect.size);
         
+        ExpandPath();
         BuildWalls();
         RenderGrid();
         
@@ -118,10 +104,24 @@ public class BSPDungeonMapGeneratorFull : BaseMapGenerator
         }
         else
         {
-            // 분할된 영역 전체를 방으로 사용
-            node.RoomRect = node.NodeRect;
+            // 분할된 영역 전체를 방으로 사용 + 마진 적용 
+            node.RoomRect = new RectInt(node.NodeRect.xMin, node.NodeRect.yMin, node.NodeRect.width -3, node.NodeRect.height -3);
             _leafNodes.Add(node);
-            _floorList.Add(node.RoomRect); // BaseMapGenerator의 _floorList에 방 추가
+            _floorList.Add(node.RoomRect);
+        }
+    }
+    
+    private void ConnectRooms(RoomNode node)
+    {
+        if (node.Left != null && node.Right != null)
+        {
+            ConnectRooms(node.Left);
+            ConnectRooms(node.Right);
+            Vector2Int pointA = node.Left.GetRoomCenter();
+            Vector2Int pointB = node.Right.GetRoomCenter();
+                
+            // BaseMapGenerator의 경로 생성 메서드 사용
+            CreatePathBetweenPoints(pointA, pointB);
         }
     }
 
@@ -144,15 +144,12 @@ public class BSPDungeonMapGeneratorFull : BaseMapGenerator
             {
                 if (x >= margin && x < gridSize.x - margin && y >= margin && y < gridSize.y - margin)
                 {
-                    bool isBorder = (x == xMin || x == xMax - 1 || y == yMin || y == yMax - 1);
                     Vector2Int pos = new Vector2Int(x, y);
                     
                     if (pos == center)
                         _grid[x, y] = CellType.FloorCenter;
                     else
-                        _grid[x, y] = isBorder ? 
-                            (_grid[x, y] == CellType.Path ? CellType.Path : CellType.Wall) : 
-                            CellType.Floor;
+                        _grid[x, y] = CellType.Floor;
                 }
             }
         }

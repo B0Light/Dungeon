@@ -92,14 +92,12 @@ public abstract class BaseMapGenerator : IMapGenerator
     
     protected void ExpandPath()
     {
-        // 벽 배치: 바닥 셀 주변이 빈 셀이라면 그곳에 벽을 배치
         for (var x = 1; x < gridSize.x - 1; x++)
         {
             for (var y = 1; y < gridSize.y - 1; y++)
             {
                 if (_grid[x, y] == CellType.Path)
                 {
-                    // 상하좌우 체크
                     if (_grid[x - 1, y] == CellType.Empty) _grid[x - 1, y] = CellType.ExpandedPath;
                     if (_grid[x + 1, y] == CellType.Empty) _grid[x + 1, y] = CellType.ExpandedPath;
                     if (_grid[x, y - 1] == CellType.Empty) _grid[x, y - 1] = CellType.ExpandedPath;
@@ -115,7 +113,7 @@ public abstract class BaseMapGenerator : IMapGenerator
         {
             for (int y = 1; y < gridSize.y - 1; y++)
             {
-                if (_grid[x, y] == CellType.Floor || _grid[x, y] == CellType.Path || _grid[x, y] == CellType.ExpandedPath)
+                if (_grid[x, y] == CellType.FloorCenter || _grid[x, y] == CellType.Floor || _grid[x, y] == CellType.Path || _grid[x, y] == CellType.ExpandedPath)
                 {
                     if (_grid[x - 1, y] == CellType.Empty) _grid[x - 1, y] = CellType.Wall;
                     if (_grid[x + 1, y] == CellType.Empty) _grid[x + 1, y] = CellType.Wall;
@@ -195,12 +193,12 @@ public abstract class BaseMapGenerator : IMapGenerator
             
             if (center.x == x && center.y == y)
             {
-                Debug.Log($"FIND ROOM! Position: ({x}, {y}), Room: {room}");
+                //Debug.Log($"FIND ROOM! Position: ({x}, {y}), Room: {room}");
                 return room;
             }
         }
 
-        Debug.LogWarning($"Room not found at position ({x}, {y}). Available rooms:");
+        //Debug.LogWarning($"Room not found at position ({x}, {y}). Available rooms:");
         for (int i = 0; i < _floorList.Count; i++)
         {
             var room = _floorList[i];
@@ -208,7 +206,7 @@ public abstract class BaseMapGenerator : IMapGenerator
                 room.x + (room.width - 1) / 2,
                 room.y + (room.height - 1) / 2
             );
-            Debug.LogWarning($"  Room {i}: {room}, Center: ({center.x}, {center.y})");
+            //Debug.LogWarning($"  Room {i}: {room}, Center: ({center.x}, {center.y})");
         }
         return null;
     }

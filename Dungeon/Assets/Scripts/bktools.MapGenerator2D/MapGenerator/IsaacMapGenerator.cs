@@ -17,18 +17,7 @@ public class IsaacMapGenerator : BaseMapGenerator
 
     private Dictionary<Vector2Int, Room> rooms = new Dictionary<Vector2Int, Room>();
     
-    /// <summary>
-    /// 모든 매개변수를 지정하는 생성자
-    /// </summary>
-    /// <param name="slot">타일을 생성할 부모 Transform</param>
-    /// <param name="tileMappingData">타일 매핑 데이터</param>
-    /// <param name="gridSize">그리드 크기</param>
-    /// <param name="cubeSize">큐브 크기</param>
-    /// <param name="seed">시드 값</param>
-    /// <param name="maxRooms">최대 방 개수</param>
-    /// <param name="specialRoomCount">특수 방 개수</param>
-    /// <param name="horizontalSize">방 가로 크기</param>
-    /// <param name="verticalSize">방 세로 크기</param>
+    
     public IsaacMapGenerator(Transform slot, TileMappingDataSO tileMappingData,
         Vector2Int gridSize, Vector3 cubeSize, int maxRooms, int specialRoomCount, int horizontalSize, int verticalSize) : base(slot, tileMappingData, gridSize, cubeSize)
     {
@@ -121,14 +110,6 @@ public class IsaacMapGenerator : BaseMapGenerator
         }
     }
     
-    /// <summary>
-    /// 방이 주어진 위치에서 그리드 범위를 벗어나는지 검사합니다.
-    /// </summary>
-    /// <param name="roomGridPos">방의 좌표 (Room 기준)</param>
-    /// <param name="width">방의 가로 크기</param>
-    /// <param name="height">방의 세로 크기</param>
-    /// <param name="spacing">방 간의 간격</param>
-    /// <returns>그리드를 벗어나면 true, 아니면 false</returns>
     private bool IsOutOfGrid(Vector2Int roomGridPos, int width, int height, int spacing)
     {
         int gridX = (gridSize.x / 2) + (roomGridPos.x * (width + spacing));
@@ -137,9 +118,7 @@ public class IsaacMapGenerator : BaseMapGenerator
         return gridX < 1 || gridX + width >= gridSize.x - 1 ||
                gridY < 1 || gridY + height >= gridSize.y - 1;
     }
-
-
-
+    
     private void PlaceRoomOnGrid(Vector2Int roomPos, int width, int height, bool isStartRoom)
     {
         // 방들 사이에 간격을 두기 위해 spacing 추가

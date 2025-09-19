@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileMappings:
   - cellType: 0
-    tileData: {fileID: 11400000, guid: 244c99d7e467bc447b1fc326b5eaa687, type: 2}
+    tileData: {fileID: 11400000, guid: 20bc63b50ac89cf40a779ef80acbe3bd, type: 2}
   - cellType: 1
-    tileData: {fileID: 11400000, guid: c241b59ab56d560428c0d1ad77fc343b, type: 2}
+    tileData: {fileID: 11400000, guid: 7f31dd68417e63548b9a7d3e8c8e6798, type: 2}
   - cellType: 2
-    tileData: {fileID: 11400000, guid: f5204939765025348bce9c1fc1b77f20, type: 2}
+    tileData: {fileID: 11400000, guid: aed668f27b5726743852ed3e101e3e6f, type: 2}
   - cellType: 3
-    tileData: {fileID: 11400000, guid: ad39a1cb2cde83a4180062076904b7da, type: 2}
+    tileData: {fileID: 11400000, guid: ccfba24e218fa0348bc4d4c16897f58b, type: 2}
   - cellType: 4
-    tileData: {fileID: 11400000, guid: aed668f27b5726743852ed3e101e3e6f, type: 2}
+    tileData: {fileID: 11400000, guid: 244c99d7e467bc447b1fc326b5eaa687, type: 2}
   - cellType: 5
-    tileData: {fileID: 11400000, guid: aed668f27b5726743852ed3e101e3e6f, type: 2}
+    tileData: {fileID: 11400000, guid: 244c99d7e467bc447b1fc326b5eaa687, type: 2}

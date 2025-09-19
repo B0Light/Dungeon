@@ -19,7 +19,7 @@ public class MapGeneratorFactory : MonoBehaviour
     [SerializeField] private Vector2Int gridSize = new Vector2Int(64, 64);
     [SerializeField] private Vector3 cubeSize = new Vector3(2, 2, 2);
     [SerializeField] private int roomCount = 5;
-    [SerializeField, Range(5,15)] private int standardRoomSize = 10;
+    [SerializeField, Range(10,20)] private int standardRoomSize = 15;
     [SerializeField] private PathType pathType = PathType.Straight;
     [SerializeField] private Transform slot; // 타일을 생성할 부모 Transform
     
@@ -101,8 +101,8 @@ public class MapGeneratorFactory : MonoBehaviour
             tileMappingDataSO, 
             gridSize, 
             cubeSize, 
-            standardRoomSize-5, 
-            standardRoomSize+5
+            standardRoomSize, 
+            roomCount
         );
         
         generator.pathType = pathType;
