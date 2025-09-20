@@ -119,12 +119,20 @@ public abstract class BaseMapGenerator : IMapGenerator
         {
             for (int y = 1; y < gridSize.y - 1; y++)
             {
-                if (_grid[x, y] == CellType.FloorCenter || _grid[x, y] == CellType.Floor || _grid[x, y] == CellType.Path || _grid[x, y] == CellType.ExpandedPath)
+                if (_grid[x, y] != CellType.FloorCenter && _grid[x, y] != CellType.Floor && _grid[x, y] != CellType.Wall)
                 {
-                    if (_grid[x - 1, y] == CellType.Empty) _grid[x - 1, y] = CellType.Wall;
-                    if (_grid[x + 1, y] == CellType.Empty) _grid[x + 1, y] = CellType.Wall;
-                    if (_grid[x, y - 1] == CellType.Empty) _grid[x, y - 1] = CellType.Wall;
-                    if (_grid[x, y + 1] == CellType.Empty) _grid[x, y + 1] = CellType.Wall;
+                    if (_grid[x - 1, y] == CellType.Floor) _grid[x - 1, y] = CellType.Wall;
+                    if (_grid[x + 1, y] == CellType.Floor) _grid[x + 1, y] = CellType.Wall;
+                    if (_grid[x, y - 1] == CellType.Floor) _grid[x, y - 1] = CellType.Wall;
+                    if (_grid[x, y + 1] == CellType.Floor) _grid[x, y + 1] = CellType.Wall;
+                }
+
+                if (_grid[x, y] == CellType.Path || _grid[x, y] == CellType.ExpandedPath)
+                {
+                    if (_grid[x - 1, y] == CellType.Empty) _grid[x - 1, y] = CellType.PathWall;
+                    if (_grid[x + 1, y] == CellType.Empty) _grid[x + 1, y] = CellType.PathWall;
+                    if (_grid[x, y - 1] == CellType.Empty) _grid[x, y - 1] = CellType.PathWall;
+                    if (_grid[x, y + 1] == CellType.Empty) _grid[x, y + 1] = CellType.PathWall;
                 }
             }
         }
@@ -134,50 +142,71 @@ public abstract class BaseMapGenerator : IMapGenerator
     
     private void BuildGate()
     {
-        for (int x = 1; x < gridSize.x - 1; x++)
+        // 기본 Gate 생성
+        ProcessGrid((x, y) => _grid[x, y] == CellType.Wall && HasNeighbors(x, y, 
+            new[] { CellType.Floor, CellType.FloorCenter }, 
+            new[] { CellType.Path }),
+            CellType.Gate);
+        
+        // Gate 주변 확장
+        var existingGates = FindCells(CellType.Gate);
+        foreach (var gate in existingGates)
         {
-            for (int y = 1; y < gridSize.y - 1; y++)
+            foreach (var neighbor in GetNeighbors(gate))
             {
-                // 현재 셀이 통로이거나 확장된 통로일 때만 검사
-                if (_grid[x, y] == CellType.Path || _grid[x, y] == CellType.ExpandedPath)
+                if (IsValid(neighbor) && _grid[neighbor.x, neighbor.y] == CellType.Wall && 
+                    HasNeighbors(neighbor.x, neighbor.y, 
+                        new[] { CellType.Floor, CellType.FloorCenter }, 
+                        new[] { CellType.ExpandedPath }))
                 {
-                    bool hasFloorNeighbor = false;
-                    bool hasPathNeighbor = false;
-
-                    // 4방향 이웃 탐색
-                    int[] dx = { -1, 1, 0, 0 };
-                    int[] dy = { 0, 0, -1, 1 };
-
-                    for (int i = 0; i < 4; i++)
-                    {
-                        int nx = x + dx[i];
-                        int ny = y + dy[i];
-
-                        // 그리드 범위 체크
-                        if (nx < 0 || nx >= gridSize.x || ny < 0 || ny >= gridSize.y)
-                        {
-                            continue;
-                        }
-
-                        // 이웃 셀 타입 확인
-                        if (_grid[nx, ny] == CellType.Floor || _grid[nx, ny] == CellType.FloorCenter)
-                        {
-                            hasFloorNeighbor = true;
-                        }
-                        else if (_grid[nx, ny] == CellType.Path || _grid[nx, ny] == CellType.ExpandedPath)
-                        {
-                            hasPathNeighbor = true;
-                        }
-                    }
-
-                    // 주변에 Floor와 Path가 모두 존재하고, 현재 셀이 Path일 경우 Gate로 변경
-                    if (hasFloorNeighbor && hasPathNeighbor)
-                    {
-                        _grid[x, y] = CellType.Gate;
-                    }
+                    _grid[neighbor.x, neighbor.y] = CellType.Gate;
                 }
             }
         }
+    }
+
+    private void ProcessGrid(Func<int, int, bool> condition, CellType newType)
+    {
+        for (int x = 1; x < gridSize.x - 1; x++)
+            for (int y = 1; y < gridSize.y - 1; y++)
+                if (condition(x, y))
+                    _grid[x, y] = newType;
+    }
+
+    private List<Vector2Int> FindCells(CellType type)
+    {
+        var result = new List<Vector2Int>();
+        for (int x = 0; x < gridSize.x; x++)
+            for (int y = 0; y < gridSize.y; y++)
+                if (_grid[x, y] == type)
+                    result.Add(new Vector2Int(x, y));
+        return result;
+    }
+
+    private Vector2Int[] GetNeighbors(Vector2Int pos) => new[]
+    {
+        pos + Vector2Int.left, pos + Vector2Int.right,
+        pos + Vector2Int.down, pos + Vector2Int.up
+    };
+
+    private bool IsValid(Vector2Int pos) => 
+        pos.x >= 0 && pos.x < gridSize.x && pos.y >= 0 && pos.y < gridSize.y;
+
+    private bool HasNeighbors(int x, int y, CellType[] type1, CellType[] type2)
+    {
+        var set1 = new HashSet<CellType>(type1);
+        var set2 = new HashSet<CellType>(type2);
+        bool has1 = false, has2 = false;
+        
+        foreach (var neighbor in GetNeighbors(new Vector2Int(x, y)))
+        {
+            if (!IsValid(neighbor)) continue;
+            var cell = _grid[neighbor.x, neighbor.y];
+            if (set1.Contains(cell)) has1 = true;
+            if (set2.Contains(cell)) has2 = true;
+            if (has1 && has2) return true;
+        }
+        return false;
     }
     
     protected virtual void RenderGrid()
@@ -362,8 +391,6 @@ public abstract class BaseMapGenerator : IMapGenerator
 
         // 가장 멀리 떨어진 두 방을 찾기
         FindFurthestRooms();
-        
-        Debug.Log($"시작 방 인덱스: {_startRoomIndex}, 출구 방 인덱스: {_exitRoomIndex} (총 {_floorList.Count}개 방)");
     }
     
     protected virtual void FindFurthestRooms()
@@ -620,25 +647,29 @@ public abstract class BaseMapGenerator : IMapGenerator
     private void CreateAStarPath(Vector2Int startPos, Vector2Int endPos)
     {
         DungeonPathfinder2D aStar = new DungeonPathfinder2D(gridSize);
-    
+        
         var path = aStar.FindPath(
             startPos, 
             endPos, 
-            (a, b) => 
+            (pathNode, currentNode) => 
             { 
-                var cost = Vector2Int.Distance(b.Position, endPos);
-                var traversalCost = _grid[b.Position.x, b.Position.y] switch
+                var baseCost = Vector2Int.Distance(currentNode.Position, endPos);
+                var traversalCost = _grid[currentNode.Position.x, currentNode.Position.y] switch
                 {
-                    CellType.Floor => 10f,
+                    CellType.Floor => 50f,
                     CellType.Empty => 5f,
                     CellType.Path => 1f,
-                    _ => 1f
+                    _ => 10f
                 };
+                
+                float floorNeighborPenalty = CalculateFloorNeighborPenalty(currentNode.Position);
+                float directionCost = CalculateDirectionChangeCost(pathNode, currentNode, endPos);
+                
 
                 return new DungeonPathfinder2D.PathCost
                 {
                     traversable = true,
-                    cost = cost + traversalCost
+                    cost = baseCost + traversalCost + directionCost + floorNeighborPenalty
                 };
             });
 
@@ -652,6 +683,69 @@ public abstract class BaseMapGenerator : IMapGenerator
             }
         }
     }
+    
+    private float CalculateFloorNeighborPenalty(Vector2Int position)
+    {
+        float floorPenalty = 20f; // Floor 인접 시 추가 비용
+        float totalPenalty = 0f;
+    
+        // 8방향 주변 노드 체크
+        int[] dx = { -1, -1, -1, 0, 0, 1, 1, 1 };
+        int[] dy = { -1, 0, 1, -1, 1, -1, 0, 1 };
+    
+        for (int i = 0; i < 8; i++)
+        {
+            int nx = position.x + dx[i];
+            int ny = position.y + dy[i];
+        
+            // 그리드 범위 체크
+            if (nx >= 0 && nx < gridSize.x && ny >= 0 && ny < gridSize.y)
+            {
+                if (_grid[nx, ny] == CellType.Floor || _grid[nx, ny] == CellType.FloorCenter)
+                {
+                    // 대각선 방향은 조금 더 적은 페널티 적용
+                    float penalty = (i % 2 == 0) ? floorPenalty * 0.7f : floorPenalty;
+                    totalPenalty += penalty;
+                }
+            }
+        }
+    
+        return totalPenalty;
+    }
+    
+    private float CalculateDirectionChangeCost(DungeonPathfinder2D.Node pathNode, DungeonPathfinder2D.Node currentNode, Vector2Int endPos)
+    {
+        if (pathNode == null) return 0f;
+    
+        // 방향 변경 패널티
+        float directionChangePenalty = 15f;
+    
+        
+        Vector2Int previousDirection = GetDirection(pathNode.Position, currentNode.Position);
+        Vector2Int currentDirection = GetDirection(currentNode.Position, endPos);
+                
+        if (previousDirection != currentDirection)
+        {
+            if (Vector2.Dot(previousDirection, currentDirection) == 0)
+            {
+                return directionChangePenalty;
+            }
+        }
+        
+        return 0f; 
+    }
+
+    // 두 위치 사이의 방향을 계산하는 헬퍼 메서드
+    private Vector2Int GetDirection(Vector2Int from, Vector2Int to)
+    {
+        Vector2Int diff = to - from;
+        
+        // 정규화된 방향 벡터 반환 (8방향)
+        return new Vector2Int(
+            diff.x == 0 ? 0 : (diff.x > 0 ? 1 : -1),
+            diff.y == 0 ? 0 : (diff.y > 0 ? 1 : -1)
+        );
+}
 
     private void CreateStraightPath(Vector2Int startPos, Vector2Int endPos)
     {
@@ -759,7 +853,5 @@ public abstract class BaseMapGenerator : IMapGenerator
         );
 
         CreatePathBetweenPoints(startPos, endPos);
-        
-        Debug.Log($"방 {startRoomIndex} -> {endRoomIndex} 연결 생성");
     }
 }
