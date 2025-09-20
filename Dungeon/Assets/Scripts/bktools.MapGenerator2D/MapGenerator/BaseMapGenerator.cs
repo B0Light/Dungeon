@@ -21,6 +21,9 @@ public abstract class BaseMapGenerator : IMapGenerator
     private TileMappingDataSO _tileMappingDataSO;
     private Dictionary<CellType, TileDataSO> _tileDataDict;
     
+    private HashSet<(int, int)> _connectedRoomPairs = new HashSet<(int, int)>();
+    private Dictionary<int, HashSet<int>> _roomConnections = new Dictionary<int, HashSet<int>>();
+    
     [Header("상태")]
     private bool _isMapGenerated = false;
     
@@ -31,6 +34,7 @@ public abstract class BaseMapGenerator : IMapGenerator
     private int _exitRoomIndex;
 
     private readonly Transform _slot;
+    
     
     // 웨이포인트 시스템
     private WaypointSystemData _waypointSystem;
@@ -80,7 +84,9 @@ public abstract class BaseMapGenerator : IMapGenerator
     {
         _grid = new CellType[gridSize.x, gridSize.y];
         _floorList = new List<RectInt>();
-        
+        _connectedRoomPairs = new HashSet<(int, int)>();
+        _roomConnections = new Dictionary<int, HashSet<int>>(); 
+    
         for (int x = 0; x < gridSize.x; x++)
         {
             for (int y = 0; y < gridSize.y; y++)
@@ -408,11 +414,9 @@ public abstract class BaseMapGenerator : IMapGenerator
     {
         if (_slot != null)
         {
-            // slot 하위의 모든 자식 오브젝트 제거
             ClearChildrenRecursively(_slot);
         }
-        
-        // 그리드 초기화
+    
         if (_grid != null)
         {
             for (int x = 0; x < gridSize.x; x++)
@@ -423,13 +427,15 @@ public abstract class BaseMapGenerator : IMapGenerator
                 }
             }
         }
-        
-        // 바닥 리스트 초기화
+    
         if (_floorList != null)
         {
             _floorList.Clear();
         }
-        
+    
+        _connectedRoomPairs?.Clear();
+        _roomConnections?.Clear();
+    
         _isMapGenerated = false;
         Debug.Log($"{GetType().Name}: 맵 제거 완료");
     }
@@ -534,7 +540,6 @@ public abstract class BaseMapGenerator : IMapGenerator
         CreateDelaunayPaths(Delaunay2D.Triangulate(vertices));
     }
     
-    /// Delaunay 삼각분할과 Kruskal MST를 사용한 경로 생성
     private void CreateDelaunayPaths(Delaunay2D delaunay)
     {
         var edges = delaunay.Edges.Select(edge => new Kruskal.Edge(edge.U, edge.V)).ToList();
@@ -544,13 +549,23 @@ public abstract class BaseMapGenerator : IMapGenerator
         // 일부 랜덤한 엣지를 추가하여 더 많은 복도 생성
         foreach (var edge in edges.Where(e => !selectedEdges.Contains(e))) 
         {
-            if (Random.value < 0.6) 
+            if (Random.value < 0.3) // 확률을 낮춰서 과도한 연결 방지
             {
                 selectedEdges.Add(edge);
             }
         }
-        
-        // 선택된 엣지들로 경로 생성
+    
+        // 연결 관계 초기화
+        _connectedRoomPairs.Clear();
+        _roomConnections.Clear();
+    
+        // 방 인덱스 초기화
+        for (int i = 0; i < _floorList.Count; i++)
+        {
+            _roomConnections[i] = new HashSet<int>();
+        }
+    
+        // 선택된 엣지들로 경로 생성 (중복 및 불필요한 연결 제거)
         foreach (var edge in selectedEdges) 
         {
             var startRoom = (edge.U as Vertex<RectInt>)?.Item;
@@ -558,17 +573,31 @@ public abstract class BaseMapGenerator : IMapGenerator
 
             if (startRoom == null || endRoom == null) continue;
 
-            var startPos = new Vector2Int(
-                (int)startRoom?.center.x, 
-                (int)startRoom?.center.y
-            );
-            var endPos = new Vector2Int(
-                (int)endRoom?.center.x, 
-                (int)endRoom?.center.y
-            );
+            // 두 방의 인덱스를 찾기
+            int startRoomIndex = FindRoomIndex(startRoom.Value);
+            int endRoomIndex = FindRoomIndex(endRoom.Value);
+        
+            if (startRoomIndex == -1 || endRoomIndex == -1) continue;
+        
+            // 이미 직접 연결된 방들인지 체크
+            if (IsDirectlyConnected(startRoomIndex, endRoomIndex))
+            {
+                Debug.Log($"방 {startRoomIndex}과 {endRoomIndex}는 이미 직접 연결됨 - 스킵");
+                continue;
+            }
+        
+            // 간접 연결 가능한지 체크 (경로가 2개 이하인 경우만)
+            if (CanReachIndirectly(startRoomIndex, endRoomIndex, 2))
+            {
+                Debug.Log($"방 {startRoomIndex}과 {endRoomIndex}는 간접적으로 연결 가능 - 스킵");
+                continue;
+            }
 
-            CreatePathBetweenPoints(startPos, endPos);
+            // 연결 생성
+            CreateConnectionBetweenRooms(startRoomIndex, endRoomIndex, startRoom.Value, endRoom.Value);
         }
+    
+        Debug.Log($"총 {_connectedRoomPairs.Count}개의 방 연결이 생성됨");
     }
 
     #endregion
@@ -591,16 +620,13 @@ public abstract class BaseMapGenerator : IMapGenerator
     private void CreateAStarPath(Vector2Int startPos, Vector2Int endPos)
     {
         DungeonPathfinder2D aStar = new DungeonPathfinder2D(gridSize);
-        
+    
         var path = aStar.FindPath(
             startPos, 
             endPos, 
             (a, b) => 
             { 
-                // 휴리스틱 비용 계산
                 var cost = Vector2Int.Distance(b.Position, endPos);
-
-                // 셀 타입에 따른 이동 비용 결정
                 var traversalCost = _grid[b.Position.x, b.Position.y] switch
                 {
                     CellType.Floor => 10f,
@@ -618,7 +644,6 @@ public abstract class BaseMapGenerator : IMapGenerator
 
         if (path == null) return;
 
-        // 경로에 복도 배치
         foreach (var pos in path) 
         {
             if (_grid[pos.x, pos.y] == CellType.Empty) 
@@ -627,16 +652,16 @@ public abstract class BaseMapGenerator : IMapGenerator
             }
         }
     }
-    
+
     private void CreateStraightPath(Vector2Int startPos, Vector2Int endPos)
     {
         Vector2Int direction = new Vector2Int(
             endPos.x > startPos.x ? 1 : endPos.x < startPos.x ? -1 : 0,
             endPos.y > startPos.y ? 1 : endPos.y < startPos.y ? -1 : 0
         );
-        
+    
         Vector2Int current = startPos;
-        
+    
         while (current != endPos)
         {
             if (current.x >= 0 && current.x < gridSize.x && 
@@ -647,13 +672,11 @@ public abstract class BaseMapGenerator : IMapGenerator
                     _grid[current.x, current.y] = CellType.Path;
                 }
             }
-            
-            // X축 먼저 이동
+        
             if (current.x != endPos.x)
             {
                 current.x += direction.x;
             }
-            // Y축 이동
             else if (current.y != endPos.y)
             {
                 current.y += direction.y;
@@ -662,4 +685,81 @@ public abstract class BaseMapGenerator : IMapGenerator
     }
     
     #endregion
+    
+    private int FindRoomIndex(RectInt room)
+    {
+        for (int i = 0; i < _floorList.Count; i++)
+        {
+            if (_floorList[i].Equals(room))
+                return i;
+        }
+        return -1;
+    }
+
+    private bool IsDirectlyConnected(int roomA, int roomB)
+    {
+        var roomPair = roomA < roomB ? (roomA, roomB) : (roomB, roomA);
+        return _connectedRoomPairs.Contains(roomPair);
+    }
+
+    private bool CanReachIndirectly(int startRoom, int endRoom, int maxDepth)
+    {
+        if (maxDepth <= 0) return false;
+        
+        HashSet<int> visited = new HashSet<int>();
+        Queue<(int room, int depth)> queue = new Queue<(int, int)>();
+        
+        queue.Enqueue((startRoom, 0));
+        visited.Add(startRoom);
+        
+        while (queue.Count > 0)
+        {
+            var (currentRoom, depth) = queue.Dequeue();
+            
+            if (currentRoom == endRoom && depth > 0)
+                return true;
+                
+            if (depth >= maxDepth) continue;
+            
+            if (_roomConnections.ContainsKey(currentRoom))
+            {
+                foreach (int connectedRoom in _roomConnections[currentRoom])
+                {
+                    if (!visited.Contains(connectedRoom))
+                    {
+                        visited.Add(connectedRoom);
+                        queue.Enqueue((connectedRoom, depth + 1));
+                    }
+                }
+            }
+        }
+        
+        return false;
+    }
+
+    private void CreateConnectionBetweenRooms(int startRoomIndex, int endRoomIndex, RectInt startRoom, RectInt endRoom)
+    {
+        // 연결 정보 저장
+        var roomPair = startRoomIndex < endRoomIndex ? 
+            (startRoomIndex, endRoomIndex) : (endRoomIndex, startRoomIndex);
+        _connectedRoomPairs.Add(roomPair);
+        
+        // 양방향 연결 정보 업데이트
+        _roomConnections[startRoomIndex].Add(endRoomIndex);
+        _roomConnections[endRoomIndex].Add(startRoomIndex);
+
+        // 실제 경로 생성
+        var startPos = new Vector2Int(
+            startRoom.x + (startRoom.width - 1) / 2,
+            startRoom.y + (startRoom.height - 1) / 2
+        );
+        var endPos = new Vector2Int(
+            endRoom.x + (endRoom.width - 1) / 2,
+            endRoom.y + (endRoom.height - 1) / 2
+        );
+
+        CreatePathBetweenPoints(startPos, endPos);
+        
+        Debug.Log($"방 {startRoomIndex} -> {endRoomIndex} 연결 생성");
+    }
 }
