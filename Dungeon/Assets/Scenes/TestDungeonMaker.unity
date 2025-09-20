@@ -196,12 +196,28 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5938771594113182416, guid: 010e2315959bdd44da321c5c0d094d72, type: 3}
+      propertyPath: _seed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938771594113182416, guid: 010e2315959bdd44da321c5c0d094d72, type: 3}
       propertyPath: pathType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5938771594113182416, guid: 010e2315959bdd44da321c5c0d094d72, type: 3}
       propertyPath: roomCount
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938771594113182416, guid: 010e2315959bdd44da321c5c0d094d72, type: 3}
+      propertyPath: cubeSize.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938771594113182416, guid: 010e2315959bdd44da321c5c0d094d72, type: 3}
+      propertyPath: cubeSize.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938771594113182416, guid: 010e2315959bdd44da321c5c0d094d72, type: 3}
+      propertyPath: cubeSize.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5938771594113182416, guid: 010e2315959bdd44da321c5c0d094d72, type: 3}
       propertyPath: gridSize.x
@@ -213,15 +229,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5938771594113182416, guid: 010e2315959bdd44da321c5c0d094d72, type: 3}
       propertyPath: standardRoomSize
-      value: 15
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5938771594113182416, guid: 010e2315959bdd44da321c5c0d094d72, type: 3}
       propertyPath: tileMappingDataSO
       value: 
-      objectReference: {fileID: 11400000, guid: 0db42af299f35ba48b0df94c4d205c17, type: 2}
+      objectReference: {fileID: 11400000, guid: d8082120cc75f914995df8535cf3af4a, type: 2}
     - target: {fileID: 5938771594113182416, guid: 010e2315959bdd44da321c5c0d094d72, type: 3}
       propertyPath: currentGeneratorType
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5938771594113182416, guid: 010e2315959bdd44da321c5c0d094d72, type: 3}
       propertyPath: autoMapGenerationMode

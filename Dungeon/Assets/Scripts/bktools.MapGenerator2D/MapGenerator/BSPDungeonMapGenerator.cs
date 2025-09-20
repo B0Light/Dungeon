@@ -13,24 +13,12 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
     
     private List<RoomNode> _leafNodes;
     
-    /// <summary>
-    /// 모든 매개변수를 지정하는 생성자
-    /// </summary>
-    /// <param name="slot">타일을 생성할 부모 Transform</param>
-    /// <param name="tileMappingData">타일 매핑 데이터</param>
-    /// <param name="gridSize">그리드 크기</param>
-    /// <param name="cubeSize">큐브 크기</param>
-    /// <param name="seed">시드 값</param>
-    /// <param name="minRoomSize">최소 방 크기</param>
-    /// <param name="maxRoomSize">최대 방 크기</param>
-    /// <param name="maxDepth">최대 분할 깊이</param>
     public BSPDungeonMapGenerator(Transform slot, TileMappingDataSO tileMappingData,
-        Vector2Int gridSize, Vector3 cubeSize, int minRoomSize, int maxRoomSize, int maxDepth
+        Vector2Int gridSize, Vector3 cubeSize, int minRoomSize, int maxRoomSize
         ) : base(slot, tileMappingData, gridSize, cubeSize)
     {
         this._minRoomSize = minRoomSize;
         this._maxRoomSize = maxRoomSize;
-        this._maxDepth = maxDepth;
     }
     
     protected override void InitializeGenerator()
@@ -42,8 +30,9 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
     }
     
     [ContextMenu("Create Map")]
-    public override void GenerateMap()
+    public override void GenerateMap(int seed)
     {
+        Random.InitState(seed);
         InitializeGrid();
         
         if (_leafNodes == null)

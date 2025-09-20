@@ -74,7 +74,7 @@ public abstract class BaseMapGenerator : IMapGenerator
         }
     }
     
-    public abstract void GenerateMap();
+    public abstract void GenerateMap(int seed);
     
     protected virtual void InitializeGrid()
     {
@@ -119,6 +119,56 @@ public abstract class BaseMapGenerator : IMapGenerator
                     if (_grid[x + 1, y] == CellType.Empty) _grid[x + 1, y] = CellType.Wall;
                     if (_grid[x, y - 1] == CellType.Empty) _grid[x, y - 1] = CellType.Wall;
                     if (_grid[x, y + 1] == CellType.Empty) _grid[x, y + 1] = CellType.Wall;
+                }
+            }
+        }
+        
+        BuildGate();
+    }
+    
+    private void BuildGate()
+    {
+        for (int x = 1; x < gridSize.x - 1; x++)
+        {
+            for (int y = 1; y < gridSize.y - 1; y++)
+            {
+                // 현재 셀이 통로이거나 확장된 통로일 때만 검사
+                if (_grid[x, y] == CellType.Path || _grid[x, y] == CellType.ExpandedPath)
+                {
+                    bool hasFloorNeighbor = false;
+                    bool hasPathNeighbor = false;
+
+                    // 4방향 이웃 탐색
+                    int[] dx = { -1, 1, 0, 0 };
+                    int[] dy = { 0, 0, -1, 1 };
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        int nx = x + dx[i];
+                        int ny = y + dy[i];
+
+                        // 그리드 범위 체크
+                        if (nx < 0 || nx >= gridSize.x || ny < 0 || ny >= gridSize.y)
+                        {
+                            continue;
+                        }
+
+                        // 이웃 셀 타입 확인
+                        if (_grid[nx, ny] == CellType.Floor || _grid[nx, ny] == CellType.FloorCenter)
+                        {
+                            hasFloorNeighbor = true;
+                        }
+                        else if (_grid[nx, ny] == CellType.Path || _grid[nx, ny] == CellType.ExpandedPath)
+                        {
+                            hasPathNeighbor = true;
+                        }
+                    }
+
+                    // 주변에 Floor와 Path가 모두 존재하고, 현재 셀이 Path일 경우 Gate로 변경
+                    if (hasFloorNeighbor && hasPathNeighbor)
+                    {
+                        _grid[x, y] = CellType.Gate;
+                    }
                 }
             }
         }
@@ -185,7 +235,6 @@ public abstract class BaseMapGenerator : IMapGenerator
 
         foreach (var room in _floorList)
         {
-            // 정확한 중심 위치 계산 (각 맵 생성기에서 사용하는 방식과 동일)
             Vector2Int center = new Vector2Int(
                 room.x + (room.width - 1) / 2,
                 room.y + (room.height - 1) / 2
@@ -193,12 +242,10 @@ public abstract class BaseMapGenerator : IMapGenerator
             
             if (center.x == x && center.y == y)
             {
-                //Debug.Log($"FIND ROOM! Position: ({x}, {y}), Room: {room}");
                 return room;
             }
         }
 
-        //Debug.LogWarning($"Room not found at position ({x}, {y}). Available rooms:");
         for (int i = 0; i < _floorList.Count; i++)
         {
             var room = _floorList[i];
@@ -206,7 +253,6 @@ public abstract class BaseMapGenerator : IMapGenerator
                 room.x + (room.width - 1) / 2,
                 room.y + (room.height - 1) / 2
             );
-            //Debug.LogWarning($"  Room {i}: {room}, Center: ({center.x}, {center.y})");
         }
         return null;
     }

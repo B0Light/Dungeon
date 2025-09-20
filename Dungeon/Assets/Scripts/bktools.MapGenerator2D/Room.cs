@@ -70,8 +70,10 @@ public enum CellType
     Floor,
     FloorCenter,
     Wall,
+    PathWall,
     Path,
     ExpandedPath,
+    Gate,
 }
 
 

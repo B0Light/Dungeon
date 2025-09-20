@@ -21,20 +21,23 @@ public class TileDataSO : ScriptableObject
 
     public GameObject SpawnTile(Vector3 position, Vector3 size, Transform parent, bool isSpawnPoint = false)
     {
-        if (tilePrefab == null)
-        {
-            Debug.LogWarning("Tile prefab is missing.");
-            return null;
-        }
-
-        GameObject tile = Instantiate(tilePrefab, position, Quaternion.identity);
-        tile.transform.localScale = size;
-        tile.transform.SetParent(parent);
+        GameObject tile = SpawnBasicTile(position, size, parent);
+        
         if(!isSpawnPoint) SpawnProps(tile.transform);
         return tile;
     }
     
     public GameObject SpawnTileWithSizeAwareProps(Vector3 position, Vector3 size, Transform parent, RoomInfo roomInfo)
+    {
+        GameObject tile = SpawnBasicTile(position, size, parent);
+        
+        // 방 크기를 고려한 프롭 생성
+        SpawnSizeAwareProps(tile.transform, roomInfo);
+        
+        return tile;
+    }
+
+    private GameObject SpawnBasicTile(Vector3 position, Vector3 size, Transform parent)
     {
         if (tilePrefab == null)
         {
@@ -45,10 +48,6 @@ public class TileDataSO : ScriptableObject
         GameObject tile = Instantiate(tilePrefab, position, Quaternion.identity);
         tile.transform.localScale = size;
         tile.transform.SetParent(parent);
-        
-        // 방 크기를 고려한 프롭 생성
-        SpawnSizeAwareProps(tile.transform, roomInfo);
-        
         return tile;
     }
 

@@ -8,7 +8,7 @@ public interface IMapGenerator
     /// <summary>
     /// 맵을 생성합니다.
     /// </summary>
-    void GenerateMap();
+    void GenerateMap(int seed);
     
     /// <summary>
     /// 맵 생성이 완료되었는지 확인합니다.

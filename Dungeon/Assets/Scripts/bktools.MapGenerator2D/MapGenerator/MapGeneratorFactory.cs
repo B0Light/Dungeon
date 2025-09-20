@@ -18,13 +18,15 @@ public class MapGeneratorFactory : MonoBehaviour
     [Header("기본 설정")]
     [SerializeField] private Vector2Int gridSize = new Vector2Int(64, 64);
     [SerializeField] private Vector3 cubeSize = new Vector3(2, 2, 2);
-    [SerializeField] private int roomCount = 5;
-    [SerializeField, Range(10,20)] private int standardRoomSize = 15;
+    [SerializeField, Range(5,15)] private int standardRoomSize = 15;
     [SerializeField] private PathType pathType = PathType.Straight;
     [SerializeField] private Transform slot; // 타일을 생성할 부모 Transform
     
     [Header("Tile Data Map")]
     [SerializeField] private TileMappingDataSO tileMappingDataSO;
+
+    [Header("랜덤 시드 설정")]
+    [SerializeField] private int _seed;
     
     private BaseMapGenerator _currentGenerator;
     public BaseMapGenerator CurrentGenerator => _currentGenerator;
@@ -42,10 +44,17 @@ public class MapGeneratorFactory : MonoBehaviour
             Debug.LogWarning("맵 생성기를 설정할 수 없습니다. TileMappingDataSO가 할당되었는지 확인해주세요.");
             return;
         }
+
+        // 시드값이 0이면 새로운 시드 생성, 아니면 고정 시드 사용
+        if (_seed == 0)
+        {
+            _seed = System.DateTime.Now.Second;
+            Debug.Log($"시드값이 지정되지 않아 현재 시간({_seed})으로 시드를 설정합니다.");
+        }
         
-        Debug.Log($"{currentGeneratorType} 맵 생성기를 사용하여 맵을 생성합니다.");
+        Debug.Log($"{currentGeneratorType} 맵 생성기를 사용하여 시드: {_seed} 로 맵을 생성합니다.");
         //ClearMap();
-        _currentGenerator.GenerateMap();
+        _currentGenerator.GenerateMap(_seed);
     }
     
     private void SetupCurrentGenerator()
@@ -85,8 +94,7 @@ public class MapGeneratorFactory : MonoBehaviour
             gridSize, 
             cubeSize, 
             standardRoomSize -5, 
-            standardRoomSize +5, 
-            roomCount
+            standardRoomSize +5 
         );
         
         generator.pathType = pathType;
@@ -101,8 +109,7 @@ public class MapGeneratorFactory : MonoBehaviour
             tileMappingDataSO, 
             gridSize, 
             cubeSize, 
-            standardRoomSize, 
-            roomCount
+            standardRoomSize 
         );
         
         generator.pathType = pathType;
@@ -116,8 +123,7 @@ public class MapGeneratorFactory : MonoBehaviour
             slot, 
             tileMappingDataSO, 
             gridSize, 
-            cubeSize, 
-            roomCount, 
+            cubeSize,  
             3, 
             standardRoomSize, 
             standardRoomSize
@@ -129,9 +135,9 @@ public class MapGeneratorFactory : MonoBehaviour
         return generator;
     }
     
-    private RandomMapGenerator CreateDelaunayGenerator()
+    private DelaunayMapGenerator CreateDelaunayGenerator()
     {
-        var generator = new RandomMapGenerator(
+        var generator = new DelaunayMapGenerator(
             slot, 
             tileMappingDataSO, 
             gridSize, 

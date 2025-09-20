@@ -10,10 +10,9 @@ public class BSPDungeonMapGeneratorFull : BaseMapGenerator
     private List<RoomNode> _leafNodes;
     
     public BSPDungeonMapGeneratorFull(Transform slot, TileMappingDataSO tileMappingData,
-        Vector2Int gridSize, Vector3 cubeSize, int minSplitSize, int maxDepth) : base(slot, tileMappingData, gridSize, cubeSize)
+        Vector2Int gridSize, Vector3 cubeSize, int minSplitSize) : base(slot, tileMappingData, gridSize, cubeSize)
     {
         this.minSplitSize = minSplitSize;
-        this.maxDepth = maxDepth;
     }
     
     protected override void InitializeGenerator()
@@ -23,8 +22,9 @@ public class BSPDungeonMapGeneratorFull : BaseMapGenerator
         pathType = PathType.Straight;
     }
     
-    public override void GenerateMap()
+    public override void GenerateMap(int seed)
     {
+        Random.InitState(seed);
         InitializeGrid();
         
         // 리프 노드 초기화

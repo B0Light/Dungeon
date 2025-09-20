@@ -19,9 +19,8 @@ public class IsaacMapGenerator : BaseMapGenerator
     
     
     public IsaacMapGenerator(Transform slot, TileMappingDataSO tileMappingData,
-        Vector2Int gridSize, Vector3 cubeSize, int maxRooms, int specialRoomCount, int horizontalSize, int verticalSize) : base(slot, tileMappingData, gridSize, cubeSize)
+        Vector2Int gridSize, Vector3 cubeSize, int specialRoomCount, int horizontalSize, int verticalSize) : base(slot, tileMappingData, gridSize, cubeSize)
     {
-        this.maxRooms = maxRooms;
         this.specialRoomCount = specialRoomCount;
         this.horizontalSize = horizontalSize;
         this.verticalSize = verticalSize;
@@ -31,13 +30,23 @@ public class IsaacMapGenerator : BaseMapGenerator
     {
         rooms = new Dictionary<Vector2Int, Room>();
         
+        int avgRoomSize = (horizontalSize + verticalSize) / 2;
+        int spacing = 3; // 벽+복도
+        int effectiveSize = avgRoomSize + spacing;
+    
+        int roomsX = gridSize.x / effectiveSize;
+        int roomsY = gridSize.y / effectiveSize;
+    
+        maxRooms = Mathf.Max(8, Mathf.RoundToInt(roomsX * roomsY * 0.3f));
+        
         // Isaac 스타일은 기본적으로 직선 복도를 사용
         pathType = PathType.Straight;
     }
     
     [ContextMenu("Create Map")]
-    public override void GenerateMap()
+    public override void GenerateMap(int seed)
     {
+        Random.InitState(seed);
         InitializeGrid();
         GenerateRooms();
         PlaceSpecialRooms();
