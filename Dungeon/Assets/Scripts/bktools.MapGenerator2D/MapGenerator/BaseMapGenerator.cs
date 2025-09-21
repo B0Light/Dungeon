@@ -80,7 +80,7 @@ public abstract class BaseMapGenerator : IMapGenerator
     
     public abstract void GenerateMap(int seed);
     
-    protected virtual void InitializeGrid()
+    protected void InitializeGrid()
     {
         _grid = new CellType[gridSize.x, gridSize.y];
         _floorList = new List<RectInt>();
@@ -209,7 +209,7 @@ public abstract class BaseMapGenerator : IMapGenerator
         return false;
     }
     
-    protected virtual void RenderGrid()
+    protected void RenderGrid()
     {
         for (int x = 0; x < gridSize.x; x++)
         {
@@ -220,7 +220,7 @@ public abstract class BaseMapGenerator : IMapGenerator
         }
     }
     
-    protected virtual void RenderTileAt(int x, int y)
+    private void RenderTileAt(int x, int y)
     {
         if (!TryGetTileData(x, y, out TileDataSO tileData)) return;
         
@@ -235,12 +235,12 @@ public abstract class BaseMapGenerator : IMapGenerator
         }
     }
     
-    protected virtual bool TryGetTileData(int x, int y, out TileDataSO tileData)
+    private bool TryGetTileData(int x, int y, out TileDataSO tileData)
     {
         return _tileDataDict.TryGetValue(_grid[x, y], out tileData) && tileData != null;
     }
     
-    protected virtual void HandleCenterTileRendering(int x, int y, TileDataSO tileData, Vector3 spawnPos)
+    private void HandleCenterTileRendering(int x, int y, TileDataSO tileData, Vector3 spawnPos)
     {
         RectInt? room = GetRoomByCenterPosition(x, y);
         if (!room.HasValue)
@@ -292,9 +292,8 @@ public abstract class BaseMapGenerator : IMapGenerator
         return null;
     }
     
-    public RoomInfo GetRoomInfo(RectInt room)
+    private RoomInfo GetRoomInfo(RectInt room)
     {
-        // 정확한 중심 위치 계산 (각 맵 생성기에서 사용하는 방식과 동일)
         Vector2Int center = new Vector2Int(
             room.x + (room.width - 1) / 2,
             room.y + (room.height - 1) / 2
@@ -327,7 +326,7 @@ public abstract class BaseMapGenerator : IMapGenerator
         };
     }
     
-    protected virtual void GenerateWaypointSystem()
+    private void GenerateWaypointSystem()
     {
         if (!_isMapGenerated)
         {
@@ -342,12 +341,12 @@ public abstract class BaseMapGenerator : IMapGenerator
         Debug.Log($"웨이포인트 시스템 생성 완료: {_waypointSystem?.waypoints?.Count ?? 0}개 웨이포인트");
     }
     
-    public virtual WaypointSystemData GetWaypointSystemData()
+    public WaypointSystemData GetWaypointSystemData()
     {
         return _waypointSystem;
     }
     
-    public virtual PatrolRoute GetPatrolRoute(string routeName)
+    public PatrolRoute GetPatrolRoute(string routeName)
     {
         if (_waypointSystem?.patrolRoutes == null) return null;
         
@@ -360,17 +359,17 @@ public abstract class BaseMapGenerator : IMapGenerator
         return null;
     }
     
-    public virtual List<PatrolRoute> GetAllPatrolRoutes()
+    public List<PatrolRoute> GetAllPatrolRoutes()
     {
         return _waypointSystem?.patrolRoutes ?? new List<PatrolRoute>();
     }
     
-    public virtual int FindNearestWaypoint(Vector3 worldPosition)
+    public int FindNearestWaypoint(Vector3 worldPosition)
     {
         return _waypointSystem?.FindNearestWaypoint(worldPosition) ?? -1;
     }
     
-    protected virtual void InitializeRoomIndices()
+    private void InitializeRoomIndices()
     {
         if (_floorList == null || _floorList.Count == 0)
         {
@@ -393,7 +392,7 @@ public abstract class BaseMapGenerator : IMapGenerator
         FindFurthestRooms();
     }
     
-    protected virtual void FindFurthestRooms()
+    private void FindFurthestRooms()
     {
         float maxDistance = 0;
         _startRoomIndex = 0;
@@ -423,7 +422,7 @@ public abstract class BaseMapGenerator : IMapGenerator
         }
     }
     
-    protected virtual void OnMapGenerationComplete()
+    protected void OnMapGenerationComplete()
     {
         // 방 인덱스 초기화
         InitializeRoomIndices();

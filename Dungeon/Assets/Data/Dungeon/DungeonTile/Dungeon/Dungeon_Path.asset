@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 104abc759d417fb488533d6b2f4b0307, type: 3}
-  m_Name: Dungeon_Wall
+  m_Name: Dungeon_Path
   m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 1691581078342472967, guid: 38892216f1afb1742b6825a9f385f7a2, type: 3}
+  tilePrefab: {fileID: 1691581078342472967, guid: f8a59e154578fc549a69216d75d93847, type: 3}
   objectPercent: 0
   treePercent: 0
   grassPercent: 0

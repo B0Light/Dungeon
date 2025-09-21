@@ -157,7 +157,6 @@ public class MapGeneratorFactory : MonoBehaviour
         return _currentGenerator != null && _currentGenerator.IsMapGenerated;
     }
     
-    
     public WaypointSystemData GetCurrentWaypointSystemData()
     {
         return _currentGenerator?.GetWaypointSystemData();
