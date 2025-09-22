@@ -112,7 +112,7 @@ using System;
      
      protected void BuildWalls() => CheckAndSetNeighborWalls(CellType.Floor, CellType.Empty, CellType.Wall);
      
-     protected void BuildPathWalls() => CheckAndSetNeighborWalls(CellType.ExpandedPath, CellType.Empty, CellType.PathWall);
+     protected void BuildPathWalls() => CheckAndSetNeighborWalls(CellType.Empty, CellType.ExpandedPath, CellType.PathWall);
      
      private void CheckAndSetNeighborWalls(CellType centerType, CellType neighborType, CellType wallType)
      {
@@ -140,22 +140,14 @@ using System;
  
              if (_grid[nx, ny] == neighborType)
              {
-                 _grid[nx, ny] = wallType;
+                 _grid[x, y] = wallType;
+                 return;
              }
          }
      }
      
      protected void BuildGate()
      {
-         Func<Vector2Int, bool> isGateCandidate = pos =>
-             _grid[pos.x, pos.y] == CellType.Wall &&
-             GetNeighborCells(pos)
-                 .Any(cell => cell == CellType.Floor || cell == CellType.FloorCenter) &&
-             GetNeighborCells(pos)
-                 .Any(cell => cell == CellType.Path);
- 
-         ProcessGrid(isGateCandidate, CellType.Gate);
-         
          Func<Vector2Int, bool> isGateCandidate2 = pos =>
              _grid[pos.x, pos.y] == CellType.Wall &&
              GetNeighborCells(pos)
@@ -349,15 +341,52 @@ using System;
                  { 
                      CellType.Path => 0.1f,
                      CellType.Floor => 1f, 
-                     CellType.Empty => 2f, 
-                     CellType.Wall => 3f, 
-                     _ => 10f 
+                     CellType.Empty => 5f, 
+                     CellType.Wall => 10f, 
+                     _ => 4f 
                  }; 
+                 
+                 float directionCost = CalculateDirectionChangeCost(pathNode, currentNode, endPos);
+                 
+                 return new DungeonPathfinder2D.PathCost 
+                 { 
+                     traversable = true, 
+                     cost = traversalCost + directionCost
+                 }; 
+             }); 
+
+         if (path == null) return; 
+
+         foreach (var pos in path)  
+         { 
+             if (_grid[pos.x, pos.y] == CellType.Empty)  
+             { 
+                 _grid[pos.x, pos.y] = CellType.Path; 
+             }
+             else if (_grid[pos.x, pos.y] == CellType.Wall)
+             {
+                 _grid[pos.x, pos.y] = CellType.Gate;
+             }
+         } 
+     } 
+
+     private void CreateStraightPath(Vector2Int startPos, Vector2Int endPos) 
+     { 
+         DungeonPathfinder2D aStar = new DungeonPathfinder2D(_config.GridSize); 
+          
+         var path = aStar.FindPath( 
+             startPos,  
+             endPos,  
+             (pathNode, currentNode) =>  
+             {  
+                 var baseCost = Mathf.Abs(currentNode.Position.x - endPos.x) + Mathf.Abs(currentNode.Position.y - endPos.y);
+                 
+                 float directionCost = CalculateDirectionChangeCost(pathNode, currentNode, endPos);
                   
                  return new DungeonPathfinder2D.PathCost 
                  { 
                      traversable = true, 
-                     cost = baseCost + traversalCost 
+                     cost = baseCost + directionCost
                  }; 
              }); 
 
@@ -369,39 +398,48 @@ using System;
              { 
                  _grid[pos.x, pos.y] = CellType.Path; 
              } 
+             else if (_grid[pos.x, pos.y] == CellType.Wall)
+             {
+                 _grid[pos.x, pos.y] = CellType.Gate;
+             }
          } 
      } 
+     
+     private float CalculateDirectionChangeCost(DungeonPathfinder2D.Node pathNode, DungeonPathfinder2D.Node currentNode, Vector2Int endPos)
+     {
+         if (pathNode == null) return 0f;
+    
+         // 방향 변경 패널티
+         float directionChangePenalty = 1000f;
+        
+         Vector2Int previousDirection = GetDirection(pathNode.Position, currentNode.Position);
+         Vector2Int currentDirection = GetDirection(currentNode.Position, endPos);
+                
+         if (previousDirection != currentDirection)
+         {
+             return directionChangePenalty;
+         }
+        
+         return 0f; 
+     }
 
-     private void CreateStraightPath(Vector2Int startPos, Vector2Int endPos) 
-     { 
-         Vector2Int direction = new Vector2Int( 
-             endPos.x > startPos.x ? 1 : endPos.x < startPos.x ? -1 : 0, 
-             endPos.y > startPos.y ? 1 : endPos.y < startPos.y ? -1 : 0 
-         ); 
-      
-         Vector2Int current = startPos; 
-      
-         while (current != endPos) 
-         { 
-             if (current.x >= 0 && current.x < _config.GridSize.x &&  
-                 current.y >= 0 && current.y < _config.GridSize.y) 
-             { 
-                 if (_grid[current.x, current.y] == CellType.Empty) 
-                 { 
-                     _grid[current.x, current.y] = CellType.Path; 
-                 } 
-             } 
-          
-             if (current.x != endPos.x) 
-             { 
-                 current.x += direction.x; 
-             } 
-             else if (current.y != endPos.y) 
-             { 
-                 current.y += direction.y; 
-             } 
-         } 
-     } 
+     private Vector2Int GetDirection(Vector2Int from, Vector2Int to)
+     {
+         Vector2Int diff = to - from;
+    
+         // x, y 차이 중 더 큰 값을 기준으로 방향 결정
+         if (Mathf.Abs(diff.x) > Mathf.Abs(diff.y))
+         {
+             // 좌우 방향
+             return new Vector2Int(diff.x > 0 ? 1 : -1, 0);
+         }
+         else
+         {
+             // 상하 방향 (x, y 차이가 같을 경우 상하를 우선함)
+             return new Vector2Int(0, diff.y > 0 ? 1 : -1);
+         }
+     }
+
       
      #endregion 
       

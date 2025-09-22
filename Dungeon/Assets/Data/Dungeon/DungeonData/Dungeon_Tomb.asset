@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Dungeon_Tomb
   m_EditorClassIdentifier: 
   dungeonCode: Tomb
-  seed: 0
+  seed: 100
   generatorType: 3
   gridSize: {x: 100, y: 100}
   cubeSize: {x: 2, y: 2, z: 2}
   roomSize: 13
-  pathType: 1
+  pathType: 0
   tileMappingDataSO: {fileID: 11400000, guid: d8082120cc75f914995df8535cf3af4a, type: 2}
