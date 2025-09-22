@@ -76,8 +76,8 @@ public class DungeonMapSetter : MonoBehaviour
 
     private void GeneratePlayerSpawn(Vector3 offset)
     {
-        playerSpawn = _mapGenerator.CurrentGenerator.GetStartPos();
-        exit = _mapGenerator.CurrentGenerator.GetExitPos();
+        //playerSpawn = _mapGenerator.CurrentGenerator.GetStartPos();
+        //exit = _mapGenerator.CurrentGenerator.GetExitPos();
 
         Instantiate(playerStartPrefab, new Vector3(playerSpawn.x * offset.x, 0f, playerSpawn.y * offset.z), quaternion.identity);
         Instantiate(exitPrefab, new Vector3(exit.x * offset.x, 0f, exit.y * offset.z), quaternion.identity);

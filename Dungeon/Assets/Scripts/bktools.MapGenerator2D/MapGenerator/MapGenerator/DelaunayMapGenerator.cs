@@ -52,8 +52,6 @@ public class DelaunayMapGenerator : BaseMapGenerator
         // 맵 데이터 설정
         var mapData = GetMapData();
         mapData.roomCount = _floorList.Count;
-        
-        OnMapGenerationComplete();
     }
     
     private void PlaceRooms()

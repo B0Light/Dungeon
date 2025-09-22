@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public enum MapGeneratorType
 {
@@ -12,21 +13,19 @@ public enum MapGeneratorType
 public class MapGeneratorFactory : MonoBehaviour
 {
     [Header("맵 생성기 설정")]
+    [SerializeField] private int seed;
     [SerializeField] private MapGeneratorType currentGeneratorType = MapGeneratorType.BSP;
     public MapGeneratorType CurrentGeneratorType => currentGeneratorType;
     
     [Header("기본 설정")]
     [SerializeField] private Vector2Int gridSize = new Vector2Int(64, 64);
     [SerializeField] private Vector3 cubeSize = new Vector3(2, 2, 2);
-    [SerializeField, Range(5,15)] private int standardRoomSize = 15;
+    [SerializeField, Range(5,15)] private int roomSize = 15;
     [SerializeField] private PathType pathType = PathType.Straight;
     [SerializeField] private Transform slot; // 타일을 생성할 부모 Transform
     
     [Header("Tile Data Map")]
     [SerializeField] private TileMappingDataSO tileMappingDataSO;
-
-    [Header("랜덤 시드 설정")]
-    [SerializeField] private int _seed;
     
     private BaseMapGenerator _currentGenerator;
     public BaseMapGenerator CurrentGenerator => _currentGenerator;
@@ -46,15 +45,15 @@ public class MapGeneratorFactory : MonoBehaviour
         }
 
         // 시드값이 0이면 새로운 시드 생성, 아니면 고정 시드 사용
-        if (_seed == 0)
+        if (seed == 0)
         {
-            _seed = System.DateTime.Now.Second;
-            Debug.Log($"시드값이 지정되지 않아 현재 시간({_seed})으로 시드를 설정합니다.");
+            seed = System.DateTime.Now.Second;
+            Debug.Log($"시드값이 지정되지 않아 현재 시간({seed})으로 시드를 설정합니다.");
         }
         
-        Debug.Log($"{currentGeneratorType} 맵 생성기를 사용하여 시드: {_seed} 로 맵을 생성합니다.");
+        Debug.Log($"{currentGeneratorType} 맵 생성기를 사용하여 시드: {seed} 로 맵을 생성합니다.");
         //ClearMap();
-        _currentGenerator.GenerateMap(_seed);
+        _currentGenerator.GenerateMap(seed);
     }
     
     private void SetupCurrentGenerator()
@@ -93,8 +92,8 @@ public class MapGeneratorFactory : MonoBehaviour
             tileMappingDataSO, 
             gridSize, 
             cubeSize, 
-            standardRoomSize -5, 
-            standardRoomSize +5 
+            roomSize -5, 
+            roomSize +5 
         );
         
         generator.pathType = pathType;
@@ -109,7 +108,7 @@ public class MapGeneratorFactory : MonoBehaviour
             tileMappingDataSO, 
             gridSize, 
             cubeSize, 
-            standardRoomSize 
+            roomSize 
         );
         
         generator.pathType = pathType;
@@ -125,8 +124,8 @@ public class MapGeneratorFactory : MonoBehaviour
             gridSize, 
             cubeSize,  
             3, 
-            standardRoomSize, 
-            standardRoomSize
+            roomSize, 
+            roomSize
         );
         
         // 경로 설정 적용
@@ -142,8 +141,8 @@ public class MapGeneratorFactory : MonoBehaviour
             tileMappingDataSO, 
             gridSize, 
             cubeSize, 
-            standardRoomSize, 
-            standardRoomSize
+            roomSize, 
+            roomSize
         );
         
         // 경로 설정 적용
@@ -155,11 +154,6 @@ public class MapGeneratorFactory : MonoBehaviour
     public bool IsMapGenerated()
     {
         return _currentGenerator != null && _currentGenerator.IsMapGenerated;
-    }
-    
-    public WaypointSystemData GetCurrentWaypointSystemData()
-    {
-        return _currentGenerator?.GetWaypointSystemData();
     }
     
     public Vector3 GetCubeSize()

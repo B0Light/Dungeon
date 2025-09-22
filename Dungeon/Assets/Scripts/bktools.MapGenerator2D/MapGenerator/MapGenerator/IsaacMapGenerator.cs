@@ -56,8 +56,6 @@ public class IsaacMapGenerator : BaseMapGenerator
         // 맵 데이터 설정
         var mapData = GetMapData();
         mapData.roomCount = rooms.Count;
-        
-        OnMapGenerationComplete();
     }
 
     private void GenerateRooms()
