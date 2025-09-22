@@ -8,32 +8,18 @@ using Random = UnityEngine.Random;
 public class DelaunayMapGenerator : BaseMapGenerator
 {
     [Header("Delaunay 설정")]
-    [SerializeField] protected int minRoomSize = 9; // 최소 방 크기
-    [SerializeField] protected int maxRoomSize = 12; // 최대 방 크기
-    protected int roomCount; // 방의 개수
+    private int _roomCount;
     
-    public DelaunayMapGenerator(Transform slot, TileMappingDataSO tileMappingData,
-        Vector2Int gridSize, Vector3 cubeSize, int minRoomSize, int maxRoomSize) : base(slot, tileMappingData, gridSize, cubeSize)
-    {
-        this.minRoomSize = minRoomSize;
-        this.maxRoomSize = maxRoomSize;
-    }
+    public DelaunayMapGenerator(Transform slot, DungeonDataSO dungeonDataSo) : base(slot, dungeonDataSo) { }
     
     protected override void InitializeGenerator()
     {
-        int avgRoomSize = (minRoomSize + maxRoomSize) / 2;
-        int spacing = 3; // 벽+복도
-        int effectiveSize = avgRoomSize + spacing;
+        int effectiveSize = _config.RoomSize + _config.Margin;
     
-        int roomsX = gridSize.x / effectiveSize;
-        int roomsY = gridSize.y / effectiveSize;
+        int roomsX = _config.GridSize.x / effectiveSize;
+        int roomsY = _config.GridSize.y / effectiveSize;
     
-        roomCount = Mathf.Max(8, Mathf.RoundToInt(roomsX * roomsY * 0.3f));
-    
-        Debug.Log($"방 개수: {roomCount}개");
-        
-        // Delaunay는 기본적으로 A* 경로 찾기를 사용
-        pathType = PathType.AStar;
+        _roomCount = Mathf.Max(8, Mathf.RoundToInt(roomsX * roomsY * 0.5f));
     }
     
     [ContextMenu("Create Map")]
@@ -42,11 +28,11 @@ public class DelaunayMapGenerator : BaseMapGenerator
         Random.InitState(seed);
         InitializeGrid();
         PlaceRooms();
-        CreatePathByTriangulate();
-        //CreatePathByEdgeProjection();
-        ExpandPath();
         BuildWalls();
-        
+        CreatePathByTriangulate();
+        ExpandPath();
+        BuildPathWalls();
+        BuildGate();
         RenderGrid();
         
         // 맵 데이터 설정
@@ -57,19 +43,16 @@ public class DelaunayMapGenerator : BaseMapGenerator
     private void PlaceRooms()
     {
         const int MaxAttemptsPerRoom = 5;
-        int maxAttempts = roomCount * MaxAttemptsPerRoom;
+        int maxAttempts = _roomCount * MaxAttemptsPerRoom;
         int roomsPlaced = 0;
 
-        int currentMinSize = minRoomSize;
-        int currentMaxSize = maxRoomSize;
-
-        while (roomsPlaced < roomCount && maxAttempts > 0)
+        while (roomsPlaced < _roomCount && maxAttempts > 0)
         {
-            RectInt newRoom = GenerateRoom(currentMinSize, currentMaxSize);
+            RectInt newRoom = GenerateRoom(_config.RoomSize);
 
             // 경계 밖으로 벗어나면 시도 무효
-            if (newRoom.x < margin || newRoom.x >= gridSize.x - margin ||
-                newRoom.y < margin || newRoom.y >= gridSize.y - margin)
+            if (newRoom.x < _config.Margin || newRoom.x >= _config.GridSize.x - _config.Margin ||
+                newRoom.y < _config.Margin || newRoom.y >= _config.GridSize.y - _config.Margin)
             {
                 maxAttempts--;
                 continue;
@@ -84,33 +67,23 @@ public class DelaunayMapGenerator : BaseMapGenerator
             }
 
             maxAttempts--;
-
-            // 점진적으로 방 크기 축소
-            if (maxAttempts == roomCount * 3)
-            {
-                currentMaxSize = Mathf.Max(minRoomSize + 1, currentMaxSize - 1);
-            }
-            else if (maxAttempts == roomCount)
-            {
-                currentMinSize = Mathf.Max(2, currentMinSize - 1);
-            }
         }
 
-        if (roomsPlaced < roomCount)
+        if (roomsPlaced < _roomCount)
         {
-            Debug.LogWarning($"⚠️ {roomCount}개 중 {roomsPlaced}개 방만 배치되었습니다.\n" +
-                             $"- gridSize: {gridSize.x}x{gridSize.y}, " +
-                             $"- minSize: {minRoomSize}, maxSize: {maxRoomSize}\n" +
+            Debug.LogWarning($"⚠️ {_roomCount}개 중 {roomsPlaced}개 방만 배치되었습니다.\n" +
+                             $"- _config.GridSize: {_config.GridSize.x}x{_config.GridSize.y}, " +
+                             $"- size: {_config.RoomSize}\n" +
                              $"- 남은 공간 부족일 수 있습니다.");
         }
     }
 
-    private RectInt GenerateRoom(int minSize, int maxSize)
+    private RectInt GenerateRoom(int size)
     {
-        int width = Random.Range(minSize, maxSize + 1);
-        int height = Random.Range(minSize, maxSize + 1);
-        int x = Random.Range(1, gridSize.x - width - 1);
-        int y = Random.Range(1, gridSize.y - height - 1);
+        int width = size;
+        int height = size;
+        int x = Random.Range(1, _config.GridSize.x - width - 1);
+        int y = Random.Range(1, _config.GridSize.y - height - 1);
 
         return new RectInt(x, y, width, height);
     }
@@ -120,8 +93,8 @@ public class DelaunayMapGenerator : BaseMapGenerator
         foreach (var existing in _floorList)
         {
             RectInt expanded = new RectInt(
-                existing.x - margin, existing.y - margin,
-                existing.width + margin*2, existing.height + margin*2
+                existing.x - _config.Margin, existing.y - _config.Margin,
+                existing.width + _config.Margin*2, existing.height + _config.Margin*2
             );
 
             if (room.Overlaps(expanded))
@@ -149,7 +122,7 @@ public class DelaunayMapGenerator : BaseMapGenerator
     
     private Vector3 ConvertGridPos(Vector2 pos)
     {
-        Vector3 position = new Vector3(pos.x * cubeSize.x, 0, pos.y * cubeSize.z);
+        Vector3 position = new Vector3(pos.x * _config.CubeSize.x, 0, pos.y * _config.CubeSize.z);
         return position;
     }
 }

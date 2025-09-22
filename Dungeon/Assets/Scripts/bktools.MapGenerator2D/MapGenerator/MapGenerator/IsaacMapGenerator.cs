@@ -11,36 +11,21 @@ public class IsaacMapGenerator : BaseMapGenerator
     public int maxRooms = 15;             // 최대 방 개수
     public int specialRoomCount = 3;      // 특수 방 개수
 
-    [Header("방 크기 (고정)")]
-    public int horizontalSize = 11;       // 가로 길이
-    public int verticalSize = 11;          // 세로 길이
-
     private Dictionary<Vector2Int, Room> rooms = new Dictionary<Vector2Int, Room>();
     
-    
-    public IsaacMapGenerator(Transform slot, TileMappingDataSO tileMappingData,
-        Vector2Int gridSize, Vector3 cubeSize, int specialRoomCount, int horizontalSize, int verticalSize) : base(slot, tileMappingData, gridSize, cubeSize)
-    {
-        this.specialRoomCount = specialRoomCount;
-        this.horizontalSize = horizontalSize;
-        this.verticalSize = verticalSize;
-    }
+    public IsaacMapGenerator(Transform slot, DungeonDataSO dungeonDataSo) : base(slot, dungeonDataSo) { }
     
     protected override void InitializeGenerator()
     {
         rooms = new Dictionary<Vector2Int, Room>();
         
-        int avgRoomSize = (horizontalSize + verticalSize) / 2;
         int spacing = 3; // 벽+복도
-        int effectiveSize = avgRoomSize + spacing;
+        int effectiveSize = _config.RoomSize + spacing;
     
-        int roomsX = gridSize.x / effectiveSize;
-        int roomsY = gridSize.y / effectiveSize;
+        int roomsX = _config.GridSize.x / effectiveSize;
+        int roomsY = _config.GridSize.y / effectiveSize;
     
         maxRooms = Mathf.Max(8, Mathf.RoundToInt(roomsX * roomsY * 0.3f));
-        
-        // Isaac 스타일은 기본적으로 직선 복도를 사용
-        pathType = PathType.Straight;
     }
     
     [ContextMenu("Create Map")]
@@ -51,6 +36,8 @@ public class IsaacMapGenerator : BaseMapGenerator
         GenerateRooms();
         PlaceSpecialRooms();
         BuildWalls();
+        BuildPathWalls();
+        BuildGate();
         RenderGrid();
         
         // 맵 데이터 설정
@@ -66,8 +53,8 @@ public class IsaacMapGenerator : BaseMapGenerator
         Queue<Vector2Int> frontier = new Queue<Vector2Int>();
         frontier.Enqueue(startPos);
 
-        rooms[startPos] = new Room(startPos, horizontalSize, verticalSize, RoomType.Start);
-        PlaceRoomOnGrid(startPos, horizontalSize, verticalSize, true);
+        rooms[startPos] = new Room(startPos, _config.RoomSize, _config.RoomSize, RoomType.Start);
+        PlaceRoomOnGrid(startPos, _config.RoomSize, _config.RoomSize, true);
 
         System.Random prng = new System.Random(System.DateTime.Now.Millisecond);
 
@@ -85,7 +72,7 @@ public class IsaacMapGenerator : BaseMapGenerator
                 if (rooms.ContainsKey(newPos))
                     continue;
 
-                if (IsOutOfGrid(newPos, horizontalSize, verticalSize, 3))
+                if (IsOutOfGrid(newPos, _config.RoomSize, _config.RoomSize, 3))
                     continue;
 
                 // 현재 방 개수에 따라 가변 확률 조절
@@ -95,13 +82,13 @@ public class IsaacMapGenerator : BaseMapGenerator
                 if (Random.value > spawnChance)
                     continue;
 
-                Room newRoom = new Room(newPos, horizontalSize, verticalSize, RoomType.Normal);
+                Room newRoom = new Room(newPos, _config.RoomSize, _config.RoomSize, RoomType.Normal);
                 rooms[newPos] = newRoom;
 
                 rooms[current].Doors.Add(dir);
                 rooms[newPos].Doors.Add(-dir);
 
-                PlaceRoomOnGrid(newPos, horizontalSize, verticalSize, false);
+                PlaceRoomOnGrid(newPos, _config.RoomSize, _config.RoomSize, false);
                 frontier.Enqueue(newPos);
 
                 if (rooms.Count >= maxRooms)
@@ -119,11 +106,11 @@ public class IsaacMapGenerator : BaseMapGenerator
     
     private bool IsOutOfGrid(Vector2Int roomGridPos, int width, int height, int spacing)
     {
-        int gridX = (gridSize.x / 2) + (roomGridPos.x * (width + spacing));
-        int gridY = (gridSize.y / 2) + (roomGridPos.y * (height + spacing));
+        int gridX = (_config.GridSize.x / 2) + (roomGridPos.x * (width + spacing));
+        int gridY = (_config.GridSize.y / 2) + (roomGridPos.y * (height + spacing));
 
-        return gridX < 1 || gridX + width >= gridSize.x - 1 ||
-               gridY < 1 || gridY + height >= gridSize.y - 1;
+        return gridX < 1 || gridX + width >= _config.GridSize.x - 1 ||
+               gridY < 1 || gridY + height >= _config.GridSize.y - 1;
     }
     
     private void PlaceRoomOnGrid(Vector2Int roomPos, int width, int height, bool isStartRoom)
@@ -132,12 +119,12 @@ public class IsaacMapGenerator : BaseMapGenerator
         int spacing = 3; // 방 사이 간격 (복도 공간)
         
         // 그리드 좌표로 변환 (간격을 고려한 배치)
-        int gridX = (gridSize.x / 2) + (roomPos.x * (width + spacing));
-        int gridY = (gridSize.y / 2) + (roomPos.y * (height + spacing));
+        int gridX = (_config.GridSize.x / 2) + (roomPos.x * (width + spacing));
+        int gridY = (_config.GridSize.y / 2) + (roomPos.y * (height + spacing));
 
         // 방이 그리드 범위를 벗어나지 않도록 조정
-        gridX = Mathf.Clamp(gridX, 1, gridSize.x - width - 1);
-        gridY = Mathf.Clamp(gridY, 1, gridSize.y - height - 1);
+        gridX = Mathf.Clamp(gridX, 1, _config.GridSize.x - width - 1);
+        gridY = Mathf.Clamp(gridY, 1, _config.GridSize.y - height - 1);
 
         RectInt roomRect = new RectInt(gridX, gridY, width, height);
         _floorList.Add(roomRect);
@@ -147,7 +134,7 @@ public class IsaacMapGenerator : BaseMapGenerator
         {
             for (int y = gridY; y < gridY + height; y++)
             {
-                if (x >= 0 && x < gridSize.x && y >= 0 && y < gridSize.y)
+                if (x >= 0 && x < _config.GridSize.x && y >= 0 && y < _config.GridSize.y)
                 {
                     if (x == gridX + (width - 1) / 2 && y == gridY + (height - 1) / 2)
                         _grid[x, y] = CellType.FloorCenter;

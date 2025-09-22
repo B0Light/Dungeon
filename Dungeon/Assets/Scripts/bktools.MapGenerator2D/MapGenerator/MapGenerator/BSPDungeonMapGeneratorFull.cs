@@ -9,17 +9,11 @@ public class BSPDungeonMapGeneratorFull : BaseMapGenerator
     
     private List<RoomNode> _leafNodes;
     
-    public BSPDungeonMapGeneratorFull(Transform slot, TileMappingDataSO tileMappingData,
-        Vector2Int gridSize, Vector3 cubeSize, int minSplitSize) : base(slot, tileMappingData, gridSize, cubeSize)
-    {
-        this.minSplitSize = minSplitSize;
-    }
+    public BSPDungeonMapGeneratorFull(Transform slot, DungeonDataSO dungeonDataSo) : base(slot, dungeonDataSo) { }
     
     protected override void InitializeGenerator()
     {
         _leafNodes = new List<RoomNode>();
-        
-        pathType = PathType.Straight;
     }
     
     public override void GenerateMap(int seed)
@@ -33,16 +27,18 @@ public class BSPDungeonMapGeneratorFull : BaseMapGenerator
         else
             _leafNodes.Clear();
         
-        RoomNode rootNode = new RoomNode(new RectInt(0, 0, gridSize.x, gridSize.y));
+        RoomNode rootNode = new RoomNode(new RectInt(0, 0, _config.GridSize.x, _config.GridSize.y));
         SplitNode(rootNode, 0);
         PlaceRooms(rootNode);
+        BuildWalls();
         ConnectRooms(rootNode);
         
         foreach (var node in _leafNodes)
             PlaceRoomOnGrid(node.RoomRect.position, node.RoomRect.size);
         
         ExpandPath();
-        BuildWalls();
+        BuildPathWalls();
+        BuildGate();
         RenderGrid();
         
         // 맵 데이터 설정
@@ -140,7 +136,7 @@ public class BSPDungeonMapGeneratorFull : BaseMapGenerator
         {
             for (int y = yMin; y < yMax; y++)
             {
-                if (x >= margin && x < gridSize.x - margin && y >= margin && y < gridSize.y - margin)
+                if (x >= _config.Margin && x < _config.GridSize.x - _config.Margin && y >= _config.Margin && y < _config.GridSize.y - _config.Margin)
                 {
                     Vector2Int pos = new Vector2Int(x, y);
                     

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Serialization;
 
 public class MapDataManager : MonoBehaviour
 {
@@ -8,16 +9,10 @@ public class MapDataManager : MonoBehaviour
     
     private Dictionary<int, int> _killLog = new Dictionary<int, int>();
     
-    [Header("Waypoint System")]
-    [SerializeField]
-    private MapGeneratorFactory mapGeneratorFactory;
     
     private void Awake()
     {
         Instance = this;
-        
-        if (mapGeneratorFactory == null)
-            mapGeneratorFactory = FindFirstObjectByType<MapGeneratorFactory>();
     }
     
     public void AddKillLog(int itemId)

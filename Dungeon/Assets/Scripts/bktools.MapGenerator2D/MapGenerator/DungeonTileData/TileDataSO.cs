@@ -19,20 +19,11 @@ public class TileDataSO : ScriptableObject
     public List<PropPrefabWeightedSO> treePrefabs;
     public List<PropPrefabWeightedSO> grassPrefabs;
 
-    public GameObject SpawnTile(Vector3 position, Vector3 size, Transform parent, bool isSpawnPoint = false)
+    public GameObject SpawnTile(Vector3 position, Vector3 size, Transform parent)
     {
         GameObject tile = SpawnBasicTile(position, size, parent);
         
-        if(!isSpawnPoint) SpawnProps(tile.transform);
-        return tile;
-    }
-    
-    public GameObject SpawnTileWithSizeAwareProps(Vector3 position, Vector3 size, Transform parent, RoomInfo roomInfo)
-    {
-        GameObject tile = SpawnBasicTile(position, size, parent);
-        
-        // 방 크기를 고려한 프롭 생성
-        SpawnSizeAwareProps(tile.transform, roomInfo);
+        SpawnProps(tile.transform);
         
         return tile;
     }
@@ -79,67 +70,6 @@ public class TileDataSO : ScriptableObject
         childInstance.transform.rotation = rotation;
         
         return true;
-    }
-    
-    // 방 크기를 고려하여 프롭 생성
-    private void SpawnSizeAwareProps(Transform parent, RoomInfo roomInfo)
-    {
-        // Props 자식 오브젝트 확인
-        Transform propsTransform = parent.transform.Find("Props");
-        if (propsTransform == null) return;
-        
-        // 방의 크기를 확인하여 적합한 프롭 선택 (가장 작은 차원 사용)
-        Vector2Int roomSize = roomInfo.size;
-        int minRoomDimension = Mathf.Min(roomSize.x, roomSize.y);
-        
-        // 1. 방 크기에 맞는 Object 프롭 시도
-        TrySpawnSizeAwareProp(objectPrefabs, objectPercent, propsTransform, minRoomDimension);
-        
-        // 2. 방 크기에 맞는 Tree 프롭 시도
-        TrySpawnSizeAwareProp(treePrefabs, treePercent, propsTransform, minRoomDimension);
-        
-        // 3. 방 크기에 맞는 Grass 프롭 시도 (Grass는 일반적으로 작으므로 항상 가능)
-        TrySpawnSizeAwareProp(grassPrefabs, grassPercent, propsTransform, minRoomDimension);
-    }
-    
-    // 방 크기를 고려한 프롭 생성 시도
-    private bool TrySpawnSizeAwareProp(List<PropPrefabWeightedSO> prefabList, int percentChance, Transform parent, int maxAllowedSize)
-    {
-        if (prefabList == null || prefabList.Count == 0) return false;
-        if (!IsChanceSuccessful(percentChance)) return false;
-        
-        // 방 크기에 맞는 프롭만 필터링
-        List<PropPrefabWeightedSO> compatibleProps = new List<PropPrefabWeightedSO>();
-        
-        foreach (var prop in prefabList)
-        {
-            // 프롭 크기가 방에 맞는지 확인 (프롭의 가장 큰 차원이 방의 최소 차원보다 작아야 함)
-            int maxPropDimension = Mathf.Max(prop.size.x, prop.size.y);
-            
-            if (maxPropDimension <= maxAllowedSize)
-            {
-                compatibleProps.Add(prop);
-            }
-        }
-        
-        if (compatibleProps.Count == 0) return false;
-        
-        // 크기에 맞는 프롭에서 가중치 랜덤 선택
-        PropPrefabWeightedSO selectedProp = GetWeightedRandomPrefab(compatibleProps);
-        if (selectedProp == null || selectedProp.prefab == null) return false;
-        
-        // 프롭 생성
-        GameObject childInstance = Instantiate(selectedProp.prefab, parent);
-        childInstance.transform.localPosition = Vector3.zero;
-        childInstance.transform.rotation = GetPropRotation(selectedProp);
-        
-        return true;
-    }
-    
-    // 프롭 유형에 따른 적절한 회전 선택
-    private Quaternion GetPropRotation(PropPrefabWeightedSO prop)
-    {
-        return treePrefabs.Contains(prop) ? GetRandomYRotation() : GetRandomYRotation90();
     }
 
     private bool IsChanceSuccessful(int percent)

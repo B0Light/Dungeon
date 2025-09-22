@@ -120,7 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2677175714142079942}
   m_Layer: 0
-  m_Name: TEST_ObjectPosition
+  m_Name: TEST_ObjectPosition_BLUE
   m_TagString: PlayerStart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

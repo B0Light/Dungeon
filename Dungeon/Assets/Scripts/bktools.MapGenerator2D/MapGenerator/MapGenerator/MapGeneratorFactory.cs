@@ -1,163 +1,31 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public enum MapGeneratorType
+public class MapGeneratorFactory
 {
-    BSP,            // Binary Space Partitioning
-    BSPFull,        // BSP Full (분할된 영역 전체를 방으로 사용)
-    Isaac,          // Isaac 스타일 (BFS 방식)
-    Delaunay        // Delaunay 삼각분할 + Kruskal
-}
+    private readonly Transform _slot;
+    private readonly DungeonDataSO _dungeonDataSo;
 
-public class MapGeneratorFactory : MonoBehaviour
-{
-    [Header("맵 생성기 설정")]
-    [SerializeField] private int seed;
-    [SerializeField] private MapGeneratorType currentGeneratorType = MapGeneratorType.BSP;
-    public MapGeneratorType CurrentGeneratorType => currentGeneratorType;
-    
-    [Header("기본 설정")]
-    [SerializeField] private Vector2Int gridSize = new Vector2Int(64, 64);
-    [SerializeField] private Vector3 cubeSize = new Vector3(2, 2, 2);
-    [SerializeField, Range(5,15)] private int roomSize = 15;
-    [SerializeField] private PathType pathType = PathType.Straight;
-    [SerializeField] private Transform slot; // 타일을 생성할 부모 Transform
-    
-    [Header("Tile Data Map")]
-    [SerializeField] private TileMappingDataSO tileMappingDataSO;
-    
-    private BaseMapGenerator _currentGenerator;
-    public BaseMapGenerator CurrentGenerator => _currentGenerator;
-    
-    [ContextMenu("Generate Map")]
-    public void GenerateMap()
+    public MapGeneratorFactory(Transform slot, DungeonDataSO dungeonDataSo)
     {
-        if (_currentGenerator == null)
-        {
-            SetupCurrentGenerator();
-        }
-        
-        if (_currentGenerator == null)
-        {
-            Debug.LogWarning("맵 생성기를 설정할 수 없습니다. TileMappingDataSO가 할당되었는지 확인해주세요.");
-            return;
-        }
-
-        // 시드값이 0이면 새로운 시드 생성, 아니면 고정 시드 사용
-        if (seed == 0)
-        {
-            seed = System.DateTime.Now.Second;
-            Debug.Log($"시드값이 지정되지 않아 현재 시간({seed})으로 시드를 설정합니다.");
-        }
-        
-        Debug.Log($"{currentGeneratorType} 맵 생성기를 사용하여 시드: {seed} 로 맵을 생성합니다.");
-        //ClearMap();
-        _currentGenerator.GenerateMap(seed);
+        _slot = slot;
+        _dungeonDataSo = dungeonDataSo;
     }
-    
-    private void SetupCurrentGenerator()
+
+    public BaseMapGenerator CreateGenerator(MapGeneratorType type)
     {
-        if (tileMappingDataSO == null)
-        {
-            Debug.LogError("TileMappingDataSO가 할당되지 않았습니다.");
-            return;
-        }
-        
-        // 새 생성기 생성
-        switch (currentGeneratorType)
+        switch (type)
         {
             case MapGeneratorType.BSP:
-                _currentGenerator = CreateBSPGenerator();
-                break;
+                return new BSPDungeonMapGenerator(_slot, _dungeonDataSo);
             case MapGeneratorType.BSPFull:
-                _currentGenerator = CreateBSPFullGenerator();
-                break;
+                return new BSPDungeonMapGeneratorFull(_slot, _dungeonDataSo);
             case MapGeneratorType.Isaac:
-                _currentGenerator = CreateIsaacGenerator();
-                break;
+                return new IsaacMapGenerator(_slot, _dungeonDataSo);
             case MapGeneratorType.Delaunay:
-                _currentGenerator = CreateDelaunayGenerator();
-                break;
+                return new DelaunayMapGenerator(_slot, _dungeonDataSo);
             default:
-                Debug.LogError($"알 수 없는 맵 생성기 타입: {currentGeneratorType}");
-                return;
+                Debug.LogError($"알 수 없는 맵 생성기 타입: {type}");
+                return null;
         }
-    }
-    
-    private BSPDungeonMapGenerator CreateBSPGenerator()
-    {
-        var generator = new BSPDungeonMapGenerator(
-            slot, 
-            tileMappingDataSO, 
-            gridSize, 
-            cubeSize, 
-            roomSize -5, 
-            roomSize +5 
-        );
-        
-        generator.pathType = pathType;
-        
-        return generator;
-    }
-    
-    private BSPDungeonMapGeneratorFull CreateBSPFullGenerator()
-    {
-        var generator = new BSPDungeonMapGeneratorFull(
-            slot, 
-            tileMappingDataSO, 
-            gridSize, 
-            cubeSize, 
-            roomSize 
-        );
-        
-        generator.pathType = pathType;
-        
-        return generator;
-    }
-    
-    private IsaacMapGenerator CreateIsaacGenerator()
-    {
-        var generator = new IsaacMapGenerator(
-            slot, 
-            tileMappingDataSO, 
-            gridSize, 
-            cubeSize,  
-            3, 
-            roomSize, 
-            roomSize
-        );
-        
-        // 경로 설정 적용
-        generator.pathType = pathType;
-        
-        return generator;
-    }
-    
-    private DelaunayMapGenerator CreateDelaunayGenerator()
-    {
-        var generator = new DelaunayMapGenerator(
-            slot, 
-            tileMappingDataSO, 
-            gridSize, 
-            cubeSize, 
-            roomSize, 
-            roomSize
-        );
-        
-        // 경로 설정 적용
-        generator.pathType = pathType;
-        
-        return generator;
-    }
-    
-    public bool IsMapGenerated()
-    {
-        return _currentGenerator != null && _currentGenerator.IsMapGenerated;
-    }
-    
-    public Vector3 GetCubeSize()
-    {
-        return cubeSize;
     }
 }

@@ -3,12 +3,14 @@ using System.Collections;
 using Unity.AI.Navigation;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class DungeonMapSetter : MonoBehaviour
 {
     public int dungeonID;
+    [SerializeField] private DungeonDataSO dungeonDataSo;
     private NavMeshSurface _navMeshSurface;
-    private MapGeneratorFactory _mapGenerator;
+    private MapGenerator _mapGenerator;
     
     [SerializeField] private GameObject playerStartPrefab;
     [SerializeField] private GameObject exitPrefab;
@@ -25,13 +27,14 @@ public class DungeonMapSetter : MonoBehaviour
     private void Awake()
     {
         _navMeshSurface = GetComponent<NavMeshSurface>();
-        _mapGenerator = GetComponent<MapGeneratorFactory>();
+        _mapGenerator = GetComponent<MapGenerator>();
 
         GameTimer.OnTimerEnd += SpawnBoss;
     }
 
     private void Start()
     {
+        _mapGenerator.InitGenerator(dungeonDataSo);
         StartCoroutine(GenerateMapSequence());
     }
 
@@ -53,7 +56,7 @@ public class DungeonMapSetter : MonoBehaviour
         }
         
         // 3단계: 플레이어 스폰
-        Vector3 offset = _mapGenerator.GetCubeSize();
+        Vector3 offset = dungeonDataSo.cubeSize;
         GeneratePlayerSpawn(offset);
     }
 

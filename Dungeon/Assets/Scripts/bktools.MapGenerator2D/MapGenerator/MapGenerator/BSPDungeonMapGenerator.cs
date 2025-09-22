@@ -1,32 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// BSP(Binary Space Partitioning) 알고리즘을 사용한 던전 맵 생성기
-/// </summary>
 public class BSPDungeonMapGenerator : BaseMapGenerator
 {
     [Header("BSP 설정")]
-    private int _minRoomSize = 6;
-    private int _maxRoomSize = 20;
     private int _maxDepth = 5;
     
     private List<RoomNode> _leafNodes;
     
-    public BSPDungeonMapGenerator(Transform slot, TileMappingDataSO tileMappingData,
-        Vector2Int gridSize, Vector3 cubeSize, int minRoomSize, int maxRoomSize
-        ) : base(slot, tileMappingData, gridSize, cubeSize)
-    {
-        this._minRoomSize = minRoomSize;
-        this._maxRoomSize = maxRoomSize;
-    }
+    public BSPDungeonMapGenerator(Transform slot, DungeonDataSO  dungeonDataSo) : base(slot, dungeonDataSo) { }
     
     protected override void InitializeGenerator()
     {
         _leafNodes = new List<RoomNode>();
-        
-        // BSP는 기본적으로 L자 형태의 복도를 사용
-        pathType = PathType.Straight;
     }
     
     [ContextMenu("Create Map")]
@@ -40,16 +26,18 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
         else
             _leafNodes.Clear();
         
-        RoomNode rootNode = new RoomNode(new RectInt(0, 0, gridSize.x, gridSize.y));
+        RoomNode rootNode = new RoomNode(new RectInt(0, 0, _config.GridSize.x, _config.GridSize.y));
         SplitNode(rootNode, 0);
         PlaceRooms(rootNode);
+        BuildWalls();
         CreatePathByTriangulate();
         
         foreach (var node in _leafNodes) 
             PlaceRoomOnGrid(node.RoomRect.position, node.RoomRect.size);
         
         ExpandPath();
-        BuildWalls();
+        BuildPathWalls();
+        BuildGate();
         RenderGrid();
         
         // 맵 데이터 설정
@@ -79,18 +67,18 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
         }
 
         // 분할 가능한 크기인지 확인
-        if (splitHorizontally && node.NodeRect.height < _minRoomSize * 2) return false;
-        if (!splitHorizontally && node.NodeRect.width < _minRoomSize * 2) return false;
+        if (splitHorizontally && node.NodeRect.height < _config.RoomSize * 2) return false;
+        if (!splitHorizontally && node.NodeRect.width < _config.RoomSize * 2) return false;
 
         if (splitHorizontally)
         {
-            int splitY = Random.Range(_minRoomSize, node.NodeRect.height - _minRoomSize);
+            int splitY = Random.Range(_config.RoomSize, node.NodeRect.height - _config.RoomSize);
             node.Left = new RoomNode(new RectInt(node.NodeRect.x, node.NodeRect.y, node.NodeRect.width, splitY));
             node.Right = new RoomNode(new RectInt(node.NodeRect.x, node.NodeRect.y + splitY, node.NodeRect.width, node.NodeRect.height - splitY));
         }
         else
         {
-            int splitX = Random.Range(_minRoomSize, node.NodeRect.width - _minRoomSize);
+            int splitX = Random.Range(_config.RoomSize, node.NodeRect.width - _config.RoomSize);
             node.Left = new RoomNode(new RectInt(node.NodeRect.x, node.NodeRect.y, splitX, node.NodeRect.height));
             node.Right = new RoomNode(new RectInt(node.NodeRect.x + splitX, node.NodeRect.y, node.NodeRect.width - splitX, node.NodeRect.height));
         }
@@ -109,13 +97,10 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
         }
         else
         {
-            int roomWidth = Random.Range(_minRoomSize, Mathf.Min(_maxRoomSize, node.NodeRect.width));
-            int roomHeight = Random.Range(_minRoomSize, Mathf.Min(_maxRoomSize, node.NodeRect.height));
+            int roomX = Random.Range(node.NodeRect.xMin, node.NodeRect.xMax - _config.RoomSize);
+            int roomY = Random.Range(node.NodeRect.yMin, node.NodeRect.yMax - _config.RoomSize);
 
-            int roomX = Random.Range(node.NodeRect.xMin, node.NodeRect.xMax - roomWidth);
-            int roomY = Random.Range(node.NodeRect.yMin, node.NodeRect.yMax - roomHeight);
-
-            node.RoomRect = new RectInt(roomX, roomY, roomWidth, roomHeight);
+            node.RoomRect = new RectInt(roomX, roomY, _config.RoomSize, _config.RoomSize);
             _leafNodes.Add(node);
             _floorList.Add(node.RoomRect); // BaseMapGenerator의 _floorList에 방 추가
         }
@@ -132,7 +117,7 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
         {
             for (int y = location.y; y < location.y + size.y; y++)
             {
-                if (x >= margin && x < gridSize.x - margin && y >= margin && y < gridSize.y - margin)
+                if (x >= _config.Margin && x < _config.GridSize.x - _config.Margin && y >= _config.Margin && y < _config.GridSize.y - _config.Margin)
                 {
                     Vector2Int pos = new Vector2Int(x, y);
                     _grid[x, y] = (pos == center) ? CellType.FloorCenter : CellType.Floor;
