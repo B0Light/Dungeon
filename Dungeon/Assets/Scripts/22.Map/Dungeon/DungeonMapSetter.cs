@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.AI.Navigation;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Serialization;
+using System.Linq;
 
 public class DungeonMapSetter : MonoBehaviour
 {
     public int dungeonID;
     [SerializeField] private DungeonDataSO dungeonDataSo;
+    [SerializeField] private DungeonRoomDataSO dungeonRoomDataSo;
+    [SerializeField] private Transform roomSlot;
     private NavMeshSurface _navMeshSurface;
     private MapGenerator _mapGenerator;
     
@@ -21,15 +23,12 @@ public class DungeonMapSetter : MonoBehaviour
     [SerializeField] private float navMeshBuildDelay = 0.5f;
     
     public static event Action OnPlayerSpawned;
-    public static event Action OnBossStart;
     public static event Action OnNavMeshBuilt;
 
     private void Awake()
     {
         _navMeshSurface = GetComponent<NavMeshSurface>();
         _mapGenerator = GetComponent<MapGenerator>();
-
-        GameTimer.OnTimerEnd += SpawnBoss;
     }
 
     private void Start()
@@ -43,7 +42,7 @@ public class DungeonMapSetter : MonoBehaviour
         // 1단계: 맵 생성
         GenerateMap();
         yield return new WaitForEndOfFrame();
-        
+        GenerateRoom();
         // 2단계: NavMesh 비동기 빌드
         if (useAsyncNavMeshBuild)
         {
@@ -54,10 +53,7 @@ public class DungeonMapSetter : MonoBehaviour
             yield return new WaitForSeconds(navMeshBuildDelay);
             _navMeshSurface.BuildNavMesh();
         }
-        
-        // 3단계: 플레이어 스폰
-        Vector3 offset = dungeonDataSo.cubeSize;
-        GeneratePlayerSpawn(offset);
+        ActivateGameTimerWithEvent();
     }
 
     private IEnumerator BuildNavMeshAsync()
@@ -77,15 +73,56 @@ public class DungeonMapSetter : MonoBehaviour
         _mapGenerator.GenerateMap();
     }
 
-    private void GeneratePlayerSpawn(Vector3 offset)
+    private void GenerateRoom()
     {
-        //playerSpawn = _mapGenerator.CurrentGenerator.GetStartPos();
-        //exit = _mapGenerator.CurrentGenerator.GetExitPos();
-
-        Instantiate(playerStartPrefab, new Vector3(playerSpawn.x * offset.x, 0f, playerSpawn.y * offset.z), quaternion.identity);
-        Instantiate(exitPrefab, new Vector3(exit.x * offset.x, 0f, exit.y * offset.z), quaternion.identity);
-        
-        ActivateGameTimerWithEvent();
+        MapData mapData = _mapGenerator.GetMapData();
+        Queue<GameObject> buildingQueue = new Queue<GameObject>(dungeonRoomDataSo.essentialBuilding);
+        List<GameObject> subBuildingList = new List<GameObject>(dungeonRoomDataSo.subBuilding);
+        foreach (var room in mapData.floorList)
+        {
+            if (buildingQueue.Count > 0)
+            {
+                var targetBuilding = buildingQueue.Dequeue();
+                Vector3 position = new Vector3(room.center.x * mapData.mapConfig.CubeSize.x, mapData.mapConfig.CubeSize.y, room.center.y * mapData.mapConfig.CubeSize.z); 
+                
+                Quaternion rotation = Quaternion.identity;
+                if (_mapGenerator.GetRoomDirection().TryGetValue(room, out var gateDirections))
+                {
+                    if (gateDirections.Any())
+                    {
+                        Vector2Int firstGateDirection = gateDirections[0];
+                        // Vector2Int 방향을 Quaternion으로 변환
+                        if (firstGateDirection == Vector2Int.right) rotation = Quaternion.Euler(0, 90, 0);
+                        else if (firstGateDirection == Vector2Int.up) rotation = Quaternion.Euler(0, 180, 0);
+                        else if (firstGateDirection == Vector2Int.left) rotation = Quaternion.Euler(0, 270, 0);
+                        else if (firstGateDirection == Vector2Int.down) rotation = Quaternion.Euler(0, 0, 0);
+                    }
+                }
+                GameObject instantiateRoom = Instantiate(targetBuilding, position, rotation, roomSlot);
+                instantiateRoom.transform.localScale = mapData.mapConfig.CubeSize;
+            }
+            else if(subBuildingList.Count > 0)
+            {
+                var targetBuilding = subBuildingList[UnityEngine.Random.Range(0,subBuildingList.Count)];
+                Vector3 position = new Vector3(room.center.x * mapData.mapConfig.CubeSize.x, mapData.mapConfig.CubeSize.y, room.center.y * mapData.mapConfig.CubeSize.z); 
+                
+                Quaternion rotation = Quaternion.identity;
+                if (_mapGenerator.GetRoomDirection().TryGetValue(room, out var gateDirections))
+                {
+                    if (gateDirections.Any())
+                    {
+                        Vector2Int firstGateDirection = gateDirections[0];
+                        // Vector2Int 방향을 Quaternion으로 변환
+                        if (firstGateDirection == Vector2Int.right) rotation = Quaternion.Euler(0, 90, 0);
+                        else if (firstGateDirection == Vector2Int.up) rotation = Quaternion.Euler(0, 180, 0);
+                        else if (firstGateDirection == Vector2Int.left) rotation = Quaternion.Euler(0, 270, 0);
+                        else if (firstGateDirection == Vector2Int.down) rotation = Quaternion.Euler(0, 0, 0);
+                    }
+                }
+                GameObject instantiateRoom = Instantiate(targetBuilding, position, rotation, roomSlot);
+                instantiateRoom.transform.localScale = mapData.mapConfig.CubeSize;
+            }
+        }
     }
     
     private void ActivateGameTimerWithEvent()
@@ -95,11 +132,5 @@ public class DungeonMapSetter : MonoBehaviour
         Debug.Log("Player Spawn");
     }
 
-    private void SpawnBoss()
-    {
-        var spawner = AISpawnManager.Instance.GetClosestSpawnerToPlayer();
-        spawner.AttemptToSpawnCharacter(true);
-        Debug.Log("Time Over Boss Spawns");
-        OnBossStart?.Invoke();
-    }
+    
 }

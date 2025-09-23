@@ -38,6 +38,7 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
         ExpandPath();
         BuildPathWalls();
         BuildGate();
+        PopulateRoomGateDirections();
         RenderGrid();
         
         // 맵 데이터 설정

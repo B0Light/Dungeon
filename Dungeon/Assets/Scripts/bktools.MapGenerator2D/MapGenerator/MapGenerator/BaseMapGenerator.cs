@@ -3,7 +3,6 @@ using System;
  using System.Linq;
  using UnityEngine;
  using bkTools;
- using Random = UnityEngine.Random;
  
  public enum MapGeneratorType
  {
@@ -24,21 +23,22 @@ using System;
      // Configurable properties from ScriptableObject, now using a single data class
      protected readonly MapGenerationConfig _config;
      private readonly Transform _slot;
- 
-     // Runtime state
-     private bool _isMapGenerated = false;
      
      // Common grid data
      protected CellType[,] _grid;
      protected List<RectInt> _floorList;
      private Dictionary<CellType, TileDataSO> _tileDataDict;
      
+     // Room and Gate tracking
+     private readonly Dictionary<RectInt, List<Vector2Int>> _roomGateDirections = new();
+
      // Room connection tracking
      private readonly HashSet<(int, int)> _connectedRoomPairs = new();
      private readonly Dictionary<int, HashSet<int>> _roomConnections = new();
  
      // Public property
-     public bool IsMapGenerated => _isMapGenerated;
+     public bool IsMapGenerated { get; private set; }
+     public Dictionary<RectInt, List<Vector2Int>> RoomGateDirections => _roomGateDirections;
      
      // Constructor
      protected BaseMapGenerator(Transform slot, DungeonDataSO dungeonDataSo)
@@ -71,6 +71,7 @@ using System;
          _floorList = new List<RectInt>();
          _connectedRoomPairs.Clear();
          _roomConnections.Clear();
+         _roomGateDirections.Clear();
      }
      
      protected void ExpandPath()
@@ -231,15 +232,9 @@ using System;
          return _tileDataDict.TryGetValue(cellType, out tileData) && tileData != null;
      }
  
-     public virtual MapData GetMapData()
+     public MapData GetMapData()
      {
-         return new MapData
-         {
-             grid = _grid,
-             floorList = _floorList,
-             gridSize = _config.GridSize,
-             isGenerated = _isMapGenerated
-         };
+         return new MapData(_grid, _floorList, _config);
      }
  
      #region Path Connect Method 
@@ -367,7 +362,7 @@ using System;
              {
                  _grid[pos.x, pos.y] = CellType.Gate;
              }
-         } 
+         }
      } 
 
      private void CreateStraightPath(Vector2Int startPos, Vector2Int endPos) 
@@ -402,7 +397,7 @@ using System;
              {
                  _grid[pos.x, pos.y] = CellType.Gate;
              }
-         } 
+         }
      } 
      
      private float CalculateDirectionChangeCost(DungeonPathfinder2D.Node pathNode, DungeonPathfinder2D.Node currentNode, Vector2Int endPos)
@@ -506,12 +501,14 @@ using System;
          
          _roomConnections[startRoomIndex].Add(endRoomIndex);
          _roomConnections[endRoomIndex].Add(startRoomIndex);
- 
+
          // Generate the path
          var startPos = GetRoomCenter(startRoom);
          var endPos = GetRoomCenter(endRoom);
          
          CreatePathBetweenPoints(startPos, endPos);
+
+         // TODO: 게이트 방향 저장 로직은 맵 생성이 완료된 후 일괄 처리하도록 변경
      }
      
      private Vector2Int GetRoomCenter(RectInt room)
@@ -520,6 +517,75 @@ using System;
              room.x + room.width / 2,
              room.y + room.height / 2
          );
+     }
+
+    // 맵 생성이 완료된 후 방별 게이트 방향을 채우는 함수
+    protected void PopulateRoomGateDirections()
+    {
+        _roomGateDirections.Clear(); // 맵 재생성 시 초기화
+
+        foreach (RectInt room in _floorList)
+        {
+            List<Vector2Int> gatesInRoom = new List<Vector2Int>();
+            
+            // 상단 경계
+            for (int x = room.x; x < room.x + room.width; x++)
+            {
+                CheckAndAddGateDirection(new Vector2Int(x, room.y), gatesInRoom);
+                CheckAndAddGateDirection(new Vector2Int(x, room.y + room.height -1), gatesInRoom);
+            }
+            // 좌우 경계 (모서리 중복 방지)
+            for (int y = room.y; y < room.y + room.height; y++)
+            {
+                CheckAndAddGateDirection(new Vector2Int(room.x , y), gatesInRoom);
+                CheckAndAddGateDirection(new Vector2Int(room.x + room.width- 1, y), gatesInRoom);
+            }
+
+            if (gatesInRoom.Any())
+            {
+                _roomGateDirections[room] = gatesInRoom;
+            }
+        }
+    }
+
+    private void CheckAndAddGateDirection(Vector2Int pos, List<Vector2Int> gatesList)
+    {
+        if (IsValid(pos) && _grid[pos.x, pos.y] == CellType.Gate)
+        {
+            // 게이트 방향을 얻습니다.
+            Vector2Int gateDirection = GetGateDirection(pos);
+            if (gateDirection != Vector2Int.zero)
+            {
+                gatesList.Add(gateDirection);
+            }
+        }
+    }
+
+    private Vector2Int GetGateDirection(Vector2Int gatePos)
+     {
+         Vector2Int direction = Vector2Int.zero;
+         Vector2Int[] neighbors = GetNeighbors(gatePos);
+
+         // 게이트 주변 4방향을 확인하여 Path 또는 ExpandedPath를 찾습니다.
+         foreach (var neighbor in neighbors)
+         {
+             if (IsValid(neighbor) && (_grid[neighbor.x, neighbor.y] == CellType.Path || _grid[neighbor.x, neighbor.y] == CellType.ExpandedPath))
+             {
+                 direction = neighbor - gatePos;
+                 break;
+             }
+         }
+
+         // 방향을 정규화합니다 (예: (1,0) 또는 (0,1))
+         if (direction.x != 0)
+         {
+             return new Vector2Int((int)Mathf.Sign(direction.x), 0);
+         }
+         else if (direction.y != 0)
+         {
+             return new Vector2Int(0, (int)Mathf.Sign(direction.y));
+         }
+         return Vector2Int.zero; // 경로 타일을 찾지 못한 경우
      }
  }
  

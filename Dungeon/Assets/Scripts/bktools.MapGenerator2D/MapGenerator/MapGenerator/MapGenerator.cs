@@ -1,5 +1,5 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -38,4 +38,9 @@ public class MapGenerator : MonoBehaviour
     {
         _currentGenerator = _generatorFactory.CreateGenerator(_dungeonDataSo.generatorType);
     }
+
+    public MapData GetMapData() => _currentGenerator.GetMapData();
+
+    public Dictionary<RectInt, List<Vector2Int>> GetRoomDirection() => _currentGenerator.RoomGateDirections;
+
 }

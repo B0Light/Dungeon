@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &21728849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 21728850}
+  m_Layer: 0
+  m_Name: RoomSlot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &21728850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21728849}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &125048267
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +450,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 200, y: 10, z: 200}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -469,6 +500,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dungeonID: 0
   dungeonDataSo: {fileID: 11400000, guid: d13124cc68eff5a4e9ce3f2ec0d8aaa0, type: 2}
+  dungeonRoomDataSo: {fileID: 11400000, guid: 642489d665ae1ac45808967280720cfd, type: 2}
+  roomSlot: {fileID: 21728850}
   playerStartPrefab: {fileID: 2733936239621624404, guid: 5332ae938f919fe459ba7848c8516d6e, type: 3}
   exitPrefab: {fileID: 2733936239621624404, guid: 08f3f49352520d343baf52a9561d86c9, type: 3}
   useAsyncNavMeshBuild: 1
@@ -480,3 +513,4 @@ SceneRoots:
   - {fileID: 125048270}
   - {fileID: 880597515}
   - {fileID: 2917525456848730943}
+  - {fileID: 21728850}
