@@ -78,51 +78,76 @@ public class DungeonMapSetter : MonoBehaviour
         MapData mapData = _mapGenerator.GetMapData();
         Queue<GameObject> buildingQueue = new Queue<GameObject>(dungeonRoomDataSo.essentialBuilding);
         List<GameObject> subBuildingList = new List<GameObject>(dungeonRoomDataSo.subBuilding);
+
         foreach (var room in mapData.floorList)
         {
+            GameObject targetBuilding = null;
+
             if (buildingQueue.Count > 0)
             {
-                var targetBuilding = buildingQueue.Dequeue();
-                Vector3 position = new Vector3(room.center.x * mapData.mapConfig.CubeSize.x, mapData.mapConfig.CubeSize.y, room.center.y * mapData.mapConfig.CubeSize.z); 
-                
-                Quaternion rotation = Quaternion.identity;
-                if (_mapGenerator.GetRoomDirection().TryGetValue(room, out var gateDirections))
-                {
-                    if (gateDirections.Any())
-                    {
-                        Vector2Int firstGateDirection = gateDirections[0];
-                        // Vector2Int 방향을 Quaternion으로 변환
-                        if (firstGateDirection == Vector2Int.right) rotation = Quaternion.Euler(0, 90, 0);
-                        else if (firstGateDirection == Vector2Int.up) rotation = Quaternion.Euler(0, 180, 0);
-                        else if (firstGateDirection == Vector2Int.left) rotation = Quaternion.Euler(0, 270, 0);
-                        else if (firstGateDirection == Vector2Int.down) rotation = Quaternion.Euler(0, 0, 0);
-                    }
-                }
-                GameObject instantiateRoom = Instantiate(targetBuilding, position, rotation, roomSlot);
-                instantiateRoom.transform.localScale = mapData.mapConfig.CubeSize;
+                targetBuilding = buildingQueue.Dequeue();
             }
-            else if(subBuildingList.Count > 0)
+            else if (subBuildingList.Count > 0)
             {
-                var targetBuilding = subBuildingList[UnityEngine.Random.Range(0,subBuildingList.Count)];
-                Vector3 position = new Vector3(room.center.x * mapData.mapConfig.CubeSize.x, mapData.mapConfig.CubeSize.y, room.center.y * mapData.mapConfig.CubeSize.z); 
-                
-                Quaternion rotation = Quaternion.identity;
-                if (_mapGenerator.GetRoomDirection().TryGetValue(room, out var gateDirections))
-                {
-                    if (gateDirections.Any())
-                    {
-                        Vector2Int firstGateDirection = gateDirections[0];
-                        // Vector2Int 방향을 Quaternion으로 변환
-                        if (firstGateDirection == Vector2Int.right) rotation = Quaternion.Euler(0, 90, 0);
-                        else if (firstGateDirection == Vector2Int.up) rotation = Quaternion.Euler(0, 180, 0);
-                        else if (firstGateDirection == Vector2Int.left) rotation = Quaternion.Euler(0, 270, 0);
-                        else if (firstGateDirection == Vector2Int.down) rotation = Quaternion.Euler(0, 0, 0);
-                    }
-                }
-                GameObject instantiateRoom = Instantiate(targetBuilding, position, rotation, roomSlot);
-                instantiateRoom.transform.localScale = mapData.mapConfig.CubeSize;
+                targetBuilding = subBuildingList[UnityEngine.Random.Range(0, subBuildingList.Count)];
+            }
+        
+            if (targetBuilding != null)
+            {
+                InstantiateBuilding(targetBuilding, room, mapData);
             }
         }
+    }
+
+    private void InstantiateBuilding(GameObject targetBuilding, RectInt room, MapData mapData)
+    {
+        Vector3 position = new Vector3(
+            room.center.x * mapData.mapConfig.CubeSize.x,
+            mapData.mapConfig.CubeSize.y,
+            room.center.y * mapData.mapConfig.CubeSize.z
+        );
+
+        Quaternion rotation = GetBuildingRotation(room);
+
+        GameObject instantiatedRoom = Instantiate(targetBuilding, position, rotation, roomSlot);
+        instantiatedRoom.transform.localScale = mapData.mapConfig.CubeSize;
+    }
+
+    private Quaternion GetBuildingRotation(RectInt room)
+    {
+        if (_mapGenerator.GetRoomDirection().TryGetValue(room, out var gateDirections))
+        {
+            // Define a set of all possible directions.
+            List<Vector2Int> allDirections = new List<Vector2Int>
+            {
+                Vector2Int.up,
+                Vector2Int.down,
+                Vector2Int.left,
+                Vector2Int.right
+            };
+        
+            foreach (var direction in allDirections)
+            {
+                if (!gateDirections.Contains(direction))
+                {
+                    if (direction == Vector2Int.right) return Quaternion.Euler(0, 90, 0); // To face Right
+                    if (direction == Vector2Int.up) return Quaternion.Euler(0, 0, 0);   // To face Up
+                    if (direction == Vector2Int.left) return Quaternion.Euler(0, 270, 0); // To face Left
+                    if (direction == Vector2Int.down) return Quaternion.Euler(0, 180, 0); // To face Down
+                }
+            }
+        
+            if (gateDirections.Any())
+            {
+                Vector2Int firstGateDirection = gateDirections[0];
+                if (firstGateDirection == Vector2Int.right) return Quaternion.Euler(0, 270, 0);
+                if (firstGateDirection == Vector2Int.up) return Quaternion.Euler(0, 180, 0);
+                if (firstGateDirection == Vector2Int.left) return Quaternion.Euler(0, 90, 0);
+                if (firstGateDirection == Vector2Int.down) return Quaternion.Euler(0, 0, 0);
+            }
+        }
+    
+        return Quaternion.identity;
     }
     
     private void ActivateGameTimerWithEvent()

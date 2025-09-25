@@ -6,27 +6,39 @@
   <component name="ChangeListManager">
     <list default="true" id="1844b18a-d80d-49d6-955e-b57cdcc0bed9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/00. Main Source/MapComponent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/00. Main Source/MapComponent.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/00. Main Source/Spawner/Object Spawner.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/00. Main Source/Spawner/Object Spawner.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/FieldMapGenerator.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/FieldMapGenerator.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DungeonManagement_Demo.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DungeonManagement_Demo.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/New Scene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/New Scene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestDungeonMaker.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestDungeonMaker.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/DungeonRoom/DungeonRoom.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Dungeon/DungeonRoom/DungeonRoom.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Legendary.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Legendary.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Misc_Cardboard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Misc_Cardboard.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_01.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_02.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_03.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_03.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_Treasure.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Misc_Chest_Treasure.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Misc_Scifi.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Misc_Scifi.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Misx_Recycle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Misx_Recycle.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Weapon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableBox_Weapon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableShareBox_Tumb.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBox/InteractableShareBox_Tumb.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/MapBuilder/Dungeon/Room/Dungeon_Room_01_Portal.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/MapBuilder/Dungeon/Room/Dungeon_Room_01_Portal.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/MapBuilder/Dungeon/Room/Dungeon_Room_02.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/MapBuilder/Dungeon/Room/Dungeon_Room_02.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/MapBuilder/Dungeon/Room/Dungeon_Room_03.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/MapBuilder/Dungeon/Room/Dungeon_Room_03.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Chapter01.BrokenDungeon.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Chapter01.BrokenDungeon.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Demo_Crypt_01.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Demo_Crypt_01.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Demo_Graveyard_01.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Demo_Graveyard_01.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DungeonRoomPreview.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DungeonRoomPreview.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/20.Interactable/InteractableDungeonManager.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/20.Interactable/InteractableDungeonManager/AdvancedDungeonManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/20.Interactable/InteractableDungeonManager/AdvancedDungeonManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/20.Interactable/InteractableElevator.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/20.Interactable/InteractableElevator/InteractableElevator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/20.Interactable/InteractableElevator/InteractableElevator.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/DungeonMapSetter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/DungeonMapSetter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/99.Utility/Mouse3D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/99.Utility/Mouse3D.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/DungeonTileData/PropPrefabWeightedSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/DungeonTileData/PropPrefabWeightedSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapData/MapData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapData/MapData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGenerator/BSPDungeonMapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGenerator/BSPDungeonMapGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGenerator/BSPDungeonMapGeneratorFull.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGenerator/BSPDungeonMapGeneratorFull.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGenerator/BaseMapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGenerator/BaseMapGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGenerator/DelaunayMapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGenerator/DelaunayMapGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGenerator/IsaacMapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGenerator/IsaacMapGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGenerator/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGenerator/MapGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +52,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/28bc61a429714536ab08181feb5cfb971df600/49/0b3f19f6/Vector2Int.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/a9/41012e6a/Func`3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d303c2bf72cd4cec95665b89c457d265d2b8ef3ed6da17cd4f85587c2f9de7/System.Linq.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/20.Interactable/InteractableEvent/InteractableBrazier.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/99.Utility/HoveringRotator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGenerator/MapGeneratorFactory.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -138,7 +151,8 @@
       <workItem from="1758375923635" duration="7486000" />
       <workItem from="1758466629064" duration="1861000" />
       <workItem from="1758532973708" duration="26779000" />
-      <workItem from="1758611335203" duration="11214000" />
+      <workItem from="1758611335203" duration="11944000" />
+      <workItem from="1758780883996" duration="11286000" />
     </task>
     <servers />
   </component>

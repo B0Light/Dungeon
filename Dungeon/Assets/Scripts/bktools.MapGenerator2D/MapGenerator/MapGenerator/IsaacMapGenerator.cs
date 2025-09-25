@@ -1,10 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Isaac 스타일의 던전 맵 생성기
-/// BFS 방식으로 방을 생성하고 연결합니다.
-/// </summary>
 public class IsaacMapGenerator : BaseMapGenerator
 {
     [Header("맵 설정")]
@@ -36,6 +32,7 @@ public class IsaacMapGenerator : BaseMapGenerator
         GenerateRooms();
         PlaceSpecialRooms();
         BuildWalls();
+        ExpandPath();
         BuildPathWalls();
         BuildGate();
         PopulateRoomGateDirections();
@@ -55,7 +52,7 @@ public class IsaacMapGenerator : BaseMapGenerator
         frontier.Enqueue(startPos);
 
         rooms[startPos] = new Room(startPos, _config.RoomSize, _config.RoomSize, RoomType.Start);
-        PlaceRoomOnGrid(startPos, _config.RoomSize, _config.RoomSize, true);
+        PlaceRoomOnGrid(startPos, _config.RoomSize, _config.RoomSize);
 
         System.Random prng = new System.Random(System.DateTime.Now.Millisecond);
 
@@ -89,7 +86,7 @@ public class IsaacMapGenerator : BaseMapGenerator
                 rooms[current].Doors.Add(dir);
                 rooms[newPos].Doors.Add(-dir);
 
-                PlaceRoomOnGrid(newPos, _config.RoomSize, _config.RoomSize, false);
+                PlaceRoomOnGrid(newPos, _config.RoomSize, _config.RoomSize);
                 frontier.Enqueue(newPos);
 
                 if (rooms.Count >= maxRooms)
@@ -114,14 +111,11 @@ public class IsaacMapGenerator : BaseMapGenerator
                gridY < 1 || gridY + height >= _config.GridSize.y - 1;
     }
     
-    private void PlaceRoomOnGrid(Vector2Int roomPos, int width, int height, bool isStartRoom)
+    private void PlaceRoomOnGrid(Vector2Int roomPos, int width, int height)
     {
-        // 방들 사이에 간격을 두기 위해 spacing 추가
-        int spacing = 3; // 방 사이 간격 (복도 공간)
-        
         // 그리드 좌표로 변환 (간격을 고려한 배치)
-        int gridX = (_config.GridSize.x / 2) + (roomPos.x * (width + spacing));
-        int gridY = (_config.GridSize.y / 2) + (roomPos.y * (height + spacing));
+        int gridX = (_config.GridSize.x / 2) + (roomPos.x * (width + _config.Margin));
+        int gridY = (_config.GridSize.y / 2) + (roomPos.y * (height + _config.Margin));
 
         // 방이 그리드 범위를 벗어나지 않도록 조정
         gridX = Mathf.Clamp(gridX, 1, _config.GridSize.x - width - 1);
@@ -150,44 +144,46 @@ public class IsaacMapGenerator : BaseMapGenerator
         {
             foreach (var door in rooms[roomPos].Doors)
             {
-                CreateCorridor(gridX, gridY, width, height, door, spacing);
+                CreateCorridor(gridX, gridY, width, height, door);
             }
         }
     }
     
-    private void CreateCorridor(int roomX, int roomY, int width, int height, Vector2Int direction, int spacing)
+    private void CreateCorridor(int roomX, int roomY, int width, int height, Vector2Int direction)
     {
         // 복도 길이를 spacing에 맞춰 조정
-        int corridorLength = spacing - 1; // 방 사이 간격만큼 복도 생성
+        int corridorLength = _config.Margin + 1; // 방 사이 간격만큼 복도 생성
         
         // 방의 가장자리에서 복도 시작점 계산
         int startX, startY;
         
         if (direction.x > 0) // 오른쪽
         {
-            startX = roomX + width;
+            startX = roomX + width - 1;
             startY = roomY + height / 2;
         }
         else if (direction.x < 0) // 왼쪽
         {
-            startX = roomX - 1;
+            startX = roomX;
             startY = roomY + height / 2;
         }
         else if (direction.y > 0) // 위쪽
         {
             startX = roomX + width / 2;
-            startY = roomY + height;
+            startY = roomY + height - 1;
         }
         else // 아래쪽
         {
             startX = roomX + width / 2;
-            startY = roomY - 1;
+            startY = roomY;
         }
         
         // 복도 끝점 계산
         int endX = startX + direction.x * corridorLength;
         int endY = startY + direction.y * corridorLength;
-        
+
+        _grid[startX, startY] = CellType.Gate;
+        _grid[endX, endY] = CellType.Gate;
         // BaseMapGenerator의 경로 생성 메서드 사용
         CreatePathBetweenPoints(new Vector2Int(startX, startY), new Vector2Int(endX, endY));
     }

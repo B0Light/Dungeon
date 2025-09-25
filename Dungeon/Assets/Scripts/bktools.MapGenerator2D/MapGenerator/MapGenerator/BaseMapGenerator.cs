@@ -149,7 +149,7 @@ using System;
      
      protected void BuildGate()
      {
-         Func<Vector2Int, bool> isGateCandidate2 = pos =>
+         Func<Vector2Int, bool> isGateCandidate = pos =>
              _grid[pos.x, pos.y] == CellType.Wall &&
              GetNeighborCells(pos)
                  .Any(cell => cell == CellType.Floor || cell == CellType.FloorCenter) &&
@@ -162,7 +162,7 @@ using System;
              GetNeighborCells(pos)
                  .Any(cell => cell != CellType.Empty);
  
-         ProcessGrid(isGateCandidate2, CellType.Gate);
+         ProcessGrid(isGateCandidate, CellType.Gate);
      }
  
      private void ProcessGrid(Func<Vector2Int, bool> condition, CellType newType)
@@ -524,6 +524,7 @@ using System;
     {
         _roomGateDirections.Clear(); // 맵 재생성 시 초기화
 
+        Debug.Log("FloorList Cnt : " + _floorList.Count);
         foreach (RectInt room in _floorList)
         {
             List<Vector2Int> gatesInRoom = new List<Vector2Int>();

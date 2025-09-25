@@ -555,7 +555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3904383197583727764}
   m_Layer: 0
-  m_Name: Dungeon_Room_02
+  m_Name: Dungeon_Room_02_Tomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
