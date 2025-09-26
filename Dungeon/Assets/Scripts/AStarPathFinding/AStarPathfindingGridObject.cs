@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class AStarPathfindingGrid : AStarPathfindingBase<GridObject>
+public class AStarPathfindingGridObject : AStarPathfindingBase<GridObject>
 {
     private GridXZ<GridObject> _grid;
     private GridObject _goalNode;
