@@ -7,10 +7,10 @@ public class MapGenerator : MonoBehaviour
     private MapGeneratorFactory _generatorFactory;
     private BaseMapGenerator _currentGenerator;
 
-    public void InitGenerator(DungeonDataSO dungeonDataSo)
+    public void InitGenerator(Transform slot, DungeonDataSO dungeonDataSo)
     {
         _dungeonDataSo = dungeonDataSo;
-        _generatorFactory = new MapGeneratorFactory(this.transform, _dungeonDataSo);
+        _generatorFactory = new MapGeneratorFactory(slot, _dungeonDataSo);
     }
     
     public void GenerateMap()

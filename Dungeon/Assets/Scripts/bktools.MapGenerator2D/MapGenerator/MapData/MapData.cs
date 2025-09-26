@@ -14,17 +14,19 @@ public class MapData
 
     public MapGenerationConfig mapConfig;
     
-    public int roomCount;
-    
     public int corridorCount;
     
     public System.DateTime generationTime;
     
-    public MapData(CellType[,] grid,List<RectInt> floorList, MapGenerationConfig mapConfig)
+    public MapData(CellType[,] grid, List<RectInt> floorList, MapGenerationConfig mapConfig, int corridorCount)
     {
-        generationTime = System.DateTime.Now;
-        this.mapConfig = mapConfig;
+        this.grid = grid;
         this.floorList = floorList;
+        this.mapConfig = mapConfig;
+        this.corridorCount = corridorCount;
+        generationTime = System.DateTime.Now;
+        
+        LogMapInfo();
     }
     
     public CellType GetCellType(int x, int y)
@@ -45,7 +47,7 @@ public class MapData
     
     public void LogMapInfo()
     {
-        Debug.Log($"맵 생성 완료 - 크기: {mapConfig.GridSize}, 방 개수: {roomCount}, 복도 개수: {corridorCount}, 생성 시간: {generationTime}");
+        Debug.Log($"맵 생성 완료 - 크기: {mapConfig.GridSize}, 방 개수: {floorList.Count}, 복도 개수: {corridorCount}, 생성 시간: {generationTime}");
     }
 }
 
@@ -57,9 +59,6 @@ public class MapGenerationConfig
     public PathType PathType { get; }
     public int RoomSize { get; }
     public int Margin { get; }
-    public float BaseCostWeight { get; }
-    public float DirectionChangePenalty { get; }
-    public float WallPenalty { get; }
     public TileMappingDataSO TileMappingDataSO { get; }
  
     public MapGenerationConfig(DungeonDataSO dungeonDataSo)
@@ -68,10 +67,7 @@ public class MapGenerationConfig
         CubeSize = dungeonDataSo.cubeSize;
         PathType = dungeonDataSo.pathType;
         RoomSize = dungeonDataSo.roomSize;
-        Margin = 3; // Hardcoded, consider making configurable
-        BaseCostWeight = 5f; // Hardcoded
-        DirectionChangePenalty = 5f; // Hardcoded
-        WallPenalty = 100f; // Hardcoded
+        Margin = 3; 
         TileMappingDataSO = dungeonDataSo.tileMappingDataSO;
     }
 }

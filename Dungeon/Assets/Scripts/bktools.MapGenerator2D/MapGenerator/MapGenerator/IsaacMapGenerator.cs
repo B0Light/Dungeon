@@ -38,10 +38,6 @@ public class IsaacMapGenerator : BaseMapGenerator
         BuildSubWalls();
         PopulateRoomGateDirections();
         RenderGrid();
-        
-        // 맵 데이터 설정
-        var mapData = GetMapData();
-        mapData.roomCount = rooms.Count;
     }
 
     private void GenerateRooms()

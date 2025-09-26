@@ -42,10 +42,6 @@ public class BSPDungeonMapGeneratorFull : BaseMapGenerator
         BuildSubWalls();
         PopulateRoomGateDirections();
         RenderGrid();
-        
-        // 맵 데이터 설정
-        var mapData = GetMapData();
-        mapData.roomCount = _leafNodes.Count;
     }
     
     bool SplitNode(RoomNode node, int depth)

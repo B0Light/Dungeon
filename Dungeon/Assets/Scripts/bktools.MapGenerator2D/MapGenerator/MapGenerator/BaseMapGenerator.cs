@@ -35,6 +35,7 @@ public abstract class BaseMapGenerator : IMapGenerator
     // Room connection tracking
     private readonly HashSet<(int, int)> _connectedRoomPairs = new();
     private readonly Dictionary<int, HashSet<int>> _roomConnections = new();
+    private MapData _mapData;
 
     // Public property
     public bool IsMapGenerated { get; private set; }
@@ -236,7 +237,8 @@ public abstract class BaseMapGenerator : IMapGenerator
 
     public MapData GetMapData()
     {
-        return new MapData(_grid, _floorList, _config);
+        _mapData ??= new MapData(_grid, _floorList, _config, _connectedRoomPairs.Count);
+        return _mapData;
     }
 
     #region Path Connect Method 

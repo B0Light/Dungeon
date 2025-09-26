@@ -36,10 +36,6 @@ public class DelaunayMapGenerator : BaseMapGenerator
         BuildSubWalls();
         PopulateRoomGateDirections();
         RenderGrid();
-        
-        // 맵 데이터 설정
-        var mapData = GetMapData();
-        mapData.roomCount = _floorList.Count;
     }
     
     private void PlaceRooms()
