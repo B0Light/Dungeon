@@ -33,15 +33,6 @@ public class DungeonBGMManager : MonoBehaviour
     private bool _isBossMode = false;
     private Coroutine _currentFadeCoroutine;
     
-    private void Start()
-    {
-        // 던전 매니저가 있다면 이벤트 구독
-        DungeonMapSetter dungeonManager = FindFirstObjectByType<DungeonMapSetter>();
-        if (dungeonManager != null)
-        {
-            DungeonMapSetter.OnPlayerSpawned += () => OnDungeonEnter(dungeonManager.dungeonID);
-        }
-    }
     
     #region 던전 BGM 제어 메서드
     

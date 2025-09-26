@@ -21,17 +21,9 @@ public class GameTimer : MonoBehaviour
         // 초기 시간 설정
         currentTime = countDown ? gameTime : 0f;
         UpdateTimerDisplay();
-        
-        // 이벤트 구독
-        DungeonMapSetter.OnPlayerSpawned += StartTimer;
     }
 
-    private void OnDestroy()
-    {
-        // 이벤트 구독 해제
-        DungeonMapSetter.OnPlayerSpawned -= StartTimer;
-    }
-
+   
     private void FixedUpdate()
     {
         if (isTimerRunning)

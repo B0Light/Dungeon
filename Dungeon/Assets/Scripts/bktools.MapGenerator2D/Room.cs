@@ -73,7 +73,8 @@ public enum CellType
     PathWall,
     Path,
     ExpandedPath,
-    Gate,
+    MainGate,
+    SubGate,
 }
 
 

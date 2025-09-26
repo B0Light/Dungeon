@@ -73,7 +73,7 @@ public class AICharacterManager : CharacterManager
         if (currentState != newState)
         {
             currentState = newState;
-            currentState.OnEnterState(this); // 새로운 상태의 초기화 메서드 호출
+            currentState.OnEnterState(this);
         }
     }
     

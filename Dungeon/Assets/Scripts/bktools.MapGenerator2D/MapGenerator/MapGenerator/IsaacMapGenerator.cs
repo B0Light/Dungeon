@@ -35,6 +35,7 @@ public class IsaacMapGenerator : BaseMapGenerator
         ExpandPath();
         BuildPathWalls();
         BuildGate();
+        BuildSubWalls();
         PopulateRoomGateDirections();
         RenderGrid();
         
@@ -182,8 +183,8 @@ public class IsaacMapGenerator : BaseMapGenerator
         int endX = startX + direction.x * corridorLength;
         int endY = startY + direction.y * corridorLength;
 
-        _grid[startX, startY] = CellType.Gate;
-        _grid[endX, endY] = CellType.Gate;
+        _grid[startX, startY] = CellType.MainGate;
+        _grid[endX, endY] = CellType.MainGate;
         // BaseMapGenerator의 경로 생성 메서드 사용
         CreatePathBetweenPoints(new Vector2Int(startX, startY), new Vector2Int(endX, endY));
     }

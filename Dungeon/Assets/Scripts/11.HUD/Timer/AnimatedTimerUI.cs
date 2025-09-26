@@ -45,13 +45,6 @@ public class AnimatedTimerUI : MonoBehaviour
         
         UpdateTimerDisplay();
         
-        // 이벤트 구독
-        DungeonMapSetter.OnPlayerSpawned += StartTimer;
-    }
-
-    private void OnDestroy()
-    {
-        DungeonMapSetter.OnPlayerSpawned -= StartTimer;
     }
 
     private void Update()

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -45,5 +46,32 @@ public class MapData
     public void LogMapInfo()
     {
         Debug.Log($"맵 생성 완료 - 크기: {mapConfig.GridSize}, 방 개수: {roomCount}, 복도 개수: {corridorCount}, 생성 시간: {generationTime}");
+    }
+}
+
+// Helper class to encapsulate configuration data
+public class MapGenerationConfig
+{
+    public Vector2Int GridSize { get; }
+    public Vector3 CubeSize { get; }
+    public PathType PathType { get; }
+    public int RoomSize { get; }
+    public int Margin { get; }
+    public float BaseCostWeight { get; }
+    public float DirectionChangePenalty { get; }
+    public float WallPenalty { get; }
+    public TileMappingDataSO TileMappingDataSO { get; }
+ 
+    public MapGenerationConfig(DungeonDataSO dungeonDataSo)
+    {
+        GridSize = dungeonDataSo.gridSize;
+        CubeSize = dungeonDataSo.cubeSize;
+        PathType = dungeonDataSo.pathType;
+        RoomSize = dungeonDataSo.roomSize;
+        Margin = 3; // Hardcoded, consider making configurable
+        BaseCostWeight = 5f; // Hardcoded
+        DirectionChangePenalty = 5f; // Hardcoded
+        WallPenalty = 100f; // Hardcoded
+        TileMappingDataSO = dungeonDataSo.tileMappingDataSO;
     }
 }

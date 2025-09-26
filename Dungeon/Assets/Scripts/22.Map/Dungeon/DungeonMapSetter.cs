@@ -21,9 +21,6 @@ public class DungeonMapSetter : MonoBehaviour
     [Header("NavMesh Build Settings")]
     [SerializeField] private bool useAsyncNavMeshBuild = true;
     [SerializeField] private float navMeshBuildDelay = 0.5f;
-    
-    public static event Action OnPlayerSpawned;
-    public static event Action OnNavMeshBuilt;
 
     private void Awake()
     {
@@ -39,11 +36,12 @@ public class DungeonMapSetter : MonoBehaviour
 
     private IEnumerator GenerateMapSequence()
     {
-        // 1단계: 맵 생성
+        // 1단계 : 맵 생성
         GenerateMap();
         yield return new WaitForEndOfFrame();
+        // 2단계 : 방 생성 
         GenerateRoom();
-        // 2단계: NavMesh 비동기 빌드
+        // 3단계 : NavMesh 비동기 빌드
         if (useAsyncNavMeshBuild)
         {
             yield return StartCoroutine(BuildNavMeshAsync());
@@ -53,7 +51,6 @@ public class DungeonMapSetter : MonoBehaviour
             yield return new WaitForSeconds(navMeshBuildDelay);
             _navMeshSurface.BuildNavMesh();
         }
-        ActivateGameTimerWithEvent();
     }
 
     private IEnumerator BuildNavMeshAsync()
@@ -63,9 +60,6 @@ public class DungeonMapSetter : MonoBehaviour
         
         // 점진적 NavMesh 빌드
         _navMeshSurface.BuildNavMesh();
-        
-        Debug.Log("NavMesh 빌드 완료");
-        OnNavMeshBuilt?.Invoke();
     }
 
     private void GenerateMap()
@@ -149,13 +143,4 @@ public class DungeonMapSetter : MonoBehaviour
     
         return Quaternion.identity;
     }
-    
-    private void ActivateGameTimerWithEvent()
-    {
-        // 플레이어 스폰 이벤트 발생
-        OnPlayerSpawned?.Invoke();
-        Debug.Log("Player Spawn");
-    }
-
-    
 }

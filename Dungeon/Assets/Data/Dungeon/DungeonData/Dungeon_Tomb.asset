@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dungeon_Tomb
   m_EditorClassIdentifier: 
   dungeonCode: Tomb
-  seed: 100
+  seed: 1
   generatorType: 3
   gridSize: {x: 100, y: 100}
   cubeSize: {x: 2, y: 2, z: 2}

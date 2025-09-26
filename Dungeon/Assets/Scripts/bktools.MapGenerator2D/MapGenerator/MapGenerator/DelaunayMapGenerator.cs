@@ -33,6 +33,7 @@ public class DelaunayMapGenerator : BaseMapGenerator
         ExpandPath();
         BuildPathWalls();
         BuildGate();
+        BuildSubWalls();
         PopulateRoomGateDirections();
         RenderGrid();
         

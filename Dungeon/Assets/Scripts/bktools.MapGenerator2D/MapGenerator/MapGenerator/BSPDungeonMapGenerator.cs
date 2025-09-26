@@ -38,6 +38,7 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
         ExpandPath();
         BuildPathWalls();
         BuildGate();
+        BuildSubWalls();
         PopulateRoomGateDirections();
         RenderGrid();
         
