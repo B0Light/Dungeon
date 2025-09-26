@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1844b18a-d80d-49d6-955e-b57cdcc0bed9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/Parkgoer/AStarPathfinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/Parkgoer/AStarPathfinding.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AStarPathFinding/AStarPathfindingGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AStarPathFinding/AStarPathfindingGridObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AStarPathFinding/AStarPathfindingGrid.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AStarPathFinding/AStarPathfindingGridObject.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGenerator/BaseMapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGenerator/BaseMapGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestDungeonMaker.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestDungeonMaker.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/DungeonMapSetter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/DungeonMapSetter.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
