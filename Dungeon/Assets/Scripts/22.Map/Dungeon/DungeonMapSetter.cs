@@ -15,7 +15,6 @@ public class DungeonMapSetter : MonoBehaviour
     [SerializeField] private Transform roomSlot;
     private NavMeshSurface _navMeshSurface;
     private MapGenerator _mapGenerator;
-    private WaypointManager _waypointManager;
     
     [SerializeField] private GameObject playerStartPrefab;
     [SerializeField] private GameObject exitPrefab;
@@ -29,7 +28,6 @@ public class DungeonMapSetter : MonoBehaviour
     {
         _navMeshSurface = GetComponent<NavMeshSurface>();
         _mapGenerator = GetComponent<MapGenerator>();
-        _waypointManager = GetComponent<WaypointManager>();
     }
 
     private void Start()
@@ -55,7 +53,6 @@ public class DungeonMapSetter : MonoBehaviour
             yield return new WaitForSeconds(navMeshBuildDelay);
             _navMeshSurface.BuildNavMesh();
         }
-        _waypointManager.Init(_mapGenerator.GetMapData());
     }
 
     private IEnumerator BuildNavMeshAsync()

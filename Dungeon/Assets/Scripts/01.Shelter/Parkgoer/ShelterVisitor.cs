@@ -82,22 +82,14 @@ public class ShelterVisitor : MonoBehaviour
     {
        StartCoroutine(MoveThroughPointsCoroutine(points));
     }
-
-    private IEnumerator RotateTowardsPointCoroutine(Vector3 targetPoint)
+    
+    private IEnumerator MoveThroughPointsCoroutine(List<Vector3> points)
     {
-        if (targetPoint == transform.position) yield break;
-        
-        Vector3 direction = (targetPoint - transform.position).normalized;
-
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-
-        while (Quaternion.Angle(transform.rotation, targetRotation) > 1f)
+        foreach (Vector3 targetPoint in points)
         {
-            _isMoving.Value = false;
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-            yield return null; 
+            yield return StartCoroutine(MoveToPointCoroutine(targetPoint));
         }
-        transform.rotation = targetRotation;
+        TryAttraction();
     }
     
     public IEnumerator MoveToPointCoroutine(Vector3 targetPoint, Quaternion? targetRotation = null)
@@ -122,15 +114,24 @@ public class ShelterVisitor : MonoBehaviour
         _isMoving.Value = false;
     }
     
-    private IEnumerator MoveThroughPointsCoroutine(List<Vector3> points)
+    private IEnumerator RotateTowardsPointCoroutine(Vector3 targetPoint)
     {
-        foreach (Vector3 targetPoint in points)
+        if (targetPoint == transform.position) yield break;
+        
+        Vector3 direction = (targetPoint - transform.position).normalized;
+
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+        while (Quaternion.Angle(transform.rotation, targetRotation) > 1f)
         {
-            yield return StartCoroutine(MoveToPointCoroutine(targetPoint));
+            _isMoving.Value = false;
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            yield return null; 
         }
-        TryAttraction();
+        transform.rotation = targetRotation;
     }
 
+    
     private void TryAttraction()
     {
         if (!_destination) return;
@@ -141,7 +142,7 @@ public class ShelterVisitor : MonoBehaviour
         
         revenueFacilityTile.AddVisitor(this);
     }
-
+    
     public void GetNextDestination(Vector2Int curPos)
     {
         Debug.Log("Set NEXT DESTINATION");

@@ -13,20 +13,7 @@ public class AStarPathfinding : MonoBehaviour
         _grid = GridBuildingSystem.Instance.GetGrid();
 
         List<GridObject> path = FindPath(start, goal);
-        /*
-        if (path != null)
-        {
-            Debug.Log("Success!");
-            foreach (var node in path)
-            {
-                Debug.Log($"Path Node: ({node.GetOriginPosition().x}, {node.GetOriginPosition().y})");
-            }
-        }
-        else
-        {
-            Debug.Log("Path not found!");
-        }
-        */
+        
         return path;
     }
 
