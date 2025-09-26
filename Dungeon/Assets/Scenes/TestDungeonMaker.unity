@@ -498,7 +498,6 @@ GameObject:
   - component: {fileID: 614296772561904408}
   - component: {fileID: 6905432225046475023}
   - component: {fileID: 6905432225046475022}
-  - component: {fileID: 6905432225046475024}
   m_Layer: 0
   m_Name: FieldMapGenerator
   m_TagString: Untagged
@@ -539,18 +538,6 @@ MonoBehaviour:
   exitPrefab: {fileID: 2733936239621624404, guid: 08f3f49352520d343baf52a9561d86c9, type: 3}
   useAsyncNavMeshBuild: 1
   navMeshBuildDelay: 0.5
---- !u!114 &6905432225046475024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6905432225046475021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 625f45c42fd34364bac5e124dde510c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

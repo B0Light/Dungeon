@@ -9,7 +9,6 @@ public class GridXZ<TGridObject>
     private readonly float _cellSize;
     private readonly Vector3 _originPosition;
     private readonly TGridObject[,] _gridArray;
-    private List<TGridObject> _onGridObjects;
 
     private readonly Transform _textTransform;
     private readonly Transform _lineTransform;
@@ -31,6 +30,8 @@ public class GridXZ<TGridObject>
             }
         }
     }
+
+    public TGridObject[,] GetAllGridObjects() => _gridArray;
     
     public float GetCellSize() => _cellSize;
 
@@ -45,6 +46,5 @@ public class GridXZ<TGridObject>
 
     public TGridObject GetGridObject(int x, int z) => IsValidGridPosition(x, z) ? _gridArray[x, z] : default;
     
-
     private bool IsValidGridPosition(int x, int z) => x >= 0 && z >= 0 && x < _width && z < _height;
 }

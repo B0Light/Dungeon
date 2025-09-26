@@ -37,7 +37,7 @@ public class ShelterVisitor : MonoBehaviour
     public void SpawnVisitor(ShelterManager shelterManager)
     {
         _shelterManager = shelterManager;
-        Vector2Int startPos = new Vector2Int(20, 0);
+        Vector2Int startPos = new Vector2Int(3, 0);
         if (!SetRoute(startPos, SelectRandomAttraction()))
         {
             GetNextDestination(startPos);
@@ -50,7 +50,7 @@ public class ShelterVisitor : MonoBehaviour
         if(attractions.Count == 0) 
         { 
             Debug.Log("NO ATTRACTION : GOAL - H.Q");
-            return new Vector2Int(21, 3); // H.Q Position;
+            return new Vector2Int(4, 1); // H.Q Position;
         }
         int randomIndex = UnityEngine.Random.Range(0, attractions.Count);
         return attractions[randomIndex];

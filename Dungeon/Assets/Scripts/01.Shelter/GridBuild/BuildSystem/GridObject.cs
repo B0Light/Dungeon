@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GridObject
+public class GridObject : IPathNode
 {
     private GridXZ<GridObject> _grid;
     private int _posX, _posZ; // 현재 GridObject의 위치
@@ -13,6 +13,7 @@ public class GridObject
     public float HCost { get; set; } // 휴리스틱 비용
     public float FCost => GCost + HCost; // 총 비용
     public GridObject Parent { get; set; }
+    IPathNode IPathNode.Parent { get => Parent; set => Parent = (GridObject)value; }
     
     public GridObject(GridXZ<GridObject> grid, int posX, int posZ)
     {

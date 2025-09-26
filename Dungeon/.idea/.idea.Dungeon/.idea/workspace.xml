@@ -6,11 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="1844b18a-d80d-49d6-955e-b57cdcc0bed9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Shelter/GridBuildSystem/ParkGoer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Shelter/GridBuildSystem/ParkGoer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/03.Shelter.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/03.Shelter.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestDungeonMaker.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestDungeonMaker.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/GridBuild/BuildSystem/GridObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/GridBuild/BuildSystem/GridObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/GridBuild/BuildSystem/GridXZ.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/GridBuild/BuildSystem/GridXZ.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/Parkgoer/AStarPathfinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/Parkgoer/AStarPathfinding.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/Parkgoer/ShelterVisitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/Parkgoer/ShelterVisitor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/DungeonMapSetter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/DungeonMapSetter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/WaypointManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/WaypointManager.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +28,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/a9/41012e6a/Func`3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d303c2bf72cd4cec95665b89c457d265d2b8ef3ed6da17cd4f85587c2f9de7/System.Linq.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/99.Utility/HoveringRotator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AStarPathFinding/AStarPathfindingGrid.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/bktools.MapGenerator2D/MapGenerator/MapGenerator/MapGeneratorFactory.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
