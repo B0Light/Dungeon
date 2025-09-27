@@ -46,6 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnVisual: {fileID: 9218055019607344518}
+  spawnPrefab:
+    characterPrefab: {fileID: 2733936239621624404, guid: 08f3f49352520d343baf52a9561d86c9, type: 3}
+    maxHealth: 100
+  cellSize: {x: 2, y: 2, z: 2}
+  mapOffset: {x: 0.5, y: 2, z: 0.5}
+  _gridPosition: {x: 0, y: 0}
 --- !u!1 &9218055019607344518
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,9 +59,6 @@ public class ExtractionSummaryManager : GUIComponent
         
         lootItemGrid.SetGrid(12,12, ConvertDictToRepeatedList(WorldPlayerInventory.Instance.finalItemDict));
         
-        /* combat */
-        SetEliminatedEnemy();
-        
         /* Boss */
         BossEliminated();
         
@@ -161,27 +158,7 @@ public class ExtractionSummaryManager : GUIComponent
     }
 
     #endregion
-
-    #region CombatPanel
-
-    private void SetEliminatedEnemy()
-    {
-        if(_aiSpawnManager == null || _enemyDB == null) return;
-        
-        foreach (var killLog in _aiSpawnManager.GetKillLog())
-        {
-            _enemyDB.CreateEnemyInfo(killLog.Key, killLog.Value, killLogSlot);
-
-            if (killLog.Key % 10 == 0)
-            {
-                _isBossEliminated = true;
-                _bossId = killLog.Key;
-            }
-        }
-    }
     
-    #endregion
-
     #region BossPanel
 
     private void BossEliminated()

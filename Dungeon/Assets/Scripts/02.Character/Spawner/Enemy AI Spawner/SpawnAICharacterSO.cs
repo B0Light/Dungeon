@@ -14,8 +14,4 @@ public class SpawnableCharacter
     [Header("Character Info")]
     public GameObject characterPrefab;
     public int maxHealth = 100;
-    
-    [Header("Spawn Settings")]
-    [Range(0, 10)]
-    public int spawnWeight = 1; // 스폰 가중치 (높을수록 자주 스폰)
 }

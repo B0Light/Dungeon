@@ -107,7 +107,7 @@ public class AICharacterManager : CharacterManager
         characterCollider.enabled = false;
         navMeshAgent.ResetPath();
         navMeshAgent.isStopped = true;
-        AISpawnManager.Instance?.NotifyTermination(this);
+        //AISpawnManager.Instance?.NotifyTermination(this);
         return base.ProcessDeathEvent();
     }
     

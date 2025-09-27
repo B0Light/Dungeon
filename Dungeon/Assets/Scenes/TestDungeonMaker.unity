@@ -498,6 +498,7 @@ GameObject:
   - component: {fileID: 614296772561904408}
   - component: {fileID: 6905432225046475023}
   - component: {fileID: 6905432225046475022}
+  - component: {fileID: 6905432225046475024}
   m_Layer: 0
   m_Name: FieldMapGenerator
   m_TagString: Untagged
@@ -534,13 +535,20 @@ MonoBehaviour:
   dungeonRoomDataSo: {fileID: 11400000, guid: 642489d665ae1ac45808967280720cfd, type: 2}
   floorSlot: {fileID: 46885518}
   roomSlot: {fileID: 21728850}
-  mapParent: {fileID: 2917525456848730943}
-  playerPrefab: {fileID: 8602919852715271167, guid: 4b2e7b62e7c0e46489ce1d8bbd568525, type: 3}
-  enemyPrefab: {fileID: 8602919852715271167, guid: 4b2e7b62e7c0e46489ce1d8bbd568525, type: 3}
-  playerStartPrefab: {fileID: 2733936239621624404, guid: 5332ae938f919fe459ba7848c8516d6e, type: 3}
-  exitPrefab: {fileID: 2733936239621624404, guid: 08f3f49352520d343baf52a9561d86c9, type: 3}
   useAsyncNavMeshBuild: 1
   navMeshBuildDelay: 0.5
+--- !u!114 &6905432225046475024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905432225046475021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6361329703f69824eb465a8d7204230f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

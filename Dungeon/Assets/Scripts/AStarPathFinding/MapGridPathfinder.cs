@@ -35,16 +35,6 @@ public class MapGridPathfinder : AStarPathfindingBase<GridPathNode>
         InitializeNodeGrid();
     }
 
-    // BaseMapGenerator에서 직접 생성하는 경우
-    public MapGridPathfinder(CellType[,] grid, Vector2Int gridSize)
-    {
-        _grid = grid;
-        _gridSize = gridSize;
-        _nodeGrid = new GridPathNode[_gridSize.x, _gridSize.y];
-        
-        InitializeNodeGrid();
-    }
-
     private void InitializeNodeGrid()
     {
         for (int x = 0; x < _gridSize.x; x++)

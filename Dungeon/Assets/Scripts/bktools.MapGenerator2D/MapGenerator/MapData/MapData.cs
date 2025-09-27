@@ -51,7 +51,9 @@ public class MapData
     }
 }
 
-// Helper class to encapsulate configuration data
+/// <summary>
+/// 맵 생성시 필요한 정보 
+/// </summary>
 public class MapGenerationConfig
 {
     public Vector2Int GridSize { get; }
