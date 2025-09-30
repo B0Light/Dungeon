@@ -15,7 +15,7 @@ public class GridBuildingSystem : MonoBehaviour
     private GridXZ<GridCell> _grid;
     private BuildObjData.Dir _dir = BuildObjData.Dir.Down;
     private readonly int _gridWidth = 7;
-    private readonly int _gridLength = 9;
+    private readonly int _gridHeight = 9;
     private readonly int _cellSize = 5;
 
     [SerializeField, Range(0,1f)] private float depreciation = 0.7f;
@@ -48,7 +48,7 @@ public class GridBuildingSystem : MonoBehaviour
         Instance = this;
         _grid = new GridXZ<GridCell>(
             _gridWidth,
-            _gridLength,
+            _gridHeight,
             _cellSize,
             transform.position,
             (int x, int z) => new GridCell(x, z, CellType.Empty)
@@ -90,7 +90,7 @@ public class GridBuildingSystem : MonoBehaviour
     {
         for (int i = 0; i < _gridWidth; i++)
         {
-            for (int j = 0; j < _gridLength; j++)
+            for (int j = 0; j < _gridHeight; j++)
             {
                 SetDefaultTile(i,j);
             }
@@ -511,7 +511,7 @@ public class GridBuildingSystem : MonoBehaviour
 
         return x >= 0 && z >= 0 &&
                x + objectWidth <= _gridWidth &&
-               z + objectLength <= _gridLength;
+               z + objectLength <= _gridHeight;
     }
     
     public void SelectToBuild(BuildObjData buildData)

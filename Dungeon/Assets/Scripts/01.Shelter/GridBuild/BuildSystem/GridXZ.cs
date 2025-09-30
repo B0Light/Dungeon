@@ -30,6 +30,8 @@ public class GridXZ<GridCell>
     public GridCell[,] GetAllGridObjects() => _gridArray;
     
     public float GetCellSize() => _cellSize;
+    public int GetGridWidth() => _width;
+    public int GetGridHeight() => _height;
 
     public Vector3 GetWorldPosition(int x, int z) => new Vector3(x, 0, z) * _cellSize + _originPosition;
 

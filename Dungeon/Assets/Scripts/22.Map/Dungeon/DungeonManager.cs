@@ -16,7 +16,7 @@ public class DungeonManager : MonoBehaviour
     
     private NavMeshSurface _navMeshSurface;
     private MapGenerator _mapGenerator;
-    private MapGridPathfinder _pathfinder;
+    private GridPathfinder _pathfinder;
     private AISpawnManager _aiSpawnManager;
     
     [Header("NavMesh Build Settings")]
@@ -56,7 +56,7 @@ public class DungeonManager : MonoBehaviour
         
         // 4단계 : PathFinder 생성
         var mapData = _mapGenerator.GetMapData();
-        _pathfinder = new MapGridPathfinder(mapData);
+        _pathfinder = new GridPathfinder(mapData);
         
         _pathfinder.AllowDiagonalMovement = false; // 4방향 이동만
         _pathfinder.StraightMoveCost = 1.0f;

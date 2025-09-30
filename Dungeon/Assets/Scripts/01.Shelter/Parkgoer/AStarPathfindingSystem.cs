@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class AStarPathfindingSystem : MonoBehaviour
 {
-    private AStarPathfinding _pathfinding;
+    private GridPathfinder _pathfinder;
 
     private void Awake()
     {
-        _pathfinding = new AStarPathfinding();
+        _pathfinder = new GridPathfinder();
     }
 
     public List<GridCell> NavigatePath(Vector2Int start, Vector2Int goal)
     {
-        return _pathfinding.NavigatePath(start, goal);
+        return _pathfinder.NavigatePath(start, goal);
     }
 }

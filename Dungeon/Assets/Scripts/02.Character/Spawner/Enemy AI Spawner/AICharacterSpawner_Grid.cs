@@ -26,7 +26,7 @@ public class AICharacterSpawner_Grid : MonoBehaviour
         _gridPosition = new Vector2Int(gridX, gridY);
     }
     
-    public void SpawnUnit(MapGridPathfinder pathfinder)
+    public void SpawnUnit(GridPathfinder pathfinder)
     {
         GameObject unit = Instantiate(spawnPrefab.characterPrefab);
         

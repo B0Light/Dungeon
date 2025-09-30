@@ -9,13 +9,13 @@ public class AISpawnManager : MonoBehaviour
     private readonly List<AICharacterSpawner_Grid> _aiCharacterSpawners = new List<AICharacterSpawner_Grid>();
     private readonly List<AICharacterManager> _spawnedInCharacters = new List<AICharacterManager>();
 
-    private MapGridPathfinder _pathfinder;
+    private GridPathfinder _pathfinder;
     private void Awake()
     {
         Instance = this;
     }
 
-    public void Init(MapGridPathfinder pathfinder)
+    public void Init(GridPathfinder pathfinder)
     {
         _pathfinder = pathfinder;
 

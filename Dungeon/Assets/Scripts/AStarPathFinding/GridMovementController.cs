@@ -12,8 +12,8 @@ public class GridMovementController : MonoBehaviour
     public bool showDebugPath = true;
     public Color pathColor = Color.green;
     
-    private MapGridPathfinder _pathfinder;
-    private List<Vector2Int> _currentPath;
+    private GridPathfinder _pathfinder;
+    private List<GridCell> _currentPath;
     private int _currentPathIndex;
     private bool _isMoving;
     private Vector3 _targetWorldPosition;
@@ -23,7 +23,7 @@ public class GridMovementController : MonoBehaviour
     public Vector3 cellSize = Vector3.one;
     public Vector3 gridOffset = Vector3.zero;
 
-    public void Initialize(MapGridPathfinder pathfinder, Vector2Int startPosition)
+    public void Initialize(GridPathfinder pathfinder, Vector2Int startPosition)
     {
         _pathfinder = pathfinder;
         _pathfinder.AllowDiagonalMovement = allowDiagonalMovement;
@@ -41,7 +41,7 @@ public class GridMovementController : MonoBehaviour
             return false;
         }
 
-        var path = _pathfinder.FindPath(_currentGridPosition, targetPosition);
+        var path = _pathfinder.NavigatePath(_currentGridPosition, targetPosition);
         
         if (path == null || path.Count == 0)
         {
@@ -52,11 +52,6 @@ public class GridMovementController : MonoBehaviour
         _currentPath = path;
         _currentPathIndex = 0;
         _isMoving = false;
-        
-        if (showDebugPath)
-        {
-            _pathfinder.PrintPath(path);
-        }
         
         StartMovement();
         return true;
@@ -78,7 +73,7 @@ public class GridMovementController : MonoBehaviour
         }
 
         var nextGridPos = _currentPath[_currentPathIndex];
-        _targetWorldPosition = GridToWorldPosition(nextGridPos);
+        _targetWorldPosition = GridToWorldPosition(nextGridPos.Position);
         
         if (smoothMovement)
         {
@@ -88,7 +83,7 @@ public class GridMovementController : MonoBehaviour
         {
             // 즉시 이동
             transform.position = _targetWorldPosition;
-            _currentGridPosition = nextGridPos;
+            _currentGridPosition = nextGridPos.Position;
             OnReachedWaypoint();
         }
     }
@@ -104,7 +99,7 @@ public class GridMovementController : MonoBehaviour
         if (Vector3.Distance(transform.position, _targetWorldPosition) < 0.01f)
         {
             transform.position = _targetWorldPosition;
-            _currentGridPosition = _currentPath[_currentPathIndex];
+            _currentGridPosition = _currentPath[_currentPathIndex].Position;
             _isMoving = false;
             
             OnReachedWaypoint();
@@ -176,8 +171,8 @@ public class GridMovementController : MonoBehaviour
         
         for (int i = 0; i < _currentPath.Count - 1; i++)
         {
-            var current = GridToWorldPosition(_currentPath[i]);
-            var next = GridToWorldPosition(_currentPath[i + 1]);
+            var current = GridToWorldPosition(_currentPath[i].Position);
+            var next = GridToWorldPosition(_currentPath[i + 1].Position);
             
             Gizmos.DrawLine(current, next);
             Gizmos.DrawWireSphere(current, 0.2f);
@@ -185,7 +180,7 @@ public class GridMovementController : MonoBehaviour
         
         if (_currentPath.Count > 0)
         {
-            var last = GridToWorldPosition(_currentPath[_currentPath.Count - 1]);
+            var last = GridToWorldPosition(_currentPath[-1].Position);
             Gizmos.DrawWireSphere(last, 0.2f);
         }
     }
