@@ -43,7 +43,7 @@ public class RoadTile : PlacedObject
 
     private bool IsRoadAtPosition(Vector2Int position, Vector2Int direction)
     {
-        GridObject gridObject = GridBuildingSystem.Instance.GetGrid().GetGridObject(position.x, position.y);
+        GridCell gridObject = GridBuildingSystem.Instance.GetGrid().GetGridObject(position.x, position.y);
         if (gridObject == null)
         {
             return false;
@@ -72,7 +72,7 @@ public class RoadTile : PlacedObject
     }
 
 // 어트랙션 또는 랜드마크가 도로와 연결되어 있는지 확인
-    private bool IsSpecialTileConnectedToRoad(GridObject gridObject, Vector2Int position, Vector2Int direction)
+    private bool IsSpecialTileConnectedToRoad(GridCell gridObject, Vector2Int position, Vector2Int direction)
     {
         // 입구 확인
         if (position == gridObject.GetEntrancePosition())
@@ -92,7 +92,7 @@ public class RoadTile : PlacedObject
     }
 
 // 본부가 도로와 연결되어 있는지 확인
-    private bool IsHeadquarterConnectedToRoad(GridObject gridObject, Vector2Int position, Vector2Int direction)
+    private bool IsHeadquarterConnectedToRoad(GridCell gridObject, Vector2Int position, Vector2Int direction)
     {
         if (position == gridObject.GetEntrancePosition())
         {

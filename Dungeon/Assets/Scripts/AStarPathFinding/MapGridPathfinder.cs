@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class MapGridPathfinder : AStarPathfindingBase<GridPathNode>
+public class MapGridPathfinder : AStarPathfindingBase<GridCell>
 {
     private readonly CellType[,] _grid;
     private readonly Vector2Int _gridSize;
-    private readonly GridPathNode[,] _nodeGrid;
+    private readonly GridCell[,] _nodeGrid;
     
     // 이동 방향 정의 (4방향 또는 8방향)
     private static readonly Vector2Int[] DirectionsCardinal = 
@@ -30,7 +30,7 @@ public class MapGridPathfinder : AStarPathfindingBase<GridPathNode>
     {
         _grid = mapData.grid;
         _gridSize = mapData.mapConfig.GridSize;
-        _nodeGrid = new GridPathNode[_gridSize.x, _gridSize.y];
+        _nodeGrid = new GridCell[_gridSize.x, _gridSize.y];
         
         InitializeNodeGrid();
     }
@@ -41,7 +41,7 @@ public class MapGridPathfinder : AStarPathfindingBase<GridPathNode>
         {
             for (int y = 0; y < _gridSize.y; y++)
             {
-                _nodeGrid[x, y] = new GridPathNode(new Vector2Int(x, y), _grid[x, y]);
+                _nodeGrid[x, y] = new GridCell(null, x, y, _grid[x, y]);
             }
         }
     }
@@ -85,7 +85,7 @@ public class MapGridPathfinder : AStarPathfindingBase<GridPathNode>
         }
     }
 
-    protected override IEnumerable<GridPathNode> GetNeighbors(GridPathNode node)
+    protected override IEnumerable<GridCell> GetNeighbors(GridCell node)
     {
         var directions = AllowDiagonalMovement ? DirectionsDiagonal : DirectionsCardinal;
         
@@ -104,7 +104,7 @@ public class MapGridPathfinder : AStarPathfindingBase<GridPathNode>
         }
     }
 
-    protected override float GetDistance(GridPathNode a, GridPathNode b)
+    protected override float GetDistance(GridCell a, GridCell b)
     {
         var distance = Vector2Int.Distance(a.Position, b.Position);
         
@@ -120,7 +120,7 @@ public class MapGridPathfinder : AStarPathfindingBase<GridPathNode>
         return pos.x >= 0 && pos.x < _gridSize.x && pos.y >= 0 && pos.y < _gridSize.y;
     }
 
-    private GridPathNode GetNode(Vector2Int position)
+    private GridCell GetNode(Vector2Int position)
     {
         return _nodeGrid[position.x, position.y];
     }

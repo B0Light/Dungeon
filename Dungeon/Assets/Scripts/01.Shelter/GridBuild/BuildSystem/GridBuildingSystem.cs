@@ -12,7 +12,7 @@ public class GridBuildingSystem : MonoBehaviour
     
    private BuildObjData _objectToPlace;
 
-    private GridXZ<GridObject> _grid;
+    private GridXZ<GridCell> _grid;
     private BuildObjData.Dir _dir = BuildObjData.Dir.Down;
     private readonly int _gridWidth = 7;
     private readonly int _gridLength = 9;
@@ -46,12 +46,12 @@ public class GridBuildingSystem : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        _grid = new GridXZ<GridObject>(
+        _grid = new GridXZ<GridCell>(
             _gridWidth,
             _gridLength,
             _cellSize,
             transform.position,
-            (GridXZ<GridObject> g, int x, int z) => new GridObject(g, x, z)
+            (GridXZ<GridCell> g, int x, int z) => new GridCell(g, x, z, CellType.Empty)
         );
         _lastPlacedPosition = new Vector2Int(-1, -1); // 초기화: 유효하지 않은 위치
     }
@@ -167,7 +167,7 @@ public class GridBuildingSystem : MonoBehaviour
             Vector3 targetPosition = GetMouseWorldSnappedPosition();
             _grid.GetXZ(targetPosition, out int x, out int z);
             
-            GridObject gridObject = _grid.GetGridObject(x, z);
+            GridCell gridObject = _grid.GetGridObject(x, z);
             PlacedObject placedObject = gridObject?.GetPlacedObject();
 
             if (placedObject)
@@ -462,7 +462,7 @@ public class GridBuildingSystem : MonoBehaviour
         Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
         _grid.GetXZ(mousePosition, out int x, out int z);
 
-        GridObject gridObject = _grid.GetGridObject(x, z);
+        GridCell gridObject = _grid.GetGridObject(x, z);
         return gridObject?.GetPlacedObject();
     }
     
@@ -565,5 +565,5 @@ public class GridBuildingSystem : MonoBehaviour
         _objectToPlace?.GetTileCategory() == TileCategory.Headquarter ? null : _objectToPlace;
 
     
-    public GridXZ<GridObject> GetGrid() => _grid;
+    public GridXZ<GridCell> GetGrid() => _grid;
 }

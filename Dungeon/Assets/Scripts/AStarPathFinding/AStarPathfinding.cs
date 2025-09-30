@@ -1,22 +1,20 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class AStarPathfindingGridObject : AStarPathfindingBase<GridObject>
+public class AStarPathfinding : AStarPathfindingBase<GridCell>
 {
-    private GridXZ<GridObject> _grid;
-    private GridObject _goalNode;
+    private GridXZ<GridCell> _grid;
+    private GridCell _goalNode;
 
-    public List<GridObject> NavigatePath(Vector2Int start, Vector2Int goal)
+    public List<GridCell> NavigatePath(Vector2Int start, Vector2Int goal)
     {
         _grid = GridBuildingSystem.Instance.GetGrid();
 
-        GridObject startNode = _grid.GetGridObject(start.x, start.y);
+        GridCell startNode = _grid.GetGridObject(start.x, start.y);
         _goalNode = _grid.GetGridObject(goal.x, goal.y);
         
         // GCost와 HCost 초기화
-        foreach (GridObject obj in _grid.GetAllGridObjects())
+        foreach (GridCell obj in _grid.GetAllGridObjects())
         {
             obj.GCost = float.MaxValue;
             obj.HCost = float.MaxValue;
@@ -25,14 +23,14 @@ public class AStarPathfindingGridObject : AStarPathfindingBase<GridObject>
         startNode.GCost = 0;
         startNode.HCost = GetDistance(startNode, _goalNode);
 
-        List<GridObject> path = FindPath(startNode, _goalNode);
+        List<GridCell> path = FindPath(startNode, _goalNode);
         
         return path;
     }
 
-    protected override IEnumerable<GridObject> GetNeighbors(GridObject node)
+    protected override IEnumerable<GridCell> GetNeighbors(GridCell node)
     {
-        List<GridObject> neighbors = new List<GridObject>();
+        List<GridCell> neighbors = new List<GridCell>();
 
         Vector2Int[] directions = new Vector2Int[]
         {
@@ -45,7 +43,7 @@ public class AStarPathfindingGridObject : AStarPathfindingBase<GridObject>
         foreach (Vector2Int dir in directions)
         {
             Vector2Int neighborPos = node.GetEntrancePosition() + dir;
-            GridObject neighborGrid = _grid.GetGridObject(neighborPos.x, neighborPos.y);
+            GridCell neighborGrid = _grid.GetGridObject(neighborPos.x, neighborPos.y);
             
             if (neighborGrid?.GetTileType() == TileType.Road) 
             {
@@ -70,7 +68,7 @@ public class AStarPathfindingGridObject : AStarPathfindingBase<GridObject>
         return neighbors;
     }
     
-    protected override float GetDistance(GridObject a, GridObject b)
+    protected override float GetDistance(GridCell a, GridCell b)
     {
         int distX = Mathf.Abs(a.GetEntrancePosition().x - b.GetEntrancePosition().x);
         int distY = Mathf.Abs(a.GetEntrancePosition().y - b.GetEntrancePosition().y);

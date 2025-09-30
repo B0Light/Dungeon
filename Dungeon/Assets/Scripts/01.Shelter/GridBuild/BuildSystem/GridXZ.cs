@@ -2,25 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridXZ<TGridObject>
+public class GridXZ<GridCell>
 {
     private readonly int _width;
     private readonly int _height;
     private readonly float _cellSize;
     private readonly Vector3 _originPosition;
-    private readonly TGridObject[,] _gridArray;
-
-    private readonly Transform _textTransform;
-    private readonly Transform _lineTransform;
+    private readonly GridCell[,] _gridArray;
     
     public GridXZ(int width, int height, float cellSize, Vector3 originPosition,
-        Func<GridXZ<TGridObject>, int, int, TGridObject> createGridObject)
+        Func<GridXZ<GridCell>, int, int, GridCell> createGridObject)
     {
         _width = width;
         _height = height;
         _cellSize = cellSize;
         _originPosition = originPosition;
-        _gridArray = new TGridObject[width, height];
+        _gridArray = new GridCell[width, height];
 
         for (int x = 0; x < width; x++)
         {
@@ -31,7 +28,7 @@ public class GridXZ<TGridObject>
         }
     }
 
-    public TGridObject[,] GetAllGridObjects() => _gridArray;
+    public GridCell[,] GetAllGridObjects() => _gridArray;
     
     public float GetCellSize() => _cellSize;
 
@@ -44,7 +41,7 @@ public class GridXZ<TGridObject>
         z = Mathf.FloorToInt((worldPosition - _originPosition).z / _cellSize);
     }
 
-    public TGridObject GetGridObject(int x, int z) => IsValidGridPosition(x, z) ? _gridArray[x, z] : default;
+    public GridCell GetGridObject(int x, int z) => IsValidGridPosition(x, z) ? _gridArray[x, z] : default;
     
     private bool IsValidGridPosition(int x, int z) => x >= 0 && z >= 0 && x < _width && z < _height;
 }
