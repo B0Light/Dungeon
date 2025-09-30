@@ -12,7 +12,7 @@ public class GridBuildingSystem : MonoBehaviour
     
    private BuildObjData _objectToPlace;
 
-    private GridXZ<GridCell> _grid;
+    private FixedGridXZ<GridCell> _fixedGrid;
     private BuildObjData.Dir _dir = BuildObjData.Dir.Down;
     private readonly int _gridWidth = 7;
     private readonly int _gridHeight = 9;
@@ -46,7 +46,7 @@ public class GridBuildingSystem : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        _grid = new GridXZ<GridCell>(
+        _fixedGrid = new FixedGridXZ<GridCell>(
             _gridWidth,
             _gridHeight,
             _cellSize,
@@ -163,9 +163,9 @@ public class GridBuildingSystem : MonoBehaviour
         if (GetPlacedObject() == null)
         {
             Vector3 targetPosition = GetMouseWorldSnappedPosition();
-            _grid.GetXZ(targetPosition, out int x, out int z);
+            _fixedGrid.GetXZ(targetPosition, out int x, out int z);
             
-            GridCell gridObject = _grid.GetGridObject(x, z);
+            GridCell gridObject = _fixedGrid.GetGridObject(x, z);
             PlacedObject placedObject = gridObject?.GetPlacedObject();
 
             if (placedObject)
@@ -174,7 +174,7 @@ public class GridBuildingSystem : MonoBehaviour
                 var dir = placedObject.GetDir();
                 selector.transform.localScale = new Vector3(obj.GetWidth(dir),1,obj.GetHeight(dir));
 
-                targetPosition = _grid.GetWorldPosition(placedObject.GetOriginPos());
+                targetPosition = _fixedGrid.GetWorldPosition(placedObject.GetOriginPos());
             }
             targetPosition.y = 0.5f;
             selector.transform.position = Vector3.Lerp(selector.transform.position, targetPosition, Time.deltaTime * 15f);
@@ -237,7 +237,7 @@ public class GridBuildingSystem : MonoBehaviour
     private void PlaceObjectAtMousePositionIfNeeded()
     {
         Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
-        _grid.GetXZ(mousePosition, out int x, out int z);
+        _fixedGrid.GetXZ(mousePosition, out int x, out int z);
         Vector2Int currentGridPosition = new Vector2Int(x, z);
 
         // 중복 배치 방지
@@ -269,7 +269,7 @@ public class GridBuildingSystem : MonoBehaviour
     public bool CheckCanBuildAtPos()
     {
         Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
-        _grid.GetXZ(mousePosition, out int x, out int z);
+        _fixedGrid.GetXZ(mousePosition, out int x, out int z);
         return IsPlacementValid(x, z) && CanBuildAtPos(_objectToPlace.GetGridPositionList(new Vector2Int(x, z), _dir));
     }
 
@@ -289,7 +289,7 @@ public class GridBuildingSystem : MonoBehaviour
     {
         foreach (Vector2Int gridPosition in gridPositionList)
         {
-            var gridObject = _grid.GetGridObject(gridPosition.x, gridPosition.y);
+            var gridObject = _fixedGrid.GetGridObject(gridPosition.x, gridPosition.y);
             if (gridObject == null || !gridObject.CanBuild())
             {
                 return false;
@@ -306,7 +306,7 @@ public class GridBuildingSystem : MonoBehaviour
         
         foreach (Vector2Int gridPosition in gridPositionList)
         {
-            var gridObject = _grid.GetGridObject(gridPosition.x, gridPosition.y);
+            var gridObject = _fixedGrid.GetGridObject(gridPosition.x, gridPosition.y);
             gridObject.GetPlacedObject()?.DestroySelf();
             gridObject.ClearPlacedObject();
         }
@@ -327,8 +327,8 @@ public class GridBuildingSystem : MonoBehaviour
     private PlacedObject BuildTile(int x, int z, BuildObjData.Dir dir, int level = 0, bool isIrremovable = false)
     {
         Vector2Int rotationOffset = _objectToPlace.GetRotationOffset(dir);
-        Vector3 placedObjectWorldPosition = _grid.GetWorldPosition(x, z) +
-                                            new Vector3(rotationOffset.x, 0, rotationOffset.y) * _grid.GetCellSize();
+        Vector3 placedObjectWorldPosition = _fixedGrid.GetWorldPosition(x, z) +
+                                            new Vector3(rotationOffset.x, 0, rotationOffset.y) * _fixedGrid.CellSize;
 
         PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), dir, _objectToPlace, level, isIrremovable);
 
@@ -458,23 +458,23 @@ public class GridBuildingSystem : MonoBehaviour
     private PlacedObject GetObjectAtMousePosition()
     {
         Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
-        _grid.GetXZ(mousePosition, out int x, out int z);
+        _fixedGrid.GetXZ(mousePosition, out int x, out int z);
 
-        GridCell gridObject = _grid.GetGridObject(x, z);
+        GridCell gridObject = _fixedGrid.GetGridObject(x, z);
         return gridObject?.GetPlacedObject();
     }
     
     // _grid 특정 위치에 객체 배치
     private void SetObjectAtGridPosition(Vector2Int position, PlacedObject placedObject, BuildObjData.Dir dir)
     {
-        var gridObject = _grid.GetGridObject(position.x, position.y);
+        var gridObject = _fixedGrid.GetGridObject(position.x, position.y);
         gridObject?.SetPlacedObject(placedObject, _objectToPlace, dir); // BuildObjData 저장
     }
 
     // 특정 위치의 객체 제거
     private void ClearObjectAtGridPosition(Vector2Int gridPosition)
     {
-        var gridObject = _grid.GetGridObject(gridPosition.x, gridPosition.y);
+        var gridObject = _fixedGrid.GetGridObject(gridPosition.x, gridPosition.y);
         if (gridObject != null)
         {
             gridObject.ClearPlacedObject();
@@ -494,7 +494,7 @@ public class GridBuildingSystem : MonoBehaviour
         foreach (Vector2Int dir in directions)
         {
             Vector2Int neighborPos = position + dir;
-            var neighborObject = _grid.GetGridObject(neighborPos.x, neighborPos.y)?.GetPlacedObject();
+            var neighborObject = _fixedGrid.GetGridObject(neighborPos.x, neighborPos.y)?.GetPlacedObject();
 
             if (neighborObject is RoadTile neighborRoad)
             {
@@ -528,12 +528,12 @@ public class GridBuildingSystem : MonoBehaviour
     
     public Vector3 GetMouseWorldSnappedPosition() {
         Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
-        _grid.GetXZ(mousePosition, out int x, out int z);
+        _fixedGrid.GetXZ(mousePosition, out int x, out int z);
 
-        Vector3 placedObjectWorldPosition = _grid.GetWorldPosition(x, z);
+        Vector3 placedObjectWorldPosition = _fixedGrid.GetWorldPosition(x, z);
         if (_objectToPlace != null) {
             Vector2Int rotationOffset = _objectToPlace.GetRotationOffset(_dir);
-            placedObjectWorldPosition += new Vector3(rotationOffset.x, 0, rotationOffset.y) * _grid.GetCellSize();
+            placedObjectWorldPosition += new Vector3(rotationOffset.x, 0, rotationOffset.y) * _fixedGrid.CellSize;
         } 
         
         return placedObjectWorldPosition;
@@ -563,5 +563,5 @@ public class GridBuildingSystem : MonoBehaviour
         _objectToPlace?.GetTileCategory() == TileCategory.Headquarter ? null : _objectToPlace;
 
     
-    public GridXZ<GridCell> GetGrid() => _grid;
+    public FixedGridXZ<GridCell> GetGrid() => _fixedGrid;
 }

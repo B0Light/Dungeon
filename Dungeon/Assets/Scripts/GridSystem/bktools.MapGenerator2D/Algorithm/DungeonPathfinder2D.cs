@@ -27,27 +27,26 @@ public class DungeonPathfinder2D {
         new Vector2Int(0, -1),
     };
 
-    Grid2D<Node> grid;
+    DynamicGridXZ<Node> _dynamicGrid;
     PriorityQueue<Node, float> queue;
     HashSet<Node> closed;
 
     public DungeonPathfinder2D(Vector2Int size) {
-        grid = new Grid2D<Node>(size, Vector2Int.zero);
+        _dynamicGrid = new DynamicGridXZ<Node>(size, Vector2Int.zero);
         queue = new PriorityQueue<Node, float>();
         closed = new HashSet<Node>();
 
         for (int x = 0; x < size.x; x++) {
             for (int y = 0; y < size.y; y++) {
-                grid[x, y] = new Node(new Vector2Int(x, y));
+                _dynamicGrid[x, y] = new Node(new Vector2Int(x, y));
             }
         }
     }
 
     void ResetNodes() {
-        var size = grid.Size;
-        for (int x = 0; x < size.x; x++) {
-            for (int y = 0; y < size.y; y++) {
-                var node = grid[x, y];
+        for (int x = 0; x < _dynamicGrid.Width; x++) {
+            for (int y = 0; y < _dynamicGrid.Height; y++) {
+                var node = _dynamicGrid[x, y];
                 node.Previous = null;
                 node.Cost = float.PositiveInfinity;
             }
@@ -59,7 +58,7 @@ public class DungeonPathfinder2D {
         queue.Clear();
         closed.Clear();
 
-        var startNode = grid[start];
+        var startNode = _dynamicGrid[start];
         startNode.Cost = 0;
         queue.Enqueue(startNode, 0);
 
@@ -74,8 +73,8 @@ public class DungeonPathfinder2D {
             foreach (var offset in neighbors) {
                 Vector2Int neighborPos = current.Position + offset;
 
-                if (!grid.InBounds(neighborPos)) continue;
-                var neighbor = grid[neighborPos];
+                if (!_dynamicGrid.InBounds(neighborPos)) continue;
+                var neighbor = _dynamicGrid[neighborPos];
                 if (closed.Contains(neighbor)) continue;
 
                 var pathCost = costFunction(current, neighbor);

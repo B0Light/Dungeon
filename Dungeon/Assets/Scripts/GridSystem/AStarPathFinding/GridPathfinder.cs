@@ -1,15 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq; // Added for MapGridPathfinder's LINQ usage
 
 public class GridPathfinder : AStarPathfindingBase<GridCell>
 {
-    // AStarPathfinding's fields
-    private GridXZ<GridCell> _grid;
+    private FixedGridXZ<GridCell> _fixedGrid;
     private GridCell _goalNode;
 
-    // MapGridPathfinder's fields
-    private CellType[,] _cellTypeGrid; // Renamed from _grid in MapGridPathfinder to avoid conflict
+    private readonly CellType[,] _cellTypeGrid; 
     private Vector2Int _gridSize;
     private GridCell[,] _nodeGrid;
     
@@ -47,11 +44,11 @@ public class GridPathfinder : AStarPathfindingBase<GridCell>
         // Otherwise, get grid from GridBuildingSystem and initialize _nodeGrid.
         if (_nodeGrid == null)
         {
-            _grid = GridBuildingSystem.Instance.GetGrid();
-            _gridSize = new Vector2Int(_grid.GetGridWidth(), _grid.GetGridHeight());
+            _fixedGrid = GridBuildingSystem.Instance.GetGrid();
+            _gridSize = new Vector2Int(_fixedGrid.Width, _fixedGrid.Height);
             _nodeGrid = new GridCell[_gridSize.x, _gridSize.y];
             // Initialize _nodeGrid based on GridXZ for AStarPathfinding's use case
-            foreach (GridCell obj in _grid.GetAllGridObjects())
+            foreach (GridCell obj in _fixedGrid.GetAllGridObjects())
             {
                 _nodeGrid[obj.Position.x, obj.Position.y] = obj;
             }
@@ -128,9 +125,9 @@ public class GridPathfinder : AStarPathfindingBase<GridCell>
                 if (neighborNode == null) continue; // Safety check
 
                 // AStarPathfinding specific logic
-                if (_grid != null) // If using GridBuildingSystem grid
+                if (_fixedGrid != null) // If using GridBuildingSystem grid
                 {
-                    GridCell currentNeighborGrid = _grid.GetGridObject(neighborPos.x, neighborPos.y);
+                    GridCell currentNeighborGrid = _fixedGrid.GetGridObject(neighborPos.x, neighborPos.y);
                     if (currentNeighborGrid?.GetTileType() == TileType.Road) 
                     {
                         yield return currentNeighborGrid;
