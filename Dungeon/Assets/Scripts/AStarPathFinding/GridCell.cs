@@ -10,7 +10,6 @@ public class GridCell : IPathNode
     IPathNode IPathNode.Parent { get => Parent; set => Parent = (GridCell)value; }
     
     // 그리드와 위치 정보
-    private GridXZ<GridCell> _grid;
     private int _posX, _posZ;
     public Vector2Int Position { get; }
 
@@ -23,9 +22,8 @@ public class GridCell : IPathNode
     // 길찾기 기능
     public bool IsWalkable { get; private set; }
 
-    public GridCell(GridXZ<GridCell> grid, int posX, int posZ, CellType cellType)
+    public GridCell(int posX, int posZ, CellType cellType)
     {
-        _grid = grid;
         _posX = posX;
         _posZ = posZ;
         Position = new Vector2Int(posX, posZ);

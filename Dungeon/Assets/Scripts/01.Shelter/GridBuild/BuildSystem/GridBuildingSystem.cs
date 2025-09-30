@@ -51,7 +51,7 @@ public class GridBuildingSystem : MonoBehaviour
             _gridLength,
             _cellSize,
             transform.position,
-            (GridXZ<GridCell> g, int x, int z) => new GridCell(g, x, z, CellType.Empty)
+            (int x, int z) => new GridCell(x, z, CellType.Empty)
         );
         _lastPlacedPosition = new Vector2Int(-1, -1); // 초기화: 유효하지 않은 위치
     }
@@ -126,8 +126,6 @@ public class GridBuildingSystem : MonoBehaviour
         AttractionEntrancePosList.Add(placedObject.GetEntrance());
         _objectToPlace = null;
     }
-
-    public Vector2Int GetHeadquarterPos() => headquarterPos;
     
     private void LoadDefaultRoad()
     {

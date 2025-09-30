@@ -41,7 +41,7 @@ public class MapGridPathfinder : AStarPathfindingBase<GridCell>
         {
             for (int y = 0; y < _gridSize.y; y++)
             {
-                _nodeGrid[x, y] = new GridCell(null, x, y, _grid[x, y]);
+                _nodeGrid[x, y] = new GridCell(x, y, _grid[x, y]);
             }
         }
     }

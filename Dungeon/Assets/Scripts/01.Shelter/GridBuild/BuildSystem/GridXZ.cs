@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GridXZ<GridCell>
@@ -11,7 +10,7 @@ public class GridXZ<GridCell>
     private readonly GridCell[,] _gridArray;
     
     public GridXZ(int width, int height, float cellSize, Vector3 originPosition,
-        Func<GridXZ<GridCell>, int, int, GridCell> createGridObject)
+        Func<int, int, GridCell> createGridObject)
     {
         _width = width;
         _height = height;
@@ -23,7 +22,7 @@ public class GridXZ<GridCell>
         {
             for (int z = 0; z < height; z++)
             {
-                _gridArray[x, z] = createGridObject(this, x, z);
+                _gridArray[x, z] = createGridObject(x, z);
             }
         }
     }
