@@ -26,7 +26,7 @@ public class RevenueFacilityTile_BaseRide_Cafe : RevenueFacilityTile
         
         while (waitingQueue.Count > 0)
         {
-            ShelterVisitor client = waitingQueue.Dequeue();
+            PathFindingUnit client = waitingQueue.Dequeue();
             
             BoardRide(client, assignedSeat);
 
@@ -39,7 +39,7 @@ public class RevenueFacilityTile_BaseRide_Cafe : RevenueFacilityTile
         }
     }
     
-    protected override void BoardRide(ShelterVisitor rider, Transform seat)
+    protected override void BoardRide(PathFindingUnit rider, Transform seat)
     {
         base.BoardRide(rider, seat);
         seatOccupied[seat] = true;
@@ -52,7 +52,7 @@ public class RevenueFacilityTile_BaseRide_Cafe : RevenueFacilityTile
         StartCoroutine(StayOnRide(rider, seat));
     }
     
-    private IEnumerator StayOnRide(ShelterVisitor rider, Transform seat)
+    private IEnumerator StayOnRide(PathFindingUnit rider, Transform seat)
     {
         float waitTime = Random.Range(10f, 60f);
         yield return new WaitForSeconds(waitTime); // 한 바퀴 회전
@@ -60,7 +60,7 @@ public class RevenueFacilityTile_BaseRide_Cafe : RevenueFacilityTile
         ExitRide(rider, seat);
     }
 
-    private void ExitRide(ShelterVisitor rider, Transform seat)
+    private void ExitRide(PathFindingUnit rider, Transform seat)
     {
         rider.transform.parent = null; 
         rider.transform.position = exitPoint.position;

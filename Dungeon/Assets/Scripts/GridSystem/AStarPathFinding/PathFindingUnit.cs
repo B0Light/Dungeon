@@ -1,11 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 [RequireComponent(typeof(AStarPathfindingSystem))]
-public class ShelterVisitor : MonoBehaviour
+public class PathFindingUnit : MonoBehaviour
 {
     private AStarPathfindingSystem _aStarPathfindingSystem;
     [SerializeField] private float rotationSpeed = 5f; // 회전 속도

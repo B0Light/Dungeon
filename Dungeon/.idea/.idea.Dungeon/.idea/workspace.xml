@@ -6,19 +6,33 @@
   <component name="ChangeListManager">
     <list default="true" id="1844b18a-d80d-49d6-955e-b57cdcc0bed9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/00.Core/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/00.Core/Enums.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/TlieInfo/PlacedObject.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/TlieInfo/PlacedObject.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/90.World Managers/WorldDatabase_Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/90.World Managers/WorldDatabase_Build.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/GridCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/GridCell.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildManager/BuildObjData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildManager/BuildObjData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildManager/BuildingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildManager/BuildingManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildSystem/GridBuildingSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildSystem/GridBuildingSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/HUD_BuildInfo/HUD_BuildInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/HUD_BuildInfo/HUD_BuildInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/HUD_BuildSelector/HUDGridBuildCategorySelector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/HUD_BuildSelector/HUDGridBuildCategorySelector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/HUD_BuildSelector/HUDGridBuildingCategoryUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/HUD_BuildSelector/HUDGridBuildingCategoryUnit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/HUD_BuildSelector/HUDGridBuildingSelector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/HUD_BuildSelector/HUDGridBuildingSelector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/HUD_BuildShop/ShopShelfItem_Building.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/HUD_BuildShop/ShopShelfItem_Building.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/Enemy/00.Stellive/Enemy_00_TwitchBot.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/Enemy/00.Stellive/Enemy_00_TwitchBot.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/00. Main Source/Spawner/AI Spawner.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/00. Main Source/Spawner/AI Spawner.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/GridMovementController.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/GridMovementController.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/MapBuilder/Dungeon/Room/Dungeon_Room_02_Tomb.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/MapBuilder/Dungeon/Room/Dungeon_Room_02_Tomb.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestDungeonMaker.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestDungeonMaker.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/Parkgoer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/Parkgoer/AStarPathfindingSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/Parkgoer/AStarPathfindingSystem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/Parkgoer/ShelterVisitor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/Parkgoer/ShelterVisitor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/ShelterManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/ShelterManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/TlieInfo/RevenueFacilityTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/TlieInfo/RevenueFacilityTile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/TlieInfo/RevenueFacilityTile/RevenueFacilityTile_BaseRide.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/TlieInfo/RevenueFacilityTile/RevenueFacilityTile_BaseRide.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/TlieInfo/RevenueFacilityTile/RevenueFacilityTile_BaseRide_Cafe.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/TlieInfo/RevenueFacilityTile/RevenueFacilityTile_BaseRide_Cafe.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/TlieInfo/RevenueFacilityTile/RevenueFacilityTile_Exit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/TlieInfo/RevenueFacilityTile/RevenueFacilityTile_Exit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/TlieInfo/RevenueFacilityTile/RevenueFacilityTile_FerrisWheel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/TlieInfo/RevenueFacilityTile/RevenueFacilityTile_FerrisWheel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/TlieInfo/RevenueFacilityTile/RevenueFacilityTile_Shop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/TlieInfo/RevenueFacilityTile/RevenueFacilityTile_Shop.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterPatrolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterPatrolManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/Spawner/Enemy AI Spawner/AICharacterSpawner_Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/Spawner/Enemy AI Spawner/AICharacterSpawner_AStar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/Spawner/Enemy AI Spawner/AICharacterSpawner_Grid.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/Spawner/Enemy AI Spawner/AICharacterSpawner_AStar.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/AISpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/AISpawnManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/DungeonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/DungeonManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/AStarPathfindingBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/AStarPathfindingBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/GridMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/GridMovementController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/GridPathfinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/GridPathfinder.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,25 +61,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\jangb\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\jangb\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\jangb\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\jangb\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\jangb\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\jangb\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$USER_HOME$/Desktop/StealAlive\STEAL ALIVE.exe" />
@@ -142,6 +156,7 @@
       <workItem from="1759212187355" duration="1477000" />
       <workItem from="1759213692584" duration="17165000" />
       <workItem from="1759293594923" duration="2976000" />
+      <workItem from="1759319118290" duration="10286000" />
     </task>
     <servers />
   </component>

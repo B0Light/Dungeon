@@ -11,7 +11,8 @@ public class GridMovementController : MonoBehaviour
     [Header("Debug")]
     public bool showDebugPath = true;
     public Color pathColor = Color.green;
-    
+
+    private List<Vector2Int> _patrolPointList;
     private GridPathfinder _pathfinder;
     private List<GridCell> _currentPath;
     private int _currentPathIndex;
@@ -20,8 +21,8 @@ public class GridMovementController : MonoBehaviour
     private Vector2Int _currentGridPosition;
     
     // 그리드 좌표와 월드 좌표 변환을 위한 설정
-    public Vector3 cellSize = Vector3.one;
-    public Vector3 gridOffset = Vector3.zero;
+    [HideInInspector] public Vector3 cellSize = Vector3.one;
+    [HideInInspector] public Vector3 gridOffset = Vector3.zero;
 
     public void Initialize(GridPathfinder pathfinder, Vector2Int startPosition)
     {
@@ -33,12 +34,39 @@ public class GridMovementController : MonoBehaviour
         _targetWorldPosition = transform.position;
     }
 
-    public bool MoveTo(Vector2Int targetPosition)
+    public void StartPatrol(List<Vector2Int> patrolPointList)
+    {
+        _patrolPointList = patrolPointList;
+        MoveTo(GetNextPatrolPoint());
+    }
+
+    private Vector2Int GetNextPatrolPoint()
+    {
+        if (_patrolPointList == null || _patrolPointList.Count == 0)
+        {
+            Debug.LogError("Patrol point list is empty or null.");
+            return _currentGridPosition; 
+        }
+
+        int currentIndex = _patrolPointList.IndexOf(_currentGridPosition);
+
+        if (currentIndex == -1)
+        {
+            Debug.LogWarning("Current grid position not found in the patrol list. Returning the first point.");
+            return _patrolPointList[0];
+        }
+
+        int nextIndex = (currentIndex + 1) % _patrolPointList.Count;
+
+        return _patrolPointList[nextIndex];
+    }
+
+    private void MoveTo(Vector2Int targetPosition)
     {
         if (_pathfinder == null)
         {
             Debug.LogError("Pathfinder not initialized!");
-            return false;
+            return;
         }
 
         var path = _pathfinder.NavigatePath(_currentGridPosition, targetPosition);
@@ -46,7 +74,7 @@ public class GridMovementController : MonoBehaviour
         if (path == null || path.Count == 0)
         {
             Debug.LogWarning($"No path found from {_currentGridPosition} to {targetPosition}");
-            return false;
+            return;
         }
 
         _currentPath = path;
@@ -54,7 +82,6 @@ public class GridMovementController : MonoBehaviour
         _isMoving = false;
         
         StartMovement();
-        return true;
     }
 
     private void Update()
@@ -125,8 +152,7 @@ public class GridMovementController : MonoBehaviour
     private void OnPathCompleted()
     {
         Debug.Log($"Reached destination: {_currentGridPosition}");
-        _currentPath = null;
-        _currentPathIndex = 0;
+        MoveTo(GetNextPatrolPoint());
     }
 
     private Vector3 GridToWorldPosition(Vector2Int gridPos)
@@ -136,30 +162,6 @@ public class GridMovementController : MonoBehaviour
             gridOffset.y,
             gridPos.y * cellSize.z + gridOffset.z
         );
-    }
-
-    public Vector2Int WorldToGridPosition(Vector3 worldPos)
-    {
-        return new Vector2Int(
-            Mathf.RoundToInt((worldPos.x - gridOffset.x) / cellSize.x),
-            Mathf.RoundToInt((worldPos.z - gridOffset.z) / cellSize.z)
-        );
-    }
-
-    // 유틸리티 메서드들
-    public bool IsPositionWalkable(Vector2Int gridPosition)
-    {
-        return _pathfinder?.IsPositionWalkable(gridPosition) ?? false;
-    }
-
-    public Vector2Int GetCurrentGridPosition()
-    {
-        return _currentGridPosition;
-    }
-
-    public bool IsMoving()
-    {
-        return _isMoving || _currentPath != null;
     }
 
     // 디버그 드로잉
@@ -180,7 +182,7 @@ public class GridMovementController : MonoBehaviour
         
         if (_currentPath.Count > 0)
         {
-            var last = GridToWorldPosition(_currentPath[-1].Position);
+            var last = GridToWorldPosition(_currentPath[_currentPath.Count-1].Position);
             Gizmos.DrawWireSphere(last, 0.2f);
         }
     }

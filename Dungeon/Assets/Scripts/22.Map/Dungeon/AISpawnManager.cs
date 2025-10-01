@@ -6,9 +6,11 @@ public class AISpawnManager : MonoBehaviour
 {
     public static AISpawnManager Instance { get; private set; }
     
-    private readonly List<AICharacterSpawner_Grid> _aiCharacterSpawners = new List<AICharacterSpawner_Grid>();
+    private readonly List<AICharacterSpawner_AStar> _aiCharacterSpawners_AStar = new List<AICharacterSpawner_AStar>();
+    private readonly List<AICharacterSpawner_Navmesh> _aiCharacterSpawners_Navmesh = new List<AICharacterSpawner_Navmesh>();
     private readonly List<AICharacterManager> _spawnedInCharacters = new List<AICharacterManager>();
-
+    private readonly List<Vector2Int> _patrolPointList = new List<Vector2Int>();
+    
     private GridPathfinder _pathfinder;
     private void Awake()
     {
@@ -29,10 +31,10 @@ public class AISpawnManager : MonoBehaviour
         // 스포너들이 등록될 때까지 잠시 대기
         yield return new WaitForSeconds(0.5f);
         
-        if (_aiCharacterSpawners.Count == 0)
+        if (_aiCharacterSpawners_AStar.Count == 0 &&  _aiCharacterSpawners_Navmesh.Count == 0)
         {
             Debug.LogWarning("No spawners registered! Waiting for spawners...");
-            yield return new WaitUntil(() => _aiCharacterSpawners.Count > 0);
+            yield return new WaitUntil(() => _aiCharacterSpawners_AStar.Count + _aiCharacterSpawners_Navmesh.Count > 0);
         }
         
         yield return StartCoroutine(SpawnEnemies());
@@ -40,18 +42,29 @@ public class AISpawnManager : MonoBehaviour
     
     private IEnumerator SpawnEnemies()
     {
-        foreach (var spawner in _aiCharacterSpawners)
+        foreach (var spawner in _aiCharacterSpawners_AStar)
         {
             yield return new WaitForEndOfFrame();
-            spawner.SpawnUnit(_pathfinder);
+            spawner.SpawnUnit(_pathfinder, _patrolPointList);
+        }
+        foreach (var spawner in _aiCharacterSpawners_Navmesh)
+        {
+            yield return new WaitForEndOfFrame();
+            spawner.SpawnUnit(_patrolPointList);
         }
     }
     
     
-    public void RegisterSpawner(AICharacterSpawner_Grid aiCharacterSpawnerGrid)
+    public void RegisterSpawner(AICharacterSpawner_AStar aiCharacterSpawnerAStar)
     {
-        _aiCharacterSpawners.Add(aiCharacterSpawnerGrid);
-        aiCharacterSpawnerGrid.Init();
+        _aiCharacterSpawners_AStar.Add(aiCharacterSpawnerAStar);
+        _patrolPointList.Add(aiCharacterSpawnerAStar.Init());
+    }
+    
+    public void RegisterSpawner(AICharacterSpawner_Navmesh aiCharacterSpawnerNavmesh)
+    {
+        _aiCharacterSpawners_Navmesh.Add(aiCharacterSpawnerNavmesh);
+        _patrolPointList.Add(aiCharacterSpawnerNavmesh.Init());
     }
 
     public void AddCharacterToSpawnedCharactersList(AICharacterManager character)
@@ -70,6 +83,4 @@ public class AISpawnManager : MonoBehaviour
         }
         _spawnedInCharacters.Clear();
     }
-    
-    
 }

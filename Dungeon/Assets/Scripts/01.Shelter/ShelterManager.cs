@@ -13,9 +13,9 @@ public class ShelterManager : MonoBehaviour
     public int visitorCapacity = 30;
     public float visitCycle = 3f;
     private readonly object _lockObject = new object();
-    private readonly List<ShelterVisitor> _shelterVisitorList = new List<ShelterVisitor>();
+    private readonly List<PathFindingUnit> _shelterVisitorList = new List<PathFindingUnit>();
     
-    public void RemoveVisitor(ShelterVisitor visitor)
+    public void RemoveVisitor(PathFindingUnit visitor)
     {
         lock (_lockObject)
         {
@@ -58,11 +58,11 @@ public class ShelterManager : MonoBehaviour
     public void HandleVisitorEntry()
     {
         GameObject visitor = Instantiate(parkGoerPrefab, parkEntrance);
-        ShelterVisitor shelterVisitor = visitor.GetComponent<ShelterVisitor>();
-        if(shelterVisitor) shelterVisitor.SpawnVisitor(this);
+        PathFindingUnit pathFindingUnit = visitor.GetComponent<PathFindingUnit>();
+        if(pathFindingUnit) pathFindingUnit.SpawnVisitor(this);
         lock (_lockObject)
         {
-            _shelterVisitorList.Add(shelterVisitor);
+            _shelterVisitorList.Add(pathFindingUnit);
         }
     }
 

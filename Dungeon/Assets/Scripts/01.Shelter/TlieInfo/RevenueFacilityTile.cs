@@ -15,8 +15,8 @@ public class RevenueFacilityTile : PlacedObject
     [SerializeField] protected float attractionCycleTime = 10f; // 놀이기구 한 사이클 시간 (초 단위)
     protected Transform exitPoint; // 출구 위치
 
-    private Queue<ShelterVisitor> _onAttractionQueue = new Queue<ShelterVisitor>(); // 타일에는 들어 왔으나 아직 줄 서지 않은 인원 
-    protected Queue<ShelterVisitor> waitingQueue = new Queue<ShelterVisitor>(); // 대기열
+    private Queue<PathFindingUnit> _onAttractionQueue = new Queue<PathFindingUnit>(); // 타일에는 들어 왔으나 아직 줄 서지 않은 인원 
+    protected Queue<PathFindingUnit> waitingQueue = new Queue<PathFindingUnit>(); // 대기열
     protected bool isOperating = false; // 놀이기구가 동작 중인지 여부
     
     [SerializeField] protected Transform queueStartPoint;
@@ -41,13 +41,13 @@ public class RevenueFacilityTile : PlacedObject
         _vCam.SetActive(value);
     }
     
-    public virtual void AddVisitor(ShelterVisitor visitor)
+    public virtual void AddVisitor(PathFindingUnit visitor)
     {
         _onAttractionQueue.Enqueue(visitor);
         StartCoroutine(EnqueueVisitor(visitor));
     }
     
-    private IEnumerator EnqueueVisitor(ShelterVisitor visitor)
+    private IEnumerator EnqueueVisitor(PathFindingUnit visitor)
     {
         int queueCount = _onAttractionQueue.Count + waitingQueue.Count -1;
 
@@ -72,7 +72,7 @@ public class RevenueFacilityTile : PlacedObject
         yield return null;
     }
 
-    protected virtual void BoardRide(ShelterVisitor rider, Transform seat)
+    protected virtual void BoardRide(PathFindingUnit rider, Transform seat)
     {
         GenerateIncome();
     }

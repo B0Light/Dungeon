@@ -6,7 +6,7 @@ using System.Linq;
 public class RevenueFacilityTile_BaseRide : RevenueFacilityTile
 {
     [SerializeField] private List<Transform> seats = new List<Transform>();
-    private List<ShelterVisitor> riders = new List<ShelterVisitor>();
+    private List<PathFindingUnit> riders = new List<PathFindingUnit>();
     protected override IEnumerator ProcessQueue()
     {
         isOperating = true;
@@ -23,7 +23,7 @@ public class RevenueFacilityTile_BaseRide : RevenueFacilityTile
             }
             
             // 탑승 
-            ShelterVisitor rider = waitingQueue.Peek();
+            PathFindingUnit rider = waitingQueue.Peek();
             BoardRide(rider, availableSeat);
             riders.Add(rider);
             waitingQueue.Dequeue();
@@ -42,7 +42,7 @@ public class RevenueFacilityTile_BaseRide : RevenueFacilityTile
         }
     }
 
-    protected override void BoardRide(ShelterVisitor rider, Transform seat)
+    protected override void BoardRide(PathFindingUnit rider, Transform seat)
     {
         base.BoardRide(rider, seat);
         rider.transform.parent = seat;
@@ -64,7 +64,7 @@ public class RevenueFacilityTile_BaseRide : RevenueFacilityTile
         return null;
     }
     
-    private void ExitRide(ShelterVisitor rider)
+    private void ExitRide(PathFindingUnit rider)
     {
         rider.transform.parent = null; 
         rider.transform.position = exitPoint.position;

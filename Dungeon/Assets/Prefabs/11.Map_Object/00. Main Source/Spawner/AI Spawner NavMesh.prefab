@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2012846401295292252}
-  - component: {fileID: 5056730367949569064}
+  - component: {fileID: 5836067206656681024}
   m_Layer: 2
-  m_Name: AI Spawner
+  m_Name: AI Spawner NavMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 5400374992444600154}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5056730367949569064
+--- !u!114 &5836067206656681024
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,16 +42,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5314425562373395008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a0bf8c06405c9047adf23eb9fbe7a92, type: 3}
+  m_Script: {fileID: 11500000, guid: df7c47e715a481f4fab55809353e1fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnVisual: {fileID: 9218055019607344518}
   spawnPrefab:
-    characterPrefab: {fileID: 2733936239621624404, guid: 08f3f49352520d343baf52a9561d86c9, type: 3}
+    characterPrefab: {fileID: 0}
     maxHealth: 100
   cellSize: {x: 2, y: 2, z: 2}
   mapOffset: {x: 0.5, y: 2, z: 0.5}
-  _gridPosition: {x: 0, y: 0}
 --- !u!1 &9218055019607344518
 GameObject:
   m_ObjectHideFlags: 0

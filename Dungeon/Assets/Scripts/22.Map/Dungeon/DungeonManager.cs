@@ -59,7 +59,6 @@ public class DungeonManager : MonoBehaviour
         _pathfinder = new GridPathfinder(mapData);
         
         _pathfinder.AllowDiagonalMovement = false; // 4방향 이동만
-        _pathfinder.StraightMoveCost = 1.0f;
         
         // 5단계 : A.I. 생성
         _aiSpawnManager.Init(_pathfinder);

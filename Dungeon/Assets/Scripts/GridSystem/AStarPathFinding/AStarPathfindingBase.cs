@@ -14,6 +14,13 @@ public abstract class AStarPathfindingBase<TNode>
 {
     protected abstract IEnumerable<TNode> GetNeighbors(TNode node);
     protected abstract float GetDistance(TNode a, TNode b);
+    
+    // 실제 G 비용을 계산할 때 사용할 이동 비용 훅
+    // 기본은 격자 간 거리 사용. 하위 클래스에서 셀 타입/지형 가중치를 반영하도록 재정의 가능
+    protected virtual float GetMovementCost(TNode from, TNode to)
+    {
+        return GetDistance(from, to);
+    }
 
     protected List<TNode> FindPath(TNode startNode, TNode goalNode)
     {
@@ -40,7 +47,7 @@ public abstract class AStarPathfindingBase<TNode>
                     continue;
                 }
 
-                float tentativeGCost = currentNode.GCost + GetDistance(currentNode, neighbor);
+                float tentativeGCost = currentNode.GCost + GetMovementCost(currentNode, neighbor);
 
                 if (tentativeGCost < neighbor.GCost || !openList.Contains(neighbor))
                 {

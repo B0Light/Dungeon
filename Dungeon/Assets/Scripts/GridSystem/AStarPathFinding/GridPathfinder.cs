@@ -23,31 +23,25 @@ public class GridPathfinder : AStarPathfindingBase<GridCell>
     };
 
     public bool AllowDiagonalMovement { get; set; } = false;
-    public float DiagonalMoveCost { get; set; } = 1.414f; // sqrt(2)
-    public float StraightMoveCost { get; set; } = 1.0f;
 
-    // Constructor for MapGridPathfinder-like initialization
+    
     public GridPathfinder(MapData mapData)
     {
         _cellTypeGrid = mapData.grid;
         _gridSize = mapData.mapConfig.GridSize;
         _nodeGrid = new GridCell[_gridSize.x, _gridSize.y];
         InitializeNodeGrid();
-    }
-
-    // Default constructor for AStarPathfinding-like initialization
+    } 
+    
     public GridPathfinder() { }
 
     public List<GridCell> NavigatePath(Vector2Int start, Vector2Int goal)
     {
-        // If initialized with MapData, use _nodeGrid directly.
-        // Otherwise, get grid from GridBuildingSystem and initialize _nodeGrid.
         if (_nodeGrid == null)
         {
             _fixedGrid = GridBuildingSystem.Instance.GetGrid();
             _gridSize = new Vector2Int(_fixedGrid.Width, _fixedGrid.Height);
             _nodeGrid = new GridCell[_gridSize.x, _gridSize.y];
-            // Initialize _nodeGrid based on GridXZ for AStarPathfinding's use case
             foreach (GridCell obj in _fixedGrid.GetAllGridObjects())
             {
                 _nodeGrid[obj.Position.x, obj.Position.y] = obj;
@@ -84,12 +78,10 @@ public class GridPathfinder : AStarPathfindingBase<GridCell>
         {
             for (int y = 0; y < _gridSize.y; y++)
             {
-                // If initialized with MapData, create GridCell from _cellTypeGrid
                 if (_cellTypeGrid != null)
                 {
                     _nodeGrid[x, y] = new GridCell(x, y, _cellTypeGrid[x, y]);
                 }
-                // If initialized via GridBuildingSystem, GridCell objects already exist and are populated in NavigatePath
             }
         }
     }
@@ -117,15 +109,14 @@ public class GridPathfinder : AStarPathfindingBase<GridCell>
 
         foreach (var direction in directions)
         {
-            Vector2Int neighborPos = node.Position + direction; // Changed to node.Position for consistency
+            Vector2Int neighborPos = node.Position + direction;
             
             if (IsValidPosition(neighborPos))
             {
                 var neighborNode = GetNode(neighborPos);
                 if (neighborNode == null) continue; // Safety check
 
-                // AStarPathfinding specific logic
-                if (_fixedGrid != null) // If using GridBuildingSystem grid
+                if (_fixedGrid != null)
                 {
                     GridCell currentNeighborGrid = _fixedGrid.GetGridObject(neighborPos.x, neighborPos.y);
                     if (currentNeighborGrid?.GetTileType() == TileType.Road) 
@@ -133,8 +124,10 @@ public class GridPathfinder : AStarPathfindingBase<GridCell>
                         yield return currentNeighborGrid;
                     }
                     
-                    if ((currentNeighborGrid?.GetTileType() == TileType.Headquarter || currentNeighborGrid?.GetTileType() == TileType.Attraction || currentNeighborGrid?.GetTileType() == TileType.MajorFacility)
-                        && currentNeighborGrid == _goalNode) // Check against _goalNode here
+                    if ((currentNeighborGrid?.GetTileType() == TileType.Headquarter ||
+                         currentNeighborGrid?.GetTileType() == TileType.Attraction ||
+                         currentNeighborGrid?.GetTileType() == TileType.MajorFacility)
+                        && currentNeighborGrid.Equals(_goalNode)) // Check against _goalNode here
                     {
                         Vector2Int attractionOrigin = currentNeighborGrid.GetEntrancePosition();
                         if (attractionOrigin == neighborPos)
@@ -148,7 +141,6 @@ public class GridPathfinder : AStarPathfindingBase<GridCell>
                         }
                     }
                 }
-                // MapGridPathfinder specific logic (or general walkable check)
                 else if (neighborNode.IsWalkable)
                 {
                     yield return neighborNode;
@@ -159,21 +151,85 @@ public class GridPathfinder : AStarPathfindingBase<GridCell>
     
     protected override float GetDistance(GridCell a, GridCell b)
     {
-        // If diagonal movement is allowed, use Euclidean distance with custom costs
+        int distX = Mathf.Abs(a.GetEntrancePosition().x - b.GetEntrancePosition().x);
+        int distY = Mathf.Abs(a.GetEntrancePosition().y - b.GetEntrancePosition().y);
+        
         if (AllowDiagonalMovement)
         {
-            var distance = Vector2Int.Distance(a.Position, b.Position);
-            bool isDiagonal = Mathf.Abs(a.Position.x - b.Position.x) == 1 && 
-                              Mathf.Abs(a.Position.y - b.Position.y) == 1;
-            return isDiagonal ? DiagonalMoveCost : StraightMoveCost; // Return fixed cost for immediate neighbors
+            int diagonal = Mathf.Min(distX, distY);
+            int straight = Mathf.Max(distX, distY) - diagonal;
+            return straight + diagonal * 1.414f;
         }
-        // Otherwise, use Manhattan distance
+        // use Manhattan distance
         else
         {
-            int distX = Mathf.Abs(a.GetEntrancePosition().x - b.GetEntrancePosition().x);
-            int distY = Mathf.Abs(a.GetEntrancePosition().y - b.GetEntrancePosition().y);
-            return distX + distY; // 맨해튼 거리
+            return distX + distY;
         }
+    }
+
+    // 셀 타입에 따른 이동 비용 가중치를 적용
+    protected override float GetMovementCost(GridCell from, GridCell to)
+    {
+        float baseCost = GetDistance(from, to);
+
+        // 타일/셀 타입별 가중치. 필요 시 외부 설정으로 분리 가능
+        float terrainMultiplier = 1f;
+
+        // 우선 순위: 배치 오브젝트의 타일 타입 > 셀 자체의 CellType
+        TileType? tileType = to.GetTileType();
+        if (tileType.HasValue)
+        {
+            switch (tileType.Value)
+            {
+                case TileType.Road:
+                    terrainMultiplier = 0.9f; // 도로는 약간 빠르게
+                    break;
+                case TileType.Headquarter:
+                case TileType.Attraction:
+                case TileType.MajorFacility:
+                    terrainMultiplier = 1.0f; // 시설 내부 진입은 기본
+                    break;
+                case TileType.Tree:
+                    terrainMultiplier = 2.0f; // 통과 가능하다면 높은 비용
+                    break;
+                default:
+                    terrainMultiplier = 1.0f;
+                    break;
+            }
+        }
+        else
+        {
+            // GridCell의 논리적 CellType 기반 가중치
+            switch (to.CellType)
+            {
+                case CellType.Floor:
+                case CellType.FloorCenter:
+                case CellType.Path:
+                    terrainMultiplier = 0.5f;
+                    break;
+                case CellType.ExpandedPath:
+                    terrainMultiplier = 0.95f;
+                    break;
+                case CellType.MainGate:
+                    terrainMultiplier = 0.7f;
+                    break;
+                case CellType.SubGate:
+                    terrainMultiplier = 1.0f;
+                    break;
+                case CellType.Wall:
+                case CellType.PathWall:
+                case CellType.Empty:
+                    // 이 경우 보통 IsWalkable이 false라 이 함수까지 오지 않지만, 안전상 높은 비용 부여
+                    terrainMultiplier = 10f;
+                    break;
+                default:
+                    terrainMultiplier = 1.0f;
+                    break;
+            }
+        }
+
+        // 대각 이동 보정: 기본 거리에서 이미 1.414 적용됨. 필요 시 추가 계수 조정 가능
+        return baseCost * terrainMultiplier;
     }
 
     private static BuildObjData.Dir ConvertToConnectDirection(Vector2Int direction)
@@ -185,42 +241,17 @@ public class GridPathfinder : AStarPathfindingBase<GridCell>
         return BuildObjData.Dir.Down;
     }
 
-    // Helper methods from MapGridPathfinder
     private bool IsValidPosition(Vector2Int pos)
     {
         return pos.x >= 0 && pos.x < _gridSize.x && pos.y >= 0 && pos.y < _gridSize.y;
     }
 
-    public GridCell GetNode(Vector2Int position)
+    private GridCell GetNode(Vector2Int position)
     {
-        // Ensure _nodeGrid is initialized before access
         if (_nodeGrid == null) {
             Debug.LogError("Node grid not initialized. Call NavigatePath or use MapData constructor.");
             return null;
         }
         return _nodeGrid[position.x, position.y];
-    }
-    
-
-    public bool IsPositionWalkable(Vector2Int position)
-    {
-        if (!IsValidPosition(position)) return false;
-        return GetNode(position).IsWalkable;
-    }
-
-    public CellType GetCellType(Vector2Int position)
-    {
-        if (!IsValidPosition(position)) return CellType.Empty;
-        // If initialized with MapData, use _cellTypeGrid
-        if (_cellTypeGrid != null)
-        {
-            return _cellTypeGrid[position.x, position.y];
-        }
-        // Otherwise, use _nodeGrid's CellType
-        else if (_nodeGrid != null && _nodeGrid[position.x, position.y] != null)
-        {
-            return _nodeGrid[position.x, position.y].CellType;
-        }
-        return CellType.Empty;
     }
 }

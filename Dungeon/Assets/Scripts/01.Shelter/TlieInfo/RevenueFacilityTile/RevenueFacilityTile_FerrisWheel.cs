@@ -21,7 +21,7 @@ public class RevenueFacilityTile_FerrisWheel : RevenueFacilityTile
     {
         while (waitingQueue.Count > 0)
         {
-            ShelterVisitor rider = waitingQueue.Dequeue();
+            PathFindingUnit rider = waitingQueue.Dequeue();
             Transform assignedSeat = null;
 
             yield return StartCoroutine(WaitForLowestAvailableSeat());
@@ -37,7 +37,7 @@ public class RevenueFacilityTile_FerrisWheel : RevenueFacilityTile
         }
     }
         
-    protected override void BoardRide(ShelterVisitor rider, Transform seat)
+    protected override void BoardRide(PathFindingUnit rider, Transform seat)
     {
         base.BoardRide(rider, seat);
         seatOccupied[seat] = true;
@@ -50,14 +50,14 @@ public class RevenueFacilityTile_FerrisWheel : RevenueFacilityTile
         StartCoroutine(StayOnRide(rider, seat));
     }
     
-    private IEnumerator StayOnRide(ShelterVisitor rider, Transform seat)
+    private IEnumerator StayOnRide(PathFindingUnit rider, Transform seat)
     {
         yield return new WaitForSeconds(36f); // 한 바퀴 회전
 
         ExitRide(rider, seat);
     }
 
-    private void ExitRide(ShelterVisitor rider, Transform seat)
+    private void ExitRide(PathFindingUnit rider, Transform seat)
     {
         rider.transform.parent = null; 
         rider.transform.position = exitPoint.position;

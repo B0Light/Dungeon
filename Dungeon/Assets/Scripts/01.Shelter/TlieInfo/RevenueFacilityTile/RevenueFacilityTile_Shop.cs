@@ -14,7 +14,7 @@ public class RevenueFacilityTile_Shop : RevenueFacilityTile
         while (waitingQueue.Count > 0)
         {
             _isWorking = true;
-            ShelterVisitor client = waitingQueue.Dequeue();
+            PathFindingUnit client = waitingQueue.Dequeue();
             
             yield return client.MoveToPointCoroutine(actionPoint.position, actionPoint.rotation);
 
@@ -32,7 +32,7 @@ public class RevenueFacilityTile_Shop : RevenueFacilityTile
         }
     }
     
-    private IEnumerator ExitTrade(ShelterVisitor client)
+    private IEnumerator ExitTrade(PathFindingUnit client)
     {
         GenerateIncome();
         yield return client.MoveToPointCoroutine(exitPoint.position, exitPoint.rotation);
