@@ -66,8 +66,8 @@ public class HUD_BuildInfo : MonoBehaviour
 
     private string GetStateText(int level, int income)
     {
-        string unit = "STL";
-        string per = "gang";
+        string unit = "SKL";
+        string per = "Time";
 
         string text = $"레벨 : {level}\n수익 : {income} {unit} / {per}";
 

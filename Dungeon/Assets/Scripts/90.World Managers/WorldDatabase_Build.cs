@@ -39,7 +39,7 @@ public class WorldDatabase_Build : Singleton<WorldDatabase_Build>
     public BuildObjData GetBuildingByID(int id) => 
         allBuildObjDataList.FirstOrDefault(buildObjData => buildObjData.itemCode == id);
 
-    public Sprite GetCategoryIcon(TileCategory id) => defaultCategoryIcon[(int)id];
+    public Sprite GetCategoryIcon(TileType id) => defaultCategoryIcon[(int)id];
     
     public IReadOnlyList<BuildObjData> GetBuildingsByTierReadOnly(ItemTier tier)
     {

@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
-using Unity.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-[SerializeField]
 public class BuildObjData : ItemData
 {
     [System.Serializable]
@@ -20,11 +17,9 @@ public class BuildObjData : ItemData
         Right,
     }
 
-    public bool isForbidden = false;
     public Transform prefab;
     
     [Space(10)]
-    [SerializeField] private TileCategory tileCategory;
     [SerializeField] private TileType tileType;
     public int maxLevel = 10;
     public int baseFee = 100;
@@ -67,6 +62,4 @@ public class BuildObjData : ItemData
     public int GetHeight(Dir dir) => dir is Dir.Down or Dir.Up ? height : width;
 
     public TileType GetTileType() => tileType;
-    
-    public TileCategory GetTileCategory() => tileCategory;
 }

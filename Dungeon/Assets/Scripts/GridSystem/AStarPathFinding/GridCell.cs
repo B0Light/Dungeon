@@ -1,5 +1,14 @@
 using UnityEngine;
 
+public enum TileType
+{
+    Headquarter,
+    Road,
+    Tree,
+    Attraction,
+    MajorFacility,
+    None,
+}
 public class GridCell : IPathNode
 {
     // A* Pathfinding을 위한 속성들

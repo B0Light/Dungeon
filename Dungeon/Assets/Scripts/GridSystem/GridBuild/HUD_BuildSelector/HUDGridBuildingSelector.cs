@@ -6,7 +6,7 @@ public class HUDGridBuildingSelector : MonoBehaviour
     [SerializeField] private GameObject selectPrefab;
     [SerializeField] private Transform selectButtonSlot;
     
-    public IEnumerator InitBtnSlot(TileCategory category)
+    public IEnumerator InitBtnSlot(TileType category)
     {
         RefreshSlot();
         yield return StartCoroutine(WaitForDataLoad());

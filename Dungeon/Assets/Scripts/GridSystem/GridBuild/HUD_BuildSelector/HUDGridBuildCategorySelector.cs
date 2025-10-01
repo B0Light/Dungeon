@@ -10,7 +10,7 @@ public class HUDGridBuildCategorySelector : MonoBehaviour
         RemoveAllChildren();
         foreach (var key in BuildingManager.Instance.unlockedBuildingByCategory.Keys)
         {
-            if(key == TileCategory.Headquarter) continue;
+            if(key == TileType.Headquarter) continue;
             GameObject instanceBtnObj = Instantiate(categoryPrefab, selectButtonSlot);
             instanceBtnObj.GetComponent<HUDGridBuildingCategoryUnit>()?.InitButton(key);
         }

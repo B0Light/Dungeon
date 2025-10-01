@@ -7,7 +7,7 @@ public class HUDGridBuildingCategoryUnit : MonoBehaviour
     [SerializeField] private Image buildingIcon;
     [SerializeField] private Button selectButton;
     
-    public void InitButton(TileCategory categoryCode)
+    public void InitButton(TileType categoryCode)
     {
         gameObject.SetActive(true);
         if (gameObject.activeInHierarchy)
@@ -20,7 +20,7 @@ public class HUDGridBuildingCategoryUnit : MonoBehaviour
         }
     }
     
-    private IEnumerator Init(TileCategory categoryCode)
+    private IEnumerator Init(TileType categoryCode)
     {
         yield return WaitForDataLoad();
         buildingIcon.sprite = WorldDatabase_Build.Instance.GetCategoryIcon(categoryCode);

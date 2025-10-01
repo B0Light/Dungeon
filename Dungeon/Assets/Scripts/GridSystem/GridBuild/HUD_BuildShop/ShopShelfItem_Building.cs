@@ -11,5 +11,5 @@ public class ShopShelfItem_Building : ShopShelfItem
     
     private void SelectThisItem()=>GridBuildingSystem.Instance.SelectToBuild(_buildObjData);
     
-    public override int GetItemCategory() => (int)_buildObjData.GetTileCategory();
+    public override int GetItemCategory() => (int)_buildObjData.GetTileType();
 }

@@ -14,7 +14,7 @@ public class BuildingManager : MonoBehaviour
 
     public ShelterManager shelterManager;
 
-    public SerializableDictionary<TileCategory, HashSet<BuildObjData>> unlockedBuildingByCategory;
+    public SerializableDictionary<TileType, HashSet<BuildObjData>> unlockedBuildingByCategory;
 
     [SerializeField] private CanvasGroup constructionCanvasGroup;
     [SerializeField] private CanvasGroup buildingSelectionCanvasGroup;
@@ -57,9 +57,9 @@ public class BuildingManager : MonoBehaviour
     
     private void InitBuildingCategory()
     {
-        foreach (TileCategory tileCategory in Enum.GetValues(typeof(TileCategory)))
+        foreach (TileType tileCategory in Enum.GetValues(typeof(TileType)))
         {
-            if(tileCategory == TileCategory.None) return;
+            if(tileCategory == TileType.None) return;
             if(unlockedBuildingByCategory.ContainsKey(tileCategory) == false)
                 unlockedBuildingByCategory.Add(tileCategory, new HashSet<BuildObjData>());
         }
@@ -78,7 +78,7 @@ public class BuildingManager : MonoBehaviour
     
     private void UpdateCategory(BuildObjData buildObjData)
     {
-        TileCategory tileCategory = buildObjData.GetTileCategory(); 
+        TileType tileCategory = buildObjData.GetTileType(); 
         
         if(unlockedBuildingByCategory.ContainsKey(tileCategory) == false)
             unlockedBuildingByCategory.Add(tileCategory, new HashSet<BuildObjData>());
@@ -168,7 +168,7 @@ public class BuildingManager : MonoBehaviour
         ToggleBuildPopUpHUD(false);
     }
 
-    public void SelectCategory(TileCategory id)
+    public void SelectCategory(TileType id)
     {
         GridBuildingSystem.Instance.SelectToBuild(null);
         StartCoroutine(gridBuildingSelector.InitBtnSlot(id));

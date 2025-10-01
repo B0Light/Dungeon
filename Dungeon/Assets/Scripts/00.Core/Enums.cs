@@ -16,6 +16,7 @@ public enum CharacterGroup
 {
     Team01,
     Team02,
+    Team03,
 }
 
 public enum ItemGridType
@@ -133,26 +134,6 @@ public enum StaticAnimationType
     Death,
     Sleep,
     Sit
-}
-
-public enum TileCategory
-{
-    Headquarter,
-    Road,
-    Tree,
-    Attraction,
-    LandMark,
-    None,
-}
-
-public enum TileType
-{
-    Headquarter,
-    Road,
-    Tree,
-    Attraction,
-    MajorFacility,
-    None,
 }
 
 public enum BoxType

@@ -560,7 +560,7 @@ public class GridBuildingSystem : MonoBehaviour
     }
     
     public BuildObjData GetPlacedObject() => 
-        _objectToPlace?.GetTileCategory() == TileCategory.Headquarter ? null : _objectToPlace;
+        _objectToPlace?.GetTileType() == TileType.Headquarter ? null : _objectToPlace;
 
     
     public FixedGridXZ<GridCell> GetGrid() => _fixedGrid;
