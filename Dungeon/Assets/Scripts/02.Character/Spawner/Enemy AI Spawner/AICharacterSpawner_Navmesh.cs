@@ -27,8 +27,8 @@ public class AICharacterSpawner_Navmesh : MonoBehaviour
     
     public void SpawnUnit(List<Vector2Int> patrolPointList)
     {
-        GameObject unit = Instantiate(spawnPrefab.characterPrefab);
-        
+        GameObject unit = Instantiate(spawnPrefab.characterPrefab, transform);
+        unit.transform.SetParent(null);
         if (spawnPrefab.maxHealth > 0)
         {
             AICharacterVariableManager aiCharacterVariableManager = unit.GetComponent<AICharacterVariableManager>();

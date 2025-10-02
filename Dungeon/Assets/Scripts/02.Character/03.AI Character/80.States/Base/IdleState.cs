@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "A.I/States/Base/Idle")]
@@ -147,7 +148,7 @@ public class IdleState : AIState
             if (Time.time - idleStartTime >= idleWaitTime)
             {
                 isWaitingAtWaypoint = false;
-                StartPatrolling(aiCharacter, patrolManager);
+                StartPatrolling(patrolManager);
             }
             return;
         }
@@ -162,7 +163,7 @@ public class IdleState : AIState
         // 현재 이동 중이 아니라면 순찰 시작
         if (!IsCurrentlyMoving())
         {
-            StartPatrolling(aiCharacter, patrolManager);
+            StartPatrolling(patrolManager);
         }
     }
     
@@ -179,30 +180,20 @@ public class IdleState : AIState
         // 매복 중에도 계속 적을 탐지 (이미 CheckForCombatTransition에서 처리됨)
     }
     
-    private void StartPatrolling(AICharacterManager aiCharacter, AICharacterPatrolManager patrolManager)
+    private void StartPatrolling(AICharacterPatrolManager patrolManager)
     {
-        Vector3? nextWaypoint = patrolManager.GetNextWaypoint();
+        Vector3 waypointPosition = patrolManager.GetNextWaypoint();
         
-        if (nextWaypoint.HasValue)
+        if (locomotionManager != null)
         {
-            // 새로운 웨이포인트로 이동 시작
-            Vector3 waypointPosition = nextWaypoint.Value;
+            locomotionManager.ForceSetDestination(waypointPosition);
+            isMovingToWaypoint = true;
+            lastWaypointPosition = waypointPosition;
             
-            if (locomotionManager != null)
-            {
-                locomotionManager.ForceSetDestination(waypointPosition);
-                isMovingToWaypoint = true;
-                lastWaypointPosition = waypointPosition;
-                
-                if (debugIdleState)
-                    Debug.Log($"[IdleState] AI moving to waypoint: {waypointPosition}");
-            }
-        }
-        else
-        {
             if (debugIdleState)
-                Debug.LogWarning($"[IdleState] No valid waypoint found for {aiCharacter.name}");
+                Debug.Log($"[IdleState] AI moving to waypoint: {waypointPosition}");
         }
+        
     }
     
     private void CheckWaypointReached(AICharacterManager aiCharacter)
@@ -248,9 +239,9 @@ public class IdleState : AIState
         }
     }
     
-    private System.Collections.IEnumerator EnableMovementAfterDelay()
+    private IEnumerator EnableMovementAfterDelay()
     {
-        yield return new UnityEngine.WaitForSeconds(moveStartDelay);
+        yield return new WaitForSeconds(moveStartDelay);
         
         if (locomotionManager != null)
         {
@@ -263,84 +254,6 @@ public class IdleState : AIState
         if (locomotionManager == null) return false;
         
         return locomotionManager.IsMoving;
-    }
-    
-    #endregion
-    
-    #region Utility Methods
-    
-    /// <summary>
-    /// 강제로 순찰을 시작합니다.
-    /// </summary>
-    /// <param name="aiCharacter">AI 캐릭터</param>
-    public void ForceStartPatrol(AICharacterManager aiCharacter)
-    {
-        if (locomotionManager == null) return;
-        
-        AICharacterPatrolManager patrolManager = aiCharacter.GetComponent<AICharacterPatrolManager>();
-        if (patrolManager != null)
-        {
-            isWaitingAtWaypoint = false;
-            isMovingToWaypoint = false;
-            StartPatrolling(aiCharacter, patrolManager);
-            
-            if (debugIdleState)
-                Debug.Log($"[IdleState] Force started patrol for {aiCharacter.name}");
-        }
-    }
-    
-    /// <summary>
-    /// 현재 대기 중인지 확인합니다.
-    /// </summary>
-    /// <returns>대기 중이면 true</returns>
-    public bool IsWaiting()
-    {
-        return isWaitingAtWaypoint;
-    }
-    
-    /// <summary>
-    /// 현재 웨이포인트로 이동 중인지 확인합니다.
-    /// </summary>
-    /// <returns>이동 중이면 true</returns>
-    public bool IsMovingToWaypoint()
-    {
-        return isMovingToWaypoint;
-    }
-    
-    /// <summary>
-    /// Idle 설정을 런타임에 변경합니다.
-    /// </summary>
-    /// <param name="newIdleWaitTime">새로운 대기 시간</param>
-    /// <param name="newPatrolCheckInterval">새로운 순찰 체크 간격</param>
-    public void UpdateIdleSettings(float newIdleWaitTime, float newPatrolCheckInterval)
-    {
-        idleWaitTime = Mathf.Max(0.1f, newIdleWaitTime);
-        patrolCheckInterval = Mathf.Max(0.1f, newPatrolCheckInterval);
-        
-        if (debugIdleState)
-            Debug.Log($"[IdleState] Updated settings - Wait Time: {idleWaitTime}, Check Interval: {patrolCheckInterval}");
-    }
-    
-    #endregion
-    
-    #region Debug Information
-    
-    /// <summary>
-    /// 현재 Idle 상태의 디버그 정보를 반환합니다.
-    /// </summary>
-    /// <returns>디버그 정보 문자열</returns>
-    public string GetDebugInfo()
-    {
-        float currentIdleTime = Time.time - idleStartTime;
-        float timeSinceLastCheck = Time.time - lastPatrolCheckTime;
-        
-        return $"[IdleState Debug]\n" +
-               $"Waiting at Waypoint: {isWaitingAtWaypoint}\n" +
-               $"Moving to Waypoint: {isMovingToWaypoint}\n" +
-               $"Current Idle Time: {currentIdleTime:F1}s\n" +
-               $"Time Since Last Check: {timeSinceLastCheck:F1}s\n" +
-               $"Last Waypoint: {lastWaypointPosition}\n" +
-               $"Currently Moving: {IsCurrentlyMoving()}";
     }
     
     #endregion

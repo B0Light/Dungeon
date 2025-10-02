@@ -1874,6 +1874,14 @@ PrefabInstance:
       value: AI Spawner NavMesh
       objectReference: {fileID: 0}
     - target: {fileID: 5836067206656681024, guid: 8708e9192d035424ea87d32122f44c63, type: 3}
+      propertyPath: mapOffset.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5836067206656681024, guid: 8708e9192d035424ea87d32122f44c63, type: 3}
+      propertyPath: mapOffset.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5836067206656681024, guid: 8708e9192d035424ea87d32122f44c63, type: 3}
       propertyPath: spawnPrefab.characterPrefab
       value: 
       objectReference: {fileID: 6093447394938997679, guid: d772f758790abd2498c7103203520fc7, type: 3}

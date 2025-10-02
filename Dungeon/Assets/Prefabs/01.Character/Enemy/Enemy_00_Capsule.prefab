@@ -1273,9 +1273,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alwaysStrafe: 0
-  walkSpeed: 0.7
-  runSpeed: 1
-  sprintSpeed: 6
+  walkSpeed: 3
+  runSpeed: 6
+  sprintSpeed: 10
   speedChangeDamping: 10
   rotationSmoothing: 10
   shuffleDirectionX: 0
@@ -1467,6 +1467,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellSize: {x: 1, y: 1, z: 1}
   gridOffset: {x: 0, y: 0, z: 0}
+  ambushProbability: 0.3
+  ambushDuration: 10
 --- !u!114 &8564587586335744857
 MonoBehaviour:
   m_ObjectHideFlags: 0
