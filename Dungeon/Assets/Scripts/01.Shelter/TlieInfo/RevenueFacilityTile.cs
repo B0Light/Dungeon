@@ -11,26 +11,22 @@ public class RevenueFacilityTile : PlacedObject
     private GameObject _vCam;
     
     [Header("Attraction Properties")]
-    [SerializeField] protected int attractionCapacity = 12;  // 수용 가능한 인원 수
     [SerializeField] protected float attractionCycleTime = 10f; // 놀이기구 한 사이클 시간 (초 단위)
     protected Transform exitPoint; // 출구 위치
 
-    private Queue<PathFindingUnit> _onAttractionQueue = new Queue<PathFindingUnit>(); // 타일에는 들어 왔으나 아직 줄 서지 않은 인원 
+    private readonly Queue<PathFindingUnit> _onAttractionQueue = new Queue<PathFindingUnit>(); // 타일에는 들어 왔으나 아직 줄 서지 않은 인원 
     protected Queue<PathFindingUnit> waitingQueue = new Queue<PathFindingUnit>(); // 대기열
     protected bool isOperating = false; // 놀이기구가 동작 중인지 여부
     
     [SerializeField] protected Transform queueStartPoint;
     protected readonly float queueSpacing = 1.5f;
     [SerializeField] private int maxColumns = 8; 
-    
-    protected ParticleSystem moneyVfx;
 
     [SerializeField] protected IncomeEventSO incomeEventChannel;
 
     protected override void Awake()
     {
         base.Awake();
-        moneyVfx = GetComponentInChildren<ParticleSystem>();
         exitPoint = FindChildByName(gameObject, "Exit").transform;
         
         _vCam = FindChildByName(gameObject, "CinemachineCamera");

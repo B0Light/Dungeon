@@ -1,6 +1,15 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+public enum TileType
+{
+    Headquarter,
+    Road,
+    Tree,
+    MajorFacility,
+    None,
+}
+
 public class BuildObjData : ItemData
 {
     [System.Serializable]
@@ -55,7 +64,6 @@ public class BuildObjData : ItemData
 
         return gridPositionList;
     }
-
 
     public int GetWidth(Dir dir) => dir is Dir.Down or Dir.Up ? width : height;
 

@@ -1,14 +1,6 @@
 using UnityEngine;
 
-public enum TileType
-{
-    Headquarter,
-    Road,
-    Tree,
-    Attraction,
-    MajorFacility,
-    None,
-}
+
 public class GridCell : IPathNode
 {
     // A* Pathfinding을 위한 속성들
@@ -19,7 +11,7 @@ public class GridCell : IPathNode
     IPathNode IPathNode.Parent { get => Parent; set => Parent = (GridCell)value; }
     
     // 그리드와 위치 정보
-    private int _posX, _posZ;
+    private readonly int _posX, _posZ;
     public Vector2Int Position { get; }
 
     // 타일 및 건물 정보
@@ -47,11 +39,11 @@ public class GridCell : IPathNode
     // 타일의 이동 가능 여부를 업데이트하는 내부 메서드
     private void UpdateWalkability()
     {
-        IsWalkable = GetWalkabilityFromCellType(CellType);
+        IsWalkable = GetWalkabilityFromCellType(CellType) | GetWalkabilityFromTileType();
     }
 
     // CellType에 따른 초기 이동 가능 여부 반환
-    private static bool GetWalkabilityFromCellType(CellType cellType)
+    private bool GetWalkabilityFromCellType(CellType cellType)
     {
         return cellType switch
         {
@@ -65,6 +57,20 @@ public class GridCell : IPathNode
             CellType.PathWall => false,
             CellType.Empty => false,
             _ => false
+        };
+    }
+    
+    private bool GetWalkabilityFromTileType()
+    {
+        if (_buildObjData == null) return false;
+        return _buildObjData.GetTileType() switch
+        {
+            TileType.Headquarter => true,
+            TileType.Road => true,
+            TileType.Tree => false,
+            TileType.MajorFacility => true,
+            TileType.None => false,
+            _=> false
         };
     }
 

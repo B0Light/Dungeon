@@ -125,7 +125,6 @@ public class GridPathfinder : AStarPathfindingBase<GridCell>
                     }
                     
                     if ((currentNeighborGrid?.GetTileType() == TileType.Headquarter ||
-                         currentNeighborGrid?.GetTileType() == TileType.Attraction ||
                          currentNeighborGrid?.GetTileType() == TileType.MajorFacility)
                         && currentNeighborGrid.Equals(_goalNode)) // Check against _goalNode here
                     {
@@ -185,7 +184,6 @@ public class GridPathfinder : AStarPathfindingBase<GridCell>
                     terrainMultiplier = 0.9f; // 도로는 약간 빠르게
                     break;
                 case TileType.Headquarter:
-                case TileType.Attraction:
                 case TileType.MajorFacility:
                     terrainMultiplier = 1.0f; // 시설 내부 진입은 기본
                     break;

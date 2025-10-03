@@ -21,10 +21,8 @@ MonoBehaviour:
   costItemList: e8030000e9030000380400004204000043040000
   width: 2
   height: 2
-  isForbidden: 0
   prefab: {fileID: 5182557877217463400, guid: 512ab81de883d8d40a58f94c25cf4fca, type: 3}
-  tileCategory: 4
-  tileType: 4
+  tileType: 3
   maxLevel: 10
   baseFee: 100
   upgradeStages: []

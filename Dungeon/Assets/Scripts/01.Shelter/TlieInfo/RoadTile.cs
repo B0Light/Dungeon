@@ -50,28 +50,18 @@ public class RoadTile : PlacedObject
         }
 
         TileType? tileType = gridObject.GetTileType();
-    
-        // 일반 도로인 경우 방향 확인 없이 true 반환
-        if (tileType == TileType.Road)
+
+        switch (tileType)
         {
-            return true;
+            case TileType.Road:
+                return true;
+            case TileType.Headquarter:
+            case TileType.MajorFacility:
+                return IsSpecialTileConnectedToRoad(gridObject, position, direction);
         }
-    
-        // 특수 타일(어트랙션, 랜드마크, 본부)의 경우
-        if (tileType == TileType.Attraction || tileType == TileType.MajorFacility)
-        {
-            return IsSpecialTileConnectedToRoad(gridObject, position, direction);
-        }
-    
-        if (tileType == TileType.Headquarter)
-        {
-            return IsHeadquarterConnectedToRoad(gridObject, position, direction);
-        }
-    
         return false;
     }
 
-// 어트랙션 또는 랜드마크가 도로와 연결되어 있는지 확인
     private bool IsSpecialTileConnectedToRoad(GridCell gridObject, Vector2Int position, Vector2Int direction)
     {
         // 입구 확인
@@ -85,18 +75,6 @@ public class RoadTile : PlacedObject
         if (position == gridObject.GetExitPosition())
         {
             BuildObjData.Dir objectDirection = gridObject.GetExitDirection();
-            return objectDirection == ConvertToConnectDirection(direction);
-        }
-    
-        return false;
-    }
-
-// 본부가 도로와 연결되어 있는지 확인
-    private bool IsHeadquarterConnectedToRoad(GridCell gridObject, Vector2Int position, Vector2Int direction)
-    {
-        if (position == gridObject.GetEntrancePosition())
-        {
-            BuildObjData.Dir objectDirection = gridObject.GetDirection();
             return objectDirection == ConvertToConnectDirection(direction);
         }
     

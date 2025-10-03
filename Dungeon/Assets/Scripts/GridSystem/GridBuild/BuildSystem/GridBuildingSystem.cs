@@ -320,6 +320,8 @@ public class GridBuildingSystem : MonoBehaviour
         {
             AttractionEntrancePosList.Add(placedObject.GetEntrance());
         }
+        
+        
 
         return placedObject;
     }
@@ -390,18 +392,16 @@ public class GridBuildingSystem : MonoBehaviour
     private void IsUpdateSurroundingRoad(PlacedObject placedObject)
     {
         TileType curTileType = _objectToPlace.GetTileType();
-        if (curTileType == TileType.Road)
+        switch (curTileType)
         {
-            UpdateSurroundingRoads(placedObject.GetEntrance());
-        }
-        if (curTileType == TileType.Attraction || curTileType == TileType.MajorFacility)
-        {
-            UpdateSurroundingRoads(placedObject.GetExit());
-            UpdateSurroundingRoads(placedObject.GetEntrance());
-        }
-        if (curTileType == TileType.Headquarter)
-        {
-            UpdateSurroundingRoads(placedObject.GetEntrance());
+            case TileType.Road:
+                UpdateSurroundingRoads(placedObject.GetEntrance());
+                break;
+            case TileType.MajorFacility:
+            case TileType.Headquarter: 
+                UpdateSurroundingRoads(placedObject.GetExit());
+                UpdateSurroundingRoads(placedObject.GetEntrance());
+                break;
         }
     }
 

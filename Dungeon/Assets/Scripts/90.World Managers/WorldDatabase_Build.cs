@@ -32,7 +32,8 @@ public class WorldDatabase_Build : Singleton<WorldDatabase_Build>
                 _buildObjByLevel[tier] = buildObjList;
             }
         
-            buildObjList.Add(buildObj);
+            if(buildObj.itemCode > 99)
+                buildObjList.Add(buildObj);
         }
     }
     

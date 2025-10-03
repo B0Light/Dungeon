@@ -50,7 +50,7 @@ public class PathFindingUnit : MonoBehaviour
             Debug.Log("NO ATTRACTION : GOAL - H.Q");
             return new Vector2Int(4, 1); // H.Q Position;
         }
-        int randomIndex = UnityEngine.Random.Range(0, attractions.Count);
+        int randomIndex = Random.Range(0, attractions.Count);
         return attractions[randomIndex];
     }
 
