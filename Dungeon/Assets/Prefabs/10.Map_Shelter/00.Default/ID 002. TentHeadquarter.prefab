@@ -648,6 +648,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Crypt_01
       objectReference: {fileID: 0}
+    - target: {fileID: 5688596867530812240, guid: 31489bb6b032392419c09929bcaae4fc, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688596867530812240, guid: 31489bb6b032392419c09929bcaae4fc, type: 3}
+      propertyPath: m_TagString
+      value: Ignore_CamCollision
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500632491225041568, guid: 31489bb6b032392419c09929bcaae4fc, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

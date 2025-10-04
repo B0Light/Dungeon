@@ -36,8 +36,8 @@ TagManager:
   - MiniMapComponents
   - Sign
   - 
-  - HexTile
-  - HexUnit
+  - 
+  - 
   - 
   - DungeonFloor
   - 
