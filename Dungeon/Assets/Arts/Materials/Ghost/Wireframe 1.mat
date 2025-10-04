@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: InteractableItem
+  m_Name: Wireframe 1
   m_Shader: {fileID: -6465566751694194690, guid: 6ed127712af586d46b3476b1db72145c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -54,7 +54,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.8
+    - _Alpha: 1
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
@@ -62,7 +62,7 @@ Material:
     - _Cull: 2
     - _DstBlend: 10
     - _DstBlendAlpha: 10
-    - _FresnelPower: 0.75
+    - _FresnelPower: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SrcBlend: 5
@@ -72,6 +72,6 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 0.26079226, g: 0.90566045, b: 0.2630977, a: 1}
+    - _Color: {r: 2.737258, g: 0.6879692, b: 6.3412805, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
