@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4349126926753710086}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,9 +485,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3475988442516812136, guid: 997d77fc119a24a4ebfbaf1fbc4e9ac7, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3477760727386972620, guid: 997d77fc119a24a4ebfbaf1fbc4e9ac7, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5601771533983221918, guid: 997d77fc119a24a4ebfbaf1fbc4e9ac7, type: 3}
       propertyPath: m_Name
       value: InteractableShredder
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601771533983221918, guid: 997d77fc119a24a4ebfbaf1fbc4e9ac7, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8291842793251353649, guid: 997d77fc119a24a4ebfbaf1fbc4e9ac7, type: 3}
       propertyPath: m_LocalPosition.y
