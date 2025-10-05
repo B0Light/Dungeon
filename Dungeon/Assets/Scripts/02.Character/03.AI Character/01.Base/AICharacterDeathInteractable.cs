@@ -9,7 +9,7 @@ public class AICharacterDeathInteractable : Interactable
     [Header("Loot Box Configuration")]
     [SerializeField] private int boxWidth = 5;
     [SerializeField] private int boxHeight = 5;
-    
+    [SerializeField] private float interactionTime = 1;
     [Header("Generated Loot (Runtime)")]
     [SerializeField] private List<int> generatedItemIds = new List<int>();
     
@@ -97,7 +97,7 @@ public class AICharacterDeathInteractable : Interactable
     {
         base.Interact(player);
         
-        GUIController.Instance.WaitToInteraction(OpenLootBox);
+        GUIController.Instance.WaitToInteraction(interactionTime,OpenLootBox);
     }
     
     #endregion

@@ -149,10 +149,10 @@ public class GUIController : Singleton<GUIController>
         inventoryGUIManager.OpenInteractionInventory(true, width, height, itemIdList, interactable);
     }
 
-    public void OpenDungeonEntrance(DungeonPlaceData dungeonPlaceData, Interactable interactable)
+    public void OpenDungeonEntrance(DungeonInfoData dungeonInfoData, Interactable interactable)
     {
         OpenGUI(dungeonEnterGUIManager);
-        dungeonEnterGUIManager.InitDungeonEnterHUD(dungeonPlaceData, interactable);
+        dungeonEnterGUIManager.InitDungeonEnterHUD(dungeonInfoData, interactable);
     }
 
     public void OpenForge(Interactable interactable)
@@ -186,8 +186,9 @@ public class GUIController : Singleton<GUIController>
         OpenGUI(mapGUIManager);
     }
     
-    public void WaitToInteraction(Action action)
+    public void WaitToInteraction(float time, Action action)
     {
+        interactionCountDown.SetInteractionTime(time);
         interactionCountDown.Interaction(action);
     }
 

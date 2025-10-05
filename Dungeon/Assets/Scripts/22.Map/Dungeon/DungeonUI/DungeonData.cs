@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Dungeon/Info ")]
+[CreateAssetMenu(menuName = "Dungeon/Info/DungeonData ")]
 public class DungeonData : ScriptableObject
 {
     [Header("Dungeon Information")] 

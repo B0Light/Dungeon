@@ -21,8 +21,9 @@ public class GridBuildingSystem : MonoBehaviour
     [SerializeField, Range(0,1f)] private float depreciation = 0.7f;
 
     [Space(10)] 
-    [ReadOnly] private Vector2Int entracnePos = new Vector2Int(3, 0);
-    [ReadOnly] private Vector2Int headquarterPos = new Vector2Int(4, 1);
+    [ReadOnly] private Vector2Int _entrancePos = new Vector2Int(3, 0);
+    [ReadOnly] private Vector2Int _headquarterPos = new Vector2Int(4, 1);
+    [ReadOnly] private Vector2Int _dungeonEntrancePos = new Vector2Int(3, 8);
 
     [Space(10)] 
     [SerializeField] private GameObject selector;
@@ -74,16 +75,9 @@ public class GridBuildingSystem : MonoBehaviour
     private void Start()
     {
         AttractionEntrancePosList = new List<Vector2Int>();
+        LoadDefaultTiles();
         LoadDefaultObject();
         LoadSaveBuildingData();
-        LoadDefaultTiles();
-    }
-
-    private void LoadDefaultObject()
-    {
-        LoadEntrance();
-        LoadDefaultRoad();
-        LoadHeadquarter();
     }
 
     private void LoadDefaultTiles()
@@ -97,7 +91,7 @@ public class GridBuildingSystem : MonoBehaviour
         }
         _objectToPlace = null;
     }
-
+    
     private void SetDefaultTile(int x, int y)
     {
         _objectToPlace = WorldDatabase_Build.Instance.GetBuildingByID(0);
@@ -105,23 +99,29 @@ public class GridBuildingSystem : MonoBehaviour
         PlaceTile(x,y, BuildObjData.Dir.Down);
         _objectToPlace = null;
     }
+    
+    private void LoadDefaultObject()
+    {
+        LoadEntrance();
+        LoadDefaultRoad();
+        LoadHeadquarter();
+        LoadDefaultDungeonEntrance();
+    }
 
     private void LoadEntrance()
     {
         _objectToPlace = WorldDatabase_Build.Instance.GetBuildingByID(1);
         if(_objectToPlace == null) return;
-        var placedObject = PlaceTile(entracnePos.x,entracnePos.y,BuildObjData.Dir.Down, 0,true);
+        var placedObject = PlaceTile(_entrancePos.x,_entrancePos.y,BuildObjData.Dir.Down, 0,true);
         AttractionEntrancePosList.Add(placedObject.GetEntrance());
         _objectToPlace = null;
     }
-
-    public Vector2Int GetEntrancePos() => entracnePos;
     
     private void LoadHeadquarter()
     {
         _objectToPlace = WorldDatabase_Build.Instance.GetBuildingByID(2);
         if(_objectToPlace == null) return;
-        var placedObject = PlaceTile(headquarterPos.x,headquarterPos.y,BuildObjData.Dir.Left,
+        var placedObject = PlaceTile(_headquarterPos.x,_headquarterPos.y,BuildObjData.Dir.Left,
             WorldSaveGameManager.Instance.currentGameData.shelterLevel,true);
         AttractionEntrancePosList.Add(placedObject.GetEntrance());
         _objectToPlace = null;
@@ -131,7 +131,16 @@ public class GridBuildingSystem : MonoBehaviour
     {
         _objectToPlace = WorldDatabase_Build.Instance.GetBuildingByID(3);
         if(_objectToPlace == null) return;
-        PlaceTile(3,1,BuildObjData.Dir.Down, 0,true);
+        for(int i = _entrancePos.y; i < _dungeonEntrancePos.y; i++)
+            PlaceTile(_entrancePos.x,i,BuildObjData.Dir.Down, 0);
+        _objectToPlace = null;
+    }
+    
+    private void LoadDefaultDungeonEntrance()
+    {
+        _objectToPlace = WorldDatabase_Build.Instance.GetBuildingByID(9);
+        if(_objectToPlace == null) return;
+        PlaceTile(_dungeonEntrancePos.x,_dungeonEntrancePos.y,BuildObjData.Dir.Down, 0,true);
         _objectToPlace = null;
     }
     
@@ -559,9 +568,10 @@ public class GridBuildingSystem : MonoBehaviour
         _isDeleteMode.Value = (BuildingManager.Instance.shelterManager.IsVisitorInShelter() == false);
     }
     
+    public Vector2Int GetEntrancePos() => _entrancePos;
+    
     public BuildObjData GetPlacedObject() => 
         _objectToPlace?.GetTileType() == TileType.Headquarter ? null : _objectToPlace;
-
     
     public FixedGridXZ<GridCell> GetGrid() => _fixedGrid;
 }

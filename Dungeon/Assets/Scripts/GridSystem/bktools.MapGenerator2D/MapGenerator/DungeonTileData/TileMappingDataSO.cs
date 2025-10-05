@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TileMappingData", menuName = "Dungeon/Tile Mapping Data")]
+[CreateAssetMenu(fileName = "TileMappingData", menuName = "Dungeon/Editor/Tile Mapping Data")]
 public class TileMappingDataSO : ScriptableObject
 {
     public List<TileTypeMapping> tileMappings = new List<TileTypeMapping>();

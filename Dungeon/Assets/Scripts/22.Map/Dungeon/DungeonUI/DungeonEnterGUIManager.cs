@@ -27,16 +27,16 @@ public class DungeonEnterGUIManager : GUIComponent
         _interactableObj?.ResetInteraction();
     }
 
-    public void InitDungeonEnterHUD(DungeonPlaceData dungeonPlaceData, Interactable interactable)
+    public void InitDungeonEnterHUD(DungeonInfoData dungeonInfoData, Interactable interactable)
     {
         _interactableObj = interactable;
         
         PlayerInputManager.Instance.SetControlActive(false);
         
-        if(dungeonPlaceData.dungeonDataList.Count == 0) return;
+        if(dungeonInfoData.dungeonDataList.Count == 0) return;
 
         ResetShelf();
-        dungeonDataList.AddRange(dungeonPlaceData.dungeonDataList);
+        dungeonDataList.AddRange(dungeonInfoData.dungeonDataList);
 
         for (var i = 0; i < dungeonDataList.Count; i++)
         {
@@ -47,7 +47,7 @@ public class DungeonEnterGUIManager : GUIComponent
             spawnButton.onClick.AddListener(() => InitEntranceOfDungeon(dungeonDataList[capturedIndex]));
         }
 
-        InitEntranceOfDungeon(dungeonPlaceData.dungeonDataList[0]);
+        InitEntranceOfDungeon(dungeonInfoData.dungeonDataList[0]);
     }
     
     private void ResetShelf()

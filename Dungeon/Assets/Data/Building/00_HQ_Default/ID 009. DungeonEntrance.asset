@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcc0e6685a77e3f48bc873f4f6566496, type: 3}
-  m_Name: ID 100. BaseRoad
+  m_Name: ID 009. DungeonEntrance
   m_EditorClassIdentifier: 
-  itemCode: 100
-  itemName: Road
-  itemIcon: {fileID: 21300000, guid: 67fdc91acd8a4b240a1a5c5d4fabc97d, type: 3}
-  itemTier: 0
-  itemDescription: A path that connects buildings.
+  itemCode: 9
+  itemName: Dungeon Entrance
+  itemIcon: {fileID: 21300000, guid: 13845c034a9beae4bb0a70e8068fafd4, type: 3}
+  itemTier: 5
+  itemDescription: Dungeon Entrance
   purchaseCost: 0
-  costItemList: e8030000
+  costItemList: 
   width: 1
   height: 1
-  prefab: {fileID: 1528818639043606945, guid: 9c14bbed5a19d450295e19722b94fe0c, type: 3}
-  tileType: 1
+  prefab: {fileID: 5182557877217463400, guid: 3aa2fc8c83bf49b4f97513e805432cd8, type: 3}
+  tileType: 0
   maxLevel: 0
   baseFee: 50
   upgradeStages: []

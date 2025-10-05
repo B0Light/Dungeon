@@ -1,10 +1,7 @@
-using System;
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.Serialization;
-using Random = UnityEngine.Random;
 
-[CreateAssetMenu(menuName = "Dungeon/TileData")]
+[CreateAssetMenu(menuName = "Dungeon/Editor/TileData")]
 public class TileDataSO : ScriptableObject
 {
     public GameObject tilePrefab;

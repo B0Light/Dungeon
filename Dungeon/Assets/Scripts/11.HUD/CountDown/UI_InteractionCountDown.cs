@@ -2,12 +2,10 @@ using System.Collections;
 using UnityEngine;
 using System;
 using TMPro;
-using UnityEngine.Serialization;
 
 public class UI_InteractionCountDown : MonoBehaviour
 {
-    
-    public float interactionTime = 2.0f;
+    private float _interactionTime = 1.0f;
     
     [Header("Interaction Obj")]
     [SerializeField] private GameObject textSlot;
@@ -31,10 +29,10 @@ public class UI_InteractionCountDown : MonoBehaviour
         
         float elapsedTime = 0.0f;
 
-        while (elapsedTime < interactionTime)
+        while (elapsedTime < _interactionTime)
         {
             elapsedTime += Time.deltaTime;
-            timerText.text = (interactionTime - elapsedTime).ToString("F2") + " seconds remaining";
+            timerText.text = (_interactionTime - elapsedTime).ToString("F2") + " seconds remaining";
             yield return null;
         }
 
@@ -48,5 +46,10 @@ public class UI_InteractionCountDown : MonoBehaviour
         _canvasGroup.alpha = isActive ? 1 : 0;
         _canvasGroup.interactable = false;
         _canvasGroup.blocksRaycasts = false;
+    }
+
+    public void SetInteractionTime(float time)
+    {
+        _interactionTime = time;
     }
 }

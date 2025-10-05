@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd2be48f5a491e248a996629a57e3ad6, type: 3}
+  m_Name: Dungeon
+  m_EditorClassIdentifier: 
+  tileMappings:
+  - cellType: 0
+    tileData: {fileID: 11400000, guid: 20bc63b50ac89cf40a779ef80acbe3bd, type: 2}
+  - cellType: 1
+    tileData: {fileID: 11400000, guid: 91affc24506b3c446965fd6c993000bd, type: 2}
+  - cellType: 2
+    tileData: {fileID: 11400000, guid: 2721bc0dbd25b644ca37d58236a01ec5, type: 2}
+  - cellType: 3
+    tileData: {fileID: 11400000, guid: c7d1effbd94d5994182a469d6f5deda8, type: 2}
+  - cellType: 4
+    tileData: {fileID: 11400000, guid: 6dd633de1441e654aadc4e524f238958, type: 2}
+  - cellType: 5
+    tileData: {fileID: 11400000, guid: 77d854f25c0bcea4e8ba82b997cb233e, type: 2}
+  - cellType: 6
+    tileData: {fileID: 11400000, guid: a364be97e94a5eb42a7437471d46a666, type: 2}
+  - cellType: 7
+    tileData: {fileID: 11400000, guid: c241b59ab56d560428c0d1ad77fc343b, type: 2}
+  - cellType: 8
+    tileData: {fileID: 11400000, guid: 22b781589da43224cb580673718e491c, type: 2}

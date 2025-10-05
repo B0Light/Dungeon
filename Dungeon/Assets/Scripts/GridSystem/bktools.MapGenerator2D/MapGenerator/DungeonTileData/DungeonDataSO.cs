@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Dungeon/Data ")]
+[CreateAssetMenu(menuName = "Dungeon/Editor/Data ")]
 public class DungeonDataSO : ScriptableObject
 {
     public string dungeonCode;
