@@ -1,15 +1,16 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class InteractableDungeonEntrance : Interactable
 {
-    [FormerlySerializedAs("_dungeonPlaceData")] [SerializeField] private DungeonInfoData dungeonInfoData;
+    [SerializeField] private DungeonInfoData dungeonInfoData;
     [SerializeField] private ParticleSystem vfx;
+    [SerializeField] private GameObject vCam;
     public override void Interact(PlayerManager player)
     {
         base.Interact(player);
         WorldSaveGameManager.Instance.SaveGame();
         
+        vCam?.SetActive(true);
         vfx?.Play();
         OpenHUD();
     }
@@ -22,6 +23,7 @@ public class InteractableDungeonEntrance : Interactable
     public override void ResetInteraction()
     {
         base.ResetInteraction();
+        vCam?.SetActive(false);
         vfx?.Stop();
     }
 }

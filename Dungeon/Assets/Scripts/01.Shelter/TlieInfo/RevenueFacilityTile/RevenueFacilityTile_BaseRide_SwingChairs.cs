@@ -16,7 +16,7 @@ public class RevenueFacilityTile_BaseRide_SwingChairs : RevenueFacilityTile_Base
     {
         float elapsedTime = 0f;
 
-        while (elapsedTime < attractionCycleTime)
+        while (elapsedTime < cycleTime)
         {
             rotationObject.transform.Rotate(Vector3.up * Time.deltaTime * rotationSpeed);
             elapsedTime += Time.deltaTime;

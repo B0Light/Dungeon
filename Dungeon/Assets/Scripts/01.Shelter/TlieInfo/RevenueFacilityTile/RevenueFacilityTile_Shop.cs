@@ -25,7 +25,7 @@ public class RevenueFacilityTile_Shop : RevenueFacilityTile
                 yield return StartCoroutine(visitors[i].MoveToPointCoroutine(targetPosition));
             }
             
-            yield return new WaitForSeconds(attractionCycleTime);
+            yield return new WaitForSeconds(cycleTime);
             
             yield return StartCoroutine(ExitTrade(client));
             _isWorking = false;

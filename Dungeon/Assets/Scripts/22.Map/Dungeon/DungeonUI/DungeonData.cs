@@ -16,7 +16,6 @@ public class DungeonData : ScriptableObject
     public List<int> mainResourceList;
     public int bossSpawnTimer ;
 
-    public Sprite dungeonInfoBackground;
     public AudioSource bgm;
     
     public string GetFormattedInfo()

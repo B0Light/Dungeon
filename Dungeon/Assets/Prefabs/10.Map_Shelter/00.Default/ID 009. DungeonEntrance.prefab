@@ -170,11 +170,11 @@ Transform:
   m_GameObject: {fileID: 2149775122745635514}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: -0.5}
+  m_LocalPosition: {x: 2.5, y: 0.5, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5727576749277753066}
+  m_Father: {fileID: 5182557877217463400}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5764166298242039156
 BoxCollider:
@@ -212,6 +212,7 @@ MonoBehaviour:
   interactableText: Enter the Dungeon
   dungeonInfoData: {fileID: 11400000, guid: 68535547ce776e04685afc6faeb8fac5, type: 2}
   vfx: {fileID: 5863183314179336205}
+  vCam: {fileID: 3757962887826353653}
 --- !u!1 &2662095491473402812
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +279,7 @@ Transform:
   - {fileID: 6436352552845147816}
   - {fileID: 5727576749277753066}
   - {fileID: 7631331118074422909}
+  - {fileID: 7015854418657304264}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4014031952026991852
@@ -295,7 +297,7 @@ MonoBehaviour:
   exitDir: 0
   entrancePos: 0
   exitPos: 0
-  attractionCycleTime: 1
+  cycleTime: 10
   queueStartPoint: {fileID: 7631331118074422909}
   maxColumns: 1
   incomeEventChannel: {fileID: 11400000, guid: be0c8f8789cf88b459b4a23e998bfc44, type: 2}
@@ -435,7 +437,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6177640903938468862}
-  - {fileID: 7015854418657304264}
   - {fileID: 2455566576632346642}
   m_Father: {fileID: 5182557877217463400}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

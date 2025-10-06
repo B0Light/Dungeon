@@ -63,7 +63,6 @@ public class DungeonEnterGUIManager : GUIComponent
     {
         dungeonName.text = dungeonData.dungeonName;
         dungeonInfo.text = dungeonData.GetFormattedInfo();
-        dungeonBackgroundImage.sprite = dungeonData.dungeonInfoBackground;
 
         available.SetActive(false);
         disable.SetActive(false);

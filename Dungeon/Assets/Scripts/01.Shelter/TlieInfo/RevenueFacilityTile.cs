@@ -8,10 +8,8 @@ using UnityEngine.Serialization;
 
 public class RevenueFacilityTile : PlacedObject
 {
-    private GameObject _vCam;
-    
     [Header("Attraction Properties")]
-    [SerializeField] protected float attractionCycleTime = 10f; // 놀이기구 한 사이클 시간 (초 단위)
+    [SerializeField] protected float cycleTime = 10f; // 한 사이클 시간 (초 단위)
     protected Transform exitPoint; // 출구 위치
 
     private readonly Queue<PathFindingUnit> _onAttractionQueue = new Queue<PathFindingUnit>(); // 타일에는 들어 왔으나 아직 줄 서지 않은 인원 
@@ -21,8 +19,9 @@ public class RevenueFacilityTile : PlacedObject
     [SerializeField] protected Transform queueStartPoint;
     protected readonly float queueSpacing = 1.5f;
     [SerializeField] private int maxColumns = 8; 
-
     [SerializeField] protected IncomeEventSO incomeEventChannel;
+    
+    private GameObject _vCam;
 
     protected override void Awake()
     {
