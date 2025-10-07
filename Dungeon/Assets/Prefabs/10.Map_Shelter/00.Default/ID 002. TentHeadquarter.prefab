@@ -304,13 +304,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3669425791974323059}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 8.5, y: 0, z: 2.9999995}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 8, y: 0, z: 2.9999995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1528818639043606945}
-  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &4158904800304438031
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,9 +398,9 @@ MonoBehaviour:
   exitDir: 0
   entrancePos: 1
   exitPos: 0
-  attractionCycleTime: 10
+  cycleTime: 10
   queueStartPoint: {fileID: 9210139824186471760}
-  maxColumns: 8
+  maxColumns: 4
   incomeEventChannel: {fileID: 11400000, guid: be0c8f8789cf88b459b4a23e998bfc44, type: 2}
   actionPoint: {fileID: 1063337070376941733}
 --- !u!1 &6934409471941008720

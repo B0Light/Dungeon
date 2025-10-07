@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(AStarPathfindingSystem))]
 public class PathFindingUnit : MonoBehaviour
@@ -9,10 +10,10 @@ public class PathFindingUnit : MonoBehaviour
     [SerializeField] private float rotationSpeed = 5f; // 회전 속도
     [SerializeField] private float moveSpeed = 5f; // 이동 속도
 
-    [SerializeField] private int numOfAttraction = 3;
+    [SerializeField] private int numOfTarget = 3;
     private PlacedObject _destination;
     
-    private Variable<bool> _isMoving = new Variable<bool>(false); // 이동 중인지 확인
+    private readonly Variable<bool> _isMoving = new Variable<bool>(false); // 이동 중인지 확인
     private Animator _animator;
     private readonly int _movementHash = Animator.StringToHash("isMove");
     private readonly int _rideHash = Animator.StringToHash("isRide");
@@ -35,21 +36,16 @@ public class PathFindingUnit : MonoBehaviour
     public void SpawnVisitor(ShelterManager shelterManager)
     {
         _shelterManager = shelterManager;
-        Vector2Int startPos = new Vector2Int(3, 0);
-        if (!SetRoute(startPos, SelectRandomAttraction()))
+        Vector2Int startPos = GridBuildingSystem.Instance.GetEntrancePos();
+        if (!SetRoute(startPos, SelectRandomTarget()))
         {
             GetNextDestination(startPos);
         }
     }
     
-    private Vector2Int SelectRandomAttraction()
+    private Vector2Int SelectRandomTarget()
     {
-        var attractions = GridBuildingSystem.Instance.AttractionEntrancePosList;
-        if(attractions.Count == 0) 
-        { 
-            Debug.Log("NO ATTRACTION : GOAL - H.Q");
-            return new Vector2Int(4, 1); // H.Q Position;
-        }
+        var attractions = GridBuildingSystem.Instance.CheckPointList;
         int randomIndex = Random.Range(0, attractions.Count);
         return attractions[randomIndex];
     }
@@ -70,7 +66,7 @@ public class PathFindingUnit : MonoBehaviour
         }
         else
         {
-            Debug.Log("NO WAY GOAL : " + goalPos);
+            Debug.Log("[PathFindingUnit] NO WAY GOAL : " + goalPos);
             // 선택한 목적지로 가는 경로가 없는 경우 
             return false;
         }
@@ -144,17 +140,18 @@ public class PathFindingUnit : MonoBehaviour
     public void GetNextDestination(Vector2Int curPos)
     {
         Debug.Log("Set NEXT DESTINATION");
-        if(numOfAttraction > 0)
+        if(numOfTarget > 0)
         {
-            numOfAttraction--;
-            if (!SetRoute(curPos, SelectRandomAttraction()))
+            numOfTarget--;
+            if (!SetRoute(curPos, SelectRandomTarget()))
             {
                 GetNextDestination(curPos);
             }
         }
         else
         {
-            if (!SetRoute(curPos, GridBuildingSystem.Instance.GetEntrancePos()))
+            if (!SetRoute(curPos, Random.Range(0, 1) > 0.5f ? 
+                    GridBuildingSystem.Instance.GetDungeonPos() : GridBuildingSystem.Instance.GetEntrancePos()))
             {
                 Destroy(this.gameObject);
             }

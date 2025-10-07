@@ -1,10 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class RevenueFacilityTile : PlacedObject
 {
@@ -12,7 +8,7 @@ public class RevenueFacilityTile : PlacedObject
     [SerializeField] protected float cycleTime = 10f; // 한 사이클 시간 (초 단위)
     protected Transform exitPoint; // 출구 위치
 
-    private readonly Queue<PathFindingUnit> _onAttractionQueue = new Queue<PathFindingUnit>(); // 타일에는 들어 왔으나 아직 줄 서지 않은 인원 
+    private readonly Queue<PathFindingUnit> _approachingQueue = new Queue<PathFindingUnit>(); // 타일에는 들어 왔으나 아직 줄 서지 않은 인원 
     protected Queue<PathFindingUnit> waitingQueue = new Queue<PathFindingUnit>(); // 대기열
     protected bool isOperating = false; // 놀이기구가 동작 중인지 여부
     
@@ -38,24 +34,24 @@ public class RevenueFacilityTile : PlacedObject
     
     public virtual void AddVisitor(PathFindingUnit visitor)
     {
-        _onAttractionQueue.Enqueue(visitor);
+        _approachingQueue.Enqueue(visitor);
         StartCoroutine(EnqueueVisitor(visitor));
     }
     
     private IEnumerator EnqueueVisitor(PathFindingUnit visitor)
     {
-        int queueCount = _onAttractionQueue.Count + waitingQueue.Count -1;
+        int queueCount = _approachingQueue.Count + waitingQueue.Count -1; // index는 0부터 시작 : 첫번쨰 사람 -> 0번 
 
         int row = queueCount / maxColumns; // 몇 번째 줄인지
         int column = queueCount % maxColumns; // 해당 줄에서 몇 번째 칸인지
 
         Vector3 targetPosition = queueStartPoint.position 
-                                 - queueStartPoint.forward * queueSpacing * row  // 앞뒤 간격
-                                 + queueStartPoint.right * queueSpacing * column; // 좌우 간격
+                                 - queueStartPoint.forward * queueSpacing * column  // 앞뒤 간격
+                                 - queueStartPoint.right * queueSpacing * row; // 좌우 간격
         
         yield return StartCoroutine(visitor.MoveToPointCoroutine(targetPosition));
         
-        waitingQueue.Enqueue(_onAttractionQueue.Dequeue());
+        waitingQueue.Enqueue(_approachingQueue.Dequeue());
         if (!isOperating)
         {
             StartCoroutine(ProcessQueue());

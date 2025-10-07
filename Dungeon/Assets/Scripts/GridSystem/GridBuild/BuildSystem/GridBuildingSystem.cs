@@ -38,8 +38,8 @@ public class GridBuildingSystem : MonoBehaviour
     
     public List<SaveBuildingData> SaveBuildingDataList { get; private set; }
 
-    // Attraction Entrance Position List -> For NPC
-    public List<Vector2Int> AttractionEntrancePosList { get; private set; }
+    // CheckPoint List -> For NPC
+    public List<Vector2Int> CheckPointList { get; private set; }
 
     public event EventHandler OnSelectedChanged;
     public event EventHandler OnObjectPlaced;
@@ -74,7 +74,7 @@ public class GridBuildingSystem : MonoBehaviour
 
     private void Start()
     {
-        AttractionEntrancePosList = new List<Vector2Int>();
+        CheckPointList = new List<Vector2Int>();
         LoadDefaultTiles();
         LoadDefaultObject();
         LoadSaveBuildingData();
@@ -113,7 +113,7 @@ public class GridBuildingSystem : MonoBehaviour
         _objectToPlace = WorldDatabase_Build.Instance.GetBuildingByID(1);
         if(_objectToPlace == null) return;
         var placedObject = PlaceTile(_entrancePos.x,_entrancePos.y,BuildObjData.Dir.Down, 0,true);
-        AttractionEntrancePosList.Add(placedObject.GetEntrance());
+        //CheckPointList.Add(placedObject.GetEntrance());
         _objectToPlace = null;
     }
     
@@ -123,7 +123,7 @@ public class GridBuildingSystem : MonoBehaviour
         if(_objectToPlace == null) return;
         var placedObject = PlaceTile(_headquarterPos.x,_headquarterPos.y,BuildObjData.Dir.Left,
             WorldSaveGameManager.Instance.currentGameData.shelterLevel,true);
-        AttractionEntrancePosList.Add(placedObject.GetEntrance());
+        CheckPointList.Add(placedObject.GetEntrance());
         _objectToPlace = null;
     }
     
@@ -140,7 +140,8 @@ public class GridBuildingSystem : MonoBehaviour
     {
         _objectToPlace = WorldDatabase_Build.Instance.GetBuildingByID(9);
         if(_objectToPlace == null) return;
-        PlaceTile(_dungeonEntrancePos.x,_dungeonEntrancePos.y,BuildObjData.Dir.Down, 0,true);
+        var placedObject = PlaceTile(_dungeonEntrancePos.x,_dungeonEntrancePos.y,BuildObjData.Dir.Down, 0,true);
+        CheckPointList.Add(placedObject.GetEntrance());
         _objectToPlace = null;
     }
     
@@ -327,7 +328,7 @@ public class GridBuildingSystem : MonoBehaviour
         }
         if(_objectToPlace.itemCode >= 300)
         {
-            AttractionEntrancePosList.Add(placedObject.GetEntrance());
+            CheckPointList.Add(placedObject.GetEntrance());
         }
         
         
@@ -435,7 +436,7 @@ public class GridBuildingSystem : MonoBehaviour
             }
             
             if(itemCode >= 300)
-                AttractionEntrancePosList.Remove(placedObject.GetEntrance());
+                CheckPointList.Remove(placedObject.GetEntrance());
             
             List<Vector2Int> gridPositionList = placedObject.GetGridPositionList();
 
@@ -569,6 +570,7 @@ public class GridBuildingSystem : MonoBehaviour
     }
     
     public Vector2Int GetEntrancePos() => _entrancePos;
+    public Vector2Int GetDungeonPos() => _dungeonEntrancePos;
     
     public BuildObjData GetPlacedObject() => 
         _objectToPlace?.GetTileType() == TileType.Headquarter ? null : _objectToPlace;
