@@ -2783,7 +2783,7 @@ MonoBehaviour:
   frontRayPos: {fileID: 1255029725836309375}
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 20481
+    m_Bits: 1090539521
   inclineAngle: 0
   groundedOffset: -0.14
   jumpForce: 8

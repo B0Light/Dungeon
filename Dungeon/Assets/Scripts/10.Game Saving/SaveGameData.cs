@@ -88,8 +88,7 @@ public class SaveGameData
         buildings = new List<SaveBuildingData>();
         
         availableDungeon = new SerializableDictionary<int, bool>();
-        availableDungeon.TryAdd(0, true);
-        availableDungeon.TryAdd(1, false);
+        availableDungeon.TryAdd(1, true);
         availableDungeon.TryAdd(2, false);
         availableDungeon.TryAdd(3, false);
         availableDungeon.TryAdd(4, false);

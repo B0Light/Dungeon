@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using Unity.Cinemachine;
 
 public class PlayerCameraController : Singleton<PlayerCameraController>
 {
-    private bool _enable = false;
+    private bool _enableOcclusion = false;
     [HideInInspector] public PlayerManager playerManager;
     public Camera mainCamera;
 
@@ -38,7 +39,7 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
 
     public void Update()
     {
-        if(!_enable) return;
+        if(!_enableOcclusion) return;
         HandleOcclusion();
     }
 
@@ -108,7 +109,8 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         vCam.LookAt = _playerTarget;
         
         TurnOnCamera();
-        _enable = true;
+        _enableOcclusion = true;
+        WorldSceneChangeManager.OnSceneEndPhase += ResetCamOcclusion;
     }
     
     public void LockOn(bool enable, Transform newLockOnTarget = null)
@@ -207,4 +209,6 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         if (currentValue != newValue)
             cameraController.enabled = newValue;
     }
+
+    private void ResetCamOcclusion() => _enableOcclusion = false;
 }

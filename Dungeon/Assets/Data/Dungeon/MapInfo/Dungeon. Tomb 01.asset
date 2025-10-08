@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c6e7fe83ba9a849923650ba55a9a37, type: 3}
   m_Name: Dungeon. Tomb 01
   m_EditorClassIdentifier: Assembly-CSharp::DungeonData
-  dungeonID: 0
+  dungeonID: 1
   dungeonKey: 0
-  difficulty: 0
-  dungeonSceneName: 
-  dungeonName: 
+  difficulty: 1
+  dungeonSceneName: 10.Dungeon_01
+  dungeonName: "\uC601\uC6C5\uC758 \uBB34\uB364 "
   enemyList: 
   mainResourceList: 
   bossSpawnTimer: 0
-  dungeonInfoBackground: {fileID: 0}
   bgm: {fileID: 0}

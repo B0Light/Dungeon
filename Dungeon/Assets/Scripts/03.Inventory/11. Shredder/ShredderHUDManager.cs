@@ -20,7 +20,7 @@ public class ShredderHUDManager : MonoBehaviour
     public void Init(int width, int height, List<int> itemIdList)
     {
         disassembleButton.onClick.AddListener(DisassembleItems);
-        WorldSceneChangeManager.OnSceneChanged += ResetDisassemble;
+        WorldSceneChangeManager.OnSceneEndPhase += ResetDisassemble;
 
         _initItemList = itemIdList;
         itemGrid.SetGrid(width, height, itemIdList);
@@ -66,7 +66,7 @@ public class ShredderHUDManager : MonoBehaviour
         _currentResetTime = resetTimer;
     }
 
-    public void ResetDisassemble()
+    private void ResetDisassemble()
     {
         _isDisassemble = false;
         disassembleButton.interactable = true;

@@ -24,7 +24,7 @@ public class WorldSceneChangeManager : Singleton<WorldSceneChangeManager>
     private float _currentDisplayProgress = 0f; // 현재 표시되는 진행률
     [SerializeField] private string titleSceneName = "01.TitleScene";
     [SerializeField] private string shelterSceneName = "03.Shelter";
-    public static event Action OnSceneChanged;
+    public static event Action OnSceneEndPhase;
 
     protected override void Awake()
     {
@@ -55,10 +55,10 @@ public class WorldSceneChangeManager : Singleton<WorldSceneChangeManager>
     {
         // 씬을 정수 코드로 로드
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneToLoad);
-
+        OnSceneEndPhase?.Invoke();
         yield return StartCoroutine(HandleSceneLoading(asyncOperation, sceneToLoad));
         
-        OnSceneChanged?.Invoke();
+        
     }
 
     private IEnumerator HandleSceneLoading(AsyncOperation asyncOperation, string sceneToLoad)
