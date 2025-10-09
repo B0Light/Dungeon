@@ -1,5 +1,6 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using bkTools;
 
 public interface IPathNode
 {
@@ -9,8 +10,8 @@ public interface IPathNode
     IPathNode Parent { get; set; }
 }
 
-public abstract class AStarPathfindingBase<TNode>
-    where TNode : IPathNode
+public abstract class PathfindingBase<TNode>
+    where TNode : class, IPathNode
 {
     protected abstract IEnumerable<TNode> GetNeighbors(TNode node);
     protected abstract float GetDistance(TNode a, TNode b);
@@ -24,41 +25,33 @@ public abstract class AStarPathfindingBase<TNode>
 
     protected List<TNode> FindPath(TNode startNode, TNode goalNode)
     {
-        List<TNode> openList = new List<TNode>();
+        PriorityQueue<TNode, float> pq = new PriorityQueue<TNode, float>();
         HashSet<TNode> closedList = new HashSet<TNode>();
 
-        openList.Add(startNode);
+        pq.Enqueue(startNode, 0);
 
-        while (openList.Count > 0)
+        while (pq.Count > 0)
         {
-            TNode currentNode = openList.OrderBy(node => node.FCost).First();
-
+            TNode currentNode = pq.Dequeue();
+            closedList.Add(currentNode);
             if (currentNode.Equals(goalNode))
             {
                 return RetracePath(startNode, goalNode);
             }
-            openList.Remove(currentNode);
-            closedList.Add(currentNode);
-
+            
             foreach (TNode neighbor in GetNeighbors(currentNode))
             {
-                if (closedList.Contains(neighbor))
-                {
-                    continue;
-                }
+                if (closedList.Contains(neighbor)) continue;
 
                 float tentativeGCost = currentNode.GCost + GetMovementCost(currentNode, neighbor);
 
-                if (tentativeGCost < neighbor.GCost || !openList.Contains(neighbor))
+                if (tentativeGCost < neighbor.GCost)
                 {
                     neighbor.GCost = tentativeGCost;
                     neighbor.HCost = GetDistance(neighbor, goalNode);
                     neighbor.Parent = currentNode;
-
-                    if (!openList.Contains(neighbor))
-                    {
-                        openList.Add(neighbor);
-                    }
+                    
+                    pq.Enqueue(neighbor, tentativeGCost);
                 }
             }
         }
@@ -66,7 +59,7 @@ public abstract class AStarPathfindingBase<TNode>
         return null; // 경로를 찾지 못한 경우
     }
 
-    protected List<TNode> RetracePath(TNode startNode, TNode goalNode)
+    private List<TNode> RetracePath(TNode startNode, TNode goalNode)
     {
         List<TNode> path = new List<TNode>();
         TNode currentNode = goalNode;

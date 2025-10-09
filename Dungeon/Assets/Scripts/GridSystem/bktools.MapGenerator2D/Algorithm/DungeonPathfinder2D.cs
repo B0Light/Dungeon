@@ -32,7 +32,7 @@ public class DungeonPathfinder2D {
     HashSet<Node> closed;
 
     public DungeonPathfinder2D(Vector2Int size) {
-        _dynamicGrid = new DynamicGridXZ<Node>(size, Vector2Int.zero);
+        _dynamicGrid = new DynamicGridXZ<Node>(size);
         queue = new PriorityQueue<Node, float>();
         closed = new HashSet<Node>();
 

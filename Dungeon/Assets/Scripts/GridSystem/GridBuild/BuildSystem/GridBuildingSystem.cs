@@ -52,7 +52,7 @@ public class GridBuildingSystem : MonoBehaviour
             _gridHeight,
             _cellSize,
             transform.position,
-            (int x, int z) => new GridCell(x, z, CellType.Empty)
+            (x, z) => new GridCell(x, z, CellType.Empty)
         );
         _lastPlacedPosition = new Vector2Int(-1, -1); // 초기화: 유효하지 않은 위치
     }

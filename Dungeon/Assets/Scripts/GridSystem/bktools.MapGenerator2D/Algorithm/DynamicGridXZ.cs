@@ -5,11 +5,8 @@ public class DynamicGridXZ<T> : GridBase<T>
 {
     private Dictionary<Vector2Int, T> _data;
 
-    public Vector2Int Offset { get; set; }
-
-    public DynamicGridXZ(Vector2Int size, Vector2Int offset) : base(size.x, size.y, 1f, new Vector3(offset.x, 0, offset.y))
+    public DynamicGridXZ(Vector2Int size) : base(size.x, size.y, 1f, Vector3.zero)
     {
-        Offset = offset;
         _data = new Dictionary<Vector2Int, T>();
     }
 
@@ -22,7 +19,7 @@ public class DynamicGridXZ<T> : GridBase<T>
     public override T GetGridObject(int x, int z)
     {
         Vector2Int pos = new Vector2Int(x, z);
-        if (_data.TryGetValue(pos + Offset, out var value))
+        if (_data.TryGetValue(pos, out var value))
         {
             return value;
         }
@@ -50,7 +47,7 @@ public class DynamicGridXZ<T> : GridBase<T>
     {
         get
         {
-            if (_data.TryGetValue(pos + Offset, out var value))
+            if (_data.TryGetValue(pos, out var value))
             {
                 return value;
             } else
@@ -60,15 +57,7 @@ public class DynamicGridXZ<T> : GridBase<T>
         }
         set
         {
-            _data[pos + Offset] = value;
-        }
-    }
-
-    public IEnumerable<Vector2Int> GetAllPositions()
-    {
-        foreach (var key in _data.Keys)
-        {
-            yield return key - Offset;
+            _data[pos] = value;
         }
     }
 }

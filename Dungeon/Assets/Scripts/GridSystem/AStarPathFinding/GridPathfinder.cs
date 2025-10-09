@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridPathfinder : AStarPathfindingBase<GridCell>
+public class GridPathfinder : PathfindingBase<GridCell>
 {
     private FixedGridXZ<GridCell> _fixedGrid;
     private GridCell _goalNode;
