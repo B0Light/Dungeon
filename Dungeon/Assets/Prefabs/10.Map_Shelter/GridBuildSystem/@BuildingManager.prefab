@@ -909,8 +909,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8121581617279451529}
+  m_Children: []
   m_Father: {fileID: 3650849430938048335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2824698861582437865
@@ -2704,7 +2703,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00000015646219}
+  m_AnchoredPosition: {x: 0, y: 0.000025987625}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &6117774590072434570
@@ -2953,12 +2952,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2558066296419659778}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 17.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6114955813912047611}
+  m_Father: {fileID: 3650849430938048335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2562828582653356206
 GameObject:
@@ -3268,12 +3267,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2772494150305798207}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3632092813234344551}
+  m_Father: {fileID: 3650849430938048335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &878390919256217850
 MonoBehaviour:
@@ -3287,6 +3286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f323a651df7557843aabdbc1a0fb5a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridBuildController: {fileID: 5734266620335009917}
   ghostMaterialEnable: {fileID: 2100000, guid: 8e288663dcad1a0468669a0b5e70e381, type: 2}
   ghostMaterialDisable: {fileID: 2100000, guid: cfe0c32c04eeb1a4595ef543b2c70bd8, type: 2}
 --- !u!1 &2783295626688176818
@@ -5507,8 +5507,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7354136166512941660}
-        m_TargetAssemblyTypeName: GridBuildingSystem, Assembly-CSharp
+      - m_Target: {fileID: 5734266620335009917}
+        m_TargetAssemblyTypeName: GridBuildController, Assembly-CSharp
         m_MethodName: SetDeleteMode
         m_Mode: 1
         m_Arguments:
@@ -8141,8 +8141,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1575260067314652146}
+  m_Children: []
   m_Father: {fileID: 3650849430938048335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7354136166512941660
@@ -8157,11 +8156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acefa9be2f436894ca0e6cb30f4ae3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  depreciation: 0.7
-  selector: {fileID: 4710162212561415036}
-  selectorMeshRenderer: {fileID: 4469568518272452175}
-  baseMat: {fileID: 2100000, guid: a49319226b6a181478e8ee4f99dedee5, type: 2}
-  deleteMat: {fileID: 2100000, guid: fed0a678cf678124d9566724907f5140, type: 2}
 --- !u!1 &6247025730770938858
 GameObject:
   m_ObjectHideFlags: 0
@@ -8850,7 +8844,10 @@ Transform:
   m_Children:
   - {fileID: 4990667994886488225}
   - {fileID: 6114955813912047611}
+  - {fileID: 8121581617279451529}
   - {fileID: 3632092813234344551}
+  - {fileID: 3661591375638608280}
+  - {fileID: 1575260067314652146}
   - {fileID: 2889749955518618743}
   - {fileID: 2736523785732371631}
   - {fileID: 7363710750095016222}
@@ -8872,13 +8869,14 @@ MonoBehaviour:
   gridBuildCategorySelector: {fileID: 7796116802862077934}
   gridBuildingSelector: {fileID: 5347772458471290143}
   shelterManager: {fileID: 2824698861582437865}
-  unlockedBuildingByCategory:
-    keys: 
+  gridBuildCamera: {fileID: 1959803570036205827}
+  gridBuildController: {fileID: 5734266620335009917}
   constructionCanvasGroup: {fileID: 2977473820808376118}
   buildingSelectionCanvasGroup: {fileID: 1126869874080044157}
   buildingPopupCanvasGroup: {fileID: 2453993650216264061}
   buildInfoHUD: {fileID: 7833350303422047147}
-  _gridBuildCamera: {fileID: 1959803570036205827}
+  unlockedBuildingByCategory:
+    keys: 
 --- !u!1 &7086117900120386677
 GameObject:
   m_ObjectHideFlags: 0
@@ -10597,6 +10595,55 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!1 &7993059910434442670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3661591375638608280}
+  - component: {fileID: 5734266620335009917}
+  m_Layer: 0
+  m_Name: GridBulidController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3661591375638608280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7993059910434442670}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3650849430938048335}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5734266620335009917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7993059910434442670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1098126fcee4d54ca8090c8bc61150c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridBuildController
+  gridBuildSystem: {fileID: 7354136166512941660}
+  selector: {fileID: 4710162212561415036}
+  selectorMeshRenderer: {fileID: 4469568518272452175}
+  baseMat: {fileID: 2100000, guid: a49319226b6a181478e8ee4f99dedee5, type: 2}
+  deleteMat: {fileID: 2100000, guid: fed0a678cf678124d9566724907f5140, type: 2}
 --- !u!1 &8075491412668162468
 GameObject:
   m_ObjectHideFlags: 0

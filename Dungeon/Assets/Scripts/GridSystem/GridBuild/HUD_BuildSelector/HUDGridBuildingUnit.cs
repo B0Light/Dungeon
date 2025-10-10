@@ -19,7 +19,7 @@ public class HUDGridBuildingUnit : MonoBehaviour
         _buildObjData = WorldDatabase_Build.Instance.GetBuildingByID(buildingCode);
         buildingIcon.sprite = _buildObjData.itemIcon;
         selectNumText.text = itemCount.ToString();
-        selectButton.onClick.AddListener(()=>GridBuildingSystem.Instance.SelectToBuild(_buildObjData));
+        selectButton.onClick.AddListener(()=>GridBuildSystem.Instance.SelectToBuild(_buildObjData));
     }
 
     public void InitExitButton()

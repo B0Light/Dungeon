@@ -13,7 +13,7 @@ public class HUDGridBuildingCostController : MonoBehaviour
         {
             yield return null; // 한 프레임 대기
         }
-        while (!GridBuildingSystem.Instance)
+        while (!GridBuildSystem.Instance)
         {
             yield return null; // 한 프레임 대기
         }
@@ -26,19 +26,13 @@ public class HUDGridBuildingCostController : MonoBehaviour
     private IEnumerator BindSelectBuilding()
     {
         yield return StartCoroutine(WaitForDataLoad());
-        GridBuildingSystem.Instance.OnSelectedChanged += Instance_OnSelectedChanged;
-        GridBuildingSystem.Instance.OnObjectPlaced += Instance_OnSelectedChanged;
+        GridBuildSystem.OnSelectedChanged += Instance_OnSelectedChanged;
+        GridBuildSystem.OnObjectPlaced  += Instance_OnSelectedChanged;
     }
 
-    private void OnDisable()
+    private void Instance_OnSelectedChanged(BuildObjData objectToPlace)
     {
-        GridBuildingSystem.Instance.OnSelectedChanged -= Instance_OnSelectedChanged;
-        GridBuildingSystem.Instance.OnObjectPlaced -= Instance_OnSelectedChanged;
-    }
-
-    private void Instance_OnSelectedChanged(object sender, System.EventArgs e)
-    {
-        ItemData item = GridBuildingSystem.Instance.GetPlacedObject();
+        ItemData item = objectToPlace;
         
         DeleteAllChildren(costItemSlot);
         if (item == null) return;

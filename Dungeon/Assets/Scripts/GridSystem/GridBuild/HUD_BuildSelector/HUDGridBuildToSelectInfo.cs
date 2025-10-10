@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using System.Collections;
@@ -26,7 +25,7 @@ public class HUDGridBuildToSelectInfo : MonoBehaviour
         {
             yield return null; // 한 프레임 대기
         }
-        while (!GridBuildingSystem.Instance)
+        while (!GridBuildSystem.Instance)
         {
             yield return null; // 한 프레임 대기
         }
@@ -40,17 +39,12 @@ public class HUDGridBuildToSelectInfo : MonoBehaviour
     private IEnumerator BindSelectBuilding()
     {
         yield return StartCoroutine(WaitForDataLoad());
-        GridBuildingSystem.Instance.OnSelectedChanged += Instance_OnSelectedChanged;
-    }
-
-    private void OnDisable()
-    {
-        GridBuildingSystem.Instance.OnSelectedChanged -= Instance_OnSelectedChanged;
+        GridBuildSystem.OnSelectedChanged += Instance_OnSelectedChanged;
     }
     
-    private void Instance_OnSelectedChanged(object sender, System.EventArgs e)
+    private void Instance_OnSelectedChanged(BuildObjData objectToPlace)
     {
-        BuildObjData buildObjData = GridBuildingSystem.Instance.GetPlacedObject();
+        BuildObjData buildObjData = objectToPlace;
 
         _canvasGroup.alpha = buildObjData != null ? 1 : 0;
         Init(buildObjData);

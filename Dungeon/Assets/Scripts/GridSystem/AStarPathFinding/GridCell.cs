@@ -19,9 +19,6 @@ public class GridCell : IPathNode
     private PlacedObject _placedObject;
     private BuildObjData _buildObjData;
     private BuildObjData.Dir _dir;
-    
-    // 길찾기 기능
-    public bool IsWalkable { get; private set; }
 
     public GridCell(int posX, int posZ, CellType cellType)
     {
@@ -33,53 +30,15 @@ public class GridCell : IPathNode
         GCost = float.MaxValue;
         
         // 초기 이동 가능 여부 설정
-        UpdateWalkability();
     }
 
     // 타일의 이동 가능 여부를 업데이트하는 내부 메서드
-    private void UpdateWalkability()
-    {
-        IsWalkable = GetWalkabilityFromCellType(CellType) | GetWalkabilityFromTileType();
-    }
-
-    // CellType에 따른 초기 이동 가능 여부 반환
-    private bool GetWalkabilityFromCellType(CellType cellType)
-    {
-        return cellType switch
-        {
-            CellType.Floor => true,
-            CellType.FloorCenter => true,
-            CellType.Path => true,
-            CellType.ExpandedPath => true,
-            CellType.MainGate => true,
-            CellType.SubGate => true,
-            CellType.Wall => false,
-            CellType.PathWall => false,
-            CellType.Empty => false,
-            _ => false
-        };
-    }
-    
-    private bool GetWalkabilityFromTileType()
-    {
-        if (_buildObjData == null) return false;
-        return _buildObjData.GetTileType() switch
-        {
-            TileType.Headquarter => true,
-            TileType.Road => true,
-            TileType.Tree => false,
-            TileType.MajorFacility => true,
-            TileType.None => false,
-            _=> false
-        };
-    }
 
     public void SetPlacedObject(PlacedObject placedObject, BuildObjData buildObjData, BuildObjData.Dir dir)
     {
         _placedObject = placedObject;
         _buildObjData = buildObjData;
         _dir = dir;
-        UpdateWalkability(); // 건물이 배치되면 이동 가능 여부를 갱신
     }
 
     public void ClearPlacedObject()
@@ -87,7 +46,6 @@ public class GridCell : IPathNode
         _placedObject = null;
         _buildObjData = null;
         _dir = BuildObjData.Dir.Down;
-        UpdateWalkability(); // 건물이 제거되면 이동 가능 여부를 갱신
     }
 
     public bool CanBuild()
@@ -104,7 +62,7 @@ public class GridCell : IPathNode
 
     public override string ToString()
     {
-        return $"GridCell({_posX}, {_posZ}) - {CellType}, IsWalkable: {IsWalkable}";
+        return $"GridCell({_posX}, {_posZ}) - {CellType}";
     }
     
     public override bool Equals(object obj)

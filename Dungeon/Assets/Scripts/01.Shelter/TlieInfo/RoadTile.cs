@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class RoadTile : PlacedObject
 {
-    [Space(10)]
-    // 기본 연결 타입별 프리팹
     [SerializeField] private GameObject defaultPrefab;
+    [Space(10)]
     [SerializeField] private GameObject straightPrefab; // 1자 연결 프리팹 (-)
     [SerializeField] private GameObject cornerPrefab;   // ㄱ자 연결 프리팹
-    [SerializeField] private GameObject tPrefab;        // ㅗ자 연결 프리팹
     [SerializeField] private GameObject crossPrefab;    // +자 연결 프리팹
-    [SerializeField] private string connectionKey = "";
-    public void UpdateConnections()
+    [SerializeField] private GameObject tPrefab;        // ㅗ자 연결 프리팹
+    
+    public virtual void UpdateConnections()
     {
         Vector2Int[] directions = new Vector2Int[]
         {
@@ -21,9 +20,8 @@ public class RoadTile : PlacedObject
         };
 
         // 연결 정보를 나타내는 4비트 문자열 생성
-        connectionKey = "";
+        string connectionKey = "";
         
-
         foreach (var dir in directions)
         {
             Vector2Int checkPos = originPos + dir;
@@ -41,9 +39,9 @@ public class RoadTile : PlacedObject
         UpdateModel(connectionKey);
     }
 
-    private bool IsRoadAtPosition(Vector2Int position, Vector2Int direction)
+    protected bool IsRoadAtPosition(Vector2Int position, Vector2Int direction)
     {
-        GridCell gridObject = GridBuildingSystem.Instance.GetGrid().GetGridObject(position.x, position.y);
+        GridCell gridObject = GridBuildSystem.Instance.GetGrid().GetGridObject(position.x, position.y);
         if (gridObject == null)
         {
             return false;
@@ -90,7 +88,7 @@ public class RoadTile : PlacedObject
         return BuildObjData.Dir.Up;
     }
 
-    private void UpdateModel(string connectionKey)
+    protected void UpdateModel(string connectionKey)
     {
         // 기존 모델 제거
         foreach (Transform child in modelSlot)

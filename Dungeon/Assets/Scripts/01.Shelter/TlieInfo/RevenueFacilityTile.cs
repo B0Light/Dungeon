@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RevenueFacilityTile : PlacedObject
+public class RevenueFacilityTile : PlacedObject, IRevenueFacility
 {
     [Header("Attraction Properties")]
     [SerializeField] protected float cycleTime = 10f; // 한 사이클 시간 (초 단위)
@@ -71,7 +71,7 @@ public class RevenueFacilityTile : PlacedObject
     protected void GenerateIncome()
     {
         // 약간의 랜덤 변동을 주는 수입 계산
-        int actualIncome = Mathf.RoundToInt(GetFee() * UnityEngine.Random.Range(0.8f, 1.2f));
+        int actualIncome = Mathf.RoundToInt(GetFee() * Random.Range(0.8f, 1.2f));
         
         // 수입 데이터 생성
         IncomeData incomeData = new IncomeData(buildObjData.itemName, actualIncome);

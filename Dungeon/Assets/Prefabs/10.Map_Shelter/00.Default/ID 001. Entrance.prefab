@@ -168,6 +168,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -189,6 +191,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -224,7 +227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1528818639043606945}
-  - component: {fileID: -6940803115734237264}
+  - component: {fileID: 8027054537972169745}
   m_Layer: 14
   m_Name: ID 001. Entrance
   m_TagString: Untagged
@@ -250,7 +253,7 @@ Transform:
   - {fileID: 4809916779958587067}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6940803115734237264
+--- !u!114 &8027054537972169745
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -259,17 +262,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4992911712181626642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 483a8c076bfbe6548b678bc831bbef33, type: 3}
+  m_Script: {fileID: 11500000, guid: c89adb96387239448960e3f77b1268aa, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntranceTile
   exitDir: 0
   entrancePos: 0
   exitPos: 0
-  attractionCapacity: 1
-  attractionCycleTime: 1
-  queueStartPoint: {fileID: 3580092039268810369}
-  maxColumns: 1
-  incomeEventChannel: {fileID: 0}
+  defaultPrefab: {fileID: 1593622924028346, guid: 3222b28643104234bae076b4e36510dc, type: 3}
+  straightPrefab: {fileID: 1214461412346908, guid: 9e7829e2c198d894ab228a264cbc5d9d, type: 3}
+  cornerPrefab: {fileID: 1767584490360036, guid: dedc3a45428c9614089ce95778deb926, type: 3}
+  crossPrefab: {fileID: 1821989252022256, guid: a7f62a09d79e0ac489ab9f9709e417dc, type: 3}
+  tPrefab: {fileID: 1968427985800984, guid: d084ea025e1a038439c9f2e8b152625e, type: 3}
 --- !u!1 &5518748391943264478
 GameObject:
   m_ObjectHideFlags: 0

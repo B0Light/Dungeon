@@ -39,7 +39,7 @@ public class GridPathfinder : PathfindingBase<GridCell>
     {
         if (_nodeGrid == null)
         {
-            _fixedGrid = GridBuildingSystem.Instance.GetGrid();
+            _fixedGrid = GridBuildSystem.Instance.GetGrid();
             _gridSize = new Vector2Int(_fixedGrid.Width, _fixedGrid.Height);
             _nodeGrid = new GridCell[_gridSize.x, _gridSize.y];
             foreach (GridCell obj in _fixedGrid.GetAllGridObjects())
@@ -54,12 +54,6 @@ public class GridPathfinder : PathfindingBase<GridCell>
         if (!IsValidPosition(start) || !IsValidPosition(goal))
         {
             Debug.LogWarning($"Invalid positions: Start({start}) or Goal({goal})");
-            return null;
-        }
-
-        if (!startNode.IsWalkable || !_goalNode.IsWalkable)
-        {
-            Debug.LogWarning($"Unwalkable positions: Start({start}:{startNode.CellType}) or Goal({goal}:{_goalNode.CellType})");
             return null;
         }
 
@@ -140,7 +134,7 @@ public class GridPathfinder : PathfindingBase<GridCell>
                         }
                     }
                 }
-                else if (neighborNode.IsWalkable)
+                else
                 {
                     yield return neighborNode;
                 }

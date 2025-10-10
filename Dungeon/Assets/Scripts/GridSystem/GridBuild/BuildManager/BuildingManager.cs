@@ -3,7 +3,6 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class BuildingManager : MonoBehaviour
 {
@@ -13,9 +12,12 @@ public class BuildingManager : MonoBehaviour
     public HUDGridBuildingSelector gridBuildingSelector;
 
     public ShelterManager shelterManager;
+    
+    [Header("BuildSystem")] 
+    [SerializeField] private GridBuildCamera gridBuildCamera;
+    [SerializeField] private GridBuildController gridBuildController;
 
-    public SerializableDictionary<TileType, HashSet<BuildObjData>> unlockedBuildingByCategory;
-
+    [Header("Canvas Group")]
     [SerializeField] private CanvasGroup constructionCanvasGroup;
     [SerializeField] private CanvasGroup buildingSelectionCanvasGroup;
     [SerializeField] private CanvasGroup buildingPopupCanvasGroup;
@@ -23,13 +25,10 @@ public class BuildingManager : MonoBehaviour
     [Space(10)]
     [SerializeField] private HUD_BuildInfo buildInfoHUD;
     
-    [Header("BuildCam")] 
-    [SerializeField] private GridBuildCamera _gridBuildCamera;
+    public SerializableDictionary<TileType, HashSet<BuildObjData>> unlockedBuildingByCategory;
     
     private Interactable _interactableObject;
     private RevenueFacilityTile _currentSelectTile = null;
-    
-    // 시간에 따라 상호작용 가능 여부 확인 
 
     private void Awake()
     {
@@ -107,7 +106,6 @@ public class BuildingManager : MonoBehaviour
         }
         
         ToggleConstructionHUD(isActive);
-        GridBuildingSystem.Instance.SetActive(isActive);
         if (isActive)
         {
             TurnOnGridBuildCamera();
@@ -170,25 +168,27 @@ public class BuildingManager : MonoBehaviour
 
     public void SelectCategory(TileType id)
     {
-        GridBuildingSystem.Instance.SelectToBuild(null);
+        GridBuildSystem.Instance.SelectToBuild(null);
         StartCoroutine(gridBuildingSelector.InitBtnSlot(id));
     }
 
     public void RefreshCategory()
     {
-        GridBuildingSystem.Instance.SelectToBuild(null);
+        GridBuildSystem.Instance.SelectToBuild(null);
         gridBuildingSelector.RefreshSlot();
     }
 
     private void TurnOnGridBuildCamera()
     {
-        _gridBuildCamera.gameObject.SetActive(true);
+        gridBuildCamera.gameObject.SetActive(true);
+        gridBuildController.SetControllerActive(true);
         PlayerCameraController.Instance.TurnOffCamera();
     }
     
     private void TurnOffGridBuildCamera()
     {
-        _gridBuildCamera.gameObject.SetActive(false);
+        gridBuildCamera.gameObject.SetActive(false);
+        gridBuildController.SetControllerActive(false);
         PlayerCameraController.Instance.TurnOnCamera();
     }
 
@@ -196,7 +196,7 @@ public class BuildingManager : MonoBehaviour
     {
         SaveGridData(); 
         
-        GridBuildingSystem.Instance.SelectToBuild(null);
+        GridBuildSystem.Instance.SelectToBuild(null);
         GUIController.Instance.ToggleMainGUI(true);
         PlayerInputManager.Instance.SetControlActive(true);
         PlayerCameraController.Instance.TurnOnCamera();
@@ -207,7 +207,7 @@ public class BuildingManager : MonoBehaviour
     private void SaveGridData()
     {
         WorldSaveGameManager.Instance.currentGameData.buildings.Clear();
-        foreach (var building in GridBuildingSystem.Instance.SaveBuildingDataList)
+        foreach (var building in GridBuildSystem.Instance.SaveBuildingDataList)
         {
             if (building != null)
             {

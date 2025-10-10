@@ -1,16 +1,20 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class BuildingGhost : MonoBehaviour
 {
+    [SerializeField] private GridBuildController gridBuildController;
+    
     [SerializeField] private Material ghostMaterialEnable;
     [SerializeField] private Material ghostMaterialDisable;
     private Transform _visual;
     private Material _curOriginMat;
     private Material _curMat;
+
     private void Start() 
     {
-        RefreshVisual();
+        RefreshVisual(null);
     }
 
     private void OnEnable()
@@ -21,39 +25,39 @@ public class BuildingGhost : MonoBehaviour
     private IEnumerator WaitForGridBuildingSystem()
     {
         // GridBuildingSystem.Instance가 null이 아닌지 확인
-        while (GridBuildingSystem.Instance == null)
+        while (GridBuildSystem.Instance == null)
         {
             yield return null; // 매 프레임 기다림
         }
 
         // GridBuildingSystem.Instance가 설정되었을 때 이벤트 등록
-        GridBuildingSystem.Instance.OnObjectPlaced += Instance_OnSelectedChanged;
-        GridBuildingSystem.Instance.OnSelectedChanged += Instance_OnSelectedChanged;
+        GridBuildSystem.OnObjectPlaced += Instance_OnSelectedChanged;
+        GridBuildSystem.OnSelectedChanged += Instance_OnSelectedChanged;
     }
 
     private void OnDisable()
     {
-        GridBuildingSystem.Instance.OnObjectPlaced -= Instance_OnSelectedChanged;
-        GridBuildingSystem.Instance.OnSelectedChanged -= Instance_OnSelectedChanged;
+        GridBuildSystem.OnObjectPlaced -= Instance_OnSelectedChanged;
+        GridBuildSystem.OnSelectedChanged -= Instance_OnSelectedChanged;
     }
 
-    private void Instance_OnSelectedChanged(object sender, System.EventArgs e) 
+    private void Instance_OnSelectedChanged(BuildObjData buildObjData) 
     {
-        RefreshVisual();
+        RefreshVisual(buildObjData);
     }
 
     private void LateUpdate() 
     {
-        if(GridBuildingSystem.Instance.GetPlacedObject() == null) return;
-        Vector3 targetPosition = GridBuildingSystem.Instance.GetMouseWorldSnappedPosition();
+        if(GridBuildSystem.Instance.ObjectToPlace == null) return;
+        Vector3 targetPosition = gridBuildController.GetMouseWorldSnappedPosition();
         targetPosition.y = 1f;
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 15f);
-        transform.rotation = Quaternion.Lerp(transform.rotation, GridBuildingSystem.Instance.GetPlacedObjectRotation(), Time.deltaTime * 15f);
+        transform.rotation = Quaternion.Lerp(transform.rotation, GridBuildSystem.Instance.GetPlacedObjectRotation(), Time.deltaTime * 15f);
 
         if (_visual)
         {
             MeshRenderer[] mrs = _visual.GetComponentsInChildren<MeshRenderer>();
-            Material selectMat = GridBuildingSystem.Instance.CheckCanBuildAtPos() ? _curOriginMat : ghostMaterialDisable;
+            Material selectMat = gridBuildController.CheckCanBuildAtPos() ? _curOriginMat : ghostMaterialDisable;
             foreach (var mr in mrs)
             {
                 mr.material = selectMat;
@@ -61,16 +65,14 @@ public class BuildingGhost : MonoBehaviour
         }
     }
 
-    private void RefreshVisual() 
+    private void RefreshVisual(BuildObjData placedObjectData) 
     {
         if (_visual != null) 
         {
             Destroy(_visual.gameObject);
             _visual = null;
         }
-
-        BuildObjData placedObjectData = GridBuildingSystem.Instance.GetPlacedObject();
-
+        
         if (placedObjectData != null) 
         {
             _visual = Instantiate(placedObjectData.prefab, Vector3.zero, Quaternion.identity);
@@ -79,7 +81,7 @@ public class BuildingGhost : MonoBehaviour
             _visual.localEulerAngles = Vector3.zero;
             MeshRenderer[] mrs = _visual.GetComponentsInChildren<MeshRenderer>();
             
-            _curOriginMat = (GridBuildingSystem.Instance.CanBuildObject())
+            _curOriginMat = (gridBuildController.CanBuildObject())
                 ? ghostMaterialEnable
                 : ghostMaterialDisable;
             foreach (var mr in mrs)
