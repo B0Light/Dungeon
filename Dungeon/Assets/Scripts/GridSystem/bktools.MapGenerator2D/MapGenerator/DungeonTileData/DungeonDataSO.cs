@@ -9,6 +9,5 @@ public class DungeonDataSO : ScriptableObject
     public Vector2Int gridSize;
     public Vector3 cubeSize;
     [Range(5, 15)] public int roomSize;
-    public PathType pathType;
     public TileMappingDataSO tileMappingDataSO;
 }

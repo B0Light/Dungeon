@@ -118,7 +118,9 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
                 if (x >= _config.Margin && x < _config.GridSize.x - _config.Margin && y >= _config.Margin && y < _config.GridSize.y - _config.Margin)
                 {
                     Vector2Int pos = new Vector2Int(x, y);
-                    _grid[x, y] = (pos == center) ? CellType.FloorCenter : CellType.Floor;
+
+                    _fixedGrid.GetGridObject(pos.x, pos.y).CellType =
+                        (pos == center) ? CellType.FloorCenter : CellType.Floor;
                 }
             }
         }

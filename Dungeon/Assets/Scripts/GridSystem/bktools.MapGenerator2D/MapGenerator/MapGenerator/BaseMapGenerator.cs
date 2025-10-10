@@ -23,12 +23,6 @@ public abstract class BaseMapGenerator : IMapGenerator
     #region Constants
     private static class PathfindingConstants
     {
-        public const float PATH_TRAVERSAL_COST = 0.1f;
-        public const float FLOOR_TRAVERSAL_COST = 1f;
-        public const float EMPTY_TRAVERSAL_COST = 5f;
-        public const float WALL_TRAVERSAL_COST = 10f;
-        public const float DEFAULT_TRAVERSAL_COST = 4f;
-        public const float DIRECTION_CHANGE_PENALTY = 1000f;
         public const float DELAUNAY_EDGE_THRESHOLD = 30f;
         public const int MAX_INDIRECT_CONNECTION_DEPTH = 2;
     }
@@ -47,7 +41,7 @@ public abstract class BaseMapGenerator : IMapGenerator
     private readonly Transform _slot;
     
     // Grid and room data
-    protected CellType[,] _grid;
+    protected FixedGridXZ<GridCell> _fixedGrid;
     protected List<RectInt> _floorList;
     private Dictionary<CellType, TileDataSO> _tileDataDict;
     
@@ -94,7 +88,13 @@ public abstract class BaseMapGenerator : IMapGenerator
     #region Grid Management
     protected void InitializeGrid()
     {
-        _grid = new CellType[_config.GridSize.x, _config.GridSize.y];
+        _fixedGrid = new FixedGridXZ<GridCell>(
+            _config.GridSize.x,
+            _config.GridSize.y, 
+            _config.CubeSize.x,
+            _slot.position,
+            (x, z) => new GridCell(x, z, CellType.Empty)
+        );
         _floorList = new List<RectInt>();
         ClearConnectionData();
     }
@@ -108,9 +108,6 @@ public abstract class BaseMapGenerator : IMapGenerator
 
     private bool IsValidPosition(Vector2Int pos) =>
         pos.x >= 0 && pos.x < _config.GridSize.x && pos.y >= 0 && pos.y < _config.GridSize.y;
-
-    private bool IsWithinBounds(int x, int y) =>
-        x >= 1 && x < _config.GridSize.x - 1 && y >= 1 && y < _config.GridSize.y - 1;
     #endregion
 
     #region Path and Wall Building
@@ -128,11 +125,11 @@ public abstract class BaseMapGenerator : IMapGenerator
         var positions = new List<Vector2Int>();
         for (var x = 1; x < _config.GridSize.x - 1; x++)
         {
-            for (var y = 1; y < _config.GridSize.y - 1; y++)
+            for (var z = 1; z < _config.GridSize.y - 1; z++)
             {
-                if (_grid[x, y] == targetType)
+                if (_fixedGrid.GetGridObject(x,z).CellType == targetType)
                 {
-                    positions.Add(new Vector2Int(x, y));
+                    positions.Add(new Vector2Int(x, z));
                 }
             }
         }
@@ -144,9 +141,9 @@ public abstract class BaseMapGenerator : IMapGenerator
         foreach (var direction in CARDINAL_DIRECTIONS)
         {
             var neighborPos = position + direction;
-            if (IsValidPosition(neighborPos) && _grid[neighborPos.x, neighborPos.y] == CellType.Empty)
+            if (IsValidPosition(neighborPos) && _fixedGrid.GetGridObject(neighborPos.x, neighborPos.y).CellType == CellType.Empty)
             {
-                _grid[neighborPos.x, neighborPos.y] = CellType.ExpandedPath;
+                _fixedGrid.GetGridObject(neighborPos.x, neighborPos.y).CellType = CellType.ExpandedPath;
             }
         }
     }
@@ -166,9 +163,9 @@ public abstract class BaseMapGenerator : IMapGenerator
         {
             for (int y = 1; y < _config.GridSize.y - 1; y++)
             {
-                if (_grid[x, y] == centerType && HasNeighborOfType(x, y, neighborType))
+                if (_fixedGrid.GetGridObject(x, y).CellType == centerType && HasNeighborOfType(x, y, neighborType))
                 {
-                    _grid[x, y] = wallType;
+                    _fixedGrid.GetGridObject(x, y).CellType = wallType;
                 }
             }
         }
@@ -180,7 +177,7 @@ public abstract class BaseMapGenerator : IMapGenerator
         {
             int nx = x + DX[i];
             int ny = y + DY[i];
-            if (_grid[nx, ny] == targetType)
+            if (_fixedGrid.GetGridObject(nx, ny).CellType == targetType)
             {
                 return true;
             }
@@ -195,7 +192,7 @@ public abstract class BaseMapGenerator : IMapGenerator
         var gatePositions = FindGateCandidatePositions();
         foreach (var pos in gatePositions)
         {
-            _grid[pos.x, pos.y] = CellType.SubGate;
+            _fixedGrid.GetGridObject(pos.x, pos.y).CellType = CellType.SubGate;
         }
     }
 
@@ -218,15 +215,41 @@ public abstract class BaseMapGenerator : IMapGenerator
 
     private bool IsGateCandidate(Vector2Int pos)
     {
-        if (_grid[pos.x, pos.y] != CellType.Wall) return false;
+        if (_fixedGrid.GetGridObject(pos.x, pos.y).CellType != CellType.Wall) return false;
 
         var neighbors = GetNeighborCellTypes(pos);
         
-        return neighbors.Any(IsFloorOrWallType) &&
-               neighbors.Any(IsPathType) &&
-               neighbors.Any(cell => cell == CellType.MainGate) &&
-               neighbors.Any(IsWallType) &&
-               neighbors.All(cell => cell != CellType.Empty);
+        bool hasFloorOrWall = false;
+        bool hasPath = false;
+        bool hasMainGate = false;
+        bool hasWall = false;
+        bool hasEmpty = false;
+
+        foreach (var cell in neighbors)
+        {
+            if (IsFloorOrWallType(cell))
+            {
+                hasFloorOrWall = true;
+            }
+            if (IsPathType(cell))
+            {
+                hasPath = true;
+            }
+            if (cell == CellType.MainGate)
+            {
+                hasMainGate = true;
+            }
+            if (IsWallType(cell))
+            {
+                hasWall = true;
+            }
+            if (cell == CellType.Empty)
+            {
+                hasEmpty = true;
+            }
+        }
+
+        return hasFloorOrWall && hasPath && hasMainGate && hasWall && !hasEmpty;
     }
 
     private IEnumerable<CellType> GetNeighborCellTypes(Vector2Int pos)
@@ -234,7 +257,7 @@ public abstract class BaseMapGenerator : IMapGenerator
         return CARDINAL_DIRECTIONS
             .Select(dir => pos + dir)
             .Where(IsValidPosition)
-            .Select(p => _grid[p.x, p.y]);
+            .Select(p => _fixedGrid.GetGridObject(p.x, p.y).CellType);
     }
 
     private static bool IsFloorOrWallType(CellType cellType) =>
@@ -261,13 +284,13 @@ public abstract class BaseMapGenerator : IMapGenerator
 
     private void RenderTileAt(int x, int y)
     {
-        if (!TryGetTileData(_grid[x, y], out var tileData)) return;
+        if (!TryGetTileData(_fixedGrid.GetGridObject(x, y).CellType, out var tileData)) return;
         
         Vector3 spawnPos = new Vector3(x * _config.CubeSize.x, 0, y * _config.CubeSize.z);
         tileData.SpawnTile(spawnPos, _config.CubeSize, _slot);
     }
 
-    private bool TryGetTileData(CellType cellType, out TileDataSO tileData)
+    protected bool TryGetTileData(CellType cellType, out TileDataSO tileData)
     {
         tileData = null;
         return _tileDataDict?.TryGetValue(cellType, out tileData) == true && tileData != null;
@@ -277,7 +300,7 @@ public abstract class BaseMapGenerator : IMapGenerator
     #region Map Data
     public MapData GetMapData()
     {
-        _mapData ??= new MapData(_grid, _floorList, _config, _connectedRoomPairs.Count);
+        _mapData ??= new MapData(_fixedGrid, _floorList, _config, _connectedRoomPairs.Count);
         return _mapData;
     }
     #endregion
@@ -446,98 +469,20 @@ public abstract class BaseMapGenerator : IMapGenerator
     #region Path Generation
     protected void CreatePathBetweenPoints(Vector2Int startPos, Vector2Int endPos)
     {
-        switch (_config.PathType)
+        var pathfinder = new GridPathfinder(_fixedGrid);
+        var path = pathfinder.NavigatePath(startPos, endPos);
+        if (path != null)
         {
-            case PathType.AStar:
-                CreateAStarPath(startPos, endPos);
-                break;
-            case PathType.Straight:
-                CreateStraightPath(startPos, endPos);
-                break;
-        }
-    }
-
-    private void CreateAStarPath(Vector2Int startPos, Vector2Int endPos)
-    {
-        var pathfinder = new DungeonPathfinder2D(_config.GridSize);
-        var path = pathfinder.FindPath(startPos, endPos, CalculateAStarCost);
-        if (path != null) BuildPath(path);
-    }
-
-    private void CreateStraightPath(Vector2Int startPos, Vector2Int endPos)
-    {
-        var pathfinder = new DungeonPathfinder2D(_config.GridSize);
-        var path = pathfinder.FindPath(startPos, endPos, CalculateStraightPathCost);
-        if (path != null) BuildPath(path);
-    }
-
-    private DungeonPathfinder2D.PathCost CalculateAStarCost(
-        DungeonPathfinder2D.Node pathNode, 
-        DungeonPathfinder2D.Node currentNode)
-    {
-        var traversalCost = GetTraversalCost(currentNode.Position);
-        var directionCost = CalculateDirectionChangeCost(pathNode, currentNode);
-        
-        return new DungeonPathfinder2D.PathCost
-        {
-            traversable = true,
-            cost = traversalCost + directionCost
-        };
-    }
-
-    private DungeonPathfinder2D.PathCost CalculateStraightPathCost(
-        DungeonPathfinder2D.Node pathNode, 
-        DungeonPathfinder2D.Node currentNode)
-    {
-        // Manhattan distance for straight paths
-        var baseCost = Mathf.Abs(currentNode.Position.x) + Mathf.Abs(currentNode.Position.y);
-        var directionCost = CalculateDirectionChangeCost(pathNode, currentNode);
-        
-        return new DungeonPathfinder2D.PathCost
-        {
-            traversable = true,
-            cost = baseCost + directionCost
-        };
-    }
-
-    private float GetTraversalCost(Vector2Int position)
-    {
-        return _grid[position.x, position.y] switch
-        {
-            CellType.Path => PathfindingConstants.PATH_TRAVERSAL_COST,
-            CellType.Floor => PathfindingConstants.FLOOR_TRAVERSAL_COST,
-            CellType.Empty => PathfindingConstants.EMPTY_TRAVERSAL_COST,
-            CellType.Wall => PathfindingConstants.WALL_TRAVERSAL_COST,
-            _ => PathfindingConstants.DEFAULT_TRAVERSAL_COST
-        };
-    }
-
-    private float CalculateDirectionChangeCost(DungeonPathfinder2D.Node pathNode, DungeonPathfinder2D.Node currentNode)
-    {
-        if (pathNode == null) return 0f;
-
-        var previousDirection = GetDirection(pathNode.Position, currentNode.Position);
-        var currentDirection = GetDirection(currentNode.Position, currentNode.Position); // This might need endPos
-
-        return previousDirection != currentDirection ? PathfindingConstants.DIRECTION_CHANGE_PENALTY : 0f;
-    }
-
-    private Vector2Int GetDirection(Vector2Int from, Vector2Int to)
-    {
-        Vector2Int diff = to - from;
-
-        // Prioritize the larger difference
-        if (Mathf.Abs(diff.x) > Mathf.Abs(diff.y))
-        {
-            return new Vector2Int(Math.Sign(diff.x), 0);
+            Debug.Log($"Path Created : {path.Count}");
+            BuildPath(path);
         }
         else
         {
-            return new Vector2Int(0, Math.Sign(diff.y));
+            Debug.LogWarning($"Path Created Fail");
         }
     }
-
-    private void BuildPath(List<Vector2Int> path)
+    
+    private void BuildPath(List<GridCell> path)
     {
         foreach (var pos in path)
         {
@@ -545,15 +490,15 @@ public abstract class BaseMapGenerator : IMapGenerator
         }
     }
 
-    private void ProcessPathPosition(Vector2Int pos)
+    private void ProcessPathPosition(GridCell pos)
     {
-        switch (_grid[pos.x, pos.y])
+        switch (_fixedGrid.GetGridObject(pos.Position.x, pos.Position.y).CellType)
         {
             case CellType.Empty:
-                _grid[pos.x, pos.y] = CellType.Path;
+                _fixedGrid.GetGridObject(pos.Position.x, pos.Position.y).CellType = CellType.Path;
                 break;
-            case CellType.Wall when !IsAdjacentToMainGate(pos):
-                _grid[pos.x, pos.y] = CellType.MainGate;
+            case CellType.Wall when !IsAdjacentToMainGate(pos.Position):
+                _fixedGrid.GetGridObject(pos.Position.x, pos.Position.y).CellType = CellType.MainGate;
                 break;
         }
     }
@@ -563,7 +508,7 @@ public abstract class BaseMapGenerator : IMapGenerator
         return CARDINAL_DIRECTIONS
             .Select(dir => pos + dir)
             .Where(neighbor => IsValidPosition(neighbor))
-            .Any(neighbor => _grid[neighbor.x, neighbor.y] == CellType.MainGate);
+            .Any(neighbor => _fixedGrid.GetGridObject(neighbor.x, neighbor.y).CellType == CellType.MainGate);
     }
     #endregion
 
@@ -606,7 +551,7 @@ public abstract class BaseMapGenerator : IMapGenerator
 
     private void CheckForGateDirection(Vector2Int pos, List<Vector2Int> gateDirections)
     {
-        if (IsValidPosition(pos) && _grid[pos.x, pos.y] == CellType.MainGate)
+        if (IsValidPosition(pos) && _fixedGrid.GetGridObject(pos.x, pos.y).CellType == CellType.MainGate)
         {
             var direction = GetGateDirection(pos);
             if (direction != Vector2Int.zero)
@@ -621,7 +566,7 @@ public abstract class BaseMapGenerator : IMapGenerator
         foreach (var direction in CARDINAL_DIRECTIONS)
         {
             var neighbor = gatePos + direction;
-            if (IsValidPosition(neighbor) && IsPathType(_grid[neighbor.x, neighbor.y]))
+            if (IsValidPosition(neighbor) && IsPathType(_fixedGrid.GetGridObject(neighbor.x, neighbor.y).CellType))
             {
                 return new Vector2Int((int)Mathf.Sign(direction.x), (int)Mathf.Sign(direction.y));
             }

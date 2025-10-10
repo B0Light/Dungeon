@@ -10,6 +10,7 @@ public enum TileType
     None,
 }
 
+[CreateAssetMenu(menuName = "Build/ObjectData")]
 public class BuildObjData : ItemData
 {
     [System.Serializable]

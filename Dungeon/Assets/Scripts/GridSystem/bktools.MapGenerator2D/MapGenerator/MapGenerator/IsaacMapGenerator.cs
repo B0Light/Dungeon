@@ -128,10 +128,10 @@ public class IsaacMapGenerator : BaseMapGenerator
             {
                 if (x >= 0 && x < _config.GridSize.x && y >= 0 && y < _config.GridSize.y)
                 {
-                    if (x == gridX + (width - 1) / 2 && y == gridY + (height - 1) / 2)
-                        _grid[x, y] = CellType.FloorCenter;
-                    else
-                        _grid[x, y] = CellType.Floor;
+                    _fixedGrid.GetGridObject(x, y).CellType =
+                        (x == gridX + (width - 1) / 2 && y == gridY + (height - 1) / 2)
+                            ? CellType.FloorCenter
+                            : CellType.Floor;
                 }
             }
         }
@@ -178,9 +178,10 @@ public class IsaacMapGenerator : BaseMapGenerator
         // 복도 끝점 계산
         int endX = startX + direction.x * corridorLength;
         int endY = startY + direction.y * corridorLength;
+        
+        _fixedGrid.GetGridObject(startX, startY).CellType = CellType.MainGate;
+        _fixedGrid.GetGridObject(endX, endY).CellType = CellType.MainGate;
 
-        _grid[startX, startY] = CellType.MainGate;
-        _grid[endX, endY] = CellType.MainGate;
         // BaseMapGenerator의 경로 생성 메서드 사용
         CreatePathBetweenPoints(new Vector2Int(startX, startY), new Vector2Int(endX, endY));
     }

@@ -6,7 +6,6 @@ public class GridPathfinder : PathfindingBase<GridCell>
     private FixedGridXZ<GridCell> _fixedGrid;
     private GridCell _goalNode;
 
-    private readonly CellType[,] _cellTypeGrid; 
     private Vector2Int _gridSize;
     private GridCell[,] _nodeGrid;
     
@@ -23,23 +22,24 @@ public class GridPathfinder : PathfindingBase<GridCell>
     };
 
     public bool AllowDiagonalMovement { get; set; } = false;
-
     
     public GridPathfinder(MapData mapData)
     {
-        _cellTypeGrid = mapData.grid;
+        _fixedGrid = mapData.grid;
         _gridSize = mapData.mapConfig.GridSize;
         _nodeGrid = new GridCell[_gridSize.x, _gridSize.y];
         InitializeNodeGrid();
-    } 
-    
-    public GridPathfinder() { }
+    }
+
+    public GridPathfinder(FixedGridXZ<GridCell> fixedGridXZ)
+    {
+        _fixedGrid = fixedGridXZ;
+    }
 
     public List<GridCell> NavigatePath(Vector2Int start, Vector2Int goal)
     {
         if (_nodeGrid == null)
         {
-            _fixedGrid = GridBuildSystem.Instance.GetGrid();
             _gridSize = new Vector2Int(_fixedGrid.Width, _fixedGrid.Height);
             _nodeGrid = new GridCell[_gridSize.x, _gridSize.y];
             foreach (GridCell obj in _fixedGrid.GetAllGridObjects())
@@ -72,9 +72,9 @@ public class GridPathfinder : PathfindingBase<GridCell>
         {
             for (int y = 0; y < _gridSize.y; y++)
             {
-                if (_cellTypeGrid != null)
+                if (_fixedGrid != null)
                 {
-                    _nodeGrid[x, y] = new GridCell(x, y, _cellTypeGrid[x, y]);
+                    _nodeGrid[x, y] = new GridCell(x, y, _fixedGrid.GetGridObject(x, y).CellType);
                 }
             }
         }
@@ -108,34 +108,16 @@ public class GridPathfinder : PathfindingBase<GridCell>
             if (IsValidPosition(neighborPos))
             {
                 var neighborNode = GetNode(neighborPos);
-                if (neighborNode == null) continue; // Safety check
-
+                if (neighborNode == null) continue;  // Safety check
+                
                 if (_fixedGrid != null)
                 {
                     GridCell currentNeighborGrid = _fixedGrid.GetGridObject(neighborPos.x, neighborPos.y);
-                    if (currentNeighborGrid?.GetTileType() == TileType.Road) 
-                    {
-                        yield return currentNeighborGrid;
-                    }
-                    
-                    if ((currentNeighborGrid?.GetTileType() == TileType.Headquarter ||
-                         currentNeighborGrid?.GetTileType() == TileType.MajorFacility)
-                        && currentNeighborGrid.Equals(_goalNode)) // Check against _goalNode here
-                    {
-                        Vector2Int attractionOrigin = currentNeighborGrid.GetEntrancePosition();
-                        if (attractionOrigin == neighborPos)
-                        {
-                            BuildObjData.Dir objectDirection = currentNeighborGrid.GetDirection();
-
-                            if (objectDirection == ConvertToConnectDirection(direction))
-                            {
-                                yield return currentNeighborGrid;
-                            }
-                        }
-                    }
+                     yield return currentNeighborGrid;
                 }
                 else
                 {
+                    Debug.LogWarning("Fixed Grid is null ");
                     yield return neighborNode;
                 }
             }
@@ -211,8 +193,7 @@ public class GridPathfinder : PathfindingBase<GridCell>
                 case CellType.Wall:
                 case CellType.PathWall:
                 case CellType.Empty:
-                    // 이 경우 보통 IsWalkable이 false라 이 함수까지 오지 않지만, 안전상 높은 비용 부여
-                    terrainMultiplier = 10f;
+                    terrainMultiplier = 1f;
                     break;
                 default:
                     terrainMultiplier = 1.0f;

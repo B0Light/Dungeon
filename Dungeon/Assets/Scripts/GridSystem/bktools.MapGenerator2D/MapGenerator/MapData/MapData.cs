@@ -8,7 +8,7 @@ using UnityEngine;
 [System.Serializable]
 public class MapData
 {
-    public CellType[,] grid;
+    public FixedGridXZ<GridCell> grid;
     
     public List<RectInt> floorList;
 
@@ -18,7 +18,7 @@ public class MapData
     
     public System.DateTime generationTime;
     
-    public MapData(CellType[,] grid, List<RectInt> floorList, MapGenerationConfig mapConfig, int corridorCount)
+    public MapData(FixedGridXZ<GridCell> grid, List<RectInt> floorList, MapGenerationConfig mapConfig, int corridorCount)
     {
         this.grid = grid;
         this.floorList = floorList;
@@ -34,15 +34,7 @@ public class MapData
         if (grid == null || x < 0 || x >= mapConfig.GridSize.x || y < 0 || y >= mapConfig.GridSize.y)
             return CellType.Empty;
         
-        return grid[x, y];
-    }
-    
-    public void SetCellType(int x, int y, CellType cellType)
-    {
-        if (grid == null || x < 0 || x >= mapConfig.GridSize.x || y < 0 || y >= mapConfig.GridSize.y)
-            return;
-        
-        grid[x, y] = cellType;
+        return grid.GetGridObject(x,y).CellType;
     }
     
     public void LogMapInfo()
@@ -58,7 +50,6 @@ public class MapGenerationConfig
 {
     public Vector2Int GridSize { get; }
     public Vector3 CubeSize { get; }
-    public PathType PathType { get; }
     public int RoomSize { get; }
     public int Margin { get; }
     public TileMappingDataSO TileMappingDataSO { get; }
@@ -67,7 +58,6 @@ public class MapGenerationConfig
     {
         GridSize = dungeonDataSo.gridSize;
         CubeSize = dungeonDataSo.cubeSize;
-        PathType = dungeonDataSo.pathType;
         RoomSize = dungeonDataSo.roomSize;
         Margin = 3; 
         TileMappingDataSO = dungeonDataSo.tileMappingDataSO;

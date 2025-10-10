@@ -15,7 +15,7 @@ public class GridCell : IPathNode
     public Vector2Int Position { get; }
 
     // 타일 및 건물 정보
-    public CellType CellType { get; }
+    public CellType CellType { get; set;}
     private PlacedObject _placedObject;
     private BuildObjData _buildObjData;
     private BuildObjData.Dir _dir;
@@ -28,13 +28,9 @@ public class GridCell : IPathNode
         CellType = cellType;
         
         GCost = float.MaxValue;
-        
-        // 초기 이동 가능 여부 설정
     }
-
-    // 타일의 이동 가능 여부를 업데이트하는 내부 메서드
-
-    public void SetPlacedObject(PlacedObject placedObject, BuildObjData buildObjData, BuildObjData.Dir dir)
+    
+    public void SetPlacedObject(PlacedObject placedObject, BuildObjData buildObjData, BuildObjData.Dir dir = BuildObjData.Dir.Down)
     {
         _placedObject = placedObject;
         _buildObjData = buildObjData;
