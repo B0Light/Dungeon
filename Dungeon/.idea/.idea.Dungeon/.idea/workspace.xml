@@ -6,351 +6,199 @@
   <component name="ChangeListManager">
     <list default="true" id="1844b18a-d80d-49d6-955e-b57cdcc0bed9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_back_step_attack_01_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_back_step_attack_01_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_back_step_attack_02_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_back_step_attack_02_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_back_step_attack_03_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_back_step_attack_03_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_back_step_attack_04_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_back_step_attack_04_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_block_heavy_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_block_heavy_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_block_light_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_block_light_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_block_medium_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_block_medium_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_block_ping_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_block_ping_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_break_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_break_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_down_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_down_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_idle_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_idle_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_stun_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_stun_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_up_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_guard_up_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_jump_attack_01_charge.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_jump_attack_01_charge.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_jump_attack_01_end.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_jump_attack_01_end.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_jump_attack_01_idle.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_jump_attack_01_idle.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_jump_light_attack_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_jump_light_attack_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_light_attack_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_light_attack_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_light_attack_02.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_light_attack_02.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_roll_attack_01_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_roll_attack_01_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_roll_attack_02_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_roll_attack_02_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_attack_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_attack_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_guard_BL_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_guard_BL_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_guard_BR_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_guard_BR_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_guard_B_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_guard_B_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_guard_FL_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_guard_FL_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_guard_FR_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_guard_FR_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_guard_F_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_guard_F_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_guard_L_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_guard_L_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_guard_R_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_run_guard_R_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_walk_guard_BL_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_walk_guard_BL_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_walk_guard_BR_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_walk_guard_BR_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_walk_guard_B_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_walk_guard_B_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_walk_guard_FL_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_walk_guard_FL_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_walk_guard_FR_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_walk_guard_FR_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_walk_guard_F_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_walk_guard_F_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_walk_guard_L_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_walk_guard_L_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_walk_guard_R_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Dual Wield/straight_sword_dw_walk_guard_R_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_back_step_attack_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_back_step_attack_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_back_step_attack_01_charge.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_back_step_attack_01_charge.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_back_step_attack_01_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_back_step_attack_01_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_back_step_attack_02_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_back_step_attack_02_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_01_charge.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_01_charge.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_01_hold.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_01_hold.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_01_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_01_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_01_release_full.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_01_release_full.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_02.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_02.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_02_charge.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_02_charge.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_02_hold.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_02_hold.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_02_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_02_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_02_release_full.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_02_release_full.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_03.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_03.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_03_charge.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_03_charge.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_03_hold.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_03_hold.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_03_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_03_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_03_release_full.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_charged_attack_03_release_full.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_death_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_death_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_equip_L_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_equip_L_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_equip_L_02.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_equip_L_02.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_equip_R_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_equip_R_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_equip_R_02.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_equip_R_02.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_idle_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_idle_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_jump_attack_01_charge.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_jump_attack_01_charge.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_jump_attack_01_end.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_jump_attack_01_end.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_jump_attack_01_idle.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_jump_attack_01_idle.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_jump_light_attack_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_jump_light_attack_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_light_attack_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_light_attack_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_light_attack_02.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_light_attack_02.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_roll_attack_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_roll_attack_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_roll_attack_01_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_roll_attack_01_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_run_attack_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Main Hand/straight_sword_main_run_attack_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_block_heavy_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_block_heavy_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_block_light_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_block_light_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_block_medium_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_block_medium_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_block_ping_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_block_ping_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_block_stun_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_block_stun_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_break_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_break_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_down_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_down_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_idle_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_idle_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_up_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_guard_up_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_jump_light_attack_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_jump_light_attack_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_light_attack_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_light_attack_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_light_attack_02.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_light_attack_02.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_run_guard_BL_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_run_guard_BL_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_run_guard_BR_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_run_guard_BR_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_run_guard_B_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_run_guard_B_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_run_guard_FL_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_run_guard_FL_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_run_guard_FR_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_run_guard_FR_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_run_guard_F_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_run_guard_F_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_run_guard_L_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_run_guard_L_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_run_guard_R_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_run_guard_R_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_sprint_guard_F_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_sprint_guard_F_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_walk_guard_BL_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_walk_guard_BL_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_walk_guard_BR_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_walk_guard_BR_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_walk_guard_B_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_walk_guard_B_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_walk_guard_FL_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_walk_guard_FL_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_walk_guard_FR_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_walk_guard_FR_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_walk_guard_F_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_walk_guard_F_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_walk_guard_L_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_walk_guard_L_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_walk_guard_R_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Off Hand/straight_sword_off_walk_guard_R_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_back_step_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_back_step_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_back_step_02.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_back_step_02.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_back_step_attack_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_back_step_attack_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_back_step_attack_01_charge.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_back_step_attack_01_charge.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_back_step_attack_01_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_back_step_attack_01_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_back_step_attack_02_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_back_step_attack_02_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_01_charge.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_01_charge.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_01_hold.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_01_hold.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_01_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_01_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_01_release_full.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_01_release_full.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_02.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_02.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_02_charge.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_02_charge.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_02_hold.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_02_hold.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_02_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_02_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_02_release_full.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_charged_attack_02_release_full.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_death_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_death_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_equip_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_equip_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_equip_02.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_equip_02.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_block_heavy_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_block_heavy_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_block_light_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_block_light_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_block_medium_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_block_medium_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_block_ping_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_block_ping_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_block_stun_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_block_stun_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_break_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_break_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_down_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_down_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_idle_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_idle_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_up_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_guard_up_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_idle_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_idle_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_jump_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_jump_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_jump_attack_02_charge.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_jump_attack_02_charge.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_jump_attack_02_end.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_jump_attack_02_end.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_jump_attack_02_idle.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_jump_attack_02_idle.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_jump_light_attack_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_jump_light_attack_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_light_attack_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_light_attack_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_light_attack_02.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_light_attack_02.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_light_attack_03.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_light_attack_03.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_roll_attack_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_roll_attack_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_roll_attack_01_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_roll_attack_01_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_roll_attack_02.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_roll_attack_02.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_roll_attack_02_release.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_roll_attack_02_release.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_attack_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_attack_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_guard_BL_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_guard_BL_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_guard_BR_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_guard_BR_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_guard_B_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_guard_B_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_guard_FL_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_guard_FL_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_guard_FR_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_guard_FR_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_guard_F_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_guard_F_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_guard_L_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_guard_L_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_guard_R_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_run_guard_R_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_sprint_guard_F_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_sprint_guard_F_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_walk_guard_BL_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_walk_guard_BL_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_walk_guard_BR_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_walk_guard_BR_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_walk_guard_B_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_walk_guard_B_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_walk_guard_FL_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_walk_guard_FL_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_walk_guard_FR_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_walk_guard_FR_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_walk_guard_F_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_walk_guard_F_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_walk_guard_L_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_walk_guard_L_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_walk_guard_R_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animations/Straight Sword Animation Set/Animations/Legacy Anims/Straight Sword Two Hand/straight_sword_th_walk_guard_R_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator Controllers/BossEnemy.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator Controllers/BossEnemy.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator Controllers/Humanoid.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator Controllers/Humanoid.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator Controllers/Humanoid_ReAim.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator Controllers/Humanoid_ReAim.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator Controllers/Stellive.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator Controllers/Stellive/ARY.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator Controllers/Stellive/ARY.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator Controllers/Stellive/ARY_Gun.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator Controllers/Stellive/ARY_Gun.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator Controllers/Stellive/BDY.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator Controllers/Stellive/BDY.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator Controllers/Stellive/UNI_RIFLE.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator Controllers/Stellive/UNI_RIFLE.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/Player/Player.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/Player/Player.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/BaseMelee.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/BaseMelee/Attack_Punch_01.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/BaseMelee/Attack_Punch_01.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/BaseMelee/Attack_Punch_02.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/BaseMelee/Attack_Punch_02.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/BaseMelee/Attack_Punch_Backstep.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/BaseMelee/Attack_Punch_Backstep.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/BaseRange.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/BaseRange/Attack_Shoot.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/BaseRange/Attack_Shoot.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/BaseRange/Attack_Shoot_Backstep.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/BaseRange/Attack_Shoot_Backstep.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/BaseRange/Attack_Shoot_Combo.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/BaseRange/Attack_Shoot_Combo.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Boss.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Boss/Attack_ShockWave.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Boss/Attack_ShockWave.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Boss/Attack_Smash.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Boss/Attack_Smash.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Boss/BodyPress.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Boss/BodyPress.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Boss/Jump.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Boss/Jump.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Bug.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Bug/Bug_MeleeAttack.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Bug/Bug_MeleeAttack.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Bug/Bug_RangeAttack.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Bug/Bug_RangeAttack.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Quad.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Quad/QuadAttack_Bite.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Quad/QuadAttack_Bite.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Quad/QuadAttack_Claw.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI Attack Actions/Quad/QuadAttack_Claw.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/ARY Attack State.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/ARY Attack State.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/ARY Combat Stance State Gun.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/ARY Combat Stance State Gun.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/ARY Combat Stance State.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/ARY Combat Stance State.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/ARY Idle State.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/ARY Idle State.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/ARY Pursue Target State.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/ARY Pursue Target State.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/Attack.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/Attack/ARYG_Attack.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/Attack/ARYG_Attack.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/Attack/ARYG_Combo.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/Attack/ARYG_Combo.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/Attack/ARYG_Combo_B.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/Attack/ARYG_Combo_B.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/Attack/ARY_GroundExplosion.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/Attack/ARY_GroundExplosion.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/Attack/ARY_Punch.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/Attack/ARY_Punch.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/Attack/ARY_Smash.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/ARY/Attack/ARY_Smash.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY/Attack.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY/Attack/BDY_Laser.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY/Attack/BDY_Laser.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY/Attack/BDY_ShockWave.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY/Attack/BDY_ShockWave.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY/Attack/BDY_WaterSpell.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY/Attack/BDY_WaterSpell.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY/BDY Attack State.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY/BDY Attack State.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY/BDY Combat Stance State Origin.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY/BDY Combat Stance State Origin.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY/BDY Combat Stance State.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY/BDY Combat Stance State.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY/BDY Idle State.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY/BDY Idle State.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY/BDY Pursue Target State.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/BDY/BDY Pursue Target State.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Boss.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Boss/BossCombatState.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Boss/BossCombatState.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Boss/Boss_Cat.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Boss/Boss_Cat.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Uni.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Uni/Attack.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Uni/Attack/UNI_Attack.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Uni/Attack/UNI_Attack.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Uni/Attack/UNI_Combo.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Uni/Attack/UNI_Combo.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Uni/Attack/UNI_Grenade.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Uni/Attack/UNI_Grenade.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Uni/UNI Attack State.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Uni/UNI Attack State.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Uni/UNI Combat Stance State Gun.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Uni/UNI Combat Stance State Gun.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Uni/UNI Idle State.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Uni/UNI Idle State.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Uni/UNI Pursue Target State.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Uni/UNI Pursue Target State.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/WeaponAction.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/WeaponAction/01.BaseAttackAction_Light.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/WeaponAction/01.BaseAttackAction_Light.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/WeaponAction/02.BaseAttackAction_Heavy.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/WeaponAction/02.BaseAttackAction_Heavy.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/WeaponAction/03.BlockAction.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/WeaponAction/03.BlockAction.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/WeaponAction/04.BaseAttackAction_Skill.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/WeaponAction/04.BaseAttackAction_Skill.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/WeaponAction/BaseWeaponAction_None.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/WeaponAction/BaseWeaponAction_None.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/WeaponAction/Skill_Chainsaw.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/WeaponAction/Skill_Chainsaw.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/WeaponDataImporter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/WeaponDataImporter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test_Swipe.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test_Swipe.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/00.Core/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/00.Core/Enums.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterAnimatorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterAnimatorManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterCombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterCombatManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerCombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerCombatManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerLocomotionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerLocomotionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerSoundFXManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerSoundFXManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerVariableManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerVariableManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterCombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterCombatManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterLocomotionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterLocomotionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/02.Quadruped/QuadrupedAICombatManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/02.Quadruped/QuadrupedAICombatManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/02.Quadruped/QuadrupedAIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/02.Quadruped/QuadrupedAIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/03.Apo/MutantAICombatManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/03.Apo/MutantAICombatManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/04.Bug/BugAICombatManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/04.Bug/BugAICombatManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/10.Boss.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/10.Boss/BossAICombatManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/10.Boss/BossAICombatManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/AttackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/AttackState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/CombatStanceState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/CombatStanceState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/IdleState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/PursueTargetState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/PursueTargetState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/91.AttaackType_Melee.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/91.AttaackType_Melee/AICharacterCombatManager_Melee.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/91.AttaackType_Melee/AICharacterCombatManager_Melee.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/91.AttaackType_Melee/AICharacterCombatManager_Melee_Aura.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/91.AttaackType_Melee/AICharacterCombatManager_Melee_Aura.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/92.AttackType_Range.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/92.AttackType_Range/AICharacterCombatManager_Range.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/92.AttackType_Range/AICharacterCombatManager_Range.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/Animator/ResetActionFlag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/Animator/ResetActionFlag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/Animator/ToggleAttackType.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/Animator/ToggleAttackType.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/PlayerInput/PlayerInputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/PlayerInput/PlayerInputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/03.Inventory/21. Items/EquipmentItemInfoWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/03.Inventory/21. Items/EquipmentItemInfoWeapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Colliders/MeleeWeaponDamageCollider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Colliders/MeleeWeaponDamageCollider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Critical.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/MeleeWeaponManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/MeleeWeaponManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/ParticleCollisionHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/ParticleCollisionHandler.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/BaseProjectile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/BaseProjectile.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/GuidedProjectile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/GuidedProjectile.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/HitScanProjectile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/HitScanProjectile.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/IProjectile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/IProjectile.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/PhysicalProjectile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/PhysicalProjectile.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/ProjectileConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/ProjectileConfiguration.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/ProjectileObject.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/ProjectileObject.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/Shooter.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/Shooter/BasicShooter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/Shooter/BasicShooter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/Shooter/SimpleWeaponController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/Shooter/SimpleWeaponController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/UnifiedProjectilePoolManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Range/UnifiedProjectilePoolManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/RangeWeaponManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/RangeWeaponManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/WeaponAction.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/WeaponAction/BaseAttackAction_Heavy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/WeaponAction/BaseAttackAction_Heavy.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/WeaponAction/BaseAttackAction_Light.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/WeaponAction/BaseAttackAction_Light.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/WeaponAction/BaseAttackAction_Skill.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/WeaponAction/BaseAttackAction_Skill.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/WeaponAction/BlockAction.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/WeaponAction/BlockAction.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/WeaponAction/Skill_Chainsaw.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/WeaponAction/Skill_Chainsaw.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/WeaponAction/WeaponItemAction.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/WeaponAction/WeaponItemAction.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/90.World Managers/WorldDatabase_Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/90.World Managers/WorldDatabase_Item.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -377,25 +225,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "NewCombatStyle",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\jangb\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\jangb\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\jangb\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\jangb\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\jangb\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\jangb\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$USER_HOME$/Desktop/StealAlive\STEAL ALIVE.exe" />
@@ -488,7 +336,7 @@
       <workItem from="1760194520957" duration="62000" />
       <workItem from="1760194765004" duration="616000" />
       <workItem from="1760252885590" duration="7599000" />
-      <workItem from="1760413615584" duration="335000" />
+      <workItem from="1760413615584" duration="15078000" />
     </task>
     <servers />
   </component>

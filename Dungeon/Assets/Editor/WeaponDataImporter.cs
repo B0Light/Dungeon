@@ -75,11 +75,6 @@ public class WeaponDataImporter : MonoBehaviour
             item.physicalDamageAbsorption = 30;
             item.magicalDamageAbsorption = 0;
             item.stability = 50;
-
-            
-            item.lightAttackAction = ScriptableObject.CreateInstance<BaseAttackAction_Light>();
-            item.heavyAttackAction = ScriptableObject.CreateInstance<BaseAttackAction_Heavy>();
-            item.blockAction = ScriptableObject.CreateInstance<BlockAction>();
             
             //item.itemName = values[13]; // 한국어 이름 으로 저장 
 

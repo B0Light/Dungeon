@@ -18,13 +18,13 @@ public class PursueTargetState : AIState
         if (aiCharacter.isPerformingAction) return this;
 
         // 목표가 없으면 Idle 상태로 전환
-        if (aiCharacter.aiCharacterCombatManager.currentTarget == null)
+        if (aiCharacter.aiCharacterPursueManager.pursueTarget == null)
             return SwitchState(aiCharacter, aiCharacter.stateIdle);
 
         // 추격 시간 초과 시 목표 제거 후 Idle 상태로 전환
         if (Time.time - pursuitStartTime > pursuitTimeout)
         {
-            aiCharacter.aiCharacterCombatManager.SetTarget(null);
+            aiCharacter.aiCharacterPursueManager.SetTarget(null);
             return SwitchState(aiCharacter, aiCharacter.stateIdle);
         }
 
@@ -35,7 +35,7 @@ public class PursueTargetState : AIState
         aiCharacter.aiCharacterLocomotionManager.RotateTowardAgent(aiCharacter);
         
         // 타겟과의 거리 확인
-        if (aiCharacter.aiCharacterCombatManager.distanceFromTarget <=
+        if (aiCharacter.aiCharacterPursueManager.distanceFromTarget <=
             aiCharacter.navMeshAgent.stoppingDistance)
         {
             return SwitchState(aiCharacter, aiCharacter.stateCombatStance);
@@ -43,7 +43,7 @@ public class PursueTargetState : AIState
 
         // 경로 설정
         NavMeshPath path = new NavMeshPath();
-        aiCharacter.navMeshAgent.CalculatePath(aiCharacter.aiCharacterCombatManager.currentTarget.transform.position, path);
+        aiCharacter.navMeshAgent.CalculatePath(aiCharacter.aiCharacterPursueManager.pursueTarget.transform.position, path);
         aiCharacter.navMeshAgent.SetPath(path);
 
         return this;

@@ -31,7 +31,11 @@ public class CharacterManager : MonoBehaviour, IDamageable
     public CharacterGroup characterGroup;
 
     [HideInInspector] public bool isPerformingAction = false;
-     
+    [HideInInspector] public CharacterManager currentTarget;
+    [HideInInspector] public float detectionRange;
+
+    public Vector3 lockOnPosition;
+        
     #region Unity Lifecycle Methods
     
     protected virtual void Awake()
@@ -134,7 +138,7 @@ public class CharacterManager : MonoBehaviour, IDamageable
     {
         yield return new WaitForFixedUpdate();
         characterVariableManager.health.Value = 0;
-        characterCombatManager.SetTarget(null);
+        SetTarget(null);
         characterAnimatorManager.PlayTargetActionAnimation("Dead_01", true, canMove: false, canRotate: false);
     }
     
@@ -147,6 +151,11 @@ public class CharacterManager : MonoBehaviour, IDamageable
     #endregion
 
     #region Combat and Damage
+
+    public void SetTarget(CharacterManager newTarget)
+    {
+        currentTarget = newTarget;
+    }
     
     public void TakeDamage(DamageData data)
     {

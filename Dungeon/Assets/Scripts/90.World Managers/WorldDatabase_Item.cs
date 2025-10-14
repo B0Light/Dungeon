@@ -68,12 +68,6 @@ public class WorldDatabase_Item : Singleton<WorldDatabase_Item>
         /* Equipment Item */
         foreach (var itemInfo in equipmentItems)
         {
-            if (itemInfo is EquipmentItemInfoWeapon weaponItem)
-            {
-                weaponItem.lightAttackAction = ScriptableObject.CreateInstance<BaseAttackAction_Light>();
-                weaponItem.heavyAttackAction = ScriptableObject.CreateInstance<BaseAttackAction_Heavy>();
-                weaponItem.blockAction = ScriptableObject.CreateInstance<BlockAction>();
-            }
             itemInfo.costItemList.Clear();
         }
         

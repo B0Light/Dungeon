@@ -48,12 +48,12 @@ public class CombatStanceState : AIState
         EnsureNavMeshAgentEnabled(aiCharacter);
         RotateTowardsTarget(aiCharacter);
     
-        return aiCharacter.aiCharacterCombatManager.currentTarget == null;
+        return aiCharacter.currentTarget == null;
     }
 
     protected bool ShouldPursueTarget(AICharacterManager aiCharacter)
     {
-        return aiCharacter.aiCharacterCombatManager.distanceFromTarget > maximumEngagementDistance;
+        return aiCharacter.aiCharacterPursueManager.distanceFromTarget > maximumEngagementDistance;
     }
 
     protected virtual AIState HandleCombatLogic(AICharacterManager aiCharacter)
@@ -82,7 +82,7 @@ public class CombatStanceState : AIState
 
     private void RotateTowardsTarget(AICharacterManager aiCharacter)
     {
-        aiCharacter.aiCharacterCombatManager.RotateTowardsAgent(aiCharacter);
+        aiCharacter.aiCharacterPursueManager.RotateTowardsAgent(aiCharacter);
     }
 
     #endregion
@@ -95,19 +95,19 @@ public class CombatStanceState : AIState
         foreach (var potentialAttack in aiCharacterAttacks)
         {
             // 최소 공격 거리보다 가까우면 제외
-            if (potentialAttack.minimumAttackDistance > aiCharacter.aiCharacterCombatManager.distanceFromTarget)
+            if (potentialAttack.minimumAttackDistance > aiCharacter.aiCharacterPursueManager.distanceFromTarget)
                 continue;
 
             // 최대 공격 거리보다 멀면 제외
-            if (potentialAttack.maximumAttackDistance < aiCharacter.aiCharacterCombatManager.distanceFromTarget)
+            if (potentialAttack.maximumAttackDistance < aiCharacter.aiCharacterPursueManager.distanceFromTarget)
                 continue;
 
             // 최소 시야 각도보다 작으면 제외
-            if (potentialAttack.minimumAttackAngle > aiCharacter.aiCharacterCombatManager.viewableAngle)
+            if (potentialAttack.minimumAttackAngle > aiCharacter.aiCharacterPursueManager.viewableAngle)
                 continue;
 
             // 최대 시야 각도보다 크면 제외
-            if (potentialAttack.maximumAttackAngle < aiCharacter.aiCharacterCombatManager.viewableAngle) 
+            if (potentialAttack.maximumAttackAngle < aiCharacter.aiCharacterPursueManager.viewableAngle) 
                 continue;
 
             _potentialAttacks.Add(potentialAttack);

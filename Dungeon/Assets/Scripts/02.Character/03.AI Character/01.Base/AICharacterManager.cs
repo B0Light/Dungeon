@@ -12,7 +12,7 @@ public class AICharacterManager : CharacterManager
     [HideInInspector] public AICharacterCombatManager aiCharacterCombatManager;
     [HideInInspector] public AICharacterLocomotionManager aiCharacterLocomotionManager;
     [HideInInspector] public AICharacterPatrolManager aiCharacterPatrolManager;
-    
+    [HideInInspector] public AICharacterPursueManager aiCharacterPursueManager;
     [HideInInspector] public AICharacterDeathInteractable aiCharacterDeathInteractable;
     [HideInInspector] public LockOnObject lockOnObject;
     
@@ -39,6 +39,8 @@ public class AICharacterManager : CharacterManager
         aiCharacterCombatManager = GetComponent<AICharacterCombatManager>();
         aiCharacterLocomotionManager = GetComponent<AICharacterLocomotionManager>();
         aiCharacterPatrolManager = GetComponent<AICharacterPatrolManager>();
+        aiCharacterPursueManager = GetComponent<AICharacterPursueManager>();
+        
         aiCharacterDeathInteractable = GetComponentInChildren<AICharacterDeathInteractable>();
         lockOnObject = GetComponentInChildren<LockOnObject>();
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -91,14 +93,14 @@ public class AICharacterManager : CharacterManager
             SwitchToState(nextState);
         }
 
-        if (aiCharacterCombatManager.currentTarget != null)
+        if (currentTarget != null)
         {
-            aiCharacterCombatManager.targetDirection =
-                aiCharacterCombatManager.currentTarget.transform.position - transform.position;
-            aiCharacterCombatManager.viewableAngle = 
-                WorldUtilityManager.Instance.GetAngleOfTarget(transform, aiCharacterCombatManager.targetDirection);
-            aiCharacterCombatManager.distanceFromTarget =
-                Vector3.Distance(transform.position, aiCharacterCombatManager.currentTarget.transform.position);
+            aiCharacterPursueManager.targetDirection =
+                aiCharacterPursueManager.pursueTarget.transform.position - transform.position;
+            aiCharacterPursueManager.viewableAngle = 
+                WorldUtilityManager.Instance.GetAngleOfTarget(transform, aiCharacterPursueManager.targetDirection);
+            aiCharacterPursueManager.distanceFromTarget =
+                Vector3.Distance(transform.position, aiCharacterPursueManager.pursueTarget.transform.position);
         }
     }
 

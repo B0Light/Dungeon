@@ -18,13 +18,11 @@ public class AttackState : AIState
 
     public override AIState Tick(AICharacterManager aiCharacter)
     {
-        if (aiCharacter.aiCharacterCombatManager.currentTarget == null)
+        if (aiCharacter.currentTarget == null)
             return SwitchState(aiCharacter, aiCharacter.stateIdle);
         
-        if(aiCharacter.aiCharacterCombatManager.currentTarget.isDead.Value)
+        if(aiCharacter.currentTarget.isDead.Value)
             return SwitchState(aiCharacter, aiCharacter.stateIdle);
-        
-        aiCharacter.aiCharacterCombatManager.RotateTowardsTargetWhilstAttacking(aiCharacter);
         
         if (willPerformCombo && !_hasPerformedCombo && !_hasPerformedAttack)
         {

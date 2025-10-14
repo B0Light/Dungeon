@@ -299,18 +299,7 @@ public class PlayerInputManager : Singleton<PlayerInputManager>
 
         if (playerManager.playerVariableManager.currentEquippedWeaponID.Value == 0) return;
 
-        var weapon = playerManager.playerEquipmentManger.currentEquippedInfoWeapon;
-        var action = actionType switch
-        {
-            AttackType.Skill => weapon.weaponSkill,
-            AttackType.LightAttack01 => weapon.lightAttackAction,
-            AttackType.HeavyAttack01 => weapon.heavyAttackAction,
-            AttackType.ChargeAttack01 => weapon.heavyAttackAction,
-            AttackType.Parry => weapon.blockAction,
-            _ => throw new ArgumentOutOfRangeException()
-        };
-
-        playerManager.playerCombatManager.PerformWeaponBasedAction(action, weapon);
+        playerManager.playerCombatManager.PerformWeaponBasedAction();
     }
 
     

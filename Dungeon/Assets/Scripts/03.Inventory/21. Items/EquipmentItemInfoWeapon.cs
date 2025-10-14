@@ -44,10 +44,4 @@ public class EquipmentItemInfoWeapon : EquipmentItemInfo
     [HideInInspector] public int physicalDamageAbsorption = 50;
     [HideInInspector] public int magicalDamageAbsorption = 50;
     [HideInInspector] public int stability = 50; // 가드시 poiseDmg 가드 정도 
-    
-    [Header("Actions")] 
-    public WeaponItemAction lightAttackAction; 
-    public WeaponItemAction heavyAttackAction;
-    public WeaponItemAction blockAction;
-    public WeaponItemAction weaponSkill;
 }

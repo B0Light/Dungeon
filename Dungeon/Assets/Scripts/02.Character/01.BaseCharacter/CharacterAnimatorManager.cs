@@ -25,13 +25,6 @@ public class CharacterAnimatorManager : MonoBehaviour
     [ReadOnly] public readonly string blockRight    = "A_Blocking_R_Sword";
     [ReadOnly] public readonly string groggy        = "Groggy";
 
-    [Header("Critical Effect")]
-    [ReadOnly] public readonly string criticalAttack_Back = "CriticalAttack_Back";
-    [ReadOnly] public readonly string criticalAttack_Front = "CriticalAttack_Front";
-    [ReadOnly] public readonly string criticalAttack_Back_Victim = "CriticalAttack_Back_Victim";
-    [ReadOnly] public readonly string criticalAttack_Front_Victim = "CriticalAttack_Front_Victim";
-    [ReadOnly] public readonly string criticalAttack_Back_Death = "CriticalAttack_Back_Death";
-    [ReadOnly] public readonly string criticalAttack_Front_Death = "CriticalAttack_Front_Death";
     public void Spawn()
     {
         characterManager = GetComponent<CharacterManager>();
@@ -59,22 +52,17 @@ public class CharacterAnimatorManager : MonoBehaviour
 
     public void PlayTargetAttackActionAnimation(
         EquipmentItemInfoWeapon equipmentItemInfoWeapon,
-        AttackType attackType,
-        string targetAnimation,
-        bool isPerformingAction,
+        int targetAnimation,
         bool rootMotion = true,
         bool canRotate = false,
-        bool canMove = false,
-        int actionPoint = 1)
+        bool canMove = false
+        )
     {
-        if (targetAnimation != "Dead_01" && characterManager.isDead.Value) return;
+        if (targetAnimation != Animator.StringToHash("Dead_01") && characterManager.isDead.Value) return;
         
-        characterManager.characterStatsManager.UseActionPoint(actionPoint);
-        characterManager.characterCombatManager.currentAttackType = attackType;
-        characterManager.characterCombatManager.lastAttackAnimationPerformed = targetAnimation;
         UpdateAnimatorController(equipmentItemInfoWeapon.weaponAnimator);
         applyRootMotion = rootMotion;
-        characterManager.isPerformingAction = isPerformingAction;
+        characterManager.isPerformingAction = true;
         characterManager.characterLocomotionManager.canRotate = canRotate;
         characterManager.characterLocomotionManager.canMove = canMove;
         characterManager.animator.CrossFade(targetAnimation, 0.2f);

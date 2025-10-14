@@ -21,6 +21,8 @@ public class PlayerSoundFXManager : CharacterSoundFXManager
     private Vector3 _lastRightFootPos;
     private float _lastFootstepTime;
     
+    private readonly Collider[] _colliderBuffer = new Collider[32]; // 클래스 멤버 변수로 선언
+    
     [Header("Sound Emitter")] 
     [SerializeField] private LayerMask reactLayer; // 적을 감지할 레이어 설정
 
@@ -119,21 +121,16 @@ public class PlayerSoundFXManager : CharacterSoundFXManager
         EmitSound(volume);
     }
     
-    private Collider[] colliderBuffer = new Collider[32]; // 클래스 멤버 변수로 선언
-
     private void EmitSound(float volume)
     {
         //Debug.Log("Sound EMIT");
         // 소리가 발생할 때 물리적인 충돌을 검사하여 적을 감지
-        int hitCount = Physics.OverlapSphereNonAlloc(transform.position, volume, colliderBuffer, reactLayer);
+        int hitCount = Physics.OverlapSphereNonAlloc(transform.position, volume, _colliderBuffer, reactLayer);
     
         for (int i = 0; i < hitCount; i++)
         {
-            CharacterManager reactor = colliderBuffer[i].GetComponent<CharacterManager>();
-            if (reactor != null)
-            {
-                reactor.characterCombatManager.ReactToSound(characterManager);
-            }
+            CharacterManager reactor = _colliderBuffer[i].GetComponent<CharacterManager>();
+            // reactor -> react sound target : _player
         }
     }
 

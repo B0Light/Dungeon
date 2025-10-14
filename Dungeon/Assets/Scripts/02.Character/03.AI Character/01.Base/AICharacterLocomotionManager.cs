@@ -255,7 +255,7 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
         Vector3 characterRight = new Vector3(transform.right.x, 0f, transform.right.z).normalized;
         Vector3 directionForward = new Vector3(CLVM.moveDirection.x, 0f, CLVM.moveDirection.z).normalized;
 
-        if (_aiCharacterManager.characterCombatManager.currentTarget != null)
+        if (_aiCharacterManager.currentTarget != null)
         {
             HandleCombatRotation(characterForward, characterRight, directionForward);
         }
@@ -267,7 +267,7 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
     
     private void HandleCombatRotation(Vector3 characterForward, Vector3 characterRight, Vector3 directionForward)
     {
-        Vector3 targetDirection = (_aiCharacterManager.characterCombatManager.currentTarget.transform.position - transform.position).normalized;
+        Vector3 targetDirection = (_aiCharacterManager.currentTarget.transform.position - transform.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
 
         CLVM.strafeAngle = characterForward != directionForward ? Vector3.SignedAngle(characterForward, directionForward, Vector3.up) : 0f;
@@ -446,11 +446,11 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
     
     private Vector3 DetermineTargetPosition()
     {
-        Transform currentDestination = _aiCharacterManager.aiCharacterCombatManager.currentTarget?.transform;
+        Transform currentDestination = _aiCharacterManager.currentTarget?.transform;
         
         if (currentDestination != null)
         {
-            navAgent.stoppingDistance = _aiCharacterManager.aiCharacterCombatManager.attackRange;
+            navAgent.stoppingDistance = _aiCharacterManager.detectionRange;
             return currentDestination.position;
         }
         else

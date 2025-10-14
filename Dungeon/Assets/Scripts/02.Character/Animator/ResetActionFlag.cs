@@ -20,11 +20,6 @@ public class ResetActionFlag : StateMachineBehaviour
         
         _character.characterEquipmentManager.CloseDamageCollider();
         
-        _character.characterCombatManager.DisableCanDoCombo();
-        _character.characterCombatManager.DisableCanDoRollingAttack();
-        _character.characterCombatManager.DisableCanDoBeckStepAttack();
-        _character.characterCombatManager.DisableCanDoJumpingAttack();
-        
         _character.characterVariableManager.isInvulnerable.Value = false;
         _character.characterVariableManager.isAttacking.Value = false;
         _character.characterVariableManager.isCharging.Value = false;

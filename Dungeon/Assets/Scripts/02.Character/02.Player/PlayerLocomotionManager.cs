@@ -396,7 +396,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     {
         if(!CanPerformJump()) return;
         
-        _playerManager.playerCombatManager.EnableCanDoJumpingAttack();
         if (_canDoubleJump)
         {
             _canDoubleJump = false;
@@ -435,7 +434,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     
     private void ExitFallState()
     {
-        _playerManager.playerCombatManager.canPerformJumpingAttack = false;
         _canDoubleJump = false;
     }
 

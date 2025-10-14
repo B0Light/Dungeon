@@ -292,23 +292,6 @@ public class PlayerVariableManager : CharacterVariableManager
         }
     }
 
-    public override void SuccessParry(CharacterManager parriedTarget)
-    {
-        base.SuccessParry(parriedTarget);
-        if (perkPerryWithCriticalAttack.Value)
-        {
-            _playerManager.playerCombatManager.canCriticalAttack = true;
-            _playerManager.playerCombatManager.criticalDamagedCharacter = parriedTarget;
-            StartCoroutine(DisableCriticalAttack());
-        }
-    }
-
-    private IEnumerator DisableCriticalAttack()
-    {
-        yield return new WaitForSeconds(3f);
-        _playerManager.playerCombatManager.canCriticalAttack = false;
-    }
-
     public void OnExtraAttackChange(bool isActivated)
     {
         _playerManager.playerStatsManager.extraDamage.Value += isActivated ? 30 : -30;
