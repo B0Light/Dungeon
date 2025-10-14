@@ -3,8 +3,8 @@ using UnityEngine.Serialization;
 
 public class AICharacterPursueManager : MonoBehaviour
 {
-    protected AICharacterManager aiCharacter;
-    public CharacterManager pursueTarget;
+    private AICharacterManager _aiCharacter;
+    [HideInInspector] public CharacterManager pursueTarget;
     
     [HideInInspector] public float distanceFromTarget;
     [HideInInspector] public float viewableAngle;
@@ -22,7 +22,7 @@ public class AICharacterPursueManager : MonoBehaviour
     
     private void Awake()
     {
-        aiCharacter = GetComponent<AICharacterManager>();
+        _aiCharacter = GetComponent<AICharacterManager>();
     }
 
     public void SetTarget(CharacterManager newTarget)
@@ -55,14 +55,14 @@ public class AICharacterPursueManager : MonoBehaviour
         // hitCount만큼만 순회하여 성능 최적화
         for (int i = 0; i < hitCount; i++)
         {
-            var collider = _colliderBuffer[i];
+            var col = _colliderBuffer[i];
             
             // null 체크 추가
-            if (collider == null)
+            if (col == null)
                 continue;
 
             // 컴포넌트 캐싱으로 중복 호출 방지
-            CharacterManager targetCharacter = collider.GetComponent<CharacterManager>();
+            CharacterManager targetCharacter = col.GetComponent<CharacterManager>();
 
             // 유효성 검사들을 단계별로 수행 (비용이 적은 것부터)
             if (!IsValidTarget(targetCharacter))
@@ -107,15 +107,15 @@ public class AICharacterPursueManager : MonoBehaviour
     private bool IsValidTarget(CharacterManager targetCharacter)
     {
         return targetCharacter != null && 
-               targetCharacter != aiCharacter && 
+               targetCharacter != _aiCharacter && 
                !targetCharacter.isDead.Value;
     }
     
      // 타겟이 시야각 내에 있는지 확인하는 메서드
     private bool IsTargetInFieldOfView(CharacterManager targetCharacter)
     {
-        Vector3 targetsDirection = targetCharacter.transform.position - aiCharacter.transform.position;
-        float angleOfPotentialTarget = Vector3.Angle(targetsDirection, aiCharacter.transform.forward);
+        Vector3 targetsDirection = targetCharacter.transform.position - _aiCharacter.transform.position;
+        float angleOfPotentialTarget = Vector3.Angle(targetsDirection, _aiCharacter.transform.forward);
         
         return angleOfPotentialTarget > minimumFOV && angleOfPotentialTarget < maximumFOV;
     }
@@ -123,7 +123,7 @@ public class AICharacterPursueManager : MonoBehaviour
     // 타겟과의 시선이 차단되지 않았는지 확인하는 메서드
     private bool HasLineOfSight(CharacterManager targetCharacter)
     {
-        Vector3 aiLockOnPosition = aiCharacter.lockOnPosition;
+        Vector3 aiLockOnPosition = _aiCharacter.lockOnPosition;
         Vector3 targetLockOnPosition = targetCharacter.lockOnPosition;
         
         bool isBlocked = Physics.Linecast(aiLockOnPosition, targetLockOnPosition, WorldUtilityManager.Instance.GetEnvLayer());

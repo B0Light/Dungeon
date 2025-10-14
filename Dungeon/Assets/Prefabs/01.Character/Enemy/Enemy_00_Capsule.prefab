@@ -1088,8 +1088,8 @@ GameObject:
   - component: {fileID: 7696289410677057404}
   - component: {fileID: 8591169680176691093}
   - component: {fileID: 9217734685296204317}
-  - component: {fileID: 8564587586335744857}
   - component: {fileID: 8921109462206675164}
+  - component: {fileID: 1766836693995085412}
   - component: {fileID: 1980838598440057832}
   - component: {fileID: 3508677618849695729}
   - component: {fileID: 7958220063865464974}
@@ -1179,12 +1179,16 @@ MonoBehaviour:
   meshTrail: {fileID: 0}
   characterGroup: 1
   isPerformingAction: 0
+  currentTarget: {fileID: 0}
+  detectionRange: 0
+  lockOnPosition: {x: 0, y: 0, z: 0}
   characterID: 0
   characterName: "\uBCF4\uB77C\uC2DC\uD2F0 \uC8FC\uBBFC"
   aiCharacterVariableManager: {fileID: 0}
   aiCharacterCombatManager: {fileID: 0}
   aiCharacterLocomotionManager: {fileID: 0}
   aiCharacterPatrolManager: {fileID: 0}
+  aiCharacterPursueManager: {fileID: 0}
   aiCharacterDeathInteractable: {fileID: 0}
   lockOnObject: {fileID: 0}
   navMeshAgent: {fileID: 6144042840328024194}
@@ -1469,42 +1473,6 @@ MonoBehaviour:
   gridOffset: {x: 0, y: 0, z: 0}
   ambushProbability: 0.3
   ambushDuration: 10
---- !u!114 &8564587586335744857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6093447394938997679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbfa22b23c38a2f40b9d562577b11f66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lastAttackAnimationPerformed: 
-  currentTarget: {fileID: 0}
-  currentAttackType: 0
-  lockOnTransform: {fileID: 0}
-  criticalDamagedCharacter: {fileID: 0}
-  canCriticalAttack: 0
-  canPerformRollingAttack: 0
-  canPerformBackStepAttack: 0
-  canPerformJumpingAttack: 0
-  distanceFromTarget: 0
-  viewableAngle: 0
-  targetDirection: {x: 0, y: 0, z: 0}
-  detectionRadius: 15
-  minimumFOV: -35
-  maximumFOV: 35
-  attackRange: 2
-  attackRotationSpeed: 25
-  leftHandDamageColliders: []
-  rightHandDamageColliders: []
-  hornDamageCollider: {fileID: 0}
-  baseDamage: 40
-  basePoiseDamage: 25
-  attack01DamageModifier: 1
-  attack02DamageModifier: 1.4
 --- !u!114 &8921109462206675164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1523,6 +1491,27 @@ MonoBehaviour:
   hitBackward: hit_Backward_Medium_01
   hitLeft: hit_Left_Medium_01
   hitRight: hit_Right_Medium_01
+--- !u!114 &1766836693995085412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093447394938997679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d8454aacdd69e42ae336a4d1cf5bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AICharacterPursueManager
+  pursueTarget: {fileID: 0}
+  distanceFromTarget: 0
+  viewableAngle: 0
+  targetDirection: {x: 0, y: 0, z: 0}
+  detectionRadius: 15
+  minimumFOV: -35
+  maximumFOV: 35
+  attackRange: 2
+  rotationSpeed: 25
 --- !u!114 &1980838598440057832
 MonoBehaviour:
   m_ObjectHideFlags: 0
