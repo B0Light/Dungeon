@@ -289,25 +289,11 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         }
         
         UpdateBestTarget();
-        EnableLockOn(CLVM.currentTargetCandidates.Count > 0 && CLVM.isLockedOn);
     }
     
     private void ToggleLockOn()
     {
         UpdateBestTarget();
-        //  lock on 대상이 있으며 / 현재 록온 x -> true
-        EnableLockOn(CLVM.currentTargetCandidates.Count > 0 && !CLVM.isLockedOn);
-    }
-
-    private void EnableLockOn(bool enable)
-    {
-        CLVM.isLockedOn = enable;
-        CLVM.isStrafing = enable ? !CLVM.isSprinting : CLVM.alwaysStrafe ;
-        
-        PlayerCameraController.Instance.LockOn(enable, CLVM.targetLockOnPos);
-        
-        if (CLVM.currentLockOnTarget != null)
-            CLVM.currentLockOnTarget.GetComponent<LockOnObject>().Highlight(enable);
     }
 
     #endregion

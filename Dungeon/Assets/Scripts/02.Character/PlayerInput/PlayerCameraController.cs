@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,13 +10,7 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     public Camera mainCamera;
 
     private Transform _playerTarget;
-    private Transform _lockOnTarget;
-    private Transform _originTarget;
-    private float _rotationX;
-    private float _rotationY;
-
-    private Transform _cameraTransform;
-
+    
     [Header("Cinemachine Cameras")]
     [SerializeField] private CinemachineCamera vCam; 
     [SerializeField] private CinemachineInputAxisController cameraController;
@@ -27,16 +20,16 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     [SerializeField] private LayerMask occlusionLayer; 
     [SerializeField] private float raycastDistanceOffset = 0.5f;
 
-    // Added: Material for replacement and a dictionary to store original materials
     [Header("Material Replacement")]
     [SerializeField] private Material replacementMaterial;
     
-    private readonly Dictionary<Renderer, Material[]> _originalMaterials = new Dictionary<Renderer, Material[]>();
+    // 딕셔너리에 원래 재질 정보 저장
+    private readonly Dictionary<Renderer, Material[]> _occludedRenderers = new Dictionary<Renderer, Material[]>();
     
     // 최적화: Physics.RaycastNonAlloc()을 위한 배열 사전 할당
     private const int MAX_HITS = 10;
     private RaycastHit[] _raycastHits = new RaycastHit[MAX_HITS];
-
+    
     public void Update()
     {
         if(!_enableOcclusion) return;
@@ -47,7 +40,8 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     {
         if(!hideOption) return;
 
-        var renderersToRestore = new List<Renderer>(_originalMaterials.Keys);
+        // 가려져야 할 오브젝트를 추적하기 위한 임시 HashSet
+        var currentOccludedRenderers = new HashSet<Renderer>();
 
         Vector3 direction = (_playerTarget.position - mainCamera.transform.position).normalized;
         float distance = Vector3.Distance(mainCamera.transform.position, _playerTarget.position) - raycastDistanceOffset;
@@ -57,43 +51,47 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         for (int i = 0; i < hitCount; i++)
         {
             var hit = _raycastHits[i];
-
-            // Check the tag of the hit object and ensure it has a Renderer
+            
             if (hit.collider.CompareTag("Ignore_CamCollision")) 
             {
                 Renderer renderer = hit.collider.GetComponent<Renderer>();
                 if (renderer != null)
                 {
-                    // If the object is currently occluded, remove it from the restore list
-                    if (renderersToRestore.Contains(renderer))
-                    {
-                        renderersToRestore.Remove(renderer);
-                    }
+                    currentOccludedRenderers.Add(renderer);
 
-                    // Store original materials if not already stored
-                    if (!_originalMaterials.ContainsKey(renderer))
+                    if (!_occludedRenderers.ContainsKey(renderer))
                     {
-                        _originalMaterials[renderer] = renderer.materials;
+                        // 원본 재질을 저장하고 교체
+                        _occludedRenderers[renderer] = renderer.sharedMaterials;
+                        
+                        Material[] newMaterials = new Material[renderer.sharedMaterials.Length];
+                        for (int j = 0; j < newMaterials.Length; j++)
+                        {
+                            newMaterials[j] = replacementMaterial;
+                        }
+                        renderer.materials = newMaterials;
                     }
-
-                    // Replace all materials with the replacement material
-                    Material[] newMaterials = new Material[renderer.materials.Length];
-                    for (int j = 0; j < newMaterials.Length; j++)
-                    {
-                        newMaterials[j] = replacementMaterial;
-                    }
-                    renderer.materials = newMaterials;
                 }
             }
         }
-
-        // Restore materials for objects that are no longer being hit
-        foreach (var renderer in renderersToRestore)
+        
+        // 더 이상 가려지지 않는 오브젝트의 재질을 복원
+        // _occludedRenderers 딕셔너리에서 현재 Raycast에 포함되지 않은 렌더러들을 찾습니다.
+        var renderersToRestore = new List<Renderer>();
+        foreach(var renderer in _occludedRenderers.Keys)
         {
-            if (_originalMaterials.TryGetValue(renderer, out Material[] originalMats))
+            if(!currentOccludedRenderers.Contains(renderer))
+            {
+                renderersToRestore.Add(renderer);
+            }
+        }
+
+        foreach(var renderer in renderersToRestore)
+        {
+            if (_occludedRenderers.TryGetValue(renderer, out Material[] originalMats))
             {
                 renderer.materials = originalMats;
-                _originalMaterials.Remove(renderer);
+                _occludedRenderers.Remove(renderer);
             }
         }
     }
@@ -102,60 +100,24 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     {
         playerManager = player;
         _playerTarget = playerManager.transform.Find("Player_LookAt");
-        _originTarget = playerManager.transform.Find("TargetLockOnPos");
-        _lockOnTarget = _originTarget;
 
-        vCam.Follow = _playerTarget;
-        vCam.LookAt = _playerTarget;
-        
-        TurnOnCamera();
-        _enableOcclusion = true;
-        WorldSceneChangeManager.OnSceneEndPhase += ResetCamOcclusion;
-    }
-    
-    public void LockOn(bool enable, Transform newLockOnTarget = null)
-    {
-        var orbitalFollow = vCam.GetComponent<CinemachineOrbitalFollow>();
-        orbitalFollow.RecenteringTarget = CinemachineOrbitalFollow.ReferenceFrames.TrackingTarget;
-        
-        if(playerManager.playerVariableManager.CLVM.isStopped)
-            StartCoroutine(ResetCamCoroutine());
-        else if (enable)
+        // Null 체크 추가
+        if (_playerTarget != null)
         {
-            orbitalFollow.HorizontalAxis.Recentering.Wait = 0f;
-            orbitalFollow.HorizontalAxis.Recentering.Time = 0.5f;
-            orbitalFollow.HorizontalAxis.Recentering.Enabled = true;
-            orbitalFollow.VerticalAxis.Recentering.Wait = 0f;
-            orbitalFollow.VerticalAxis.Recentering.Time = 0.5f;
-            orbitalFollow.VerticalAxis.Recentering.Enabled = true;
-            cameraController.enabled = false;
+            vCam.Follow = _playerTarget;
+            vCam.LookAt = _playerTarget;
         }
         else
         {
-            orbitalFollow.HorizontalAxis.Recentering.Enabled = false;
-            orbitalFollow.VerticalAxis.Recentering.Enabled = false;
-            cameraController.enabled = true;
+            Debug.LogError("Player_LookAt Transform을 찾을 수 없습니다.");
         }
-            
-        _lockOnTarget = newLockOnTarget != null ? newLockOnTarget : _originTarget;
-    }
-
-    private IEnumerator ResetCamCoroutine()
-    {
-        var orbitalFollow = vCam.GetComponent<CinemachineOrbitalFollow>();
-        orbitalFollow.RecenteringTarget = CinemachineOrbitalFollow.ReferenceFrames.TrackingTarget;
         
-        orbitalFollow.HorizontalAxis.Recentering.Wait = 0f;
-        orbitalFollow.HorizontalAxis.Recentering.Time = 0.5f;
-        orbitalFollow.HorizontalAxis.Recentering.Enabled = true;
-        orbitalFollow.VerticalAxis.Recentering.Wait = 0f;
-        orbitalFollow.VerticalAxis.Recentering.Time = 0.5f;
-        orbitalFollow.VerticalAxis.Recentering.Enabled = true;
-        cameraController.enabled = false;
-        yield return new WaitForSeconds(1f);
-        orbitalFollow.HorizontalAxis.Recentering.Enabled = false;
-        orbitalFollow.VerticalAxis.Recentering.Enabled = false;
-        cameraController.enabled = true;
+        TurnOnCamera();
+        _enableOcclusion = true;
+        
+        // -= 를 먼저 호출하여 중복 구독 방지
+        WorldSceneChangeManager.OnSceneEndPhase -= ResetCamOcclusion;
+        WorldSceneChangeManager.OnSceneEndPhase += ResetCamOcclusion;
     }
     
     public Vector3 GetCameraPosition()
@@ -168,24 +130,16 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         return mainCamera.transform.forward;
     }
 
-    private Vector3 GetCameraForwardZeroedY()
-    {
-        return new Vector3(mainCamera.transform.forward.x, 0, mainCamera.transform.forward.z);
-    }
-
     public Vector3 GetCameraForwardZeroedYNormalized()
     {
-        return GetCameraForwardZeroedY().normalized;
+        Vector3 forward = new Vector3(mainCamera.transform.forward.x, 0, mainCamera.transform.forward.z);
+        return forward.normalized;
     }
     
-    private Vector3 GetCameraRightZeroedY()
-    {
-        return new Vector3(mainCamera.transform.right.x, 0, mainCamera.transform.right.z);
-    }
-
     public Vector3 GetCameraRightZeroedYNormalized()
     {
-        return GetCameraRightZeroedY().normalized;
+        Vector3 right = new Vector3(mainCamera.transform.right.x, 0, mainCamera.transform.right.z);
+        return right.normalized;
     }
 
     public float GetCameraTiltX()
@@ -205,10 +159,21 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
 
     public void SetCameraControllerEnable(bool newValue)
     {
-        var currentValue = cameraController.enabled;
-        if (currentValue != newValue)
+        if (cameraController != null && cameraController.enabled != newValue)
             cameraController.enabled = newValue;
     }
 
-    private void ResetCamOcclusion() => _enableOcclusion = false;
+    private void ResetCamOcclusion()
+    {
+        _enableOcclusion = false;
+        // 씬 전환 시 모든 재질 복구
+        foreach(var renderer in _occludedRenderers.Keys)
+        {
+            if (renderer != null && _occludedRenderers.TryGetValue(renderer, out Material[] originalMats))
+            {
+                renderer.materials = originalMats;
+            }
+        }
+        _occludedRenderers.Clear();
+    }
 }

@@ -11,14 +11,11 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerVariableManager playerVariableManager;
     [HideInInspector] public PlayerStatsManager playerStatsManager;
     [HideInInspector] public PlayerEquipmentManger playerEquipmentManger;
-    [HideInInspector] public PlayerCombatManager playerCombatManager;
     [HideInInspector] public PlayerSoundFXManager playerSoundFXManager;
     [HideInInspector] public PlayerInteractionManager playerInteractionManager;
     [HideInInspector] public PlayerItemConsumeManager playerItemConsumeManager;
     
     [HideInInspector] public CharacterController characterController;
-    
-    [SerializeField] private Vector3 initialPosition = new Vector3(0,10,0);
     
     private bool _isApplicationQuitting = false;
     
@@ -27,7 +24,6 @@ public class PlayerManager : CharacterManager
         base.Awake();
         
         Debug.Log("Player Ready");
-        
         // DO MORE STUFF, ONLY FOR THE PLAYER
 
         playerLocomotionManager = characterLocomotionManager as PlayerLocomotionManager;
@@ -35,7 +31,6 @@ public class PlayerManager : CharacterManager
         playerVariableManager = characterVariableManager as PlayerVariableManager;
         playerStatsManager = characterStatsManager as PlayerStatsManager;
         playerEquipmentManger = characterEquipmentManager as PlayerEquipmentManger;
-        playerCombatManager =  characterCombatManager as PlayerCombatManager;
         playerSoundFXManager = characterSoundFXManager as PlayerSoundFXManager;
         playerInteractionManager = GetComponent<PlayerInteractionManager>();
         playerItemConsumeManager = GetComponent<PlayerItemConsumeManager>();
@@ -62,7 +57,7 @@ public class PlayerManager : CharacterManager
         base.OnEnable();
         
         PlayerCameraController.Instance.SetPlayer(this);
-        PlayerInputManager.Instance.playerManager = this;
+        PlayerInputManager.Instance.SetPlayer(this);
         
         isDead.OnValueChanged += playerVariableManager.OnPlayerDeath;
         // Updates ui stat bars when a stat changes (health or stamina)

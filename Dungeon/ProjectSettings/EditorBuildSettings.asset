@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/10.Dungeon_01.unity
     guid: d49e01bf2d412a74f94faabd075e5ff2
+  - enabled: 1
+    path: Assets/Scenes/Test_Swipe.unity
+    guid: 85dfaeb8a2404ac4bae075cf2442bdf3
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 99f9c9493070a9d4c979a8fec7c5a8d3, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 8d47185fa0163dd44982c9619a9abbc3, type: 3}

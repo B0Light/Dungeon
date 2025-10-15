@@ -15,6 +15,5 @@ public class CloseLoadingScene : MonoBehaviour
     private void OnAnyKeyPressed()
     {
         WorldSceneChangeManager.Instance.CloseLoadingScreen();
-        PlayerInputManager.Instance.EnableCharacter();
     }
 }

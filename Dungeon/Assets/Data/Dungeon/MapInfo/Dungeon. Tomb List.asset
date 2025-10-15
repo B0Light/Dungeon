@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DungeonInfoData
   dungeonDataList:
   - {fileID: 11400000, guid: 097d62684c19a5646bcd89e1f5eb5d4b, type: 2}
+  - {fileID: 11400000, guid: 7c7f5c54e19d8144cac12a999fd669da, type: 2}

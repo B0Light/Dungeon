@@ -1,89 +1,27 @@
- using System;
- using Unity.Collections;
- using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
+using UnityEngine.InputSystem;
 
 public class PlayerInputManager : Singleton<PlayerInputManager>
 {
     // LOCAL PLAYER
-    [HideInInspector]public PlayerManager playerManager;
+    private PlayerManager _playerManager;
 
     private PlayerControls _playerControls;
     
     public float buttonHoldThreshold = 0.15f;
     
-    private CharacterLocomotionVariableManager CLVM => playerManager.characterVariableManager.CLVM;
-    
-    [Header("DEBUG CAMERA MOVEMENT INPUT")]
-    public float cameraVerticalInput;
-    public float cameraHorizontalInput;
-    
-    public Vector2 mouseDelta;
     public Vector2 moveComposite;
 
     public float movementInputDuration;
     public bool movementInputDetected;
 
     private bool _isSprinting = false;
-    
-    [ReadOnly] private bool _jumpInput = false;
-    [ReadOnly] private bool _walkInput = false;
-    [ReadOnly] private bool _sprintInput = false;
-    [ReadOnly] private bool _crouchInput = false;
-    [ReadOnly] private bool _lockOnInput = false;
-    
-    [ReadOnly] private bool _rollInput = false;
-    
-    [ReadOnly] private bool _interactionInput = false;
-    
-    [ReadOnly] private bool _lightAttackInput = false;
-    [ReadOnly] private bool _heavyAttackInput = false;
-    [ReadOnly] private bool _chargeAttackInput = false;
-    
-    [ReadOnly] private bool _parryInput = false;
-    [ReadOnly] private bool _blockInput = false;
-    
-    [ReadOnly] private bool _skillInput = false;
-    
-    [Header("Inventory")] 
-    [ReadOnly] private bool _toggleInventory = false;
-    [ReadOnly] private bool _toggleQuickSlot = false;
-    
-    [ReadOnly] private bool _switchLQuickSlot = false;
-    [ReadOnly] private bool _switchRQuickSlot = false;
-    
-    [ReadOnly] private bool _useQuickSlot = false;
+    private CharacterLocomotionVariableManager CLVM => _playerManager.characterVariableManager.CLVM;
 
-    [Header("GUI")] 
-    [ReadOnly] private bool _escapeInput = false;
-    [ReadOnly] private bool _guiInput = false;
-    [ReadOnly] private bool _openMapInput = false; 
-    [ReadOnly] private bool _guiClickInput = false; 
-    [ReadOnly] private bool _guiDoubleClickInput = false;
-    [ReadOnly] private bool _guiRightClickInput = false;
-    [ReadOnly] private bool _guiRotateInput = false;
-    private void Start()
+    public void SetPlayer(PlayerManager playerManager)
     {
-        SceneManager.activeSceneChanged += OnSceneChange;
-
-        Instance.enabled = false;
-        if(_playerControls != null)
-            _playerControls.Disable();
-    }
-
-    public void EnableCharacter()
-    {
-        Instance.enabled = true;
-        if (_playerControls != null)
-            _playerControls.Enable();
-    }
-
-    private void OnSceneChange(Scene oldScene, Scene newScene)
-    {
-        Instance.enabled = false;
-        if (_playerControls != null)
-            _playerControls.Disable();
+        _playerManager = playerManager;
     }
 
     private void OnEnable()
@@ -92,245 +30,222 @@ public class PlayerInputManager : Singleton<PlayerInputManager>
         {
             _playerControls = new PlayerControls();
 
-            _playerControls.PlayerActions.Interact.performed += i => _interactionInput = true;
-            
             // Locomotion
-            _playerControls.PlayerLocomotion.Look.performed += i => mouseDelta = i.ReadValue<Vector2>();
-            _playerControls.PlayerLocomotion.Move.performed += i => moveComposite = i.ReadValue<Vector2>();
-            _playerControls.PlayerLocomotion.Jump.performed += i => _jumpInput = true;
-            _playerControls.PlayerLocomotion.ToggleWalk.performed += i => _walkInput = true;
-            _playerControls.PlayerLocomotion.Sprint.performed += i => _sprintInput = true;
-            _playerControls.PlayerLocomotion.Sprint.canceled += i => _sprintInput = false;
-            _playerControls.PlayerLocomotion.ToggleCrouch.performed += i => _crouchInput = true;
-            _playerControls.PlayerLocomotion.LockOn.performed += i => _lockOnInput = true;
-            
-            // Weapon Actions
-            _playerControls.PlayerActions.Roll.performed += i => _rollInput = true;
-            
-            _playerControls.PlayerActions.LightAttack.performed += i => _lightAttackInput = true;
-            _playerControls.PlayerActions.HeavyAttack.performed += i => _heavyAttackInput = true;
-            _playerControls.PlayerActions.ChargeAttack.performed += i => _chargeAttackInput = true;
-            _playerControls.PlayerActions.ChargeAttack.canceled += i => _chargeAttackInput = false;
-            
-            _playerControls.PlayerActions.Parry.performed += i => _parryInput = true;
-            _playerControls.PlayerActions.Block.performed += i => _blockInput = true;
-            _playerControls.PlayerActions.Block.canceled += i => _blockInput = false;
-            _playerControls.PlayerActions.Skill.performed += i => _skillInput = true;
-            
-            // Inventory Actions
-            _playerControls.PlayerInventory.ToggleInventory.performed += i => _toggleInventory = true;
-            _playerControls.PlayerInventory.ToggleQuickSlot.performed += i => _toggleQuickSlot = true;
-            _playerControls.PlayerInventory.ToggleOption.performed += i => _escapeInput = true;
-            
-            _playerControls.PlayerInventory.SwitchLQuickSlot.performed += i => _switchLQuickSlot = true;
-            _playerControls.PlayerInventory.SwitchRQuickSlot.performed += i => _switchRQuickSlot = true;
+            _playerControls.PlayerLocomotion.Move.performed += OnMovePerformed;
+            _playerControls.PlayerLocomotion.Move.canceled += OnMoveCanceled;
+            _playerControls.PlayerLocomotion.Jump.performed += OnJumpPerformed;
+            _playerControls.PlayerLocomotion.ToggleWalk.performed += OnToggleWalkPerformed;
+            _playerControls.PlayerLocomotion.Sprint.performed += OnSprintPerformed;
+            _playerControls.PlayerLocomotion.Sprint.canceled += OnSprintCanceled;
+            _playerControls.PlayerLocomotion.ToggleCrouch.performed += OnToggleCrouchPerformed;
+            _playerControls.PlayerLocomotion.LockOn.performed += OnLockOnPerformed;
 
-            _playerControls.PlayerInventory.UseQuickSlotItem.performed += i => _useQuickSlot = true;
+            // Player Actions
+            _playerControls.PlayerActions.Interact.performed += OnInteractPerformed;
+            _playerControls.PlayerActions.Roll.performed += OnRollPerformed;
+            
+
+            // Inventory Actions
+            _playerControls.PlayerInventory.ToggleInventory.performed += OnToggleInventoryPerformed;
+            _playerControls.PlayerInventory.ToggleQuickSlot.performed += OnToggleQuickSlotPerformed;
+            _playerControls.PlayerInventory.SwitchLQuickSlot.performed += OnSwitchLQuickSlotPerformed;
+            _playerControls.PlayerInventory.SwitchRQuickSlot.performed += OnSwitchRQuickSlotPerformed;
+            _playerControls.PlayerInventory.UseQuickSlotItem.performed += OnUseQuickSlotPerformed;
             
             // Menu Actions
-            _playerControls.UI.ToggleOption.performed += i => _escapeInput = true;
-            _playerControls.UI.NextGUI.performed += i => _guiInput = true;
-            _playerControls.UI.OpenMap.performed += i => _openMapInput = true;
-            _playerControls.UI.Click.performed += i => _guiClickInput = true;
-            _playerControls.UI.DoubleClick.performed += i => _guiDoubleClickInput = true;
-            _playerControls.UI.RightClick.performed += i => _guiRightClickInput = true;
-            _playerControls.UI.Rotate.performed += i => _guiRotateInput = true;
+            _playerControls.UI.ToggleOption.performed += OnEscapePerformed;
+            _playerControls.UI.NextGUI.performed += OnNextGUIPerformed;
+            _playerControls.UI.OpenMap.performed += OnOpenMapPerformed;
+            _playerControls.UI.Click.performed += OnGUIClickPerformed;
+            _playerControls.UI.DoubleClick.performed += OnGUIDoubleClickPerformed;
+            _playerControls.UI.RightClick.performed += OnGUIRightClickPerformed;
+            _playerControls.UI.Rotate.performed += OnGUIRotatePerformed;
         }
 
         _playerControls.Enable();
     }
 
-    protected override void OnDestroy()
+    private void OnDisable()
     {
-        base.OnDestroy();
-        SceneManager.activeSceneChanged -= OnSceneChange;
+        // 구독 해제
+        if (_playerControls != null)
+        {
+            _playerControls.PlayerLocomotion.Move.performed -= OnMovePerformed;
+            _playerControls.PlayerLocomotion.Move.canceled -= OnMoveCanceled;
+            _playerControls.PlayerLocomotion.Jump.performed -= OnJumpPerformed;
+            _playerControls.PlayerLocomotion.ToggleWalk.performed -= OnToggleWalkPerformed;
+            _playerControls.PlayerLocomotion.Sprint.performed -= OnSprintPerformed;
+            _playerControls.PlayerLocomotion.Sprint.canceled -= OnSprintCanceled;
+            _playerControls.PlayerLocomotion.ToggleCrouch.performed -= OnToggleCrouchPerformed;
+            _playerControls.PlayerLocomotion.LockOn.performed -= OnLockOnPerformed;
+
+            _playerControls.PlayerActions.Interact.performed -= OnInteractPerformed;
+            _playerControls.PlayerActions.Roll.performed -= OnRollPerformed;
+            
+            _playerControls.PlayerInventory.ToggleInventory.performed -= OnToggleInventoryPerformed;
+            _playerControls.PlayerInventory.ToggleQuickSlot.performed -= OnToggleQuickSlotPerformed;
+            _playerControls.PlayerInventory.SwitchLQuickSlot.performed -= OnSwitchLQuickSlotPerformed;
+            _playerControls.PlayerInventory.SwitchRQuickSlot.performed -= OnSwitchRQuickSlotPerformed;
+            _playerControls.PlayerInventory.UseQuickSlotItem.performed -= OnUseQuickSlotPerformed;
+            
+            _playerControls.UI.ToggleOption.performed -= OnEscapePerformed;
+            _playerControls.UI.NextGUI.performed -= OnNextGUIPerformed;
+            _playerControls.UI.OpenMap.performed -= OnOpenMapPerformed;
+            _playerControls.UI.Click.performed -= OnGUIClickPerformed;
+            _playerControls.UI.DoubleClick.performed -= OnGUIDoubleClickPerformed;
+            _playerControls.UI.RightClick.performed -= OnGUIRightClickPerformed;
+            _playerControls.UI.Rotate.performed -= OnGUIRotatePerformed;
+        }
+
+        _playerControls?.Disable();
     }
 
-    // IF WE MINIMIZE OR LOWER THE WINDOW, STOP ADJUSTING INPUTS
     private void OnApplicationFocus(bool focus)
     {
-        if(enabled)
+        if(!enabled) return;
+        
+        if(focus)
         {
-            if(focus)
-            {
-                _playerControls.Enable();
-            }
-            else
-            {
-                _playerControls.Disable();
-            }
+            _playerControls.Enable();
         }
+        else
+        {
+            _playerControls.Disable();
+        }
+        
     }
 
     private void Update()
     {
-        HandleAllInputs();
+        // Update 함수는 연속적인 입력 값 처리에 사용됩니다.
+        HandleContinuousInput();
     }
-
-    private void HandleAllInputs()
+    
+    private void HandleContinuousInput()
     {
-        HandleEscape();
-        HandleToggleInventory();
-        HandleGUI();
-        HandleInventoryGUIInput();
-        if (playerManager.playerVariableManager.canControl.Value)
+        // 이동 입력 감지는 Update에서 처리
+        movementInputDetected = moveComposite.magnitude > 0;
+        if (movementInputDetected)
         {
-            HandleToggleQuickSlot();
-            HandleUseQuickSlot();
-            
-            HandleMoveInput();
-            HandleJumpInput();
-            HandleToggleWalkInput();
-            HandleSprintInput();
-            HandleToggleCrouchInput();
-            HandleLockOnInput();
-            HandleRollInput();
-            // Action
-            HandleSkillInput();
-            HandleParryInput();
-            HandleBlockInput();
-            HandleLightAttackInput();
-            HandleHeavyAttackInput();
-            HandleChargingAttackInput();
-            HandleSwitchLQuickSlotInput();
-            HandleSwitchRQuickSlotInput();
-            HandleInteractionInput();
-            HandleOpenMap();
+            movementInputDuration += Time.deltaTime;
         }
         else
         {
-            ResetAllInput();
+            movementInputDuration = 0;
         }
     }
 
-    private void HandleMoveInput()
-    {
-        movementInputDetected = moveComposite.magnitude > 0;
-    }
+    //
+    // 이벤트 콜백 함수들
+    //
     
-    private void HandleJumpInput()
-    {
-        if (_jumpInput)
-        {
-            _jumpInput = false;
-            playerManager.playerLocomotionManager.AttemptToJump();
-        }
-    }
+    // Locomotion
+    private void OnMovePerformed(InputAction.CallbackContext context) => moveComposite = context.ReadValue<Vector2>();
+    private void OnMoveCanceled(InputAction.CallbackContext context) => moveComposite = Vector2.zero;
 
-    private void HandleRollInput()
+    private void OnJumpPerformed(InputAction.CallbackContext context)
     {
-        if (_rollInput)
-        {
-            _rollInput = false;
-            playerManager.playerLocomotionManager.AttemptToRoll();
-        }
-    }
-    private void HandleToggleWalkInput()
-    {
-        if (_walkInput)
-        {
-            _walkInput = false;
-            playerManager.playerLocomotionManager.AttemptToToggleWalk();
-        }
+        if (_playerManager.playerVariableManager.canControl.Value)
+            _playerManager.playerLocomotionManager.AttemptToJump();
     }
     
-    private void HandleSprintInput()
+    private void OnToggleWalkPerformed(InputAction.CallbackContext context)
     {
-        if (_sprintInput)
+        if (_playerManager.playerVariableManager.canControl.Value)
+            _playerManager.playerLocomotionManager.AttemptToToggleWalk();
+    }
+    
+    private void OnSprintPerformed(InputAction.CallbackContext context)
+    {
+        if (_playerManager.playerVariableManager.canControl.Value)
         {
             if (_isSprinting) return;
             _isSprinting = true;
-            playerManager.playerLocomotionManager.DeactivateCrouch();
-            playerManager.playerLocomotionManager.AttemptToActivateSprint();
+            _playerManager.playerLocomotionManager.DeactivateCrouch();
+            _playerManager.playerLocomotionManager.AttemptToActivateSprint();
         }
-        else
+    }
+    
+    private void OnSprintCanceled(InputAction.CallbackContext context)
+    {
+        if (_isSprinting)
         {
-            if(!_isSprinting) return;
             _isSprinting = false;
-            playerManager.playerLocomotionManager.AttemptToDeactivateSprint();
+            _playerManager.playerLocomotionManager.AttemptToDeactivateSprint();
         }
     }
     
-    private void HandleToggleCrouchInput()
+    private void OnToggleCrouchPerformed(InputAction.CallbackContext context)
     {
-        if (_crouchInput)
+        if (_playerManager.playerVariableManager.canControl.Value)
         {
-            _crouchInput = false;
-            playerManager.playerLocomotionManager.AttemptToToggleCrouch();
-            _sprintInput = false;
+            _playerManager.playerLocomotionManager.AttemptToToggleCrouch();
             _isSprinting = false;
         }
     }
     
-    private void HandleLockOnInput()
+    private void OnLockOnPerformed(InputAction.CallbackContext context)
     {
-        if (_lockOnInput)
+        if (_playerManager.playerVariableManager.canControl.Value)
         {
-            _lockOnInput = false;
-            playerManager.playerLocomotionManager.AttemptToLockOn();
-            playerManager.playerLocomotionManager.AttemptToDeactivateSprint();
+            _playerManager.playerLocomotionManager.AttemptToLockOn();
+            _playerManager.playerLocomotionManager.AttemptToDeactivateSprint();
         }
     }
-    
-    private void HandleSkillInput() => HandleInputAttack(_skillInput, AttackType.Skill);
-    private void HandleLightAttackInput() => HandleInputAttack(_lightAttackInput, AttackType.LightAttack01);
-    private void HandleHeavyAttackInput() => HandleInputAttack(_heavyAttackInput, AttackType.HeavyAttack01);
-    private void HandleChargingAttackInput() => HandleInputAttack(_chargeAttackInput, AttackType.ChargeAttack01);
-    private void HandleParryInput() => HandleInputAttack(_parryInput, AttackType.Parry);
-    private void HandleBlockInput()
+
+    // Player Actions
+    private void OnInteractPerformed(InputAction.CallbackContext context)
     {
-       playerManager.playerVariableManager.isBlock.Value = _blockInput;
+        if (_playerManager.playerVariableManager.canControl.Value)
+            _playerManager.playerInteractionManager.Interact();
     }
     
-    private void HandleInputAttack(bool input, AttackType actionType)
+    private void OnRollPerformed(InputAction.CallbackContext context)
     {
-        if (!input) return;
+        if (_playerManager.playerVariableManager.canControl.Value)
+            _playerManager.playerLocomotionManager.AttemptToRoll();
+    }
+    
 
-        // Reset input
-        if (actionType == AttackType.Skill) _skillInput = false;
-        else if (actionType == AttackType.LightAttack01) _lightAttackInput = false;
-        else if (actionType == AttackType.HeavyAttack01) _heavyAttackInput = false;
-        else if (actionType == AttackType.ChargeAttack01)
-        {
-            _chargeAttackInput = false;
-            playerManager.playerVariableManager.isCharging.Value = true;
-        }
-        else if (actionType == AttackType.Parry) _parryInput = false;
-
-        if (playerManager.playerVariableManager.currentEquippedWeaponID.Value == 0) return;
-
-        playerManager.playerCombatManager.PerformWeaponBasedAction();
+    // Inventory
+    private void OnToggleInventoryPerformed(InputAction.CallbackContext context)
+    {
+        GUIController.Instance.HandleTab();
     }
 
-    
-    private void HandleSwitchLQuickSlotInput()
+    private void OnToggleQuickSlotPerformed(InputAction.CallbackContext context)
     {
-        if (_switchLQuickSlot)
-        {
-            _switchLQuickSlot = false;
+        if (_playerManager.playerVariableManager.canControl.Value)
+            GUIController.Instance.playerUIHudManager.playerUIQuickSlotManager.ToggleQuickSlotItem();
+    }
+    
+    private void OnSwitchLQuickSlotPerformed(InputAction.CallbackContext context)
+    {
+        if (_playerManager.playerVariableManager.canControl.Value)
             SelectNextQuickSlotItem(FindCurrentSelectQuickSlotItem(), false);
-        }
     }
-
-    private void HandleSwitchRQuickSlotInput()
+    
+    private void OnSwitchRQuickSlotPerformed(InputAction.CallbackContext context)
     {
-        if (_switchRQuickSlot)
-        {
-            _switchRQuickSlot = false;
+        if (_playerManager.playerVariableManager.canControl.Value)
             SelectNextQuickSlotItem(FindCurrentSelectQuickSlotItem(), true);
-        }
     }
-
+    
+    private void OnUseQuickSlotPerformed(InputAction.CallbackContext context)
+    {
+        if (_playerManager.playerVariableManager.canControl.Value)
+            _playerManager.playerItemConsumeManager.UseQuickSlotItem();
+    }
+    
     private int FindCurrentSelectQuickSlotItem()
     {
         int index = 0;
-        foreach (var itemID in playerManager.playerVariableManager.currentQuickSlotIDList.Value)
+        foreach (var itemID in _playerManager.playerVariableManager.currentQuickSlotIDList.Value)
         {
-            if (playerManager.playerVariableManager.currentSelectQuickSlotItem.Value == itemID)
+            if (_playerManager.playerVariableManager.currentSelectQuickSlotItem.Value == itemID)
             {
                 return index;
             }
-
             index++;
         }
         return 0;
@@ -338,81 +253,53 @@ public class PlayerInputManager : Singleton<PlayerInputManager>
 
     private void SelectNextQuickSlotItem(int curIndex, bool isRight)
     {
-        int maxCount = playerManager.playerVariableManager.currentQuickSlotIDList.Count;
+        int maxCount = _playerManager.playerVariableManager.currentQuickSlotIDList.Count;
         for (int i = 0; i < maxCount; i++)
         {
             int searchIndex = (isRight ? (i + curIndex) : (curIndex - i + maxCount)) % maxCount;
 
-            if (playerManager.playerVariableManager.currentSelectQuickSlotItem.Value !=
-                playerManager.playerVariableManager.currentQuickSlotIDList[searchIndex])
+            if (_playerManager.playerVariableManager.currentSelectQuickSlotItem.Value !=
+                _playerManager.playerVariableManager.currentQuickSlotIDList[searchIndex])
             {
-                playerManager.playerVariableManager.currentSelectQuickSlotItem.Value =
-                    playerManager.playerVariableManager.currentQuickSlotIDList[searchIndex];
+                _playerManager.playerVariableManager.currentSelectQuickSlotItem.Value =
+                    _playerManager.playerVariableManager.currentQuickSlotIDList[searchIndex];
                 return;
             }
         }
     }
-    
-    private void HandleInteractionInput()
-    {
-        if (_interactionInput)
-        {
-            _interactionInput = false;
-            
-           playerManager.playerInteractionManager.Interact();
-        }
-    }
 
-    private void HandleOpenMap()
+    // GUI
+    private void OnEscapePerformed(InputAction.CallbackContext context) => GUIController.Instance.HandleEscape();
+    private void OnNextGUIPerformed(InputAction.CallbackContext context) => GUIController.Instance.HandleNextGUI();
+    private void OnOpenMapPerformed(InputAction.CallbackContext context) => GUIController.Instance.OpenMap();
+    private void OnGUIClickPerformed(InputAction.CallbackContext context)
     {
-        if (_openMapInput)
-        {
-            _openMapInput = false;
-            
-            GUIController.Instance.OpenMap();
-        }
-    }
-
-    private void HandleGUI()
-    {
-        if (_guiInput)
-        {
-            _guiInput = false;
-            
-            GUIController.Instance.HandleNextGUI();
-        }
+        var inventoryController = GetInventoryController();
+        if (inventoryController != null && inventoryController.isActive)
+            inventoryController.LeftMouseButtonPress();
     }
     
-    private void HandleEscape()
+    private void OnGUIDoubleClickPerformed(InputAction.CallbackContext context)
     {
-        if (_escapeInput)
-        {
-            _escapeInput = false;
-            GUIController.Instance.HandleEscape();
-        }
+        var inventoryController = GetInventoryController();
+        if (inventoryController != null && inventoryController.isActive)
+            inventoryController.RightMouseButtonPress();
     }
-
-    private void HandleToggleInventory()
+    
+    private void OnGUIRightClickPerformed(InputAction.CallbackContext context)
     {
-        if (_toggleInventory)
-        {
-            _toggleInventory = false;
-            GUIController.Instance.HandleTab();
-        }
+        var inventoryController = GetInventoryController();
+        if (inventoryController != null && inventoryController.isActive)
+            inventoryController.RightMouseButtonPress();
     }
-
-    private void HandleInventoryGUIInput()
+    
+    private void OnGUIRotatePerformed(InputAction.CallbackContext context)
     {
-        InventoryController inventoryController = GetInventoryController();
-        if (inventoryController != null)
-        {
-            HandleInventoryGUIRightClick(inventoryController);
-            //HandleInventoryGUIDoubleClick(inventoryController);
-            HandleInventoryGUIClick(inventoryController);
-            HandleInventoryGUIRotate(inventoryController);
-        }
+        var inventoryController = GetInventoryController();
+        if (inventoryController != null && inventoryController.isActive)
+            inventoryController.RotateItem();
     }
-
+    
     private InventoryController GetInventoryController()
     {
         if (GUIController.Instance != null && GUIController.Instance.inventoryGUIManager != null &&
@@ -420,118 +307,26 @@ public class PlayerInputManager : Singleton<PlayerInputManager>
         {
             return GUIController.Instance.inventoryGUIManager.inventoryController;
         }
-        else
-        {
-            return null;
-        }
-    }
-
-    private void HandleInventoryGUIRightClick(InventoryController inventoryController)
-    {
-        if (inventoryController.isActive &&_guiRightClickInput)
-        {
-            _guiRightClickInput = false;
-            inventoryController.RightMouseButtonPress();
-        }
-    }
-
-    private void HandleInventoryGUIDoubleClick(InventoryController inventoryController)
-    {
-        if (inventoryController.isActive && _guiDoubleClickInput)
-        {
-            _guiDoubleClickInput = false;
-            _guiClickInput = false;
-            inventoryController.RightMouseButtonPress();
-        }
-    }
-    
-    private void HandleInventoryGUIClick(InventoryController inventoryController)
-    {
-        if (inventoryController.isActive && _guiClickInput)
-        {
-            _guiClickInput = false;
-            inventoryController.LeftMouseButtonPress();
-        }
-    }
-
-    private void HandleInventoryGUIRotate(InventoryController inventoryController)
-    {
-        if (inventoryController.isActive && _guiRotateInput)
-        {
-            _guiRotateInput = false;
-            inventoryController.RotateItem();
-        }
-    }
-
-    private void HandleToggleQuickSlot()
-    {
-        if (_toggleQuickSlot)
-        {
-            _toggleQuickSlot = false;
-            GUIController.Instance.playerUIHudManager.playerUIQuickSlotManager.ToggleQuickSlotItem();
-        }
-    }
-
-    private void HandleUseQuickSlot()
-    {
-        if (_useQuickSlot)
-        {
-            _useQuickSlot = false;
-            
-            playerManager.playerItemConsumeManager.UseQuickSlotItem();
-        }
-    }
-
-    private void ResetAllInput()
-    {
-        cameraVerticalInput = 0;
-        cameraHorizontalInput = 0;
-        movementInputDetected = false;
-        movementInputDuration = 0;
-        
-        _isSprinting = false;
-        _jumpInput = false;
-        _walkInput = false;
-        _sprintInput = false;
-        _crouchInput = false;
-        _lockOnInput = false;
-        
-        _rollInput = false;
-        
-        _interactionInput = false;
-        
-        _lightAttackInput = false;
-        _heavyAttackInput = false;
-        
-        _blockInput = false;
-        
-        _toggleQuickSlot = false;
-        
-        _switchLQuickSlot = false;
-        _switchRQuickSlot = false;
-        
-        _useQuickSlot = false;
+        return null;
     }
 
     public void SetControlActive(bool isActive)
     {
         if (isActive)
         {
-            // 게임 활성화
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             
-            if(playerManager != null)
-                playerManager.playerVariableManager.canControl.Value = true;
+            if(_playerManager != null)
+                _playerManager.playerVariableManager.canControl.Value = true;
         }
         else
         {
-            // UI 활성화 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             
-            if(playerManager != null)
-                playerManager.playerVariableManager.canControl.Value = false;
+            if(_playerManager != null)
+                _playerManager.playerVariableManager.canControl.Value = false;
         }
     }
     
@@ -540,36 +335,19 @@ public class PlayerInputManager : Singleton<PlayerInputManager>
         Vector3 moveDirection = Vector3.zero;
         if (movementInputDetected)
         {
-            if (movementInputDuration == 0)
-            {
-                CLVM.movementInputTapped = true;
-            }
-            else if (movementInputDuration > 0 && movementInputDuration < buttonHoldThreshold)
-            {
-                CLVM.movementInputTapped = false;
-                CLVM.movementInputPressed = true;
-                CLVM.movementInputHeld = false;
-            }
-            else
-            {
-                CLVM.movementInputTapped = false;
-                CLVM.movementInputPressed = false;
-                CLVM.movementInputHeld = true;
-            }
-
-            movementInputDuration += Time.deltaTime;
+            CLVM.movementInputTapped = movementInputDuration == 0;
+            CLVM.movementInputPressed = movementInputDuration > 0 && movementInputDuration < buttonHoldThreshold;
+            CLVM.movementInputHeld = movementInputDuration >= buttonHoldThreshold;
+            
             moveDirection = (PlayerCameraController.Instance.GetCameraForwardZeroedYNormalized() * moveComposite.y) +
                             (PlayerCameraController.Instance.GetCameraRightZeroedYNormalized() * moveComposite.x);
         }
         else
         {
-            movementInputDuration = 0;
             CLVM.movementInputTapped = false;
             CLVM.movementInputPressed = false;
             CLVM.movementInputHeld = false;
         }
-
         CLVM.moveDirection = moveDirection;
     }
 }
-

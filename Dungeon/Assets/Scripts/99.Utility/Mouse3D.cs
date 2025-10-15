@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Mouse3D : MonoBehaviour
 {
-    public static Mouse3D Instance { get; private set; }
+    private static Mouse3D Instance { get; set; }
     
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] private Vector3 defaultPosition = new Vector3(-100, -100, -100);
+    private readonly Vector3 _defaultPosition = new Vector3(-100, -100, -100);
 
     private void Awake()
     {
@@ -32,7 +32,7 @@ public class Mouse3D : MonoBehaviour
         }
         else
         {
-            return defaultPosition;
+            return _defaultPosition;
         }
     }
 
