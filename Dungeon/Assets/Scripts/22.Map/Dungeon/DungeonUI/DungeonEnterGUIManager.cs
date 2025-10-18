@@ -31,7 +31,7 @@ public class DungeonEnterGUIManager : GUIComponent
     {
         _interactableObj = interactable;
         
-        PlayerInputManager.Instance.SetControlActive(false);
+        InputHandlerManager.Instance.SetControlActive(false);
         
         if(dungeonInfoData.dungeonDataList.Count == 0) return;
 

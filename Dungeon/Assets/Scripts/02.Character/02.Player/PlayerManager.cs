@@ -57,7 +57,7 @@ public class PlayerManager : CharacterManager
         base.OnEnable();
         
         PlayerCameraController.Instance.SetPlayer(this);
-        PlayerInputManager.Instance.SetPlayer(this);
+        InputHandlerManager.Instance.SetPlayer(this);
         
         isDead.OnValueChanged += playerVariableManager.OnPlayerDeath;
         // Updates ui stat bars when a stat changes (health or stamina)
@@ -138,7 +138,7 @@ public class PlayerManager : CharacterManager
     {
         GUIController.Instance.playerUIPopUpManager.SendYouDiedPopUp();
         
-        PlayerInputManager.Instance.SetControlActive(false);
+        InputHandlerManager.Instance.SetControlActive(false);
         
         yield return new WaitForFixedUpdate();
         characterAnimatorManager.PlayTargetActionAnimation("Dead_01", true);

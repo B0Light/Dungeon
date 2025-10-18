@@ -13,8 +13,7 @@ public class InteractableForge : Interactable
     
     private void EnterForge()
     {
-        PlayerInputManager.Instance.SetControlActive(false);
+        InputHandlerManager.Instance.SetControlActive(false);
         GUIController.Instance.OpenForge(this);
     }
-    
 }

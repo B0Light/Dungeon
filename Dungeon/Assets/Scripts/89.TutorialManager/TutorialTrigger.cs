@@ -39,7 +39,7 @@ public class TutorialTrigger : MonoBehaviour
     private IEnumerator PlayTutorialSequence()
     {
         // 플레이어 제어 비활성화
-        PlayerInputManager.Instance.SetControlActive(false);
+        InputHandlerManager.Instance.SetControlActive(false);
             
         // 튜토리얼 UI 활성화
         if (tutorialUI != null)
@@ -71,6 +71,6 @@ public class TutorialTrigger : MonoBehaviour
             tutorialUI.SetActive(false);
             
         // 플레이어 제어 다시 활성화
-        PlayerInputManager.Instance.SetControlActive(true);
+        InputHandlerManager.Instance.SetControlActive(true);
     }
 }

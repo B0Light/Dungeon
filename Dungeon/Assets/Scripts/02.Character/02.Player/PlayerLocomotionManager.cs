@@ -66,12 +66,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         characterManager.animator.SetFloat(_cameraRotationOffsetHash, _cameraRotationOffset);
     }
 
-    protected override void CalculateMoveDirection()
-    {
-        PlayerInputManager.Instance.CalculateInput();
-        base.CalculateMoveDirection();
-    }
-
     protected override void FaceMoveDirection()
     {
         if(!canRotate) return;
@@ -348,24 +342,20 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             }
             else
             {
-                switch (PlayerInputManager.Instance.moveComposite)
+                switch (CLVM.moveComposite)
                 {
-                    case var direction when direction.x > 0.1f:
+                    case { x: > 0.1f }:
                         _playerManager.playerAnimatorManager.PlayTargetActionAnimation("Roll_Right", true);
                         break;
-        
-                    case var direction when direction.x < -0.1f:
+                    case { x: < -0.1f }:
                         _playerManager.playerAnimatorManager.PlayTargetActionAnimation("Roll_Left", true);
                         break;
-        
-                    case var direction when direction.y > 0.1f:
+                    case { y: > 0.1f }:
                         _playerManager.playerAnimatorManager.PlayTargetActionAnimation("Roll_Forward", true);
                         break;
-        
-                    case var direction when direction.y < -0.1f:
+                    case { y: < -0.1f }:
                         _playerManager.playerAnimatorManager.PlayTargetActionAnimation("Roll_Backward", true);
                         break;
-        
                     default:
                         _playerManager.playerAnimatorManager.PlayTargetActionAnimation("Roll_Forward", true);
                         break;

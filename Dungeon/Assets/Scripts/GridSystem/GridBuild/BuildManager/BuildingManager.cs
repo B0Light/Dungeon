@@ -198,7 +198,7 @@ public class BuildingManager : MonoBehaviour
         
         GridBuildSystem.Instance.SelectToBuild(null);
         GUIController.Instance.ToggleMainGUI(true);
-        PlayerInputManager.Instance.SetControlActive(true);
+        InputHandlerManager.Instance.SetControlActive(true);
         PlayerCameraController.Instance.TurnOnCamera();
 
         ToggleMainBuildHUD(false);

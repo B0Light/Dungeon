@@ -90,4 +90,5 @@ public class CharacterLocomotionVariableManager : MonoBehaviour
     [HideInInspector] public Vector3 moveDirection;
     [HideInInspector] public Vector3 previousRotation; 
     [HideInInspector] public Vector3 velocity;
+    [HideInInspector] public Vector2 moveComposite;
 }

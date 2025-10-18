@@ -94,7 +94,7 @@ public class InteractableBox : Interactable
         if (isOpen == false)
         {
             OpenBox(); 
-            PlayerInputManager.Instance.SetControlActive(false);
+            InputHandlerManager.Instance.SetControlActive(false);
             GUIController.Instance.WaitToInteraction(animationDuration, PerformInteraction);
             isOpen = true;
         }

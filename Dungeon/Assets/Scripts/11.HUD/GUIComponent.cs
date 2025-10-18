@@ -12,13 +12,13 @@ public class GUIComponent : MonoBehaviour
 
     public virtual void OpenGUI()
     {
-        PlayerInputManager.Instance.SetControlActive(false);
+        InputHandlerManager.Instance.SetControlActive(false);
         ToggleGUI(true);
     }
 
     public virtual void CloseGUI()
     {
-        PlayerInputManager.Instance.SetControlActive(true);
+        InputHandlerManager.Instance.SetControlActive(true);
         ToggleGUI(false);
     }
 

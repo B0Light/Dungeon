@@ -14,7 +14,7 @@ public class PlayerCombatManager : CharacterCombatManager
     [ContextMenu("OnCombat")]
     public void OnCombat()
     {
-        PlayerInputManager.Instance.SetControlActive(false);
+        InputHandlerManager.Instance.SetControlActive(false);
     }
     
     public void PerformWeaponBasedAction()

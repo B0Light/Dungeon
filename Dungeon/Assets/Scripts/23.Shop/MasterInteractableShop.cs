@@ -15,7 +15,7 @@ public class MasterInteractableShop : InteractableShop
     
     protected override void EnterShop()
     {
-        PlayerInputManager.Instance.SetControlActive(false);
+        InputHandlerManager.Instance.SetControlActive(false);
         GUIController.Instance.OpenShop(saleItemList, this, true);
     }
 }
