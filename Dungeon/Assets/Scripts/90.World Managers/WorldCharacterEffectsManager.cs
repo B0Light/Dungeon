@@ -19,7 +19,6 @@ public class WorldCharacterEffectsManager : Singleton<WorldCharacterEffectsManag
     [HideInInspector] public TakeDamageEffect takeDamageEffect;
     [HideInInspector] public TakeBlockDamageEffect takeBlockDamageEffect;
     [HideInInspector] public RestoreHealthEffect restoreHealthEffect;
-    [HideInInspector] public EatingFoodEffect eatingFoodEffectEffect;
     [HideInInspector] public BuffAttackEffect buffAttackEffect;
     [HideInInspector] public BuffDefenseEffect buffDefenseEffect;
     [HideInInspector] public UtilitySpeedEffect utilitySpeedEffect;
@@ -32,7 +31,6 @@ public class WorldCharacterEffectsManager : Singleton<WorldCharacterEffectsManag
         takeDamageEffect = ScriptableObject.CreateInstance<TakeDamageEffect>();
         takeBlockDamageEffect = ScriptableObject.CreateInstance<TakeBlockDamageEffect>();
         restoreHealthEffect = ScriptableObject.CreateInstance<RestoreHealthEffect>();
-        eatingFoodEffectEffect = ScriptableObject.CreateInstance<EatingFoodEffect>();
         buffAttackEffect = ScriptableObject.CreateInstance<BuffAttackEffect>();
         buffDefenseEffect = ScriptableObject.CreateInstance<BuffDefenseEffect>();
         utilitySpeedEffect = ScriptableObject.CreateInstance<UtilitySpeedEffect>();

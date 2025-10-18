@@ -63,9 +63,6 @@ public class HUD_SelectedItemAbility : MonoBehaviour
         
             case ItemEffect.RestoreHealth:
                 return $"<color=#2ecc71><b>+{value}</b></color> 체력 회복"; // 녹색
-        
-            case ItemEffect.EatingFood:
-                return $"<color=#f39c12><b>+{value}</b></color> 배고픔 회복"; // 오렌지 계열
             
             case ItemEffect.Resource:
                 return " 분명 어딘가 쓸모가 있을 것입니다.";

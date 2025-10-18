@@ -18,7 +18,6 @@ public class PlayerItemConsumeManager : MonoBehaviour
         _effectHandlers = new Dictionary<ItemEffect, Action<ItemInfoConsumable, ItemAbility>>()
         {
             { ItemEffect.RestoreHealth, HandleRestoreHealthEffect },
-            { ItemEffect.EatingFood, HandleEatingFoodEffect },
             { ItemEffect.BuffAttack, HandleBuffAttackEffect },
             { ItemEffect.BuffDefense, HandleBuffDefenseEffect },
             { ItemEffect.UtilitySpeed, HandleUtilitySpeedEffect },
@@ -93,15 +92,6 @@ public class PlayerItemConsumeManager : MonoBehaviour
         
         restoreHealthEffect.SetHealAmount(immediateValue, continuousValue, duration);
         _playerManager.characterEffectsManager.ProcessInstantEffect(restoreHealthEffect);
-    }
-
-    private void HandleEatingFoodEffect(ItemInfoConsumable itemInfo, ItemAbility ability)
-    {
-        var eatingFoodEffect = Instantiate(WorldCharacterEffectsManager.Instance.eatingFoodEffectEffect);
-        
-        var immediateValue = ability?.value ?? itemInfo.immediateEffectValue;
-        eatingFoodEffect.SetFoodAmount(immediateValue);
-        _playerManager.characterEffectsManager.ProcessInstantEffect(eatingFoodEffect);
     }
 
     private void HandleBuffAttackEffect(ItemInfoConsumable itemInfo, ItemAbility ability)

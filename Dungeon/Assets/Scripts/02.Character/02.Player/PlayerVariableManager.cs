@@ -10,12 +10,7 @@ public class PlayerVariableManager : CharacterVariableManager
     public Variable<string> characterName = new Variable<string>("Character");
     [Header("Controls")] 
     public Variable<bool> canControl = new Variable<bool>(true);
-
-    [Header("Status")] 
-    public ClampedVariable<int> hungerLevel;
-    public Variable<bool> isHungry = new Variable<bool>(false);
-    public float moveCoefficientByHungry = 1f;
-
+    
     public float playerWeight = 0;
     public float moveCoefficientByWeight = 1f;
         
@@ -64,12 +59,6 @@ public class PlayerVariableManager : CharacterVariableManager
 
         _playerManager = GetComponent<PlayerManager>();
     }
-
-    public override void InitVariable()
-    {
-        base.InitVariable();
-        hungerLevel = new ClampedVariable<int>(100);
-    }
     
     // hp == 0
     public override void DeathProcess(int newValue)
@@ -78,7 +67,6 @@ public class PlayerVariableManager : CharacterVariableManager
         {
             _enableLastSpurt = false;
             health.Value = health.MaxValue / 2;
-            hungerLevel.Value = (int)(hungerLevel.MaxValue * 0.6f);
         }
         else
         {
@@ -123,11 +111,6 @@ public class PlayerVariableManager : CharacterVariableManager
     public void SetNewMaxActionPoint(int newValue)
     {
         GUIController.Instance.playerUIHudManager.playerUIStatusManager.SetMaxActionPoint(newValue);
-    }
-
-    public float GetMoveCoefficient()
-    {
-        return moveCoefficientByHungry * moveCoefficientByWeight;
     }
 
     public void UpdatePlayerWeight(float newValue)
@@ -262,34 +245,6 @@ public class PlayerVariableManager : CharacterVariableManager
     public void OnSelectQuickSlotItemChange(int itemID)
     {
         GUIController.Instance.playerUIHudManager.playerUIQuickSlotManager.ChangeQuickSlotItem(itemID);
-    }
-    
-    public void OnHealByFullness(bool value)
-    {
-        if(!value)
-        {
-            if (_regenCoroutine == null) return;
-            
-            StopCoroutine(HealByFullnessCoroutine());
-            _regenCoroutine = null;
-        }
-        else
-        {
-            // ??= : 변수가 null 이면 대입 아니면 무시
-            _regenCoroutine ??= StartCoroutine(HealByFullnessCoroutine());
-        }
-    }
-
-    private IEnumerator HealByFullnessCoroutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSecondsRealtime(1f);
-            if (!(health.Value < health.MaxValue && !isHungry.Value)) yield break;
-            
-            health.Value += 1;
-            hungerLevel.Value -= 1;
-        }
     }
 
     public void OnExtraAttackChange(bool isActivated)

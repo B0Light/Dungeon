@@ -28,7 +28,6 @@ public class GameManager : Singleton<GameManager>
 
     public void HandlePostDeath_Continue()
     {
-        _playerManager.playerItemConsumeManager.UseItem(300);
         WorldSceneChangeManager.Instance.LoadShelter(); // shelter
     }
 

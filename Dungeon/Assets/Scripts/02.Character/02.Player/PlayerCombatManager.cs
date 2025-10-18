@@ -10,6 +10,12 @@ public class PlayerCombatManager : CharacterCombatManager
 
         _player = GetComponent<PlayerManager>();
     }
+
+    [ContextMenu("OnCombat")]
+    public void OnCombat()
+    {
+        PlayerInputManager.Instance.SetControlActive(false);
+    }
     
     public void PerformWeaponBasedAction()
     {

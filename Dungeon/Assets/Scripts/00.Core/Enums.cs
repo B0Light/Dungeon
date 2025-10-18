@@ -101,7 +101,7 @@ public enum ItemEffect
     MagicalDefense,     // 3. 마법 방어력 증가
     HealthPoint,        // 4. 최대 체력 증가
     RestoreHealth,      // 5. 체력 회복
-    EatingFood,         // 6. 배고픔 회복
+    
     BuffAttack,         // 7. 공격력 버프
     BuffDefense,        // 8. 방어력 버프
     BuffActionPoint,    // 9. 행동력 버프

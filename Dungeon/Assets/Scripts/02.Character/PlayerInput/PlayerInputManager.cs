@@ -4,12 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputManager : Singleton<PlayerInputManager>
 {
-    // LOCAL PLAYER
     private PlayerManager _playerManager;
-
     private PlayerControls _playerControls;
-    
-    public float buttonHoldThreshold = 0.15f;
     
     public Vector2 moveComposite;
 
@@ -18,6 +14,7 @@ public class PlayerInputManager : Singleton<PlayerInputManager>
 
     private bool _isSprinting = false;
     private CharacterLocomotionVariableManager CLVM => _playerManager.characterVariableManager.CLVM;
+    private readonly float _buttonHoldThreshold = 0.05f;
 
     public void SetPlayer(PlayerManager playerManager)
     {
@@ -135,10 +132,8 @@ public class PlayerInputManager : Singleton<PlayerInputManager>
         }
     }
 
-    //
-    // 이벤트 콜백 함수들
-    //
-    
+    #region Event CallBack
+
     // Locomotion
     private void OnMovePerformed(InputAction.CallbackContext context) => moveComposite = context.ReadValue<Vector2>();
     private void OnMoveCanceled(InputAction.CallbackContext context) => moveComposite = Vector2.zero;
@@ -299,6 +294,8 @@ public class PlayerInputManager : Singleton<PlayerInputManager>
         if (inventoryController != null && inventoryController.isActive)
             inventoryController.RotateItem();
     }
+
+    #endregion
     
     private InventoryController GetInventoryController()
     {
@@ -312,6 +309,7 @@ public class PlayerInputManager : Singleton<PlayerInputManager>
 
     public void SetControlActive(bool isActive)
     {
+        Debug.Log($"SetControlActive : {isActive}");
         if (isActive)
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -336,8 +334,8 @@ public class PlayerInputManager : Singleton<PlayerInputManager>
         if (movementInputDetected)
         {
             CLVM.movementInputTapped = movementInputDuration == 0;
-            CLVM.movementInputPressed = movementInputDuration > 0 && movementInputDuration < buttonHoldThreshold;
-            CLVM.movementInputHeld = movementInputDuration >= buttonHoldThreshold;
+            CLVM.movementInputPressed = movementInputDuration > 0 && movementInputDuration < _buttonHoldThreshold;
+            CLVM.movementInputHeld = movementInputDuration >= _buttonHoldThreshold;
             
             moveDirection = (PlayerCameraController.Instance.GetCameraForwardZeroedYNormalized() * moveComposite.y) +
                             (PlayerCameraController.Instance.GetCameraRightZeroedYNormalized() * moveComposite.x);

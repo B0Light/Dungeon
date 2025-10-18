@@ -251,7 +251,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     protected override void Move()
     {
-        float moveCoefficient = canMove ? _playerManager.playerVariableManager.GetMoveCoefficient() : 0;
+        float moveCoefficient = canMove ? 1 : 0;
         Vector3 moveValue = Time.unscaledDeltaTime * moveCoefficient * CLVM.velocity;
         _playerManager.characterController.Move(moveValue);
         
@@ -402,7 +402,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     private bool CanPerformJump()
     {
-        if (_playerManager.playerVariableManager.isHungry.Value) return false;
         if (_playerManager.isPerformingAction) return false;
 
         var currentState = characterManager.characterVariableManager.CLVM.currentState;
@@ -435,7 +434,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     
     public void AttemptToActivateSprint()
     {
-        if (_playerManager.playerVariableManager.isHungry.Value || _playerManager.playerVariableManager.isBlock.Value)
+        if (_playerManager.playerVariableManager.isBlock.Value)
         {
             AttemptToDeactivateSprint();
             return;

@@ -85,8 +85,6 @@ public class InventoryGUIManager : GUIComponent
         GUIController.Instance.inventoryGUIManager.CloseItemToolTip();
         WorldPlayerInventory.Instance.curOpenedInventory = ItemGridType.None;
         WorldPlayerInventory.Instance.curInteractItemGrid = null;
-        
-        WorldSaveGameManager.Instance.SaveGame();
     }
     
     private void CloseInteractionInventory()
@@ -116,7 +114,7 @@ public class InventoryGUIManager : GUIComponent
 
         var targetGrid = isShareInventory ? shareInventoryItemGrid : interactionInventoryItemGrid;
 
-        Debug.LogWarning("CUR BOX SIZE : " + width + ", " + height);
+        Debug.LogWarning($"CUR BOX SIZE [{width}, {height}]");
         targetGrid.ResetItemGrid();
         targetGrid.SetGrid(width, height, itemIdList);
 

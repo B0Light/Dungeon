@@ -67,7 +67,6 @@ public class PlayerManager : CharacterManager
         playerVariableManager.health.OnValueChanged  += playerStatsManager.SetNewHealthPoint;
         playerVariableManager.actionPoint.OnValueChanged += playerStatsManager.SetNewActionPoint;
         
-        playerVariableManager.hungerLevel.OnValueChanged += playerStatsManager.OnHungryLevelChange;
         
         //Control
         playerVariableManager.canControl.OnValueChanged += playerVariableManager.OnControlChange;
@@ -81,8 +80,6 @@ public class PlayerManager : CharacterManager
         playerVariableManager.currentQuickSlotIDList.OnItemRemoved += playerVariableManager.OnRemoveQuickSlotItem;
         playerVariableManager.currentQuickSlotIDList.OnListCleared += playerVariableManager.OnQuickSlotClear;
         playerVariableManager.currentSelectQuickSlotItem.OnValueChanged += playerVariableManager.OnSelectQuickSlotItemChange;
-
-        playerVariableManager.perkHealByFullness.OnValueChanged += playerVariableManager.OnHealByFullness;
             
         playerVariableManager.perkExtraAttack.OnValueChanged += playerVariableManager.OnExtraAttackChange;
         playerVariableManager.perkExtraDefence.OnValueChanged += playerVariableManager.OnExtraDefenceChange;
