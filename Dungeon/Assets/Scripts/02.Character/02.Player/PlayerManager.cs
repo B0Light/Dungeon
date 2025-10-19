@@ -14,6 +14,7 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerSoundFXManager playerSoundFXManager;
     [HideInInspector] public PlayerInteractionManager playerInteractionManager;
     [HideInInspector] public PlayerItemConsumeManager playerItemConsumeManager;
+    [HideInInspector] public PlayerCombatManager playerCombatManager;
     
     [HideInInspector] public CharacterController characterController;
     
@@ -34,6 +35,7 @@ public class PlayerManager : CharacterManager
         playerSoundFXManager = characterSoundFXManager as PlayerSoundFXManager;
         playerInteractionManager = GetComponent<PlayerInteractionManager>();
         playerItemConsumeManager = GetComponent<PlayerItemConsumeManager>();
+        playerCombatManager = GetComponent<PlayerCombatManager>();
         
         characterController = GetComponent<CharacterController>();
     }

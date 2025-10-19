@@ -10,7 +10,6 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
     private PlayerControls _playerControls;
 
     public float movementInputDuration;
-    public bool movementInputDetected;
 
     private bool _isSprinting = false;
     
@@ -35,6 +34,7 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
     {
         // Locomotion
         _playerControls.PlayerLocomotion.Enable();
+        _playerControls.PlayerLocomotion.Move.started += OnMoveStarted;
         _playerControls.PlayerLocomotion.Move.performed += OnMovePerformed;
         _playerControls.PlayerLocomotion.Move.canceled += OnMoveCanceled;
         _playerControls.PlayerLocomotion.Jump.performed += OnJumpPerformed;
@@ -51,6 +51,7 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
 
     public void DisableInput()
     {
+        _playerControls.PlayerLocomotion.Move.started -= OnMoveStarted;
         _playerControls.PlayerLocomotion.Move.performed -= OnMovePerformed;
         _playerControls.PlayerLocomotion.Move.canceled -= OnMoveCanceled;
         _playerControls.PlayerLocomotion.Jump.performed -= OnJumpPerformed;
@@ -84,52 +85,41 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
 
     private void Update()
     {
-        // Update 함수는 연속적인 입력 값 처리에 사용됩니다.
-        HandleContinuousInput();
-    }
-    
-    private void HandleContinuousInput()
-    {
-        // 이동 입력 감지는 Update에서 처리
-        movementInputDetected = CLVM.moveComposite.magnitude > 0;
-        if (movementInputDetected)
+        if (_playerControls.PlayerLocomotion.Move.IsInProgress())
         {
             movementInputDuration += Time.deltaTime;
-        }
-        else
-        {
-            movementInputDuration = 0;
-        }
-        
-        CalculateInput();
-    }
-    
-    private void CalculateInput()
-    {
-        Vector3 moveDirection = Vector3.zero;
-        if (movementInputDetected)
-        {
+            
             CLVM.movementInputTapped = movementInputDuration == 0;
             CLVM.movementInputPressed = movementInputDuration > 0 && movementInputDuration < _buttonHoldThreshold;
             CLVM.movementInputHeld = movementInputDuration >= _buttonHoldThreshold;
-            
-            moveDirection = (PlayerCameraController.Instance.GetCameraForwardZeroedYNormalized() * CLVM.moveComposite.y) +
-                            (PlayerCameraController.Instance.GetCameraRightZeroedYNormalized() * CLVM.moveComposite.x);
+
+            Vector3 moveDirection = 
+                (PlayerCameraController.Instance.GetCameraForwardZeroedYNormalized() * CLVM.moveComposite.y) +
+                (PlayerCameraController.Instance.GetCameraRightZeroedYNormalized() * CLVM.moveComposite.x);
+                
+            CLVM.moveDirection = moveDirection;
         }
-        else
-        {
-            CLVM.movementInputTapped = false;
-            CLVM.movementInputPressed = false;
-            CLVM.movementInputHeld = false;
-        }
-        CLVM.moveDirection = moveDirection;
     }
 
     #region Event CallBack
 
     // Locomotion
+
+    private void OnMoveStarted(InputAction.CallbackContext context)
+    {
+        movementInputDuration = 0;
+        CLVM.movementInputTapped = true;
+    }
     private void OnMovePerformed(InputAction.CallbackContext context) => CLVM.moveComposite = context.ReadValue<Vector2>();
-    private void OnMoveCanceled(InputAction.CallbackContext context) => CLVM.moveComposite = Vector2.zero;
+    
+    private void OnMoveCanceled(InputAction.CallbackContext context)
+    {
+        CLVM.moveComposite = Vector2.zero;
+        movementInputDuration = 0;
+        CLVM.movementInputTapped = false;
+        CLVM.movementInputPressed = false;
+        CLVM.movementInputHeld = false;
+    }
 
     private void OnJumpPerformed(InputAction.CallbackContext context)
     {

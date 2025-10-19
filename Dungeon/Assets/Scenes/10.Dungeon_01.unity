@@ -308,6 +308,117 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1001 &1620320104
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3986854940711249001, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
+      propertyPath: m_Name
+      value: PlayerInputManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063099454750857880, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063099454750857880, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063099454750857880, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063099454750857880, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063099454750857880, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063099454750857880, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063099454750857880, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063099454750857880, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063099454750857880, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063099454750857880, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3986854940711249001, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1620320108}
+    - targetCorrespondingSourceObject: {fileID: 3986854940711249001, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1620320107}
+    - targetCorrespondingSourceObject: {fileID: 3986854940711249001, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1620320106}
+  m_SourcePrefab: {fileID: 100100000, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
+--- !u!1 &1620320105 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3986854940711249001, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
+  m_PrefabInstance: {fileID: 1620320104}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1620320106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620320105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f39b4c188359b6429464c8901b0fba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputHandler_Combat
+  swipeTrailPrefab: {fileID: 0}
+  minSwipeDistance: 50
+  maxSwipeTime: 1
+--- !u!114 &1620320107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620320105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c15d62a56be25e548b1da01b57d2a0c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputHandler_Locomotion
+  movementInputDuration: 0
+--- !u!114 &1620320108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620320105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 412435f5bdb9bea4592ef6ed69418030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputHandler_UI
 --- !u!114 &614296772561904408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,3 +537,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 880597515}
   - {fileID: 2917525456848730943}
+  - {fileID: 1620320104}

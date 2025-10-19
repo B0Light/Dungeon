@@ -48,19 +48,24 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
     {
         var movementHandler = FindAnyObjectByType<InputHandler_Locomotion>();
         var combatHandler = FindAnyObjectByType<InputHandler_Combat>();
+        var uiHandler = FindAnyObjectByType<InputHandler_UI>();
 
         switch (mode)
         {
             case InputMode.Exploration:
-                UnregisterAndDisableHandler(combatHandler);
                 RegisterAndEnableHandler(movementHandler); 
+                UnregisterAndDisableHandler(combatHandler);
+                RegisterAndEnableHandler(uiHandler);
                 break;
             case InputMode.Combat:
+                UnregisterAndDisableHandler(movementHandler); 
                 RegisterAndEnableHandler(combatHandler);
-                RegisterAndEnableHandler(movementHandler); // 전투 중에도 이동은 유지한다고 가정
+                RegisterAndEnableHandler(uiHandler);
                 break;
             case InputMode.UI_Open:
-                // 모든 게임플레이 입력 비활성화 후 UI 입력만 활성화하는 로직 구현 가능
+                UnregisterAndDisableHandler(movementHandler); 
+                UnregisterAndDisableHandler(combatHandler);
+                RegisterAndEnableHandler(uiHandler);
                 break;
         }
     }
