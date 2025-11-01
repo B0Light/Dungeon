@@ -14148,7 +14148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputHandler_Locomotion
   movementInputDuration: 0
-  movementInputDetected: 0
 --- !u!1 &1255069706
 GameObject:
   m_ObjectHideFlags: 0

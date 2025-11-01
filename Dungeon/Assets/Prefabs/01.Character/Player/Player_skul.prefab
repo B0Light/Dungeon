@@ -1481,8 +1481,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3806862718217876942}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.48063442, y: 0.518643, z: -0.48063442, w: 0.518643}
-  m_LocalPosition: {x: 0, y: 1.3374462, z: -0.032662265}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2584,17 +2584,19 @@ MonoBehaviour:
   meshTrail: {fileID: 0}
   characterGroup: 0
   isPerformingAction: 0
+  currentTarget: {fileID: 0}
+  detectionRange: 0
+  lockOnPosition: {x: 0, y: 0, z: 0}
   playerAnimatorManager: {fileID: 0}
   playerLocomotionManager: {fileID: 0}
   playerVariableManager: {fileID: 0}
   playerStatsManager: {fileID: 0}
   playerEquipmentManger: {fileID: 0}
-  playerCombatManager: {fileID: 0}
   playerSoundFXManager: {fileID: 0}
   playerInteractionManager: {fileID: 0}
   playerItemConsumeManager: {fileID: 0}
+  playerCombatManager: {fileID: 0}
   characterController: {fileID: 0}
-  initialPosition: {x: 0, y: 10, z: 0}
 --- !u!114 &2197405601842952974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2644,13 +2646,6 @@ MonoBehaviour:
     _value: Character
   canControl:
     _value: 1
-  hungerLevel:
-    _value: 0
-    _maxValue: 0
-    _minValue: 0
-  isHungry:
-    _value: 0
-  moveCoefficientByHungry: 1
   playerWeight: 0
   moveCoefficientByWeight: 1
   currentEquippedWeaponID:
@@ -2703,17 +2698,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6882be1d36c1dd40b7a172f6a7db4af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastAttackAnimationPerformed: 
-  currentTarget: {fileID: 0}
-  currentAttackType: 0
-  lockOnTransform: {fileID: 5369680195202656204}
-  criticalDamagedCharacter: {fileID: 0}
-  canCriticalAttack: 0
-  canPerformRollingAttack: 0
-  canPerformBackStepAttack: 0
-  canPerformJumpingAttack: 0
-  currentEquipmentItemInfoWeaponBeingUsed: {fileID: 11400000, guid: d88497e2fe628f644859027bafcb6c65, type: 2}
-  enableCanDoCombo: 0
+  equipmentItemInfoWeapon: {fileID: 0}
+  currentAttackDir: 0
 --- !u!114 &8575953409261725909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2945,6 +2931,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   previousRotation: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
+  moveComposite: {x: 0, y: 0}
 --- !u!114 &7831165401563334995
 MonoBehaviour:
   m_ObjectHideFlags: 0

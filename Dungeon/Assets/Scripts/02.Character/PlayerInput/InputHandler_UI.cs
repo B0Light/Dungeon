@@ -25,7 +25,6 @@ public class InputHandler_UI : MonoBehaviour, InputHandlerManager.IInputHandler
     {
         _playerControls.PlayerInventory.Enable();
         _playerControls.PlayerInventory.ToggleInventory.performed += OnToggleInventoryPerformed;
-        _playerControls.PlayerInventory.ToggleQuickSlot.performed += OnToggleQuickSlotPerformed;
         _playerControls.PlayerInventory.SwitchLQuickSlot.performed += OnSwitchLQuickSlotPerformed;
         _playerControls.PlayerInventory.SwitchRQuickSlot.performed += OnSwitchRQuickSlotPerformed;
         _playerControls.PlayerInventory.UseQuickSlotItem.performed += OnUseQuickSlotPerformed;
@@ -44,7 +43,6 @@ public class InputHandler_UI : MonoBehaviour, InputHandlerManager.IInputHandler
     public void DisableInput()
     {
         _playerControls.PlayerInventory.ToggleInventory.performed -= OnToggleInventoryPerformed;
-        _playerControls.PlayerInventory.ToggleQuickSlot.performed -= OnToggleQuickSlotPerformed;
         _playerControls.PlayerInventory.SwitchLQuickSlot.performed -= OnSwitchLQuickSlotPerformed;
         _playerControls.PlayerInventory.SwitchRQuickSlot.performed -= OnSwitchRQuickSlotPerformed;
         _playerControls.PlayerInventory.UseQuickSlotItem.performed -= OnUseQuickSlotPerformed;
@@ -65,12 +63,6 @@ public class InputHandler_UI : MonoBehaviour, InputHandlerManager.IInputHandler
     private void OnToggleInventoryPerformed(InputAction.CallbackContext context)
     {
         GUIController.Instance.HandleTab();
-    }
-
-    private void OnToggleQuickSlotPerformed(InputAction.CallbackContext context)
-    {
-        if (_playerManager.playerVariableManager.canControl.Value)
-            GUIController.Instance.playerUIHudManager.playerUIQuickSlotManager.ToggleQuickSlotItem();
     }
     
     private void OnSwitchLQuickSlotPerformed(InputAction.CallbackContext context)

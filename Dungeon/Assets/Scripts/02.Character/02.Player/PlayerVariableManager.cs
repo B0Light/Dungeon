@@ -211,42 +211,6 @@ public class PlayerVariableManager : CharacterVariableManager
         
     }
 
-    public void OnAddQuickSlotItem(int itemID)
-    {
-        GUIController.Instance.playerUIHudManager.playerUIQuickSlotManager.AddQuickSlotItem(itemID);
-        // 현재 퀵슬롯 (물약 창)이 비었을 때 새로운 아이템을 넣으면 해당 아이템을 퀵슬롯에 등록한다.
-        if (currentSelectQuickSlotItem.Value == 0)
-        {
-            currentSelectQuickSlotItem.Value = itemID;
-        }
-    }
-    
-    public void OnRemoveQuickSlotItem(int itemID)
-    {
-        // 플레이어 HUD 에서 해당 아이템 제거 
-        GUIController.Instance.playerUIHudManager.playerUIQuickSlotManager.RemoveQuickSlotItem(itemID);
-        // 현재 퀵슬롯에 등록된 아이템이 사용된 아이템인지 확인 (인벤토리에서 바로 사용할 수도 있음)
-        if (currentSelectQuickSlotItem.Value == itemID)
-        {
-            // 퀵슬롯에 해당아이템의 여분이 남아있지 않다면 남은 퀵슬롯 아이템으로 퀵슬롯 대체
-            if (!currentQuickSlotIDList.Contains(itemID))
-            {
-                currentSelectQuickSlotItem.Value = currentQuickSlotIDList.Count == 0 ? 0 : currentQuickSlotIDList[0];
-            }
-        }
-    }
-    
-    public void OnQuickSlotClear()
-    {
-        GUIController.Instance.playerUIHudManager.playerUIQuickSlotManager.ClearQuickSlot();
-        currentSelectQuickSlotItem.Value = 0;
-    }
-
-    public void OnSelectQuickSlotItemChange(int itemID)
-    {
-        GUIController.Instance.playerUIHudManager.playerUIQuickSlotManager.ChangeQuickSlotItem(itemID);
-    }
-
     public void OnExtraAttackChange(bool isActivated)
     {
         _playerManager.playerStatsManager.extraDamage.Value += isActivated ? 30 : -30;

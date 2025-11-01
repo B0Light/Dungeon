@@ -78,11 +78,6 @@ public class PlayerManager : CharacterManager
         playerVariableManager.currentHelmetID.OnValueChanged += playerVariableManager.CurrentEquippedHelmetIDChange;
         playerVariableManager.currentArmorID.OnValueChanged += playerVariableManager.CurrentEquippedArmorIDChange;
             
-        playerVariableManager.currentQuickSlotIDList.OnItemAdded += playerVariableManager.OnAddQuickSlotItem;
-        playerVariableManager.currentQuickSlotIDList.OnItemRemoved += playerVariableManager.OnRemoveQuickSlotItem;
-        playerVariableManager.currentQuickSlotIDList.OnListCleared += playerVariableManager.OnQuickSlotClear;
-        playerVariableManager.currentSelectQuickSlotItem.OnValueChanged += playerVariableManager.OnSelectQuickSlotItemChange;
-            
         playerVariableManager.perkExtraAttack.OnValueChanged += playerVariableManager.OnExtraAttackChange;
         playerVariableManager.perkExtraDefence.OnValueChanged += playerVariableManager.OnExtraDefenceChange;
         playerVariableManager.perkExtraMagicGuard.OnValueChanged += playerVariableManager.OnExtraMagicGuardChange;
@@ -121,11 +116,6 @@ public class PlayerManager : CharacterManager
         playerVariableManager.currentEquippedWeaponID.OnValueChanged -= playerVariableManager.CurrentEquippedWeaponIDChange;
         playerVariableManager.currentHelmetID.OnValueChanged -= playerVariableManager.CurrentEquippedHelmetIDChange;
         playerVariableManager.currentArmorID.OnValueChanged -= playerVariableManager.CurrentEquippedArmorIDChange;
-        
-        playerVariableManager.currentQuickSlotIDList.OnItemAdded -= playerVariableManager.OnAddQuickSlotItem;
-        playerVariableManager.currentQuickSlotIDList.OnItemRemoved -= playerVariableManager.OnRemoveQuickSlotItem;
-        playerVariableManager.currentQuickSlotIDList.OnListCleared -= playerVariableManager.OnQuickSlotClear;
-        playerVariableManager.currentSelectQuickSlotItem.OnValueChanged -= playerVariableManager.OnSelectQuickSlotItemChange;
         
         playerVariableManager.perkExtraAttack.OnValueChanged -= playerVariableManager.OnExtraAttackChange;
         playerVariableManager.perkExtraDefence.OnValueChanged -= playerVariableManager.OnExtraDefenceChange;

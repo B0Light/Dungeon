@@ -1,45 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
-
-public class UI_StatBarSlider : UI_StatBar
+public class UI_StatBarSlider : MonoBehaviour
 {
-    private Image icon;
-    protected Slider slider;
-    
+    private Slider _slider;
+    private Coroutine _lerpRoutine;
+    [SerializeField] private float _changeSpeed = 5f; // 값 변화 속도 조절
+
     protected virtual void Awake()
     {
-        slider = GetComponentInChildren<Slider>();
-        icon = GetComponentInChildren<Image>();
-    }
-    
-
-    public override void SetStat(int newValue)
-    {
-        slider.value = newValue;
-        Image fillImage = slider.fillRect.GetComponent<Image>();
-        if (fillImage != null)
-        {
-            fillImage.color = GetColorGradient(newValue);
-        }
+        _slider = GetComponentInChildren<Slider>();
     }
 
-    public override void SetMaxStat(int maxValue)
+    public void SetStat(int newValue)
     {
-        slider.maxValue = maxValue;
-        slider.value = maxValue;
-        Image fillImage = slider.fillRect.GetComponent<Image>();
-        
-        if (fillImage != null)
+        // 기존 코루틴이 실행 중이면 중지
+        if (_lerpRoutine != null) 
+            StopCoroutine(_lerpRoutine);
+
+        _lerpRoutine = StartCoroutine(LerpValue(newValue));
+    }
+
+    public void SetMaxStat(int maxValue)
+    {
+        _slider.maxValue = maxValue;
+        SetStat(maxValue); // 초기 설정도 애니메이션 가능
+    }
+
+    private IEnumerator LerpValue(float targetValue)
+    {
+        float startValue = _slider.value;
+
+        while (Mathf.Abs(_slider.value - targetValue) > 0.01f)
         {
-            fillImage.color = GetColorGradient(maxValue);
+            _slider.value = Mathf.Lerp(_slider.value, targetValue, Time.deltaTime * _changeSpeed);
+            yield return null;
         }
 
-        if (icon != null)
-        {
-            icon.color = GetColorGradient(maxValue);
-        }
+        _slider.value = targetValue;
+        _lerpRoutine = null;
     }
 }
