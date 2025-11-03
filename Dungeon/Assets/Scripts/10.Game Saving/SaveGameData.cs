@@ -8,7 +8,7 @@ using UnityEngine;
 public class SaveGameData
 {
     [Header("Character Name")]
-    public string characterName = "Gangdodan";
+    public string characterName = "Skul";
 
     [Header("Time Played")]
     public int secondsPlayed;
@@ -63,7 +63,7 @@ public class SaveGameData
     public SaveGameData()
     {
         lastPlayTime = DateTime.Now.ToString("o");
-        weaponBoxSize = new Vector2Int(4, 1);
+        weaponBoxSize = new Vector2Int(1, 4);
         helmetBoxSize = new Vector2Int(2, 2);
         armorBoxSize = new Vector2Int(2, 2);
         consumableBoxSize = new Vector2Int(4, 1);

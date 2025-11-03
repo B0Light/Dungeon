@@ -24,9 +24,6 @@ public class InventoryGUIManager : GUIComponent
     public ItemGrid safeInventoryItemGrid;
     [SerializeField] private CanvasGroup safeInventoryCanvasGroup;
     
-    [Header("Player Profile")]
-    [SerializeField] private GameObject playerProfile;
-    
     [Header("Interactable Inventory")]
     [SerializeField] private ItemGrid_Interactable interactionInventoryItemGrid;
     [SerializeField] private CanvasGroup interactionInventoryCanvasGroup;
@@ -63,7 +60,6 @@ public class InventoryGUIManager : GUIComponent
         base.OpenGUI();
         _isOpen = true;
         inventoryController.isActive = _isOpen;
-        playerProfile.SetActive(_isOpen);
         
         WorldPlayerInventory.Instance.curOpenedInventory = _hasBackpack ? ItemGridType.BackpackInventory : ItemGridType.PlayerInventory;
         WorldPlayerInventory.Instance.curInteractItemGrid = _hasBackpack ? backpackItemGrid : playerInventoryItemGrid;
@@ -77,7 +73,6 @@ public class InventoryGUIManager : GUIComponent
         base.CloseGUI();
         _isOpen = false;
         inventoryController.isActive = _isOpen;
-        playerProfile.SetActive(_isOpen);
         
         ResetSelectItem();
         CloseInteractionInventory();
