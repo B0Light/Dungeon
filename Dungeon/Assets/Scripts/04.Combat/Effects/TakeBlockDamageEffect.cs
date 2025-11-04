@@ -9,7 +9,6 @@ public class TakeBlockDamageEffect : TakeDamageEffect
     {
         physicalDamage *= (100 - hitTarget.characterStatsManager.blockingPhysicalAbsorption) / 100;
         magicalDamage *= (100 - hitTarget.characterStatsManager.blockingMagicalAbsorption) / 100;
-        poiseDamage *= (100 - hitTarget.characterStatsManager.blockingStability) / 100;
 
         base.CalculateDamage(hitTarget);
     }

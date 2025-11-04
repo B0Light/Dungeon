@@ -41,7 +41,7 @@ public class ContinuousDamageCollider : DamageCollider
             SetBlockingDotValues(damageTarget);
             if (CheckForParried(damageTarget)) return;
             
-            DamageTarget(damageTarget, CheckForBlock(damageTarget));
+            DamageTarget(damageTarget, physicalDamage, magicalDamage,CheckForBlock(damageTarget));
         }
         
         // 지속 피해 코루틴 시작
@@ -75,7 +75,7 @@ public class ContinuousDamageCollider : DamageCollider
             SetBlockingDotValues(target);
             if (CheckForParried(target)) continue;
             
-            DamageTarget(target, CheckForBlock(target));
+            DamageTarget(target, physicalDamage,magicalDamage, CheckForBlock(target));
         }
     }
     

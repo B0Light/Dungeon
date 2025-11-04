@@ -7,15 +7,13 @@ public class TakeDamageEffect : IInstantCharacterEffect
 {
     #region Variables
     
-    protected CharacterManager attacker;
     protected float physicalDamage;
     protected float magicalDamage;
     protected float extraDamage;
     
     protected float finalDamageDealt;
     protected float finalPoiseDamage;
-
-    protected float poiseDamage;     
+    
     protected Vector3 contactPoint; 
     protected float angleHitFrom;
     
@@ -23,14 +21,11 @@ public class TakeDamageEffect : IInstantCharacterEffect
 
     #region Public Methods
     
-    public void SetDamage(CharacterManager characterCausingDamage, float physicalDmg, float magicalDmg, 
-                          float extraDmg, float poiseDmg, Vector3 contact, float angle)
+    public void SetDamage(float physicalDmg, float magicalDmg, float extraDmg, Vector3 contact, float angle)
     {
-        attacker = characterCausingDamage;
         physicalDamage = physicalDmg;
         magicalDamage = magicalDmg;
         extraDamage = extraDmg;
-        poiseDamage = poiseDmg;
         contactPoint = contact;
         angleHitFrom = angle;
     }
@@ -39,7 +34,6 @@ public class TakeDamageEffect : IInstantCharacterEffect
     {
         physicalDamage *= modifier;
         magicalDamage *= modifier;
-        poiseDamage *= modifier;
     }
 
     public override void ProcessEffect(CharacterManager effectTarget)
@@ -71,7 +65,6 @@ public class TakeDamageEffect : IInstantCharacterEffect
         
         // 최종 데미지 및 포이즈 데미지 계산
         finalDamageDealt = Mathf.RoundToInt(reducedPhysicalDamage + reducedMagicalDamage + extraDamage);
-        finalPoiseDamage = poiseDamage * ((100 - hitTarget.characterStatsManager.passivePoise.Value) / 100);
         
         // 최소 데미지 보장
         if(finalDamageDealt <= 0)

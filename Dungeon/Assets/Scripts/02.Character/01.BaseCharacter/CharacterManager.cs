@@ -163,8 +163,7 @@ public class CharacterManager : MonoBehaviour, IDamageable
 
         // TakeDamageEffect 클래스를 활용하여 데미지 처리
         TakeDamageEffect damageEffect = ScriptableObject.CreateInstance<TakeDamageEffect>();
-        damageEffect.SetDamage(data.attacker, data.physicalDamage, data.magicalDamage, data.extraDamage, 
-                               data.poiseDamage, data.contactPoint, data.angleHitFrom);
+        damageEffect.SetDamage(data.physicalDamage, data.magicalDamage, data.extraDamage, data.contactPoint, data.angleHitFrom);
         damageEffect.ProcessEffect(this);
     }
 

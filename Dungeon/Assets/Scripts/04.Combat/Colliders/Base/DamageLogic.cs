@@ -1,14 +1,18 @@
 using System.Collections.Generic;
-using Unity.Collections;
 using UnityEngine;
+
+public enum MagicalType
+{
+    Fire,
+    Water,
+    Grass,
+    Dark,
+    Light,
+}
 
 public abstract class DamageLogic : MonoBehaviour
 {
     [HideInInspector] public CharacterManager ownerCharacter;
-
-    [HideInInspector] public float physicalDamage = 0;
-    [HideInInspector] public float magicalDamage = 0;
-    [HideInInspector] public float poiseDamage = 0;
 
     [Header("Contact Point")]
     protected Vector3 contactPoint;
@@ -60,7 +64,7 @@ public abstract class DamageLogic : MonoBehaviour
         return false;
     }
 
-    protected void DamageTarget(CharacterManager damageTarget, bool isBlock = false)
+    protected void DamageTarget(CharacterManager damageTarget, float physicalDamage, float magicalDamage,  bool isBlock = false)
     {
         if (charactersDamaged.Contains(damageTarget))
             return;
@@ -73,11 +77,9 @@ public abstract class DamageLogic : MonoBehaviour
                 WorldCharacterEffectsManager.Instance.takeDamageEffect);
         
         damageEffect.SetDamage(
-            ownerCharacter,
             physicalDamage, 
             magicalDamage, 
             ownerCharacter.characterStatsManager.extraDamage.Value, 
-            poiseDamage, 
             contactPoint,
             Vector3.SignedAngle(ownerCharacter.transform.forward, damageTarget.transform.forward, Vector3.up)
             );

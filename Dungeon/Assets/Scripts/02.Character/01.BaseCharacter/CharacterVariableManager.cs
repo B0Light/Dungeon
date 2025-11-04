@@ -30,9 +30,10 @@ public class CharacterVariableManager : MonoBehaviour
     public Variable<bool> isParring = new Variable<bool>(false);
     public ClampedVariable<float> groggy = new ClampedVariable<float>(100.0f);
 
-    [Header("Groggy")] 
+    [Header("Combat")] 
+    public Variable<float> physicalDamageMultiplier = new Variable<float>(1.0f);
+    public Variable<float> magicalDamageMultiplier = new Variable<float>(1.0f);
     private readonly float _groggyTime = 1;
-    
     
     [Header("MeshTrailer")]
     public Variable<bool> isTrailActive;

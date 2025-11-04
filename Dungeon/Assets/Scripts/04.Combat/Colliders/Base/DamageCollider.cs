@@ -3,11 +3,14 @@ using UnityEngine;
 public class DamageCollider : DamageLogic
 {
     protected Collider[] damageColliders;
+    
+    protected float physicalDamage;
+    protected float magicalDamage;
 
     protected override void Awake()
     {
         base.Awake();
-        damageColliders = GetComponents<Collider>();
+        damageColliders = GetComponentsInChildren<Collider>();
     }
     
     protected virtual void Start()
@@ -29,9 +32,17 @@ public class DamageCollider : DamageLogic
         SetBlockingDotValues(damageTarget);
         if(CheckForParried(damageTarget)) return;
         
-        DamageTarget(damageTarget, CheckForBlock(damageTarget));
+        DamageTarget(damageTarget, physicalDamage, magicalDamage, CheckForBlock(damageTarget));
     }
-    
+
+    #region Public Method
+
+    public void SetWeaponDamage(CharacterManager owner, EquipmentItemInfoWeapon equipmentItemInfoWeapon)
+    {
+        physicalDamage = equipmentItemInfoWeapon.physicalDamage * owner.characterVariableManager.physicalDamageMultiplier.Value;
+        magicalDamage = equipmentItemInfoWeapon.magicalDamage * owner.characterVariableManager.magicalDamageMultiplier.Value;
+    }
+
     #region AnimationEvent
     public virtual void EnableDamageCollider()
     {
@@ -51,4 +62,8 @@ public class DamageCollider : DamageLogic
         charactersDamaged.Clear();
     }
     #endregion
+
+    #endregion
+    
+    
 }
