@@ -12,7 +12,7 @@ public class UI_CharacterHPBar : UI_StatBar
     [SerializeField] float hideTimer = 0;
     [SerializeField] int currentDamageTaken = 0;
     [SerializeField] TextMeshProUGUI characterName;
-    [HideInInspector] public int oldHealthValue = 0;
+    [HideInInspector] public float oldHealthValue = 0;
     
     [Header("체력바 색상 설정")]
     [SerializeField] private Color fullHealthColor = Color.green;
@@ -26,8 +26,8 @@ public class UI_CharacterHPBar : UI_StatBar
     [Header("그라데이션 설정")]
     [SerializeField] private bool useGradientTransition = true;
     [SerializeField] private float gradientWidth = 0.1f; // 그라데이션 영역의 폭
-    private int _currentHealthValue;
-    private int _maxHealthValue;
+    private float _currentHealthValue;
+    private float _maxHealthValue;
     protected void Awake()
     {
         character = GetComponentInParent<CharacterManager>();
@@ -73,7 +73,7 @@ public class UI_CharacterHPBar : UI_StatBar
         }
     }
 
-    public override void SetStat(int newValue)
+    public override void SetStat(float newValue)
     {
         if (displayCharacterNameOnDamage)
         {
@@ -122,14 +122,14 @@ public class UI_CharacterHPBar : UI_StatBar
                 gameObject.SetActive(true);
             }
         }
-        else if (character.characterVariableManager.health.Value != character.characterVariableManager.health.MaxValue)
+        else if(!Mathf.Approximately(character.characterVariableManager.health.Value, character.characterVariableManager.health.MaxValue))
         {
             hideTimer = defaultTimeBeforeBarHides;
             gameObject.SetActive(true);
         }
     }
 
-    public override void SetMaxStat(int maxValue)
+    public override void SetMaxStat(float maxValue)
     {
         _maxHealthValue = maxValue;
         UpdateHealthBar();

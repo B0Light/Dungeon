@@ -75,7 +75,7 @@ public class WorldSaveGameManager : Singleton<WorldSaveGameManager>
         PlayerManager player = GameManager.Instance.SpawnPlayer();
         player.playerVariableManager.characterName.Value = playerName;
         player.playerVariableManager.health.MaxValue = 100;
-        player.playerVariableManager.actionPoint.MaxValue = 4;
+        player.playerVariableManager.stamina.MaxValue = 4;
         player.playerVariableManager.currentArmorID.Value = 0;
         player.playerVariableManager.currentHelmetID.Value = 0;
         player.playerVariableManager.currentEquippedWeaponID.Value = 0;

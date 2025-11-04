@@ -13,16 +13,13 @@ public class UI_StatBarSlider : MonoBehaviour
         _slider = GetComponentInChildren<Slider>();
     }
 
-    public void SetStat(int newValue)
+    public void SetStat(float newValue)
     {
-        // 기존 코루틴이 실행 중이면 중지
-        if (_lerpRoutine != null) 
-            StopCoroutine(_lerpRoutine);
-
+        StopAllCoroutines();
         _lerpRoutine = StartCoroutine(LerpValue(newValue));
     }
 
-    public void SetMaxStat(int maxValue)
+    public void SetMaxStat(float maxValue)
     {
         _slider.maxValue = maxValue;
         SetStat(maxValue); // 초기 설정도 애니메이션 가능

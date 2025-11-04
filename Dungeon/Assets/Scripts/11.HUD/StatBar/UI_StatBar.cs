@@ -6,14 +6,14 @@ public abstract class UI_StatBar : MonoBehaviour
     [SerializeField] private Color green;
     [SerializeField] private Color blue;
 
-    public abstract void SetStat(int newValue);
+    public abstract void SetStat(float newValue);
 
-    public abstract void SetMaxStat(int maxValue);
+    public abstract void SetMaxStat(float maxValue);
     
     
-    protected Color GetColorGradient(int value)
+    protected Color GetColorGradient(float value)
     {
-        float normalizedValue = Mathf.Clamp01(value / 1000f);
+        var normalizedValue = Mathf.Clamp01(value / 1000f);
 
         if (normalizedValue <= 0.1f)
         {

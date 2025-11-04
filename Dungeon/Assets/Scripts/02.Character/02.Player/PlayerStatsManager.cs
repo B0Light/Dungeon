@@ -1,23 +1,12 @@
 
-using UnityEngine;
-
 public class PlayerStatsManager : CharacterStatsManager
 {
-    private PlayerManager _player;
-    
-    protected override void Awake()
-    {
-        base.Awake();
-
-        _player = character as PlayerManager;
-    }
-    
-    public void SetNewHealthPoint(int value)
+    public void SetNewHealthPoint(float value)
     {
         GUIController.Instance.playerUIHudManager.playerUIStatusManager.SetNewHealthValue(value);
     }
 
-    public void SetNewActionPoint(int value)
+    public void SetNewStamina(float value)
     {
         GUIController.Instance.playerUIHudManager.playerUIStatusManager.SetNewActionPoint(value);
     }

@@ -324,11 +324,10 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     
     private bool CanPerformDodge()
     {
-        //if (_playerManager.playerVariableManager.isHungry.Value) return false;
         if (_playerManager.isPerformingAction) return false;
         if (!CLVM.isGrounded) return false;
 
-        return _playerManager.playerStatsManager.UseActionPoint();
+        return _playerManager.playerStatsManager.UseActionPoint(30);
     }
     
     private void PerformDodge()
@@ -429,7 +428,8 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             AttemptToDeactivateSprint();
             return;
         }
-        if (_playerManager.playerStatsManager.UseActionPoint())
+        
+        if (_playerManager.playerVariableManager.stamina.Value >= 10)
         {
             ActivateSprint();
         }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum InputMode { Exploration, Combat, UI_Open }
+public enum InputMode { Exploration, CombatBuild, OpenUI }
 
 public class InputHandlerManager : Singleton<InputHandlerManager>
 {
@@ -47,24 +47,21 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
     public void SetInputMode(InputMode mode)
     {
         var movementHandler = FindAnyObjectByType<InputHandler_Locomotion>();
-        var combatHandler = FindAnyObjectByType<InputHandler_Combat>();
+        // combat build
         var uiHandler = FindAnyObjectByType<InputHandler_UI>();
 
         switch (mode)
         {
             case InputMode.Exploration:
                 RegisterAndEnableHandler(movementHandler); 
-                UnregisterAndDisableHandler(combatHandler);
                 RegisterAndEnableHandler(uiHandler);
                 break;
-            case InputMode.Combat:
+            case InputMode.CombatBuild:
                 UnregisterAndDisableHandler(movementHandler); 
-                RegisterAndEnableHandler(combatHandler);
                 RegisterAndEnableHandler(uiHandler);
                 break;
-            case InputMode.UI_Open:
+            case InputMode.OpenUI:
                 UnregisterAndDisableHandler(movementHandler); 
-                UnregisterAndDisableHandler(combatHandler);
                 RegisterAndEnableHandler(uiHandler);
                 break;
         }

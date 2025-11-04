@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerVariableManager : CharacterVariableManager
 {
@@ -61,7 +58,7 @@ public class PlayerVariableManager : CharacterVariableManager
     }
     
     // hp == 0
-    public override void DeathProcess(int newValue)
+    public override void DeathProcess(float newValue)
     {
         if (perkLastSpurt.Value && _enableLastSpurt)
         {
@@ -97,18 +94,18 @@ public class PlayerVariableManager : CharacterVariableManager
 
         health.MaxValue = initialMaxHealth;
         health.Value = 5;
-        actionPoint.MaxValue = initialActionPoint;
+        stamina.MaxValue = initialStamina;
         WorldSaveGameManager.Instance.SaveGame();
     }
 
-    public void SetNewMaxHealthPoint(int newValue)
+    public void SetNewMaxHealthPoint(float newValue)
     {
         // 실제 채력을 변경하지 않는 이유는 탈출맵에서 갑옷을 바꿔 끼는 행위로 채력변동을 허용하지 않음 
         GUIController.Instance.playerUIHudManager.playerUIStatusManager.SetMaxHealthValue(newValue);
         GUIController.Instance.playerUIHudManager.playerUIStatusManager.SetNewHealthValue(health.Value);
     }
 
-    public void SetNewMaxActionPoint(int newValue)
+    public void SetNewMaxStamina(float newValue)
     {
         GUIController.Instance.playerUIHudManager.playerUIStatusManager.SetMaxActionPoint(newValue);
     }
@@ -158,7 +155,7 @@ public class PlayerVariableManager : CharacterVariableManager
     // ResetActionPoint: actionPoint를 초기 상태로 리셋
     private void ResetActionPoint(EquipmentItemInfoHelmet helmet)
     {
-        actionPoint.MaxValue = initialActionPoint + (perkExtraHealthPoint.Value ? 1 : 0) + (helmet == null ? 0 : helmet.extraActionPoint);
+        stamina.MaxValue = initialStamina + (perkExtraHealthPoint.Value ? 1 : 0) + (helmet == null ? 0 : helmet.extraActionPoint);
         _playerManager.characterStatsManager.extraPhysicalAbsorption = helmet == null ? 0 : helmet.extraPhysicalAbsorption;
         _playerManager.characterStatsManager.extraMagicalAbsorption = helmet== null ? 0 : helmet.extraMagicalAbsorption;
     }
@@ -166,7 +163,7 @@ public class PlayerVariableManager : CharacterVariableManager
     public void ResetStatus()
     {
         var helmet = _playerManager.playerEquipmentManger.currentEquippedInfoHelmet;
-        actionPoint.MaxValue = initialActionPoint + (perkExtraActionPoint.Value ? 1 : 0) + (helmet == null ? 0 : helmet.extraActionPoint);
+        stamina.MaxValue = initialStamina + (perkExtraActionPoint.Value ? 1 : 0) + (helmet == null ? 0 : helmet.extraActionPoint);
         _playerManager.playerStatsManager.extraPhysicalAbsorption = helmet == null ? 0 : helmet.extraPhysicalAbsorption;
         _playerManager.playerStatsManager.extraMagicalAbsorption = helmet== null ? 0 : helmet.extraMagicalAbsorption;
         
@@ -190,7 +187,7 @@ public class PlayerVariableManager : CharacterVariableManager
         _playerManager.playerEquipmentManger.SetArmor();
         /* MAX HEALTH */
         // 최대 체력 업데이트
-        int baseHealth = initialMaxHealth + (perkExtraHealthPoint.Value ? 100 : 0);
+        var baseHealth = initialMaxHealth + (perkExtraHealthPoint.Value ? 100 : 0);
         health.MaxValue = baseHealth + (newArmor != null ? newArmor.extraHealth : 0);
     
         // 현재 체력 비율 유지
@@ -235,7 +232,7 @@ public class PlayerVariableManager : CharacterVariableManager
     
     public void OnExtraActionPointChange(bool isActivated)
     {
-        actionPoint.MaxValue += isActivated ? 1 : -1;
+        stamina.MaxValue += isActivated ? 1 : -1;
     }
 
     public void OnExtraWeight(bool isActivated)

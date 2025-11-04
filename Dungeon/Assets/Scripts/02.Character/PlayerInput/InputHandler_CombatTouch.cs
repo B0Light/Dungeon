@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputHandler_Combat : MonoBehaviour, InputHandlerManager.IInputHandler
+public class InputHandler_CombatTouch : MonoBehaviour, InputHandlerManager.IInputHandler
 {
     private PlayerManager _playerManager;
     private PlayerControls _playerControls;
@@ -29,27 +29,27 @@ public class InputHandler_Combat : MonoBehaviour, InputHandlerManager.IInputHand
     
     public void EnableInput()
     {
-        _playerControls.Combat.Enable();
-        _playerControls.Combat.Touch.started += OnTouchStart;
-        _playerControls.Combat.Touch.canceled += OnTouchEnd;
+        _playerControls.Combat_Touch.Enable();
+        _playerControls.Combat_Touch.Touch.started += OnTouchStart;
+        _playerControls.Combat_Touch.Touch.canceled += OnTouchEnd;
     }
 
     public void DisableInput()
     {
-        _playerControls.Combat.Disable();
-        _playerControls.Combat.Touch.started -= OnTouchStart;
-        _playerControls.Combat.Touch.canceled -= OnTouchEnd;
+        _playerControls.Combat_Touch.Disable();
+        _playerControls.Combat_Touch.Touch.started -= OnTouchStart;
+        _playerControls.Combat_Touch.Touch.canceled -= OnTouchEnd;
     }
     
     private void OnTouchStart(InputAction.CallbackContext context)
     {
-        _startPosition = _playerControls.Combat.Position.ReadValue<Vector2>();
+        _startPosition = _playerControls.Combat_Touch.Position.ReadValue<Vector2>();
         _startTime = Time.time;
     }
     
     private void OnTouchEnd(InputAction.CallbackContext context)
     {
-        Vector2 endPosition = _playerControls.Combat.Position.ReadValue<Vector2>();
+        Vector2 endPosition = _playerControls.Combat_Touch.Position.ReadValue<Vector2>();
         float endTime = Time.time;
 
         float swipeDistance = Vector2.Distance(_startPosition, endPosition);

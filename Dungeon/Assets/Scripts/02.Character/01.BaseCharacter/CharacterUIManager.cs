@@ -8,7 +8,7 @@ public class CharacterUIManager : MonoBehaviour
     public bool hasFloatingHPBar = false;
     public UI_CharacterHPBar characterHPBar;
 
-    public void OnHPChanged(int newValue)
+    public void OnHPChanged(float newValue)
     {
         characterHPBar.SetStat(newValue);
     }

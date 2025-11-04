@@ -305,76 +305,6 @@
             ]
         },
         {
-            "name": "Combat",
-            "id": "3b8368a4-2f3d-4616-83a9-d8d0db6a0021",
-            "actions": [
-                {
-                    "name": "Touch",
-                    "type": "Button",
-                    "id": "c13a5d67-3d7a-457d-8d95-089077579d3b",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Position",
-                    "type": "Value",
-                    "id": "168ca9c4-ea4f-449e-87d9-2cd3e6125118",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "3f243a2e-02c3-4c85-bdf8-2d959abdd3ec",
-                    "path": "<Touchscreen>/Press",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Touch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "56c2ce09-f9c4-4e91-8713-b93e8dc7f7ec",
-                    "path": "<Mouse>/press",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Touch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5db59509-dce8-4792-adab-db9ffdb06391",
-                    "path": "<Touchscreen>/primaryTouch/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Position",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "270d79a6-09fe-4fe6-b4d9-a992ef55d813",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Position",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
             "name": "Player Actions",
             "id": "96719bb8-aef4-4b74-b4e3-2d922bc16d8c",
             "actions": [
@@ -1108,13 +1038,13 @@
             ]
         },
         {
-            "name": "Mobile",
-            "id": "a236e980-0322-4cb8-952d-5a00dd898498",
+            "name": "Combat_Touch",
+            "id": "3b8368a4-2f3d-4616-83a9-d8d0db6a0021",
             "actions": [
                 {
                     "name": "Touch",
                     "type": "Button",
-                    "id": "b6e8f722-f427-419b-aeaa-91bf0476abc2",
+                    "id": "c13a5d67-3d7a-457d-8d95-089077579d3b",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -1123,7 +1053,7 @@
                 {
                     "name": "Position",
                     "type": "Value",
-                    "id": "a8f15024-a0fd-49cd-9733-3edd006e487d",
+                    "id": "168ca9c4-ea4f-449e-87d9-2cd3e6125118",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -1133,7 +1063,29 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "074bbd4a-fe59-4330-83f5-a3ff1c16b201",
+                    "id": "3f243a2e-02c3-4c85-bdf8-2d959abdd3ec",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "56c2ce09-f9c4-4e91-8713-b93e8dc7f7ec",
+                    "path": "<Mouse>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5db59509-dce8-4792-adab-db9ffdb06391",
                     "path": "<Touchscreen>/primaryTouch/position",
                     "interactions": "",
                     "processors": "",
@@ -1144,12 +1096,12 @@
                 },
                 {
                     "name": "",
-                    "id": "68cda97a-e4a8-4eb3-a065-26011bd736e3",
-                    "path": "<Touchscreen>/Press",
+                    "id": "270d79a6-09fe-4fe6-b4d9-a992ef55d813",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Touch",
+                    "action": "Position",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

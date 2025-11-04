@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = "Character Effects/Instant Effects/Take ActionPoint Damage")]
-public class TakeActionPointDamageEffect : IInstantCharacterEffect
+public class TakeStaminaEffect : IInstantCharacterEffect
 {
     public int actionCost;
     public override void ProcessEffect(CharacterManager effectTarget)
@@ -14,6 +14,6 @@ public class TakeActionPointDamageEffect : IInstantCharacterEffect
 
     private void CalculateActionPointDamage(CharacterManager character)
     {
-        character.characterVariableManager.actionPoint.Value -= actionCost;
+        character.characterVariableManager.stamina.Value -= actionCost;
     }
 }

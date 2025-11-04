@@ -14,9 +14,6 @@ public class CharacterVariableManager : MonoBehaviour
     
     [HideInInspector] public CharacterLocomotionVariableManager CLVM;
     
-    [Header("Active")]
-    public Variable<bool> isActive = new Variable<bool>(true);
-    
     [Header("Position")]
     public Variable<Vector3> position = new Variable<Vector3>(Vector3.zero);
     public Variable<Quaternion> rotation = new Variable<Quaternion>(Quaternion.identity);
@@ -39,11 +36,11 @@ public class CharacterVariableManager : MonoBehaviour
     public Variable<bool> isTrailActive;
 
     [Header("Resources")]
-    [SerializeField] protected int initialMaxHealth = 100;
-    [SerializeField] protected int initialActionPoint = 4;
+    protected float initialMaxHealth = 100;
+    protected float initialStamina = 100;
     
-    public ClampedVariable<int> health;
-    public ClampedVariable<int> actionPoint;
+    public ClampedVariable<float> health;
+    public ClampedVariable<float> stamina;
 
     protected virtual void Awake()
     {
@@ -78,8 +75,8 @@ public class CharacterVariableManager : MonoBehaviour
         if(_isInitVariable) return;
         _isInitVariable = true;
 
-        health = new ClampedVariable<int>(initialMaxHealth);
-        actionPoint = new ClampedVariable<int>(initialActionPoint);
+        health = new ClampedVariable<float>(initialMaxHealth);
+        stamina = new ClampedVariable<float>(initialStamina);
     }
 
     // 패리 당한 대상을 인자로 보냄
@@ -106,7 +103,7 @@ public class CharacterVariableManager : MonoBehaviour
     }
     
     // 해당 함수는 health.OnDepleted 에 구독된 함수임
-    public virtual void DeathProcess(int newValue)
+    public virtual void DeathProcess(float newValue)
     {
         character.isDead.Value = true;
         character.animator.SetBool(_isDeadHash, true); // critical로 죽을 때 애니메이션 변경

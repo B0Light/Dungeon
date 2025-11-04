@@ -1,19 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
-using UnityEngine.Serialization;
-
 
 public class CharacterStatsManager : MonoBehaviour
 {
     protected CharacterManager character;
 
-    [Header("Stamina Regeneration")]
-    private readonly float _actionPointRegenerationTime = 0.3f;
-    private readonly float _actionPointRegenerationDelay = 0.3f;
-    private float _actionPointRegenerationTimer = 0;
-    private float _actionPointTickTimer = 0;
+    private readonly float _staminaRegenDelayTime = 2.0f; // 재생이 시작되기까지의 딜레이 시간 (초)
+    private readonly float _staminaRegenRatePerSecond = 5.0f; // 초당 재생되는 스태미나 값
+    private readonly float _staminaDrainRatePerSecond = 10.0f; // 초당 감소하는 스태미나 값 (달리기 시)
+    private float _staminaRegenTimer = 0.0f; // 재생 딜레이를 위한 타이머
     
     public Variable<int> extraDamage = new Variable<int>(0);
     // 저항력
@@ -42,44 +36,64 @@ public class CharacterStatsManager : MonoBehaviour
 
     public void RegenerateStamina()
     {
-        // WE DO NOT WANT TO REGENERATE STAMINA IF WE ARE USING IT
-        if (character.characterVariableManager.CLVM.isSprinting)
-            return;
-
-        if (character.isPerformingAction)
-            return;
-
-        if (character.characterVariableManager.actionPoint.Value >=
-            character.characterVariableManager.actionPoint.MaxValue)
+        if (character.characterVariableManager.stamina.Value >=
+            character.characterVariableManager.stamina.MaxValue)
         {
-            character.characterVariableManager.actionPoint.Value =
-                character.characterVariableManager.actionPoint.MaxValue;
+            character.characterVariableManager.stamina.Value =
+                character.characterVariableManager.stamina.MaxValue;
+        
+            _staminaRegenTimer = 0.0f; 
+        
+            return;
+        }
+        
+        // 1. 달리기 시 스테미나 감소
+        if (character.characterVariableManager.CLVM.isSprinting)
+        {
+            _staminaRegenTimer = 0.0f;
+
+            character.characterVariableManager.stamina.Value -=
+                _staminaDrainRatePerSecond * Time.deltaTime;
+
+            if (character.characterVariableManager.stamina.Value < 0)
+            {
+                character.characterVariableManager.stamina.Value = 0;
+                character.characterVariableManager.CLVM.isSprinting = false;
+            }
+
             return;
         }
 
-        _actionPointRegenerationTimer += Time.deltaTime;
-
-        if (_actionPointRegenerationTimer >= _actionPointRegenerationDelay)
+        // 2. 행동 중일 때 재생 중단
+        if (character.isPerformingAction)
         {
-            if (character.characterVariableManager.actionPoint.Value < character.characterVariableManager.actionPoint.MaxValue)
-            {
-                _actionPointTickTimer += Time.deltaTime;
+            // 딜레이 타이머 리셋 (행동 중에는 재생 딜레이도 초기화)
+            _staminaRegenTimer = 0.0f;
+            return;
+        }
 
-                if (_actionPointTickTimer >= _actionPointRegenerationTime)
-                {
-                    _actionPointTickTimer = 0;
-                    character.characterVariableManager.actionPoint.Value += 1;
-                }
+        // 3. 비활동 (가만히 있는) 상태: 재생 딜레이 타이머 증가
+        _staminaRegenTimer += Time.deltaTime;
+
+        // 4. 딜레이 시간(RegenDelayTime)이 지난 후, 스테미나 재생 시작
+        if (_staminaRegenTimer >= _staminaRegenDelayTime)
+        {
+            character.characterVariableManager.stamina.Value +=
+                _staminaRegenRatePerSecond * Time.deltaTime;
+
+            if (character.characterVariableManager.stamina.Value > character.characterVariableManager.stamina.MaxValue)
+            {
+                character.characterVariableManager.stamina.Value =
+                    character.characterVariableManager.stamina.MaxValue;
             }
         }
     }
     
-    public bool UseActionPoint(int value = 1)
+    public bool UseActionPoint(float value = 10)
     {
-        if (character.characterVariableManager.actionPoint.Value < value) return false;
+        if (character.characterVariableManager.stamina.Value < value) return false;
         
-        character.characterVariableManager.actionPoint.Value -= value;
-        _actionPointRegenerationTimer = 0;
+        character.characterVariableManager.stamina.Value -= value;
         return true;
     }
 }

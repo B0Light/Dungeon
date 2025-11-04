@@ -8,7 +8,7 @@ public class AICharacterVariableManager : CharacterVariableManager
         _aiCharacterManager = character as AICharacterManager;
     }
 
-    public override void DeathProcess(int newValue)
+    public override void DeathProcess(float newValue)
     {
         base.DeathProcess(newValue);
         _aiCharacterManager.aiCharacterDeathInteractable.PerformDeath();

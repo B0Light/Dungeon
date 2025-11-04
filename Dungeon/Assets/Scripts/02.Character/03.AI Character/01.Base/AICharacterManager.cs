@@ -57,8 +57,7 @@ public class AICharacterManager : CharacterManager
         SwitchToState(stateIdle);
 
         if (characterUIManager && characterUIManager.hasFloatingHPBar)
-            characterVariableManager.health.OnValueChanged +=
-                characterUIManager.OnHPChanged;
+            characterVariableManager.health.OnValueChanged += characterUIManager.OnHPChanged;
     }
 
     protected override void OnDisable()
@@ -66,8 +65,7 @@ public class AICharacterManager : CharacterManager
         base.OnDisable();
         
         if(characterUIManager && characterUIManager.hasFloatingHPBar)
-            characterVariableManager.health.OnValueChanged -=
-                characterUIManager.OnHPChanged;
+            characterVariableManager.health.OnValueChanged -= characterUIManager.OnHPChanged;
     }
     
     private void SwitchToState(AIState newState)

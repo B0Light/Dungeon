@@ -9,22 +9,22 @@ public class PlayerUIStatusManager : MonoBehaviour
     [SerializeField] private UI_StatBarSlider healthBar;
     [SerializeField] private UI_StatBarSlider staminaBar;
 
-    public void SetNewHealthValue(int newValue)
+    public void SetNewHealthValue(float newValue)
     {
         healthBar.SetStat(newValue);
     }
 
-    public void SetMaxHealthValue(int maxHealth)
+    public void SetMaxHealthValue(float maxHealth)
     {
         healthBar.SetMaxStat(maxHealth);
     }
 
-    public void SetNewActionPoint(int newValue)
+    public void SetNewActionPoint(float newValue)
     {
         staminaBar.SetStat(newValue);
     }
 
-    public void SetMaxActionPoint(int newValue)
+    public void SetMaxActionPoint(float newValue)
     {
         staminaBar.SetMaxStat(newValue);
     }

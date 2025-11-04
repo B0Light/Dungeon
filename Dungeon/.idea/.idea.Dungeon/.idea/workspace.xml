@@ -6,15 +6,28 @@
   <component name="ChangeListManager">
     <list default="true" id="1844b18a-d80d-49d6-955e-b57cdcc0bed9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/INPUT_PlayerControls/PlayerControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/INPUT_PlayerControls/PlayerControls.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/INPUT_PlayerControls/PlayerControls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/INPUT_PlayerControls/PlayerControls.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterStatsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterStatsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterUIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterUIManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterVariableManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterVariableManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Colliders/Base/ContinuousDamageCollider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Colliders/Base/ContinuousDamageCollider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Colliders/Base/DamageCollider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Colliders/Base/DamageCollider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Colliders/Base/DamageLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Colliders/Base/DamageLogic.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Effects/TakeBlockDamageEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Effects/TakeBlockDamageEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Effects/TakeDamageEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Effects/TakeDamageEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Interface/IDamageable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Interface/IDamageable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Interface/IWeaponManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Interface/IWeaponManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerLocomotionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerLocomotionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerStatsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerStatsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerVariableManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerVariableManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterVariableManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterVariableManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/PlayerInput/InputHandlerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/PlayerInput/InputHandlerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/PlayerInput/InputHandler_Combat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/PlayerInput/InputHandler_CombatTouch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/PlayerInput/InputHandler_Combat.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/PlayerInput/InputHandler_CombatTouch.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Effects/TakeActionPointDamageEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Effects/TakeStaminaEffect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Effects/TakeActionPointDamageEffect.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/04.Combat/Effects/TakeStaminaEffect.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/11.HUD/Player_Status/PlayerUIStatusManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/11.HUD/Player_Status/PlayerUIStatusManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/11.HUD/StatBar/UI_CharacterHPBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/11.HUD/StatBar/UI_CharacterHPBar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/11.HUD/StatBar/UI_StatBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/11.HUD/StatBar/UI_StatBar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/11.HUD/StatBar/UI_StatBarImage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/11.HUD/StatBar/UI_StatBarImage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/11.HUD/StatBar/UI_StatBarSlider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/11.HUD/StatBar/UI_StatBarSlider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/90.World Managers/WorldSaveGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/90.World Managers/WorldSaveGameManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,25 +56,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;NewUISystem&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\jangb\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\jangb\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\jangb\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\jangb\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\jangb\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\jangb\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$USER_HOME$/Desktop/StealAlive\STEAL ALIVE.exe" />
@@ -164,6 +177,7 @@
       <workItem from="1761971154608" duration="3099000" />
       <workItem from="1762172231303" duration="1416000" />
       <workItem from="1762260608892" duration="2754000" />
+      <workItem from="1762265934409" duration="2727000" />
     </task>
     <servers />
   </component>

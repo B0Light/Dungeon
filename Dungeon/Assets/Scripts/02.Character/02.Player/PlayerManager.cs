@@ -64,10 +64,10 @@ public class PlayerManager : CharacterManager
         isDead.OnValueChanged += playerVariableManager.OnPlayerDeath;
         // Updates ui stat bars when a stat changes (health or stamina)
         playerVariableManager.health.OnSetMaxValue += playerVariableManager.SetNewMaxHealthPoint;
-        playerVariableManager.actionPoint.OnSetMaxValue += playerVariableManager.SetNewMaxActionPoint;
+        playerVariableManager.stamina.OnSetMaxValue += playerVariableManager.SetNewMaxStamina;
         
         playerVariableManager.health.OnValueChanged  += playerStatsManager.SetNewHealthPoint;
-        playerVariableManager.actionPoint.OnValueChanged += playerStatsManager.SetNewActionPoint;
+        playerVariableManager.stamina.OnValueChanged += playerStatsManager.SetNewStamina;
         
         
         //Control
@@ -105,10 +105,10 @@ public class PlayerManager : CharacterManager
         
         // Updates ui stat bars when a stat changes (health or stamina)
         playerVariableManager.health.OnSetMaxValue -= playerVariableManager.SetNewMaxHealthPoint;
-        playerVariableManager.actionPoint.OnSetMaxValue -= playerVariableManager.SetNewMaxActionPoint;
+        playerVariableManager.stamina.OnSetMaxValue -= playerVariableManager.SetNewMaxStamina;
         
         playerVariableManager.health.OnValueChanged  -= playerStatsManager.SetNewHealthPoint;
-        playerVariableManager.actionPoint.OnValueChanged -= playerStatsManager.SetNewActionPoint;
+        playerVariableManager.stamina.OnValueChanged -= playerStatsManager.SetNewStamina;
         
         playerVariableManager.canControl.OnValueChanged -= playerVariableManager.OnControlChange;
         
