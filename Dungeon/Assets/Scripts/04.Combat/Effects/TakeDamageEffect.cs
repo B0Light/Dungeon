@@ -111,9 +111,9 @@ public class TakeDamageEffect : IInstantCharacterEffect
     {
         if (character.isDead.Value) return;
 
-        string damageAnimation = GetDirectionalHitAnimation(character, angleHitFrom);
-        if (string.IsNullOrEmpty(damageAnimation)) return;
+        int damageAnimation = GetDirectionalHitAnimation(character, angleHitFrom);
         
+        if (damageAnimation == -1) return;
         if (Random.Range(1, 10) >= 1) return;
         
         character.characterAnimatorManager.lastDamageAnimationPlayed = damageAnimation;
@@ -124,7 +124,7 @@ public class TakeDamageEffect : IInstantCharacterEffect
 
     #region Private Methods
     
-    private string GetDirectionalHitAnimation(CharacterManager character, float angle)
+    private int GetDirectionalHitAnimation(CharacterManager character, float angle)
     {
         // 각도에 따른 피격 방향 결정
         if ((angle >= 145 && angle <= 180) || (angle >= -180 && angle <= -145))
@@ -139,7 +139,7 @@ public class TakeDamageEffect : IInstantCharacterEffect
         if (angle >= 46 && angle <= 144)
             return character.characterAnimatorManager.hitRight;
         
-        return null;
+        return -1;
     }
     
     #endregion

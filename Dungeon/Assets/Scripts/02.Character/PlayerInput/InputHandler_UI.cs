@@ -59,6 +59,14 @@ public class InputHandler_UI : MonoBehaviour, InputHandlerManager.IInputHandler
         _playerControls.UI.Disable();
     }
     
+    private void OnDestroy()
+    {
+        if (InputHandlerManager.Instance != null)
+        {
+            InputHandlerManager.Instance.UnregisterAndDisableHandler(this);
+        }
+    }
+    
     // Inventory
     private void OnToggleInventoryPerformed(InputAction.CallbackContext context)
     {
@@ -156,11 +164,5 @@ public class InputHandler_UI : MonoBehaviour, InputHandlerManager.IInputHandler
         return null;
     }
     
-    private void OnDestroy()
-    {
-        if (InputHandlerManager.Instance != null)
-        {
-            InputHandlerManager.Instance.UnregisterAndDisableHandler(this);
-        }
-    }
+   
 }

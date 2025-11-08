@@ -25,11 +25,6 @@ public class QuadrupedAIAnimatorManager : CharacterAnimatorManager
     private void Start()
     {
         InitializeAnimationHashes();
-        
-        hitForward  = "Damaged";
-        hitBackward = "Damaged";
-        hitLeft     = "Damaged";
-        hitRight    = "Damaged";
     }
     
     private void InitializeAnimationHashes()

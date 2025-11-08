@@ -133,7 +133,7 @@ public class PlayerManager : CharacterManager
         InputHandlerManager.Instance.SetControlActive(false);
         
         yield return new WaitForFixedUpdate();
-        characterAnimatorManager.PlayTargetActionAnimation("Dead_01", true);
+        characterAnimatorManager.PlayDeadAnimation();
     }
     
     public void SaveGameDataToCurrentCharacterData(ref SaveGameData currentGameData)

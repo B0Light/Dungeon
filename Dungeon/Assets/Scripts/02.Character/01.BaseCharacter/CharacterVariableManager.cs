@@ -41,6 +41,7 @@ public class CharacterVariableManager : MonoBehaviour
     
     public ClampedVariable<float> health;
     public ClampedVariable<float> stamina;
+    public ClampedVariable<int> actionPoint;
 
     protected virtual void Awake()
     {

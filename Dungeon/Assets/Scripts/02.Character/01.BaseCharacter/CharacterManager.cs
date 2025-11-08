@@ -139,7 +139,7 @@ public class CharacterManager : MonoBehaviour, IDamageable
         yield return new WaitForFixedUpdate();
         characterVariableManager.health.Value = 0;
         SetTarget(null);
-        characterAnimatorManager.PlayTargetActionAnimation("Dead_01", true, canMove: false, canRotate: false);
+        characterAnimatorManager.PlayDeadAnimation();
     }
     
     protected virtual void ActivateTrail()

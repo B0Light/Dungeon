@@ -1,59 +1,114 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CharacterCombatManager : MonoBehaviour
 {
     protected CharacterManager character;
     
-    [HideInInspector] public EquipmentItemInfoWeapon equipmentItemInfoWeapon;
-    [HideInInspector] public Dir currentAttackDir;
+    [HideInInspector]  public int lastAttackAction;
 
-    private Dictionary<Dir, int> _dirByAnimationDic;
+    [Header("Attack Target")]
+    [HideInInspector]  public CharacterManager currentTarget;
 
-    #region Attack Hash
+    [Header("Attack Type")]
+    [HideInInspector]  public AttackType currentAttackType;
 
-    private readonly int _attackUp = Animator.StringToHash("Attack_Up");
-    private readonly int _attackUpRight = Animator.StringToHash("Attack_UpRight");
-    private readonly int _attackRight = Animator.StringToHash("Attack_Right");
-    private readonly int _attackDownRight = Animator.StringToHash("Attack_DownRight");
-    private readonly int _attackDown = Animator.StringToHash("Attack_Down");
-    private readonly int _attackDownLeft = Animator.StringToHash("Attack_DownLeft");
-    private readonly int _attackLeft = Animator.StringToHash("Attack_Left");
-    private readonly int _attackUpLeft = Animator.StringToHash("Attack_UpLeft");
+    [Header("Lock On Transform")]
+    [HideInInspector]  public Transform lockOnTransform;
 
-    #endregion
+    [HideInInspector]  public CharacterManager criticalDamagedCharacter;
+    [HideInInspector]  public bool canCriticalAttack = false;
+    
+    [Header("Attack Flag")]
+    [HideInInspector] public bool enableCanDoCombo = false;
+    [HideInInspector]  public bool canPerformRollingAttack = false;
+    [HideInInspector]  public bool canPerformBackStepAttack = false;
+    [HideInInspector]  public bool canPerformJumpingAttack = false;
+    
 
     protected virtual void Awake()
     {
         character = GetComponent<CharacterManager>();
-        SetDirDic();
     }
+    
+    
 
-    private void SetDirDic()
+    #region public Method
+    
+    public virtual void SetTarget(CharacterManager newTarget)
     {
-        _dirByAnimationDic = new Dictionary<Dir, int>
+        if(currentTarget == newTarget) return;
+        
+        if(newTarget != null)
         {
-            { Dir.Up, _attackUp },
-            { Dir.UpRight, _attackUpRight },
-            { Dir.Right, _attackRight },
-            { Dir.DownRight, _attackDownRight },
-            { Dir.Down, _attackDown },
-            { Dir.DownLeft, _attackDownLeft },
-            { Dir.Left, _attackLeft },
-            { Dir.UpLeft, _attackUpLeft }
-        };
-    }
-
-    public void PerformWeaponDirAction(Dir dir)
-    {
-        if (_dirByAnimationDic.TryGetValue(dir, out int animationHash))
-        {
-            currentAttackDir = dir;
-            character.characterAnimatorManager.PlayTargetAttackActionAnimation(equipmentItemInfoWeapon, animationHash);
+            currentTarget = newTarget;
+            character.characterVariableManager.CLVM.isSprinting = true;
+            Debug.Log("SET TARGET : " + newTarget.name);
         }
         else
         {
-            Debug.LogWarning("[CCM] No Animation");
+            currentTarget = null;
+            character.characterVariableManager.CLVM.isSprinting = false;
+            Debug.Log("RESET TARGET");
         }
     }
+
+    public void ReactToSound(CharacterManager source)
+    {
+        currentTarget = source;
+    }
+    public void EnableIsInvulnerable()
+    {
+        character.characterVariableManager.isInvulnerable.Value = true;
+    }
+
+    public void DisableIsInvulnerable()
+    {
+        character.characterVariableManager.isInvulnerable.Value = false;
+    }
+    
+    public void EnableCanDoCombo()
+    {
+        enableCanDoCombo = true;
+    }
+
+    public void DisableCanDoCombo()
+    {
+        enableCanDoCombo = false;
+    }
+    
+    public void EnableCanDoRollingAttack()
+    {
+        canPerformRollingAttack = true;
+    }
+    
+    public void DisableCanDoRollingAttack()
+    {
+        canPerformRollingAttack = false;
+    }
+    
+    public void EnableCanDoBeckStepAttack()
+    {
+        canPerformBackStepAttack = true;
+    }
+    
+    public void DisableCanDoBeckStepAttack()
+    {
+        canPerformBackStepAttack = false;
+    }
+    
+    public void EnableCanDoJumpingAttack()
+    {
+        Debug.Log("Can Jump Attack");
+        canPerformJumpingAttack = true;
+    }
+    
+    public void DisableCanDoJumpingAttack()
+    {
+        canPerformJumpingAttack = false;
+    }
+
+    #endregion
+    
 }

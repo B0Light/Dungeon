@@ -21,11 +21,7 @@ public class EquipmentItemInfoWeapon : EquipmentItemInfo
     [HideInInspector] public int physicalDamage = 0;
     [HideInInspector] public int magicalDamage = 0;
 
-    [Header("Weapon Base Poise Damage")] 
-    public float poiseDamage = 10;
-    [Header("Attack Speed")] 
-    public float attackSpeed = 1;
-
+    [HideInInspector] public float attackSpeed = 1.0f;
     [HideInInspector] public float hAtkMod01 = 1.0f;
     [HideInInspector] public float hAtkMod02 = 1.2f;
     [HideInInspector] public float hAtkMod03 = 2.0f;

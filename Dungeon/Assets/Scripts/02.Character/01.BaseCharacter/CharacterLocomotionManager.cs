@@ -49,7 +49,15 @@ public class CharacterLocomotionManager : MonoBehaviour
     private readonly int _bodyLookYHash = Animator.StringToHash("BodyLookY");
     
     private readonly int _locomotionStartDirectionHash = Animator.StringToHash("LocomotionStartDirection");
-
+    
+    private readonly int _jumpTwiceHash = Animator.StringToHash("JumpTwice");
+        
+    protected readonly int rollForwardHash = Animator.StringToHash("Roll_Forward");
+    protected readonly int rollRightHash = Animator.StringToHash("Roll_Right");
+    protected readonly int rollLeftHash = Animator.StringToHash("Roll_Left");
+    protected readonly int rollBackwordHash = Animator.StringToHash("Roll_Backward");
+    protected readonly int backStepHash = Animator.StringToHash("Back_Step");
+    
     #endregion
     
     protected const float _ANIMATION_DAMP_TIME = 5f;
@@ -672,7 +680,7 @@ public class CharacterLocomotionManager : MonoBehaviour
     {
         if(characterManager.isPerformingAction) return;
         SwitchState(AnimationState.DoubleJump);
-        characterManager.characterAnimatorManager.PlayTargetActionAnimation("JumpTwice", true, canMove:true, canRotate:true);
+        characterManager.characterAnimatorManager.PlayTargetActionAnimation(_jumpTwiceHash, true, canMove:true, canRotate:true);
     }
     
     protected void EnterDoubleJumpState()

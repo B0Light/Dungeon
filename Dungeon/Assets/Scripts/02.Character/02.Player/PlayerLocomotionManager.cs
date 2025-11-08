@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerLocomotionManager : CharacterLocomotionManager
 {
     private PlayerManager _playerManager;
+    
+    
 
     private bool _canDoubleJump = false;
     private bool _canJumpLocomotion = false;
@@ -337,33 +339,33 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         {
             if (CLVM.isStrafing == false)
             {
-                _playerManager.playerAnimatorManager.PlayTargetActionAnimation("Roll_Forward", true);
+                _playerManager.playerAnimatorManager.PlayTargetActionAnimation(rollForwardHash, true);
             }
             else
             {
                 switch (CLVM.moveComposite)
                 {
                     case { x: > 0.1f }:
-                        _playerManager.playerAnimatorManager.PlayTargetActionAnimation("Roll_Right", true);
+                        _playerManager.playerAnimatorManager.PlayTargetActionAnimation(rollRightHash, true);
                         break;
                     case { x: < -0.1f }:
-                        _playerManager.playerAnimatorManager.PlayTargetActionAnimation("Roll_Left", true);
+                        _playerManager.playerAnimatorManager.PlayTargetActionAnimation(rollLeftHash, true);
                         break;
                     case { y: > 0.1f }:
-                        _playerManager.playerAnimatorManager.PlayTargetActionAnimation("Roll_Forward", true);
+                        _playerManager.playerAnimatorManager.PlayTargetActionAnimation(rollForwardHash, true);
                         break;
                     case { y: < -0.1f }:
-                        _playerManager.playerAnimatorManager.PlayTargetActionAnimation("Roll_Backward", true);
+                        _playerManager.playerAnimatorManager.PlayTargetActionAnimation(rollBackwordHash, true);
                         break;
                     default:
-                        _playerManager.playerAnimatorManager.PlayTargetActionAnimation("Roll_Forward", true);
+                        _playerManager.playerAnimatorManager.PlayTargetActionAnimation(rollForwardHash, true);
                         break;
                 }
             }
         }
         else
         {
-            _playerManager.playerAnimatorManager.PlayTargetActionAnimation("Back_Step", true);
+            _playerManager.playerAnimatorManager.PlayTargetActionAnimation(backStepHash, true);
         }
     }
     

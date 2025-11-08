@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerCombatManager : CharacterCombatManager
@@ -10,14 +11,8 @@ public class PlayerCombatManager : CharacterCombatManager
 
         _player = GetComponent<PlayerManager>();
     }
-
-    [ContextMenu("OnCombat")]
-    public void OnCombat()
-    {
-        InputHandlerManager.Instance.SetControlActive(false);
-    }
     
-    public void PerformWeaponBasedAction()
+    public void PerformWeaponBasedAction(AttackType actionType)
     {
         
     }

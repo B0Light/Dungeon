@@ -89,7 +89,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""PlayerLocomotion"",
+            ""name"": ""Player Locomotion"",
             ""id"": ""c9f72a2d-c48a-4ab9-bd63-eb2a0a8a8441"",
             ""actions"": [
                 {
@@ -404,81 +404,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""LightAttack"",
-                    ""type"": ""Button"",
-                    ""id"": ""a2d80261-1cf6-4ddb-aa66-7f308aaab761"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""HeavyAttack"",
-                    ""type"": ""Button"",
-                    ""id"": ""ba7e9329-89da-4c00-8984-c557d3638e28"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChargeAttack"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""4fd748c9-ade0-405d-bbd6-eac98fd55ee2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Hold(pressPoint=0.1)"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Parry"",
-                    ""type"": ""Button"",
-                    ""id"": ""52e5253e-634f-4ae1-bd98-7e1e048cb11f"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Block"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""a24a7fca-0821-44d3-b353-5a73e28307e1"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Hold(pressPoint=0.1)"",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""e6d93fc2-63d9-4cf3-aaee-102be44d0488"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Seek Left Lock On Target"",
-                    ""type"": ""Button"",
-                    ""id"": ""cb11a37c-cf02-4c80-9c31-d96d052de949"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Seek Right Lock On Target"",
-                    ""type"": ""Button"",
-                    ""id"": ""4aca756c-4d68-4dd2-8571-e04a49581ecd"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Skill"",
-                    ""type"": ""Button"",
-                    ""id"": ""a5c7de33-189a-40ec-925b-baac652fcab3"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -510,50 +438,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""fd90cfae-e134-443e-9a5a-21ee32dd5be7"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard"",
-                    ""action"": ""LightAttack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2aa05493-c5c1-4ffe-9888-92a00b6e8b21"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""LightAttack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7b8188d9-0efe-46d8-b7a8-68f98d904c67"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard"",
-                    ""action"": ""Seek Left Lock On Target"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ddb09491-dd46-4f65-be09-277bf835d951"",
-                    ""path"": ""<Keyboard>/t"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Seek Right Lock On Target"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""1b4063e2-4be6-492c-b2e1-a066d6805877"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
@@ -573,10 +457,134 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Player Combat"",
+            ""id"": ""5926fd14-d4f0-4f41-8fbe-695cc93aea61"",
+            ""actions"": [
+                {
+                    ""name"": ""LightAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""531b28c7-e05a-480a-a1e4-093414907e18"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HeavyAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""5d0ef7a6-a379-4e07-b582-b13736be54c3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChargeAttack"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""3836c6ce-1686-4f96-92eb-f80a21a933db"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(pressPoint=0.1)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Parry"",
+                    ""type"": ""Button"",
+                    ""id"": ""7ce92213-07ed-471d-8889-3102e6fe1438"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Block"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""4a0f3070-cd5a-45a1-bb7e-6f7291ad5495"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(pressPoint=0.1)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Seek Left Lock On Target"",
+                    ""type"": ""Button"",
+                    ""id"": ""43a8aff5-06f7-48ff-aac5-27ec0dd63f84"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Seek Right Lock On Target"",
+                    ""type"": ""Button"",
+                    ""id"": ""dea28e20-5bd3-4c36-a9d0-4016aa3d2854"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skill"",
+                    ""type"": ""Button"",
+                    ""id"": ""a50b5b13-ebfe-4bcb-a553-add81c29536e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""32c72fa6-4f43-42cb-9ab8-4a5e434859f6"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""LightAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b76da48f-4e55-4e16-ae71-c72c25ebe465"",
+                    ""id"": ""de02b845-d4f5-47c5-bf88-b860fdb8268a"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""LightAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e1ef1845-85e5-47f9-b5ef-dd17cdee11ca"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Seek Left Lock On Target"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c0dae8f7-1000-440e-94d5-75f3011f3725"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Seek Right Lock On Target"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""92ca14f0-f6d6-4835-a596-4d186df1b0ba"",
                     ""path"": ""<Mouse>/backButton"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -587,7 +595,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f3d01fb8-7c55-4395-a233-5454dde41e7a"",
+                    ""id"": ""6ea7974d-83de-4375-93a4-51f2e4a62f23"",
                     ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -598,7 +606,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""18ee6cc5-c27e-45c6-ac16-c171f6b7bd70"",
+                    ""id"": ""6e8b46b9-893b-4df9-aab5-94c422b6cbca"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -609,7 +617,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""83b35623-e99f-4375-a130-a11080aeed6d"",
+                    ""id"": ""3c04a3a3-a394-44a8-b977-33ae5ab85849"",
                     ""path"": ""<Mouse>/backButton"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -620,7 +628,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""05a23bfa-d656-49fd-b819-df931f83daca"",
+                    ""id"": ""a9238981-5bd2-47bc-b0cb-c7c750e9a69d"",
                     ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -631,7 +639,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""130005b5-2907-49c2-8ab0-33677ee6d601"",
+                    ""id"": ""dd9270e1-56e0-4e0c-9d6d-3ce2d667acb7"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -642,7 +650,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6215c133-9f72-4ad6-8c73-db53b6dc1207"",
+                    ""id"": ""e389129f-a71a-4678-9c0c-7848c8917949"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -653,7 +661,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""70e76182-51e0-4bd6-bbd6-b9be614842bf"",
+                    ""id"": ""eea1bd28-6c34-4554-b1a2-ba43a0eedc3d"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -664,7 +672,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""12d9e3f9-ee23-402d-828e-df95e35fafb6"",
+                    ""id"": ""b079ca13-c97f-4121-abfd-4829409ca849"",
                     ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -675,7 +683,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a5c0199a-d0c3-4378-b44b-90e02ddde7e6"",
+                    ""id"": ""cbe4d7a7-8b70-4c8b-928e-836461069790"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -686,7 +694,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""96158c2a-7814-49d5-922f-4429eff7b1e2"",
+                    ""id"": ""f3c767d5-427e-438d-bd95-84750774cc2e"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -697,7 +705,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""af909baa-906a-4697-8f11-ae5cd6332070"",
+                    ""id"": ""0ba4e004-f0c7-41df-8385-b4b2f1c7be85"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -1224,8 +1232,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // PlayerLocomotion
-        m_PlayerLocomotion = asset.FindActionMap("PlayerLocomotion", throwIfNotFound: true);
+        // Player Locomotion
+        m_PlayerLocomotion = asset.FindActionMap("Player Locomotion", throwIfNotFound: true);
         m_PlayerLocomotion_Jump = m_PlayerLocomotion.FindAction("Jump", throwIfNotFound: true);
         m_PlayerLocomotion_Move = m_PlayerLocomotion.FindAction("Move", throwIfNotFound: true);
         m_PlayerLocomotion_Look = m_PlayerLocomotion.FindAction("Look", throwIfNotFound: true);
@@ -1236,15 +1244,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // Player Actions
         m_PlayerActions = asset.FindActionMap("Player Actions", throwIfNotFound: true);
         m_PlayerActions_Roll = m_PlayerActions.FindAction("Roll", throwIfNotFound: true);
-        m_PlayerActions_LightAttack = m_PlayerActions.FindAction("LightAttack", throwIfNotFound: true);
-        m_PlayerActions_HeavyAttack = m_PlayerActions.FindAction("HeavyAttack", throwIfNotFound: true);
-        m_PlayerActions_ChargeAttack = m_PlayerActions.FindAction("ChargeAttack", throwIfNotFound: true);
-        m_PlayerActions_Parry = m_PlayerActions.FindAction("Parry", throwIfNotFound: true);
-        m_PlayerActions_Block = m_PlayerActions.FindAction("Block", throwIfNotFound: true);
         m_PlayerActions_Interact = m_PlayerActions.FindAction("Interact", throwIfNotFound: true);
-        m_PlayerActions_SeekLeftLockOnTarget = m_PlayerActions.FindAction("Seek Left Lock On Target", throwIfNotFound: true);
-        m_PlayerActions_SeekRightLockOnTarget = m_PlayerActions.FindAction("Seek Right Lock On Target", throwIfNotFound: true);
-        m_PlayerActions_Skill = m_PlayerActions.FindAction("Skill", throwIfNotFound: true);
+        // Player Combat
+        m_PlayerCombat = asset.FindActionMap("Player Combat", throwIfNotFound: true);
+        m_PlayerCombat_LightAttack = m_PlayerCombat.FindAction("LightAttack", throwIfNotFound: true);
+        m_PlayerCombat_HeavyAttack = m_PlayerCombat.FindAction("HeavyAttack", throwIfNotFound: true);
+        m_PlayerCombat_ChargeAttack = m_PlayerCombat.FindAction("ChargeAttack", throwIfNotFound: true);
+        m_PlayerCombat_Parry = m_PlayerCombat.FindAction("Parry", throwIfNotFound: true);
+        m_PlayerCombat_Block = m_PlayerCombat.FindAction("Block", throwIfNotFound: true);
+        m_PlayerCombat_SeekLeftLockOnTarget = m_PlayerCombat.FindAction("Seek Left Lock On Target", throwIfNotFound: true);
+        m_PlayerCombat_SeekRightLockOnTarget = m_PlayerCombat.FindAction("Seek Right Lock On Target", throwIfNotFound: true);
+        m_PlayerCombat_Skill = m_PlayerCombat.FindAction("Skill", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_X = m_UI.FindAction("X", throwIfNotFound: true);
@@ -1274,6 +1284,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         UnityEngine.Debug.Assert(!m_PlayerLocomotion.enabled, "This will cause a leak and performance issues, PlayerControls.PlayerLocomotion.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_PlayerActions.enabled, "This will cause a leak and performance issues, PlayerControls.PlayerActions.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_PlayerCombat.enabled, "This will cause a leak and performance issues, PlayerControls.PlayerCombat.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, PlayerControls.UI.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_PlayerInventory.enabled, "This will cause a leak and performance issues, PlayerControls.PlayerInventory.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Combat_Touch.enabled, "This will cause a leak and performance issues, PlayerControls.Combat_Touch.Disable() has not been called.");
@@ -1349,7 +1360,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // PlayerLocomotion
+    // Player Locomotion
     private readonly InputActionMap m_PlayerLocomotion;
     private List<IPlayerLocomotionActions> m_PlayerLocomotionActionsCallbackInterfaces = new List<IPlayerLocomotionActions>();
     private readonly InputAction m_PlayerLocomotion_Jump;
@@ -1360,7 +1371,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerLocomotion_ToggleCrouch;
     private readonly InputAction m_PlayerLocomotion_LockOn;
     /// <summary>
-    /// Provides access to input actions defined in input action map "PlayerLocomotion".
+    /// Provides access to input actions defined in input action map "Player Locomotion".
     /// </summary>
     public struct PlayerLocomotionActions
     {
@@ -1515,15 +1526,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerActions;
     private List<IPlayerActionsActions> m_PlayerActionsActionsCallbackInterfaces = new List<IPlayerActionsActions>();
     private readonly InputAction m_PlayerActions_Roll;
-    private readonly InputAction m_PlayerActions_LightAttack;
-    private readonly InputAction m_PlayerActions_HeavyAttack;
-    private readonly InputAction m_PlayerActions_ChargeAttack;
-    private readonly InputAction m_PlayerActions_Parry;
-    private readonly InputAction m_PlayerActions_Block;
     private readonly InputAction m_PlayerActions_Interact;
-    private readonly InputAction m_PlayerActions_SeekLeftLockOnTarget;
-    private readonly InputAction m_PlayerActions_SeekRightLockOnTarget;
-    private readonly InputAction m_PlayerActions_Skill;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player Actions".
     /// </summary>
@@ -1540,41 +1543,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Roll => m_Wrapper.m_PlayerActions_Roll;
         /// <summary>
-        /// Provides access to the underlying input action "PlayerActions/LightAttack".
-        /// </summary>
-        public InputAction @LightAttack => m_Wrapper.m_PlayerActions_LightAttack;
-        /// <summary>
-        /// Provides access to the underlying input action "PlayerActions/HeavyAttack".
-        /// </summary>
-        public InputAction @HeavyAttack => m_Wrapper.m_PlayerActions_HeavyAttack;
-        /// <summary>
-        /// Provides access to the underlying input action "PlayerActions/ChargeAttack".
-        /// </summary>
-        public InputAction @ChargeAttack => m_Wrapper.m_PlayerActions_ChargeAttack;
-        /// <summary>
-        /// Provides access to the underlying input action "PlayerActions/Parry".
-        /// </summary>
-        public InputAction @Parry => m_Wrapper.m_PlayerActions_Parry;
-        /// <summary>
-        /// Provides access to the underlying input action "PlayerActions/Block".
-        /// </summary>
-        public InputAction @Block => m_Wrapper.m_PlayerActions_Block;
-        /// <summary>
         /// Provides access to the underlying input action "PlayerActions/Interact".
         /// </summary>
         public InputAction @Interact => m_Wrapper.m_PlayerActions_Interact;
-        /// <summary>
-        /// Provides access to the underlying input action "PlayerActions/SeekLeftLockOnTarget".
-        /// </summary>
-        public InputAction @SeekLeftLockOnTarget => m_Wrapper.m_PlayerActions_SeekLeftLockOnTarget;
-        /// <summary>
-        /// Provides access to the underlying input action "PlayerActions/SeekRightLockOnTarget".
-        /// </summary>
-        public InputAction @SeekRightLockOnTarget => m_Wrapper.m_PlayerActions_SeekRightLockOnTarget;
-        /// <summary>
-        /// Provides access to the underlying input action "PlayerActions/Skill".
-        /// </summary>
-        public InputAction @Skill => m_Wrapper.m_PlayerActions_Skill;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1604,33 +1575,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Roll.started += instance.OnRoll;
             @Roll.performed += instance.OnRoll;
             @Roll.canceled += instance.OnRoll;
-            @LightAttack.started += instance.OnLightAttack;
-            @LightAttack.performed += instance.OnLightAttack;
-            @LightAttack.canceled += instance.OnLightAttack;
-            @HeavyAttack.started += instance.OnHeavyAttack;
-            @HeavyAttack.performed += instance.OnHeavyAttack;
-            @HeavyAttack.canceled += instance.OnHeavyAttack;
-            @ChargeAttack.started += instance.OnChargeAttack;
-            @ChargeAttack.performed += instance.OnChargeAttack;
-            @ChargeAttack.canceled += instance.OnChargeAttack;
-            @Parry.started += instance.OnParry;
-            @Parry.performed += instance.OnParry;
-            @Parry.canceled += instance.OnParry;
-            @Block.started += instance.OnBlock;
-            @Block.performed += instance.OnBlock;
-            @Block.canceled += instance.OnBlock;
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
-            @SeekLeftLockOnTarget.started += instance.OnSeekLeftLockOnTarget;
-            @SeekLeftLockOnTarget.performed += instance.OnSeekLeftLockOnTarget;
-            @SeekLeftLockOnTarget.canceled += instance.OnSeekLeftLockOnTarget;
-            @SeekRightLockOnTarget.started += instance.OnSeekRightLockOnTarget;
-            @SeekRightLockOnTarget.performed += instance.OnSeekRightLockOnTarget;
-            @SeekRightLockOnTarget.canceled += instance.OnSeekRightLockOnTarget;
-            @Skill.started += instance.OnSkill;
-            @Skill.performed += instance.OnSkill;
-            @Skill.canceled += instance.OnSkill;
         }
 
         /// <summary>
@@ -1645,33 +1592,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Roll.started -= instance.OnRoll;
             @Roll.performed -= instance.OnRoll;
             @Roll.canceled -= instance.OnRoll;
-            @LightAttack.started -= instance.OnLightAttack;
-            @LightAttack.performed -= instance.OnLightAttack;
-            @LightAttack.canceled -= instance.OnLightAttack;
-            @HeavyAttack.started -= instance.OnHeavyAttack;
-            @HeavyAttack.performed -= instance.OnHeavyAttack;
-            @HeavyAttack.canceled -= instance.OnHeavyAttack;
-            @ChargeAttack.started -= instance.OnChargeAttack;
-            @ChargeAttack.performed -= instance.OnChargeAttack;
-            @ChargeAttack.canceled -= instance.OnChargeAttack;
-            @Parry.started -= instance.OnParry;
-            @Parry.performed -= instance.OnParry;
-            @Parry.canceled -= instance.OnParry;
-            @Block.started -= instance.OnBlock;
-            @Block.performed -= instance.OnBlock;
-            @Block.canceled -= instance.OnBlock;
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
-            @SeekLeftLockOnTarget.started -= instance.OnSeekLeftLockOnTarget;
-            @SeekLeftLockOnTarget.performed -= instance.OnSeekLeftLockOnTarget;
-            @SeekLeftLockOnTarget.canceled -= instance.OnSeekLeftLockOnTarget;
-            @SeekRightLockOnTarget.started -= instance.OnSeekRightLockOnTarget;
-            @SeekRightLockOnTarget.performed -= instance.OnSeekRightLockOnTarget;
-            @SeekRightLockOnTarget.canceled -= instance.OnSeekRightLockOnTarget;
-            @Skill.started -= instance.OnSkill;
-            @Skill.performed -= instance.OnSkill;
-            @Skill.canceled -= instance.OnSkill;
         }
 
         /// <summary>
@@ -1705,6 +1628,179 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="PlayerActionsActions" /> instance referencing this action map.
     /// </summary>
     public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
+
+    // Player Combat
+    private readonly InputActionMap m_PlayerCombat;
+    private List<IPlayerCombatActions> m_PlayerCombatActionsCallbackInterfaces = new List<IPlayerCombatActions>();
+    private readonly InputAction m_PlayerCombat_LightAttack;
+    private readonly InputAction m_PlayerCombat_HeavyAttack;
+    private readonly InputAction m_PlayerCombat_ChargeAttack;
+    private readonly InputAction m_PlayerCombat_Parry;
+    private readonly InputAction m_PlayerCombat_Block;
+    private readonly InputAction m_PlayerCombat_SeekLeftLockOnTarget;
+    private readonly InputAction m_PlayerCombat_SeekRightLockOnTarget;
+    private readonly InputAction m_PlayerCombat_Skill;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Player Combat".
+    /// </summary>
+    public struct PlayerCombatActions
+    {
+        private @PlayerControls m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public PlayerCombatActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerCombat/LightAttack".
+        /// </summary>
+        public InputAction @LightAttack => m_Wrapper.m_PlayerCombat_LightAttack;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerCombat/HeavyAttack".
+        /// </summary>
+        public InputAction @HeavyAttack => m_Wrapper.m_PlayerCombat_HeavyAttack;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerCombat/ChargeAttack".
+        /// </summary>
+        public InputAction @ChargeAttack => m_Wrapper.m_PlayerCombat_ChargeAttack;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerCombat/Parry".
+        /// </summary>
+        public InputAction @Parry => m_Wrapper.m_PlayerCombat_Parry;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerCombat/Block".
+        /// </summary>
+        public InputAction @Block => m_Wrapper.m_PlayerCombat_Block;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerCombat/SeekLeftLockOnTarget".
+        /// </summary>
+        public InputAction @SeekLeftLockOnTarget => m_Wrapper.m_PlayerCombat_SeekLeftLockOnTarget;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerCombat/SeekRightLockOnTarget".
+        /// </summary>
+        public InputAction @SeekRightLockOnTarget => m_Wrapper.m_PlayerCombat_SeekRightLockOnTarget;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerCombat/Skill".
+        /// </summary>
+        public InputAction @Skill => m_Wrapper.m_PlayerCombat_Skill;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_PlayerCombat; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="PlayerCombatActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(PlayerCombatActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="PlayerCombatActions" />
+        public void AddCallbacks(IPlayerCombatActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerCombatActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerCombatActionsCallbackInterfaces.Add(instance);
+            @LightAttack.started += instance.OnLightAttack;
+            @LightAttack.performed += instance.OnLightAttack;
+            @LightAttack.canceled += instance.OnLightAttack;
+            @HeavyAttack.started += instance.OnHeavyAttack;
+            @HeavyAttack.performed += instance.OnHeavyAttack;
+            @HeavyAttack.canceled += instance.OnHeavyAttack;
+            @ChargeAttack.started += instance.OnChargeAttack;
+            @ChargeAttack.performed += instance.OnChargeAttack;
+            @ChargeAttack.canceled += instance.OnChargeAttack;
+            @Parry.started += instance.OnParry;
+            @Parry.performed += instance.OnParry;
+            @Parry.canceled += instance.OnParry;
+            @Block.started += instance.OnBlock;
+            @Block.performed += instance.OnBlock;
+            @Block.canceled += instance.OnBlock;
+            @SeekLeftLockOnTarget.started += instance.OnSeekLeftLockOnTarget;
+            @SeekLeftLockOnTarget.performed += instance.OnSeekLeftLockOnTarget;
+            @SeekLeftLockOnTarget.canceled += instance.OnSeekLeftLockOnTarget;
+            @SeekRightLockOnTarget.started += instance.OnSeekRightLockOnTarget;
+            @SeekRightLockOnTarget.performed += instance.OnSeekRightLockOnTarget;
+            @SeekRightLockOnTarget.canceled += instance.OnSeekRightLockOnTarget;
+            @Skill.started += instance.OnSkill;
+            @Skill.performed += instance.OnSkill;
+            @Skill.canceled += instance.OnSkill;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="PlayerCombatActions" />
+        private void UnregisterCallbacks(IPlayerCombatActions instance)
+        {
+            @LightAttack.started -= instance.OnLightAttack;
+            @LightAttack.performed -= instance.OnLightAttack;
+            @LightAttack.canceled -= instance.OnLightAttack;
+            @HeavyAttack.started -= instance.OnHeavyAttack;
+            @HeavyAttack.performed -= instance.OnHeavyAttack;
+            @HeavyAttack.canceled -= instance.OnHeavyAttack;
+            @ChargeAttack.started -= instance.OnChargeAttack;
+            @ChargeAttack.performed -= instance.OnChargeAttack;
+            @ChargeAttack.canceled -= instance.OnChargeAttack;
+            @Parry.started -= instance.OnParry;
+            @Parry.performed -= instance.OnParry;
+            @Parry.canceled -= instance.OnParry;
+            @Block.started -= instance.OnBlock;
+            @Block.performed -= instance.OnBlock;
+            @Block.canceled -= instance.OnBlock;
+            @SeekLeftLockOnTarget.started -= instance.OnSeekLeftLockOnTarget;
+            @SeekLeftLockOnTarget.performed -= instance.OnSeekLeftLockOnTarget;
+            @SeekLeftLockOnTarget.canceled -= instance.OnSeekLeftLockOnTarget;
+            @SeekRightLockOnTarget.started -= instance.OnSeekRightLockOnTarget;
+            @SeekRightLockOnTarget.performed -= instance.OnSeekRightLockOnTarget;
+            @SeekRightLockOnTarget.canceled -= instance.OnSeekRightLockOnTarget;
+            @Skill.started -= instance.OnSkill;
+            @Skill.performed -= instance.OnSkill;
+            @Skill.canceled -= instance.OnSkill;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerCombatActions.UnregisterCallbacks(IPlayerCombatActions)" />.
+        /// </summary>
+        /// <seealso cref="PlayerCombatActions.UnregisterCallbacks(IPlayerCombatActions)" />
+        public void RemoveCallbacks(IPlayerCombatActions instance)
+        {
+            if (m_Wrapper.m_PlayerCombatActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="PlayerCombatActions.AddCallbacks(IPlayerCombatActions)" />
+        /// <seealso cref="PlayerCombatActions.RemoveCallbacks(IPlayerCombatActions)" />
+        /// <seealso cref="PlayerCombatActions.UnregisterCallbacks(IPlayerCombatActions)" />
+        public void SetCallbacks(IPlayerCombatActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerCombatActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerCombatActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="PlayerCombatActions" /> instance referencing this action map.
+    /// </summary>
+    public PlayerCombatActions @PlayerCombat => new PlayerCombatActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -2174,7 +2270,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerLocomotion" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player Locomotion" which allows adding and removing callbacks.
     /// </summary>
     /// <seealso cref="PlayerLocomotionActions.AddCallbacks(IPlayerLocomotionActions)" />
     /// <seealso cref="PlayerLocomotionActions.RemoveCallbacks(IPlayerLocomotionActions)" />
@@ -2245,6 +2341,21 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRoll(InputAction.CallbackContext context);
         /// <summary>
+        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInteract(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player Combat" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="PlayerCombatActions.AddCallbacks(IPlayerCombatActions)" />
+    /// <seealso cref="PlayerCombatActions.RemoveCallbacks(IPlayerCombatActions)" />
+    public interface IPlayerCombatActions
+    {
+        /// <summary>
         /// Method invoked when associated input action "LightAttack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
@@ -2279,13 +2390,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnBlock(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnInteract(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Seek Left Lock On Target" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

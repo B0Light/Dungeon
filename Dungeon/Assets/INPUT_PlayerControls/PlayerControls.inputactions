@@ -3,7 +3,7 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "PlayerLocomotion",
+            "name": "Player Locomotion",
             "id": "c9f72a2d-c48a-4ab9-bd63-eb2a0a8a8441",
             "actions": [
                 {
@@ -318,81 +318,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LightAttack",
-                    "type": "Button",
-                    "id": "a2d80261-1cf6-4ddb-aa66-7f308aaab761",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "HeavyAttack",
-                    "type": "Button",
-                    "id": "ba7e9329-89da-4c00-8984-c557d3638e28",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ChargeAttack",
-                    "type": "PassThrough",
-                    "id": "4fd748c9-ade0-405d-bbd6-eac98fd55ee2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Hold(pressPoint=0.1)",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Parry",
-                    "type": "Button",
-                    "id": "52e5253e-634f-4ae1-bd98-7e1e048cb11f",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Block",
-                    "type": "PassThrough",
-                    "id": "a24a7fca-0821-44d3-b353-5a73e28307e1",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Hold(pressPoint=0.1)",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "e6d93fc2-63d9-4cf3-aaee-102be44d0488",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Seek Left Lock On Target",
-                    "type": "Button",
-                    "id": "cb11a37c-cf02-4c80-9c31-d96d052de949",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Seek Right Lock On Target",
-                    "type": "Button",
-                    "id": "4aca756c-4d68-4dd2-8571-e04a49581ecd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Skill",
-                    "type": "Button",
-                    "id": "a5c7de33-189a-40ec-925b-baac652fcab3",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -424,50 +352,6 @@
                 },
                 {
                     "name": "",
-                    "id": "fd90cfae-e134-443e-9a5a-21ee32dd5be7",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard",
-                    "action": "LightAttack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2aa05493-c5c1-4ffe-9888-92a00b6e8b21",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "LightAttack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7b8188d9-0efe-46d8-b7a8-68f98d904c67",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard",
-                    "action": "Seek Left Lock On Target",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ddb09491-dd46-4f65-be09-277bf835d951",
-                    "path": "<Keyboard>/t",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Seek Right Lock On Target",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "1b4063e2-4be6-492c-b2e1-a066d6805877",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -487,10 +371,134 @@
                     "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player Combat",
+            "id": "5926fd14-d4f0-4f41-8fbe-695cc93aea61",
+            "actions": [
+                {
+                    "name": "LightAttack",
+                    "type": "Button",
+                    "id": "531b28c7-e05a-480a-a1e4-093414907e18",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "HeavyAttack",
+                    "type": "Button",
+                    "id": "5d0ef7a6-a379-4e07-b582-b13736be54c3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChargeAttack",
+                    "type": "PassThrough",
+                    "id": "3836c6ce-1686-4f96-92eb-f80a21a933db",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(pressPoint=0.1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Parry",
+                    "type": "Button",
+                    "id": "7ce92213-07ed-471d-8889-3102e6fe1438",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Block",
+                    "type": "PassThrough",
+                    "id": "4a0f3070-cd5a-45a1-bb7e-6f7291ad5495",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(pressPoint=0.1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Seek Left Lock On Target",
+                    "type": "Button",
+                    "id": "43a8aff5-06f7-48ff-aac5-27ec0dd63f84",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Seek Right Lock On Target",
+                    "type": "Button",
+                    "id": "dea28e20-5bd3-4c36-a9d0-4016aa3d2854",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Skill",
+                    "type": "Button",
+                    "id": "a50b5b13-ebfe-4bcb-a553-add81c29536e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "32c72fa6-4f43-42cb-9ab8-4a5e434859f6",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "LightAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "b76da48f-4e55-4e16-ae71-c72c25ebe465",
+                    "id": "de02b845-d4f5-47c5-bf88-b860fdb8268a",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "LightAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e1ef1845-85e5-47f9-b5ef-dd17cdee11ca",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Seek Left Lock On Target",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c0dae8f7-1000-440e-94d5-75f3011f3725",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Seek Right Lock On Target",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "92ca14f0-f6d6-4835-a596-4d186df1b0ba",
                     "path": "<Mouse>/backButton",
                     "interactions": "",
                     "processors": "",
@@ -501,7 +509,7 @@
                 },
                 {
                     "name": "",
-                    "id": "f3d01fb8-7c55-4395-a233-5454dde41e7a",
+                    "id": "6ea7974d-83de-4375-93a4-51f2e4a62f23",
                     "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
@@ -512,7 +520,7 @@
                 },
                 {
                     "name": "",
-                    "id": "18ee6cc5-c27e-45c6-ac16-c171f6b7bd70",
+                    "id": "6e8b46b9-893b-4df9-aab5-94c422b6cbca",
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
@@ -523,7 +531,7 @@
                 },
                 {
                     "name": "",
-                    "id": "83b35623-e99f-4375-a130-a11080aeed6d",
+                    "id": "3c04a3a3-a394-44a8-b977-33ae5ab85849",
                     "path": "<Mouse>/backButton",
                     "interactions": "",
                     "processors": "",
@@ -534,7 +542,7 @@
                 },
                 {
                     "name": "",
-                    "id": "05a23bfa-d656-49fd-b819-df931f83daca",
+                    "id": "a9238981-5bd2-47bc-b0cb-c7c750e9a69d",
                     "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
@@ -545,7 +553,7 @@
                 },
                 {
                     "name": "",
-                    "id": "130005b5-2907-49c2-8ab0-33677ee6d601",
+                    "id": "dd9270e1-56e0-4e0c-9d6d-3ce2d667acb7",
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
@@ -556,7 +564,7 @@
                 },
                 {
                     "name": "",
-                    "id": "6215c133-9f72-4ad6-8c73-db53b6dc1207",
+                    "id": "e389129f-a71a-4678-9c0c-7848c8917949",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
@@ -567,7 +575,7 @@
                 },
                 {
                     "name": "",
-                    "id": "70e76182-51e0-4bd6-bbd6-b9be614842bf",
+                    "id": "eea1bd28-6c34-4554-b1a2-ba43a0eedc3d",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
@@ -578,7 +586,7 @@
                 },
                 {
                     "name": "",
-                    "id": "12d9e3f9-ee23-402d-828e-df95e35fafb6",
+                    "id": "b079ca13-c97f-4121-abfd-4829409ca849",
                     "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
@@ -589,7 +597,7 @@
                 },
                 {
                     "name": "",
-                    "id": "a5c0199a-d0c3-4378-b44b-90e02ddde7e6",
+                    "id": "cbe4d7a7-8b70-4c8b-928e-836461069790",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
@@ -600,7 +608,7 @@
                 },
                 {
                     "name": "",
-                    "id": "96158c2a-7814-49d5-922f-4429eff7b1e2",
+                    "id": "f3c767d5-427e-438d-bd95-84750774cc2e",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
@@ -611,7 +619,7 @@
                 },
                 {
                     "name": "",
-                    "id": "af909baa-906a-4697-8f11-ae5cd6332070",
+                    "id": "0ba4e004-f0c7-41df-8385-b4b2f1c7be85",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",

@@ -35,29 +35,29 @@ public class TakeBlockDamageEffect : TakeDamageEffect
     {
         if (character.isDead.Value || character.isGroggy.Value) return;
 
-        string damageAnimation;
+        int damageAnimationHash;
 
         if ((145 <= angleHitFrom && angleHitFrom <= 180) || (-145 >= angleHitFrom && angleHitFrom >= -180))
         {
             // front
-            damageAnimation = character.characterAnimatorManager.blockForward;
+            damageAnimationHash = character.characterAnimatorManager.blockForward;
         }
         else if (-144 <= angleHitFrom && angleHitFrom <= -45)
         {
             // left
-            damageAnimation = character.characterAnimatorManager.blockLeft;
+            damageAnimationHash = character.characterAnimatorManager.blockLeft;
         }
         else if (45 <= angleHitFrom && angleHitFrom <= 144)
         {
             // right
-            damageAnimation = character.characterAnimatorManager.blockRight;
+            damageAnimationHash = character.characterAnimatorManager.blockRight;
         }
         else
         {
             return;
         }
 
-        character.characterAnimatorManager.lastDamageAnimationPlayed = damageAnimation;
-        character.characterAnimatorManager.PlayTargetActionAnimation(damageAnimation, true);
+        character.characterAnimatorManager.lastDamageAnimationPlayed = damageAnimationHash;
+        character.characterAnimatorManager.PlayTargetActionAnimation(damageAnimationHash, true);
     }
 }

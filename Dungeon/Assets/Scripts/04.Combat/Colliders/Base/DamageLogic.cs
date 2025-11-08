@@ -22,6 +22,9 @@ public abstract class DamageLogic : MonoBehaviour
 
     [Header("Characters Damaged")]
     protected readonly List<CharacterManager> charactersDamaged = new List<CharacterManager>();
+    
+    private int _parryHash = Animator.StringToHash("parry");
+    private int _breakHash = Animator.StringToHash("Break");
 
     protected virtual void Awake()
     {
@@ -46,7 +49,7 @@ public abstract class DamageLogic : MonoBehaviour
         
         WorldCharacterEffectsManager.Instance.OnParrySuccess(contactPoint);
         damageTarget.characterVariableManager.SuccessParry(ownerCharacter); // 무적효과 
-        damageTarget.characterAnimatorManager.PlayTargetActionAnimation("Parry", true);
+        damageTarget.characterAnimatorManager.PlayTargetActionAnimation(_parryHash, true);
         damageTarget.characterSoundFXManager.PlaySoundFX(WorldSoundFXManager.Instance.ChooseParriedSfx());
         return true;
     }
@@ -60,7 +63,7 @@ public abstract class DamageLogic : MonoBehaviour
         // 블록할 액션포인트가 있는지 확인 -> 있음 
         if (damageTarget.characterStatsManager.UseActionPoint()) return true;
         // 없음 -> 블록 실패 
-        damageTarget.characterAnimatorManager.PlayTargetActionAnimation("Break", true);
+        damageTarget.characterAnimatorManager.PlayTargetActionAnimation(_breakHash, true);
         return false;
     }
 

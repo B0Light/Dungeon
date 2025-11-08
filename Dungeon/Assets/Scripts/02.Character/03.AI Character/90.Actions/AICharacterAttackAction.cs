@@ -3,8 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "A.I/Actions/Base/Attack")]
 public class AICharacterAttackAction : ScriptableObject
 {
-    [Header("Attack")] 
-    [SerializeField] private string attackAnimation;
+    private const string attackAnimation = "attack";
+    private int _attackHash = Animator.StringToHash(attackAnimation);
     
     [Header("Combo Action")] 
     public AICharacterAttackAction comboAction;
@@ -22,6 +22,6 @@ public class AICharacterAttackAction : ScriptableObject
     
     public void AttemptToPerformAction(AICharacterManager aiCharacter)
     {
-        aiCharacter.characterAnimatorManager.PlayTargetActionAnimation(attackAnimation, true);
+        aiCharacter.characterAnimatorManager.PlayTargetActionAnimation(_attackHash, true);
     }
 }

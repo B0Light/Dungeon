@@ -39,8 +39,9 @@ public class WeaponDataImporter : MonoBehaviour
             item.saleCost = Mathf.FloorToInt(item.purchaseCost * 0.9f);    
             item.height = int.Parse(values[6]);                             
             item.width = int.Parse(values[7]);                             
-            item.weight = int.Parse(values[8]);                            
-
+            item.weight = int.Parse(values[8]);     
+            item.attackSpeed = 1.0f;
+            
             /* Weapon Item Info */
             string animPath = $"Assets/Data/Load/WeaponAnimControllers/{category}.overrideController"; 
             item.weaponAnimator = AssetDatabase.LoadAssetAtPath<AnimatorOverrideController>(animPath);
@@ -58,8 +59,6 @@ public class WeaponDataImporter : MonoBehaviour
             ItemAbility ability2 = new ItemAbility(ItemEffect.MagicalAttack, int.Parse(values[10]));
             item.itemAbilities.Add(ability2);
             
-            item.poiseDamage = int.Parse(values[11]);                      
-            item.attackSpeed = float.TryParse(values[12], out var atkSpd) ? atkSpd : 1.0f;                     
             item.hAtkMod01 = 1.0f;
             item.hAtkMod02 = 1.2f;
             item.hAtkMod03 = 1.4f;

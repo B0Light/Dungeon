@@ -67,6 +67,14 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         _playerControls.PlayerLocomotion.Disable();
         _playerControls.PlayerActions.Disable();
     }
+    
+    private void OnDestroy()
+    {
+        if (InputHandlerManager.Instance != null)
+        {
+            InputHandlerManager.Instance.UnregisterAndDisableHandler(this);
+        }
+    }
 
     private void OnApplicationFocus(bool focus)
     {
@@ -186,11 +194,5 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
 
     #endregion
     
-    private void OnDestroy()
-    {
-        if (InputHandlerManager.Instance != null)
-        {
-            InputHandlerManager.Instance.UnregisterAndDisableHandler(this);
-        }
-    }
+    
 }

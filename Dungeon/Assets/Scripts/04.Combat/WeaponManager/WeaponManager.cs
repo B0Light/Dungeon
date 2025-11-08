@@ -4,7 +4,6 @@ public class WeaponManager : MonoBehaviour, IWeaponManager
 {
     private DamageCollider _damageCollider;
     
-    
     private void Awake()
     {
         _damageCollider = GetComponentInChildren<DamageCollider>();
