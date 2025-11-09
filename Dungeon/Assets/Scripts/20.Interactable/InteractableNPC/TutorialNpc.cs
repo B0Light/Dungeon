@@ -119,7 +119,7 @@ public class TutorialNpc : Interactable
         Debug.LogWarning("Reset Interaction");
         vCam.Priority = 0;
         
-        InputHandlerManager.Instance.SetControlActive(true);
+        InputHandlerManager.Instance.SetInputMode(InputMode.Exploration);
         
         base.ResetInteraction();
     }

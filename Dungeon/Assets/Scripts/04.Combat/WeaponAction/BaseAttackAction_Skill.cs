@@ -1,15 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Character Actions/Weapon Actions/skill")]
-public class BaseAttackAction_Skill : IWeaponItemAction
+[CreateAssetMenu(menuName = "Character Actions/Weapon Actions/10.skill_Empty")]
+public class BaseAttackAction_Skill : ScriptableObject, IWeaponItemAction
 {
     private readonly int _skill = Animator.StringToHash("skill");
     
     protected float cooldownTime = 60f; // 스킬 쿨타임 (초 단위)
     private bool _isCooldown = true; 
     
-    public void AttemptToPerformAction(PlayerManager player, EquipmentItemInfoWeapon usedWeaponItemInfo)
+    public void AttemptToPerformAction(PlayerManager player)
     {
         // check for stops
         if (player.playerVariableManager.stamina.Value <= 0)
@@ -18,17 +18,17 @@ public class BaseAttackAction_Skill : IWeaponItemAction
         if (!player.characterVariableManager.CLVM.isGrounded)
             return;
 
-        PerformSkill(player, usedWeaponItemInfo);
+        PerformSkill(player);
     }
     
-    private void PerformSkill(PlayerManager player, EquipmentItemInfoWeapon weaponInfo)
+    private void PerformSkill(PlayerManager player)
     {
         if (!(player.isPerformingAction || _isCooldown)) return;
         
         Debug.LogWarning("USE SKILL");
         PerformSkill(player);
         player.StartCoroutine(SetCoolTime());
-        player.playerAnimatorManager.PlayTargetAttackActionAnimation(weaponInfo, _skill);
+        player.playerAnimatorManager.PlayTargetAttackActionAnimation(_skill);
     }
     
     private IEnumerator SetCoolTime()
@@ -40,5 +40,5 @@ public class BaseAttackAction_Skill : IWeaponItemAction
         _isCooldown = false;
     }
 
-    protected virtual void PerformSkill(PlayerManager player){}
+    protected virtual void ActiveSkill(PlayerManager player) { }
 }

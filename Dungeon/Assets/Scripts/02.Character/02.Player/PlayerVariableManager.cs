@@ -139,7 +139,7 @@ public class PlayerVariableManager : CharacterVariableManager
         _playerManager.playerStatsManager.blockingMagicalAbsorption = newWeaponInfo.magicalDamageAbsorption;
         _playerManager.playerStatsManager.blockingStability = newWeaponInfo.stability;
         
-        GUIController.Instance.playerUIHudManager.playerUIWeaponSlotManager.SetRightWeaponQuickSlotIcon(newValue);
+        //GUIController.Instance.playerUIHudManager.playerUIWeaponSlotManager.SetRightWeaponQuickSlotIcon(newValue);
     }
 
     public void CurrentEquippedHelmetIDChange(int newValue)

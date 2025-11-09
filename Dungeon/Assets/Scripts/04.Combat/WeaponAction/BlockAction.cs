@@ -1,18 +1,20 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
-[CreateAssetMenu(menuName = "Character Actions/Weapon Actions/Block Action")]
-public class BlockAction : IWeaponItemAction
+[CreateAssetMenu(menuName = "Character Actions/Weapon Actions/03.Block Action")]
+public class BlockAction : ScriptableObject, IWeaponItemAction
 {
+    [SerializeField] private float staminaCost = 5f;
+    
     private readonly int _block = Animator.StringToHash("Block");
     
-    public void AttemptToPerformAction(PlayerManager player, EquipmentItemInfoWeapon usedWeaponItemInfo)
+    private bool SpendCost(PlayerManager player)
     {
-        if (player.playerVariableManager.stamina.Value < usedWeaponItemInfo.baseActionCost)
-        {
-            Debug.Log("No ActionPoint");
-            return;
-        }
+        return player.playerStatsManager.UseStamina(staminaCost);
+    }
+    
+    public void AttemptToPerformAction(PlayerManager player)
+    {
+        if(!SpendCost(player)) return;
         
         if (!player.characterVariableManager.CLVM.isGrounded)
         {
@@ -35,8 +37,7 @@ public class BlockAction : IWeaponItemAction
             return;
         }
         
-        player.playerAnimatorManager.PlayTargetAttackActionAnimation(
-            usedWeaponItemInfo, _block, canMove: true, canRotate: true);
+        player.playerAnimatorManager.PlayTargetActionAnimation(_block, canMove: true, canRotate: true);
         
     }
 }

@@ -1,39 +1,36 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class CharacterCombatManager : MonoBehaviour
 {
     protected CharacterManager character;
     
     [HideInInspector]  public int lastAttackAction;
-
-    [Header("Attack Target")]
     [HideInInspector]  public CharacterManager currentTarget;
-
-    [Header("Attack Type")]
     [HideInInspector]  public AttackType currentAttackType;
 
-    [Header("Lock On Transform")]
+    // Lock On
     [HideInInspector]  public Transform lockOnTransform;
 
     [HideInInspector]  public CharacterManager criticalDamagedCharacter;
     [HideInInspector]  public bool canCriticalAttack = false;
     
-    [Header("Attack Flag")]
+    // Action Flag
     [HideInInspector] public bool enableCanDoCombo = false;
-    [HideInInspector]  public bool canPerformRollingAttack = false;
-    [HideInInspector]  public bool canPerformBackStepAttack = false;
-    [HideInInspector]  public bool canPerformJumpingAttack = false;
+    [HideInInspector] public bool canPerformRollingAttack = false;
+    [HideInInspector] public bool canPerformBackStepAttack = false;
+    [HideInInspector] public bool canPerformJumpingAttack = false;
     
+    // WeaponAction
+    public BaseAttackAction_Light lightAttackAction;
+    public BaseAttackAction_Heavy heavyAttackAction;
+    public BaseAttackAction_Skill skillAction;
+    public BlockAction blockAction;
 
     protected virtual void Awake()
     {
         character = GetComponent<CharacterManager>();
     }
     
-    
-
     #region public Method
     
     public virtual void SetTarget(CharacterManager newTarget)

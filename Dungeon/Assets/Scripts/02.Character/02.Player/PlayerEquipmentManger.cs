@@ -13,10 +13,6 @@ public class PlayerEquipmentManger : CharacterEquipmentMangaer
     [SerializeField] private WeaponModelInstantiateSlot rightHandSlot;
     [SerializeField] private WeaponModelInstantiateSlot leftChainsawSlot;
     private IWeaponManager _weaponManager;
-    
-    [HideInInspector] public EquipmentItemInfoWeapon currentEquippedInfoWeapon;
-    [HideInInspector] public EquipmentItemInfoHelmet currentEquippedInfoHelmet;
-    [HideInInspector] public EquipmentItemInfoArmor currentEquippedInfoArmor;
 
     private GameObject _helmetModel;
     private GameObject _backpackModel;
@@ -100,23 +96,9 @@ public class PlayerEquipmentManger : CharacterEquipmentMangaer
     
     #region AnimationEvent
     
-    public void LoadChainsaw()
-    {
-        if(currentEquippedInfoWeapon == null) return;
-        
-        rightHandSlot.UnloadModel();
-        leftChainsawSlot.UnloadModel();
-        
-        _weaponModel = Instantiate(currentEquippedInfoWeapon.itemModel);
-        leftChainsawSlot.LoadModel(_weaponModel);
-        _weaponManager = _weaponModel.GetComponent<IWeaponManager>();
-        _weaponManager.SetWeapon(player, currentEquippedInfoWeapon);
-        player.playerAnimatorManager.UpdateAnimatorController(currentEquippedInfoWeapon.weaponAnimator);
-    }
-    
     public void OpenDamageCollider()
     {
-        _weaponManager.OpenDamageCollider();
+        _weaponManager?.OpenDamageCollider();
         player.playerSoundFXManager.PlaySoundFX(WorldSoundFXManager.Instance.ChooseSwordSwingSfx());
     }
 

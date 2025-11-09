@@ -329,7 +329,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         if (_playerManager.isPerformingAction) return false;
         if (!CLVM.isGrounded) return false;
 
-        return _playerManager.playerStatsManager.UseActionPoint(30);
+        return _playerManager.playerStatsManager.UseStamina(30);
     }
     
     private void PerformDodge()
@@ -399,7 +399,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         if (currentState == AnimationState.Jump && !_playerManager.playerVariableManager.perkDoubleJump.Value) return false;
         if (currentState == AnimationState.DoubleJump) return false;
 
-        return _playerManager.playerStatsManager.UseActionPoint();
+        return _playerManager.playerStatsManager.UseStamina();
     }
     
     protected override void EnterJumpState()

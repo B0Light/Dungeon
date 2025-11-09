@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Character Actions/Weapon Actions/light Attack Action")]
+[CreateAssetMenu(menuName = "Character Actions/Weapon Actions/01.light Attack Action")]
 public class BaseAttackAction_Light : ScriptableObject, IWeaponItemAction
 {
     [SerializeField] private float staminaCost = 10f;
@@ -16,7 +16,7 @@ public class BaseAttackAction_Light : ScriptableObject, IWeaponItemAction
     
     private readonly int _criticalAttack = Animator.StringToHash("CriticalAttack");
     
-    public void AttemptToPerformAction(PlayerManager player, EquipmentItemInfoWeapon weaponInfo)
+    public void AttemptToPerformAction(PlayerManager player)
     {
         if (!player.characterVariableManager.CLVM.isGrounded)
         { 
@@ -25,7 +25,7 @@ public class BaseAttackAction_Light : ScriptableObject, IWeaponItemAction
                 player.playerVariableManager.perkJumpAttack.Value)
             {
                 player.characterVariableManager.isAttacking.Value = true;
-                PerformJumpingAttack(player, weaponInfo);
+                PerformJumpingAttack(player);
             }
         }
         else
@@ -34,36 +34,34 @@ public class BaseAttackAction_Light : ScriptableObject, IWeaponItemAction
 
             if (player.characterCombatManager.canCriticalAttack)
             {
-                PerformCriticalAttack(player, weaponInfo);
+                PerformCriticalAttack(player);
                 return;
             }
             
             if (player.characterCombatManager.canPerformRollingAttack)
             {
-                PerformRollingAttack(player, weaponInfo);
+                PerformRollingAttack(player);
                 return;
             }
             
             if (player.characterVariableManager.CLVM.isSprinting)
             {
-                PerformRunningAttack(player, weaponInfo);
+                PerformRunningAttack(player);
                 return;
             }
             
             if (player.characterCombatManager.canPerformBackStepAttack &&
                 player.playerVariableManager.perkBackStepAttack.Value)
             {
-                PerformBackStepAttack(player, weaponInfo);
+                PerformBackStepAttack(player);
                 return;
             }
     
-            PerformLightAttack(player, weaponInfo);
+            PerformLightAttack(player);
         }
-
-        
     }
-
-    protected virtual void PerformLightAttack(PlayerManager player, EquipmentItemInfoWeapon weaponInfo)
+    
+    protected virtual void PerformLightAttack(PlayerManager player)
     {
         if(player.isPerformingAction)
         {
@@ -72,20 +70,20 @@ public class BaseAttackAction_Light : ScriptableObject, IWeaponItemAction
             player.playerCombatManager.enableCanDoCombo = false;
 
             if(player.characterCombatManager.lastAttackAction == _lightAttack01)
-                player.playerAnimatorManager.PlayTargetAttackActionAnimation(weaponInfo, _lightAttack01);
+                player.playerAnimatorManager.PlayTargetAttackActionAnimation(_lightAttack02, staminaCost);
             
             else if(player.characterCombatManager.lastAttackAction == _lightAttack02 &&
                     player.playerVariableManager.perkThirdCombo.Value)
-                player.playerAnimatorManager.PlayTargetAttackActionAnimation(weaponInfo, _lightAttack03);
+                player.playerAnimatorManager.PlayTargetAttackActionAnimation(_lightAttack03, staminaCost);
             
             else
-                player.playerAnimatorManager.PlayTargetAttackActionAnimation(weaponInfo, _lightAttack01);
+                player.playerAnimatorManager.PlayTargetAttackActionAnimation(_lightAttack01, staminaCost);
         }
         else
-            player.playerAnimatorManager.PlayTargetAttackActionAnimation(weaponInfo, _lightAttack01);
+            player.playerAnimatorManager.PlayTargetAttackActionAnimation(_lightAttack01, staminaCost);
     }
 
-    protected virtual void PerformCriticalAttack(PlayerManager player, EquipmentItemInfoWeapon weaponInfo)
+    protected virtual void PerformCriticalAttack(PlayerManager player)
     {
         player.playerCombatManager.canCriticalAttack = false;
         var victimCharacter = player.playerCombatManager.criticalDamagedCharacter;
@@ -99,31 +97,31 @@ public class BaseAttackAction_Light : ScriptableObject, IWeaponItemAction
         int victimAnimation = isFront ? victimCharacter.characterAnimatorManager.criticalFrontVictim 
             : victimCharacter.characterAnimatorManager.criticalBackVictim;
 
-        player.playerAnimatorManager.PlayTargetAttackActionAnimation(weaponInfo, _criticalAttack);
-        victimCharacter.characterAnimatorManager.PlayTargetActionAnimation(victimAnimation, true);
+        player.playerAnimatorManager.PlayTargetAttackActionAnimation(_criticalAttack);
+        victimCharacter.characterAnimatorManager.PlayTargetAttackActionAnimation(victimAnimation, 0);
     }
     
-    protected virtual void PerformRunningAttack(PlayerManager player, EquipmentItemInfoWeapon weaponInfo)
+    protected virtual void PerformRunningAttack(PlayerManager player)
     {
-        player.playerAnimatorManager.PlayTargetAttackActionAnimation(weaponInfo, _runningAttack);
+        player.playerAnimatorManager.PlayTargetAttackActionAnimation(_runningAttack, staminaCost);
     }
     
-    protected virtual void PerformRollingAttack(PlayerManager player, EquipmentItemInfoWeapon weaponInfo)
+    protected virtual void PerformRollingAttack(PlayerManager player)
     {
         player.playerCombatManager.canPerformRollingAttack = false;
         player.playerVariableManager.isInvulnerable.Value = false;
-        player.playerAnimatorManager.PlayTargetAttackActionAnimation(weaponInfo, _rollingAttack);
+        player.playerAnimatorManager.PlayTargetAttackActionAnimation(_rollingAttack, staminaCost);
     }
 
-    protected virtual void PerformBackStepAttack(PlayerManager player, EquipmentItemInfoWeapon weaponInfo)
+    protected virtual void PerformBackStepAttack(PlayerManager player)
     {
         player.playerCombatManager.canPerformBackStepAttack = false;
-        player.playerAnimatorManager.PlayTargetAttackActionAnimation(weaponInfo, _backStepAttack);
+        player.playerAnimatorManager.PlayTargetAttackActionAnimation(_backStepAttack, staminaCost);
     }
     
-    protected virtual void PerformJumpingAttack(PlayerManager player, EquipmentItemInfoWeapon weaponInfo)
+    protected virtual void PerformJumpingAttack(PlayerManager player)
     {
         player.playerCombatManager.canPerformJumpingAttack = false;
-        player.playerAnimatorManager.PlayTargetAttackActionAnimation(weaponInfo, _jumpingAttack);
+        player.playerAnimatorManager.PlayTargetAttackActionAnimation(_jumpingAttack, staminaCost*2);
     }
 }

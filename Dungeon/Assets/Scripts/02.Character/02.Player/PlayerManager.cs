@@ -130,7 +130,7 @@ public class PlayerManager : CharacterManager
     {
         GUIController.Instance.playerUIPopUpManager.SendYouDiedPopUp();
         
-        InputHandlerManager.Instance.SetControlActive(false);
+        InputHandlerManager.Instance.SetInputMode(InputMode.OpenUI);
         
         yield return new WaitForFixedUpdate();
         characterAnimatorManager.PlayDeadAnimation();
@@ -142,7 +142,7 @@ public class PlayerManager : CharacterManager
         
          currentGameData.balance = WorldPlayerInventory.Instance.balance.Value;
 
-         currentGameData.curHealthPercent = (float)playerVariableManager.health.Value / playerVariableManager.health.MaxValue;
+         currentGameData.curHealthPercent = playerVariableManager.health.Value / playerVariableManager.health.MaxValue;
          
          currentGameData.secondsPlayed = WorldTimeManager.Instance.GetPlayedDate(); 
          

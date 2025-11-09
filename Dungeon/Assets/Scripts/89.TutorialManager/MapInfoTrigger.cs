@@ -33,7 +33,7 @@ public class MapInfoTrigger : MonoBehaviour
    private IEnumerator PlayTutorialSequence()
    {
       // 플레이어 제어 비활성화
-      InputHandlerManager.Instance.SetControlActive(false);
+      InputHandlerManager.Instance.SetInputMode(InputMode.OpenUI);
       GUIController.Instance.playerUIHudManager.DeactivateHUD();
       vCam.SetActive(true);
         
@@ -52,7 +52,7 @@ public class MapInfoTrigger : MonoBehaviour
       vCam.SetActive(false);
             
       // 플레이어 제어 다시 활성화
-      InputHandlerManager.Instance.SetControlActive(true);
+      InputHandlerManager.Instance.SetInputMode(InputMode.Exploration);
       GUIController.Instance.playerUIHudManager.ActiveHUD();
    }
 }

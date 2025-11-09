@@ -47,27 +47,34 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
     public void SetInputMode(InputMode mode)
     {
         var movementHandler = FindAnyObjectByType<InputHandler_Locomotion>();
-        // combat build
+        var combatHandler = FindAnyObjectByType<InputHandler_Combat>();
         var uiHandler = FindAnyObjectByType<InputHandler_UI>();
 
         switch (mode)
         {
             case InputMode.Exploration:
+                SetControlActive(true);
                 RegisterAndEnableHandler(movementHandler); 
+                RegisterAndEnableHandler(combatHandler); 
                 RegisterAndEnableHandler(uiHandler);
                 break;
             case InputMode.CombatBuild:
+                SetControlActive(false);
                 UnregisterAndDisableHandler(movementHandler); 
+                UnregisterAndDisableHandler(combatHandler); 
                 RegisterAndEnableHandler(uiHandler);
                 break;
             case InputMode.OpenUI:
+                SetControlActive(false);
+                ResetLocomotion();
                 UnregisterAndDisableHandler(movementHandler); 
+                UnregisterAndDisableHandler(combatHandler); 
                 RegisterAndEnableHandler(uiHandler);
                 break;
         }
     }
     
-    public void SetControlActive(bool isActive)
+    private void SetControlActive(bool isActive)
     {
         Debug.Log($"SetControlActive : {isActive}");
         if (isActive)
@@ -86,5 +93,10 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
             if(_playerManager != null)
                 _playerManager.playerVariableManager.canControl.Value = false;
         }
+    }
+
+    private void ResetLocomotion()
+    {
+        _playerManager.playerVariableManager.CLVM.moveDirection = Vector3.zero;
     }
 }

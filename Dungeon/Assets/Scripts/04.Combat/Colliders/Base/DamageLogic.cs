@@ -61,7 +61,7 @@ public abstract class DamageLogic : MonoBehaviour
         // 블록이 가능한지 확인
         if (_dotValueFromAttackToDamageTarget < 0.5f) return false;
         // 블록할 액션포인트가 있는지 확인 -> 있음 
-        if (damageTarget.characterStatsManager.UseActionPoint()) return true;
+        if (damageTarget.characterStatsManager.UseStamina()) return true;
         // 없음 -> 블록 실패 
         damageTarget.characterAnimatorManager.PlayTargetActionAnimation(_breakHash, true);
         return false;

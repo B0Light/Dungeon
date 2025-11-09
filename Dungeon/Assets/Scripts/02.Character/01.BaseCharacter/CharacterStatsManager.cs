@@ -89,7 +89,7 @@ public class CharacterStatsManager : MonoBehaviour
         }
     }
     
-    public bool UseActionPoint(float value = 10)
+    public bool UseStamina(float value = 10)
     {
         if (character.characterVariableManager.stamina.Value < value) return false;
         

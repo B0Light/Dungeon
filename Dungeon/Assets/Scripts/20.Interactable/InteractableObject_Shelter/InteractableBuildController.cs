@@ -14,7 +14,7 @@ public class InteractableBuildController : Interactable
     private void EnterController()
     {
         GUIController.Instance.ToggleMainGUI(false);
-        InputHandlerManager.Instance.SetControlActive(false);
+        InputHandlerManager.Instance.SetInputMode(InputMode.OpenUI);
         BuildingManager.Instance.ToggleMainBuildHUD(true, this);
     }
 }

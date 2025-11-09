@@ -17,7 +17,6 @@ public class WeaponManager : MonoBehaviour, IWeaponManager
     
     public void OpenDamageCollider()
     {
-        GUIController.Instance.playerUIHudManager.playerUIWeaponSlotManager.GlowWeaponSlot();
         _damageCollider.EnableDamageCollider();
     }
     

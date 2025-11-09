@@ -45,7 +45,7 @@ public class CharacterAnimatorManager : MonoBehaviour
 
     public void PlayTargetActionAnimation(
         int targetAnimation,
-        bool isPerformingAction, 
+        bool isPerformingAction = true, 
         bool rootMotion = true,
         bool canRotate = false,
         bool canMove = false)
@@ -58,16 +58,19 @@ public class CharacterAnimatorManager : MonoBehaviour
         characterManager.characterLocomotionManager.canMove = canMove;
         characterManager.animator.CrossFade(targetAnimation, 0.2f);
     }
-
+    
     public void PlayTargetAttackActionAnimation(
-        EquipmentItemInfoWeapon equipmentItemInfoWeapon,
         int targetAnimation,
+        float actionPoint = 1f,
+        bool isPerformingAction = true,
         bool rootMotion = true,
         bool canRotate = false,
         bool canMove = false)
     {
-        UpdateAnimatorController(equipmentItemInfoWeapon.weaponAnimator);
-        PlayTargetActionAnimation(targetAnimation, rootMotion, canRotate, canMove);
+        if(!characterManager.isPerformingAction)
+            if(!characterManager.characterStatsManager.UseStamina(actionPoint)) return;
+        characterManager.characterCombatManager.lastAttackAction = targetAnimation;
+        PlayTargetActionAnimation(targetAnimation, isPerformingAction, rootMotion, canRotate, canMove);
     }
 
     public void UpdateAnimatorController(AnimatorOverrideController weaponController)

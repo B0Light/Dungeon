@@ -561,7 +561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &25318859137418043
 Transform:
   m_ObjectHideFlags: 0
@@ -1992,7 +1992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1359801182763059319
 Transform:
   m_ObjectHideFlags: 0
@@ -2481,8 +2481,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CLVM: {fileID: 0}
-  isActive:
-    _value: 1
   position:
     _value: {x: 0, y: 0, z: 0}
   rotation:
@@ -2501,11 +2499,17 @@ MonoBehaviour:
     _value: 100
     _maxValue: 100
     _minValue: 0
+  physicalDamageMultiplier:
+    _value: 1
+  magicalDamageMultiplier:
+    _value: 1
   isTrailActive:
     _value: 0
-  initialMaxHealth: 100
-  initialActionPoint: 4
   health:
+    _value: 0
+    _maxValue: 0
+    _minValue: 0
+  stamina:
     _value: 0
     _maxValue: 0
     _minValue: 0
@@ -2569,8 +2573,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6882be1d36c1dd40b7a172f6a7db4af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentItemInfoWeapon: {fileID: 0}
-  currentAttackDir: 0
+  lastAttackAction: 0
+  currentTarget: {fileID: 0}
+  currentAttackType: 0
+  lockOnTransform: {fileID: 0}
+  criticalDamagedCharacter: {fileID: 0}
+  canCriticalAttack: 0
+  enableCanDoCombo: 0
+  canPerformRollingAttack: 0
+  canPerformBackStepAttack: 0
+  canPerformJumpingAttack: 0
+  lightAttackAction: {fileID: 11400000, guid: 1520c3383a5a6984baacf67dd2fb008f, type: 2}
+  heavyAttackAction: {fileID: 11400000, guid: 0f6a9a213f386304ea005a7570294442, type: 2}
+  skillAction: {fileID: 11400000, guid: 784796809306b47479e120ddd97107cf, type: 2}
+  blockAction: {fileID: 11400000, guid: e1097da3427c330498a15234ce6ccf3a, type: 2}
 --- !u!114 &8575953409261725909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2815,6 +2831,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c02e9676d95b8404fa5f510c2ef27c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentEquippedInfoWeapon: {fileID: 0}
+  currentEquippedInfoHelmet: {fileID: 0}
+  currentEquippedInfoArmor: {fileID: 0}
   armorList:
   - {fileID: 5511238956570077224}
   - {fileID: 4941978403270987362}
@@ -2825,9 +2844,6 @@ MonoBehaviour:
   backpackSlot: {fileID: 372237500208844289}
   rightHandSlot: {fileID: 6671320646019709271}
   leftChainsawSlot: {fileID: 6106439366164552304}
-  currentEquippedInfoWeapon: {fileID: 0}
-  currentEquippedInfoHelmet: {fileID: 0}
-  currentEquippedInfoArmor: {fileID: 0}
 --- !u!114 &6140801341384512041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2841,11 +2857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   applyRootMotion: 0
-  lastDamageAnimationPlayed: 
-  hitForward: hit_Forward_Medium_01
-  hitBackward: hit_Backward_Medium_01
-  hitLeft: hit_Left_Medium_01
-  hitRight: hit_Right_Medium_01
+  lastDamageAnimationPlayed: 0
 --- !u!114 &6792154591259707287
 MonoBehaviour:
   m_ObjectHideFlags: 0

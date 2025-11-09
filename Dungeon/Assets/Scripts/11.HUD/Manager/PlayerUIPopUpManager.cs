@@ -46,7 +46,7 @@ public class PlayerUIPopUpManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
     
-        InputHandlerManager.Instance.SetControlActive(false);
+        InputHandlerManager.Instance.SetInputMode(InputMode.OpenUI);
         youDiedPopUpGameObject.SetActive(true);
         backToTitleButton.onClick.RemoveAllListeners();
         backToTitleButton.onClick.AddListener(CloseYouDiedPopUp);
@@ -59,7 +59,7 @@ public class PlayerUIPopUpManager : MonoBehaviour
     public void CloseYouDiedPopUp()
     {
         youDiedPopUpGameObject.SetActive(false);
-        InputHandlerManager.Instance.SetControlActive(true);
+        InputHandlerManager.Instance.SetInputMode(InputMode.Exploration);
     }
     
     public void CloseAllPopUpWindows()

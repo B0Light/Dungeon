@@ -39,6 +39,7 @@ public class DamageCollider : DamageLogic
 
     public void SetWeaponDamage(CharacterManager owner, EquipmentItemInfoWeapon equipmentItemInfoWeapon)
     {
+        ownerCharacter = owner;
         physicalDamage = equipmentItemInfoWeapon.physicalDamage * owner.characterVariableManager.physicalDamageMultiplier.Value;
         magicalDamage = equipmentItemInfoWeapon.magicalDamage * owner.characterVariableManager.magicalDamageMultiplier.Value;
     }

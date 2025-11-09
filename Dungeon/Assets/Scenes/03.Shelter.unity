@@ -14117,6 +14117,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3986854940711249001, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1251337981}
+    - targetCorrespondingSourceObject: {fileID: 3986854940711249001, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1251337982}
   m_SourcePrefab: {fileID: 100100000, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
 --- !u!1 &1251337979 stripped
 GameObject:
@@ -14148,6 +14151,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputHandler_Locomotion
   movementInputDuration: 0
+--- !u!114 &1251337982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251337979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5dab819a54bb0946bdfde93104556af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputHandler_Combat
 --- !u!1 &1255069706
 GameObject:
   m_ObjectHideFlags: 0
