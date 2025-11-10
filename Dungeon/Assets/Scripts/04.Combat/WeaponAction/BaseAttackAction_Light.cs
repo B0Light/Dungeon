@@ -122,6 +122,6 @@ public class BaseAttackAction_Light : ScriptableObject, IWeaponItemAction
     protected virtual void PerformJumpingAttack(PlayerManager player)
     {
         player.playerCombatManager.canPerformJumpingAttack = false;
-        player.playerAnimatorManager.PlayTargetAttackActionAnimation(_jumpingAttack, staminaCost*2);
+        player.playerAnimatorManager.PlayTargetAttackActionAnimation(_jumpingAttack, staminaCost*2, true, true, false, true);
     }
 }

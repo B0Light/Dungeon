@@ -75,33 +75,33 @@ public class CharacterCombatManager : MonoBehaviour
         enableCanDoCombo = false;
     }
     
-    public void EnableCanDoRollingAttack()
+    public void EnableRollingAttack()
     {
         canPerformRollingAttack = true;
     }
     
-    public void DisableCanDoRollingAttack()
+    public void DisableRollingAttack()
     {
         canPerformRollingAttack = false;
     }
     
-    public void EnableCanDoBeckStepAttack()
+    public void EnableBackStepAttack()
     {
         canPerformBackStepAttack = true;
     }
     
-    public void DisableCanDoBeckStepAttack()
+    public void DisableBackStepAttack()
     {
         canPerformBackStepAttack = false;
     }
     
-    public void EnableCanDoJumpingAttack()
+    public void EnableJumpingAttack()
     {
         Debug.Log("Can Jump Attack");
         canPerformJumpingAttack = true;
     }
     
-    public void DisableCanDoJumpingAttack()
+    public void DisableJumpingAttack()
     {
         canPerformJumpingAttack = false;
     }

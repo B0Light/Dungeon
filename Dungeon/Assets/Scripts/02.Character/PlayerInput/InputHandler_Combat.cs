@@ -26,11 +26,11 @@ public class InputHandler_Combat : MonoBehaviour, InputHandlerManager.IInputHand
         _playerControls.PlayerCombat.LightAttack.performed += OnLightAttack;
         _playerControls.PlayerCombat.HeavyAttack.performed += OnHeavyAttack;
         _playerControls.PlayerCombat.ChargeAttack.performed += OnChargeAttack;
-        _playerControls.PlayerCombat.ChargeAttack.canceled += OnChargeAttack;
+        _playerControls.PlayerCombat.ChargeAttack.canceled += CloseChargeAttack;
 
         _playerControls.PlayerCombat.Parry.performed += OnParry;
         _playerControls.PlayerCombat.Block.performed += OnBlock;
-        _playerControls.PlayerCombat.Block.canceled += OnBlock;
+        _playerControls.PlayerCombat.Block.canceled += CloseBlock;
         _playerControls.PlayerCombat.Skill.performed += OnSkill;
     }
 
@@ -56,11 +56,19 @@ public class InputHandler_Combat : MonoBehaviour, InputHandlerManager.IInputHand
     private void OnHeavyAttack(InputAction.CallbackContext context)
     {
         _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.HeavyAttack01);
+        _playerManager.playerVariableManager.isCharging.Value = false;
     }
     
     private void OnChargeAttack(InputAction.CallbackContext context)
     {
         _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.ChargeAttack01);
+        _playerManager.playerVariableManager.isCharging.Value = true;
+    }
+    
+    private void CloseChargeAttack(InputAction.CallbackContext context)
+    {
+        _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.ChargeAttack01);
+        _playerManager.playerVariableManager.isCharging.Value = false;
     }
     
     private void OnParry(InputAction.CallbackContext context)
@@ -71,6 +79,12 @@ public class InputHandler_Combat : MonoBehaviour, InputHandlerManager.IInputHand
     private void OnBlock(InputAction.CallbackContext context)
     {
         _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.Block);
+        _playerManager.playerVariableManager.isBlock.Value = true;
+    }
+
+    private void CloseBlock(InputAction.CallbackContext context)
+    {
+        _playerManager.playerVariableManager.isBlock.Value = false;
     }
     
     private void OnSkill(InputAction.CallbackContext context)

@@ -13,10 +13,10 @@ public class ResetActionFlag : StateMachineBehaviour
 
         // THIS IS CALLED WHEN AN ACTION ENDS, AND THE STATE RETURNS TO "EMPTY"
         _character.isPerformingAction = false;
+        
         _character.characterAnimatorManager.applyRootMotion = true;
         _character.characterLocomotionManager.canRotate = true;
         _character.characterLocomotionManager.canMove = true;
-        //character.characterLocomotionManager.isRolling = false;
         
         _character.characterEquipmentManager.CloseDamageCollider();
         
@@ -26,6 +26,7 @@ public class ResetActionFlag : StateMachineBehaviour
         _character.characterVariableManager.isBlock.Value = false;
         _character.characterVariableManager.isParring.Value = false;
         _character.characterVariableManager.isTrailActive.Value = false;
+        _character.characterCombatManager.enableCanDoCombo = false;
 
         
         

@@ -52,6 +52,7 @@ public class MeshTrail : MonoBehaviour
     {
         GameObject trail = new GameObject("TrailObject");
         trail.SetActive(false);
+        trail.tag = "Ignore_CamCollision";
         trail.layer = LayerMask.NameToLayer("Character");
         trail.transform.SetParent(_poolParent);
         
