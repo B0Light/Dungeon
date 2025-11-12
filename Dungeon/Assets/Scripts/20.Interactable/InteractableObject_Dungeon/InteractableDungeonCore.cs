@@ -1,5 +1,6 @@
+using UnityEngine;
 
-public class InteractableBuildController : Interactable
+public class InteractableDungeonCore : Interactable
 {
     public override void Interact(PlayerManager player)
     {

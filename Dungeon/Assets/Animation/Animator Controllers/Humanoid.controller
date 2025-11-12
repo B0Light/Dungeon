@@ -3950,7 +3950,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OH_Jumping_Attack_01_Start
+  m_Name: JumpingAttack
   m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
@@ -6324,7 +6324,7 @@ AnimatorStateMachine:
     m_Position: {x: 660, y: 80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -933920376731176556}
-    m_Position: {x: 670, y: -20, z: 0}
+    m_Position: {x: 660, y: -20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5247352469769926447}
     m_Position: {x: 450, y: 30, z: 0}

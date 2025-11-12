@@ -21,14 +21,6 @@ public class SubPerkNode : PerkNode, IPointerEnterHandler, IPointerExitHandler, 
             {
                 perkGUIManager.ActiveEffect();
             }
-            
-        }
-        else if (eventData.button == PointerEventData.InputButton.Right)
-        {
-            if (perk.RefundPerk())
-            {
-                perkGUIManager.RefundEffect();
-            }
         }
     }
 

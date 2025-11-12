@@ -37,7 +37,6 @@ public class HUDGridBuildingCostController : MonoBehaviour
         DeleteAllChildren(costItemSlot);
         if (item == null) return;
         
-        
         foreach (var costItemPair in item.GetCostDict())
         {
             GameObject spawnedCostItem = Instantiate(costPrefab, costItemSlot);
@@ -48,6 +47,7 @@ public class HUDGridBuildingCostController : MonoBehaviour
     
     private void DeleteAllChildren(Transform parentTransform)
     {
+        if(parentTransform == null) Debug.LogWarning("[HUDGridBuildingCostController] : No Parent Transform");
         for (int i = parentTransform.childCount - 1; i >= 0; i--)
         {
             Transform child = parentTransform.GetChild(i);

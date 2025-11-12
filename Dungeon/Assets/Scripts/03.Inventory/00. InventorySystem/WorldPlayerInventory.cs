@@ -186,7 +186,7 @@ public class WorldPlayerInventory : Singleton<WorldPlayerInventory>
 
         int remainingToRemove = requiredCount;
 
-        int removedFromShare = share.RemoveItemById(itemId, remainingToRemove);
+        int removedFromShare = share.RemoveItemsById(itemId, remainingToRemove);
         if (removedFromShare > 0)
         {
             if (!transaction.ContainsKey(share))
@@ -203,7 +203,7 @@ public class WorldPlayerInventory : Singleton<WorldPlayerInventory>
         // 인벤토리에서 제거
         if (remainingToRemove > 0)
         {
-            int removedFromInventory = inventory.RemoveItemById(itemId, remainingToRemove);
+            int removedFromInventory = inventory.RemoveItemsById(itemId, remainingToRemove);
             if (removedFromInventory > 0)
             {
                 if (!transaction.ContainsKey(inventory))
@@ -221,7 +221,7 @@ public class WorldPlayerInventory : Singleton<WorldPlayerInventory>
         // 백팩에서 제거
         if (remainingToRemove > 0)
         {
-            int removedFromBackpack = backpack.RemoveItemById(itemId, remainingToRemove);
+            int removedFromBackpack = backpack.RemoveItemsById(itemId, remainingToRemove);
             if (removedFromBackpack > 0)
             {
                 if (!transaction.ContainsKey(backpack))

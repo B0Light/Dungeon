@@ -116,6 +116,6 @@ public class PerkGUIManager : GUIComponent
         InteractablePerkController perkController = _interactableObj as InteractablePerkController;
         if(!perkController) return;
         
-        perkController.wireframeShader.ShowWireFrameMat(isAcquire);
+        //perkController.wireframeShader.ShowWireFrameMat(isAcquire);
     }
 }

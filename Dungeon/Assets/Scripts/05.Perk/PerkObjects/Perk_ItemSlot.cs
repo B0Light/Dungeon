@@ -21,14 +21,6 @@ public class Perk_ItemSlot : Perk
         return true;
     }
 
-    public override bool RefundPerk()
-    {
-        if (!base.RefundPerk()) return false;
-        Vector2Int originGridSize = _targetInventory.GetCurItemGridSize();
-        _targetInventory.UpdateItemGridSize(originGridSize - extraGridSize);
-        return true;
-    }
-
     private void SetTargetInventory()
     {
         int targetValue = perkId / 100;

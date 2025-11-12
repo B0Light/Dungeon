@@ -26,7 +26,7 @@ public class HUDGridBuildingUnit : MonoBehaviour
     {
         buildingIcon.sprite = exitIcon;
         selectNumText.text = "X";
-        selectButton.onClick.AddListener(BuildingManager.Instance.RefreshCategory);
+        selectButton.onClick.AddListener(ShelterBuildingManager.Instance.RefreshCategory);
     }
     
 }

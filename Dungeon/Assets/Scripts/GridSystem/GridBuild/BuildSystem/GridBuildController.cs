@@ -232,7 +232,7 @@ public class GridBuildController : MonoBehaviour
     
         if (placedObject is RevenueFacilityTile attractionTile)
         {
-            BuildingManager.Instance.OpenBuildPopUpHUD(attractionTile);
+            ShelterBuildingManager.Instance.OpenBuildPopUpHUD(attractionTile);
         }
     }
     
@@ -263,7 +263,7 @@ public class GridBuildController : MonoBehaviour
         gridBuildSystem.SelectToBuild(null);
 
         _isDeleteMode.Value = !_isDeleteMode.Value;
-        _isDeleteMode.Value = (BuildingManager.Instance.shelterManager.IsVisitorInShelter() == false && _isDeleteMode.Value);
+        _isDeleteMode.Value = (ShelterBuildingManager.Instance.shelterManager.IsVisitorInShelter() == false && _isDeleteMode.Value);
     }
     
     public void SetControllerActive(bool value) => _isActive = value;

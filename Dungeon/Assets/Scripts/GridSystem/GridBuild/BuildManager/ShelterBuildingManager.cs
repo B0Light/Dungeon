@@ -1,16 +1,14 @@
 using System;
-using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildingManager : MonoBehaviour
+public class ShelterBuildingManager : MonoBehaviour
 {
-    public static BuildingManager Instance { get; private set; }
+    public static ShelterBuildingManager Instance { get; private set; }
 
     public HUDGridBuildCategorySelector gridBuildCategorySelector;
     public HUDGridBuildingSelector gridBuildingSelector;
-
     public ShelterManager shelterManager;
     
     [Header("BuildSystem")] 
@@ -34,7 +32,6 @@ public class BuildingManager : MonoBehaviour
     {
         Instance = this;
         StartCoroutine(Init());
-        
     }
     
     private IEnumerator Init()
@@ -124,7 +121,7 @@ public class BuildingManager : MonoBehaviour
         ToggleBuildSelectionHUD(!isOpen);
     }
 
-    public void ToggleConstructionHUD(bool isActive)
+    private void ToggleConstructionHUD(bool isActive)
     {
         constructionCanvasGroup.alpha = isActive ? 1f : 0f;
         constructionCanvasGroup.blocksRaycasts = isActive;
@@ -207,7 +204,9 @@ public class BuildingManager : MonoBehaviour
     private void SaveGridData()
     {
         WorldSaveGameManager.Instance.currentGameData.buildings.Clear();
-        foreach (var building in GridBuildSystem.Instance.SaveBuildingDataList)
+        ShelterGridSystem shelterGridSystem = GridBuildSystem.Instance as ShelterGridSystem;
+        if(!shelterGridSystem) return;
+        foreach (var building in shelterGridSystem.SaveBuildingDataList)
         {
             if (building != null)
             {

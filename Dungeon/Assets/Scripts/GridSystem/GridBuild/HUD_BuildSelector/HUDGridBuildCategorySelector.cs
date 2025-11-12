@@ -8,7 +8,7 @@ public class HUDGridBuildCategorySelector : MonoBehaviour
     public void RefreshBuildingCategory()
     {
         RemoveAllChildren();
-        foreach (var key in BuildingManager.Instance.unlockedBuildingByCategory.Keys)
+        foreach (var key in ShelterBuildingManager.Instance.unlockedBuildingByCategory.Keys)
         {
             if(key == TileType.Headquarter) continue;
             GameObject instanceBtnObj = Instantiate(categoryPrefab, selectButtonSlot);

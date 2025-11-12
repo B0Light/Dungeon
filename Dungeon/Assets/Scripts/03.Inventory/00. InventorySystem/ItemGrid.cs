@@ -177,18 +177,38 @@ public class ItemGrid : MonoBehaviour
 
     public int GetItemCountById(int id)
     {
-        int count = 0;
-        foreach (var kvp in _itemPosDict.GetAllKeys())
-        {
-            if (kvp.itemCode == id)
-            {
-                count += _itemPosDict.GetValueCountByKey(kvp);
-            }
-        }
-        return count;
+        return itemIdToCntDict.GetValueOrDefault(id);
     }
     
-    public bool RemoveItem(int id)
+    public bool RemoveItems(List<int> ids)
+    {
+        if (!CheckItemInInventory(ids)) return false;
+        foreach (var id in ids)
+        {
+            if (!RemoveItem(id))
+            {
+                Debug.LogError("[ItemGrid] : Error - remove item");
+            }
+        }
+
+        return true;
+    }
+
+    private bool CheckItemInInventory(List<int> ids)
+    {
+        Dictionary<int, int> chkItemDic = CountOccurrencesToDictionary(ids);
+
+        foreach (var itemInfo in chkItemDic)
+        {
+            if (itemIdToCntDict[itemInfo.Key] < itemInfo.Value)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    private bool RemoveItem(int id)
     {
         ItemInfo itemInfo = FindItemById(id);
         if (itemInfo)
@@ -202,7 +222,7 @@ public class ItemGrid : MonoBehaviour
         return false;
     }
     
-    public bool RemoveItem(InventoryItem inventoryItem)
+    protected bool RemoveItem(InventoryItem inventoryItem)
     {
         if (!inventoryItem) return false;
         
@@ -214,7 +234,8 @@ public class ItemGrid : MonoBehaviour
         return true;
     }
 
-    public int RemoveItemById(int itemId, int count)
+    // 제거한 아이템 갯수 반환 
+    public int RemoveItemsById(int itemId, int count)
     {
         int removedCount = 0;
 
@@ -228,27 +249,18 @@ public class ItemGrid : MonoBehaviour
             {
                 Vector2 itemPos = itemPositions.First();
                 InventoryItem inventoryItem = _inventoryItemSlot[(int)itemPos.x, (int)itemPos.y];
-
-                if (RemoveItem(inventoryItem))
-                {
-                    removedCount++;
-                }
-                else
-                {
-                    break; // 제거 실패 시 루프 종료
-                }
+                
+                if (RemoveItem(inventoryItem)) removedCount++;
+                else break; // 제거 실패 시 루프 종료
             }
             else
             {
                 break; // 해당 아이템의 위치 정보가 없거나 비어 있음
             }
         }
-
         return removedCount;
     }
-
-
-
+    
     [CanBeNull]
     private ItemInfo FindItemById(int id)
     {
@@ -633,4 +645,23 @@ public class ItemGrid : MonoBehaviour
             totalItemValue.Value = 0;
         }
     }
+
+    #region HelperMethod
+
+    private Dictionary<T, int> CountOccurrencesToDictionary<T>(List<T> sourceList) where T : notnull
+    {
+        // 1. GroupBy(): 리스트의 모든 요소를 자기 자신(Key)을 기준으로 그룹화합니다.
+        // 2. ToDictionary(): 그룹화된 결과를 딕셔너리로 변환합니다.
+        //    - Key: g.Key (그룹의 키, 즉 리스트의 고유한 값)
+        //    - Value: g.Count() (그룹 내 요소의 개수)
+        return sourceList
+            .GroupBy(item => item) 
+            .ToDictionary(
+                g => g.Key, 
+                g => g.Count()
+            );
+    }
+
+    #endregion
+    
 }

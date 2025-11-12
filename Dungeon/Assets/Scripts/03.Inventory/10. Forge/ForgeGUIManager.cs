@@ -115,7 +115,7 @@ public class ForgeGUIManager : GUIComponent
     {
         foreach (var ingredient in recipe.ingredients)
         {
-            craftingGrid.RemoveItemById(ingredient.itemData.itemCode, ingredient.quantity);
+            craftingGrid.RemoveItemsById(ingredient.itemData.itemCode, ingredient.quantity);
         }
     }
 

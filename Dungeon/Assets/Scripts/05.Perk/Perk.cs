@@ -13,7 +13,7 @@ public class Perk : ScriptableObject
     public String perkDescription;
     public int cost = 1;
 
-    private int _costItemId = 1300;
+    [SerializeField] private List<int> costItemIdList = new List<int>();
 
     private int _perkTier = -1; // 초기값 -1 (계산되지 않음)
     public int PerkTier
@@ -49,7 +49,6 @@ public class Perk : ScriptableObject
     {
         _perkNode = setPerkNode;
         GetRequiredPerkId();
-        _costItemId = 1300 + PerkTier;
         _perkNode.SetSelect(WorldSaveGameManager.Instance.currentGameData.unlockPerkList.Get(perkId));
     }
     
@@ -89,58 +88,11 @@ public class Perk : ScriptableObject
         return true;
     }
     
-    
-    public virtual bool RefundPerk()
-    {
-        // 해당 id에 해당하는 특전이 없거나 해금되지 않은 경우 리턴
-        if (WorldSaveGameManager.Instance.currentGameData.unlockPerkList.Get(perkId) == false)
-        {
-            return false;
-        }
-        
-        // 자신이 선행특전이 되는 다른 메인 특전 비활성화 : perkId를 선행으로 가지는 mainPerkId 를 획득 
-        if (WorldDatabase_Perk.Instance.MainPerkDict.TryGetValue(perkId, out var mainPerkId))
-        {
-            if (WorldDatabase_Perk.Instance.PerkDict.TryGetValue(mainPerkId, out var perk))
-            {
-                perk.RefundPerk();
-            }
-        }
-        
-        // 자신이 선행특전이 되는 다른 서브 특전들 비활성화 
-        if (WorldDatabase_Perk.Instance.SubPerkDict.TryGetValuesByKey(perkId, out var subPerkIds))
-        {
-            foreach (var subPerkId in subPerkIds)
-            {
-                if (WorldDatabase_Perk.Instance.PerkDict.TryGetValue(subPerkId, out var perk))
-                {
-                    if(WorldSaveGameManager.Instance.currentGameData.unlockPerkList.Get(subPerkId))
-                        perk.RefundPerk();
-                }
-            }
-        }
-
-        if (RefundProcess() == false)
-        {
-            Debug.LogWarning("특전을 반환하기 위한 아이템 공간이 없습니다.");
-            return false;
-        }
-        WorldSaveGameManager.Instance.currentGameData.unlockPerkList.Set(perkId, false);
-        _perkNode.SetSelect(false);
-        return true;
-    }
 
     private bool BuyProcess()
     {
         ItemGrid itemGrid = WorldPlayerInventory.Instance.GetInventory();
 
-        return itemGrid.RemoveItem(_costItemId) || itemGrid.RemoveItem(1300);
-    }
-
-    private bool RefundProcess()
-    {
-        ItemGrid itemGrid = WorldPlayerInventory.Instance.GetInventory();
-
-        return itemGrid.AddItemById(_costItemId, isLoad:false);
+        return itemGrid.RemoveItems(costItemIdList);
     }
 }
