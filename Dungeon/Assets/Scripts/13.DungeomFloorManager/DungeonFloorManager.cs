@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DungeonFloorManager : MonoBehaviour
 {
+    // ui 용 클래스 - 던전 관리자 
     [SerializeField] private Material onMouseMat;
     [SerializeField] private Material onClickMat;
 

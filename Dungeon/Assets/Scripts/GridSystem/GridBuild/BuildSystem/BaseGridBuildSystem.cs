@@ -2,18 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridBuildSystem : MonoBehaviour
+public class BaseGridBuildSystem : MonoBehaviour
 { 
-    public static GridBuildSystem Instance { get; private set; }
-    private static GridBuildSystem _instance;
-
+    public static BaseGridBuildSystem Instance { get; private set; }
     public BuildObjData ObjectToPlace { get; set; }
 
     protected FixedGridXZ<GridCell> _fixedGrid;
     private BuildObjData.Dir _dir = BuildObjData.Dir.Down;
-    protected readonly int _gridWidth = 7;
-    protected readonly int _gridHeight = 9;
-    protected readonly int _cellSize = 5;
+    
 
     // CheckPoint List -> For NPC
     public List<Vector2Int> CheckPointList { get; private set; }
@@ -21,16 +17,9 @@ public class GridBuildSystem : MonoBehaviour
     public static event Action<BuildObjData> OnSelectedChanged;
     public static event Action<BuildObjData> OnObjectPlaced;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         Instance = this;
-        _fixedGrid = new FixedGridXZ<GridCell>(
-            _gridWidth,
-            _gridHeight,
-            _cellSize,
-            transform.position,
-            (x, z) => new GridCell(x, z, CellType.Empty)
-        );
     }
     
     protected virtual void Start()
@@ -67,7 +56,7 @@ public class GridBuildSystem : MonoBehaviour
         var gridPositionList = ObjectToPlace.GetGridPositionList(new Vector2Int(x, z), dir);
         foreach (Vector2Int gridPosition in gridPositionList)
         {
-            SetObjectAtGridPosition(gridPosition, placedObject, dir);
+            SetObjectOnGrid(gridPosition, placedObject, dir);
         }
 
         OnObjectPlaced?.Invoke(ObjectToPlace);
@@ -102,7 +91,7 @@ public class GridBuildSystem : MonoBehaviour
     }
     
     // Grid 상에 배치 
-    protected void SetObjectAtGridPosition(Vector2Int position, PlacedObject placedObject, BuildObjData.Dir dir)
+    private void SetObjectOnGrid(Vector2Int position, PlacedObject placedObject, BuildObjData.Dir dir)
     {
         var gridObject = _fixedGrid.GetGridObject(position.x, position.y);
         gridObject?.SetPlacedObject(placedObject, ObjectToPlace, dir); // BuildObjData 저장

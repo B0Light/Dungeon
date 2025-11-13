@@ -17,6 +17,9 @@ public class PlacedObject : MonoBehaviour
     public BuildObjData.Dir exitDir;
     public int entrancePos;
     public int exitPos;
+    
+    private GameObject _vCam;
+    
     public bool Irremovable { get; private set; }
 
     protected virtual void Awake()
@@ -24,6 +27,8 @@ public class PlacedObject : MonoBehaviour
         modelSlot = FindChildByName(gameObject, "Mesh").transform;
         _propsSlot = FindChildByName(gameObject, "Props").transform;
         _entrancePoint = FindChildByName(gameObject, "Entrance").transform;
+        
+        _vCam = FindChildByName(gameObject, "CinemachineCamera");
     }
     
     protected GameObject FindChildByName(GameObject parent, string targetName)
@@ -153,6 +158,10 @@ public class PlacedObject : MonoBehaviour
         return Mathf.RoundToInt(buildObjData.purchaseCost * Mathf.Pow(1.2f, level - buildObjData.upgradeStages.Count + 1));
     }
 
+    public void SelectObject(bool value)
+    {
+        _vCam.SetActive(value);
+    }
 
     public int GetTotalUpgradeCost()
     {

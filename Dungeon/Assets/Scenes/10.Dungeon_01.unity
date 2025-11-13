@@ -597,7 +597,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5841291465386098250}
-  - component: {fileID: 1230849592987959741}
+  - component: {fileID: 5841291465386098251}
   m_Layer: 0
   m_Name: '@BuildingManager'
   m_TagString: Untagged
@@ -969,18 +969,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &411270625416409945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3516240696758520980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acefa9be2f436894ca0e6cb30f4ae3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &426536870057207748
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1183,24 +1171,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &571656934326586160
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4313545498321237395}
-  - component: {fileID: 2958562116950154280}
-  - component: {fileID: 3738441210769616088}
-  m_Layer: 5
-  m_Name: Frame
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &590221869288447028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,29 +1944,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6201161819533120736}
   m_CullTransparentMesh: 1
---- !u!114 &1230849592987959741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172280678608280019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e97579d07d8fe2c47b8ceda4f7855d60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridBuildCategorySelector: {fileID: 1120091704232804075}
-  gridBuildingSelector: {fileID: 2994076964755102746}
-  shelterManager: {fileID: 0}
-  gridBuildCamera: {fileID: 8685364933688868870}
-  gridBuildController: {fileID: 3183541950193506680}
-  constructionCanvasGroup: {fileID: 5397598510691042867}
-  buildingSelectionCanvasGroup: {fileID: 7789382080030670200}
-  buildingPopupCanvasGroup: {fileID: 4734503307082483832}
-  buildInfoHUD: {fileID: 1085267507655166638}
-  unlockedBuildingByCategory:
-    keys: 
 --- !u!114 &1238066549020094374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2413,8 +2360,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2509,7 +2456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 16793600
 --- !u!1 &1693242980242547125
 GameObject:
   m_ObjectHideFlags: 0
@@ -3282,7 +3229,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1230849592987959741}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BuildingManager, Assembly-CSharp
         m_MethodName: ToggleBuildSelector
         m_Mode: 1
@@ -4213,7 +4160,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2870771529048475958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4334,14 +4281,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!222 &2958562116950154280
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571656934326586160}
-  m_CullTransparentMesh: 1
 --- !u!224 &2968814021561130426
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4590,7 +4529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1098126fcee4d54ca8090c8bc61150c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridBuildController
-  gridBuildSystem: {fileID: 411270625416409945}
+  baseGridBuildSystem: {fileID: 5899094007550655331}
   selector: {fileID: 2515216441193841273}
   selectorMeshRenderer: {fileID: 6754585217031352138}
   baseMat: {fileID: 2100000, guid: a49319226b6a181478e8ee4f99dedee5, type: 2}
@@ -4795,7 +4734,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5899094007550655330}
-  - component: {fileID: 411270625416409945}
+  - component: {fileID: 5899094007550655331}
   m_Layer: 0
   m_Name: GridBuildingSystem
   m_TagString: Untagged
@@ -5052,36 +4991,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3738441210769616088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571656934326586160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e45c2134e4b17334588874db66f61d78, type: 3}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 3
 --- !u!224 &3760896351995894091
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5790,25 +5699,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8768655996603409457}
   m_CullTransparentMesh: 1
---- !u!224 &4313545498321237395
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571656934326586160}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4708947931695423330}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 30, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &4346874532942743036
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5828,21 +5718,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -400}
   m_SizeDelta: {x: 640, y: 1080}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &4348976780335122258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8550772282572158332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5367c27f1d51906479e0f5e4972ca159, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildName: {fileID: 7697194074172766590}
-  buildInfo: {fileID: 5269756477145474045}
-  gridBuildingUI: {fileID: 243792401128311984}
 --- !u!1 &4363395485148652355
 GameObject:
   m_ObjectHideFlags: 0
@@ -6274,7 +6149,6 @@ RectTransform:
   - {fileID: 8402250009056198080}
   - {fileID: 7225856892607921235}
   - {fileID: 8885014244534563965}
-  - {fileID: 4313545498321237395}
   m_Father: {fileID: 1418671245613651365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7093,8 +6967,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7454,7 +7328,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6832251663022864495}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -8281,6 +8155,28 @@ Transform:
   - {fileID: 4949172178534704132}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5841291465386098251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172280678608280019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60d0f1bd3ddb8643adc6f98dcef5651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridBuildingManager
+  gridBuildCategorySelector: {fileID: 1120091704232804075}
+  gridBuildingSelector: {fileID: 2994076964755102746}
+  gridBuildCamera: {fileID: 8685364933688868870}
+  gridBuildController: {fileID: 3183541950193506680}
+  constructionCanvasGroup: {fileID: 5397598510691042867}
+  buildingSelectionCanvasGroup: {fileID: 7789382080030670200}
+  buildingPopupCanvasGroup: {fileID: 4734503307082483832}
+  buildInfoHUD: {fileID: 1085267507655166638}
+  unlockedBuildingByCategory:
+    keys: 
 --- !u!222 &5860474552766771031
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8319,7 +8215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5899094007550655330
 Transform:
   m_ObjectHideFlags: 0
@@ -8335,6 +8231,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5841291465386098250}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5899094007550655331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3516240696758520980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29d69e89a5f175742a6231a6c8e06b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DungeonGridSystem
+  dungeonManager: {fileID: 6905432225046475023}
 --- !u!114 &5919881277203622921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8348,14 +8257,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49056602, g: 0.41420433, b: 0.41420433, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cd21359e4ed53304f96a2a13c053288f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d15fffb6b1fbb99479735c8eaddeca50, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9693,7 +9602,7 @@ PrefabInstance:
     - target: {fileID: 8518542090691795215, guid: a9088fc0809beb74992dd64f30452fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1230849592987959741}
+      objectReference: {fileID: 0}
     - target: {fileID: 8518542090691795215, guid: a9088fc0809beb74992dd64f30452fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -10130,7 +10039,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1230849592987959741}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BuildingManager, Assembly-CSharp
         m_MethodName: ToggleBuildSelector
         m_Mode: 1
@@ -10357,7 +10266,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1230849592987959741}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BuildingManager, Assembly-CSharp
         m_MethodName: ToggleBuildSelectionHUD
         m_Mode: 6
@@ -10702,8 +10611,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -11520,7 +11429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &8037421711241916927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11934,9 +11843,9 @@ Transform:
   m_GameObject: {fileID: 3164052607382633208}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 0, z: 2.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 0.36365, y: 0.36365, z: 0.36365}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5062070682114334122}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11984,7 +11893,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1230849592987959741}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BuildingManager, Assembly-CSharp
         m_MethodName: CloseBuildInfoHUD
         m_Mode: 1
@@ -12168,8 +12077,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4708947931695423330}
+  - component: {fileID: 8550772282572158333}
   - component: {fileID: 8039157729729483748}
-  - component: {fileID: 4348976780335122258}
   m_Layer: 5
   m_Name: SelectToBuildInfo
   m_TagString: Untagged
@@ -12177,6 +12086,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8550772282572158333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550772282572158332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5367c27f1d51906479e0f5e4972ca159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HUDGridBuildToSelectInfo
+  buildName: {fileID: 7697194074172766590}
+  buildInfo: {fileID: 5269756477145474045}
+  gridBuildingUI: {fileID: 243792401128311984}
+  _canvasGroup: {fileID: 8039157729729483748}
 --- !u!114 &8579052691721458385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12593,7 +12518,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 964dd64123f00494e8aebf4af850eda1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ddffd9d2ad1ace4ea9de3c7f8b39d08, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -12683,7 +12608,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1230849592987959741}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BuildingManager, Assembly-CSharp
         m_MethodName: ToggleBuildSelectionHUD
         m_Mode: 6

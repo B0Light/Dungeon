@@ -1,14 +1,30 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class ShelterGridSystem : GridBuildSystem
+public class ShelterBaseGridSystem : BaseGridBuildSystem
 {
+    private readonly int _gridWidth = 7;
+    private readonly int _gridHeight = 9;
+    private readonly int _cellSize = 5;
+    
     [Space(10)] 
     private Vector2Int _entrancePos = new Vector2Int(3, 0);
     private Vector2Int _headquarterPos = new Vector2Int(4, 1);
     private Vector2Int _dungeonEntrancePos = new Vector2Int(3, 8);
     
     public List<SaveBuildingData> SaveBuildingDataList { get; private set; }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _fixedGrid = new FixedGridXZ<GridCell>(
+            _gridWidth,
+            _gridHeight,
+            _cellSize,
+            transform.position,
+            (x, z) => new GridCell(x, z, CellType.Empty)
+        );
+    }
 
     protected override void Start()
     {

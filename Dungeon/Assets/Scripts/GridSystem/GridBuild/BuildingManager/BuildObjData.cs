@@ -7,6 +7,8 @@ public enum TileType
     Road,
     Tree,
     MajorFacility,
+    Turret,
+    Gateway,
     None,
 }
 

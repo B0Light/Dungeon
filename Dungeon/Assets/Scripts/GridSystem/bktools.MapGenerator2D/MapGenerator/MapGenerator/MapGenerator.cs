@@ -13,12 +13,12 @@ public class MapGenerator : MonoBehaviour
         _generatorFactory = new MapGeneratorFactory(slot, _dungeonDataSo);
     }
     
-    public void GenerateMap()
+    public FixedGridXZ<GridCell> GenerateMap()
     {
         if (_dungeonDataSo == null)
         {
             Debug.LogError("DungeonDataSO가 할당되지 않았습니다.");
-            return;
+            return null;
         }
 
         SetupCurrentGenerator();
@@ -26,12 +26,12 @@ public class MapGenerator : MonoBehaviour
         if (_currentGenerator == null)
         {
             Debug.LogWarning("맵 생성기를 설정할 수 없습니다. DungeonDataSO에 유효한 맵 생성기 타입이 할당되었는지 확인해주세요.");
-            return;
+            return null;
         }
 
         // 시드값이 0이면 새로운 시드 생성, 아니면 고정 시드 사용
         int seed = (_dungeonDataSo.seed == 0) ? System.DateTime.Now.Second : _dungeonDataSo.seed;
-        _currentGenerator.GenerateMap(seed);
+        return _currentGenerator.GenerateMap(seed);
     }
     
     private void SetupCurrentGenerator()

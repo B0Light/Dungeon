@@ -36,7 +36,7 @@ public class PathFindingUnit : MonoBehaviour
     public void SpawnVisitor(ShelterManager shelterManager)
     {
         _shelterManager = shelterManager;
-        Vector2Int startPos = GridBuildSystem.Instance.GetEntrancePos();
+        Vector2Int startPos = BaseGridBuildSystem.Instance.GetEntrancePos();
         if (!SetRoute(startPos, SelectRandomTarget()))
         {
             GetNextDestination(startPos);
@@ -45,7 +45,7 @@ public class PathFindingUnit : MonoBehaviour
     
     private Vector2Int SelectRandomTarget()
     {
-        var attractions = GridBuildSystem.Instance.CheckPointList;
+        var attractions = BaseGridBuildSystem.Instance.CheckPointList;
         int randomIndex = Random.Range(0, attractions.Count);
         return attractions[randomIndex];
     }
@@ -151,7 +151,7 @@ public class PathFindingUnit : MonoBehaviour
         else
         {
             if (!SetRoute(curPos, Random.Range(0, 1) > 0.5f ? 
-                    GridBuildSystem.Instance.GetDungeonPos() : GridBuildSystem.Instance.GetEntrancePos()))
+                    BaseGridBuildSystem.Instance.GetDungeonPos() : BaseGridBuildSystem.Instance.GetEntrancePos()))
             {
                 Destroy(this.gameObject);
             }

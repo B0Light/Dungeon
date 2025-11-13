@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,12 +9,6 @@ public enum MapGeneratorType
     BSPFull,        // BSP Full (분할된 영역 전체를 방으로 사용)
     Isaac,          // Isaac 스타일 (BFS 방식)
     Delaunay        // Delaunay 삼각분할 + Kruskal
-}
-
-public enum PathType
-{
-    AStar,
-    Straight,
 }
 
 public abstract class BaseMapGenerator : IMapGenerator
@@ -32,8 +25,8 @@ public abstract class BaseMapGenerator : IMapGenerator
         Vector2Int.left, Vector2Int.right, Vector2Int.down, Vector2Int.up
     };
 
-    private static readonly int[] DX = { -1, 1, 0, 0 };
-    private static readonly int[] DY = { 0, 0, -1, 1 };
+    private readonly int[] _dx = { -1, 1, 0, 0 };
+    private readonly int[] _dy = { 0, 0, -1, 1 };
     #endregion
 
     #region Fields
@@ -82,7 +75,7 @@ public abstract class BaseMapGenerator : IMapGenerator
     #endregion
 
     #region Abstract Methods
-    public abstract void GenerateMap(int seed);
+    public abstract FixedGridXZ<GridCell> GenerateMap(int seed);
     #endregion
 
     #region Grid Management
@@ -173,10 +166,10 @@ public abstract class BaseMapGenerator : IMapGenerator
 
     private bool HasNeighborOfType(int x, int y, CellType targetType)
     {
-        for (int i = 0; i < DX.Length; i++)
+        for (int i = 0; i < _dx.Length; i++)
         {
-            int nx = x + DX[i];
-            int ny = y + DY[i];
+            int nx = x + _dx[i];
+            int ny = y + _dy[i];
             if (_fixedGrid.GetGridObject(nx, ny).CellType == targetType)
             {
                 return true;

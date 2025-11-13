@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 2075411715764798448}
   - component: {fileID: 3126215439166164053}
   - component: {fileID: 902544191572654239}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SM_Bld_Base_Floor_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 219323599115370038}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

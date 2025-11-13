@@ -34,15 +34,6 @@ public class CharacterAnimatorManager : MonoBehaviour
         characterManager = GetComponent<CharacterManager>();
     }
 
-    public void PlayDeadAnimation()
-    {
-        applyRootMotion = true;
-        characterManager.isPerformingAction = true;
-        characterManager.characterLocomotionManager.canRotate = false;
-        characterManager.characterLocomotionManager.canMove = false;
-        characterManager.animator.CrossFade(_dead, 0.2f);
-    }
-
     public void PlayTargetActionAnimation(
         int targetAnimation,
         bool isPerformingAction = true, 
@@ -50,7 +41,7 @@ public class CharacterAnimatorManager : MonoBehaviour
         bool canRotate = false,
         bool canMove = false)
     {
-        if (characterManager.isDead.Value) return;
+        if (characterManager.isDead.Value || characterManager.animator == null) return;
         
         applyRootMotion = rootMotion;
         characterManager.isPerformingAction = isPerformingAction;
@@ -71,6 +62,11 @@ public class CharacterAnimatorManager : MonoBehaviour
             if(!characterManager.characterStatsManager.UseStamina(actionPoint)) return;
         characterManager.characterCombatManager.lastAttackAction = targetAnimation;
         PlayTargetActionAnimation(targetAnimation, isPerformingAction, rootMotion, canRotate, canMove);
+    }
+    
+    public void PlayDeadAnimation()
+    {
+        PlayTargetActionAnimation(_dead);
     }
 
     public void UpdateAnimatorController(AnimatorOverrideController weaponController)

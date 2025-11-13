@@ -16,7 +16,7 @@ public class BSPDungeonMapGeneratorFull : BaseMapGenerator
         _leafNodes = new List<RoomNode>();
     }
     
-    public override void GenerateMap(int seed)
+    public override FixedGridXZ<GridCell> GenerateMap(int seed)
     {
         Random.InitState(seed);
         InitializeGrid();
@@ -42,6 +42,7 @@ public class BSPDungeonMapGeneratorFull : BaseMapGenerator
         BuildSubWalls();
         PopulateRoomGateDirections();
         RenderGrid();
+        return _fixedGrid;
     }
     
     bool SplitNode(RoomNode node, int depth)

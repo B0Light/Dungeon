@@ -3,18 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShelterBuildingManager : MonoBehaviour
+public class GridBuildingManager : MonoBehaviour
 {
-    public static ShelterBuildingManager Instance { get; private set; }
-
+    public static GridBuildingManager Instance { get; private set; }
+    
     public HUDGridBuildCategorySelector gridBuildCategorySelector;
     public HUDGridBuildingSelector gridBuildingSelector;
-    public ShelterManager shelterManager;
     
     [Header("BuildSystem")] 
     [SerializeField] private GridBuildCamera gridBuildCamera;
     [SerializeField] private GridBuildController gridBuildController;
-
+    
     [Header("Canvas Group")]
     [SerializeField] private CanvasGroup constructionCanvasGroup;
     [SerializeField] private CanvasGroup buildingSelectionCanvasGroup;
@@ -26,8 +25,7 @@ public class ShelterBuildingManager : MonoBehaviour
     public SerializableDictionary<TileType, HashSet<BuildObjData>> unlockedBuildingByCategory;
     
     private Interactable _interactableObject;
-    private RevenueFacilityTile _currentSelectTile = null;
-
+    private PlacedObject _currentSelectTile = null;
     private void Awake()
     {
         Instance = this;
@@ -165,13 +163,13 @@ public class ShelterBuildingManager : MonoBehaviour
 
     public void SelectCategory(TileType id)
     {
-        GridBuildSystem.Instance.SelectToBuild(null);
+        BaseGridBuildSystem.Instance.SelectToBuild(null);
         StartCoroutine(gridBuildingSelector.InitBtnSlot(id));
     }
 
     public void RefreshCategory()
     {
-        GridBuildSystem.Instance.SelectToBuild(null);
+        BaseGridBuildSystem.Instance.SelectToBuild(null);
         gridBuildingSelector.RefreshSlot();
     }
 
@@ -189,30 +187,13 @@ public class ShelterBuildingManager : MonoBehaviour
         PlayerCameraController.Instance.TurnOnCamera();
     }
 
-    public void ExitBuildHUD()
+    public virtual void ExitBuildHUD()
     {
-        SaveGridData(); 
-        
-        GridBuildSystem.Instance.SelectToBuild(null);
+        BaseGridBuildSystem.Instance.SelectToBuild(null);
         GUIController.Instance.ToggleMainGUI(true);
         InputHandlerManager.Instance.SetInputMode(InputMode.Exploration);
         PlayerCameraController.Instance.TurnOnCamera();
 
         ToggleMainBuildHUD(false);
-    }
-
-    private void SaveGridData()
-    {
-        WorldSaveGameManager.Instance.currentGameData.buildings.Clear();
-        ShelterGridSystem shelterGridSystem = GridBuildSystem.Instance as ShelterGridSystem;
-        if(!shelterGridSystem) return;
-        foreach (var building in shelterGridSystem.SaveBuildingDataList)
-        {
-            if (building != null)
-            {
-                WorldSaveGameManager.Instance.currentGameData.buildings.Add(building);
-            }
-        }
-        WorldSaveGameManager.Instance.SaveGame();
     }
 }

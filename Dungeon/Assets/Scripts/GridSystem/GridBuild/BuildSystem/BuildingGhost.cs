@@ -25,20 +25,20 @@ public class BuildingGhost : MonoBehaviour
     private IEnumerator WaitForGridBuildingSystem()
     {
         // GridBuildingSystem.Instance가 null이 아닌지 확인
-        while (GridBuildSystem.Instance == null)
+        while (BaseGridBuildSystem.Instance == null)
         {
             yield return null; // 매 프레임 기다림
         }
 
         // GridBuildingSystem.Instance가 설정되었을 때 이벤트 등록
-        GridBuildSystem.OnObjectPlaced += Instance_OnSelectedChanged;
-        GridBuildSystem.OnSelectedChanged += Instance_OnSelectedChanged;
+        BaseGridBuildSystem.OnObjectPlaced += Instance_OnSelectedChanged;
+        BaseGridBuildSystem.OnSelectedChanged += Instance_OnSelectedChanged;
     }
 
     private void OnDisable()
     {
-        GridBuildSystem.OnObjectPlaced -= Instance_OnSelectedChanged;
-        GridBuildSystem.OnSelectedChanged -= Instance_OnSelectedChanged;
+        BaseGridBuildSystem.OnObjectPlaced -= Instance_OnSelectedChanged;
+        BaseGridBuildSystem.OnSelectedChanged -= Instance_OnSelectedChanged;
     }
 
     private void Instance_OnSelectedChanged(BuildObjData buildObjData) 
@@ -48,11 +48,11 @@ public class BuildingGhost : MonoBehaviour
 
     private void LateUpdate() 
     {
-        if(GridBuildSystem.Instance.ObjectToPlace == null) return;
+        if(BaseGridBuildSystem.Instance.ObjectToPlace == null) return;
         Vector3 targetPosition = gridBuildController.GetMouseWorldSnappedPosition();
         targetPosition.y = 1f;
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 15f);
-        transform.rotation = Quaternion.Lerp(transform.rotation, GridBuildSystem.Instance.GetPlacedObjectRotation(), Time.deltaTime * 15f);
+        transform.rotation = Quaternion.Lerp(transform.rotation, BaseGridBuildSystem.Instance.GetPlacedObjectRotation(), Time.deltaTime * 15f);
 
         if (_visual)
         {

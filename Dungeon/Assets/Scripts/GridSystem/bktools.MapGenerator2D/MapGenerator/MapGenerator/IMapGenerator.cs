@@ -1,6 +1,6 @@
 public interface IMapGenerator
 {
-    void GenerateMap(int seed);
+    FixedGridXZ<GridCell> GenerateMap(int seed);
     
     bool IsMapGenerated { get; }
     

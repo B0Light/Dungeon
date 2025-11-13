@@ -13,7 +13,7 @@ public class HUDGridBuildingCostController : MonoBehaviour
         {
             yield return null; // 한 프레임 대기
         }
-        while (!GridBuildSystem.Instance)
+        while (!BaseGridBuildSystem.Instance)
         {
             yield return null; // 한 프레임 대기
         }
@@ -26,8 +26,8 @@ public class HUDGridBuildingCostController : MonoBehaviour
     private IEnumerator BindSelectBuilding()
     {
         yield return StartCoroutine(WaitForDataLoad());
-        GridBuildSystem.OnSelectedChanged += Instance_OnSelectedChanged;
-        GridBuildSystem.OnObjectPlaced  += Instance_OnSelectedChanged;
+        BaseGridBuildSystem.OnSelectedChanged += Instance_OnSelectedChanged;
+        BaseGridBuildSystem.OnObjectPlaced  += Instance_OnSelectedChanged;
     }
 
     private void Instance_OnSelectedChanged(BuildObjData objectToPlace)
@@ -47,7 +47,11 @@ public class HUDGridBuildingCostController : MonoBehaviour
     
     private void DeleteAllChildren(Transform parentTransform)
     {
-        if(parentTransform == null) Debug.LogWarning("[HUDGridBuildingCostController] : No Parent Transform");
+        if(parentTransform == null)
+        {
+            Debug.LogWarning("[HUDGridBuildingCostController] : No Parent Transform");
+            return;
+        }
         for (int i = parentTransform.childCount - 1; i >= 0; i--)
         {
             Transform child = parentTransform.GetChild(i);

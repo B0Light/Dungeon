@@ -8,11 +8,12 @@ public class HUDGridBuildToSelectInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI buildInfo;
     [SerializeField] private GridBuildingUI gridBuildingUI;
 
-    private CanvasGroup _canvasGroup;
+    [SerializeField] private CanvasGroup _canvasGroup;
 
     private void Awake()
     {
-        _canvasGroup = GetComponent<CanvasGroup>();
+        if(_canvasGroup == null)
+            _canvasGroup = GetComponent<CanvasGroup>();
         _canvasGroup.alpha = 0;
         _canvasGroup.interactable = false;
         _canvasGroup.blocksRaycasts = false;
@@ -25,7 +26,7 @@ public class HUDGridBuildToSelectInfo : MonoBehaviour
         {
             yield return null; // 한 프레임 대기
         }
-        while (!GridBuildSystem.Instance)
+        while (!BaseGridBuildSystem.Instance)
         {
             yield return null; // 한 프레임 대기
         }
@@ -39,7 +40,7 @@ public class HUDGridBuildToSelectInfo : MonoBehaviour
     private IEnumerator BindSelectBuilding()
     {
         yield return StartCoroutine(WaitForDataLoad());
-        GridBuildSystem.OnSelectedChanged += Instance_OnSelectedChanged;
+        BaseGridBuildSystem.OnSelectedChanged += Instance_OnSelectedChanged;
     }
     
     private void Instance_OnSelectedChanged(BuildObjData objectToPlace)

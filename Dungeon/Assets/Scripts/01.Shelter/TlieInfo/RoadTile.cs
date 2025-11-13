@@ -41,7 +41,7 @@ public class RoadTile : PlacedObject
 
     protected bool IsRoadAtPosition(Vector2Int position, Vector2Int direction)
     {
-        GridCell gridObject = GridBuildSystem.Instance.GetGrid().GetGridObject(position.x, position.y);
+        GridCell gridObject = BaseGridBuildSystem.Instance.GetGrid().GetGridObject(position.x, position.y);
         if (gridObject == null)
         {
             return false;

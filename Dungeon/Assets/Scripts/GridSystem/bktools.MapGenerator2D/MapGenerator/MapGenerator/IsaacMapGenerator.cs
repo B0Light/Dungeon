@@ -25,7 +25,7 @@ public class IsaacMapGenerator : BaseMapGenerator
     }
     
     [ContextMenu("Create Map")]
-    public override void GenerateMap(int seed)
+    public override FixedGridXZ<GridCell> GenerateMap(int seed)
     {
         Random.InitState(seed);
         InitializeGrid();
@@ -38,6 +38,7 @@ public class IsaacMapGenerator : BaseMapGenerator
         BuildSubWalls();
         PopulateRoomGateDirections();
         RenderGrid();
+        return _fixedGrid;
     }
 
     private void GenerateRooms()

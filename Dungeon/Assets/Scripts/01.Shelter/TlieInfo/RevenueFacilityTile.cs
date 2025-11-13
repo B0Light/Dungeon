@@ -17,20 +17,14 @@ public class RevenueFacilityTile : PlacedObject, IRevenueFacility
     [SerializeField] private int maxColumns = 8; 
     [SerializeField] protected IncomeEventSO incomeEventChannel;
     
-    private GameObject _vCam;
 
     protected override void Awake()
     {
         base.Awake();
         exitPoint = FindChildByName(gameObject, "Exit").transform;
-        
-        _vCam = FindChildByName(gameObject, "CinemachineCamera");
     }
 
-    public void SelectObject(bool value)
-    {
-        _vCam.SetActive(value);
-    }
+    
     
     public virtual void AddVisitor(PathFindingUnit visitor)
     {

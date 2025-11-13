@@ -9,7 +9,7 @@ public class ShopShelfItem_Building : ShopShelfItem
         itemButton.onClick.AddListener(SelectThisItem);
     }
     
-    private void SelectThisItem()=>GridBuildSystem.Instance.SelectToBuild(_buildObjData);
+    private void SelectThisItem()=>BaseGridBuildSystem.Instance.SelectToBuild(_buildObjData);
     
     public override int GetItemCategory() => (int)_buildObjData.GetTileType();
 }

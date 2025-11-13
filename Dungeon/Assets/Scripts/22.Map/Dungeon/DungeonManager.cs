@@ -18,10 +18,14 @@ public class DungeonManager : MonoBehaviour
     private MapGenerator _mapGenerator;
     private GridPathfinder _pathfinder;
     private AISpawnManager _aiSpawnManager;
-    
+
+    public FixedGridXZ<GridCell> FixedGrid { get; private set; }
+
     [Header("NavMesh Build Settings")]
     [SerializeField] private bool useAsyncNavMeshBuild = true;
     [SerializeField] private float navMeshBuildDelay = 0.5f;
+    
+    public event Action GeneratedDungeon;
 
     private void Awake()
     {
@@ -62,6 +66,8 @@ public class DungeonManager : MonoBehaviour
         
         // 5단계 : A.I. 생성
         _aiSpawnManager.Init(_pathfinder);
+        
+        GeneratedDungeon?.Invoke();
     }
 
     private IEnumerator BuildNavMeshAsync()
@@ -75,7 +81,7 @@ public class DungeonManager : MonoBehaviour
 
     private void GenerateMap()
     {
-        _mapGenerator.GenerateMap();
+        FixedGrid = _mapGenerator.GenerateMap();
     }
 
     private void GenerateRoom()
@@ -154,5 +160,4 @@ public class DungeonManager : MonoBehaviour
     
         return Quaternion.identity;
     }
-
 }

@@ -23,7 +23,7 @@ public class DelaunayMapGenerator : BaseMapGenerator
     }
     
     [ContextMenu("Create Map")]
-    public override void GenerateMap(int seed)
+    public override FixedGridXZ<GridCell> GenerateMap(int seed)
     {
         Random.InitState(seed);
         InitializeGrid();
@@ -36,6 +36,7 @@ public class DelaunayMapGenerator : BaseMapGenerator
         BuildSubWalls();
         PopulateRoomGateDirections();
         RenderGrid();
+        return _fixedGrid;
     }
     
     private void PlaceRooms()

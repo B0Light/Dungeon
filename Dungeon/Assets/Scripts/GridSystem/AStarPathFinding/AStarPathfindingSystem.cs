@@ -7,7 +7,7 @@ public class AStarPathfindingSystem : MonoBehaviour
 
     private void Awake()
     {
-        _pathfinder = new GridPathfinder(GridBuildSystem.Instance.GetGrid());
+        _pathfinder = new GridPathfinder(BaseGridBuildSystem.Instance.GetGrid());
     }
 
     public List<GridCell> NavigatePath(Vector2Int start, Vector2Int goal)

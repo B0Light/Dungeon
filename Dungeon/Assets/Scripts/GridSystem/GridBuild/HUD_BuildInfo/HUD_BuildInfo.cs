@@ -44,7 +44,7 @@ public class HUD_BuildInfo : MonoBehaviour
             upgradeButton.onClick.RemoveAllListeners();
             upgradeButton.onClick.AddListener(() =>
             {
-                bool upgraded = GridBuildSystem.Instance.TryUpgrade(buildTile);
+                bool upgraded = BaseGridBuildSystem.Instance.TryUpgrade(buildTile);
                 if (upgraded)
                 {
                     Init(buildTile); // 성공적으로 업그레이드되었을 때만 UI 갱신

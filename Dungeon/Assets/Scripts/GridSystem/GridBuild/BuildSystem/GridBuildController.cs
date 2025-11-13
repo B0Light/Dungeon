@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class GridBuildController : MonoBehaviour
 {
-    [SerializeField] private GridBuildSystem gridBuildSystem;
+    [FormerlySerializedAs("gridBuildSystem")] [SerializeField] private BaseGridBuildSystem baseGridBuildSystem;
     
     private BuildObjData _objectToPlace;
     
@@ -24,13 +25,13 @@ public class GridBuildController : MonoBehaviour
     private void OnEnable()
     {
         _lastPlacedPosition = new Vector2Int(-1, -1);
-        GridBuildSystem.OnSelectedChanged += SetObjectToPlace;
+        BaseGridBuildSystem.OnSelectedChanged += SetObjectToPlace;
         _isDeleteMode.OnValueChanged += SetSelectorMat;
     }
 
     private void OnDisable()
     {
-        GridBuildSystem.OnSelectedChanged -= SetObjectToPlace;
+        BaseGridBuildSystem.OnSelectedChanged -= SetObjectToPlace;
         _isDeleteMode.OnValueChanged -= SetSelectorMat;
     }
     
@@ -59,9 +60,9 @@ public class GridBuildController : MonoBehaviour
         if (_objectToPlace == null)
         {
             Vector3 targetPosition = GetMouseWorldSnappedPosition();
-            gridBuildSystem.GetGrid().GetXZ(targetPosition, out int x, out int z);
+            baseGridBuildSystem.GetGrid().GetXZ(targetPosition, out int x, out int z);
             
-            GridCell gridObject = gridBuildSystem.GetGrid().GetGridObject(x, z);
+            GridCell gridObject = baseGridBuildSystem.GetGrid().GetGridObject(x, z);
             PlacedObject placedObject = gridObject?.GetPlacedObject();
 
             if (placedObject)
@@ -70,7 +71,7 @@ public class GridBuildController : MonoBehaviour
                 var dir = placedObject.GetDir();
                 selector.transform.localScale = new Vector3(obj.GetWidth(dir),1,obj.GetHeight(dir));
 
-                targetPosition = gridBuildSystem.GetGrid().GetWorldPosition(placedObject.GetOriginPos());
+                targetPosition = baseGridBuildSystem.GetGrid().GetWorldPosition(placedObject.GetOriginPos());
             }
             targetPosition.y = 0.5f;
             selector.transform.position = Vector3.Lerp(selector.transform.position, targetPosition, Time.deltaTime * 15f);
@@ -79,7 +80,7 @@ public class GridBuildController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            gridBuildSystem.SelectToBuild(null);
+            baseGridBuildSystem.SelectToBuild(null);
             _isDeleteMode.Value = false;
         }
 
@@ -134,7 +135,7 @@ public class GridBuildController : MonoBehaviour
     private void PlaceObjectAtMousePositionIfNeeded()
     {
         Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
-        gridBuildSystem.GetGrid().GetXZ(mousePosition, out int x, out int z);
+        baseGridBuildSystem.GetGrid().GetXZ(mousePosition, out int x, out int z);
         Vector2Int currentGridPosition = new Vector2Int(x, z);
 
         // 중복 배치 방지
@@ -144,7 +145,7 @@ public class GridBuildController : MonoBehaviour
         {
             if (CheckItemInInventory(_objectToPlace) && SpendItemInInventory(_objectToPlace))
             {
-                gridBuildSystem.PlaceTile(x, z, _dir);
+                baseGridBuildSystem.PlaceTile(x, z, _dir);
                 _lastPlacedPosition = currentGridPosition; // 마지막 배치 위치 갱신
             }
             else
@@ -182,7 +183,7 @@ public class GridBuildController : MonoBehaviour
     public bool CheckCanBuildAtPos()
     {
         Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
-        gridBuildSystem.GetGrid().GetXZ(mousePosition, out int x, out int z);
+        baseGridBuildSystem.GetGrid().GetXZ(mousePosition, out int x, out int z);
         return IsPlacementValid(x, z) && CanBuildAtPos(_objectToPlace.GetGridPositionList(new Vector2Int(x, z), _dir));
     }
     
@@ -190,7 +191,7 @@ public class GridBuildController : MonoBehaviour
     {
         foreach (Vector2Int gridPosition in gridPositionList)
         {
-            var gridObject = gridBuildSystem.GetGrid().GetGridObject(gridPosition.x, gridPosition.y);
+            var gridObject = baseGridBuildSystem.GetGrid().GetGridObject(gridPosition.x, gridPosition.y);
             if (gridObject == null || !gridObject.CanBuild())
             {
                 return false;
@@ -211,8 +212,8 @@ public class GridBuildController : MonoBehaviour
         int objectLength = _objectToPlace.GetHeight(_dir);
 
         return x >= 0 && z >= 0 &&
-               x + objectWidth <= gridBuildSystem.GetGrid().Width &&
-               z + objectLength <= gridBuildSystem.GetGrid().Height;
+               x + objectWidth <= baseGridBuildSystem.GetGrid().Width &&
+               z + objectLength <= baseGridBuildSystem.GetGrid().Height;
     }
     
     private void RemoveObjectAtMousePosition()
@@ -222,7 +223,7 @@ public class GridBuildController : MonoBehaviour
         
         PlacedObject placedObject = GetObjectAtMousePosition();
         
-        gridBuildSystem.RemoveTile(placedObject);
+        baseGridBuildSystem.RemoveTile(placedObject);
     }
 
     private void SelectObjectAtMousePosition()
@@ -232,18 +233,18 @@ public class GridBuildController : MonoBehaviour
     
         if (placedObject is RevenueFacilityTile attractionTile)
         {
-            ShelterBuildingManager.Instance.OpenBuildPopUpHUD(attractionTile);
+            GridBuildingManager.Instance.OpenBuildPopUpHUD(attractionTile);
         }
     }
     
     public Vector3 GetMouseWorldSnappedPosition() {
         Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
-        gridBuildSystem.GetGrid().GetXZ(mousePosition, out int x, out int z);
+        baseGridBuildSystem.GetGrid().GetXZ(mousePosition, out int x, out int z);
 
-        Vector3 placedObjectWorldPosition = gridBuildSystem.GetGrid().GetWorldPosition(x, z);
+        Vector3 placedObjectWorldPosition = baseGridBuildSystem.GetGrid().GetWorldPosition(x, z);
         if (_objectToPlace != null) {
             Vector2Int rotationOffset = _objectToPlace.GetRotationOffset(_dir);
-            placedObjectWorldPosition += new Vector3(rotationOffset.x, 0, rotationOffset.y) * gridBuildSystem.GetGrid().CellSize;
+            placedObjectWorldPosition += new Vector3(rotationOffset.x, 0, rotationOffset.y) * baseGridBuildSystem.GetGrid().CellSize;
         } 
         
         return placedObjectWorldPosition;
@@ -252,18 +253,21 @@ public class GridBuildController : MonoBehaviour
     private PlacedObject GetObjectAtMousePosition()
     {
         Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
-        gridBuildSystem.GetGrid().GetXZ(mousePosition, out int x, out int z);
+        baseGridBuildSystem.GetGrid().GetXZ(mousePosition, out int x, out int z);
 
-        GridCell gridObject = gridBuildSystem.GetGrid().GetGridObject(x, z);
+        GridCell gridObject = baseGridBuildSystem.GetGrid().GetGridObject(x, z);
         return gridObject?.GetPlacedObject();
     }
     
     public void SetDeleteMode()
     {
-        gridBuildSystem.SelectToBuild(null);
+        baseGridBuildSystem.SelectToBuild(null);
 
         _isDeleteMode.Value = !_isDeleteMode.Value;
-        _isDeleteMode.Value = (ShelterBuildingManager.Instance.shelterManager.IsVisitorInShelter() == false && _isDeleteMode.Value);
+        ShelterBuildingManager shelterBuildingManager = GridBuildingManager.Instance as ShelterBuildingManager;
+        if(shelterBuildingManager != null)
+            _isDeleteMode.Value = (shelterBuildingManager.shelterManager.IsVisitorInShelter() == false && _isDeleteMode.Value);
+            
     }
     
     public void SetControllerActive(bool value) => _isActive = value;
