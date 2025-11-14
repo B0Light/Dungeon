@@ -20,14 +20,26 @@ public class ShopShelfItem : MonoBehaviour, IShopShelfItem
     
     public virtual void Init(ItemData data)
     {
-        this.itemData = data;
+        itemData = data;
         itemCode = data.itemCode;
         ChangeSprite(itemIcon, data.itemIcon);
-        itemName.text = data.itemName;
-        itemName.color = WorldDatabase_Item.Instance.GetItemColorByTier(data.itemTier);
-        itemTierBackground.color = WorldDatabase_Item.Instance.GetItemBackgroundColorByTier(data.itemTier);
+        
+        /* UI */
+        if (itemName)
+        {
+            itemName.text = data.itemName;
+            itemName.color = WorldDatabase_Item.Instance.GetItemColorByTier(data.itemTier);
+        }
 
-        itemCost.text = data.purchaseCost.ToString();
+        if (itemCost)
+        {
+            itemCost.text = data.purchaseCost.ToString();
+        }
+
+        if (itemTierBackground)
+        {
+            itemTierBackground.color = WorldDatabase_Item.Instance.GetItemBackgroundColorByTier(data.itemTier);
+        }
     }
 
     private void ChangeSprite(Image uiImage, Sprite newSprite)

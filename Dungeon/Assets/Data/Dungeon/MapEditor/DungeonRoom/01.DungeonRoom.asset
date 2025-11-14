@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba6e3b9d02e1d2419c74adfda20f584, type: 3}
+  m_Name: 01.DungeonRoom
+  m_EditorClassIdentifier: 
+  essentialBuilding:
+  - {fileID: 54930652906114382, guid: e11cab301568d5f49b22e9d412e68c59, type: 3}
+  - {fileID: 3499694149513638284, guid: f2e6792f3b7afef499acd5e960952285, type: 3}
+  - {fileID: 1316470300395597829, guid: c3c690e4985bd614f9686c9cb49db42c, type: 3}
+  - {fileID: 8455065471804783297, guid: 1dccbac33c97a8245b3c114becda7b1f, type: 3}
+  - {fileID: 4596590122778093036, guid: c29d7d15290d1b5459407fe5fb7528ae, type: 3}
+  - {fileID: 1988982710338170593, guid: 6dab1cd4f8522f945a889a6f1252f065, type: 3}
+  - {fileID: 2420378618996009807, guid: ab29ba0293b4a824b81c183ce5b062f4, type: 3}
+  - {fileID: 1988982710338170593, guid: aa7f9bc5903338b4290c99e4830b40d7, type: 3}
+  subBuilding:
+  - {fileID: 3499694149513638284, guid: f2e6792f3b7afef499acd5e960952285, type: 3}
+  - {fileID: 1316470300395597829, guid: c3c690e4985bd614f9686c9cb49db42c, type: 3}

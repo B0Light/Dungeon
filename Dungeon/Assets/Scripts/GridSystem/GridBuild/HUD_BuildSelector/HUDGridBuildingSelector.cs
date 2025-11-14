@@ -11,7 +11,7 @@ public class HUDGridBuildingSelector : MonoBehaviour
         RefreshSlot();
         yield return StartCoroutine(WaitForDataLoad());
 
-        foreach (var buildObjData in ShelterBuildingManager.Instance.unlockedBuildingByCategory[category])
+        foreach (var buildObjData in GridBuildingManager.Instance.unlockedBuildingByCategory[category])
         {
             GameObject instanceBtnObj = Instantiate(selectPrefab, selectButtonSlot);
             ShopShelfItem_Building btnUnit = instanceBtnObj.GetComponent<ShopShelfItem_Building>();

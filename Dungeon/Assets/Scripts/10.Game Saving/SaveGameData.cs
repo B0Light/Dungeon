@@ -54,6 +54,7 @@ public class SaveGameData
 
     [Header("Dungeon")] 
     public SerializableDictionary<int, bool> availableDungeon;
+    public List<int> dungeonTurretList;
 
     [Header("Shelter")] 
     public int shelterLevel;
@@ -97,6 +98,7 @@ public class SaveGameData
         availableDungeon.TryAdd(7, false);
         availableDungeon.TryAdd(8, false);
         availableDungeon.TryAdd(9, false);
+        dungeonTurretList = new List<int>();
         
         shelterLevel = 0;
         balance = 10000;
