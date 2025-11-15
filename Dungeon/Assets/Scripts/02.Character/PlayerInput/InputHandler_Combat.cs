@@ -50,30 +50,30 @@ public class InputHandler_Combat : MonoBehaviour, InputHandlerManager.IInputHand
 
     private void OnLightAttack(InputAction.CallbackContext context)
     {
-        _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.LightAttack01);
+        _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.LightAttack);
     }
     
     private void OnHeavyAttack(InputAction.CallbackContext context)
     {
-        _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.HeavyAttack01);
+        _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.HeavyAttack);
         _playerManager.playerVariableManager.isCharging.Value = false;
     }
     
     private void OnChargeAttack(InputAction.CallbackContext context)
     {
-        _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.ChargeAttack01);
+        _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.HeavyAttack);
         _playerManager.playerVariableManager.isCharging.Value = true;
     }
     
     private void CloseChargeAttack(InputAction.CallbackContext context)
     {
-        _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.ChargeAttack01);
+        _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.HeavyAttack);
         _playerManager.playerVariableManager.isCharging.Value = false;
     }
     
     private void OnParry(InputAction.CallbackContext context)
     {
-        _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.Parry);
+        _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.Block);
     }
     
     private void OnBlock(InputAction.CallbackContext context)

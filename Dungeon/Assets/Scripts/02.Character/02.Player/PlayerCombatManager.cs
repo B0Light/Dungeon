@@ -17,14 +17,12 @@ public class PlayerCombatManager : CharacterCombatManager
         IWeaponItemAction weaponItemAction;
         switch (actionType)
         {
-            case AttackType.LightAttack01:
+            case AttackType.LightAttack:
                 weaponItemAction = lightAttackAction;
                 break;
-            case AttackType.HeavyAttack01:
-            case AttackType.ChargeAttack01:
+            case AttackType.HeavyAttack:
                 weaponItemAction = heavyAttackAction;
                 break;
-            case AttackType.Parry:
             case AttackType.Block:
                 weaponItemAction = blockAction;
                 break;

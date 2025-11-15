@@ -22,12 +22,12 @@ public enum ItemEffect
     HealthPoint,        // 4. 최대 체력 증가
     RestoreHealth,      // 5. 체력 회복
     
-    BuffAttack,         // 7. 공격력 버프
-    BuffDefense,        // 8. 방어력 버프
-    BuffActionPoint,    // 9. 행동력 버프
-    UtilitySpeed,       // 10. 이동속도 증가
-    UtilityWeight,      // 11. 무게 감소
-    Resource,           // 12. 자원 아이템
-    StorageSpace,       // 13. 배낭 공간 확장
-    None,               // 14. 효과 없음
+    BuffAttack,         // 6. 공격력 버프
+    BuffDefense,        // 7. 방어력 버프
+    BuffActionPoint,    // 8. 행동력 버프
+    UtilitySpeed,       // 9. 이동속도 증가
+    UtilityWeight,      // 10. 무게 감소
+    Resource,           // 11. 자원 아이템
+    StorageSpace,       // 12. 배낭 공간 확장
+    None,               // 13. 효과 없음
 }
