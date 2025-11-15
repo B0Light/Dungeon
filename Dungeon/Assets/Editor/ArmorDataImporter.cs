@@ -45,7 +45,7 @@ public class ArmorDataImporter : MonoBehaviour
             /* Armor Item Info */
             string modelPath = "Assets/Data/Load/ItemModels/ID_02_Armor/" + itemInfoPath + ".prefab";
             item.itemModel = AssetDatabase.LoadAssetAtPath<GameObject>(modelPath);
-            item.itemType = ItemType.Armor;
+            item.itemType = ItemInfo.ItemType.Armor;
             ItemAbility ability = new ItemAbility(ItemEffect.HealthPoint, int.Parse(values[9]));
             
             item.itemAbilities.Add(ability); 

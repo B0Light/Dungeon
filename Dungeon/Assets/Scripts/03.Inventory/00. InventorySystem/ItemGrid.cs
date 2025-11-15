@@ -7,6 +7,16 @@ using UnityEngine.Serialization;
 
 public class ItemGrid : MonoBehaviour
 {
+    public enum ItemGridType
+    {
+        PlayerInventory,
+        InteractableInventory,
+        EquipmentInventory,
+        ShareInventory,
+        BackpackInventory,
+        None,
+    }
+    
     public ItemGridType itemGridType;
     public const float TileSizeWidth = 64;  
     public const float TileSizeHeight = 64;
@@ -523,22 +533,22 @@ public class ItemGrid : MonoBehaviour
 
         switch (pickUpItem.itemInfoData.itemType)
         {
-            case ItemType.Weapon:
+            case ItemInfo.ItemType.Weapon:
                 selectItemGrid = GUIController.Instance.inventoryGUIManager.playerWeapon;
                 break;
-            case ItemType.Armor:
+            case ItemInfo.ItemType.Armor:
                 selectItemGrid = GUIController.Instance.inventoryGUIManager.playerArmor;
                 break;
-            case ItemType.Helmet:
+            case ItemInfo.ItemType.Helmet:
                 selectItemGrid = GUIController.Instance.inventoryGUIManager.playerHelmet;
                 break;
-            case ItemType.Consumables:
+            case ItemInfo.ItemType.Consumables:
                 // 소비 아이템은 바로 사용 후 성공 처리
                 PlayerManager pm = GameManager.Instance.GetPlayer();
                 pm.playerItemConsumeManager.UseItem(pickUpItem.itemInfoData.itemCode);
                 Destroy(pickUpItem.gameObject);
                 return true;
-            case ItemType.Misc:
+            case ItemInfo.ItemType.Misc:
                 // 단순 수집 아이템은 인벤토리에 들어갔을 경우만 성공 처리
                 return AddItem(pickUpItem.gameObject, false);
             default:

@@ -56,7 +56,7 @@ public class CharacterLocomotionVariableManager : MonoBehaviour
     
     [Header("RunTimeProperty")]
     public List<GameObject> currentTargetCandidates = new List<GameObject>();
-    public AnimationState currentState = AnimationState.Base;
+    public CharacterLocomotionManager.AnimationState currentState = CharacterLocomotionManager.AnimationState.Base;
     [HideInInspector] public bool cannotStandUp;
     [HideInInspector] public bool crouchKeyPressed;
     [HideInInspector] public bool isCrouching;
@@ -84,7 +84,7 @@ public class CharacterLocomotionVariableManager : MonoBehaviour
     [HideInInspector] public float strafeDirectionZ;
     
     [HideInInspector] public GameObject currentLockOnTarget;
-    [HideInInspector] public GaitState currentGait;
+    [HideInInspector] public CharacterLocomotionManager.GaitState currentGait;
     [HideInInspector] public Transform targetLockOnPos;
     [HideInInspector] public Vector3 currentRotation = new Vector3(0f, 0f, 0f);
     [HideInInspector] public Vector3 moveDirection;

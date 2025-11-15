@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class QuadrupedAIAnimatorManager : CharacterAnimatorManager
 {
+    private enum StaticAnimationType
+    {
+        Death,
+        Sleep,
+        Sit
+    }
+    
     #region AnimationHash
 
 // Quadruped specific animation hashes

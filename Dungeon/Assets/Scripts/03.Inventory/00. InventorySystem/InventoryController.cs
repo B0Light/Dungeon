@@ -181,8 +181,8 @@ public class InventoryController : MonoBehaviour
         if(pickUpItem == null) return;
         switch (_selectedItemGrid.itemGridType)
         {
-            case ItemGridType.PlayerInventory:
-            case ItemGridType.BackpackInventory:
+            case ItemGrid.ItemGridType.PlayerInventory:
+            case ItemGrid.ItemGridType.BackpackInventory:
                 // 1. 외부 인벤토리로 이동
                 if (opened == ItemGridType.InteractableInventory || opened == ItemGridType.ShareInventory)
                 {
@@ -203,14 +203,14 @@ public class InventoryController : MonoBehaviour
                 {
                     pickUpItem = _selectedItemGrid.PickUpItem(pickUpItem);
                     
-                    if (_selectedItemGrid.itemGridType == ItemGridType.BackpackInventory)
+                    if (_selectedItemGrid.itemGridType == ItemGrid.ItemGridType.BackpackInventory)
                     {
                         if (!inventory.AddItem(pickUpItem.gameObject, false))
                         {
                             _selectedItemGrid.AddItem(pickUpItem.gameObject);
                         }
                     }
-                    else if (_selectedItemGrid.itemGridType == ItemGridType.PlayerInventory)
+                    else if (_selectedItemGrid.itemGridType == ItemGrid.ItemGridType.PlayerInventory)
                     {
                         if (!backpack.AddItem(pickUpItem.gameObject, false))
                         {
@@ -220,14 +220,14 @@ public class InventoryController : MonoBehaviour
                 }
                 break;
                 
-            case ItemGridType.InteractableInventory:
-            case ItemGridType.ShareInventory:
+            case ItemGrid.ItemGridType.InteractableInventory:
+            case ItemGrid.ItemGridType.ShareInventory:
                 if (!inventory.AddItem(pickUpItem.gameObject, false) && !backpack.AddItem(pickUpItem.gameObject, false))
                 {
                     _selectedItemGrid.AddItem(pickUpItem.gameObject, false);
                 }
                 break;
-            case ItemGridType.EquipmentInventory:
+            case ItemGrid.ItemGridType.EquipmentInventory:
                 if (!backpack.AddItem(pickUpItem.gameObject, false))
                 {
                     if (!inventory.AddItem(pickUpItem.gameObject, false))

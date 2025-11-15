@@ -28,7 +28,7 @@ public class CharacterManager : MonoBehaviour, IDamageable
     private Rigidbody _rigidbody;
     
     [Header(("CharacterGroup"))] 
-    public CharacterGroup characterGroup;
+    public WorldUtilityManager.CharacterGroup characterGroup;
 
     [HideInInspector] public bool isPerformingAction = false;
     [HideInInspector] public CharacterManager currentTarget;

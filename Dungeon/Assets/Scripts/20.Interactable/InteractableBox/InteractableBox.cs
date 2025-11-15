@@ -17,6 +17,15 @@ public enum LidRotationAxis
     Z   // Z축 회전 (시계/반시계 방향)
 }
 
+public enum BoxType
+{
+    WeaponBox,
+    FoodBox,
+    SupplyBox,
+    MiscBox,
+    Safe,
+}
+
 public class InteractableBox : Interactable
 {
     [Header("Box Info")]

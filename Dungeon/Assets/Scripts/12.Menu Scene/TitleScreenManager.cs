@@ -24,7 +24,7 @@ public class TitleScreenManager : MonoBehaviour
     private TitleScreenLoadMenuInputManager _loadMenuInputManager;
 
     [Header("Character Slots")] 
-    private CharacterSlot _currentSelectedSlot = CharacterSlot.NO_SLOT;
+    private CharacterSlot _currentSelectedSlot = CharacterSlot.NoSlot;
     private event Action OnSelectSlotChange;
     public CharacterSlot CurrentSelectedSlot
     {
@@ -151,12 +151,12 @@ public class TitleScreenManager : MonoBehaviour
 
     public void SelectNoSlot()
     {
-        CurrentSelectedSlot = CharacterSlot.NO_SLOT;
+        CurrentSelectedSlot = CharacterSlot.NoSlot;
     }
 
     public void OpenToDeleteCharacterSlot()
     {
-        if (CurrentSelectedSlot != CharacterSlot.NO_SLOT)
+        if (CurrentSelectedSlot != CharacterSlot.NoSlot)
         {
             deleteCharacterSlotPopUp.SetActive(true);
         }

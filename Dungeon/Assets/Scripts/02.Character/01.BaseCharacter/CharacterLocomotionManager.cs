@@ -60,6 +60,25 @@ public class CharacterLocomotionManager : MonoBehaviour
     
     #endregion
     
+    public enum GaitState
+    {
+        Idle,
+        Walk,
+        Run,
+        Sprint,
+    }
+    
+    public enum AnimationState
+    {
+        Base,
+        Locomotion,
+        Jump,
+        Fall,
+        Crouch,
+        DoubleJump,
+        Dead,
+    }
+    
     protected const float _ANIMATION_DAMP_TIME = 5f;
     protected const float _STRAFE_DIRECTION_DAMP_TIME = 20f;
     [SerializeField] protected float _targetMaxSpeed;

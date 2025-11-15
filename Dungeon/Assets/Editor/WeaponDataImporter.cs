@@ -52,7 +52,7 @@ public class WeaponDataImporter : MonoBehaviour
             string equipSpritePath = "Assets/Data/Load/ItemSprites/ID_00_Weapon/" + itemInfoPath + "_Equip.png";
             item.weaponEquipSprite = AssetDatabase.LoadAssetAtPath<Sprite>(equipSpritePath);
 
-            item.itemType = ItemType.Weapon;
+            item.itemType = ItemInfo.ItemType.Weapon;
             
             ItemAbility ability1 = new ItemAbility(ItemEffect.PhysicalAttack, int.Parse(values[9]));
             item.itemAbilities.Add(ability1); 

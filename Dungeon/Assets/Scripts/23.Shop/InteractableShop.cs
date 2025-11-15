@@ -10,7 +10,7 @@ public class InteractableShop : Interactable
     [SerializeField] private bool purchaseWithItem = false;
     
     [Header("Sale Item")] 
-    [SerializeField] private ItemType saleItemType;
+    [SerializeField] private ItemInfo.ItemType saleItemType;
     [SerializeField] private List<int> itemList = new List<int>();
     [ReadOnly] public List<ItemInfo> saleItemList = new List<ItemInfo>();
     

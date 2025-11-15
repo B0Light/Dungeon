@@ -241,3 +241,13 @@ public class InventoryGUIManager : GUIComponent
         cg.interactable = false;
     }
 }
+
+public enum ItemGridType
+{
+    PlayerInventory,
+    InteractableInventory,
+    EquipmentInventory,
+    ShareInventory,
+    BackpackInventory,
+    None,
+}

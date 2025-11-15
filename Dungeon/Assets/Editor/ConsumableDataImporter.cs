@@ -41,7 +41,7 @@ public class ConsumableDataImporter : MonoBehaviour
             item.width = int.Parse(values[6]);                             
             item.height = int.Parse(values[7]);                             
             item.weight = int.Parse(values[8]);
-            item.itemType = ItemType.Consumables;
+            item.itemType = ItemInfo.ItemType.Consumables;
 
             if (int.TryParse(values[9], out int buffCode1) && buffCode1 >= 5 && buffCode1 < 12)
             {

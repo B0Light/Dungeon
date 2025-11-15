@@ -44,7 +44,7 @@ public class HelmetDataImporter : MonoBehaviour
 
             string modelPath = "Assets/Data/Load/ItemModels/ID_01_Helmet/" + itemInfoPath + ".prefab";
             item.itemModel = AssetDatabase.LoadAssetAtPath<GameObject>(modelPath);
-            item.itemType = ItemType.Helmet;
+            item.itemType = ItemInfo.ItemType.Helmet;
             int physicalDefense = int.Parse(values[9]);
             int magicalDefense = int.Parse(values[10]);
             ItemAbility ability1 = new ItemAbility(ItemEffect.PhysicalDefense, physicalDefense);

@@ -48,7 +48,7 @@ public class MiscItemImporter : MonoBehaviour
             item.height = int.Parse(values[7]);                             
             item.weight = int.Parse(values[8]);
 
-            item.itemType = ItemType.Misc;
+            item.itemType = ItemInfo.ItemType.Misc;
             item.itemAbilities.Add(new ItemAbility(ItemEffect.Resource, 0));
 
             //item.itemName = values[9]; // 한국어 이름 으로 저장 

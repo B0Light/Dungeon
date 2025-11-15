@@ -5,5 +5,5 @@ using UnityEngine.Serialization;
 
 public class WeaponModelInstantiateSlot : ModelInstantiateSlot
 {
-    public WeaponModelSlot weaponSlot; 
+    public CharacterEquipmentMangaer.WeaponModelSlot weaponSlot; 
 }

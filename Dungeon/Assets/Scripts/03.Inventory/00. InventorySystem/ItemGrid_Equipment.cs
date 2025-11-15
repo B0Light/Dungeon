@@ -6,7 +6,7 @@ public class ItemGrid_Equipment : ItemGrid
 {
     [SerializeField] private PlayerManager _playerManager;
     
-    [SerializeField] private ItemType itemType;
+    [SerializeField] private ItemInfo.ItemType itemType;
     private List<InventoryItem> _curEquipItem = new List<InventoryItem>();
 
     public override bool CheckPlaceItem(InventoryItem inventoryItem, int posX, int posY)
@@ -22,7 +22,7 @@ public class ItemGrid_Equipment : ItemGrid
 
     public override bool PlaceItem(InventoryItem inventoryItem, int posX, int posY, bool isLoad = false)
     {
-        if (itemType != ItemType.Consumables && _curEquipItem.Count > 0) return false;
+        if (itemType != ItemInfo.ItemType.Consumables && _curEquipItem.Count > 0) return false;
         
         if (base.PlaceItem(inventoryItem, posX, posY, isLoad))
         {
@@ -33,16 +33,16 @@ public class ItemGrid_Equipment : ItemGrid
             _curEquipItem.Add(inventoryItem);
             switch (itemType)   
             {
-                case ItemType.Weapon:
+                case ItemInfo.ItemType.Weapon:
                     _playerManager.playerVariableManager.currentEquippedWeaponID.Value = inventoryItem.itemInfoData.itemCode;
                     break;
-                case ItemType.Armor:
+                case ItemInfo.ItemType.Armor:
                     _playerManager.playerVariableManager.currentArmorID.Value = inventoryItem.itemInfoData.itemCode;
                     break;
-                case ItemType.Helmet:
+                case ItemInfo.ItemType.Helmet:
                     _playerManager.playerVariableManager.currentHelmetID.Value = inventoryItem.itemInfoData.itemCode;
                     break;
-                case ItemType.Consumables:
+                case ItemInfo.ItemType.Consumables:
                     _playerManager.playerVariableManager.currentQuickSlotIDList.Add(inventoryItem.itemInfoData.itemCode);
                     break;
             }
@@ -67,13 +67,13 @@ public class ItemGrid_Equipment : ItemGrid
             
             switch (itemType)   
             {
-                case ItemType.Weapon:
+                case ItemInfo.ItemType.Weapon:
                     _playerManager.playerVariableManager.currentEquippedWeaponID.Value = 0;
                     break;
-                case ItemType.Armor:
+                case ItemInfo.ItemType.Armor:
                     _playerManager.playerVariableManager.currentArmorID.Value = 0;
                     break;
-                case ItemType.Helmet:
+                case ItemInfo.ItemType.Helmet:
                     _playerManager.playerVariableManager.currentHelmetID.Value = 0;
                     break;
             }
@@ -92,16 +92,16 @@ public class ItemGrid_Equipment : ItemGrid
         
         switch (itemType)   
         {
-            case ItemType.Weapon:
+            case ItemInfo.ItemType.Weapon:
                 _playerManager.playerVariableManager.currentEquippedWeaponID.Value = 0;
                 break;
-            case ItemType.Helmet:
+            case ItemInfo.ItemType.Helmet:
                 _playerManager.playerVariableManager.currentHelmetID.Value = 0;
                 break;
-            case ItemType.Armor:
+            case ItemInfo.ItemType.Armor:
                 _playerManager.playerVariableManager.currentArmorID.Value = 0;
                 break;
-            case ItemType.Consumables:
+            case ItemInfo.ItemType.Consumables:
                 _playerManager.playerVariableManager.currentQuickSlotIDList.Remove(pickUpItem.itemInfoData.itemCode);
                 break;
         }

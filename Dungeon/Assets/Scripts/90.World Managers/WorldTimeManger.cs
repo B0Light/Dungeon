@@ -4,6 +4,13 @@ using UnityEngine.Events;
 
 public class WorldTimeManager : Singleton<WorldTimeManager>
 {
+    public enum TimeOfDay
+    {
+        Day,
+        Sunset,
+        Night
+    }
+    
     [SerializeField] private Material daySkybox;  // 낮 스카이박스
     [SerializeField] private Material sunsetSkybox;
     [SerializeField] private Material nightSkybox; // 밤 스카이박스

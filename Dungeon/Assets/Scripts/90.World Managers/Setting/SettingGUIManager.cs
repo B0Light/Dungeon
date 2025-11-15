@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class SettingGUIManager : GUIComponent
 {
+    private enum OptionType
+    {
+        Display,
+        KeyBind,
+        Sound,
+        Exit,
+        None,
+    }
+    
     [SerializeField] private TextMeshProUGUI navigationText;
 
     [SerializeField] private CanvasGroup optionsPanel;

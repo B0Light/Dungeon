@@ -40,3 +40,14 @@ public class ItemData : ScriptableObject
         return requiredItems;
     }
 }
+
+public enum ItemTier
+{
+    Common,     //0 white
+    Uncommon,   //1 green  
+    Rare,       //2 blue
+    Epic,       //3 purple
+    Legendary,  //4 orange
+    Mythic,     //5 Red
+    None,       // To out of index
+}

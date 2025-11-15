@@ -5,6 +5,24 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Dungeon/Info/DungeonData ")]
 public class DungeonData : ScriptableObject
 {
+    public enum Difficulty
+    {
+        [InspectorName("평화로움")]
+        Easy = 0,
+    
+        [InspectorName("보통")]
+        Normal = 1,
+    
+        [InspectorName("어려움")]
+        Hard = 2,
+    
+        [InspectorName("전문가")]
+        Expert = 3,
+    
+        [InspectorName("지옥")]
+        Hell = 4,
+    }
+    
     [Header("Dungeon Information")] 
     public int dungeonID;
     public int dungeonKey;
