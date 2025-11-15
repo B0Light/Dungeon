@@ -11,6 +11,6 @@ public class InteractableBuildController : Interactable
     {
         GUIController.Instance.ToggleMainGUI(false);
         InputHandlerManager.Instance.SetInputMode(InputMode.OpenUI);
-        ShelterBuildingManager.Instance.ToggleMainBuildHUD(true, this);
+        ShelterBuildHUDManager.Instance.ToggleMainBuildHUD(true, this);
     }
 }

@@ -24,7 +24,9 @@ public class HUDGridBuildingCategoryUnit : MonoBehaviour
     {
         yield return WaitForDataLoad();
         buildingIcon.sprite = WorldDatabase_Build.Instance.GetCategoryIcon(categoryCode);
-        selectButton.onClick.AddListener(()=>GridBuildingManager.Instance.SelectCategory(categoryCode));
+        ShelterBuildHUDManager shelterBuildHUDManager = GridBuildHUDManager.Instance as ShelterBuildHUDManager; 
+        if(shelterBuildHUDManager)
+            selectButton.onClick.AddListener(()=>shelterBuildHUDManager.SelectCategory(categoryCode));
     }
     
     private IEnumerator WaitForDataLoad()

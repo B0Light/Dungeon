@@ -1510,6 +1510,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5841291465386098250}
+  - component: {fileID: 5841291465386098251}
   m_Layer: 0
   m_Name: DungeonCoreSystem
   m_TagString: Untagged
@@ -4600,7 +4601,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6832251663022864495}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -4940,6 +4941,25 @@ Transform:
   - {fileID: 4949172178534704132}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5841291465386098251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172280678608280019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bd5c086ed7b4e446891079ef090cbf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DungeonCoreHUDManager
+  gridBuildCamera: {fileID: 8685364933688868870}
+  gridBuildController: {fileID: 3183541950193506680}
+  constructionCanvasGroup: {fileID: 8983794179825068878}
+  buildingPopupCanvasGroup: {fileID: 4734503307082483832}
+  buildInfoHUD: {fileID: 1085267507655166638}
+  unlockedBuildingByCategory:
+    keys: 
 --- !u!222 &5860474552766771031
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7511,6 +7531,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7879324421520236809}
   - component: {fileID: 8983794179825068877}
+  - component: {fileID: 8983794179825068878}
   m_Layer: 5
   m_Name: TurretSelector
   m_TagString: Untagged
@@ -7533,6 +7554,18 @@ MonoBehaviour:
   leftSlot: {fileID: 1223820549}
   rightSlot: {fileID: 75303916}
   turretPrefab: {fileID: 145910030203283280, guid: fde0da3bdd7dfe347928b364a6be00fb, type: 3}
+--- !u!225 &8983794179825068878
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8983794179825068876}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &9053379904865903886
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,6 @@ public class HUDGridBuildingUnit : MonoBehaviour
 
     private BuildObjData _buildObjData;
     
-
     public void InitButton(int buildingCode, int itemCount)
     {
         _buildObjData = WorldDatabase_Build.Instance.GetBuildingByID(buildingCode);
@@ -26,7 +25,8 @@ public class HUDGridBuildingUnit : MonoBehaviour
     {
         buildingIcon.sprite = exitIcon;
         selectNumText.text = "X";
-        selectButton.onClick.AddListener(ShelterBuildingManager.Instance.RefreshCategory);
+        ShelterBuildHUDManager shelterBuildHUDManager = GridBuildHUDManager.Instance as ShelterBuildHUDManager; 
+        if(shelterBuildHUDManager)
+            selectButton.onClick.AddListener(shelterBuildHUDManager.RefreshCategory);
     }
-    
 }

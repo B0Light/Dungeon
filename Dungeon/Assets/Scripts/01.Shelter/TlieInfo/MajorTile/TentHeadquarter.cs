@@ -7,6 +7,8 @@ public class TentHeadquarter : RevenueFacilityTile_Shop
         base.UpgradeTile();
 
         WorldSaveGameManager.Instance.currentGameData.shelterLevel = this.level;
-        ShelterBuildingManager.Instance.UpdateAvailableBuildings();
+        ShelterBuildHUDManager shelterBuildHUDManager = GridBuildHUDManager.Instance as ShelterBuildHUDManager; 
+        if(shelterBuildHUDManager)
+            shelterBuildHUDManager.UpdateAvailableBuildings();
     }
 }

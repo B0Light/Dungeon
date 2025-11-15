@@ -12,6 +12,6 @@ public class InteractableDungeonCore : Interactable
     {
         GUIController.Instance.ToggleMainGUI(false);
         InputHandlerManager.Instance.SetInputMode(InputMode.OpenUI);
-        ShelterBuildingManager.Instance.ToggleMainBuildHUD(true, this);
+        GridBuildHUDManager.Instance.ToggleMainBuildHUD(true, this);
     }
 }

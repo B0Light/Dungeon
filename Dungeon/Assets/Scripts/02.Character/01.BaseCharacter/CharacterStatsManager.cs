@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class CharacterStatsManager : MonoBehaviour
 {
-    protected CharacterManager character;
+    private CharacterManager _character;
 
-    private readonly float _staminaRegenDelayTime = 2.0f; // 재생이 시작되기까지의 딜레이 시간 (초)
-    private readonly float _staminaRegenRatePerSecond = 5.0f; // 초당 재생되는 스태미나 값
+    private readonly float _staminaRegenDelayTime = 1.0f; // 재생이 시작되기까지의 딜레이 시간 (초)
+    private readonly float _staminaRegenRatePerSecond = 15.0f; // 초당 재생되는 스태미나 값
     private readonly float _staminaDrainRatePerSecond = 10.0f; // 초당 감소하는 스태미나 값 (달리기 시)
     private float _staminaRegenTimer = 0.0f; // 재생 딜레이를 위한 타이머
     
@@ -31,16 +31,16 @@ public class CharacterStatsManager : MonoBehaviour
     
     protected virtual void Awake()
     {
-        character = GetComponent<CharacterManager>();
+        _character = GetComponent<CharacterManager>();
     }
 
     public void RegenerateStamina()
     {
-        if (character.characterVariableManager.stamina.Value >=
-            character.characterVariableManager.stamina.MaxValue)
+        if (_character.characterVariableManager.stamina.Value >=
+            _character.characterVariableManager.stamina.MaxValue)
         {
-            character.characterVariableManager.stamina.Value =
-                character.characterVariableManager.stamina.MaxValue;
+            _character.characterVariableManager.stamina.Value =
+                _character.characterVariableManager.stamina.MaxValue;
         
             _staminaRegenTimer = 0.0f; 
         
@@ -48,24 +48,24 @@ public class CharacterStatsManager : MonoBehaviour
         }
         
         // 1. 달리기 시 스테미나 감소
-        if (character.characterVariableManager.CLVM.isSprinting)
+        if (_character.characterVariableManager.CLVM.isSprinting)
         {
             _staminaRegenTimer = 0.0f;
 
-            character.characterVariableManager.stamina.Value -=
+            _character.characterVariableManager.stamina.Value -=
                 _staminaDrainRatePerSecond * Time.deltaTime;
 
-            if (character.characterVariableManager.stamina.Value < 0)
+            if (_character.characterVariableManager.stamina.Value < 0)
             {
-                character.characterVariableManager.stamina.Value = 0;
-                character.characterVariableManager.CLVM.isSprinting = false;
+                _character.characterVariableManager.stamina.Value = 0;
+                _character.characterVariableManager.CLVM.isSprinting = false;
             }
 
             return;
         }
 
         // 2. 행동 중일 때 재생 중단
-        if (character.isPerformingAction)
+        if (_character.isPerformingAction)
         {
             // 딜레이 타이머 리셋 (행동 중에는 재생 딜레이도 초기화)
             _staminaRegenTimer = 0.0f;
@@ -78,22 +78,22 @@ public class CharacterStatsManager : MonoBehaviour
         // 4. 딜레이 시간(RegenDelayTime)이 지난 후, 스테미나 재생 시작
         if (_staminaRegenTimer >= _staminaRegenDelayTime)
         {
-            character.characterVariableManager.stamina.Value +=
+            _character.characterVariableManager.stamina.Value +=
                 _staminaRegenRatePerSecond * Time.deltaTime;
 
-            if (character.characterVariableManager.stamina.Value > character.characterVariableManager.stamina.MaxValue)
+            if (_character.characterVariableManager.stamina.Value > _character.characterVariableManager.stamina.MaxValue)
             {
-                character.characterVariableManager.stamina.Value =
-                    character.characterVariableManager.stamina.MaxValue;
+                _character.characterVariableManager.stamina.Value =
+                    _character.characterVariableManager.stamina.MaxValue;
             }
         }
     }
     
     public bool UseStamina(float value = 10)
     {
-        if (character.characterVariableManager.stamina.Value < value) return false;
+        if (_character.characterVariableManager.stamina.Value < value) return false;
         
-        character.characterVariableManager.stamina.Value -= value;
+        _character.characterVariableManager.stamina.Value -= value;
         return true;
     }
 }
