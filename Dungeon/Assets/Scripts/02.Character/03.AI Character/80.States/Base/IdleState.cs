@@ -46,8 +46,8 @@ public class IdleState : AIState
         if (aiCharacter.isDead.Value) return this;
         
         // 1순위: 적 탐지 및 추적
-        AIState combatState = CheckForCombatTransition(aiCharacter);
-        if (combatState != null) return combatState;
+        AIState nextState = CheckForCombatTransition(aiCharacter);
+        if (nextState != null) return nextState;
         
         // 2순위: 순찰 로직
         HandlePatrolBehavior(aiCharacter);

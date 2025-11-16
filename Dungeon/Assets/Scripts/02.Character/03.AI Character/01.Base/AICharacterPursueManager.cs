@@ -27,6 +27,7 @@ public class AICharacterPursueManager : MonoBehaviour
 
     public void SetTarget(CharacterManager newTarget)
     {
+        Debug.Log($"AI Set Target : {pursueTarget.name}");
         pursueTarget = newTarget;
     }
     

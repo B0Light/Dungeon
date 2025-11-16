@@ -137,7 +137,6 @@ public class PlayerVariableManager : CharacterVariableManager
 
         _playerManager.playerStatsManager.blockingPhysicalAbsorption = newWeaponInfo.physicalDamageAbsorption;
         _playerManager.playerStatsManager.blockingMagicalAbsorption = newWeaponInfo.magicalDamageAbsorption;
-        _playerManager.playerStatsManager.blockingStability = newWeaponInfo.stability;
         
         //GUIController.Instance.playerUIHudManager.playerUIWeaponSlotManager.SetRightWeaponQuickSlotIcon(newValue);
     }

@@ -90,16 +90,6 @@ public class AICharacterManager : CharacterManager
         {
             SwitchToState(nextState);
         }
-
-        if (currentTarget != null)
-        {
-            aiCharacterPursueManager.targetDirection =
-                aiCharacterPursueManager.pursueTarget.transform.position - transform.position;
-            aiCharacterPursueManager.viewableAngle = 
-                WorldUtilityManager.Instance.GetAngleOfTarget(transform, aiCharacterPursueManager.targetDirection);
-            aiCharacterPursueManager.distanceFromTarget =
-                Vector3.Distance(transform.position, aiCharacterPursueManager.pursueTarget.transform.position);
-        }
     }
 
     protected override IEnumerator ProcessDeathEvent()

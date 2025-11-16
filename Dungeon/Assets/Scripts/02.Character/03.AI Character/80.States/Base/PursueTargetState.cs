@@ -34,18 +34,25 @@ public class PursueTargetState : AIState
         
         aiCharacter.aiCharacterLocomotionManager.RotateTowardAgent(aiCharacter);
         
+        // 타겟과의 거리 계산
+        aiCharacter.aiCharacterPursueManager.targetDirection =
+            aiCharacter.aiCharacterPursueManager.pursueTarget.transform.position - aiCharacter.transform.position;
+        aiCharacter.aiCharacterPursueManager.viewableAngle = 
+            WorldUtilityManager.Instance.GetAngleOfTarget(aiCharacter.transform, aiCharacter.aiCharacterPursueManager.targetDirection);
+        aiCharacter.aiCharacterPursueManager.distanceFromTarget =
+            Vector3.Distance(aiCharacter.transform.position, aiCharacter.aiCharacterPursueManager.pursueTarget.transform.position);
+        
         // 타겟과의 거리 확인
         if (aiCharacter.aiCharacterPursueManager.distanceFromTarget <=
-            aiCharacter.navMeshAgent.stoppingDistance)
+            aiCharacter.aiCharacterPursueManager.attackRange)
         {
+            Debug.Log("Target is within attack range");
             return SwitchState(aiCharacter, aiCharacter.stateCombatStance);
         }
 
         // 경로 설정
-        NavMeshPath path = new NavMeshPath();
-        aiCharacter.navMeshAgent.CalculatePath(aiCharacter.aiCharacterPursueManager.pursueTarget.transform.position, path);
-        aiCharacter.navMeshAgent.SetPath(path);
-
+        Debug.Log($"Set Destination : {aiCharacter.aiCharacterPursueManager.pursueTarget.name}");
+        aiCharacter.navMeshAgent.SetDestination(aiCharacter.aiCharacterPursueManager.pursueTarget.transform.position);
         return this;
     }
 }

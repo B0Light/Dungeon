@@ -6,40 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="1844b18a-d80d-49d6-955e-b57cdcc0bed9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Black.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Black.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Blue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Blue.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Brown.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Brown.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Gray.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Gray.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Green.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Green.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Olive.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Olive.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Pink.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Pink.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Purple.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Purple.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Red.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_Red.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_SkyBlue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_SkyBlue.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_White.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/02.Cube/Cube_Prototype_White.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/FloorSlot.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/FloorSlot.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/MapBuilder/Dungeon/Room/Dungeon_Room_01_Portal.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/MapBuilder/Dungeon/Room/Dungeon_Room_01_Portal.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_Black.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_Black.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_Blue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_Blue.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_Brown.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_Brown.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_Green.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_Green.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_Olive.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_Olive.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_Pink.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_Pink.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_Purple.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_Purple.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_Red.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_Red.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_SkyBlue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Cube_Prototype_SkyBlue.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/00.StartScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/00.StartScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/10.Dungeon_01.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/10.Dungeon_01.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/BuildingManager/ShelterBuildHUDManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/BuildingManager/ShelterBuildHUDManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/ShelterBaseGridSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/ShelterGridBuildSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/ShelterBaseGridSystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/01.Shelter/ShelterGridBuildSystem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/03.Dungeon_Build_Turret/DungeonTurretBuildUIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/03.Dungeon_Build_Turret/DungeonTurretBuildUIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/PathFindingUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/PathFindingUnit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildSystem/BaseGridBuildSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildSystem/BaseGridBuildSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildingManager/GridBuildHUDManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildingManager/GridBuildHUDManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/HUD_BuildSelector/HUDGridBuildToSelectInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/HUD_BuildSelector/HUDGridBuildToSelectInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/HUD_BuildSelector/HUDGridBuildingCostController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/HUD_BuildSelector/HUDGridBuildingCostController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterStatsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterStatsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerVariableManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerVariableManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterPursueManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterPursueManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/IdleState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/PursueTargetState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/PursueTargetState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +179,8 @@
       <workItem from="1763091746224" duration="8297000" />
       <workItem from="1763182620459" duration="2088000" />
       <workItem from="1763203169510" duration="8540000" />
-      <workItem from="1763269410087" duration="4855000" />
+      <workItem from="1763269410087" duration="5452000" />
+      <workItem from="1763291484394" duration="6873000" />
     </task>
     <servers />
   </component>
