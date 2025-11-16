@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -22,12 +23,18 @@ public class HUDGridBuildingCostController : MonoBehaviour
     {
         StartCoroutine(BindSelectBuilding());
     }
-    
+
     private IEnumerator BindSelectBuilding()
     {
         yield return StartCoroutine(WaitForDataLoad());
         BaseGridBuildSystem.OnSelectedChanged += Instance_OnSelectedChanged;
         BaseGridBuildSystem.OnObjectPlaced  += Instance_OnSelectedChanged;
+    }
+    
+    private void OnDisable()
+    {
+        BaseGridBuildSystem.OnSelectedChanged -= Instance_OnSelectedChanged;
+        BaseGridBuildSystem.OnObjectPlaced  -= Instance_OnSelectedChanged;
     }
 
     private void Instance_OnSelectedChanged(BuildObjData objectToPlace)

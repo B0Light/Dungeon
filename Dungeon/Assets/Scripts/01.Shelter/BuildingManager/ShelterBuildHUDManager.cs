@@ -111,9 +111,9 @@ public class ShelterBuildHUDManager : GridBuildHUDManager
     private void SaveGridData()
     {
         WorldSaveGameManager.Instance.currentGameData.buildings.Clear();
-        ShelterBaseGridSystem shelterBaseGridSystem = BaseGridBuildSystem.Instance as ShelterBaseGridSystem;
-        if(!shelterBaseGridSystem) return;
-        foreach (var building in shelterBaseGridSystem.SaveBuildingDataList)
+        ShelterGridBuildSystem shelterGridBuildSystem = BaseGridBuildSystem.Instance as ShelterGridBuildSystem;
+        if(!shelterGridBuildSystem) return;
+        foreach (var building in shelterGridBuildSystem.SaveBuildingDataList)
         {
             if (building != null)
             {

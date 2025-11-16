@@ -45,7 +45,9 @@ public class PathFindingUnit : MonoBehaviour
     
     private Vector2Int SelectRandomTarget()
     {
-        var attractions = BaseGridBuildSystem.Instance.CheckPointList;
+        ShelterGridBuildSystem shelterGridBuildSystem = BaseGridBuildSystem.Instance as ShelterGridBuildSystem;
+        if (!shelterGridBuildSystem) return Vector2Int.zero;
+        var attractions = shelterGridBuildSystem.CheckPointList;
         int randomIndex = Random.Range(0, attractions.Count);
         return attractions[randomIndex];
     }

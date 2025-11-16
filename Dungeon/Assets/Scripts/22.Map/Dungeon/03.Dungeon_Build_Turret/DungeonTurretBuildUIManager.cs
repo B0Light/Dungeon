@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class DungeonTurretBuildUIManager : MonoBehaviour
@@ -6,12 +5,17 @@ public class DungeonTurretBuildUIManager : MonoBehaviour
     [SerializeField] private Transform leftSlot;
     [SerializeField] private Transform rightSlot;
     [SerializeField] private GameObject turretPrefab;
-    
-    public void InitBtnSlot()
+
+    private void Start()
+    {
+        InitBtnSlot();
+    }
+
+    private void InitBtnSlot()
     {
         BaseGridBuildSystem.Instance.SelectToBuild(null);
         
-        RefreshSlot();
+        CleanupSlot();
 
         int slotId = 0;
         foreach (var turretId in WorldSaveGameManager.Instance.currentGameData.dungeonTurretList)
@@ -23,7 +27,7 @@ public class DungeonTurretBuildUIManager : MonoBehaviour
         }
     }
     
-    private void RefreshSlot()
+    private void CleanupSlot()
     {
         for (int i = leftSlot.childCount - 1; i >= 0; i--)
         {

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using System.Collections;
@@ -36,7 +37,12 @@ public class HUDGridBuildToSelectInfo : MonoBehaviour
     {
         StartCoroutine(BindSelectBuilding());
     }
-    
+
+    private void OnDisable()
+    {
+        BaseGridBuildSystem.OnSelectedChanged -= Instance_OnSelectedChanged;
+    }
+
     private IEnumerator BindSelectBuilding()
     {
         yield return StartCoroutine(WaitForDataLoad());
@@ -46,7 +52,6 @@ public class HUDGridBuildToSelectInfo : MonoBehaviour
     private void Instance_OnSelectedChanged(BuildObjData objectToPlace)
     {
         BuildObjData buildObjData = objectToPlace;
-
         _canvasGroup.alpha = buildObjData != null ? 1 : 0;
         Init(buildObjData);
     }

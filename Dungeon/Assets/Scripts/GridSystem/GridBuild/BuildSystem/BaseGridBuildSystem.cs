@@ -10,10 +10,6 @@ public class BaseGridBuildSystem : MonoBehaviour
     protected FixedGridXZ<GridCell> _fixedGrid;
     private BuildObjData.Dir _dir = BuildObjData.Dir.Down;
     
-
-    // CheckPoint List -> For NPC
-    public List<Vector2Int> CheckPointList { get; private set; }
-
     public static event Action<BuildObjData> OnSelectedChanged;
     public static event Action<BuildObjData> OnObjectPlaced;
 
@@ -22,10 +18,6 @@ public class BaseGridBuildSystem : MonoBehaviour
         Instance = this;
     }
     
-    protected virtual void Start()
-    {
-        CheckPointList = new List<Vector2Int>();
-    }
 
     #region Place & Remove Tile
 
