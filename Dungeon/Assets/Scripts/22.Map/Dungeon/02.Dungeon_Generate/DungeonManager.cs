@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Serialization;
 
 public class DungeonManager : MonoBehaviour
 {
     public int dungeonID;
     [SerializeField] private DungeonDataSO dungeonDataSo;
-    [SerializeField] private DungeonRoomDataSO dungeonRoomDataSo;
+    [SerializeField] private DungeonRoomListDataSO dungeonRoomListDataSo;
     
     [SerializeField] private Transform floorSlot;
     [SerializeField] private Transform roomSlot;
@@ -87,77 +88,41 @@ public class DungeonManager : MonoBehaviour
     private void GenerateRoom()
     {
         MapData mapData = _mapGenerator.GetMapData();
-        Queue<GameObject> buildingQueue = new Queue<GameObject>(dungeonRoomDataSo.essentialBuilding);
-        List<GameObject> subBuildingList = new List<GameObject>(dungeonRoomDataSo.subBuilding);
+        Queue<DungeonRoomDataSO> essentialRoomQueue = new Queue<DungeonRoomDataSO>(dungeonRoomListDataSo.essentialRoom);
+        List<DungeonRoomDataSO> subRoomList = new List<DungeonRoomDataSO>(dungeonRoomListDataSo.subRoom);
 
         foreach (var room in mapData.floorList)
         {
-            GameObject targetBuilding = null;
+            DungeonRoomDataSO targetRoomData = null;
 
-            if (buildingQueue.Count > 0)
+            if (essentialRoomQueue.Count > 0)
             {
-                targetBuilding = buildingQueue.Dequeue();
+                targetRoomData = essentialRoomQueue.Dequeue();
             }
-            else if (subBuildingList.Count > 0)
+            else if (subRoomList.Count > 0)
             {
-                targetBuilding = subBuildingList[UnityEngine.Random.Range(0, subBuildingList.Count)];
+                targetRoomData = subRoomList[UnityEngine.Random.Range(0, subRoomList.Count)];
             }
         
-            if (targetBuilding != null)
+            if (targetRoomData != null)
             {
-                InstantiateBuilding(targetBuilding, room, mapData);
+                InstantiateBuilding(targetRoomData, room);
             }
         }
     }
 
-    private void InstantiateBuilding(GameObject targetBuilding, RectInt room, MapData mapData)
+    private void InstantiateBuilding(DungeonRoomDataSO targetBuilding, RectInt room)
     {
-        Vector3 position = new Vector3(
-            room.center.x * mapData.mapConfig.CubeSize.x,
-            mapData.mapConfig.CubeSize.y,
-            room.center.y * mapData.mapConfig.CubeSize.z
-        );
-
-        Quaternion rotation = GetBuildingRotation(room);
-
-        GameObject instantiatedRoom = Instantiate(targetBuilding, position, rotation, roomSlot);
-        instantiatedRoom.transform.localScale = mapData.mapConfig.CubeSize;
-    }
-
-    private Quaternion GetBuildingRotation(RectInt room)
-    {
-        if (_mapGenerator.GetRoomDirection().TryGetValue(room, out var gateDirections))
+        Vector2Int roomStartPos = new Vector2Int(room.position.x, room.position.y);
+        foreach (var objectData in targetBuilding.props)
         {
-            // Define a set of all possible directions.
-            List<Vector2Int> allDirections = new List<Vector2Int>
-            {
-                Vector2Int.up,
-                Vector2Int.down,
-                Vector2Int.left,
-                Vector2Int.right
-            };
-        
-            foreach (var direction in allDirections)
-            {
-                if (!gateDirections.Contains(direction))
-                {
-                    if (direction == Vector2Int.right) return Quaternion.Euler(0, 90, 0); // To face Right
-                    if (direction == Vector2Int.up) return Quaternion.Euler(0, 0, 0);   // To face Up
-                    if (direction == Vector2Int.left) return Quaternion.Euler(0, 270, 0); // To face Left
-                    if (direction == Vector2Int.down) return Quaternion.Euler(0, 180, 0); // To face Down
-                }
-            }
-        
-            if (gateDirections.Any())
-            {
-                Vector2Int firstGateDirection = gateDirections[0];
-                if (firstGateDirection == Vector2Int.right) return Quaternion.Euler(0, 270, 0);
-                if (firstGateDirection == Vector2Int.up) return Quaternion.Euler(0, 180, 0);
-                if (firstGateDirection == Vector2Int.left) return Quaternion.Euler(0, 90, 0);
-                if (firstGateDirection == Vector2Int.down) return Quaternion.Euler(0, 0, 0);
-            }
+            var buildPos = objectData.pos + roomStartPos;
+            var buildObj = objectData.buildObject;
+            var dir = objectData.dir;
+            var level = objectData.level;
+
+            BaseGridBuildSystem.Instance.ObjectToPlace = buildObj;
+            BaseGridBuildSystem.Instance.PlaceTile(buildPos.x, buildPos.y, dir, level, true);
         }
-    
-        return Quaternion.identity;
     }
 }
