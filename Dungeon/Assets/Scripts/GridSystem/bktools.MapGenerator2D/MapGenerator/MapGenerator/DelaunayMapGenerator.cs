@@ -10,7 +10,7 @@ public class DelaunayMapGenerator : BaseMapGenerator
     [Header("Delaunay 설정")]
     private int _roomCount;
     
-    public DelaunayMapGenerator(Transform slot, DungeonDataSO dungeonDataSo) : base(slot, dungeonDataSo) { }
+    public DelaunayMapGenerator(Transform slot, DungeonGenerateDataSO dungeonGenerateDataSo) : base(slot, dungeonGenerateDataSo) { }
     
     protected override void InitializeGenerator()
     {

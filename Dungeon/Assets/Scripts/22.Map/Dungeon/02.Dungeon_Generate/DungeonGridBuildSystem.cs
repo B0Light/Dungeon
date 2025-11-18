@@ -7,11 +7,12 @@ public class DungeonGridBuildSystem : BaseGridBuildSystem
     protected override void Awake()
     {
         base.Awake();
-        dungeonManager.GeneratedDungeon += OnGeneratedDungeon;
+        dungeonManager.OnGeneratedDungeon += OnGeneratedDungeon;
     }
 
     private void OnGeneratedDungeon()
     {
+        Debug.Log("[Dungeon Grid Build System] : Set Fixed Grid");
         _fixedGrid = dungeonManager.FixedGrid;
     }
 }

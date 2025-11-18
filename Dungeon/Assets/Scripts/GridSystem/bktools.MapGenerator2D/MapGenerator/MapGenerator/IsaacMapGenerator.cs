@@ -9,7 +9,7 @@ public class IsaacMapGenerator : BaseMapGenerator
 
     private Dictionary<Vector2Int, Room> rooms = new Dictionary<Vector2Int, Room>();
     
-    public IsaacMapGenerator(Transform slot, DungeonDataSO dungeonDataSo) : base(slot, dungeonDataSo) { }
+    public IsaacMapGenerator(Transform slot, DungeonGenerateDataSO dungeonGenerateDataSo) : base(slot, dungeonGenerateDataSo) { }
     
     protected override void InitializeGenerator()
     {

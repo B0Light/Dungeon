@@ -9,7 +9,7 @@ using UnityEngine.Serialization;
 public class DungeonManager : MonoBehaviour
 {
     public int dungeonID;
-    [SerializeField] private DungeonDataSO dungeonDataSo;
+    [FormerlySerializedAs("dungeonDataSo")] [SerializeField] private DungeonGenerateDataSO dungeonGenerateDataSo;
     [SerializeField] private DungeonRoomListDataSO dungeonRoomListDataSo;
     
     [SerializeField] private Transform floorSlot;
@@ -26,7 +26,7 @@ public class DungeonManager : MonoBehaviour
     [SerializeField] private bool useAsyncNavMeshBuild = true;
     [SerializeField] private float navMeshBuildDelay = 0.5f;
     
-    public event Action GeneratedDungeon;
+    public event Action OnGeneratedDungeon;
 
     private void Awake()
     {
@@ -37,7 +37,7 @@ public class DungeonManager : MonoBehaviour
 
     private void Start()
     {
-        _mapGenerator.InitGenerator(floorSlot, dungeonDataSo);
+        _mapGenerator.InitGenerator(floorSlot, dungeonGenerateDataSo);
         StartCoroutine(GenerateMapSequence());
     }
 
@@ -45,6 +45,7 @@ public class DungeonManager : MonoBehaviour
     {
         // 1단계 : 맵 생성
         GenerateMap();
+        OnGeneratedDungeon?.Invoke();
         yield return new WaitForEndOfFrame();
         // 2단계 : 방 생성 
         GenerateRoom();
@@ -68,7 +69,7 @@ public class DungeonManager : MonoBehaviour
         // 5단계 : A.I. 생성
         _aiSpawnManager.Init(_pathfinder);
         
-        GeneratedDungeon?.Invoke();
+        
     }
 
     private IEnumerator BuildNavMeshAsync()
@@ -109,6 +110,8 @@ public class DungeonManager : MonoBehaviour
                 InstantiateBuilding(targetRoomData, room);
             }
         }
+        
+        BaseGridBuildSystem.Instance.ObjectToPlace = null;
     }
 
     private void InstantiateBuilding(DungeonRoomDataSO targetBuilding, RectInt room)

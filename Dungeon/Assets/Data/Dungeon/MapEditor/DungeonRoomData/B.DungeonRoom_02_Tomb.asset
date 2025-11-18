@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe89e19e081c21b448ca57b83abbfa88, type: 3}
+  m_Name: B.DungeonRoom_02_Tomb
+  m_EditorClassIdentifier: Assembly-CSharp::DungeonRoomDataSO
+  props:
+  - {fileID: 11400000, guid: cc3531f4e6cf1c54f8b65776cb13aba5, type: 2}
+  - {fileID: 11400000, guid: c460a79ffd1e0e444ad94a877fb26f89, type: 2}
+  - {fileID: 11400000, guid: ea345a2d083a47145950e1e255bf0431, type: 2}
+  - {fileID: 11400000, guid: 9e2573888650f024799372ca0f4f7436, type: 2}
+  - {fileID: 11400000, guid: 836eac5eb6abefd449beea74a5201a62, type: 2}
+  - {fileID: 11400000, guid: 4bd1076e36ea3424b8f4a95738a5d270, type: 2}
+  - {fileID: 11400000, guid: 1214993fbc92b924d881bdc89cd66903, type: 2}
+  - {fileID: 11400000, guid: fa1fc5f548477c34abdf7da21bb4fd19, type: 2}

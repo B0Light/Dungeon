@@ -3,19 +3,19 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    private DungeonDataSO _dungeonDataSo;
+    private DungeonGenerateDataSO _dungeonGenerateDataSo;
     private MapGeneratorFactory _generatorFactory;
     private BaseMapGenerator _currentGenerator;
 
-    public void InitGenerator(Transform slot, DungeonDataSO dungeonDataSo)
+    public void InitGenerator(Transform slot, DungeonGenerateDataSO dungeonGenerateDataSo)
     {
-        _dungeonDataSo = dungeonDataSo;
-        _generatorFactory = new MapGeneratorFactory(slot, _dungeonDataSo);
+        _dungeonGenerateDataSo = dungeonGenerateDataSo;
+        _generatorFactory = new MapGeneratorFactory(slot, _dungeonGenerateDataSo);
     }
     
     public FixedGridXZ<GridCell> GenerateMap()
     {
-        if (_dungeonDataSo == null)
+        if (_dungeonGenerateDataSo == null)
         {
             Debug.LogError("DungeonDataSO가 할당되지 않았습니다.");
             return null;
@@ -30,13 +30,13 @@ public class MapGenerator : MonoBehaviour
         }
 
         // 시드값이 0이면 새로운 시드 생성, 아니면 고정 시드 사용
-        int seed = (_dungeonDataSo.seed == 0) ? System.DateTime.Now.Second : _dungeonDataSo.seed;
+        int seed = (_dungeonGenerateDataSo.seed == 0) ? System.DateTime.Now.Second : _dungeonGenerateDataSo.seed;
         return _currentGenerator.GenerateMap(seed);
     }
     
     private void SetupCurrentGenerator()
     {
-        _currentGenerator = _generatorFactory.CreateGenerator(_dungeonDataSo.generatorType);
+        _currentGenerator = _generatorFactory.CreateGenerator(_dungeonGenerateDataSo.generatorType);
     }
 
     public MapData GetMapData() => _currentGenerator.GetMapData();

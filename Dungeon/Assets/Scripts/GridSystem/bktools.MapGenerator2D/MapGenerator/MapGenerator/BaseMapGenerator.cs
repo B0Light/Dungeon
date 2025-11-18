@@ -51,10 +51,10 @@ public abstract class BaseMapGenerator : IMapGenerator
     #endregion
 
     #region Constructor and Initialization
-    protected BaseMapGenerator(Transform slot, DungeonDataSO dungeonDataSo)
+    protected BaseMapGenerator(Transform slot, DungeonGenerateDataSO dungeonGenerateDataSo)
     {
         _slot = slot;
-        _config = new MapGenerationConfig(dungeonDataSo);
+        _config = new MapGenerationConfig(dungeonGenerateDataSo);
         Initialize();
     }
 

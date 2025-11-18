@@ -8,7 +8,7 @@ public class BSPDungeonMapGenerator : BaseMapGenerator
     
     private List<RoomNode> _leafNodes;
     
-    public BSPDungeonMapGenerator(Transform slot, DungeonDataSO  dungeonDataSo) : base(slot, dungeonDataSo) { }
+    public BSPDungeonMapGenerator(Transform slot, DungeonGenerateDataSO  dungeonGenerateDataSo) : base(slot, dungeonGenerateDataSo) { }
     
     protected override void InitializeGenerator()
     {

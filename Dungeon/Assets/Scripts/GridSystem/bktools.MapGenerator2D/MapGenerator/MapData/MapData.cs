@@ -54,12 +54,12 @@ public class MapGenerationConfig
     public int Margin { get; }
     public TileMappingDataSO TileMappingDataSO { get; }
  
-    public MapGenerationConfig(DungeonDataSO dungeonDataSo)
+    public MapGenerationConfig(DungeonGenerateDataSO dungeonGenerateDataSo)
     {
-        GridSize = dungeonDataSo.gridSize;
-        CubeSize = dungeonDataSo.cubeSize;
-        RoomSize = dungeonDataSo.roomSize;
+        GridSize = dungeonGenerateDataSo.gridSize;
+        CubeSize = dungeonGenerateDataSo.cubeSize;
+        RoomSize = dungeonGenerateDataSo.roomSize;
         Margin = 3; 
-        TileMappingDataSO = dungeonDataSo.tileMappingDataSO;
+        TileMappingDataSO = dungeonGenerateDataSo.tileMappingDataSO;
     }
 }
