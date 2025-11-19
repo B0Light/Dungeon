@@ -6,7 +6,7 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
 {
     private bool _enableOcclusion = false;
     [HideInInspector] public PlayerManager playerManager;
-    public Camera mainCamera;
+    [SerializeField] private Camera mainCamera;
 
     private Transform _playerTarget;
     
@@ -21,6 +21,10 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
 
     [Header("Material Replacement")]
     [SerializeField] private Material replacementMaterial;
+
+    [Header("Cam Mode Culling Mask")]
+    [SerializeField] private LayerMask layerExploration;
+    [SerializeField] private LayerMask layerBuild;
     
     // 딕셔너리에 원래 재질 정보 저장
     private readonly Dictionary<Renderer, Material[]> _occludedRenderers = new Dictionary<Renderer, Material[]>();
@@ -154,6 +158,16 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     public void TurnOnCamera()
     {
         vCam.gameObject.SetActive(true);
+    }
+
+    public void SetExplorationMode()
+    {
+        mainCamera.cullingMask = layerExploration;
+    }
+
+    public void SetBuildMode()
+    {
+        mainCamera.cullingMask = layerBuild;
     }
 
     public void SetCameraControllerEnable(bool newValue)

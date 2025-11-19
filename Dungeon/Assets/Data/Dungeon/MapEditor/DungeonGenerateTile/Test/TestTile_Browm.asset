@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104abc759d417fb488533d6b2f4b0307, type: 3}
   m_Name: TestTile_Browm
   m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 1691581078342472967, guid: 2b0d2782ad18295428ff7cfeff5e7654, type: 3}
+  PlacedObject: {fileID: 0}
+  BuildObjData: {fileID: 0}
+  tilePrefab: {fileID: 1691581078342472967, guid: dbd3c3bbdedcb854a8a39486af48642e, type: 3}
   objectPercent: 0
   treePercent: 0
   grassPercent: 0

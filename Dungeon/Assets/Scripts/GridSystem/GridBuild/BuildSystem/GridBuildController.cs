@@ -19,6 +19,7 @@ public class GridBuildController : MonoBehaviour
     [Space(10)] 
     [SerializeField] private GameObject selector;
     [SerializeField] private MeshRenderer selectorMeshRenderer;
+    [SerializeField] private Material selectMat;
     [SerializeField] private Material baseMat;
     [SerializeField] private Material deleteMat;
     
@@ -72,10 +73,14 @@ public class GridBuildController : MonoBehaviour
                 selector.transform.localScale = new Vector3(obj.GetWidth(dir),1,obj.GetHeight(dir));
 
                 targetPosition = baseGridBuildSystem.GetGrid().GetWorldPosition(placedObject.GetOriginPos());
+                if(_isDeleteMode.Value == false)
+                    selectorMeshRenderer.material = selectMat;
             }
             else
             {
                 selector.transform.localScale = new Vector3(1, 1, 1);
+                if(_isDeleteMode.Value == false)
+                    selectorMeshRenderer.material = baseMat;
             }
             targetPosition.y = 0.25f;
             selector.transform.position = Vector3.Lerp(selector.transform.position, targetPosition, Time.deltaTime * 15f);

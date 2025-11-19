@@ -3,9 +3,10 @@ using UnityEngine;
 public class GridBuildHUDManager : MonoBehaviour
 {
     public static GridBuildHUDManager Instance { get; private set; }
-    
-    [Header("BuildSystem")] 
+
+    [Header("BuildCam")]
     [SerializeField] private GridBuildCamera gridBuildCamera;
+    [Header("BuildSystem")]
     [SerializeField] private GridBuildController gridBuildController;
     
     [Header("Canvas Group")]
@@ -100,6 +101,7 @@ public class GridBuildHUDManager : MonoBehaviour
         gridBuildCamera.gameObject.SetActive(true);
         gridBuildController.SetControllerActive(true);
         PlayerCameraController.Instance.TurnOffCamera();
+        PlayerCameraController.Instance.SetBuildMode();
     }
     
     private void TurnOffGridBuildCamera()
@@ -107,6 +109,7 @@ public class GridBuildHUDManager : MonoBehaviour
         gridBuildCamera.gameObject.SetActive(false);
         gridBuildController.SetControllerActive(false);
         PlayerCameraController.Instance.TurnOnCamera();
+        PlayerCameraController.Instance.SetExplorationMode();
     }
 
     public virtual void ExitBuildHUD()

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104abc759d417fb488533d6b2f4b0307, type: 3}
   m_Name: TestTile_Olive
   m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 5600845454903601912, guid: 25493389fa758fc4883027fdacc70fb0, type: 3}
+  PlacedObject: {fileID: 0}
+  BuildObjData: {fileID: 0}
+  tilePrefab: {fileID: 5600845454903601912, guid: 4cd30e3aa3cd47b478173314c5681bda, type: 3}
   objectPercent: 0
   treePercent: 0
   grassPercent: 0
