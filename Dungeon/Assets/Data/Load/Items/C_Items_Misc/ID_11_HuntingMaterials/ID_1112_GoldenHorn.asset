@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7722eaf5f34afc144bb0a7b8b0ef9a87, type: 3}
+  m_Name: ID_1112_GoldenHorn
+  m_EditorClassIdentifier: 
+  itemCode: 1112
+  itemName: "\uC544\uB974\uB0E5\uC758 \uAE08\uBFD4"
+  itemIcon: {fileID: 21300000, guid: 38fc8b5a21851644899630671363ea83, type: 3}
+  itemTier: 3
+  itemDescription: "\uAE08\uBE5B\uC73C\uB85C \uBE5B\uB098\uB294 \uC544\uB974\uB0E5\uC758
+    \uBFD4\uC774\uB2E4."
+  purchaseCost: 62000
+  costItemList: 
+  width: 1
+  height: 2
+  itemType: 4
+  saleCost: 55800
+  purChaseWithItem: 0
+  itemModel: {fileID: 0}
+  itemAbilities:
+  - itemEffect: 12
+    value: 0
+  weight: 10

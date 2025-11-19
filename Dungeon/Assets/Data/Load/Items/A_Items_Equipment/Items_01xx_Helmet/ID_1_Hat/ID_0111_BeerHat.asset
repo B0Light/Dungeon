@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df6798a02992b142825a2c8843499dd, type: 3}
+  m_Name: ID_0111_BeerHat
+  m_EditorClassIdentifier: 
+  itemCode: 111
+  itemName: "\uB9E5\uC8FC \uBAA8\uC790"
+  itemIcon: {fileID: 21300000, guid: bb941b3e347801a4fae44f49c9cf8c43, type: 3}
+  itemTier: 1
+  itemDescription: "Ahoy!! \uC804\uC18D\uC804\uC9C4\uC774\uB2E4?!"
+  purchaseCost: 1500
+  costItemList: 
+  width: 2
+  height: 2
+  itemType: 2
+  saleCost: 900
+  purChaseWithItem: 0
+  itemModel: {fileID: 5557452906501526209, guid: e0a7721d38969f347a5e2188db9736b6, type: 3}
+  itemAbilities:
+  - itemEffect: 2
+    value: 5
+  - itemEffect: 3
+    value: 5
+  weight: 20
+  extraPhysicalAbsorption: 5
+  extraMagicalAbsorption: 5
+  extraActionPoint: 2

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df6798a02992b142825a2c8843499dd, type: 3}
+  m_Name: ID_0112_Captian
+  m_EditorClassIdentifier: 
+  itemCode: 112
+  itemName: "\uCEA1\uD2F4 \uBAA8\uC790"
+  itemIcon: {fileID: 21300000, guid: 85eac223b5709964586bbceb223f45e3, type: 3}
+  itemTier: 3
+  itemDescription: "\uD5A5\uC0C1\uB41C \uBC29\uC5B4 \uAE30\uB2A5\uC744 \uAC00\uC9C4
+    \uACE0\uD488\uC9C8 \uD574\uC0C1 \uC120\uC7A5 \uBAA8\uC790"
+  purchaseCost: 70000
+  costItemList: 
+  width: 2
+  height: 3
+  itemType: 2
+  saleCost: 42000
+  purChaseWithItem: 0
+  itemModel: {fileID: 516557881483555154, guid: f2ecada43b6c95c4cb015bc74ee03eec, type: 3}
+  itemAbilities:
+  - itemEffect: 2
+    value: 30
+  - itemEffect: 3
+    value: 20
+  weight: 30
+  extraPhysicalAbsorption: 30
+  extraMagicalAbsorption: 20
+  extraActionPoint: 2

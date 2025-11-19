@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7722eaf5f34afc144bb0a7b8b0ef9a87, type: 3}
+  m_Name: ID_1000_Wood
+  m_EditorClassIdentifier: 
+  itemCode: 1000
+  itemName: "\uBAA9\uC7AC"
+  itemIcon: {fileID: 21300000, guid: b44800069723f8d40a22f4b4bb5627be, type: 3}
+  itemTier: 0
+  itemDescription: "\uBD88\uC774 \uC798 \uBD99\uC744 \uAC83 \uAC19\uB2E4."
+  purchaseCost: 10
+  costItemList: 
+  width: 1
+  height: 1
+  itemType: 4
+  saleCost: 9
+  purChaseWithItem: 0
+  itemModel: {fileID: 0}
+  itemAbilities:
+  - itemEffect: 12
+    value: 0
+  weight: 10

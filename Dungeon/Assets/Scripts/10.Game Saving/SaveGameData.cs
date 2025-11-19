@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 [System.Serializable]
@@ -54,7 +55,7 @@ public class SaveGameData
 
     [Header("Dungeon")] 
     public SerializableDictionary<int, bool> availableDungeon;
-    public List<int> dungeonTurretList;
+    public SerializableDictionary<int, bool> dungeonTurretDic;
 
     [Header("Shelter")] 
     public int shelterLevel;
@@ -98,7 +99,7 @@ public class SaveGameData
         availableDungeon.TryAdd(7, false);
         availableDungeon.TryAdd(8, false);
         availableDungeon.TryAdd(9, false);
-        dungeonTurretList = new List<int>();
+        dungeonTurretDic = new SerializableDictionary<int, bool>();
         
         shelterLevel = 0;
         balance = 10000;

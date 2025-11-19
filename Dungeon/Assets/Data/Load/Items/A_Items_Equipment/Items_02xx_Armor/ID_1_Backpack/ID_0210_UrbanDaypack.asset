@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ee7216f086d99489203a9db6bd35d8, type: 3}
+  m_Name: ID_0210_UrbanDaypack
+  m_EditorClassIdentifier: 
+  itemCode: 210
+  itemName: "\uB3C4\uC2DC\uC6A9 \uBC31\uD329"
+  itemIcon: {fileID: 21300000, guid: 0beefca6efe5e694ea25993f1b6235dd, type: 3}
+  itemTier: 0
+  itemDescription: "\uC2EC\uD50C\uD558\uACE0 \uC2E4\uC6A9\uC801\uC778 \uB514\uC790\uC778\uC73C\uB85C
+    \uCD9C\uD1F4\uADFC\uC774\uB098 \uC77C\uC0C1\uC5D0\uC11C \uC4F0\uAE30 \uC88B\uC740
+    \uAC00\uBC29"
+  purchaseCost: 1000
+  costItemList: 
+  width: 2
+  height: 2
+  itemType: 1
+  saleCost: 600
+  purChaseWithItem: 0
+  itemModel: {fileID: 6640222876928105936, guid: 9f240870a41a9ef40a2753fc113a85d0, type: 3}
+  itemAbilities:
+  - itemEffect: 4
+    value: 10
+  - itemEffect: 13
+    value: 16
+  weight: 10
+  extraHealth: 10
+  backpackSize: {x: 4, y: 4}

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df6798a02992b142825a2c8843499dd, type: 3}
+  m_Name: ID_0100_Hood
+  m_EditorClassIdentifier: 
+  itemCode: 100
+  itemName: "\uD6C4\uB4DC"
+  itemIcon: {fileID: 21300000, guid: 56327ad7ca6b2a147824d25d299a599a, type: 3}
+  itemTier: 0
+  itemDescription: "\uAE30\uBCF8 \uB450\uAC74"
+  purchaseCost: 100
+  costItemList: 
+  width: 2
+  height: 2
+  itemType: 2
+  saleCost: 60
+  purChaseWithItem: 0
+  itemModel: {fileID: 2576927464921180834, guid: 4c981fee12b579c459d7a6f011cad8ec, type: 3}
+  itemAbilities:
+  - itemEffect: 2
+    value: 5
+  - itemEffect: 3
+    value: 5
+  weight: 5
+  extraPhysicalAbsorption: 5
+  extraMagicalAbsorption: 5
+  extraActionPoint: 0

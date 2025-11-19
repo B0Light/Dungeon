@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df6798a02992b142825a2c8843499dd, type: 3}
+  m_Name: ID_0126_LunaHelmet
+  m_EditorClassIdentifier: 
+  itemCode: 126
+  itemName: "\uB8E8\uB098 \uD22C\uAD6C"
+  itemIcon: {fileID: 21300000, guid: a609799d4fb40f6489d24f3bad5a6117, type: 3}
+  itemTier: 3
+  itemDescription: "\uADE0\uD615 \uC7A1\uD78C \uBCF4\uD638 \uD2B9\uC131\uC744 \uAC00\uC9C4
+    \uB2EC\uBE5B\uC5D0\uC11C \uC601\uAC10\uBC1B\uC740 \uD5EC\uBA67"
+  purchaseCost: 65000
+  costItemList: 
+  width: 2
+  height: 2
+  itemType: 2
+  saleCost: 39000
+  purChaseWithItem: 0
+  itemModel: {fileID: 591712634981125340, guid: 800ba06a862330f458ce2725a2beff21, type: 3}
+  itemAbilities:
+  - itemEffect: 2
+    value: 35
+  - itemEffect: 3
+    value: 35
+  weight: 30
+  extraPhysicalAbsorption: 35
+  extraMagicalAbsorption: 35
+  extraActionPoint: 2

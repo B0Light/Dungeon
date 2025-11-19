@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df6798a02992b142825a2c8843499dd, type: 3}
+  m_Name: ID_0109_HoodOrigin
+  m_EditorClassIdentifier: 
+  itemCode: 109
+  itemName: "\uC624\uB9AC\uC9C4 \uD6C4\uB4DC"
+  itemIcon: {fileID: 21300000, guid: d3323df7dca2dd042bfe50cc5a2d0b1a, type: 3}
+  itemTier: 5
+  itemDescription: "\uD0DC\uCD08\uBD80\uD130 \uC874\uC7AC\uD588\uB2E4\uACE0 \uC804\uD574\uC9C0\uB294
+    \uC804\uC124\uC18D \uB450\uAC74"
+  purchaseCost: 200000
+  costItemList: 
+  width: 3
+  height: 3
+  itemType: 2
+  saleCost: 120000
+  purChaseWithItem: 0
+  itemModel: {fileID: 2576927464921180834, guid: 0f48431880f3e0c479e6d1b51e4b266c, type: 3}
+  itemAbilities:
+  - itemEffect: 2
+    value: 80
+  - itemEffect: 3
+    value: 80
+  weight: 5
+  extraPhysicalAbsorption: 80
+  extraMagicalAbsorption: 80
+  extraActionPoint: 5

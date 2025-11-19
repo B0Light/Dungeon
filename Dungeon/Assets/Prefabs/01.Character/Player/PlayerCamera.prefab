@@ -50,11 +50,18 @@ MonoBehaviour:
   mainCamera: {fileID: 1293702231754221909}
   vCam: {fileID: 6913243027895022631}
   cameraController: {fileID: 5957817705818317463}
-  hideOption: 1
+  hideOption: 0
   occlusionLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 524288
   raycastDistanceOffset: 0.5
+  replacementMaterial: {fileID: 2100000, guid: e560a158cccba6141a3d463441b59746, type: 2}
+  layerExploration:
+    serializedVersion: 2
+    m_Bits: 3137015
+  layerBuild:
+    serializedVersion: 2
+    m_Bits: 19897847
 --- !u!1 &6334847189324910192
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,7 +76,7 @@ GameObject:
   - component: {fileID: 4854053991563183587}
   - component: {fileID: 8744558084232354022}
   - component: {fileID: 5957817705818317463}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: '[VCAM] FreeLook Camera'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,8 +91,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6334847189324910192}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27639407, y: 0.04129396, z: -0.011887934, w: 0.96008325}
-  m_LocalPosition: {x: -102.55535, y: 9.031161, z: 121.51893}
+  m_LocalRotation: {x: 0.2627775, y: 0.065177895, z: -0.017794803, w: 0.96248806}
+  m_LocalPosition: {x: 99.4757, y: 23.16057, z: -3.3534384}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -233,15 +240,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6334847189324910192}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbe43d662878a7c43bcd44d43c9e2094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CollideAgainst:
     serializedVersion: 2
-    m_Bits: 1
-  IgnoreTag: Ignore_CamCollision
+    m_Bits: 1135082999
+  IgnoreTag: 
   TransparentLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -351,8 +358,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9199361991902289494}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06526299, y: -0.00000032782555, z: 0.11303881, w: 0.99144495}
-  m_LocalPosition: {x: -102.03105, y: 5.8705907, z: 124.87237}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalPosition: {x: 100, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -391,7 +398,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -453,7 +460,6 @@ MonoBehaviour:
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
-  m_Version: 2
   m_TaaSettings:
     m_Quality: 3
     m_FrameInfluence: 0.1
@@ -461,6 +467,7 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!114 &7501401812754574917
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,11 +18,12 @@ public class DungeonTurretBuildUIManager : MonoBehaviour
         CleanupSlot();
 
         int slotId = 0;
-        foreach (var turretId in WorldSaveGameManager.Instance.currentGameData.dungeonTurretList)
+        foreach (var turretId in WorldSaveGameManager.Instance.currentGameData.dungeonTurretDic)
         {
+            if(turretId.Value == false) continue;
             GameObject instanceBtnObj = Instantiate(turretPrefab, slotId / 2 == 0 ? leftSlot : rightSlot);
             ShopShelfItem_Building btnUnit = instanceBtnObj.GetComponent<ShopShelfItem_Building>();
-            btnUnit.Init(WorldDatabase_Build.Instance.GetBuildingByID(turretId));
+            btnUnit.Init(WorldDatabase_Build.Instance.GetBuildingByID(turretId.Key));
             slotId++;
         }
     }

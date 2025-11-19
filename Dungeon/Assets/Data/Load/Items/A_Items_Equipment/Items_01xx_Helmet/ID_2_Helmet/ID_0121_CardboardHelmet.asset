@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df6798a02992b142825a2c8843499dd, type: 3}
+  m_Name: ID_0121_CardboardHelmet
+  m_EditorClassIdentifier: 
+  itemCode: 121
+  itemName: "\uACE8\uD310\uC9C0 \uD22C\uAD6C"
+  itemIcon: {fileID: 21300000, guid: 9462ca42c45109c4da6e7a5c20b1df28, type: 3}
+  itemTier: 0
+  itemDescription: "\uC544\uC774\uB4E4\uC774 \uD578\uB4DC \uBA54\uC774\uB4DC\uB85C
+    \uB9CC\uB4E0 \uD5EC\uBA67. \uBC29\uC5B4\uAC00 \uB420\uC9C0\uB294 \uC758\uBB38\uC2A4\uB7FD\uB2E4 "
+  purchaseCost: 50
+  costItemList: 
+  width: 2
+  height: 2
+  itemType: 2
+  saleCost: 30
+  purChaseWithItem: 0
+  itemModel: {fileID: 1458130494524661593, guid: d08231cefaef3f64f888d5fe926aec13, type: 3}
+  itemAbilities:
+  - itemEffect: 2
+    value: 2
+  - itemEffect: 3
+    value: 2
+  weight: 2
+  extraPhysicalAbsorption: 2
+  extraMagicalAbsorption: 2
+  extraActionPoint: 0

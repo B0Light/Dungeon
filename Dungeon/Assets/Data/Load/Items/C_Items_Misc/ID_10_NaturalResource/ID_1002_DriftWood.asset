@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7722eaf5f34afc144bb0a7b8b0ef9a87, type: 3}
+  m_Name: ID_1002_DriftWood
+  m_EditorClassIdentifier: 
+  itemCode: 1002
+  itemName: "\uC369\uC740 \uB098\uBB34"
+  itemIcon: {fileID: 21300000, guid: f0f4dd5bc04f2894ba6299154ac20db5, type: 3}
+  itemTier: 0
+  itemDescription: "\uBD80\uBD84 \uBD80\uBD84 \uC369\uC5B4 \uC788\uB2E4."
+  purchaseCost: 15
+  costItemList: 
+  width: 1
+  height: 1
+  itemType: 4
+  saleCost: 13
+  purChaseWithItem: 0
+  itemModel: {fileID: 0}
+  itemAbilities:
+  - itemEffect: 12
+    value: 0
+  weight: 15

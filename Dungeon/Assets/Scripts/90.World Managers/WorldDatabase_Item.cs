@@ -20,6 +20,10 @@ public class WorldDatabase_Item : Singleton<WorldDatabase_Item>
 
     [Header("Items")]
     [SerializeField] private List<ItemInfo> miscItems = new List<ItemInfo>();
+    
+    [Header("Blueprint")]
+    [SerializeField] private List<ItemInfoBlueprint> blueprintItems = new List<ItemInfoBlueprint>();
+    
     [SerializeField] private List<ItemInfo> notSaleItem = new List<ItemInfo>();
     [SerializeField] private List<ItemInfo> onSaleItem = new List<ItemInfo>();
     
@@ -33,6 +37,7 @@ public class WorldDatabase_Item : Singleton<WorldDatabase_Item>
     private Dictionary<ItemTier, List<ItemInfo>> _weaponItemsByTier;
     private Dictionary<ItemTier, List<ItemInfo>> _equipmentItemsByTier;
     private Dictionary<ItemTier, List<ItemInfo>> _consumableItemsByTier;
+    private Dictionary<ItemTier, List<ItemInfo>> _blueprintItemsByTier;
 
     protected override void Awake()
     {
@@ -51,6 +56,7 @@ public class WorldDatabase_Item : Singleton<WorldDatabase_Item>
         _weaponItemsByTier     = new Dictionary<ItemTier, List<ItemInfo>>();
         _equipmentItemsByTier  = new Dictionary<ItemTier, List<ItemInfo>>();
         _consumableItemsByTier = new Dictionary<ItemTier, List<ItemInfo>>();
+        _blueprintItemsByTier = new Dictionary<ItemTier, List<ItemInfo>>();
 
         foreach (ItemTier tier in Enum.GetValues(typeof(ItemTier)))
         {
@@ -60,6 +66,7 @@ public class WorldDatabase_Item : Singleton<WorldDatabase_Item>
             _weaponItemsByTier[tier]     = new List<ItemInfo>();
             _equipmentItemsByTier[tier]  = new List<ItemInfo>();
             _consumableItemsByTier[tier] = new List<ItemInfo>();
+            _blueprintItemsByTier[tier] = new List<ItemInfo>();
         }
     }
 
@@ -91,10 +98,16 @@ public class WorldDatabase_Item : Singleton<WorldDatabase_Item>
                 onSaleItem.Add(item);
             }
         }
+
+        foreach (var blueprint in blueprintItems)
+        {
+            blueprint.costItemList.Clear();
+        }
         
         allItems.AddRange(equipmentItems);
         allItems.AddRange(consumableItems);
         allItems.AddRange(miscItems);
+        allItems.AddRange(blueprintItems);
     }
     
     private void ClassifyItemsByTier()
@@ -137,6 +150,11 @@ public class WorldDatabase_Item : Singleton<WorldDatabase_Item>
         foreach (ItemInfoConsumable item in consumableItems)
         {
             _consumableItemsByTier[item.itemTier].Add(item);
+        }
+        
+        foreach (var item in blueprintItems)
+        {
+            _blueprintItemsByTier[item.itemTier].Add(item);
         }
     }
 

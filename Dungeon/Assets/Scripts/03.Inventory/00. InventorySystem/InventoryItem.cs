@@ -1,7 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour

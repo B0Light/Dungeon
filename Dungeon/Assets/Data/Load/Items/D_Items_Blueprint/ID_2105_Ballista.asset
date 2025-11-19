@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b45e13b0e8c76b4f9c235e6518346ef, type: 3}
+  m_Name: ID_2105_Ballista
+  m_EditorClassIdentifier: Assembly-CSharp::ItemInfoBlueprint
+  itemCode: 2105
+  itemName: ballistaBlueprint
+  itemIcon: {fileID: 21300000, guid: 34f8dceba1e1855459ef9b80d8a8cbdb, type: 3}
+  itemTier: 0
+  itemDescription: Blueprint - Ballista
+  purchaseCost: 0
+  costItemList: 
+  width: 1
+  height: 1
+  itemType: 5
+  saleCost: 5000
+  purChaseWithItem: 0
+  itemModel: {fileID: 0}
+  itemAbilities: []
+  weight: 0

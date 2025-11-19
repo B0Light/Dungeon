@@ -551,6 +551,18 @@ public class ItemGrid : MonoBehaviour
             case ItemInfo.ItemType.Misc:
                 // 단순 수집 아이템은 인벤토리에 들어갔을 경우만 성공 처리
                 return AddItem(pickUpItem.gameObject, false);
+            case ItemInfo.ItemType.Blueprint:
+                // 던전 터렛 설계도의 경우 이미 가지고 있다면 실패 없다면 성공
+                if (WorldSaveGameManager.Instance.currentGameData.dungeonTurretDic.TryAdd(pickUpItem.itemInfoData.itemCode, true))
+                {
+                    Debug.Log("Blueprint registered.");
+                    Destroy(pickUpItem.gameObject);
+                    WorldSaveGameManager.Instance.SaveGame();
+                    return true;
+                }
+                Debug.Log("Register Fail");
+                selectItemGrid = pickUpItem.previousItemGrid;
+                break;
             default:
                 return false;
         }

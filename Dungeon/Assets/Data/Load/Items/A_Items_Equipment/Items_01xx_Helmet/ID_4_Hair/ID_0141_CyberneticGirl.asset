@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df6798a02992b142825a2c8843499dd, type: 3}
+  m_Name: ID_0141_CyberneticGirl
+  m_EditorClassIdentifier: 
+  itemCode: 141
+  itemName: "\uC0AC\uC774\uBC84\uB124\uD2F1 \uD5E4\uC5B4"
+  itemIcon: {fileID: 21300000, guid: 0f8080a952cb7ec479d849143bbd465e, type: 3}
+  itemTier: 4
+  itemDescription: "\uD1B5\uD569\uB41C \uBCF4\uD638 \uAE30\uC220\uC744 \uAC00\uC9C4
+    \uBBF8\uB798\uC801 \uC0AC\uC774\uBC84\uB124\uD2F1 \uD5E4\uC5B4 \uC561\uC138\uC11C\uB9AC"
+  purchaseCost: 120000
+  costItemList: 
+  width: 2
+  height: 2
+  itemType: 2
+  saleCost: 72000
+  purChaseWithItem: 0
+  itemModel: {fileID: 6290244444173699228, guid: 42b0a0ae11414df4bae0c7a4711bd513, type: 3}
+  itemAbilities:
+  - itemEffect: 2
+    value: 45
+  - itemEffect: 3
+    value: 45
+  weight: 15
+  extraPhysicalAbsorption: 45
+  extraMagicalAbsorption: 45
+  extraActionPoint: 3

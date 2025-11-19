@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7722eaf5f34afc144bb0a7b8b0ef9a87, type: 3}
+  m_Name: ID_1009_ErdWood
+  m_EditorClassIdentifier: 
+  itemCode: 1009
+  itemName: "\uC138\uACC4\uC218 \uC6D0\uBAA9"
+  itemIcon: {fileID: 21300000, guid: a4c873ce0752d564e825eba114b072f8, type: 3}
+  itemTier: 5
+  itemDescription: "\uC138\uACC4\uC218\uC5D0\uC11C \uAD6C\uD55C \uC6D0\uBAA9. \uC774\uAC78
+    \uC5B4\uB5BB\uAC8C \uAD6C\uD588\uB294\uC9C0\uB294 \uC544\uC9C1\uB3C4 \uC54C\uB824\uC9C0\uC9C0
+    \uC54A\uC558\uB2E4."
+  purchaseCost: 100000
+  costItemList: 
+  width: 3
+  height: 2
+  itemType: 4
+  saleCost: 90000
+  purChaseWithItem: 0
+  itemModel: {fileID: 0}
+  itemAbilities:
+  - itemEffect: 12
+    value: 0
+  weight: 10

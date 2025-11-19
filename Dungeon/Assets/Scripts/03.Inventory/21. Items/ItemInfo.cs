@@ -10,6 +10,7 @@ public class ItemInfo : ItemData
         Helmet,
         Consumables,
         Misc,
+        Blueprint,
         None,
     }
     

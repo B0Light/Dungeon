@@ -1993,7 +1993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1084909107251804145, guid: a9088fc0809beb74992dd64f30452fc7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 1084909107251804145, guid: a9088fc0809beb74992dd64f30452fc7, type: 3}
       propertyPath: m_SizeDelta.y
@@ -3373,7 +3373,7 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
+  m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -6702,7 +6702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1084909107251804145, guid: a9088fc0809beb74992dd64f30452fc7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 1084909107251804145, guid: a9088fc0809beb74992dd64f30452fc7, type: 3}
       propertyPath: m_SizeDelta.y
@@ -6811,7 +6811,7 @@ PrefabInstance:
     - target: {fileID: 8518542090691795215, guid: a9088fc0809beb74992dd64f30452fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5841291465386098251}
     - target: {fileID: 8518542090691795215, guid: a9088fc0809beb74992dd64f30452fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -6822,7 +6822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8518542090691795215, guid: a9088fc0809beb74992dd64f30452fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: BuildingManager, Assembly-CSharp
+      value: DungeonCoreHUDManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8518542090691795215, guid: a9088fc0809beb74992dd64f30452fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -7502,7 +7502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1084909107251804145, guid: a9088fc0809beb74992dd64f30452fc7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 1084909107251804145, guid: a9088fc0809beb74992dd64f30452fc7, type: 3}
       propertyPath: m_SizeDelta.y

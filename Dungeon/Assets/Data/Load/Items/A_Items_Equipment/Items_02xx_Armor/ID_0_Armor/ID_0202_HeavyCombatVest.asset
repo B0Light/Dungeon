@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ee7216f086d99489203a9db6bd35d8, type: 3}
+  m_Name: ID_0202_HeavyCombatVest
+  m_EditorClassIdentifier: 
+  itemCode: 202
+  itemName: "\uC911\uBB34\uC7A5 \uC804\uD22C \uC870\uB07C"
+  itemIcon: {fileID: 21300000, guid: 41b10e29670225c489c256c630034ffa, type: 3}
+  itemTier: 4
+  itemDescription: "\uC804\uBA74 \uD3EC\uCF13\uACFC \uC5B4\uAE68 \uBCF4\uD638 \uC7A5\uBE44\uAC00
+    \uD3EC\uD568\uB41C \uD480\uC138\uD2B8 \uC804\uD22C\uC6A9 \uC870\uB07C"
+  purchaseCost: 15000
+  costItemList: 
+  width: 3
+  height: 3
+  itemType: 1
+  saleCost: 9000
+  purChaseWithItem: 0
+  itemModel: {fileID: 0}
+  itemAbilities:
+  - itemEffect: 4
+    value: 200
+  - itemEffect: 13
+    value: 16
+  weight: 50
+  extraHealth: 10
+  backpackSize: {x: 4, y: 4}
