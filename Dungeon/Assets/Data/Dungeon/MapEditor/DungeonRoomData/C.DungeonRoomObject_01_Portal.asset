@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: C.DungeonRoomObject_01_Portal
   m_EditorClassIdentifier: Assembly-CSharp::DungeonObjectDataSO
   buildObject: {fileID: 11400000, guid: 77731f19363f1034ab0cdb07ce1b9f9a, type: 2}
-  pos: {x: 4, y: 4}
+  pos: {x: 5, y: 5}
   dir: 0
   level: 0

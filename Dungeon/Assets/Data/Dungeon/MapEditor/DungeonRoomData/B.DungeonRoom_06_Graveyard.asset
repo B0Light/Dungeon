@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe89e19e081c21b448ca57b83abbfa88, type: 3}
+  m_Name: B.DungeonRoom_06_Graveyard
+  m_EditorClassIdentifier: Assembly-CSharp::DungeonRoomDataSO
+  props:
+  - {fileID: 11400000, guid: cd3f4bbe0a858334db85dc9aadb47ba6, type: 2}
+  - {fileID: 11400000, guid: 8cead10664197fb4fb567412a72ad7d4, type: 2}
+  - {fileID: 11400000, guid: 2b8e8cd9b7df1f44484a4377157aaf2e, type: 2}
+  - {fileID: 11400000, guid: f30e8a6da28bd7b4780a37dc7ec82955, type: 2}
+  - {fileID: 11400000, guid: 1d062a19b08f4b54ebc58569394aa0b5, type: 2}
+  - {fileID: 11400000, guid: d9db8d1b1ee22b44a93f048605027961, type: 2}
+  - {fileID: 11400000, guid: 121f171b531861e4bac8b129b8df944e, type: 2}
+  - {fileID: 11400000, guid: 7e106db4a7199d949992ec6d1d5550e9, type: 2}
+  - {fileID: 11400000, guid: 1e0bd1aa3fb383a4b94ef28243fc02de, type: 2}

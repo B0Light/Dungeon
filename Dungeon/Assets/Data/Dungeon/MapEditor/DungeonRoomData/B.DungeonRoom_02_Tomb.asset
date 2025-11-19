@@ -15,9 +15,3 @@ MonoBehaviour:
   props:
   - {fileID: 11400000, guid: cc3531f4e6cf1c54f8b65776cb13aba5, type: 2}
   - {fileID: 11400000, guid: c460a79ffd1e0e444ad94a877fb26f89, type: 2}
-  - {fileID: 11400000, guid: ea345a2d083a47145950e1e255bf0431, type: 2}
-  - {fileID: 11400000, guid: 9e2573888650f024799372ca0f4f7436, type: 2}
-  - {fileID: 11400000, guid: 836eac5eb6abefd449beea74a5201a62, type: 2}
-  - {fileID: 11400000, guid: 4bd1076e36ea3424b8f4a95738a5d270, type: 2}
-  - {fileID: 11400000, guid: 1214993fbc92b924d881bdc89cd66903, type: 2}
-  - {fileID: 11400000, guid: fa1fc5f548477c34abdf7da21bb4fd19, type: 2}

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CharacterStatsManager : MonoBehaviour
@@ -29,21 +30,26 @@ public class CharacterStatsManager : MonoBehaviour
         _character = GetComponent<CharacterManager>();
     }
 
-    public void RegenerateStamina()
+    private void Update()
     {
+        RegenerateStamina();
+    }
+
+    private void RegenerateStamina()
+    {
+        if (_character.characterVariableManager.stamina.Value <= 0)
+        {
+            _character.characterVariableManager.stamina.Value = 0;
+            _character.characterVariableManager.CLVM.isSprinting = false;
+        }
+        
         // 1. 달리기 시 스테미나 감소
-        if (_character.characterVariableManager.CLVM.isSprinting)
+        if (_character.characterVariableManager.CLVM.isSprinting && _character.characterVariableManager.CLVM.speed2D > 1f)
         {
             _staminaRegenTimer = 0.0f;
 
             _character.characterVariableManager.stamina.Value -=
                 _staminaDrainRatePerSecond * Time.deltaTime;
-
-            if (_character.characterVariableManager.stamina.Value < 0)
-            {
-                _character.characterVariableManager.stamina.Value = 0;
-                _character.characterVariableManager.CLVM.isSprinting = false;
-            }
 
             return;
         }

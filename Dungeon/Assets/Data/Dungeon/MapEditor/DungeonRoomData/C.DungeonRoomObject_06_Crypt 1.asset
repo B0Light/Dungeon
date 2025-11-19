@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c0f960754a4d0448bce082e57033835, type: 3}
-  m_Name: C.DungeonRoomObject_02_Tomb_05
+  m_Name: C.DungeonRoomObject_06_Crypt 1
   m_EditorClassIdentifier: Assembly-CSharp::DungeonObjectDataSO
-  buildObject: {fileID: 11400000, guid: 7250ddea16daa7049a6cd3ad7cc0ab00, type: 2}
-  pos: {x: 7, y: 5}
-  dir: 0
+  buildObject: {fileID: 11400000, guid: b5d42362e6287614dbe40eeb5166d63d, type: 2}
+  pos: {x: 2, y: 8}
+  dir: 1
   level: 0

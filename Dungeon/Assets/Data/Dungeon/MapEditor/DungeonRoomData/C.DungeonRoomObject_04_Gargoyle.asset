@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c0f960754a4d0448bce082e57033835, type: 3}
-  m_Name: C.DungeonRoomObject_02_Tomb_01
+  m_Name: C.DungeonRoomObject_04_Gargoyle
   m_EditorClassIdentifier: Assembly-CSharp::DungeonObjectDataSO
-  buildObject: {fileID: 11400000, guid: 7250ddea16daa7049a6cd3ad7cc0ab00, type: 2}
-  pos: {x: 2, y: 2}
+  buildObject: {fileID: 11400000, guid: ea210056e5cfb364a9e7094447c57699, type: 2}
+  pos: {x: 4, y: 3}
   dir: 0
   level: 0

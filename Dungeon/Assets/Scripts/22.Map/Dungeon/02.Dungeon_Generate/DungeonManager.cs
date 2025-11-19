@@ -68,8 +68,6 @@ public class DungeonManager : MonoBehaviour
         
         // 5단계 : A.I. 생성
         _aiSpawnManager.Init(_pathfinder);
-        
-        
     }
 
     private IEnumerator BuildNavMeshAsync()
@@ -111,7 +109,7 @@ public class DungeonManager : MonoBehaviour
             }
         }
         
-        BaseGridBuildSystem.Instance.ObjectToPlace = null;
+        
     }
 
     private void InstantiateBuilding(DungeonRoomDataSO targetBuilding, RectInt room)
@@ -127,5 +125,6 @@ public class DungeonManager : MonoBehaviour
             BaseGridBuildSystem.Instance.ObjectToPlace = buildObj;
             BaseGridBuildSystem.Instance.PlaceTile(buildPos.x, buildPos.y, dir, level, true);
         }
+        BaseGridBuildSystem.Instance.ObjectToPlace = null;
     }
 }

@@ -46,14 +46,6 @@ public class PlayerManager : CharacterManager
         animator.updateMode = AnimatorUpdateMode.UnscaledTime;
     }
 
-    protected override void Update()
-    {
-        base.Update();
-
-        // REGEN STAMINA
-        playerStatsManager.RegenerateStamina();
-    }
-
     protected override void OnEnable()
     {
         base.OnEnable();

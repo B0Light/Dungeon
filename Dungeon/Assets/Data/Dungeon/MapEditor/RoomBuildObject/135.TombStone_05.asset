@@ -23,7 +23,7 @@ MonoBehaviour:
   costItemList: 
   width: 2
   height: 3
-  prefab: {fileID: 5653076559889949959, guid: f920e284bbfa6334c8723eae4847f9e4, type: 3}
+  prefab: {fileID: 4035824002076401272, guid: 2d78e6a8340d5e343b4e9ab30158af21, type: 3}
   tileType: 4
   maxLevel: 10
   baseFee: 100

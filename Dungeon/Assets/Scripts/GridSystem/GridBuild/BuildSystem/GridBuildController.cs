@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 public class GridBuildController : MonoBehaviour
 {
-    [FormerlySerializedAs("gridBuildSystem")] [SerializeField] private BaseGridBuildSystem baseGridBuildSystem;
+    [SerializeField] private BaseGridBuildSystem baseGridBuildSystem;
     
     private BuildObjData _objectToPlace;
     
@@ -73,7 +73,11 @@ public class GridBuildController : MonoBehaviour
 
                 targetPosition = baseGridBuildSystem.GetGrid().GetWorldPosition(placedObject.GetOriginPos());
             }
-            targetPosition.y = 0.5f;
+            else
+            {
+                selector.transform.localScale = new Vector3(1, 1, 1);
+            }
+            targetPosition.y = 0.25f;
             selector.transform.position = Vector3.Lerp(selector.transform.position, targetPosition, Time.deltaTime * 15f);
         }
         

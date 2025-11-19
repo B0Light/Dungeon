@@ -14,5 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DungeonRoomListDataSO
   essentialRoom:
   - {fileID: 11400000, guid: 3d5d0f82f80a5904ab705b9da6036daf, type: 2}
-  subRoom:
   - {fileID: 11400000, guid: 2114ea5da507f1845bb91fb8caec3acc, type: 2}
+  - {fileID: 11400000, guid: 11d4ced2216b17f4e93df993a4f068c1, type: 2}
+  - {fileID: 11400000, guid: 45b3bd8934948274ea5fd7801d72fce2, type: 2}
+  - {fileID: 11400000, guid: e5407dc9480576a48affeb87481a0075, type: 2}
+  - {fileID: 11400000, guid: 1a525f1e93803204ea3e5f57c74c0e12, type: 2}
+  - {fileID: 11400000, guid: f2b281bc9aefa2941826ac44f7ea6cd3, type: 2}
+  - {fileID: 11400000, guid: 9c822cb46701a3648bf8265e37d79ed1, type: 2}
+  subRoom:
+  - {fileID: 11400000, guid: 45b3bd8934948274ea5fd7801d72fce2, type: 2}
+  - {fileID: 11400000, guid: 2114ea5da507f1845bb91fb8caec3acc, type: 2}
+  - {fileID: 11400000, guid: 11d4ced2216b17f4e93df993a4f068c1, type: 2}

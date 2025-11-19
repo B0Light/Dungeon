@@ -26285,6 +26285,10 @@ PrefabInstance:
       propertyPath: gridBuildSystem
       value: 
       objectReference: {fileID: 2212484870910251415}
+    - target: {fileID: 5734266620335009917, guid: f27cf38c31c11be41b195ac20d76406f, type: 3}
+      propertyPath: baseGridBuildSystem
+      value: 
+      objectReference: {fileID: 2212484870910251415}
     - target: {fileID: 5775165848100993725, guid: f27cf38c31c11be41b195ac20d76406f, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

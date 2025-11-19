@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerInteractionManager : MonoBehaviour
 {
     private PlayerManager _player;
-    public Interactable lastInteractable;
     
     private float _rayDistance = 6.5f; // 레이의 최대 거리
     [SerializeField] private LayerMask interactableLayerMask;
@@ -105,7 +104,7 @@ public class PlayerInteractionManager : MonoBehaviour
         }
     }
 
-    public void AddInteractionToList(Interactable interactableObject)
+    private void AddInteractionToList(Interactable interactableObject)
     {
         if (!currentInteractableActions.Contains(interactableObject))
             currentInteractableActions.Add(interactableObject);
@@ -116,7 +115,6 @@ public class PlayerInteractionManager : MonoBehaviour
         if (currentInteractableActions.Contains(interactableObject))
             currentInteractableActions.Remove(interactableObject);
 
-        lastInteractable = interactableObject;
         RefreshInteractionList();
     }
 
