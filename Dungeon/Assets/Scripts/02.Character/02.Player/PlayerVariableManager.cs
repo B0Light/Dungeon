@@ -107,7 +107,7 @@ public class PlayerVariableManager : CharacterVariableManager
 
     public void SetNewMaxStamina(float newValue)
     {
-        GUIController.Instance.playerUIHudManager.playerUIStatusManager.SetMaxActionPoint(newValue);
+        GUIController.Instance.playerUIHudManager.playerUIStatusManager.SetMaxStamina(newValue);
     }
 
     public void UpdatePlayerWeight(float newValue)

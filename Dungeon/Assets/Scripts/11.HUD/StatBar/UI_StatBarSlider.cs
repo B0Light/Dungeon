@@ -6,7 +6,6 @@ public class UI_StatBarSlider : MonoBehaviour
 {
     private Slider _slider;
     private Coroutine _lerpRoutine;
-    [SerializeField] private float _changeSpeed = 5f; // 값 변화 속도 조절
 
     protected virtual void Awake()
     {
@@ -15,23 +14,30 @@ public class UI_StatBarSlider : MonoBehaviour
 
     public void SetStat(float newValue)
     {
-        StopAllCoroutines();
-        _lerpRoutine = StartCoroutine(LerpValue(newValue));
+        if (_lerpRoutine != null)
+        {
+            StopCoroutine(_lerpRoutine);
+        }
+        
+        _lerpRoutine = StartCoroutine(UpdateBarRoutine(newValue));
     }
 
     public void SetMaxStat(float maxValue)
     {
         _slider.maxValue = maxValue;
-        SetStat(maxValue); // 초기 설정도 애니메이션 가능
+        SetStat(maxValue);
     }
 
-    private IEnumerator LerpValue(float targetValue)
+    private IEnumerator UpdateBarRoutine(float targetValue)
     {
         float startValue = _slider.value;
+        float time = 0f;
+        float duration = 0.5f; // 0.5초 동안 이동
 
-        while (Mathf.Abs(_slider.value - targetValue) > 0.01f)
+        while (time < duration)
         {
-            _slider.value = Mathf.Lerp(_slider.value, targetValue, Time.deltaTime * _changeSpeed);
+            time += Time.deltaTime;
+            _slider.value = Mathf.Lerp(startValue, targetValue, time / duration);
             yield return null;
         }
 

@@ -8,7 +8,7 @@ public class PlayerStatsManager : CharacterStatsManager
 
     public void SetNewStamina(float value)
     {
-        GUIController.Instance.playerUIHudManager.playerUIStatusManager.SetNewActionPoint(value);
+        GUIController.Instance.playerUIHudManager.playerUIStatusManager.SetNewStamina(value);
     }
 }
 

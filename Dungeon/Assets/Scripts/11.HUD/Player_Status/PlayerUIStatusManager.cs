@@ -1,7 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class PlayerUIStatusManager : MonoBehaviour
 {
@@ -19,12 +16,12 @@ public class PlayerUIStatusManager : MonoBehaviour
         healthBar.SetMaxStat(maxHealth);
     }
 
-    public void SetNewActionPoint(float newValue)
+    public void SetNewStamina(float newValue)
     {
         staminaBar.SetStat(newValue);
     }
 
-    public void SetMaxActionPoint(float newValue)
+    public void SetMaxStamina(float newValue)
     {
         staminaBar.SetMaxStat(newValue);
     }
