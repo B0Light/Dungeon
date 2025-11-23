@@ -148,15 +148,20 @@ public class PlayerVariableManager : CharacterVariableManager
         _playerManager.playerEquipmentManger.currentEquippedInfoHelmet = newHelmetInfo;
         _playerManager.playerEquipmentManger.LoadHelmet();
         
-        ResetActionPoint(newHelmetInfo);
+        ResetStamina(newHelmetInfo);
     }
 
     // ResetActionPoint: actionPoint를 초기 상태로 리셋
-    private void ResetActionPoint(EquipmentItemInfoHelmet helmet)
+    private void ResetStamina(EquipmentItemInfoHelmet helmet)
     {
         stamina.MaxValue = initialStamina + (perkExtraHealthPoint.Value ? 1 : 0) + (helmet == null ? 0 : helmet.extraActionPoint);
         _playerManager.characterStatsManager.extraPhysicalAbsorption = helmet == null ? 0 : helmet.extraPhysicalAbsorption;
         _playerManager.characterStatsManager.extraMagicalAbsorption = helmet== null ? 0 : helmet.extraMagicalAbsorption;
+    }
+
+    public void CurrentQuickSlotItemChange(int newValue)
+    {
+        GUIController.Instance.playerUIHudManager.playerUIQuickSlotManager.SetQuickSlotItem(newValue);
     }
     
     public void ResetStatus()

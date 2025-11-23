@@ -69,6 +69,9 @@ public class PlayerManager : CharacterManager
         playerVariableManager.currentEquippedWeaponID.OnValueChanged += playerVariableManager.CurrentEquippedWeaponIDChange;
         playerVariableManager.currentHelmetID.OnValueChanged += playerVariableManager.CurrentEquippedHelmetIDChange;
         playerVariableManager.currentArmorID.OnValueChanged += playerVariableManager.CurrentEquippedArmorIDChange;
+        
+        //quickSlot
+        playerVariableManager.currentSelectQuickSlotItem.OnValueChanged += playerVariableManager.CurrentQuickSlotItemChange;
             
         playerVariableManager.perkExtraAttack.OnValueChanged += playerVariableManager.OnExtraAttackChange;
         playerVariableManager.perkExtraDefence.OnValueChanged += playerVariableManager.OnExtraDefenceChange;
