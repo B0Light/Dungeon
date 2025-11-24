@@ -1,3 +1,5 @@
+using System;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class GridBuildCamera : MonoBehaviour
@@ -9,23 +11,35 @@ public class GridBuildCamera : MonoBehaviour
     public float minZoomDistance = 2f; // 최소 줌 거리
     public float maxZoomDistance = 50f; // 최대 줌 거리
 
-    private Vector3 targetPosition; // 카메라가 바라볼 중심점
-    private float distance; // 중심점과 카메라의 거리
+    private readonly float _minOrthographicSize = 1f;
+    private readonly float _maxOrthographicSize = 50f;
 
+    private Vector3 _targetPosition; // 카메라가 바라볼 중심점
+    private float _distance; // 중심점과 카메라의 거리
+    private float _orthographicSize;
+    
     private Vector3 _defaultPosition;
     private Quaternion _defaultQuaternion;
     
     // 탑다운 모드 상태 관리용 변수
-    private bool isTopDownMode = false;
+    private bool _isTopDownMode = false;
     private Quaternion _beforeTopDownRotation; // 탑다운 진입 전 회전값 저장
+    private CinemachineCamera _vCam;
+
+    private void Awake()
+    {
+        _vCam = GetComponent<CinemachineCamera>();
+    }
 
     private void Start()
     {
-        targetPosition = transform.position + transform.forward * 10f;
-        distance = Vector3.Distance(transform.position, targetPosition);
+        _targetPosition = transform.position + transform.forward * 10f;
+        _distance = Vector3.Distance(transform.position, _targetPosition);
 
         _defaultPosition = transform.position;
         _defaultQuaternion = transform.rotation;
+        
+        SetProjectCam();
     }
 
     private void Update()
@@ -45,7 +59,7 @@ public class GridBuildCamera : MonoBehaviour
 
             Vector3 move;
 
-            if (isTopDownMode)
+            if (_isTopDownMode)
             {
                 // 탑다운 모드일 때는 월드 좌표 기준 X(좌우), Z(상하) 평면 이동
                 // 카메라가 90도 숙여져 있으므로 transform.up이 월드의 Z축(앞뒤)과 유사함
@@ -58,7 +72,7 @@ public class GridBuildCamera : MonoBehaviour
             }
 
             transform.position += move;
-            targetPosition += move;
+            _targetPosition += move;
         }
     }
 
@@ -67,41 +81,50 @@ public class GridBuildCamera : MonoBehaviour
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll != 0f)
         {
-            distance -= scroll * zoomSpeed;
-            distance = Mathf.Clamp(distance, minZoomDistance, maxZoomDistance);
+            if (_isTopDownMode)
+            {
+                _orthographicSize -= scroll * zoomSpeed;
+                _orthographicSize = Mathf.Clamp(_orthographicSize, _minOrthographicSize, _maxOrthographicSize);
+                _vCam.Lens.OrthographicSize = _orthographicSize;
+            }
+            else
+            {
+                _distance -= scroll * zoomSpeed;
+                _distance = Mathf.Clamp(_distance, minZoomDistance, maxZoomDistance);
 
-            // 탑다운 모드에서도 줌은 타겟 방향(수직)으로 작동해야 하므로 동일 로직 사용 가능
-            Vector3 direction = (transform.position - targetPosition).normalized;
+                // 탑다운 모드에서도 줌은 타겟 방향(수직)으로 작동해야 하므로 동일 로직 사용 가능
+                Vector3 direction = (transform.position - _targetPosition).normalized;
             
-            // 안전장치: 벡터가 0이 되는 경우 방지 (탑다운에서 타겟과 겹칠 때)
-            if (direction == Vector3.zero) direction = isTopDownMode ? Vector3.up : -transform.forward;
+                // 안전장치: 벡터가 0이 되는 경우 방지 (탑다운에서 타겟과 겹칠 때)
+                if (direction == Vector3.zero) direction = _isTopDownMode ? Vector3.up : -transform.forward;
 
-            transform.position = targetPosition + direction * distance;
+                transform.position = _targetPosition + direction * _distance;
+            }
+            
         }
     }
 
     private void HandleRotation()
     {
         // 탑다운 모드에서는 회전 불가능 (각도 고정 요청)
-        if (isTopDownMode) return;
+        if (_isTopDownMode) return;
 
         if (Input.GetMouseButton(1)) // 오른쪽 버튼으로 회전
         {
             float rotX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
             float rotY = -Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
 
-            transform.RotateAround(targetPosition, Vector3.up, rotX);
-            transform.RotateAround(targetPosition, transform.right, rotY);
+            transform.RotateAround(_targetPosition, Vector3.up, rotX);
+            transform.RotateAround(_targetPosition, transform.right, rotY);
             
-            Vector3 direction = (transform.position - targetPosition).normalized;
-            distance = Vector3.Distance(transform.position, targetPosition);
-            transform.LookAt(targetPosition);
+            Vector3 direction = (transform.position - _targetPosition).normalized;
+            _distance = Vector3.Distance(transform.position, _targetPosition);
+            transform.LookAt(_targetPosition);
         }
     }
 
     private void HandleFreeMove()
     {
-        
         float currentSpeed = moveSpeed;
 
         if (Input.GetKey(KeyCode.LeftShift))
@@ -114,7 +137,7 @@ public class GridBuildCamera : MonoBehaviour
         
         Vector3 move;
 
-        if (isTopDownMode)
+        if (_isTopDownMode)
         {
             // 탑다운 모드:
             // W/S (moveZ) -> 월드 상의 앞/뒤 (화면상 위/아래) -> transform.up 사용
@@ -135,36 +158,38 @@ public class GridBuildCamera : MonoBehaviour
         }
 
         transform.position += move;
-        targetPosition += move;
+        _targetPosition += move;
     }
     
     public void ResetCamPosition()
     {
         // 리셋 시 탑다운 모드도 해제하는 것이 일반적임
-        isTopDownMode = false;
-
+        _isTopDownMode = false;
+        _vCam.Lens.ModeOverride = LensSettings.OverrideModes.None;
         transform.position = _defaultPosition;
         transform.rotation = _defaultQuaternion;
         
-        targetPosition = transform.position + transform.forward * 10f;
-        distance = Vector3.Distance(transform.position, targetPosition);
+        _targetPosition = transform.position + transform.forward * 10f;
+        _distance = Vector3.Distance(transform.position, _targetPosition);
     }
     
     // 토글 스위치 방식으로 변경
     public void SetProjectCam()
     {
-        isTopDownMode = !isTopDownMode; // 상태 반전 (True <-> False)
-
-        if (isTopDownMode)
+        _isTopDownMode = !_isTopDownMode; // 상태 반전 (True <-> False)
+        _vCam.Lens.ModeOverride = LensSettings.OverrideModes.Orthographic;
+        _orthographicSize = 20;
+        _vCam.Lens.OrthographicSize = _orthographicSize;
+        if (_isTopDownMode)
         {
             _beforeTopDownRotation = transform.rotation;
             transform.rotation = Quaternion.Euler(90f, 0f, 0f);
-            transform.position = new Vector3(targetPosition.x, targetPosition.y + distance, targetPosition.z);
+            transform.position = new Vector3(_targetPosition.x, _targetPosition.y + _distance, _targetPosition.z);
         }
         else
         {
             transform.rotation = _beforeTopDownRotation;
-            targetPosition = transform.position + transform.forward * distance;
+            _targetPosition = transform.position + transform.forward * _distance;
         }
     }
 }

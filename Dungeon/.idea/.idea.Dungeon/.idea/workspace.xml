@@ -6,10 +6,28 @@
   <component name="ChangeListManager">
     <list default="true" id="1844b18a-d80d-49d6-955e-b57cdcc0bed9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/04.HUD/PlayerUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/04.HUD/PlayerUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerVariableManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerVariableManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/VFX/MeshTrail.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/VFX/MeshTrail.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/TileMappingData/Dungeon.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/TileMappingData/Dungeon.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/Cats.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/Cats/NeonCat.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/Cats/NeonCat.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/Props/Gangdodan_SD_Ghost.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/Props/Gangdodan_SD_Ghost.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/StelLive.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/StelLive/Arrnyang.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/StelLive/Arrnyang.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/StelLive/GangG_SD.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/StelLive/GangG_SD.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/StelLive/Gangdodan_SD.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/StelLive/Gangdodan_SD.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/StelLive/Gangdodan_SD_Hood.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/StelLive/Gangdodan_SD_Hood.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/StelLive/Twitch_Character.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/StelLive/Twitch_Character.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Dungeon_PathWall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/12.MapTile/Dungeon_PathWall.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/00.StartScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/00.StartScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/03.Shelter.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/03.Shelter.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/10.Dungeon_01.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/10.Dungeon_01.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildSystem/GridBuildCamera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildSystem/GridBuildCamera.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,6 +206,7 @@
       <workItem from="1763883512709" duration="5375000" />
       <workItem from="1763913437709" duration="97000" />
       <workItem from="1763960285398" duration="1410000" />
+      <workItem from="1763969430032" duration="2829000" />
     </task>
     <servers />
   </component>

@@ -28,6 +28,6 @@ MonoBehaviour:
   - cellType: 6
     tileData: {fileID: 11400000, guid: a364be97e94a5eb42a7437471d46a666, type: 2}
   - cellType: 7
-    tileData: {fileID: 11400000, guid: c241b59ab56d560428c0d1ad77fc343b, type: 2}
+    tileData: {fileID: 11400000, guid: 621ff42ce6a123341ae191f0dde84961, type: 2}
   - cellType: 8
-    tileData: {fileID: 11400000, guid: 22b781589da43224cb580673718e491c, type: 2}
+    tileData: {fileID: 11400000, guid: 621ff42ce6a123341ae191f0dde84961, type: 2}
