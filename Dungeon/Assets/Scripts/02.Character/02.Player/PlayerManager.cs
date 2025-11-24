@@ -72,6 +72,9 @@ public class PlayerManager : CharacterManager
         
         //quickSlot
         playerVariableManager.currentSelectQuickSlotItem.OnValueChanged += playerVariableManager.CurrentQuickSlotItemChange;
+        playerVariableManager.currentQuickSlotIDList.OnItemAdded += playerVariableManager.OnAddQuickSlotItem;
+        playerVariableManager.currentQuickSlotIDList.OnItemRemoved += playerVariableManager.OnRemoveQuickSlotItem;
+        playerVariableManager.currentQuickSlotIDList.OnListCleared += playerVariableManager.OnQuickSlotClear;
             
         playerVariableManager.perkExtraAttack.OnValueChanged += playerVariableManager.OnExtraAttackChange;
         playerVariableManager.perkExtraDefence.OnValueChanged += playerVariableManager.OnExtraDefenceChange;
@@ -111,6 +114,7 @@ public class PlayerManager : CharacterManager
         playerVariableManager.currentEquippedWeaponID.OnValueChanged -= playerVariableManager.CurrentEquippedWeaponIDChange;
         playerVariableManager.currentHelmetID.OnValueChanged -= playerVariableManager.CurrentEquippedHelmetIDChange;
         playerVariableManager.currentArmorID.OnValueChanged -= playerVariableManager.CurrentEquippedArmorIDChange;
+        playerVariableManager.currentSelectQuickSlotItem.OnValueChanged -= playerVariableManager.CurrentQuickSlotItemChange;
         
         playerVariableManager.perkExtraAttack.OnValueChanged -= playerVariableManager.OnExtraAttackChange;
         playerVariableManager.perkExtraDefence.OnValueChanged -= playerVariableManager.OnExtraDefenceChange;
@@ -292,7 +296,6 @@ public class PlayerManager : CharacterManager
         playerVariableManager.currentEquippedWeaponID.Value = currentGameData.weaponItemCode;
         playerVariableManager.currentHelmetID.Value = currentGameData.helmetItemCode;
         playerVariableManager.currentArmorID.Value = currentGameData.armorItemCode;
-        
         
         playerVariableManager.currentQuickSlotIDList.Clear();
         foreach (KeyValuePair<int,int> item in currentGameData.quickSlotConsumableItems)

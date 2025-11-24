@@ -35,6 +35,7 @@ public class MeshTrail : MonoBehaviour
         
         // Create pool parent object
         GameObject trailPoolParent = new GameObject("TrailObjectsPool");
+        trailPoolParent.layer = LayerMask.NameToLayer("Ignore Raycast");
         _poolParent = trailPoolParent.transform;
         
         // Create ObjectPool with proper Unity 2021.1+ constructor
@@ -56,8 +57,8 @@ public class MeshTrail : MonoBehaviour
         trail.layer = LayerMask.NameToLayer("Character");
         trail.transform.SetParent(_poolParent);
         
-        MeshRenderer mr = trail.AddComponent<MeshRenderer>();
-        MeshFilter mf = trail.AddComponent<MeshFilter>();
+        trail.AddComponent<MeshRenderer>();
+        trail.AddComponent<MeshFilter>();
         
         return trail;
     }

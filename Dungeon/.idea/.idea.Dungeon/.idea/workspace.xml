@@ -6,17 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1844b18a-d80d-49d6-955e-b57cdcc0bed9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/04.HUD/PlayerHUD.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/04.HUD/PlayerHUD/ActionPoint.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/04.HUD/PlayerHUD/ActionPoint.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/04.HUD/PlayerHUD/QuickSlotItem.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/04.HUD/PlayerHUD/QuickSlotItem.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/04.HUD/PlayerUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/04.HUD/PlayerUI.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerVariableManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/02.Player/PlayerVariableManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/11.HUD/Manager/PlayerUIHudManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/11.HUD/Manager/PlayerUIHudManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/11.HUD/Player_HUD_Inventory/PlayerUIQuickSlotManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/11.HUD/Player_HUD_Inventory/PlayerUIQuickSlotManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/11.HUD/Player_HUD_Inventory/UI_QuickSlotItem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/11.HUD/Player_HUD_Inventory/UI_QuickSlotItem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/VFX/MeshTrail.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/VFX/MeshTrail.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +26,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7b8172fcdd864e17924794813da717121f5e00/46/ccf65b4c/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c9b3f47083fa4166b8dd12c35e1b9ae536200/be/4d480e20/AnimationState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d303c2bf72cd4cec95665b89c457d265d2b8ef3ed6da17cd4f85587c2f9de7/System.Linq.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/01.Shelter/TlieInfo/EntranceTile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/02.Character/PlayerInput/InputHandler_Combat.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/03.Inventory/21. Items/ItemInfoBlueprint.cs" root0="FORCE_HIGHLIGHTING" />
@@ -192,6 +186,8 @@
       <workItem from="1763556333551" duration="5677000" />
       <workItem from="1763627331701" duration="3360000" />
       <workItem from="1763883512709" duration="5375000" />
+      <workItem from="1763913437709" duration="97000" />
+      <workItem from="1763960285398" duration="1410000" />
     </task>
     <servers />
   </component>
