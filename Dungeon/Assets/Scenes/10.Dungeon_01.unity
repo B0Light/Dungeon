@@ -7895,8 +7895,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridBuildController: {fileID: 3183541950193506680}
-  ghostMaterialEnable: {fileID: 2100000, guid: 8e288663dcad1a0468669a0b5e70e381, type: 2}
-  ghostMaterialDisable: {fileID: 2100000, guid: cfe0c32c04eeb1a4595ef543b2c70bd8, type: 2}
+  ghostMaterialEnable: {fileID: 2100000, guid: 2761fe748f71cfd4ea5d00bc01bced65, type: 2}
+  ghostMaterialDisable: {fileID: 2100000, guid: 4cdf20f558ad25845bc3cd761d70da62, type: 2}
 --- !u!225 &8039157729729483748
 CanvasGroup:
   m_ObjectHideFlags: 0

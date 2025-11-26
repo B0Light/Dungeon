@@ -186,27 +186,14 @@ public class GridBuildController : MonoBehaviour
     
     private bool CheckCanBuildAtPos(int x, int z)
     {
-        return IsPlacementValid(x, z) && CanBuildAtPos(_objectToPlace.GetGridPositionList(new Vector2Int(x, z), _dir));
+        return IsPlacementValid(x, z) && BaseGridBuildSystem.Instance.CanBuildAtPos(_objectToPlace.GetGridPositionList(new Vector2Int(x, z), _dir));
     }
 
     public bool CheckCanBuildAtPos()
     {
         Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
         baseGridBuildSystem.GetGrid().GetXZ(mousePosition, out int x, out int z);
-        return IsPlacementValid(x, z) && CanBuildAtPos(_objectToPlace.GetGridPositionList(new Vector2Int(x, z), _dir));
-    }
-    
-    private bool CanBuildAtPos(List<Vector2Int> gridPositionList)
-    {
-        foreach (Vector2Int gridPosition in gridPositionList)
-        {
-            var gridObject = baseGridBuildSystem.GetGrid().GetGridObject(gridPosition.x, gridPosition.y);
-            if (gridObject == null || !gridObject.CanBuild())
-            {
-                return false;
-            }
-        }
-        return true;
+        return IsPlacementValid(x, z) && BaseGridBuildSystem.Instance.CanBuildAtPos(_objectToPlace.GetGridPositionList(new Vector2Int(x, z), _dir));
     }
     
     private bool IsPlacementValid(int x, int z)
@@ -266,6 +253,10 @@ public class GridBuildController : MonoBehaviour
 
         GridCell gridObject = baseGridBuildSystem.GetGrid().GetGridObject(x, z);
         return gridObject?.GetPlacedObject();
+    }
+    
+    public Quaternion GetPlacedObjectRotation() {
+        return _objectToPlace ? Quaternion.Euler(0, _objectToPlace.GetRotationAngle(_dir), 0) : Quaternion.identity;
     }
     
     public void SetDeleteMode()

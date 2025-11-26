@@ -1471,25 +1471,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5085209258715488769}
     m_Modifications:
-    - target: {fileID: 918603095358283147, guid: 5b14166f698c58b4785abbbfc4f6a763, type: 3}
-      propertyPath: hideOption
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1293702231754221909, guid: 5b14166f698c58b4785abbbfc4f6a763, type: 3}
-      propertyPath: orthographic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1371677229073721488, guid: 5b14166f698c58b4785abbbfc4f6a763, type: 3}
       propertyPath: m_Name
       value: PlayerCamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 6913243027895022631, guid: 5b14166f698c58b4785abbbfc4f6a763, type: 3}
-      propertyPath: Lens.ModeOverride
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7501401812754574917, guid: 5b14166f698c58b4785abbbfc4f6a763, type: 3}
-      propertyPath: LensModeOverride.Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8031455538994303664, guid: 5b14166f698c58b4785abbbfc4f6a763, type: 3}
       propertyPath: m_LocalPosition.x

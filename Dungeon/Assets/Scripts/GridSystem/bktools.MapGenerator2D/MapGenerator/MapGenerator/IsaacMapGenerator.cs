@@ -129,10 +129,7 @@ public class IsaacMapGenerator : BaseMapGenerator
             {
                 if (x >= 0 && x < _config.GridSize.x && y >= 0 && y < _config.GridSize.y)
                 {
-                    _fixedGrid.GetGridObject(x, y).CellType =
-                        (x == gridX + (width - 1) / 2 && y == gridY + (height - 1) / 2)
-                            ? CellType.FloorCenter
-                            : CellType.Floor;
+                    _fixedGrid.GetGridObject(x, y).CellType = CellType.Floor;
                 }
             }
         }

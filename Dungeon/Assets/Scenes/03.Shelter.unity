@@ -26161,6 +26161,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 878390919256217850, guid: f27cf38c31c11be41b195ac20d76406f, type: 3}
+      propertyPath: ghostMaterialEnable
+      value: 
+      objectReference: {fileID: 2100000, guid: 2761fe748f71cfd4ea5d00bc01bced65, type: 2}
+    - target: {fileID: 878390919256217850, guid: f27cf38c31c11be41b195ac20d76406f, type: 3}
+      propertyPath: ghostMaterialDisable
+      value: 
+      objectReference: {fileID: 2100000, guid: 4cdf20f558ad25845bc3cd761d70da62, type: 2}
     - target: {fileID: 1057863480337629212, guid: f27cf38c31c11be41b195ac20d76406f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

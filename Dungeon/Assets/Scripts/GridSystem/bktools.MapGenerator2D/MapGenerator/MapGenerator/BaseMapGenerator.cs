@@ -254,7 +254,7 @@ public abstract class BaseMapGenerator : IMapGenerator
     }
 
     private static bool IsFloorOrWallType(CellType cellType) =>
-        cellType == CellType.Floor || cellType == CellType.FloorCenter || cellType == CellType.Wall;
+        cellType == CellType.Floor || cellType == CellType.Wall;
 
     private static bool IsPathType(CellType cellType) =>
         cellType == CellType.ExpandedPath || cellType == CellType.Path;
@@ -283,7 +283,7 @@ public abstract class BaseMapGenerator : IMapGenerator
         tileData.SpawnTile(spawnPos, _config.CubeSize, _slot);
     }
 
-    protected bool TryGetTileData(CellType cellType, out TileDataSO tileData)
+    private bool TryGetTileData(CellType cellType, out TileDataSO tileData)
     {
         tileData = null;
         return _tileDataDict?.TryGetValue(cellType, out tileData) == true && tileData != null;

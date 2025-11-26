@@ -139,8 +139,7 @@ public class BSPDungeonMapGeneratorFull : BaseMapGenerator
                 {
                     Vector2Int pos = new Vector2Int(x, y);
                     
-                    _fixedGrid.GetGridObject(pos.x, pos.y).CellType =
-                        (pos == center) ? CellType.FloorCenter : CellType.Floor;
+                    _fixedGrid.GetGridObject(pos.x, pos.y).CellType = CellType.Floor;
                 }
             }
         }

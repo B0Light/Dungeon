@@ -68,7 +68,6 @@ public enum CellType
 {
     Empty,
     Floor,
-    FloorCenter,
     Wall,
     PathWall,
     Path,

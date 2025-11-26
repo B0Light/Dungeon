@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DungeonGridBuildSystem : BaseGridBuildSystem
@@ -14,5 +15,20 @@ public class DungeonGridBuildSystem : BaseGridBuildSystem
     {
         Debug.Log("[Dungeon Grid Build System] : Set Fixed Grid");
         _fixedGrid = dungeonManager.FixedGrid;
+    }
+    
+    public override bool CanBuildAtPos(List<Vector2Int> gridPositionList)
+    {
+        foreach (Vector2Int gridPosition in gridPositionList)
+        {
+            var gridObject = _fixedGrid.GetGridObject(gridPosition.x, gridPosition.y);
+            if (gridObject == null || 
+                !gridObject.CanBuild() || 
+                gridObject.CellType != CellType.Floor)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -55,7 +55,7 @@ public class BaseGridBuildSystem : MonoBehaviour
         return placedObject;
     }
     
-    private bool CanBuildAtPos(List<Vector2Int> gridPositionList)
+    public virtual bool CanBuildAtPos(List<Vector2Int> gridPositionList)
     {
         foreach (Vector2Int gridPosition in gridPositionList)
         {
@@ -116,10 +116,6 @@ public class BaseGridBuildSystem : MonoBehaviour
         OnSelectedChanged?.Invoke(ObjectToPlace);
         
         Debug.Log($"Select : {buildData?.name}");
-    }
-    
-    public Quaternion GetPlacedObjectRotation() {
-        return ObjectToPlace ? Quaternion.Euler(0, ObjectToPlace.GetRotationAngle(_dir), 0) : Quaternion.identity;
     }
     
     public FixedGridXZ<GridCell> GetGrid() => _fixedGrid;

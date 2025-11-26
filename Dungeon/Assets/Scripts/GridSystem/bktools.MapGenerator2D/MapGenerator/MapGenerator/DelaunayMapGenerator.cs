@@ -114,8 +114,7 @@ public class DelaunayMapGenerator : BaseMapGenerator
             for (int y = room.y; y < room.y + room.height; y++)
             {
                 Vector2Int pos = new Vector2Int(x, y);
-                _fixedGrid.GetGridObject(pos.x, pos.y).CellType =
-                    (pos == center) ? CellType.FloorCenter : CellType.Floor;
+                _fixedGrid.GetGridObject(pos.x, pos.y).CellType = CellType.Floor;
             }
         }
     }
