@@ -8,7 +8,6 @@ public class BaseGridBuildSystem : MonoBehaviour
     public BuildObjData ObjectToPlace { get; set; }
 
     protected FixedGridXZ<GridCell> _fixedGrid;
-    private BuildObjData.Dir _dir = BuildObjData.Dir.Down;
     
     public static event Action<BuildObjData> OnSelectedChanged;
     public static event Action<BuildObjData> OnObjectPlaced;

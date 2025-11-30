@@ -48,7 +48,7 @@ public class ShelterBuildHUDManager : GridBuildHUDManager
     {
         foreach (TileType tileCategory in Enum.GetValues(typeof(TileType)))
         {
-            if(tileCategory == TileType.None) return;
+            if(tileCategory == TileType.None || tileCategory == TileType.Turret) return;
             if(unlockedBuildingByCategory.ContainsKey(tileCategory) == false)
                 unlockedBuildingByCategory.Add(tileCategory, new HashSet<BuildObjData>());
         }
@@ -69,8 +69,8 @@ public class ShelterBuildHUDManager : GridBuildHUDManager
     {
         TileType tileCategory = buildObjData.GetTileType(); 
         
-        if(unlockedBuildingByCategory.ContainsKey(tileCategory) == false)
-            unlockedBuildingByCategory.Add(tileCategory, new HashSet<BuildObjData>());
+        // 추가 할 수 없는 건물 계열 (터렛류)
+        if(unlockedBuildingByCategory.ContainsKey(tileCategory) == false) return;
         
         unlockedBuildingByCategory[tileCategory].Add(buildObjData);
     }

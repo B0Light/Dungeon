@@ -1,4 +1,3 @@
-using System;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -163,7 +162,6 @@ public class GridBuildCamera : MonoBehaviour
     
     public void ResetCamPosition()
     {
-        // 리셋 시 탑다운 모드도 해제하는 것이 일반적임
         _isTopDownMode = false;
         _vCam.Lens.ModeOverride = LensSettings.OverrideModes.None;
         transform.position = _defaultPosition;
@@ -173,23 +171,15 @@ public class GridBuildCamera : MonoBehaviour
         _distance = Vector3.Distance(transform.position, _targetPosition);
     }
     
-    // 토글 스위치 방식으로 변경
     public void SetProjectCam()
     {
-        _isTopDownMode = !_isTopDownMode; // 상태 반전 (True <-> False)
+        _isTopDownMode = true;
         _vCam.Lens.ModeOverride = LensSettings.OverrideModes.Orthographic;
         _orthographicSize = 20;
         _vCam.Lens.OrthographicSize = _orthographicSize;
-        if (_isTopDownMode)
-        {
-            _beforeTopDownRotation = transform.rotation;
-            transform.rotation = Quaternion.Euler(90f, 0f, 0f);
-            transform.position = new Vector3(_targetPosition.x, _targetPosition.y + _distance, _targetPosition.z);
-        }
-        else
-        {
-            transform.rotation = _beforeTopDownRotation;
-            _targetPosition = transform.position + transform.forward * _distance;
-        }
+       
+        _beforeTopDownRotation = transform.rotation;
+        transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+        transform.position = new Vector3(_targetPosition.x, _targetPosition.y + _distance, _targetPosition.z);
     }
 }

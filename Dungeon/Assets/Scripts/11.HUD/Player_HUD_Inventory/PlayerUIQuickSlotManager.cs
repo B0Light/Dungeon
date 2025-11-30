@@ -1,10 +1,16 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerUIQuickSlotManager : MonoBehaviour
 {
     [SerializeField] private Image selectQuickSlotItemIcon;
-    
+
+    private void Start()
+    {
+        SetQuickSlotItem(0);
+    }
+
     public void SetQuickSlotItem(int itemID)
     {
         if (itemID == 0)

@@ -789,11 +789,11 @@ RectTransform:
   - {fileID: 7499741226018250391}
   m_Father: {fileID: 7148860015863080136}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -150, y: -25}
-  m_SizeDelta: {x: 250, y: 50}
-  m_Pivot: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 200, y: -50}
+  m_SizeDelta: {x: 300, y: 50}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &6409779326861296047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2704,7 +2704,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000018220395}
+  m_AnchoredPosition: {x: 0, y: 0.0000036805868}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &6117774590072434570
@@ -3184,14 +3184,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8396226, g: 0.6543186, b: 0.16237983, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cb38d630d208f724bb9c13449ae75092, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b4e6fbb128781ec458470fc1bc77f87d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3288,8 +3288,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridBuildController: {fileID: 5734266620335009917}
-  ghostMaterialEnable: {fileID: 2100000, guid: 8e288663dcad1a0468669a0b5e70e381, type: 2}
-  ghostMaterialDisable: {fileID: 2100000, guid: cfe0c32c04eeb1a4595ef543b2c70bd8, type: 2}
+  ghostMaterialEnable: {fileID: 2100000, guid: 2761fe748f71cfd4ea5d00bc01bced65, type: 2}
+  ghostMaterialDisable: {fileID: 2100000, guid: 4cdf20f558ad25845bc3cd761d70da62, type: 2}
 --- !u!1 &2783295626688176818
 GameObject:
   m_ObjectHideFlags: 0
@@ -7607,7 +7607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.27816838, g: 0.32127127, b: 0.4433962, a: 0.5882353}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
