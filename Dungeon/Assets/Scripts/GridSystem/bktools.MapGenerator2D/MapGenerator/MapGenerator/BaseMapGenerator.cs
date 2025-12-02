@@ -47,7 +47,7 @@ public abstract class BaseMapGenerator : IMapGenerator
 
     #region Properties
     public bool IsMapGenerated { get; private set; }
-    public Dictionary<RectInt, List<Vector2Int>> RoomGateDirections => _roomGateDirections;
+    public Dictionary<int, HashSet<int>> GetRoomConnection => _roomConnections;
     #endregion
 
     #region Constructor and Initialization

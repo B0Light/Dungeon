@@ -3,13 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
-using System.Linq;
-using UnityEngine.Serialization;
 
 public class DungeonManager : MonoBehaviour
 {
     public int dungeonID;
-    [FormerlySerializedAs("dungeonDataSo")] [SerializeField] private DungeonGenerateDataSO dungeonGenerateDataSo;
+    [SerializeField] private DungeonGenerateDataSO dungeonGenerateDataSo;
     [SerializeField] private DungeonRoomListDataSO dungeonRoomListDataSo;
     
     [SerializeField] private Transform floorSlot;
@@ -67,7 +65,7 @@ public class DungeonManager : MonoBehaviour
         _pathfinder.AllowDiagonalMovement = false; // 4방향 이동만
         
         // 5단계 : A.I. 생성
-        _aiSpawnManager.Init(_pathfinder);
+        _aiSpawnManager.Init(_pathfinder, _mapGenerator.GetRoomConnection());
     }
 
     private IEnumerator BuildNavMeshAsync()
@@ -90,7 +88,7 @@ public class DungeonManager : MonoBehaviour
         Queue<DungeonRoomDataSO> essentialRoomQueue = new Queue<DungeonRoomDataSO>(dungeonRoomListDataSo.essentialRoom);
         List<DungeonRoomDataSO> subRoomList = new List<DungeonRoomDataSO>(dungeonRoomListDataSo.subRoom);
 
-        foreach (var room in mapData.floorList)
+        foreach (var room in mapData.roomList)
         {
             DungeonRoomDataSO targetRoomData = null;
 
@@ -123,7 +121,8 @@ public class DungeonManager : MonoBehaviour
             var level = objectData.level;
 
             BaseGridBuildSystem.Instance.ObjectToPlace = buildObj;
-            BaseGridBuildSystem.Instance.PlaceTile(buildPos.x, buildPos.y, dir, level, true);
+            var placedObject = BaseGridBuildSystem.Instance.PlaceTile(buildPos.x, buildPos.y, dir, level, true);
+            placedObject.transform.SetParent(roomSlot);
         }
         BaseGridBuildSystem.Instance.ObjectToPlace = null;
     }

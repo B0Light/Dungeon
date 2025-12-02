@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae41e0ff7e201d74080011bb6ec25138, type: 3}
   m_Name: Base Combat Stance State
   m_EditorClassIdentifier: 
-  aiCharacterAttacks:
-  - {fileID: 11400000, guid: 821ff894ce133af4eb75aec86a5ea2d9, type: 2}
-  - {fileID: 11400000, guid: f10c83a6dd916094fad68582f151561e, type: 2}
-  - {fileID: 11400000, guid: 565f1bbf2a9d0e14cb39ffd716527382, type: 2}
+  aiCharacterAttacks: []
   chanceToPerformCombo: 25
   maximumEngagementDistance: 3

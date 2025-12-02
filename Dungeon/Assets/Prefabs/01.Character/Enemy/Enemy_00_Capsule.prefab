@@ -2752,15 +2752,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   extraDamage:
     _value: 0
-  passivePoise:
-    _value: 10
   basePhysicalAbsorption: 0
   baseMagicalAbsorption: 0
   extraPhysicalAbsorption: 0
   extraMagicalAbsorption: 0
   blockingPhysicalAbsorption: 0
   blockingMagicalAbsorption: 0
-  blockingStability: 0
 --- !u!114 &3508677618849695729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2974,7 +2971,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.26
-  m_Speed: 5.5
+  m_Speed: 3
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 360

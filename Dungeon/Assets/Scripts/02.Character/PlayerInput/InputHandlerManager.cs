@@ -1,7 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum InputMode { Exploration, CombatBuild, OpenUI }
+public enum InputMode { Exploration, CombatBuild, OpenUI, Exit }
 
 public class InputHandlerManager : Singleton<InputHandlerManager>
 {
@@ -71,6 +72,12 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
                 UnregisterAndDisableHandler(combatHandler); 
                 RegisterAndEnableHandler(uiHandler);
                 break;
+            case InputMode.Exit:
+                SetControlActive(false);
+                UnregisterAndDisableHandler(movementHandler); 
+                UnregisterAndDisableHandler(combatHandler); 
+                UnregisterAndDisableHandler(uiHandler);
+                break;
         }
     }
     
@@ -98,5 +105,10 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
     private void ResetLocomotion()
     {
         _playerManager.playerVariableManager.CLVM.moveDirection = Vector3.zero;
+    }
+
+    private void OnDisable()
+    {
+        SetInputMode(InputMode.Exit);
     }
 }

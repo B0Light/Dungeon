@@ -47,7 +47,7 @@ public class BaseGridBuildSystem : MonoBehaviour
         var gridPositionList = ObjectToPlace.GetGridPositionList(new Vector2Int(x, z), dir);
         foreach (Vector2Int gridPosition in gridPositionList)
         {
-            SetObjectOnGrid(gridPosition, placedObject, dir);
+            SetObjectOnGrid(gridPosition, placedObject, dir, ObjectToPlace.GetTileType());
         }
 
         OnObjectPlaced?.Invoke(ObjectToPlace);
@@ -82,10 +82,10 @@ public class BaseGridBuildSystem : MonoBehaviour
     }
     
     // Grid 상에 배치 
-    private void SetObjectOnGrid(Vector2Int position, PlacedObject placedObject, BuildObjData.Dir dir)
+    private void SetObjectOnGrid(Vector2Int position, PlacedObject placedObject, BuildObjData.Dir dir, TileType tileType)
     {
         var gridObject = _fixedGrid.GetGridObject(position.x, position.y);
-        gridObject?.SetPlacedObject(placedObject, ObjectToPlace, dir); // BuildObjData 저장
+        gridObject?.SetPlacedObject(placedObject, ObjectToPlace, dir, tileType); // BuildObjData 저장
     }
 
     // Grid 상에 제거

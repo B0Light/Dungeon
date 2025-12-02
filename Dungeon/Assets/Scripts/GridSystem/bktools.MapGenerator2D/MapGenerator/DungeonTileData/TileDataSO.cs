@@ -4,10 +4,7 @@ using System.Collections.Generic;
 [CreateAssetMenu(menuName = "Dungeon/Editor/TileData")]
 public class TileDataSO : ScriptableObject
 {
-    public PlacedObject PlacedObject;
-    public BuildObjData BuildObjData;
-    
-    public GameObject tilePrefab;
+   public GameObject tilePrefab;
     
     [Header("Prop Settings")]
     [Range(0, 100)] public int objectPercent;

@@ -31,8 +31,9 @@ public class CharacterManager : MonoBehaviour, IDamageable
     public WorldUtilityManager.CharacterGroup characterGroup;
 
     [HideInInspector] public bool isPerformingAction = false;
-    [HideInInspector] public CharacterManager currentTarget;
     [HideInInspector] public float detectionRange;
+
+    public CharacterManager CurrentTarget { get; private set; }
 
     public Vector3 lockOnPosition;
         
@@ -154,7 +155,7 @@ public class CharacterManager : MonoBehaviour, IDamageable
 
     public void SetTarget(CharacterManager newTarget)
     {
-        currentTarget = newTarget;
+        CurrentTarget = newTarget;
     }
     
     public void TakeDamage(DamageData data)

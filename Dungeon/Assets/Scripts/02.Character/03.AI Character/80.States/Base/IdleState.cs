@@ -95,7 +95,7 @@ public class IdleState : AIState
     private AIState CheckForCombatTransition(AICharacterManager aiCharacter)
     {
         // 기존 타겟이 있다면 즉시 추적 상태로 전환
-        if (aiCharacter.aiCharacterPursueManager.pursueTarget != null)
+        if (aiCharacter.CurrentTarget != null)
         {
             if (debugIdleState)
                 Debug.Log($"[IdleState] Target found, switching to pursue state");
@@ -106,7 +106,7 @@ public class IdleState : AIState
         aiCharacter.aiCharacterPursueManager.FindTargetViaLineOfSight(aiCharacter);
         
         // 적이 발견되었다면 추적 상태로 전환
-        if (aiCharacter.aiCharacterPursueManager.pursueTarget != null)
+        if (aiCharacter.CurrentTarget != null)
         {
             if (debugIdleState)
                 Debug.Log($"[IdleState] Line of sight target found, switching to pursue state");

@@ -88,10 +88,6 @@ public class CharacterLocomotionManager : MonoBehaviour
     protected float _initialTurnValue;
     protected Vector3 _cameraForward;
     protected Vector3 _targetVelocity;
-    
-    private bool _isSprintingBooster = false;
-    private float _boostedSpeed;
-    private readonly float _sprintBoostMultiplier = 3f;
 
     public bool canMove = true;
     public bool canRotate = true;
@@ -337,20 +333,12 @@ public class CharacterLocomotionManager : MonoBehaviour
         }
         else if (CLVM.isSprinting)
         {
-            if (!_isSprintingBooster)
-            {
-                // 스프린트를 시작할 때만 실행됨
-                _isSprintingBooster = true;
-                CLVM.currentMaxSpeed = CLVM.sprintSpeed * _sprintBoostMultiplier;
-            }
             _targetMaxSpeed = CLVM.sprintSpeed;
         }
         else
         {
             _targetMaxSpeed = CLVM.isWalking ? CLVM.walkSpeed : CLVM.runSpeed;
         }
-
-        if (!CLVM.isSprinting) _isSprintingBooster = false; // 스프린트 종료 시 상태 초기화
 
         CLVM.currentMaxSpeed = Mathf.Lerp(CLVM.currentMaxSpeed, _targetMaxSpeed, _ANIMATION_DAMP_TIME * Time.deltaTime);
 

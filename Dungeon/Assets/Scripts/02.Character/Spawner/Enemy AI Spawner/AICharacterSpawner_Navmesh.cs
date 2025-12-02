@@ -50,7 +50,6 @@ public class AICharacterSpawner_Navmesh : MonoBehaviour
         
         patrolManager.cellSize = cellSize;
         patrolManager.gridOffset = mapOffset;
-        patrolManager.SetPatrolPoint(patrolPointList, Init());
-
+        patrolManager.SetPatrolPoint(patrolPointList);
     }
 }

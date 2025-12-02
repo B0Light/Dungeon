@@ -16,6 +16,7 @@ public class GridCell : IPathNode
 
     // 타일 및 건물 정보
     public CellType CellType { get; set;}
+    public TileType TileType { get; set; }
     private PlacedObject _placedObject;
     private BuildObjData _buildObjData;
     private BuildObjData.Dir _dir;
@@ -30,11 +31,12 @@ public class GridCell : IPathNode
         GCost = float.MaxValue;
     }
     
-    public void SetPlacedObject(PlacedObject placedObject, BuildObjData buildObjData, BuildObjData.Dir dir = BuildObjData.Dir.Down)
+    public void SetPlacedObject(PlacedObject placedObject, BuildObjData buildObjData, BuildObjData.Dir dir, TileType tileType)
     {
         _placedObject = placedObject;
         _buildObjData = buildObjData;
         _dir = dir;
+        TileType = tileType;
     }
 
     public void ClearPlacedObject()

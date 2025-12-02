@@ -28,7 +28,7 @@ public class AICharacterManager : CharacterManager
     public CombatStanceState stateCombatStance;
     public AttackState stateAttack;
 
-    private Coroutine actionRecoveryCoroutine;
+    private Coroutine _actionRecoveryCoroutine;
     [HideInInspector] public bool isActionRecover = true;
 
     protected override void Awake()
@@ -103,19 +103,19 @@ public class AICharacterManager : CharacterManager
     
     public void StartActionRecovery(float value)
     {
-        if (actionRecoveryCoroutine == null)
+        if (_actionRecoveryCoroutine == null)
         {
             isActionRecover = false;
-            actionRecoveryCoroutine = StartCoroutine(ActionRecoveryCoroutine(value));
+            _actionRecoveryCoroutine = StartCoroutine(ActionRecoveryCoroutine(value));
         }
     }
 
     private void StopActionRecovery()
     {
-        if (actionRecoveryCoroutine != null)
+        if (_actionRecoveryCoroutine != null)
         {
-            StopCoroutine(actionRecoveryCoroutine);
-            actionRecoveryCoroutine = null;
+            StopCoroutine(_actionRecoveryCoroutine);
+            _actionRecoveryCoroutine = null;
         }
     }
 
@@ -123,6 +123,6 @@ public class AICharacterManager : CharacterManager
     {
         yield return new WaitForSeconds(value);
         isActionRecover = true;
-        actionRecoveryCoroutine = null;
+        _actionRecoveryCoroutine = null;
     }
 }

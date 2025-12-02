@@ -384,7 +384,7 @@ PrefabInstance:
     - target: {fileID: 5836067206656681024, guid: 8708e9192d035424ea87d32122f44c63, type: 3}
       propertyPath: spawnPrefab.characterPrefab
       value: 
-      objectReference: {fileID: 7630148122197415335}
+      objectReference: {fileID: 6093447394938997679, guid: d772f758790abd2498c7103203520fc7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -393,10 +393,5 @@ PrefabInstance:
 --- !u!4 &4308831643991560379 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2012846401295292252, guid: 8708e9192d035424ea87d32122f44c63, type: 3}
-  m_PrefabInstance: {fileID: 2315723968590727143}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7630148122197415335 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5314425562373395008, guid: 8708e9192d035424ea87d32122f44c63, type: 3}
   m_PrefabInstance: {fileID: 2315723968590727143}
   m_PrefabAsset: {fileID: 0}

@@ -18,7 +18,7 @@ public class PursueTargetState : AIState
         if (aiCharacter.isPerformingAction) return this;
 
         // 목표가 없으면 Idle 상태로 전환
-        if (aiCharacter.aiCharacterPursueManager.pursueTarget == null)
+        if (aiCharacter.CurrentTarget == null)
             return SwitchState(aiCharacter, aiCharacter.stateIdle);
 
         // 추격 시간 초과 시 목표 제거 후 Idle 상태로 전환
@@ -36,11 +36,11 @@ public class PursueTargetState : AIState
         
         // 타겟과의 거리 계산
         aiCharacter.aiCharacterPursueManager.targetDirection =
-            aiCharacter.aiCharacterPursueManager.pursueTarget.transform.position - aiCharacter.transform.position;
+            aiCharacter.CurrentTarget.transform.position - aiCharacter.transform.position;
         aiCharacter.aiCharacterPursueManager.viewableAngle = 
             WorldUtilityManager.Instance.GetAngleOfTarget(aiCharacter.transform, aiCharacter.aiCharacterPursueManager.targetDirection);
         aiCharacter.aiCharacterPursueManager.distanceFromTarget =
-            Vector3.Distance(aiCharacter.transform.position, aiCharacter.aiCharacterPursueManager.pursueTarget.transform.position);
+            Vector3.Distance(aiCharacter.transform.position, aiCharacter.CurrentTarget.transform.position);
         
         // 타겟과의 거리 확인
         if (aiCharacter.aiCharacterPursueManager.distanceFromTarget <=
@@ -51,8 +51,8 @@ public class PursueTargetState : AIState
         }
 
         // 경로 설정
-        Debug.Log($"Set Destination : {aiCharacter.aiCharacterPursueManager.pursueTarget.name}");
-        aiCharacter.navMeshAgent.SetDestination(aiCharacter.aiCharacterPursueManager.pursueTarget.transform.position);
+        Debug.Log($"Set Destination : {aiCharacter.CurrentTarget.name}");
+        aiCharacter.navMeshAgent.SetDestination(aiCharacter.CurrentTarget.transform.position);
         return this;
     }
 }

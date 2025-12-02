@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-[RequireComponent(typeof(AStarPathfindingSystem))]
 public class PathFindingUnit : MonoBehaviour
 {
-    private AStarPathfindingSystem _aStarPathfindingSystem;
+    private GridPathfinder _pathfinder;
     [SerializeField] private float rotationSpeed = 5f; // 회전 속도
     [SerializeField] private float moveSpeed = 5f; // 이동 속도
 
@@ -21,7 +19,7 @@ public class PathFindingUnit : MonoBehaviour
     private ShelterManager _shelterManager;
     private void Awake()
     {
-        _aStarPathfindingSystem = GetComponent<AStarPathfindingSystem>();
+        _pathfinder = new GridPathfinder(BaseGridBuildSystem.Instance.GetGrid());
         _animator = GetComponentInChildren<Animator>();
     }
 
@@ -55,7 +53,7 @@ public class PathFindingUnit : MonoBehaviour
     private bool SetRoute(Vector2Int startPos, Vector2Int goalPos)
     {
         List<Vector3> routePosList = new List<Vector3>();
-        List<GridCell> paths = _aStarPathfindingSystem.NavigatePath(startPos, goalPos);
+        List<GridCell> paths = _pathfinder.NavigatePath(startPos, goalPos);
         if (paths != null)
         {
             foreach (var gridRoute in paths)

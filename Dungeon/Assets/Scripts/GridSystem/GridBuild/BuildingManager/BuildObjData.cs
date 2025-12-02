@@ -3,11 +3,16 @@ using UnityEngine;
 
 public enum TileType
 {
+    // Shelter
     Headquarter,
     Road,
     Tree,
     MajorFacility,
+    // Dungeon
     Turret,
+    Chest,
+    Portal,
+    // etc
     None,
 }
 

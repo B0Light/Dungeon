@@ -41,6 +41,5 @@ public class MapGenerator : MonoBehaviour
 
     public MapData GetMapData() => _currentGenerator.GetMapData();
 
-    public Dictionary<RectInt, List<Vector2Int>> GetRoomDirection() => _currentGenerator.RoomGateDirections;
-
+    public Dictionary<int, HashSet<int>> GetRoomConnection() => _currentGenerator.GetRoomConnection;
 }

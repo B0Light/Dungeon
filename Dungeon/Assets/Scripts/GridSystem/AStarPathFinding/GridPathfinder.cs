@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class GridPathfinder : PathfindingBase<GridCell>
 {
-    private FixedGridXZ<GridCell> _fixedGrid;
+    private readonly FixedGridXZ<GridCell> _fixedGrid;
+    public List<RectInt> RoomList { get; set; }
     private GridCell _goalNode;
 
     private Vector2Int _gridSize;
@@ -28,6 +29,7 @@ public class GridPathfinder : PathfindingBase<GridCell>
         _fixedGrid = mapData.grid;
         _gridSize = mapData.mapConfig.GridSize;
         _nodeGrid = new GridCell[_gridSize.x, _gridSize.y];
+        RoomList = mapData.roomList;
         InitializeNodeGrid();
     }
 

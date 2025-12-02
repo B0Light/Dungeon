@@ -8,6 +8,12 @@ public class AICharacterVariableManager : CharacterVariableManager
         _aiCharacterManager = character as AICharacterManager;
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        CLVM.isWalking = true;
+    }
+
     public override void DeathProcess(float newValue)
     {
         base.DeathProcess(newValue);

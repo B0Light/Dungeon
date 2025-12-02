@@ -4,8 +4,7 @@ using UnityEngine.AI;
 
 public class AICharacterLocomotionManager : CharacterLocomotionManager
 {
-    [Header("AI Components")]
-    private AICharacterManager _aiCharacterManager;
+    protected AICharacterManager aiCharacterManager;
     protected NavMeshAgent navAgent;
 
     [SerializeField] private bool isHumanoid = true;
@@ -57,15 +56,15 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
     
     private void InitializeAIComponents()
     {
-        _aiCharacterManager = characterManager as AICharacterManager;
+        aiCharacterManager = characterManager as AICharacterManager;
         
-        if (_aiCharacterManager == null)
+        if (aiCharacterManager == null)
         {
             Debug.LogError($"[AI Locomotion] AICharacterManager not found on {gameObject.name}!");
             return;
         }
         
-        navAgent = _aiCharacterManager.navMeshAgent;
+        navAgent = aiCharacterManager.navMeshAgent;
         
         if (navAgent == null)
         {
@@ -89,7 +88,7 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
     
     private bool IsSafeToOperate()
     {
-        return _aiCharacterManager != null && 
+        return aiCharacterManager != null && 
                navAgent != null && 
                navAgent.isActiveAndEnabled &&
                characterManager != null && 
@@ -255,7 +254,7 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
         Vector3 characterRight = new Vector3(transform.right.x, 0f, transform.right.z).normalized;
         Vector3 directionForward = new Vector3(CLVM.moveDirection.x, 0f, CLVM.moveDirection.z).normalized;
 
-        if (_aiCharacterManager.currentTarget != null)
+        if (aiCharacterManager.CurrentTarget != null)
         {
             HandleCombatRotation(characterForward, characterRight, directionForward);
         }
@@ -267,7 +266,7 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
     
     private void HandleCombatRotation(Vector3 characterForward, Vector3 characterRight, Vector3 directionForward)
     {
-        Vector3 targetDirection = (_aiCharacterManager.currentTarget.transform.position - transform.position).normalized;
+        Vector3 targetDirection = (aiCharacterManager.CurrentTarget.transform.position - transform.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
 
         CLVM.strafeAngle = characterForward != directionForward ? Vector3.SignedAngle(characterForward, directionForward, Vector3.up) : 0f;
@@ -373,7 +372,7 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
     {
         if (!IsSafeToOperate()) return;
         
-        BoxCollider characterCollider = _aiCharacterManager.characterCollider as BoxCollider;
+        BoxCollider characterCollider = aiCharacterManager.characterCollider as BoxCollider;
         
         if (crouching)
         {
@@ -411,7 +410,7 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
         if (!IsSafeToOperate() || !isAIInitialized) return;
         
         // 죽었거나 움직일 수 없는 상태
-        if (_aiCharacterManager.isDead.Value || !canMove)
+        if (aiCharacterManager.isDead.Value || !canMove)
         {
             StopNavigation();
             return;
@@ -444,20 +443,20 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
         }
     }
     
-    private Vector3 DetermineTargetPosition()
+    protected virtual Vector3 DetermineTargetPosition()
     {
-        Transform currentDestination = _aiCharacterManager.currentTarget?.transform;
+        Transform currentDestination = aiCharacterManager.CurrentTarget?.transform;
         
         if (currentDestination != null)
         {
-            navAgent.stoppingDistance = _aiCharacterManager.detectionRange;
+            navAgent.stoppingDistance = aiCharacterManager.detectionRange;
             return currentDestination.position;
         }
         else
         {
-            Vector3? waypoint = _aiCharacterManager.aiCharacterPatrolManager.GetNextWaypoint();
+            Vector3 waypoint = aiCharacterManager.aiCharacterPatrolManager.GetNextWaypoint();
             navAgent.stoppingDistance = 0.5f; // 순찰시 기본 정지 거리
-            return waypoint ?? transform.position;
+            return waypoint;
         }
     }
     
@@ -493,11 +492,10 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
             return;
         }
         
-        NavMeshHit hit;
-
-        if (NavMesh.SamplePosition(targetPosition, out hit, maxNavMeshSearchDistance, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(targetPosition, out var hit, maxNavMeshSearchDistance, NavMesh.AllAreas))
         {
             navAgent.SetDestination(hit.position);
+            aiCharacterManager.aiCharacterPatrolManager.RenewPatrolPoint(hit.position);
             lastTargetPosition = targetPosition;
             
             if (showDebugInfo)
@@ -509,7 +507,7 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
             if (NavMesh.SamplePosition(transform.position, out hit, maxNavMeshSearchDistance, NavMesh.AllAreas))
             {
                 navAgent.SetDestination(hit.position);
-                
+                aiCharacterManager.aiCharacterPatrolManager.RenewPatrolPoint(hit.position);
                 if (showDebugInfo)
                     Debug.LogWarning($"[AI Locomotion] Target position invalid, using nearest valid point: {hit.position}");
             }
@@ -517,6 +515,7 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
             {
                 // 완전히 실패한 경우
                 navAgent.SetDestination(transform.position);
+                aiCharacterManager.aiCharacterPatrolManager.RenewPatrolPoint(transform.position);
                 Debug.LogWarning($"[AI Locomotion] NavMesh 위에 유효한 경로를 찾지 못했습니다. 목적지: {targetPosition}, 오브젝트: {gameObject.name}");
             }
         }
@@ -596,10 +595,10 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
             return;
         }
         
-        Debug.Log($"[NavMesh DEBUG] HasPath: {navAgent.hasPath}, " +
-                 $"RemainingDistance: {navAgent.remainingDistance:F2}, " +
-                 $"Target: {targetPosition}, " +
-                 $"Velocity: {navAgent.velocity.magnitude:F2}, " +
+        Debug.Log($"[NavMesh DEBUG] HasPath: {navAgent.hasPath}\n " +
+                 $"RemainingDistance: {navAgent.remainingDistance:F2}\n " +
+                 $"Target: {targetPosition}\n " +
+                 $"Velocity: {navAgent.velocity.magnitude:F2}\n " +
                  $"IsOnNavMesh: {navAgent.isOnNavMesh}");
     }
     

@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public class AICharacterPatrolManager : MonoBehaviour
 {
-    private readonly List<Vector3> _patrolPointList = new List<Vector3>();
+    private List<Vector2Int> _patrolGridInfo;
+    private readonly List<Vector3> _patrolPointListWorldPosition = new List<Vector3>();
     private int _curPatrolPointIndex = 0;
     [HideInInspector] public Vector3 cellSize = Vector3.one;
     [HideInInspector] public Vector3 gridOffset = Vector3.zero;
@@ -15,11 +16,12 @@ public class AICharacterPatrolManager : MonoBehaviour
     private Vector3 _ambushPosition;
     private float _ambushStartTime;
     
-    public void SetPatrolPoint(List<Vector2Int> patrolPointList, Vector2Int startPos)
+    public void SetPatrolPoint(List<Vector2Int> patrolPointList)
     {
+        _patrolGridInfo = new List<Vector2Int>(patrolPointList);
         foreach (var gridPos in patrolPointList)
         {
-            _patrolPointList.Add(GetWorldPositionByGrid(gridPos));
+            _patrolPointListWorldPosition.Add(GetWorldPositionByGrid(gridPos));
         }
         
         _curPatrolPointIndex = GetClosestPatrolPointIndex(transform.position);
@@ -36,7 +38,7 @@ public class AICharacterPatrolManager : MonoBehaviour
     
     private int GetClosestPatrolPointIndex(Vector3 currentPosition)
     {
-        if (_patrolPointList == null || _patrolPointList.Count == 0)
+        if (_patrolPointListWorldPosition == null || _patrolPointListWorldPosition.Count == 0)
         {
             Debug.LogWarning("순찰 지점 목록이 비어 있습니다!");
             return -1;
@@ -44,9 +46,9 @@ public class AICharacterPatrolManager : MonoBehaviour
         int closestIndex = -1;
         float minDistanceSqr = Mathf.Infinity; 
 
-        for (int i = 0; i < _patrolPointList.Count; i++)
+        for (int i = 0; i < _patrolPointListWorldPosition.Count; i++)
         {
-            float distanceSqr = (_patrolPointList[i] - currentPosition).sqrMagnitude;
+            float distanceSqr = (_patrolPointListWorldPosition[i] - currentPosition).sqrMagnitude;
 
             if (distanceSqr < minDistanceSqr)
             {
@@ -64,22 +66,22 @@ public class AICharacterPatrolManager : MonoBehaviour
             return _ambushPosition;
         }
         
-        if (_patrolPointList == null || _patrolPointList.Count == 0)
+        if (_patrolPointListWorldPosition == null || _patrolPointListWorldPosition.Count == 0)
         {
             return transform.position;
         }
         
         if (IsWaypointCompleted())
         {
-            _curPatrolPointIndex = (_curPatrolPointIndex + 1) % _patrolPointList.Count;
+            _curPatrolPointIndex = (_curPatrolPointIndex + 1) % _patrolPointListWorldPosition.Count;
         }
-
-        return _patrolPointList[_curPatrolPointIndex];
+        
+        return _patrolPointListWorldPosition[_curPatrolPointIndex];
     }
     
     private void SelectWaypointData()
     {
-        _curPatrolPointIndex = (_curPatrolPointIndex + 1) % _patrolPointList.Count;
+        _curPatrolPointIndex = (_curPatrolPointIndex + 1) % _patrolPointListWorldPosition.Count;
         CheckForAmbushMode();
     }
     
@@ -99,15 +101,20 @@ public class AICharacterPatrolManager : MonoBehaviour
     
     private bool IsWaypointCompleted()
     {
-        if (_patrolPointList.Count == 0)
+        if (_patrolPointListWorldPosition.Count == 0)
         {
             return false;
         }
         
-        Vector3 targetPosition = _isInAmbushMode ? _ambushPosition : _patrolPointList[_curPatrolPointIndex];
+        Vector3 targetPosition = _isInAmbushMode ? _ambushPosition : _patrolPointListWorldPosition[_curPatrolPointIndex];
         
         float distance = Vector3.Distance(transform.position, targetPosition);
-        return distance < 5.0f; 
+        return distance < 10.0f; 
+    }
+
+    public void RenewPatrolPoint(Vector3 targetPosition)
+    {
+        _patrolPointListWorldPosition[_curPatrolPointIndex] = targetPosition;
     }
     
     private void EnterAmbushMode()
@@ -136,6 +143,7 @@ public class AICharacterPatrolManager : MonoBehaviour
         {
             ExitAmbushMode();
             SelectWaypointData(); // 매복 종료 후 새로운 웨이포인트 선택
+            Debug.Log($"Ambush Remain : {ambushDuration - Time.time + _ambushStartTime}");
         }
     }
 

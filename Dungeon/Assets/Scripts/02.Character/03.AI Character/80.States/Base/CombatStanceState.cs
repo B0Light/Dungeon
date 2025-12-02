@@ -48,7 +48,7 @@ public class CombatStanceState : AIState
         EnsureNavMeshAgentEnabled(aiCharacter);
         RotateTowardsTarget(aiCharacter);
     
-        return aiCharacter.currentTarget == null;
+        return aiCharacter.CurrentTarget == null;
     }
 
     protected bool ShouldPursueTarget(AICharacterManager aiCharacter)
@@ -82,7 +82,7 @@ public class CombatStanceState : AIState
 
     private void RotateTowardsTarget(AICharacterManager aiCharacter)
     {
-        aiCharacter.aiCharacterPursueManager.RotateTowardsAgent(aiCharacter);
+        aiCharacter.aiCharacterPursueManager.RotateTowardsAgent();
     }
 
     #endregion

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -10,7 +9,7 @@ public class MapData
 {
     public FixedGridXZ<GridCell> grid;
     
-    public List<RectInt> floorList;
+    public List<RectInt> roomList;
 
     public MapGenerationConfig mapConfig;
     
@@ -18,10 +17,10 @@ public class MapData
     
     public System.DateTime generationTime;
     
-    public MapData(FixedGridXZ<GridCell> grid, List<RectInt> floorList, MapGenerationConfig mapConfig, int corridorCount)
+    public MapData(FixedGridXZ<GridCell> grid, List<RectInt> roomList, MapGenerationConfig mapConfig, int corridorCount)
     {
         this.grid = grid;
-        this.floorList = floorList;
+        this.roomList = roomList;
         this.mapConfig = mapConfig;
         this.corridorCount = corridorCount;
         generationTime = System.DateTime.Now;
@@ -39,7 +38,7 @@ public class MapData
     
     public void LogMapInfo()
     {
-        Debug.Log($"맵 생성 완료 - 크기: {mapConfig.GridSize}, 방 개수: {floorList.Count}, 복도 개수: {corridorCount}, 생성 시간: {generationTime}");
+        Debug.Log($"맵 생성 완료 - 크기: {mapConfig.GridSize}, 방 개수: {roomList.Count}, 복도 개수: {corridorCount}, 생성 시간: {generationTime}");
     }
 }
 
