@@ -6,197 +6,27 @@
   <component name="ChangeListManager">
     <list default="true" id="1844b18a-d80d-49d6-955e-b57cdcc0bed9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/AI States/Base_Melee/Base Combat Stance State.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/AI States/Base_Melee/Base Combat Stance State.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateData.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateData/Dungeon_Tomb.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateData/Dungeon_Tomb.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Dungeon.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Dungeon/Dungeon_Floor.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Dungeon/Dungeon_Floor.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Dungeon/Dungeon_FloorCenter.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Dungeon/Dungeon_FloorCenter.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Dungeon/Dungeon_Gate.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Dungeon/Dungeon_Gate.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Dungeon/Dungeon_Path.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Dungeon/Dungeon_Path.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Dungeon/Dungeon_PathExpand.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Dungeon/Dungeon_PathExpand.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Dungeon/Dungeon_PathWall.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Dungeon/Dungeon_PathWall.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Dungeon/Dungeon_Wall.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Dungeon/Dungeon_Wall.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_Black.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_Black.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_Blue.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_Blue.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_Blue_01.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_Blue_01.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_Browm.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_Browm.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_Gray.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_Gray.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_Green.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_Green.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_Olive.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_Olive.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_Red.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_Red.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_White.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/Test/TestTile_White.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/TileData.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/TileData/Dungeon_Floor.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/TileData/Dungeon_Floor.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/TileData/Dungeon_FloorCenter.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/TileData/Dungeon_FloorCenter.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/TileData/Dungeon_Path.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/TileData/Dungeon_Path.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/TileData/Dungeon_PathExpand.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/TileData/Dungeon_PathExpand.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/TileData/Dungeon_PathWall.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/TileData/Dungeon_PathWall.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/TileData/Dungeon_Wall.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonGenerateTile/TileData/Dungeon_Wall.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/A.DungeonRoonListData.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/A.DungeonRoonListData.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/B.DungeonRoom_01_Portal.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/B.DungeonRoom_01_Portal.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/B.DungeonRoom_02_Tomb.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/B.DungeonRoom_02_Tomb.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/B.DungeonRoom_03_Angle.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/B.DungeonRoom_03_Angle.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/B.DungeonRoom_04_Gargoyle.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/B.DungeonRoom_04_Gargoyle.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/B.DungeonRoom_05_Throne.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/B.DungeonRoom_05_Throne.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/B.DungeonRoom_06_Graveyard.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/B.DungeonRoom_06_Graveyard.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/B.DungeonRoom_07_TreasureRoom.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/B.DungeonRoom_07_TreasureRoom.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/B.DungeonRoom_08_DungeonCore.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/B.DungeonRoom_08_DungeonCore.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_01_Portal.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_01_Portal.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_02_PillarL.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_02_PillarL.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_02_PillarR.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_02_PillarR.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_02_Spawner.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_02_Spawner.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_03_AngleBox.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_03_AngleBox.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_03_PillarL.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_03_PillarL.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_03_PillarR.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_03_PillarR.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_04_Gargoyle.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_04_Gargoyle.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_05_Throne.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_05_Throne.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Crypt 1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Crypt 1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Crypt 2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Crypt 2.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Crypt 3.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Crypt 3.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Tomb 1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Tomb 1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Tomb 2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Tomb 2.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Tomb 3.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Tomb 3.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Tomb 4.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Tomb 4.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Tomb 5.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Tomb 5.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Tomb 6.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_06_Tomb 6.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_07_TreasureRoom.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_07_TreasureRoom.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_08_DungeonCore.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/DungeonRoomData/C.DungeonRoomObject_08_DungeonCore.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1100.DungeonPortal.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1100.DungeonPortal.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1110.DungeonPillar_Basic_LR.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1110.DungeonPillar_Basic_LR.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1111.DungeonPillar_Gargoyle_Left.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1111.DungeonPillar_Gargoyle_Left.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1112.DungeonPillar_Gargoyle_Right.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1112.DungeonPillar_Gargoyle_Right.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1121.DungeonTombBox_Basic.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1121.DungeonTombBox_Basic.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1122.DungeonTombBox_Angle.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1122.DungeonTombBox_Angle.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1123.DungeonTombBox_Gagoyler.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1123.DungeonTombBox_Gagoyler.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1124.Crypt_01.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1124.Crypt_01.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1125.Crypt_02.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1125.Crypt_02.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1131.TombStone_01.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1131.TombStone_01.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1132.TombStone_02.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1132.TombStone_02.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1133.TombStone_03.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1133.TombStone_03.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1134.TombStone_04.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1134.TombStone_04.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1135.TombStone_05.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1135.TombStone_05.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1136.TombStone_06.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1136.TombStone_06.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1140.DungeonRoomThrone.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1140.DungeonRoomThrone.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1141.DungeonRoomTreasure.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1141.DungeonRoomTreasure.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1142.DungeonRoomCore.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1142.DungeonRoomCore.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1150.DungeonSpawner.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/RoomBuildObject/1150.DungeonSpawner.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/TileMappingData.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/TileMappingData/Dungeon.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/TileMappingData/Dungeon.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/TileMappingData/TestDungeonMap.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Dungeon/MapEditor/TileMappingData/TestDungeonMap.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/00.System/World Managers/WorldAIManager.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/00.System/World Managers/WorldAIManager.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/Enemy/Enemy_00_Capsule.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/01.Character/Enemy/Enemy_00_Capsule.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Shelter/GridBuildSystem/ParkGoer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/10.Map_Shelter/GridBuildSystem/ParkGoer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/MapBuilder/Dungeon/Room/100. Dungeon_Portal.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/MapBuilder/Dungeon/Room/100. Dungeon_Portal.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/MapBuilder/Dungeon/Room/150.Spawner.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/MapBuilder/Dungeon/Room/150.Spawner.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/Enemy.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/Enemy/Enemy_00_Capsule.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/01.Character/Enemy/Enemy_00_Capsule.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/04.HUD/PlayerUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/04.HUD/PlayerUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBuildManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11.Map_Object/01. Interactable Objects/InteractableBuildManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/20.DungeonTurret/Models/2105.Ballista.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/20.DungeonTurret/Models/2105.Ballista.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/00.StartScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/00.StartScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/10.Dungeon_01.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/10.Dungeon_01.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DungeonRoomPreview.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DungeonRoomPreview.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterLocomotionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterLocomotionManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/01.BaseCharacter/CharacterManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterLocomotionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterLocomotionManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterPatrolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterPatrolManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterPursueManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterPursueManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterVariableManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/01.Base/AICharacterVariableManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/AttackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/AttackState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/CombatStanceState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/CombatStanceState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/IdleState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/PursueTargetState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/03.AI Character/80.States/Base/PursueTargetState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/PlayerInput/InputHandlerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/PlayerInput/InputHandlerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/02.Character/Spawner/Enemy AI Spawner/AICharacterSpawner_Navmesh.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/02.Character/Spawner/Enemy AI Spawner/AICharacterSpawner_Navmesh.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/11.HUD/Manager/GUIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/11.HUD/Manager/GUIController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/11.HUD/Manager/UIManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/11.HUD/Manager/UIManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/12.Menu Scene/TitleScreenManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/12.Menu Scene/TitleScreenManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/20.Interactable/InteractableObject_Shelter/InteractableBuildController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/20.Interactable/InteractableObject_Shelter/InteractableBuildController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/02.Dungeon_Generate/AISpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/02.Dungeon_Generate/AISpawnManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/02.Dungeon_Generate/DungeonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/02.Dungeon_Generate/DungeonManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/AStarPathfindingSystem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/AStarPathfindingSystem.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/GridCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/GridCell.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/GridPathfinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/GridPathfinder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/PathFindingUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/AStarPathFinding/PathFindingUnit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildSystem/BaseGridBuildSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildSystem/BaseGridBuildSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildingManager/BuildObjData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildingManager/BuildObjData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/bktools.MapGenerator2D/MapGenerator/DungeonTileData/TileDataSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/bktools.MapGenerator2D/MapGenerator/DungeonTileData/TileDataSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/bktools.MapGenerator2D/MapGenerator/MapData/MapData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/bktools.MapGenerator2D/MapGenerator/MapData/MapData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/bktools.MapGenerator2D/MapGenerator/MapGenerator/BaseMapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/bktools.MapGenerator2D/MapGenerator/MapGenerator/BaseMapGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/bktools.MapGenerator2D/MapGenerator/MapGenerator/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/bktools.MapGenerator2D/MapGenerator/MapGenerator/MapGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/03.Dungeon_Build_Turret/DungeonCoreHUDManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/22.Map/Dungeon/03.Dungeon_Build_Turret/DungeonCoreHUDManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/90.World Managers/WorldSaveGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/90.World Managers/WorldSaveGameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/90.World Managers/WorldSceneChangeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/90.World Managers/WorldSceneChangeManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildingManager/GridBuildHUDManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridBuild/BuildingManager/GridBuildHUDManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -379,7 +209,8 @@
       <workItem from="1764146749094" duration="5068000" />
       <workItem from="1764481642652" duration="3675000" />
       <workItem from="1764589200627" duration="6967000" />
-      <workItem from="1764648554828" duration="28253000" />
+      <workItem from="1764648554828" duration="28849000" />
+      <workItem from="1764778255854" duration="5524000" />
     </task>
     <servers />
   </component>

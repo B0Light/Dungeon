@@ -20,8 +20,6 @@ public class DungeonManager : MonoBehaviour
 
     public FixedGridXZ<GridCell> FixedGrid { get; private set; }
 
-    [Header("NavMesh Build Settings")]
-    [SerializeField] private bool useAsyncNavMeshBuild = true;
     [SerializeField] private float navMeshBuildDelay = 0.5f;
     
     public event Action OnGeneratedDungeon;
@@ -48,16 +46,7 @@ public class DungeonManager : MonoBehaviour
         // 2단계 : 방 생성 
         GenerateRoom();
         // 3단계 : NavMesh 비동기 빌드
-        if (useAsyncNavMeshBuild)
-        {
-            yield return StartCoroutine(BuildNavMeshAsync());
-        }
-        else
-        {
-            yield return new WaitForSeconds(navMeshBuildDelay);
-            _navMeshSurface.BuildNavMesh();
-        }
-        
+        yield return StartCoroutine(BuildNavMeshAsync());
         // 4단계 : PathFinder 생성
         var mapData = _mapGenerator.GetMapData();
         _pathfinder = new GridPathfinder(mapData);
@@ -106,8 +95,6 @@ public class DungeonManager : MonoBehaviour
                 InstantiateBuilding(targetRoomData, room);
             }
         }
-        
-        
     }
 
     private void InstantiateBuilding(DungeonRoomDataSO targetBuilding, RectInt room)
@@ -126,4 +113,33 @@ public class DungeonManager : MonoBehaviour
         }
         BaseGridBuildSystem.Instance.ObjectToPlace = null;
     }
+
+    #region Control Navmesh
+    public void StartNavMeshRenewal()
+    {
+        StartCoroutine(RenewNavmeshCoroutine());
+    }
+
+    private IEnumerator RenewNavmeshCoroutine()
+    {
+        Debug.Log("[DungeonManager] : Renew Navmesh");
+        _aiSpawnManager.StopAllCharacters();
+
+        if (_navMeshSurface.navMeshData != null)
+        {
+            var handle = _navMeshSurface.UpdateNavMesh(_navMeshSurface.navMeshData);
+
+            yield return new WaitUntil(() => handle.isDone);
+        }
+        else
+        {
+            _navMeshSurface.BuildNavMesh();
+        }
+        
+        Debug.Log("[DungeonManager] : Renew Navmesh Complete");
+        _aiSpawnManager.ReactivateAllCharacters();
+    }
+
+    #endregion
+    
 }

@@ -32,7 +32,7 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
         {
             handler.EnableInput();
             handler.SetPlayer(_playerManager);
-            Debug.Log($"Input Handler Registered and Enabled: {handler.GetType().Name}");
+            //Debug.Log($"Input Handler Registered and Enabled: {handler.GetType().Name}");
         }
     }
     
@@ -41,7 +41,7 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
         if (_activeHandlers.Remove(handler))
         {
             handler.DisableInput();
-            Debug.Log($"Input Handler Unregistered and Disabled: {handler.GetType().Name}");
+            //Debug.Log($"Input Handler Unregistered and Disabled: {handler.GetType().Name}");
         }
     }
     
@@ -83,7 +83,7 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
     
     private void SetControlActive(bool isActive)
     {
-        Debug.Log($"SetControlActive : {isActive}");
+        //Debug.Log($"SetControlActive : {isActive}");
         if (isActive)
         {
             Cursor.lockState = CursorLockMode.Locked;

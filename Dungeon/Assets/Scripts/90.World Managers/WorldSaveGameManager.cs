@@ -123,22 +123,16 @@ public class WorldSaveGameManager : Singleton<WorldSaveGameManager>
         PlayerManager player = GameManager.Instance.SpawnPlayer();
         player.LoadGameDataFromCurrentCharacterDataFirst(ref currentGameData);
         
-        UIManager.Instance.MouseActive(false);
 
         StartCoroutine(LoadWorldScene());
     }
 
     public bool LoadLastGame()
     {
-        //Debug.Log("LoadLastGame() 호출됨");
-        
         currentCharacterSlotBeingUsed = FindMostRecentlyPlayedSlot();
-        //Debug.Log($"가장 최근 슬롯: {currentCharacterSlotBeingUsed}");
         
-        // NO_SLOT이 반환되면 저장된 게임이 없음
         if (currentCharacterSlotBeingUsed == CharacterSlot.NoSlot)
         {
-            //Debug.LogWarning("저장된 게임을 찾을 수 없습니다. 새 게임으로 진행합니다.");
             return false;
         }
         
@@ -146,17 +140,13 @@ public class WorldSaveGameManager : Singleton<WorldSaveGameManager>
         _saveFileDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
         _saveFileDataWriter.saveFileName = DecideCharacterFileNameBasedOnCharacterSlotBeingUsed(currentCharacterSlotBeingUsed);
         
-        //Debug.Log($"로드 시도할 파일: {saveFileDataWriter.saveFileName}");
-        
         if (_saveFileDataWriter.CheckToSeeIfFileExists())
         {
-            //Debug.Log("저장 파일 확인됨. 게임을 로드합니다.");
             LoadGame();
             return true;
         }
         else
         {
-            //Debug.LogError($"저장 파일이 존재하지 않습니다: {saveFileDataWriter.saveFileName}");
             return false;
         }
     }

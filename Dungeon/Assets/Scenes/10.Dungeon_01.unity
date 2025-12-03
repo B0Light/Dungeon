@@ -6017,6 +6017,7 @@ MonoBehaviour:
   constructionCanvasGroup: {fileID: 5397598510691042867}
   buildingPopupCanvasGroup: {fileID: 4734503307082483832}
   buildInfoHUD: {fileID: 1085267507655166638}
+  dungeonManager: {fileID: 6905432225046475023}
 --- !u!222 &5860474552766771031
 CanvasRenderer:
   m_ObjectHideFlags: 0

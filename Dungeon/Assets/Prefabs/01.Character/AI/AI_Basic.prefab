@@ -2285,7 +2285,7 @@ GameObject:
   - component: {fileID: 5229063413092366621}
   - component: {fileID: 6144042840328024194}
   m_Layer: 6
-  m_Name: Enemy_00_Capsule
+  m_Name: AI_Basic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2375,9 +2375,8 @@ MonoBehaviour:
   characterEquipmentManager: {fileID: 0}
   characterUIManager: {fileID: 0}
   meshTrail: {fileID: 0}
-  characterGroup: 1
+  characterGroup: 0
   isPerformingAction: 0
-  currentTarget: {fileID: 0}
   detectionRange: 0
   lockOnPosition: {x: 0, y: 0, z: 0}
   characterID: 0
@@ -2729,7 +2728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d8454aacdd69e42ae336a4d1cf5bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AICharacterPursueManager
-  pursueTarget: {fileID: 0}
   distanceFromTarget: 0
   viewableAngle: 0
   targetDirection: {x: 0, y: 0, z: 0}

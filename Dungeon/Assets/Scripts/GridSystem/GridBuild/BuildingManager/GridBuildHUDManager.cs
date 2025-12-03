@@ -20,6 +20,7 @@ public class GridBuildHUDManager : MonoBehaviour
     private PlacedObject _currentSelectTile = null;
 
     private readonly Vector3 _camOffset = new Vector3(0, 20, -10);
+    
     protected virtual void Awake()
     {
         Instance = this;
@@ -34,7 +35,6 @@ public class GridBuildHUDManager : MonoBehaviour
     // Interactable Build Controller 와 상호작용해서 HUD를 열때 사용 
     public void ToggleMainBuildHUD(bool isActive, Interactable interactable = null)
     {
-        Debug.Log("Toggle Main HUD");
         if (isActive && interactable != null)
         {
             _interactableObject = interactable;
@@ -55,9 +55,7 @@ public class GridBuildHUDManager : MonoBehaviour
             TurnOffGridBuildCamera();
         }
     }
-
     
-
     private void ToggleConstructionHUD(bool isActive)
     {
         constructionCanvasGroup.alpha = isActive ? 1f : 0f;
@@ -92,9 +90,7 @@ public class GridBuildHUDManager : MonoBehaviour
         ToggleConstructionHUD(true);
         ToggleBuildPopUpHUD(false);
     }
-
     
-
     private void TurnOnGridBuildCamera()
     {
         gridBuildCamera.transform.position = _interactableObject.transform.position + _camOffset;

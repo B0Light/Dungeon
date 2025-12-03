@@ -109,7 +109,7 @@ public class AICharacterPatrolManager : MonoBehaviour
         Vector3 targetPosition = _isInAmbushMode ? _ambushPosition : _patrolPointListWorldPosition[_curPatrolPointIndex];
         
         float distance = Vector3.Distance(transform.position, targetPosition);
-        return distance < 10.0f; 
+        return distance < 3.0f; 
     }
 
     public void RenewPatrolPoint(Vector3 targetPosition)

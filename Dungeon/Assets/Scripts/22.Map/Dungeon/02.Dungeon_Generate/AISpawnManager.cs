@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AISpawnManager : MonoBehaviour
 {
@@ -81,6 +82,29 @@ public class AISpawnManager : MonoBehaviour
             Destroy(character.gameObject);
         }
         _spawnedInCharacters.Clear();
+    }
+
+    public void StopAllCharacters()
+    {
+        foreach (var character in _spawnedInCharacters)
+        {
+            character.navMeshAgent.ResetPath();
+            character.navMeshAgent.enabled = false;
+        }
+    }
+    
+    public void ReactivateAllCharacters()
+    {
+        foreach (var character in _spawnedInCharacters)
+        {
+            character.navMeshAgent.enabled = true;
+            float searchRadius = 5f;
+            if (NavMesh.SamplePosition(character.navMeshAgent.transform.position, out NavMeshHit hit, searchRadius, NavMesh.AllAreas))
+            {
+                character.navMeshAgent.Warp(hit.position);
+                character.navMeshAgent.enabled = true;
+            }
+        }
     }
 
     #region Generate Route

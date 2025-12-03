@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ba1eb7e278219409108b2af4c0fb8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableText: "\uAD00\uB9AC\uD558\uAE30"
+  interactableText: Mangement
 --- !u!1 &3289517919319441615
 GameObject:
   m_ObjectHideFlags: 0

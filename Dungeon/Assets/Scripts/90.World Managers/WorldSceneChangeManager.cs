@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class WorldSceneChangeManager : Singleton<WorldSceneChangeManager>
@@ -57,8 +55,6 @@ public class WorldSceneChangeManager : Singleton<WorldSceneChangeManager>
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneToLoad);
         OnSceneEndPhase?.Invoke();
         yield return StartCoroutine(HandleSceneLoading(asyncOperation, sceneToLoad));
-        
-        
     }
 
     private IEnumerator HandleSceneLoading(AsyncOperation asyncOperation, string sceneToLoad)
@@ -204,5 +200,7 @@ public class WorldSceneChangeManager : Singleton<WorldSceneChangeManager>
         _canvasGroup.alpha = 0;
         _canvasGroup.interactable = false;
         _canvasGroup.blocksRaycasts = false;
+        
+        InputHandlerManager.Instance.SetInputMode(InputMode.Exploration);
     }
 }

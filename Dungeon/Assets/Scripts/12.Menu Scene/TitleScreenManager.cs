@@ -73,7 +73,7 @@ public class TitleScreenManager : MonoBehaviour
     private void StartNewGame(string playerName)
     {
         WorldSaveGameManager.Instance.AttemptToCreateNewGame(playerName);
-        UIManager.Instance.MouseActive(false);
+        //UIManager.Instance.MouseActive(false);
     }
 
     public void ContinueLastGame()
@@ -86,7 +86,7 @@ public class TitleScreenManager : MonoBehaviour
         else
         {
             // 게임 정상 시작 
-            UIManager.Instance.MouseActive(false);
+            //UIManager.Instance.MouseActive(false);
         }
     }
 
