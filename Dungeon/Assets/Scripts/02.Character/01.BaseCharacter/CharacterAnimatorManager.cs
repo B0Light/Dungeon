@@ -41,8 +41,8 @@ public class CharacterAnimatorManager : MonoBehaviour
         bool canRotate = false,
         bool canMove = false)
     {
-        if (characterManager.isDead.Value || characterManager.animator == null) return;
-        
+        if (characterManager.animator == null) return;
+        if (characterManager.isDead.Value && targetAnimation != _dead) return;
         applyRootMotion = rootMotion;
         characterManager.isPerformingAction = isPerformingAction;
         characterManager.characterLocomotionManager.canRotate = canRotate;

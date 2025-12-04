@@ -14,6 +14,7 @@ public class PlayerStart : MonoBehaviour
         playerManager.LoadGameDataFromCurrentCharacterDataSceneChange(ref WorldSaveGameManager.Instance.currentGameData);
         
         InputHandlerManager.Instance.SetInputMode(InputMode.Exploration);
+        PlayerCameraController.Instance.LockOn(false);
         
         // 추후조정 : 모험시에만 활성화 
         WorldPlayerInventory.Instance.SetStartItemValue();

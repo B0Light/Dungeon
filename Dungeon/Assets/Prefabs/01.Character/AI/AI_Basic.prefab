@@ -2416,9 +2416,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alwaysStrafe: 0
-  walkSpeed: 1
+  walkSpeed: 2
   runSpeed: 4
-  sprintSpeed: 7
+  sprintSpeed: 6
   speedChangeDamping: 10
   rotationSmoothing: 10
   shuffleDirectionX: 0
@@ -2993,7 +2993,7 @@ GameObject:
   - component: {fileID: 2240658315825455020}
   - component: {fileID: 628160307633180923}
   - component: {fileID: 8826627007155351630}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DeathBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Cinemachine;
@@ -81,20 +82,20 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         // 더 이상 가려지지 않는 오브젝트의 재질을 복원
         // _occludedRenderers 딕셔너리에서 현재 Raycast에 포함되지 않은 렌더러들을 찾습니다.
         var renderersToRestore = new List<Renderer>();
-        foreach(var renderer in _occludedRenderers.Keys)
+        foreach(var rd in _occludedRenderers.Keys)
         {
-            if(!currentOccludedRenderers.Contains(renderer))
+            if(!currentOccludedRenderers.Contains(rd))
             {
-                renderersToRestore.Add(renderer);
+                renderersToRestore.Add(rd);
             }
         }
 
-        foreach(var renderer in renderersToRestore)
+        foreach(var rd in renderersToRestore)
         {
-            if (_occludedRenderers.TryGetValue(renderer, out Material[] originalMats))
+            if (_occludedRenderers.TryGetValue(rd, out Material[] originalMats))
             {
-                renderer.materials = originalMats;
-                _occludedRenderers.Remove(renderer);
+                rd.materials = originalMats;
+                _occludedRenderers.Remove(rd);
             }
         }
     }
@@ -122,6 +123,51 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         WorldSceneChangeManager.OnSceneEndPhase -= ResetCamOcclusion;
         WorldSceneChangeManager.OnSceneEndPhase += ResetCamOcclusion;
     }
+    
+    public void LockOn(bool enable, Transform newLockOnTarget = null)
+    {
+        var orbitalFollow = vCam.GetComponent<CinemachineOrbitalFollow>();
+        orbitalFollow.RecenteringTarget = CinemachineOrbitalFollow.ReferenceFrames.TrackingTarget;
+        
+        if(playerManager.playerVariableManager.CLVM.isStopped)
+            StartCoroutine(ResetCamCoroutine());
+        else if (enable)
+        {
+            orbitalFollow.HorizontalAxis.Recentering.Wait = 0f;
+            orbitalFollow.HorizontalAxis.Recentering.Time = 0.5f;
+            orbitalFollow.HorizontalAxis.Recentering.Enabled = true;
+            orbitalFollow.VerticalAxis.Recentering.Wait = 0f;
+            orbitalFollow.VerticalAxis.Recentering.Time = 0.5f;
+            orbitalFollow.VerticalAxis.Recentering.Enabled = true;
+            cameraController.enabled = false;
+        }
+        else
+        {
+            orbitalFollow.HorizontalAxis.Recentering.Enabled = false;
+            orbitalFollow.VerticalAxis.Recentering.Enabled = false;
+            cameraController.enabled = true;
+            
+        }
+    }
+    
+    private IEnumerator ResetCamCoroutine()
+    {
+        var orbitalFollow = vCam.GetComponent<CinemachineOrbitalFollow>();
+        orbitalFollow.RecenteringTarget = CinemachineOrbitalFollow.ReferenceFrames.TrackingTarget;
+        
+        orbitalFollow.HorizontalAxis.Recentering.Wait = 0f;
+        orbitalFollow.HorizontalAxis.Recentering.Time = 0.5f;
+        orbitalFollow.HorizontalAxis.Recentering.Enabled = true;
+        orbitalFollow.VerticalAxis.Recentering.Wait = 0f;
+        orbitalFollow.VerticalAxis.Recentering.Time = 0.5f;
+        orbitalFollow.VerticalAxis.Recentering.Enabled = true;
+        cameraController.enabled = false;
+        yield return new WaitForSeconds(1f);
+        orbitalFollow.HorizontalAxis.Recentering.Enabled = false;
+        orbitalFollow.VerticalAxis.Recentering.Enabled = false;
+        cameraController.enabled = true;
+    }
+    
     
     public Vector3 GetCameraPosition()
     {
@@ -180,11 +226,11 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     {
         _enableOcclusion = false;
         // 씬 전환 시 모든 재질 복구
-        foreach(var renderer in _occludedRenderers.Keys)
+        foreach(var rd in _occludedRenderers.Keys)
         {
-            if (renderer != null && _occludedRenderers.TryGetValue(renderer, out Material[] originalMats))
+            if (rd != null && _occludedRenderers.TryGetValue(rd, out Material[] originalMats))
             {
-                renderer.materials = originalMats;
+                rd.materials = originalMats;
             }
         }
         _occludedRenderers.Clear();

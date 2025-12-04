@@ -290,6 +290,18 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     private void ToggleLockOn()
     {
         UpdateBestTarget();
+        EnableLockOn(CLVM.currentTargetCandidates.Count > 0 && !CLVM.isLockedOn);
+    }
+    
+    private void EnableLockOn(bool enable)
+    {
+        CLVM.isLockedOn = enable;
+        CLVM.isStrafing = enable ? !CLVM.isSprinting : CLVM.alwaysStrafe ;
+        
+        PlayerCameraController.Instance.LockOn(enable, CLVM.targetLockOnPos);
+        
+        if (CLVM.currentLockOnTarget != null)
+            CLVM.currentLockOnTarget.GetComponent<LockOnObject>().Highlight(enable);
     }
 
     #endregion
