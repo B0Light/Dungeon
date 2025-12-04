@@ -134,8 +134,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5035696172646598437}
-  - component: {fileID: 8290100887251991913}
   - component: {fileID: 2423098482230679539}
+  - component: {fileID: 4180814145264381080}
+  - component: {fileID: 6862123805169357719}
   m_Layer: 0
   m_Name: 2105.Ballista
   m_TagString: Untagged
@@ -160,27 +161,6 @@ Transform:
   - {fileID: 8704629902656225730}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8290100887251991913
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3718816364165146653}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 2, y: 3, z: 2}
 --- !u!114 &2423098482230679539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +176,46 @@ MonoBehaviour:
   exitDir: 0
   entrancePos: 0
   exitPos: 0
+--- !u!114 &4180814145264381080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3718816364165146653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f88119c058cbfb46baeb2c53d49e6fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TurretFSM
+  turretMesh: {fileID: 3345054417331360758}
+  characterGroup: 0
+  sphereCollider: {fileID: 6862123805169357719}
+  rotationSpeed: 50
+  turnSpeed: 10
+  fireRate: 1
+  attackRange: 10
+--- !u!135 &6862123805169357719
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3718816364165146653}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 10
+  m_Center: {x: 2, y: 3, z: 2}
 --- !u!1 &3863297518844384345
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8704629902656225730}
+  - component: {fileID: 141164322964356647}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -540,6 +561,27 @@ Transform:
   - {fileID: 1224636596956363549}
   m_Father: {fileID: 5035696172646598437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &141164322964356647
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6840214700345928656}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 2, y: 3, z: 2}
 --- !u!1 &7683386579930728725
 GameObject:
   m_ObjectHideFlags: 0
