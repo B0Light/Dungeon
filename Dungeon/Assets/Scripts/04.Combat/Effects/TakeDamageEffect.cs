@@ -1,145 +1,90 @@
-using System;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 [CreateAssetMenu(menuName = "Character Effects/Instant Effects/Take Damage")]
-public class TakeDamageEffect : IInstantCharacterEffect
+public class TakeDamageEffect : IInstantEffect
 {
     #region Variables
     
-    protected float physicalDamage;
-    protected float magicalDamage;
-    protected float extraDamage;
+    private float _physicalDamage;
+    private float _magicalDamage;
+    private float _extraDamage;
     
-    protected float finalDamageDealt;
-    protected float finalPoiseDamage;
+    private float _finalDamageDealt;
+    private float _finalPoiseDamage;
     
-    protected Vector3 contactPoint; 
-    protected float angleHitFrom;
+    private Vector3 _contactPoint; 
+    private float _angleHitFrom;
+
+    private bool _isBlock;
     
     #endregion
 
     #region Public Methods
     
-    public void SetDamage(float physicalDmg, float magicalDmg, float extraDmg, Vector3 contact, float angle)
+    public void SetDamage(float physicalDmg, float magicalDmg, float extraDmg, Vector3 contact, float angle, bool isBlock)
     {
-        physicalDamage = physicalDmg;
-        magicalDamage = magicalDmg;
-        extraDamage = extraDmg;
-        contactPoint = contact;
-        angleHitFrom = angle;
+        _physicalDamage = physicalDmg;
+        _magicalDamage = magicalDmg;
+        _extraDamage = extraDmg;
+        _contactPoint = contact;
+        _angleHitFrom = angle;
+        _isBlock = isBlock;
     }
 
     public void ApplyAttackDamageModifiers(float modifier)
     {
-        physicalDamage *= modifier;
-        magicalDamage *= modifier;
+        _physicalDamage *= modifier;
+        _magicalDamage *= modifier;
     }
 
-    public override void ProcessEffect(CharacterManager effectTarget)
+    public override void ProcessEffect(IEffectable effectTarget)
     {
-        // 무적 또는 죽은 상태면 데미지 처리 안함
-        if (effectTarget.characterVariableManager.isInvulnerable.Value || effectTarget.isDead.Value) 
-            return;
+        if (effectTarget is IDamageable damageable)
+        {
+            if (!damageable.CanTakeDamage()) return;
 
-        CalculateDamage(effectTarget);
-        ApplyDamage(effectTarget);
-        HandlePostHitEffects(effectTarget);
+            CalculateDamage(damageable);
+            ApplyDamage(damageable);
+            HandlePostHitEffects(damageable);
+        }
     }
     
     #endregion
 
     #region Protected Methods
     
-    protected virtual void CalculateDamage(CharacterManager hitTarget)
+    private void CalculateDamage(IDamageable hitTarget)
     {
         // 방어력 적용 계산
-        float physicalAbsorption = hitTarget.characterStatsManager.basePhysicalAbsorption + 
-                                  hitTarget.characterStatsManager.extraPhysicalAbsorption;
-        float magicalAbsorption = hitTarget.characterStatsManager.baseMagicalAbsorption + 
-                                 hitTarget.characterStatsManager.extraMagicalAbsorption;
+        var physicalAbsorption = hitTarget.GetPhysicalAbsorption(_isBlock);
+        var magicalAbsorption = hitTarget.GetMagicalAbsorption(_isBlock);
         
         // 데미지 계산
-        float reducedPhysicalDamage = physicalDamage * (100 - physicalAbsorption) / 100;
-        float reducedMagicalDamage = magicalDamage * (100 - magicalAbsorption) / 100;
+        var reducedPhysicalDamage = _physicalDamage * (100 - physicalAbsorption) / 100;
+        var reducedMagicalDamage = _magicalDamage * (100 - magicalAbsorption) / 100;
         
         // 최종 데미지 및 포이즈 데미지 계산
-        finalDamageDealt = Mathf.RoundToInt(reducedPhysicalDamage + reducedMagicalDamage + extraDamage);
+        _finalDamageDealt = Mathf.RoundToInt(reducedPhysicalDamage + reducedMagicalDamage + _extraDamage);
         
         // 최소 데미지 보장
-        if(finalDamageDealt <= 0)
+        if(_finalDamageDealt <= 0)
         {
-            finalDamageDealt = 1;
+            _finalDamageDealt = 1;
         }
         
         //Debug.LogWarning($"[DamageINFO] B : {physicalAbsorption} D : {magicalAbsorption} / A : {physicalDamage} C : {magicalDamage} / V : {finalDamageDealt}" );
     }
 
-    protected virtual void ApplyDamage(CharacterManager hitTarget)
+    private void ApplyDamage(IDamageable hitTarget)
     {
-        if(hitTarget.isDead.Value) return;
+        if(!hitTarget.CanTakeDamage()) return;
         
-        //Debug.LogWarning("Final Dmg : " + finalDamageDealt);
-        
-        hitTarget.characterVariableManager.health.Value -= (int)finalDamageDealt;
-        hitTarget.characterVariableManager.groggy.Value -= finalPoiseDamage;
+        hitTarget.TakeDamage(_finalDamageDealt, _finalPoiseDamage);
     }
 
-    protected virtual void HandlePostHitEffects(CharacterManager hitTarget)
+    private void HandlePostHitEffects(IDamageable hitTarget)
     {
-        PlayDirectionalBasedDamagedAnimation(hitTarget);
-        PlayDamageSfx(hitTarget);
-        PlayDamageVfx(hitTarget);
-    }
-
-    protected virtual void PlayDamageVfx(CharacterManager character)
-    {
-        character.characterEffectsManager.PlayBloodSplatterVFX(contactPoint);
-    }
-
-    protected virtual void PlayDamageSfx(CharacterManager character)
-    {
-        AudioClip physicalDamageSfx = WorldSoundFXManager.Instance.ChoosePhysicalDamageSfx();
-        
-        if (physicalDamageSfx != null)
-            character.characterSoundFXManager.PlaySoundFX(physicalDamageSfx);
-
-        character.characterSoundFXManager.PlayDamageGruntSoundFX();
-    }
-
-    protected virtual void PlayDirectionalBasedDamagedAnimation(CharacterManager character)
-    {
-        if (character.isDead.Value) return;
-
-        int damageAnimation = GetDirectionalHitAnimation(character, angleHitFrom);
-        
-        if (damageAnimation == -1) return;
-        if (Random.Range(1, 10) >= 1) return;
-        
-        character.characterAnimatorManager.lastDamageAnimationPlayed = damageAnimation;
-        character.characterAnimatorManager.PlayTargetActionAnimation(damageAnimation, true);
-    }
-    
-    #endregion
-
-    #region Private Methods
-    
-    private int GetDirectionalHitAnimation(CharacterManager character, float angle)
-    {
-        // 각도에 따른 피격 방향 결정
-        if ((angle >= 145 && angle <= 180) || (angle >= -180 && angle <= -145))
-            return character.characterAnimatorManager.hitForward;
-        
-        if (angle >= -45 && angle <= 45)
-            return character.characterAnimatorManager.hitBackward;
-        
-        if (angle >= -144 && angle <= -46)
-            return character.characterAnimatorManager.hitLeft;
-        
-        if (angle >= 46 && angle <= 144)
-            return character.characterAnimatorManager.hitRight;
-        
-        return -1;
+        hitTarget.PostDamageEffect(_contactPoint, _angleHitFrom, _isBlock);
     }
     
     #endregion

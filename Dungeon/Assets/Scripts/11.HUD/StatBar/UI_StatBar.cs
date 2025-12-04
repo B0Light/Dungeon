@@ -2,9 +2,9 @@ using UnityEngine;
 
 public abstract class UI_StatBar : MonoBehaviour
 {
-    [SerializeField] private Color red;
-    [SerializeField] private Color green;
-    [SerializeField] private Color blue;
+    [SerializeField] protected Color red;
+    [SerializeField] protected Color green;
+    [SerializeField] protected Color blue;
 
     public abstract void SetStat(float newValue);
 

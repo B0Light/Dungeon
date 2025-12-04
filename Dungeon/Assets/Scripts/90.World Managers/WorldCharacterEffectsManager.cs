@@ -17,19 +17,17 @@ public class WorldCharacterEffectsManager : Singleton<WorldCharacterEffectsManag
     public List<GameObject> leapingAttackAura;
     
     [HideInInspector] public TakeDamageEffect takeDamageEffect;
-    [HideInInspector] public TakeBlockDamageEffect takeBlockDamageEffect;
     [HideInInspector] public RestoreHealthEffect restoreHealthEffect;
     [HideInInspector] public BuffAttackEffect buffAttackEffect;
     [HideInInspector] public BuffDefenseEffect buffDefenseEffect;
     [HideInInspector] public UtilitySpeedEffect utilitySpeedEffect;
     [HideInInspector] public UtilityWeightEffect utilityWeightEffect;
-    [SerializeField] List<IInstantCharacterEffect> instantEffects;
+    [SerializeField] List<IInstantEffect> instantEffects;
 
     protected override void Awake()
     {
         base.Awake();
         takeDamageEffect = ScriptableObject.CreateInstance<TakeDamageEffect>();
-        takeBlockDamageEffect = ScriptableObject.CreateInstance<TakeBlockDamageEffect>();
         restoreHealthEffect = ScriptableObject.CreateInstance<RestoreHealthEffect>();
         buffAttackEffect = ScriptableObject.CreateInstance<BuffAttackEffect>();
         buffDefenseEffect = ScriptableObject.CreateInstance<BuffDefenseEffect>();

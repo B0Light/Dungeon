@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterEffectsManager : MonoBehaviour
@@ -13,7 +11,7 @@ public class CharacterEffectsManager : MonoBehaviour
     {
         character = GetComponent<CharacterManager>();   
     }
-    public void ProcessInstantEffect(IInstantCharacterEffect effect)
+    public void ProcessInstantEffect(IInstantEffect effect)
     {
         effect.ProcessEffect(character);
     }

@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-public class RestoreHealthEffect : IInstantCharacterEffect
+public class RestoreHealthEffect : IInstantEffect
 {
     private int _immediateHealAmount;
     private int _continuousHealAmount;
@@ -12,13 +12,17 @@ public class RestoreHealthEffect : IInstantCharacterEffect
         _continuousHealAmount = continuousHealAmount;
         _duration = duration;
     }
-    public override void ProcessEffect(CharacterManager effectTarget)
+    public override void ProcessEffect(IEffectable effectTarget)
     {
-        if(effectTarget.isDead.Value) return;
-        
-        Instantiate(WorldCharacterEffectsManager.Instance.healVFX, effectTarget.transform.position + Vector3.up, Quaternion.identity);
-        HealProcess(effectTarget);
-        effectTarget.StartCoroutine(HealOverTime(effectTarget));
+        if (effectTarget is CharacterManager characterManager)
+        {
+            if (characterManager.isDead.Value) return;
+
+            Instantiate(WorldCharacterEffectsManager.Instance.healVFX, characterManager.transform.position + Vector3.up,
+                Quaternion.identity);
+            HealProcess(characterManager);
+            characterManager.StartCoroutine(HealOverTime(characterManager));
+        }
     }
 
     private void HealProcess(CharacterManager character)

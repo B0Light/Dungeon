@@ -47,7 +47,7 @@ public class DamageCollider : DamageLogic
     #region AnimationEvent
     public virtual void EnableDamageCollider()
     {
-        charactersDamaged.Clear();
+        damageableObjects.Clear();
         foreach (var damageCollider in damageColliders)
         {
             damageCollider.enabled = true;
@@ -60,7 +60,7 @@ public class DamageCollider : DamageLogic
         {
             damageCollider.enabled = false;
         }
-        charactersDamaged.Clear();
+        damageableObjects.Clear();
     }
     #endregion
 

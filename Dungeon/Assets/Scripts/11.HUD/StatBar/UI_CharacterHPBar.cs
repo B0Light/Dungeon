@@ -7,11 +7,13 @@ public class UI_CharacterHPBar : UI_StatBar
     private CharacterManager character;
     private AICharacterManager aiCharacter;
 
-    [SerializeField] bool displayCharacterNameOnDamage = false;
-    [SerializeField] float defaultTimeBeforeBarHides = 3;
-    [SerializeField] float hideTimer = 0;
-    [SerializeField] int currentDamageTaken = 0;
-    [SerializeField] TextMeshProUGUI characterName;
+    [SerializeField] private bool displayCharacterNameOnDamage = false;
+    [SerializeField] private float defaultTimeBeforeBarHides = 3;
+    [SerializeField] private float hideTimer = 0;
+    [SerializeField] private int currentDamageTaken = 0;
+    [SerializeField] private TextMeshProUGUI characterName;
+    [SerializeField] private Slider healthBar;
+    [SerializeField] private Image fillImage;
     [HideInInspector] public float oldHealthValue = 0;
     
     [Header("체력바 색상 설정")]
@@ -43,7 +45,7 @@ public class UI_CharacterHPBar : UI_StatBar
         oldHealthValue = character.characterVariableManager.health.Value;
         _maxHealthValue = character.characterVariableManager.health.MaxValue;
         _currentHealthValue = oldHealthValue;
-        UpdateHealthBar();
+        UpdateHealthBar_Text();
         
         gameObject.SetActive(false);
     }
@@ -105,7 +107,8 @@ public class UI_CharacterHPBar : UI_StatBar
         }
 
         // 텍스트 그라디언트 HP바 업데이트
-        UpdateHealthBar();
+        UpdateHealthBar_Text();
+        UpdateHealthBar_Slide();
 
         // 체력이 0이 되면 사망 처리
         if (newValue <= 0)
@@ -132,10 +135,11 @@ public class UI_CharacterHPBar : UI_StatBar
     public override void SetMaxStat(float maxValue)
     {
         _maxHealthValue = maxValue;
-        UpdateHealthBar();
+        UpdateHealthBar_Text();
+        UpdateHealthBar_Slide();
     }
 
-    private void UpdateHealthBar()
+    private void UpdateHealthBar_Text()
     {
         if (characterName == null) return;
 
@@ -194,6 +198,13 @@ public class UI_CharacterHPBar : UI_StatBar
         }
         
         characterName.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
+    }
+
+    private void UpdateHealthBar_Slide()
+    {
+        float healthPercent = _maxHealthValue > 0 ? Mathf.Max(0f, (float)_currentHealthValue / _maxHealthValue) : 0f;
+        healthBar.value = healthPercent;
+        fillImage.color = GetHealthColor(healthPercent);
     }
     
     Color GetHealthColor(float healthPercent)

@@ -1,9 +1,17 @@
 using UnityEngine;
 
-public interface IDamageable
+public interface IDamageable : IEffectable
 {
-    void TakeDamage(DamageData damageData);
-    bool IsAlive { get; }
+    void ProcessInstantEffect(TakeDamageEffect damageEffect);
+    void TakeDamage(float finalDamage, float poiseDamage);
+    void PostDamageEffect(Vector3 contactPoint, float angleHitFrom, bool isBlock);
+    
+    bool IsOpponent(WorldUtilityManager.CharacterGroup characterGroup);
+    bool CanTakeDamage();
+
+    float GetPhysicalAbsorption(bool isBlock);
+    float GetMagicalAbsorption(bool isBlock);
+
 }
 
 public struct DamageData

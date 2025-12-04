@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class UtilitySpeedEffect : IInstantCharacterEffect
+public class UtilitySpeedEffect : IInstantEffect
 {
     private float _speedMultiplier;
     private float _duration;
@@ -13,17 +13,20 @@ public class UtilitySpeedEffect : IInstantCharacterEffect
         _duration = duration;
     }
 
-    public override void ProcessEffect(CharacterManager effectTarget)
+    public override void ProcessEffect(IEffectable effectTarget)
     {
-        if (effectTarget.isDead.Value) return;
-
-        if (effectTarget is PlayerManager playerManager)
+        if (effectTarget is CharacterManager characterManager)
         {
-            ApplySpeedBuff(playerManager);
-            
-            if (_duration > 0)
+            if (characterManager.isDead.Value) return;
+
+            if (characterManager is PlayerManager playerManager)
             {
-                playerManager.StartCoroutine(RemoveBuffAfterDuration(playerManager));
+                ApplySpeedBuff(playerManager);
+            
+                if (_duration > 0)
+                {
+                    playerManager.StartCoroutine(RemoveBuffAfterDuration(playerManager));
+                }
             }
         }
     }

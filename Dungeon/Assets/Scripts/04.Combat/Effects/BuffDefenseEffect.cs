@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BuffDefenseEffect : IInstantCharacterEffect
+public class BuffDefenseEffect : IInstantEffect
 {
     private float _physicalAbsorptionBuff;
     private float _magicalAbsorptionBuff;
@@ -14,17 +14,20 @@ public class BuffDefenseEffect : IInstantCharacterEffect
         _duration = duration;
     }
 
-    public override void ProcessEffect(CharacterManager effectTarget)
+    public override void ProcessEffect(IEffectable effectTarget)
     {
-        if (effectTarget.isDead.Value) return;
-
-        if (effectTarget is PlayerManager playerManager)
+        if (effectTarget is CharacterManager characterManager)
         {
-            ApplyDefenseBuff(playerManager);
-            
-            if (_duration > 0)
+            if (characterManager.isDead.Value) return;
+
+            if (characterManager is PlayerManager playerManager)
             {
-                playerManager.StartCoroutine(RemoveBuffAfterDuration(playerManager));
+                ApplyDefenseBuff(playerManager);
+
+                if (_duration > 0)
+                {
+                    playerManager.StartCoroutine(RemoveBuffAfterDuration(playerManager));
+                }
             }
         }
     }

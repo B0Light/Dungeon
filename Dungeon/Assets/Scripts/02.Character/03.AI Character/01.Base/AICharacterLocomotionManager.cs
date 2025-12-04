@@ -449,7 +449,6 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
         
         if (currentDestination != null)
         {
-            navAgent.stoppingDistance = aiCharacterManager.detectionRange;
             return currentDestination.position;
         }
         else

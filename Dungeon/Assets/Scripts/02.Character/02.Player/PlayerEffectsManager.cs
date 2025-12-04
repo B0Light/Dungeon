@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerEffectsManager : CharacterEffectsManager
 {
     [Header("Debug Delete Later")]
-    [SerializeField] IInstantCharacterEffect effectToTest;
+    [SerializeField] IInstantEffect effectToTest;
     [SerializeField] bool processEffect = false;
 
     private void Update()
@@ -13,7 +13,7 @@ public class PlayerEffectsManager : CharacterEffectsManager
         if (processEffect)
         {
             processEffect = false;
-            IInstantCharacterEffect effect = Instantiate(effectToTest);
+            IInstantEffect effect = Instantiate(effectToTest);
             ProcessInstantEffect(effect);
         }
     }

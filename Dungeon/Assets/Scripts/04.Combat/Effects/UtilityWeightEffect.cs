@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class UtilityWeightEffect : IInstantCharacterEffect
+public class UtilityWeightEffect : IInstantEffect
 {
     private float _weightReduction;
     private float _duration;
@@ -13,17 +13,20 @@ public class UtilityWeightEffect : IInstantCharacterEffect
         _duration = duration;
     }
 
-    public override void ProcessEffect(CharacterManager effectTarget)
+    public override void ProcessEffect(IEffectable effectTarget)
     {
-        if (effectTarget.isDead.Value) return;
-
-        if (effectTarget is PlayerManager playerManager)
+        if (effectTarget is CharacterManager characterManager)
         {
-            ApplyWeightReduction(playerManager);
-            
-            if (_duration > 0)
+            if (characterManager.isDead.Value) return;
+
+            if (characterManager is PlayerManager playerManager)
             {
-                playerManager.StartCoroutine(RemoveEffectAfterDuration(playerManager));
+                ApplyWeightReduction(playerManager);
+
+                if (_duration > 0)
+                {
+                    playerManager.StartCoroutine(RemoveEffectAfterDuration(playerManager));
+                }
             }
         }
     }

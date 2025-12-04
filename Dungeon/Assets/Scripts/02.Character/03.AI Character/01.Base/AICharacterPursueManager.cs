@@ -12,7 +12,6 @@ public class AICharacterPursueManager : MonoBehaviour
     [SerializeField] float detectionRadius = 15;
     public float minimumFOV = -35;
     public float maximumFOV = 35;
-    public float attackRange = 2;
     public float rotationSpeed = 25;
     
     private readonly int _maxDetectionCount = 10;
@@ -28,7 +27,6 @@ public class AICharacterPursueManager : MonoBehaviour
         Debug.Log($"AI Set Target : {newTarget?.name}");
         _aiCharacter.SetTarget(newTarget);
         _aiCharacter.characterVariableManager.CLVM.isSprinting = newTarget;
-        _aiCharacter.navMeshAgent.stoppingDistance = attackRange;
     }
     
      public virtual void FindTargetViaLineOfSight(AICharacterManager curCharacter)

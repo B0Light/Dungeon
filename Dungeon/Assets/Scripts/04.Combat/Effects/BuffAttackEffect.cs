@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BuffAttackEffect : IInstantCharacterEffect
+public class BuffAttackEffect : IInstantEffect
 {
     private int _buffAmount;
     private float _duration;
@@ -12,17 +12,20 @@ public class BuffAttackEffect : IInstantCharacterEffect
         _duration = duration;
     }
 
-    public override void ProcessEffect(CharacterManager effectTarget)
+    public override void ProcessEffect(IEffectable effectTarget)
     {
-        if (effectTarget.isDead.Value) return;
-
-        if (effectTarget is PlayerManager playerManager)
+        if (effectTarget is CharacterManager characterManager)
         {
-            ApplyAttackBuff(playerManager);
-            
-            if (_duration > 0)
+            if (characterManager.isDead.Value) return;
+
+            if (characterManager is PlayerManager playerManager)
             {
-                playerManager.StartCoroutine(RemoveBuffAfterDuration(playerManager));
+                ApplyAttackBuff(playerManager);
+
+                if (_duration > 0)
+                {
+                    playerManager.StartCoroutine(RemoveBuffAfterDuration(playerManager));
+                }
             }
         }
     }

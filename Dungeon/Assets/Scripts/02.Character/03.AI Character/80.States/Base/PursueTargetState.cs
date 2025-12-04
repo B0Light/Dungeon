@@ -44,7 +44,7 @@ public class PursueTargetState : AIState
         
         // 타겟과의 거리 확인
         if (aiCharacter.aiCharacterPursueManager.distanceFromTarget <=
-            aiCharacter.aiCharacterPursueManager.attackRange)
+            aiCharacter.detectionRange+2f)
         {
             Debug.Log("Target is within attack range");
             return SwitchState(aiCharacter, aiCharacter.stateCombatStance);
@@ -53,6 +53,7 @@ public class PursueTargetState : AIState
         // 경로 설정
         Debug.Log($"Set Destination : {aiCharacter.CurrentTarget.name}");
         aiCharacter.navMeshAgent.SetDestination(aiCharacter.CurrentTarget.transform.position);
+        aiCharacter.navMeshAgent.stoppingDistance = 3f;
         return this;
     }
 }

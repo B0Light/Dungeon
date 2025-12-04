@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +7,6 @@ public class CharacterManager : MonoBehaviour, IDamageable
     [Header("Status")]
     public Variable<bool> isDead = new Variable<bool>(false);
     public Variable<bool> isGroggy = new Variable<bool>(false);
-
-    public bool IsAlive => isDead.Value;
 
     // 컴포넌트 레퍼런스
     [HideInInspector] public Animator animator;
@@ -31,7 +28,7 @@ public class CharacterManager : MonoBehaviour, IDamageable
     public WorldUtilityManager.CharacterGroup characterGroup;
 
     [HideInInspector] public bool isPerformingAction = false;
-    [HideInInspector] public float detectionRange;
+    [HideInInspector] public float detectionRange = 3f;
 
     public CharacterManager CurrentTarget { get; private set; }
 
@@ -157,15 +154,96 @@ public class CharacterManager : MonoBehaviour, IDamageable
     {
         CurrentTarget = newTarget;
     }
-    
-    public void TakeDamage(DamageData data)
-    {
-        if (characterVariableManager.isInvulnerable.Value || isDead.Value) return;
 
-        // TakeDamageEffect 클래스를 활용하여 데미지 처리
-        TakeDamageEffect damageEffect = ScriptableObject.CreateInstance<TakeDamageEffect>();
-        damageEffect.SetDamage(data.physicalDamage, data.magicalDamage, data.extraDamage, data.contactPoint, data.angleHitFrom);
-        damageEffect.ProcessEffect(this);
+    public bool IsOpponent(WorldUtilityManager.CharacterGroup targetGroup)
+    {
+        return targetGroup != this.characterGroup;
+    }
+
+    public bool CanTakeDamage()
+    {
+        return !(characterVariableManager.isInvulnerable.Value || isDead.Value);
+    }
+    
+    public void ProcessInstantEffect(TakeDamageEffect damageEffect)
+    {
+        characterEffectsManager.ProcessInstantEffect(damageEffect);
+    }
+    
+    public void TakeDamage(float finalDamage, float poiseDamage)
+    {
+        characterVariableManager.health.Value -= (int)finalDamage;
+        characterVariableManager.groggy.Value -= poiseDamage;
+    }
+
+    public void PostDamageEffect(Vector3 contactPoint, float angleHitFrom, bool isBlock)
+    {
+        if (isBlock)
+        {
+            // VFX
+            characterEffectsManager.PlayBlockVFX(contactPoint);
+            
+            // SFX
+            AudioClip blockSfx = WorldSoundFXManager.Instance.ChooseBlockSfx();
+
+            if (blockSfx != null)
+                characterSoundFXManager.PlaySoundFX(blockSfx);
+            else
+                characterSoundFXManager.PlayDamageGruntSoundFX();
+        }
+        else
+        {
+            // VFX
+            characterEffectsManager.PlayBloodSplatterVFX(contactPoint);
+
+            //SFX
+            AudioClip physicalDamageSfx = WorldSoundFXManager.Instance.ChoosePhysicalDamageSfx();
+
+            if (physicalDamageSfx != null)
+                characterSoundFXManager.PlaySoundFX(physicalDamageSfx);
+            else
+                characterSoundFXManager.PlayDamageGruntSoundFX();
+        }
+
+        if(isDead.Value) return;
+        int damageAnimation = GetDirectionalHitAnimation(angleHitFrom, isBlock);
+    
+        if (damageAnimation == -1) return;
+        if (Random.Range(1, 10) >= 1) return;
+    
+        characterAnimatorManager.lastDamageAnimationPlayed = damageAnimation;
+        characterAnimatorManager.PlayTargetActionAnimation(damageAnimation, true);
+    }
+    
+    private int GetDirectionalHitAnimation(float angle, bool isBlock)
+    {
+        // 각도에 따른 피격 방향 결정
+        if ((angle >= 145 && angle <= 180) || (angle >= -180 && angle <= -145))
+            return isBlock ? characterAnimatorManager.blockForward : characterAnimatorManager.hitForward;
+        
+        if (angle >= -45 && angle <= 45) // 뒤에서 떄리는 건 가드 불가 
+            return characterAnimatorManager.hitBackward;
+        
+        if (angle >= -144 && angle <= -46)
+            return isBlock ? characterAnimatorManager.blockLeft : characterAnimatorManager.hitLeft;
+        
+        if (angle >= 46 && angle <= 144)
+            return isBlock ? characterAnimatorManager.blockRight : characterAnimatorManager.hitRight;
+        
+        return -1;
+    }
+    
+    public float GetPhysicalAbsorption(bool isBlock)
+    {
+        float basePhysicalAbsorption = characterStatsManager.basePhysicalAbsorption + characterStatsManager.extraPhysicalAbsorption;
+        return basePhysicalAbsorption + (isBlock ? characterStatsManager.blockingPhysicalAbsorption : 0);
+    }
+    
+
+    public float GetMagicalAbsorption(bool isBlock)
+    {
+        float baseMagicalAbsorption = characterStatsManager.baseMagicalAbsorption + characterStatsManager.extraMagicalAbsorption;
+        return baseMagicalAbsorption + (isBlock ? characterStatsManager.blockingMagicalAbsorption : 0);
     }
 
     #endregion
