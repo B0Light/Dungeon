@@ -26,7 +26,6 @@ public class AICharacterPursueManager : MonoBehaviour
     {
         Debug.Log($"AI Set Target : {newTarget?.name}");
         _aiCharacter.SetTarget(newTarget);
-        _aiCharacter.characterVariableManager.CLVM.isSprinting = newTarget;
     }
     
      public virtual void FindTargetViaLineOfSight(AICharacterManager curCharacter)

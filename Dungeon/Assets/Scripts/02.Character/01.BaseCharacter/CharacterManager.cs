@@ -28,7 +28,7 @@ public class CharacterManager : MonoBehaviour, IDamageable
     public WorldUtilityManager.CharacterGroup characterGroup;
 
     [HideInInspector] public bool isPerformingAction = false;
-    [HideInInspector] public float detectionRange = 3f;
+    [HideInInspector] public float attackRange = 3f;
 
     public CharacterManager CurrentTarget { get; private set; }
 

@@ -9,7 +9,6 @@ public class AdventurerAILocomotionManager : AICharacterLocomotionManager
     {
         if (aiCharacterManager.CurrentTarget)
         {
-            navAgent.stoppingDistance = aiCharacterManager.detectionRange;
             return aiCharacterManager.CurrentTarget.transform.position;
         }
         else
