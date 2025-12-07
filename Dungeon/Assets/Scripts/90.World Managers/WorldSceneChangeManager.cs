@@ -23,6 +23,7 @@ public class WorldSceneChangeManager : Singleton<WorldSceneChangeManager>
     [SerializeField] private string titleSceneName = "01.TitleScene";
     [SerializeField] private string shelterSceneName = "03.Shelter";
     public static event Action OnSceneEndPhase;
+    public static event Action OnSceneChanged;
 
     protected override void Awake()
     {
@@ -202,5 +203,6 @@ public class WorldSceneChangeManager : Singleton<WorldSceneChangeManager>
         _canvasGroup.blocksRaycasts = false;
         
         InputHandlerManager.Instance.SetInputMode(InputMode.Exploration);
+        OnSceneChanged?.Invoke();
     }
 }

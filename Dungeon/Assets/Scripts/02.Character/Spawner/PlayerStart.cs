@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerStart : MonoBehaviour
@@ -13,8 +12,8 @@ public class PlayerStart : MonoBehaviour
         PlayerManager playerManager = GameManager.Instance.SpawnPlayer(gameObject.transform);
         playerManager.LoadGameDataFromCurrentCharacterDataSceneChange(ref WorldSaveGameManager.Instance.currentGameData);
         
-        InputHandlerManager.Instance.SetInputMode(InputMode.Exploration);
         PlayerCameraController.Instance.LockOn(false);
+        
         
         // 추후조정 : 모험시에만 활성화 
         WorldPlayerInventory.Instance.SetStartItemValue();

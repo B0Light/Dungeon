@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum InputMode { Exploration, CombatBuild, OpenUI, Exit }
+public enum InputMode { Exploration, Combat, OpenUI, Exit }
 
 public class InputHandlerManager : Singleton<InputHandlerManager>
 {
@@ -28,6 +27,7 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
     
     public void RegisterAndEnableHandler(IInputHandler handler)
     {
+        if(handler == null) return;
         if (_activeHandlers.Add(handler))
         {
             handler.EnableInput();
@@ -38,6 +38,7 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
     
     public void UnregisterAndDisableHandler(IInputHandler handler)
     {
+        if(handler == null) return;
         if (_activeHandlers.Remove(handler))
         {
             handler.DisableInput();
@@ -48,7 +49,7 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
     public void SetInputMode(InputMode mode)
     {
         var movementHandler = FindAnyObjectByType<InputHandler_Locomotion>();
-        var combatHandler = FindAnyObjectByType<InputHandler_Combat>();
+        var combatHandler = FindAnyObjectByType<InputHandler_CombatSwipe>();
         var uiHandler = FindAnyObjectByType<InputHandler_UI>();
 
         switch (mode)
@@ -59,10 +60,10 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
                 RegisterAndEnableHandler(combatHandler); 
                 RegisterAndEnableHandler(uiHandler);
                 break;
-            case InputMode.CombatBuild:
+            case InputMode.Combat:
                 SetControlActive(false);
                 UnregisterAndDisableHandler(movementHandler); 
-                UnregisterAndDisableHandler(combatHandler); 
+                RegisterAndEnableHandler(combatHandler); 
                 RegisterAndEnableHandler(uiHandler);
                 break;
             case InputMode.OpenUI:

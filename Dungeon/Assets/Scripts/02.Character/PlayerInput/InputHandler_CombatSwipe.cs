@@ -104,7 +104,7 @@ public class InputHandler_CombatSwipe : MonoBehaviour, InputHandlerManager.IInpu
     private void DetectSwipeDirection(Vector2 swipeVector)
     {
         float angle = Vector2.SignedAngle(Vector2.up, swipeVector);
-
+        Dir dir = Dir.Down;
         if (angle < 0)
         {
             angle = 360 + angle;
@@ -113,36 +113,48 @@ public class InputHandler_CombatSwipe : MonoBehaviour, InputHandlerManager.IInpu
         if (angle >= 337.5f || angle < 22.5f)
         {
             Debug.Log("Swipe Up");
+            dir = Dir.Up;
         }
         else if (angle >= 22.5f && angle < 67.5f)
         {
-            Debug.Log("Swipe Up-Right");
-            
+            Debug.Log("Swipe Up-Left");
+            dir = Dir.UpLeft;
         }
         else if (angle >= 67.5f && angle < 112.5f)
         {
             Debug.Log("Swipe Left");
+            dir = Dir.Left;
         }
         else if (angle >= 112.5f && angle < 157.5f)
         {
-            Debug.Log("Swipe Down-Right");
+            Debug.Log("Swipe Down-Left");
+            dir = Dir.DownLeft;
         }
         else if (angle >= 157.5f && angle < 202.5f)
         {
             Debug.Log("Swipe Down");
+            dir = Dir.Down;
         }
         else if (angle >= 202.5f && angle < 247.5f)
         {
-            Debug.Log("Swipe Down-Left");
-            
+            Debug.Log("Swipe Down-Right");
+            dir = Dir.DownRight;
         }
         else if (angle >= 247.5f && angle < 292.5f)
         {
             Debug.Log("Swipe Right");
+            dir = Dir.Right;
         }
         else if (angle >= 292.5f && angle < 337.5f)
         {
-            Debug.Log("Swipe Up-Left");
+            Debug.Log("Swipe Up-Right");
+            dir = Dir.UpRight;
         }
+        PlayAnimation(dir);
+    }
+
+    private void PlayAnimation(Dir dir)
+    {
+        _playerManager.playerAnimatorManager.PlayDirAttackAnimation(dir);
     }
 }
