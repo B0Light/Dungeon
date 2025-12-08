@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class AICharacterPatrolManager : MonoBehaviour
 {
-    private List<Vector2Int> _patrolGridInfo;
     private readonly List<Vector3> _patrolPointListWorldPosition = new List<Vector3>();
     private int _curPatrolPointIndex = 0;
     [HideInInspector] public Vector3 cellSize = Vector3.one;
@@ -18,7 +17,6 @@ public class AICharacterPatrolManager : MonoBehaviour
     
     public void SetPatrolPoint(List<Vector2Int> patrolPointList)
     {
-        _patrolGridInfo = new List<Vector2Int>(patrolPointList);
         foreach (var gridPos in patrolPointList)
         {
             _patrolPointListWorldPosition.Add(GetWorldPositionByGrid(gridPos));
@@ -114,6 +112,8 @@ public class AICharacterPatrolManager : MonoBehaviour
 
     public void RenewPatrolPoint(Vector3 targetPosition)
     {
+        Debug.Log("patrol Index : " + _curPatrolPointIndex);
+        if(_curPatrolPointIndex < 0 || _patrolPointListWorldPosition.Count >= _curPatrolPointIndex) return;
         _patrolPointListWorldPosition[_curPatrolPointIndex] = targetPosition;
     }
     

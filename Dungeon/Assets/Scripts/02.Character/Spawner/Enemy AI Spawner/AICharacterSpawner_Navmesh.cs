@@ -25,7 +25,17 @@ public class AICharacterSpawner_Navmesh : MonoBehaviour
         return new Vector2Int(gridX, gridY);
     }
     
-    public void SpawnUnit(List<Vector2Int> patrolPointList)
+    public void SpawnUnitWithPatrol(List<Vector2Int> patrolPointList)
+    {
+        var unit = SpawnUnit();
+        AICharacterPatrolManager patrolManager = unit.GetComponent<AICharacterPatrolManager>();
+        patrolManager.cellSize = cellSize;
+        patrolManager.gridOffset = mapOffset;
+        patrolManager.SetPatrolPoint(patrolPointList);
+    }
+    
+    [ContextMenu("Spawn Unit")]
+    public GameObject SpawnUnit()
     {
         GameObject unit = Instantiate(spawnPrefab.characterPrefab, transform);
         unit.transform.SetParent(null);
@@ -46,10 +56,6 @@ public class AICharacterSpawner_Navmesh : MonoBehaviour
             AISpawnManager.Instance.AddCharacterToSpawnedCharactersList(characterManager);
         }
 
-        AICharacterPatrolManager patrolManager = unit.GetComponent<AICharacterPatrolManager>();
-        
-        patrolManager.cellSize = cellSize;
-        patrolManager.gridOffset = mapOffset;
-        patrolManager.SetPatrolPoint(patrolPointList);
+        return unit;
     }
 }

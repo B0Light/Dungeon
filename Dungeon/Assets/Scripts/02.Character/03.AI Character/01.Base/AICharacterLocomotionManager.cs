@@ -410,7 +410,7 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
         if (!IsSafeToOperate() || !isAIInitialized) return;
         
         // 죽었거나 움직일 수 없는 상태
-        if (aiCharacterManager.isDead.Value || !canMove)
+        if (aiCharacterManager.isDead.Value || !canMove || !canLocomotion)
         {
             StopNavigation();
             return;
@@ -553,17 +553,17 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
     public float RemainingDistance => IsNavMeshAgentSafe() ? navAgent.remainingDistance : 0f;
     
     // 외부에서 이동 제어
-    public void SetCanMove(bool canMove)
+    public void SetCanMove(bool value)
     {
-        this.canMove = canMove;
+        canMove = value;
         
-        if (!canMove)
+        if (!value)
         {
             StopNavigation();
         }
         
         if (showDebugInfo)
-            Debug.Log($"[AI Locomotion] CanMove set to: {canMove}");
+            Debug.Log($"[AI Locomotion] CanMove set to: {value}");
     }
     
     #endregion

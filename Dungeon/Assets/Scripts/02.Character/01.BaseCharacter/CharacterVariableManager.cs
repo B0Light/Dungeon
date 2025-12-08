@@ -126,6 +126,7 @@ public class CharacterVariableManager : MonoBehaviour
         
         character.characterVariableManager.groggy.Value =
             character.characterVariableManager.groggy.MaxValue;
+        character.isGroggy.Value = false;
         character.animator.SetTrigger(_groggyHash);
     }
 }

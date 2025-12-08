@@ -7,6 +7,7 @@ public class CharacterManager : MonoBehaviour, IDamageable
     [Header("Status")]
     public Variable<bool> isDead = new Variable<bool>(false);
     public Variable<bool> isGroggy = new Variable<bool>(false);
+    public Variable<bool> isBattle = new Variable<bool>(false);
 
     // 컴포넌트 레퍼런스
     [HideInInspector] public Animator animator;
@@ -28,7 +29,7 @@ public class CharacterManager : MonoBehaviour, IDamageable
     public WorldUtilityManager.CharacterGroup characterGroup;
 
     [HideInInspector] public bool isPerformingAction = false;
-    [HideInInspector] public float attackRange = 3f;
+    [HideInInspector] public float attackRange = 5f;
 
     public CharacterManager CurrentTarget { get; private set; }
 
@@ -95,7 +96,9 @@ public class CharacterManager : MonoBehaviour, IDamageable
     
     private void SubscribeToEvents()
     {
+        isBattle.OnValueChanged += OnCharacterBattle;
         isDead.OnValueChanged += OnCharacterDeath;
+        
         characterVariableManager.health.OnDepleted += characterVariableManager.DeathProcess;
         characterVariableManager.groggy.OnDepleted += characterVariableManager.OnGroggy;
         characterVariableManager.isBlock.OnValueChanged += characterVariableManager.OnBlocking;
@@ -105,7 +108,9 @@ public class CharacterManager : MonoBehaviour, IDamageable
     
     private void UnsubscribeFromEvents()
     {
+        isBattle.OnValueChanged -= OnCharacterBattle;
         isDead.OnValueChanged -= OnCharacterDeath;
+        
         characterVariableManager.health.OnDepleted -= characterVariableManager.DeathProcess;
         characterVariableManager.groggy.OnDepleted -= characterVariableManager.OnGroggy;
         characterVariableManager.isBlock.OnValueChanged -= characterVariableManager.OnBlocking;
@@ -123,10 +128,15 @@ public class CharacterManager : MonoBehaviour, IDamageable
         characterVariableManager.position.Value = transform.position;
         characterVariableManager.rotation.Value = transform.rotation;
     }
+
+    private void OnCharacterBattle(bool value)
+    {
+        characterLocomotionManager.canLocomotion = !value;
+    }
     
     private void OnCharacterDeath(bool value)
     {
-        if (isDead.Value)
+        if (value)
         {
             StartCoroutine(ProcessDeathEvent());
         }
@@ -152,6 +162,7 @@ public class CharacterManager : MonoBehaviour, IDamageable
 
     public void SetTarget(CharacterManager newTarget)
     {
+        if(newTarget.isBattle.Value) return;
         CurrentTarget = newTarget;
     }
 

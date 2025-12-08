@@ -4,8 +4,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 {
     private PlayerManager _playerManager;
     
-    
-
     private bool _canDoubleJump = false;
     private bool _canJumpLocomotion = false;
     private bool _canJumpCrouch = false;
@@ -247,6 +245,8 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     protected override void Move()
     {
+        if(!canLocomotion) return;
+        
         float moveCoefficient = canMove ? 1 : 0;
         Vector3 moveValue = Time.unscaledDeltaTime * moveCoefficient * CLVM.velocity;
         _playerManager.characterController.Move(moveValue);

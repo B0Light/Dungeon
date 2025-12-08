@@ -52,7 +52,7 @@ public class AISpawnManager : MonoBehaviour
         foreach (var spawner in _aiCharacterSpawners_Navmesh)
         {
             yield return new WaitForEndOfFrame();
-            spawner.SpawnUnit(SetPatrolRoute(GetCurRoomIndex(spawner.Init())));
+            spawner.SpawnUnitWithPatrol(SetPatrolRoute(GetCurRoomIndex(spawner.Init())));
         }
     }
     

@@ -2315,7 +2315,7 @@ MonoBehaviour:
   meshTrail: {fileID: 0}
   characterGroup: 1
   isPerformingAction: 0
-  detectionRange: 0
+  attackRange: 3
   lockOnPosition: {x: 0, y: 0, z: 0}
   characterID: 0
   characterName: A.I.
@@ -2915,7 +2915,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.8
-  m_BaseOffset: 0
+  m_BaseOffset: 0.085
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &6148233616924076375

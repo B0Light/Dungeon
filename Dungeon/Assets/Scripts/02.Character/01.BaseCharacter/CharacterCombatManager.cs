@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 
@@ -34,11 +35,15 @@ public class CharacterCombatManager : MonoBehaviour
     public BaseAttackAction_Heavy heavyAttackAction;
     public BaseAttackAction_Skill skillAction;
     public BlockAction blockAction;
+    
+    private const float ChallengeDistance = 2.0f;
 
     protected virtual void Awake()
     {
         character = GetComponent<CharacterManager>();
     }
+    
+    
     
     #region public Method
     
@@ -64,6 +69,28 @@ public class CharacterCombatManager : MonoBehaviour
     {
         currentTarget = source;
     }
+    
+    public void ChallengeTarget()
+    {
+        CharacterManager target = character.CurrentTarget;
+        if(target == null) return;
+        target.transform.LookAt(transform);
+        Vector3 targetForward = target.transform.forward;
+        Vector3 desiredPosition = target.transform.position + targetForward * ChallengeDistance;
+        desiredPosition.y = target.transform.position.y;
+        StartCoroutine(SetBattlePosition(desiredPosition));
+    }
+
+    private IEnumerator SetBattlePosition(Vector3 desiredPosition)
+    {
+        yield return new WaitForEndOfFrame();
+        transform.position = desiredPosition;
+
+        character.isBattle.Value = true;
+        character.CurrentTarget.isBattle.Value = true;
+        Debug.Log("On Battle");
+    }
+    
     public void EnableIsInvulnerable()
     {
         character.characterVariableManager.isInvulnerable.Value = true;

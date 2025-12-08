@@ -77,6 +77,7 @@ public class CharacterLocomotionManager : MonoBehaviour
         Crouch,
         DoubleJump,
         Dead,
+        Battle,
     }
     
     protected const float _ANIMATION_DAMP_TIME = 5f;
@@ -91,6 +92,7 @@ public class CharacterLocomotionManager : MonoBehaviour
 
     public bool canMove = true;
     public bool canRotate = true;
+    public bool canLocomotion = true;
     
     protected CharacterLocomotionVariableManager CLVM => characterManager.characterVariableManager.CLVM;
 
