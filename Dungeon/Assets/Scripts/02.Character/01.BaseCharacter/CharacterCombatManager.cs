@@ -78,14 +78,10 @@ public class CharacterCombatManager : MonoBehaviour
         Vector3 targetForward = target.transform.forward;
         Vector3 desiredPosition = target.transform.position + targetForward * ChallengeDistance;
         desiredPosition.y = target.transform.position.y;
-        StartCoroutine(SetBattlePosition(desiredPosition));
-    }
-
-    private IEnumerator SetBattlePosition(Vector3 desiredPosition)
-    {
-        yield return new WaitForEndOfFrame();
         transform.position = desiredPosition;
-
+        character.characterVariableManager.CLVM.isCrouching = false;
+        target.characterVariableManager.CLVM.isCrouching = false;
+        target.characterLocomotionManager.StopLocomotion();
         character.isBattle.Value = true;
         character.CurrentTarget.isBattle.Value = true;
         Debug.Log("On Battle");

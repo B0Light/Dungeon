@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,30 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
 {
     private PlayerManager _playerManager;
     private readonly HashSet<IInputHandler> _activeHandlers = new HashSet<IInputHandler>();
+    private InputMode _lastInputMode = InputMode.Exit;
+    private InputMode _curInputMode;
+    [SerializeField] private InputHandler_Locomotion movementHandler;
+    [SerializeField] private InputHandler_CombatSwipe combatHandler;
+    [SerializeField] private InputHandler_UI uiHandler;
+    
+    public interface IInputHandler
+    {
+        void SetPlayer(PlayerManager playerManager);
+        void EnableInput();
+        void DisableInput();
+        void Register();
+        void Unregister();
+    }
+
+    private void Start()
+    {
+        movementHandler.Register();
+        movementHandler.DisableInput();
+        combatHandler.Register();
+        combatHandler.DisableInput();
+        uiHandler.Register();
+        uiHandler.DisableInput();
+    }
     
     public void SetPlayer(PlayerManager playerManager)
     {
@@ -17,14 +42,26 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
             handler.SetPlayer(_playerManager);
         }
     }
-    
-    public interface IInputHandler
+
+    private void EnableHandler(IInputHandler handler)
     {
-        void SetPlayer(PlayerManager playerManager);
-        void EnableInput();
-        void DisableInput();
+        if(handler == null) return;
+        if (_activeHandlers.Add(handler))
+        {
+            handler.EnableInput();
+            handler.SetPlayer(_playerManager);
+        }
     }
-    
+
+    private void DisableHandler(IInputHandler handler)
+    {
+        if (handler == null) return;
+        if (_activeHandlers.Remove(handler))
+        {
+            handler.DisableInput();
+        }
+    }
+
     public void RegisterAndEnableHandler(IInputHandler handler)
     {
         if(handler == null) return;
@@ -32,7 +69,6 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
         {
             handler.EnableInput();
             handler.SetPlayer(_playerManager);
-            //Debug.Log($"Input Handler Registered and Enabled: {handler.GetType().Name}");
         }
     }
     
@@ -42,36 +78,39 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
         if (_activeHandlers.Remove(handler))
         {
             handler.DisableInput();
-            //Debug.Log($"Input Handler Unregistered and Disabled: {handler.GetType().Name}");
         }
+    }
+
+    public void SetLastInputMode()
+    {
+        SetInputMode(_lastInputMode);
     }
     
     public void SetInputMode(InputMode mode)
     {
-        var movementHandler = FindAnyObjectByType<InputHandler_Locomotion>();
-        var combatHandler = FindAnyObjectByType<InputHandler_CombatSwipe>();
-        var uiHandler = FindAnyObjectByType<InputHandler_UI>();
-
+        Debug.Log($"Input Mode : {mode}");
+        _lastInputMode = _curInputMode;
+        _curInputMode = mode;
         switch (mode)
         {
             case InputMode.Exploration:
                 SetControlActive(true);
-                RegisterAndEnableHandler(movementHandler); 
-                RegisterAndEnableHandler(combatHandler); 
-                RegisterAndEnableHandler(uiHandler);
+                EnableHandler(movementHandler); 
+                DisableHandler(combatHandler); 
+                EnableHandler(uiHandler);
                 break;
             case InputMode.Combat:
                 SetControlActive(false);
-                UnregisterAndDisableHandler(movementHandler); 
-                RegisterAndEnableHandler(combatHandler); 
-                RegisterAndEnableHandler(uiHandler);
+                DisableHandler(movementHandler); 
+                EnableHandler(combatHandler); 
+                EnableHandler(uiHandler);
                 break;
             case InputMode.OpenUI:
                 SetControlActive(false);
                 ResetLocomotion();
-                UnregisterAndDisableHandler(movementHandler); 
-                UnregisterAndDisableHandler(combatHandler); 
-                RegisterAndEnableHandler(uiHandler);
+                DisableHandler(movementHandler); 
+                DisableHandler(combatHandler); 
+                EnableHandler(uiHandler);
                 break;
             case InputMode.Exit:
                 SetControlActive(false);

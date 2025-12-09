@@ -10,18 +10,15 @@ public class InputHandler_Combat : MonoBehaviour, InputHandlerManager.IInputHand
     {
         _playerControls = new PlayerControls();
     }
-
-    private void Start()
-    {
-        InputHandlerManager.Instance.RegisterAndEnableHandler(this);
-    }
+    
     public void SetPlayer(PlayerManager playerManager)
     {
         _playerManager = playerManager;
     }
     
-    public void EnableInput()
+    public void Register()
     {
+        
         _playerControls.PlayerCombat.Enable();
         _playerControls.PlayerCombat.LightAttack.performed += OnLightAttack;
         _playerControls.PlayerCombat.HeavyAttack.performed += OnHeavyAttack;
@@ -32,6 +29,26 @@ public class InputHandler_Combat : MonoBehaviour, InputHandlerManager.IInputHand
         _playerControls.PlayerCombat.Block.performed += OnBlock;
         _playerControls.PlayerCombat.Block.canceled += CloseBlock;
         _playerControls.PlayerCombat.Skill.performed += OnSkill;
+    }
+
+    public void Unregister()
+    {
+        
+        _playerControls.PlayerCombat.LightAttack.performed -= OnLightAttack;
+        _playerControls.PlayerCombat.HeavyAttack.performed -= OnHeavyAttack;
+        _playerControls.PlayerCombat.ChargeAttack.performed -= OnChargeAttack;
+        _playerControls.PlayerCombat.ChargeAttack.canceled -= CloseChargeAttack;
+
+        _playerControls.PlayerCombat.Parry.performed -= OnParry;
+        _playerControls.PlayerCombat.Block.performed -= OnBlock;
+        _playerControls.PlayerCombat.Block.canceled -= CloseBlock;
+        _playerControls.PlayerCombat.Skill.performed -= OnSkill;
+        _playerControls.PlayerCombat.Disable();
+    }
+    
+    public void EnableInput()
+    {
+        _playerControls.PlayerCombat.Enable();
     }
 
     public void DisableInput()

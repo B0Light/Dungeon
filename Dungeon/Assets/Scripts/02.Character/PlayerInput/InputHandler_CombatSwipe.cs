@@ -22,30 +22,39 @@ public class InputHandler_CombatSwipe : MonoBehaviour, InputHandlerManager.IInpu
         _playerControls = new PlayerControls();
     }
 
-    private void Start()
-    {
-        InputHandlerManager.Instance.RegisterAndEnableHandler(this);
-    }
     public void SetPlayer(PlayerManager playerManager)
     {
         _playerManager = playerManager;
     }
     
-    public void EnableInput()
+    public void Register()
     {
+        Debug.Log("[Register] InputHandler_Combat");
         _playerControls.Combat_Touch.Enable();
         _playerControls.Combat_Touch.Touch.started += OnTouchStart;
         _playerControls.Combat_Touch.Touch.canceled += OnTouchEnd;
         _playerControls.Combat_Touch.Position.performed += OnTouchMove;
-
     }
 
-    public void DisableInput()
+    public void Unregister()
     {
+        Debug.Log("[Unregister] InputHandler_Combat");
         _playerControls.Combat_Touch.Disable();
         _playerControls.Combat_Touch.Touch.started -= OnTouchStart;
         _playerControls.Combat_Touch.Touch.canceled -= OnTouchEnd;
         _playerControls.Combat_Touch.Position.performed -= OnTouchMove;
+    }
+    
+    public void EnableInput()
+    {
+        Debug.Log("[Enable] InputHandler_Combat");
+        _playerControls.Combat_Touch.Enable();
+    }
+
+    public void DisableInput()
+    {
+        Debug.Log("[Disable] InputHandler_Combat");
+        _playerControls.Combat_Touch.Disable();
     }
     
     private void OnTouchStart(InputAction.CallbackContext context)

@@ -109,6 +109,16 @@ public class CharacterLocomotionManager : MonoBehaviour
         canMove = true;
         SwitchState(AnimationState.Locomotion);
     }
+
+    public void StopLocomotion()
+    {
+        CLVM.movementInputHeld = false;
+        CLVM.movementInputPressed = false;
+        CLVM.movementInputTapped = false;
+        CLVM.velocity = Vector3.zero;
+        canMove = false;
+        canRotate = false;
+    }
     
     #region Walking State
 

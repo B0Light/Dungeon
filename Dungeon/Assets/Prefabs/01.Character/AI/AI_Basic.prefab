@@ -2301,6 +2301,8 @@ MonoBehaviour:
     _value: 0
   isGroggy:
     _value: 0
+  isBattle:
+    _value: 0
   animator: {fileID: 0}
   characterCollider: {fileID: 0}
   characterVariableManager: {fileID: 0}
@@ -2397,6 +2399,7 @@ MonoBehaviour:
   _targetMaxSpeed: 0
   canMove: 1
   canRotate: 1
+  canLocomotion: 1
   isHumanoid: 1
   destinationChangeThreshold: 1
   maxNavMeshSearchDistance: 50
@@ -2416,9 +2419,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alwaysStrafe: 0
-  walkSpeed: 2
+  walkSpeed: 3
   runSpeed: 4
-  sprintSpeed: 6
+  sprintSpeed: 5
   speedChangeDamping: 10
   rotationSmoothing: 10
   shuffleDirectionX: 0

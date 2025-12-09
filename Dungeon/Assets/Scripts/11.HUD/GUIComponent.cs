@@ -18,7 +18,7 @@ public class GUIComponent : MonoBehaviour
 
     public virtual void CloseGUI()
     {
-        InputHandlerManager.Instance.SetInputMode(InputMode.Exploration);
+        InputHandlerManager.Instance.SetLastInputMode();
         ToggleGUI(false);
     }
 

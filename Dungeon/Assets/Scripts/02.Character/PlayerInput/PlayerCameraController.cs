@@ -8,12 +8,15 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     private bool _enableOcclusion = false;
     [HideInInspector] public PlayerManager playerManager;
     [SerializeField] private Camera mainCamera;
+    private readonly Vector3 _battleCamPosOffset = new Vector3(0, 2.5f, -3.3f);
+    private readonly Vector3 _battleCamRotOffset = new Vector3(20, 0, 0);
 
     private Transform _playerTarget;
     
     [Header("Cinemachine Cameras")]
     [SerializeField] private CinemachineCamera vCam; 
     [SerializeField] private CinemachineInputAxisController cameraController;
+    [SerializeField] private CinemachineCamera battleCam;
 
     [Header("Occlusion Settings")] 
     [SerializeField] private bool hideOption = true;
@@ -234,5 +237,17 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
             }
         }
         _occludedRenderers.Clear();
+    }
+
+    public void ToggleBattleCam(bool value)
+    {
+        battleCam.gameObject.SetActive(value);
+        
+        if(!value) return;
+        battleCam.transform.LookAt(transform);
+        Vector3 targetForward = playerManager.transform.forward;
+        Vector3 desiredPosition = playerManager.transform.position + _battleCamPosOffset;
+        battleCam.transform.position = desiredPosition;
+        battleCam.transform.rotation = Quaternion.Euler(targetForward + _battleCamRotOffset);
     }
 }

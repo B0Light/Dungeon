@@ -20,19 +20,14 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         _playerControls = new PlayerControls();
     }
 
-    private void Start()
-    {
-        InputHandlerManager.Instance.RegisterAndEnableHandler(this);
-    }
-
     public void SetPlayer(PlayerManager playerManager)
     {
         _playerManager = playerManager;
     }
     
-    public void EnableInput()
+    public void Register()
     {
-        // Locomotion
+        Debug.Log("[Register] InputHandler_Locomotion");
         _playerControls.PlayerLocomotion.Enable();
         _playerControls.PlayerLocomotion.Move.started += OnMoveStarted;
         _playerControls.PlayerLocomotion.Move.performed += OnMovePerformed;
@@ -49,8 +44,9 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         _playerControls.PlayerActions.Roll.performed += OnRollPerformed;
     }
 
-    public void DisableInput()
+    public void Unregister()
     {
+        Debug.Log("[Unregister] InputHandler_Locomotion");
         _playerControls.PlayerLocomotion.Move.started -= OnMoveStarted;
         _playerControls.PlayerLocomotion.Move.performed -= OnMovePerformed;
         _playerControls.PlayerLocomotion.Move.canceled -= OnMoveCanceled;
@@ -64,6 +60,20 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         _playerControls.PlayerActions.Interact.performed -= OnInteractPerformed;
         _playerControls.PlayerActions.Roll.performed -= OnRollPerformed;
         
+        _playerControls.PlayerLocomotion.Disable();
+        _playerControls.PlayerActions.Disable();
+    }
+    
+    public void EnableInput()
+    {
+        Debug.Log("[Enable] InputHandler_Locomotion");
+        _playerControls.PlayerLocomotion.Enable();
+        _playerControls.PlayerActions.Enable();
+    }
+
+    public void DisableInput()
+    {
+        Debug.Log("[Disable] InputHandler_Locomotion");
         _playerControls.PlayerLocomotion.Disable();
         _playerControls.PlayerActions.Disable();
     }

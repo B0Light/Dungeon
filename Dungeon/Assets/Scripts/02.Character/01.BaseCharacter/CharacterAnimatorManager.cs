@@ -76,7 +76,7 @@ public class CharacterAnimatorManager : MonoBehaviour
         characterManager.isPerformingAction = isPerformingAction;
         characterManager.characterLocomotionManager.canRotate = canRotate;
         characterManager.characterLocomotionManager.canMove = canMove;
-        characterManager.animator.CrossFade(targetAnimation, 0.2f);
+        characterManager.animator.CrossFade(targetAnimation, 0f);
     }
     
     public void PlayTargetAttackActionAnimation(

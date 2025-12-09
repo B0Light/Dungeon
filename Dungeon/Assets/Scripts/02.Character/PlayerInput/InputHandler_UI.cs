@@ -10,26 +10,19 @@ public class InputHandler_UI : MonoBehaviour, InputHandlerManager.IInputHandler
     {
         _playerControls = new PlayerControls();
     }
-
-    private void Start()
-    {
-        InputHandlerManager.Instance.RegisterAndEnableHandler(this);
-    }
     
     public void SetPlayer(PlayerManager playerManager)
     {
         _playerManager = playerManager;
     }
-
-    public void EnableInput()
+    public void Register()
     {
+        Debug.Log("[Register] InputHandler_UI");
         _playerControls.PlayerInventory.Enable();
         _playerControls.PlayerInventory.ToggleInventory.performed += OnToggleInventoryPerformed;
         _playerControls.PlayerInventory.SwitchLQuickSlot.performed += OnSwitchLQuickSlotPerformed;
         _playerControls.PlayerInventory.SwitchRQuickSlot.performed += OnSwitchRQuickSlotPerformed;
         _playerControls.PlayerInventory.UseQuickSlotItem.performed += OnUseQuickSlotPerformed;
-            
-        // Menu Actions
         _playerControls.UI.Enable();
         _playerControls.UI.ToggleOption.performed += OnEscapePerformed;
         _playerControls.UI.NextGUI.performed += OnNextGUIPerformed;
@@ -40,7 +33,7 @@ public class InputHandler_UI : MonoBehaviour, InputHandlerManager.IInputHandler
         _playerControls.UI.Rotate.performed += OnGUIRotatePerformed;
     }
 
-    public void DisableInput()
+    public void Unregister()
     {
         _playerControls.PlayerInventory.ToggleInventory.performed -= OnToggleInventoryPerformed;
         _playerControls.PlayerInventory.SwitchLQuickSlot.performed -= OnSwitchLQuickSlotPerformed;
@@ -55,6 +48,21 @@ public class InputHandler_UI : MonoBehaviour, InputHandlerManager.IInputHandler
         _playerControls.UI.RightClick.performed -= OnGUIRightClickPerformed;
         _playerControls.UI.Rotate.performed -= OnGUIRotatePerformed;
         
+        _playerControls.PlayerInventory.Disable();
+        _playerControls.UI.Disable();
+    }
+    
+
+    public void EnableInput()
+    {
+        Debug.Log("[Enable] InputHandler_UI");
+        _playerControls.PlayerInventory.Enable();
+        _playerControls.UI.Enable();
+    }
+
+    public void DisableInput()
+    {
+        Debug.Log("[Disable] InputHandler_UI");
         _playerControls.PlayerInventory.Disable();
         _playerControls.UI.Disable();
     }

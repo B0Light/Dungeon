@@ -132,6 +132,9 @@ public class CharacterManager : MonoBehaviour, IDamageable
     private void OnCharacterBattle(bool value)
     {
         characterLocomotionManager.canLocomotion = !value;
+        PlayerCameraController.Instance.ToggleBattleCam(value);
+        InputHandlerManager.Instance.SetInputMode(value ? InputMode.Combat : InputMode.Exploration);
+        GUIController.Instance.CloseGUI();
     }
     
     private void OnCharacterDeath(bool value)
@@ -162,7 +165,7 @@ public class CharacterManager : MonoBehaviour, IDamageable
 
     public void SetTarget(CharacterManager newTarget)
     {
-        if(newTarget.isBattle.Value) return;
+        if(newTarget == null || newTarget.isBattle.Value) return;
         CurrentTarget = newTarget;
     }
 
