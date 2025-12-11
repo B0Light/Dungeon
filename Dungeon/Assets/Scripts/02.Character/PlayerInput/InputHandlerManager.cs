@@ -7,6 +7,7 @@ public enum InputMode { Exploration, Combat, OpenUI, Exit }
 public class InputHandlerManager : Singleton<InputHandlerManager>
 {
     private PlayerManager _playerManager;
+    private PlayerControls _playerControls;
     private readonly HashSet<IInputHandler> _activeHandlers = new HashSet<IInputHandler>();
     private InputMode _lastInputMode = InputMode.Exit;
     private InputMode _curInputMode;
@@ -17,20 +18,14 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
     public interface IInputHandler
     {
         void SetPlayer(PlayerManager playerManager);
-        void EnableInput();
-        void DisableInput();
-        void Register();
-        void Unregister();
+        void Register(PlayerControls playerControls);
+        void Unregister(PlayerControls playerControls);
     }
 
-    private void Start()
+    protected override void Awake()
     {
-        movementHandler.Register();
-        movementHandler.DisableInput();
-        combatHandler.Register();
-        combatHandler.DisableInput();
-        uiHandler.Register();
-        uiHandler.DisableInput();
+        base.Awake();
+        _playerControls = new PlayerControls();
     }
     
     public void SetPlayer(PlayerManager playerManager)
@@ -43,31 +38,12 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
         }
     }
 
-    private void EnableHandler(IInputHandler handler)
+    private void RegisterAndEnableHandler(IInputHandler handler)
     {
         if(handler == null) return;
         if (_activeHandlers.Add(handler))
         {
-            handler.EnableInput();
-            handler.SetPlayer(_playerManager);
-        }
-    }
-
-    private void DisableHandler(IInputHandler handler)
-    {
-        if (handler == null) return;
-        if (_activeHandlers.Remove(handler))
-        {
-            handler.DisableInput();
-        }
-    }
-
-    public void RegisterAndEnableHandler(IInputHandler handler)
-    {
-        if(handler == null) return;
-        if (_activeHandlers.Add(handler))
-        {
-            handler.EnableInput();
+            handler.Register(_playerControls);
             handler.SetPlayer(_playerManager);
         }
     }
@@ -77,13 +53,14 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
         if(handler == null) return;
         if (_activeHandlers.Remove(handler))
         {
-            handler.DisableInput();
+            handler.Unregister(_playerControls);
         }
     }
 
     public void SetLastInputMode()
     {
         SetInputMode(_lastInputMode);
+        
     }
     
     public void SetInputMode(InputMode mode)
@@ -95,22 +72,22 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
         {
             case InputMode.Exploration:
                 SetControlActive(true);
-                EnableHandler(movementHandler); 
-                DisableHandler(combatHandler); 
-                EnableHandler(uiHandler);
+                RegisterAndEnableHandler(movementHandler); 
+                UnregisterAndDisableHandler(combatHandler); 
+                RegisterAndEnableHandler(uiHandler);
                 break;
             case InputMode.Combat:
                 SetControlActive(false);
-                DisableHandler(movementHandler); 
-                EnableHandler(combatHandler); 
-                EnableHandler(uiHandler);
+                UnregisterAndDisableHandler(movementHandler); 
+                RegisterAndEnableHandler(combatHandler); 
+                RegisterAndEnableHandler(uiHandler);
                 break;
             case InputMode.OpenUI:
                 SetControlActive(false);
                 ResetLocomotion();
-                DisableHandler(movementHandler); 
-                DisableHandler(combatHandler); 
-                EnableHandler(uiHandler);
+                UnregisterAndDisableHandler(movementHandler); 
+                UnregisterAndDisableHandler(combatHandler); 
+                RegisterAndEnableHandler(uiHandler);
                 break;
             case InputMode.Exit:
                 SetControlActive(false);

@@ -4,67 +4,46 @@ using UnityEngine.InputSystem;
 public class InputHandler_UI : MonoBehaviour, InputHandlerManager.IInputHandler
 {
     private PlayerManager _playerManager;
-    private PlayerControls _playerControls;
-    
-    private void Awake()
-    {
-        _playerControls = new PlayerControls();
-    }
     
     public void SetPlayer(PlayerManager playerManager)
     {
         _playerManager = playerManager;
     }
-    public void Register()
+    public void Register(PlayerControls playerControls)
     {
         Debug.Log("[Register] InputHandler_UI");
-        _playerControls.PlayerInventory.Enable();
-        _playerControls.PlayerInventory.ToggleInventory.performed += OnToggleInventoryPerformed;
-        _playerControls.PlayerInventory.SwitchLQuickSlot.performed += OnSwitchLQuickSlotPerformed;
-        _playerControls.PlayerInventory.SwitchRQuickSlot.performed += OnSwitchRQuickSlotPerformed;
-        _playerControls.PlayerInventory.UseQuickSlotItem.performed += OnUseQuickSlotPerformed;
-        _playerControls.UI.Enable();
-        _playerControls.UI.ToggleOption.performed += OnEscapePerformed;
-        _playerControls.UI.NextGUI.performed += OnNextGUIPerformed;
-        _playerControls.UI.OpenMap.performed += OnOpenMapPerformed;
-        _playerControls.UI.Click.performed += OnGUIClickPerformed;
-        _playerControls.UI.DoubleClick.performed += OnGUIDoubleClickPerformed;
-        _playerControls.UI.RightClick.performed += OnGUIRightClickPerformed;
-        _playerControls.UI.Rotate.performed += OnGUIRotatePerformed;
+        playerControls.PlayerInventory.Enable();
+        playerControls.PlayerInventory.ToggleInventory.performed += OnToggleInventoryPerformed;
+        playerControls.PlayerInventory.SwitchLQuickSlot.performed += OnSwitchLQuickSlotPerformed;
+        playerControls.PlayerInventory.SwitchRQuickSlot.performed += OnSwitchRQuickSlotPerformed;
+        playerControls.PlayerInventory.UseQuickSlotItem.performed += OnUseQuickSlotPerformed;
+        playerControls.UI.Enable();
+        playerControls.UI.ToggleOption.performed += OnEscapePerformed;
+        playerControls.UI.NextGUI.performed += OnNextGUIPerformed;
+        playerControls.UI.OpenMap.performed += OnOpenMapPerformed;
+        playerControls.UI.Click.performed += OnGUIClickPerformed;
+        playerControls.UI.DoubleClick.performed += OnGUIDoubleClickPerformed;
+        playerControls.UI.RightClick.performed += OnGUIRightClickPerformed;
+        playerControls.UI.Rotate.performed += OnGUIRotatePerformed;
     }
 
-    public void Unregister()
+    public void Unregister(PlayerControls playerControls)
     {
-        _playerControls.PlayerInventory.ToggleInventory.performed -= OnToggleInventoryPerformed;
-        _playerControls.PlayerInventory.SwitchLQuickSlot.performed -= OnSwitchLQuickSlotPerformed;
-        _playerControls.PlayerInventory.SwitchRQuickSlot.performed -= OnSwitchRQuickSlotPerformed;
-        _playerControls.PlayerInventory.UseQuickSlotItem.performed -= OnUseQuickSlotPerformed;
+        playerControls.PlayerInventory.ToggleInventory.performed -= OnToggleInventoryPerformed;
+        playerControls.PlayerInventory.SwitchLQuickSlot.performed -= OnSwitchLQuickSlotPerformed;
+        playerControls.PlayerInventory.SwitchRQuickSlot.performed -= OnSwitchRQuickSlotPerformed;
+        playerControls.PlayerInventory.UseQuickSlotItem.performed -= OnUseQuickSlotPerformed;
             
-        _playerControls.UI.ToggleOption.performed -= OnEscapePerformed;
-        _playerControls.UI.NextGUI.performed -= OnNextGUIPerformed;
-        _playerControls.UI.OpenMap.performed -= OnOpenMapPerformed;
-        _playerControls.UI.Click.performed -= OnGUIClickPerformed;
-        _playerControls.UI.DoubleClick.performed -= OnGUIDoubleClickPerformed;
-        _playerControls.UI.RightClick.performed -= OnGUIRightClickPerformed;
-        _playerControls.UI.Rotate.performed -= OnGUIRotatePerformed;
+        playerControls.UI.ToggleOption.performed -= OnEscapePerformed;
+        playerControls.UI.NextGUI.performed -= OnNextGUIPerformed;
+        playerControls.UI.OpenMap.performed -= OnOpenMapPerformed;
+        playerControls.UI.Click.performed -= OnGUIClickPerformed;
+        playerControls.UI.DoubleClick.performed -= OnGUIDoubleClickPerformed;
+        playerControls.UI.RightClick.performed -= OnGUIRightClickPerformed;
+        playerControls.UI.Rotate.performed -= OnGUIRotatePerformed;
         
-        _playerControls.PlayerInventory.Disable();
-        _playerControls.UI.Disable();
-    }
-    
-
-    public void EnableInput()
-    {
-        Debug.Log("[Enable] InputHandler_UI");
-        _playerControls.PlayerInventory.Enable();
-        _playerControls.UI.Enable();
-    }
-
-    public void DisableInput()
-    {
-        Debug.Log("[Disable] InputHandler_UI");
-        _playerControls.PlayerInventory.Disable();
-        _playerControls.UI.Disable();
+        playerControls.PlayerInventory.Disable();
+        playerControls.UI.Disable();
     }
     
     private void OnDestroy()

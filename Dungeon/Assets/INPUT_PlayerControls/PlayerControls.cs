@@ -1152,6 +1152,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Dodge"",
+                    ""type"": ""Value"",
+                    ""id"": ""ac7ed913-4f67-450d-9bcd-79ce2fdf0532"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -1198,6 +1207,39 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Position"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""8ff9cb14-4972-47b6-b872-01ce52db8bf8"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dodge"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Negative"",
+                    ""id"": ""25fde20b-fef4-4ec4-915f-7a4964e912ee"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dodge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Positive"",
+                    ""id"": ""18790590-e38a-4293-b818-abf47986aed1"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dodge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -1278,6 +1320,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Combat_Touch = asset.FindActionMap("Combat_Touch", throwIfNotFound: true);
         m_Combat_Touch_Touch = m_Combat_Touch.FindAction("Touch", throwIfNotFound: true);
         m_Combat_Touch_Position = m_Combat_Touch.FindAction("Position", throwIfNotFound: true);
+        m_Combat_Touch_Dodge = m_Combat_Touch.FindAction("Dodge", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -2142,6 +2185,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<ICombat_TouchActions> m_Combat_TouchActionsCallbackInterfaces = new List<ICombat_TouchActions>();
     private readonly InputAction m_Combat_Touch_Touch;
     private readonly InputAction m_Combat_Touch_Position;
+    private readonly InputAction m_Combat_Touch_Dodge;
     /// <summary>
     /// Provides access to input actions defined in input action map "Combat_Touch".
     /// </summary>
@@ -2161,6 +2205,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Combat_Touch/Position".
         /// </summary>
         public InputAction @Position => m_Wrapper.m_Combat_Touch_Position;
+        /// <summary>
+        /// Provides access to the underlying input action "Combat_Touch/Dodge".
+        /// </summary>
+        public InputAction @Dodge => m_Wrapper.m_Combat_Touch_Dodge;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -2193,6 +2241,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Position.started += instance.OnPosition;
             @Position.performed += instance.OnPosition;
             @Position.canceled += instance.OnPosition;
+            @Dodge.started += instance.OnDodge;
+            @Dodge.performed += instance.OnDodge;
+            @Dodge.canceled += instance.OnDodge;
         }
 
         /// <summary>
@@ -2210,6 +2261,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Position.started -= instance.OnPosition;
             @Position.performed -= instance.OnPosition;
             @Position.canceled -= instance.OnPosition;
+            @Dodge.started -= instance.OnDodge;
+            @Dodge.performed -= instance.OnDodge;
+            @Dodge.canceled -= instance.OnDodge;
         }
 
         /// <summary>
@@ -2554,5 +2608,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPosition(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Dodge" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDodge(InputAction.CallbackContext context);
     }
 }

@@ -220,32 +220,10 @@ public class CharacterManager : MonoBehaviour, IDamageable
         }
 
         if(isDead.Value) return;
-        int damageAnimation = GetDirectionalHitAnimation(angleHitFrom, isBlock);
-    
-        if (damageAnimation == -1) return;
-        if (Random.Range(1, 10) >= 1) return;
-    
-        characterAnimatorManager.lastDamageAnimationPlayed = damageAnimation;
-        characterAnimatorManager.PlayTargetActionAnimation(damageAnimation, true);
+        characterAnimatorManager.PlayDirectionalHitAnimation(angleHitFrom, isBlock);
     }
     
-    private int GetDirectionalHitAnimation(float angle, bool isBlock)
-    {
-        // 각도에 따른 피격 방향 결정
-        if ((angle >= 145 && angle <= 180) || (angle >= -180 && angle <= -145))
-            return isBlock ? characterAnimatorManager.blockForward : characterAnimatorManager.hitForward;
-        
-        if (angle >= -45 && angle <= 45) // 뒤에서 떄리는 건 가드 불가 
-            return characterAnimatorManager.hitBackward;
-        
-        if (angle >= -144 && angle <= -46)
-            return isBlock ? characterAnimatorManager.blockLeft : characterAnimatorManager.hitLeft;
-        
-        if (angle >= 46 && angle <= 144)
-            return isBlock ? characterAnimatorManager.blockRight : characterAnimatorManager.hitRight;
-        
-        return -1;
-    }
+    
     
     public float GetPhysicalAbsorption(bool isBlock)
     {

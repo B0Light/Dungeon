@@ -7,7 +7,7 @@ public class InputHandler_CombatSwipe : MonoBehaviour, InputHandlerManager.IInpu
     private PlayerControls _playerControls;
     private Vector2 _startPosition;
     private float _startTime;
-
+    
     [SerializeField] private GameObject swipeTrailPrefab;
     private GameObject _currentSwipeTrail;
     
@@ -17,45 +17,33 @@ public class InputHandler_CombatSwipe : MonoBehaviour, InputHandlerManager.IInpu
     private readonly float _minSwipeDistance = 50f;
     private readonly float _maxSwipeTime = 1f;
     
-    private void Awake()
-    {
-        _playerControls = new PlayerControls();
-    }
-
     public void SetPlayer(PlayerManager playerManager)
     {
         _playerManager = playerManager;
     }
     
-    public void Register()
+    public void Register(PlayerControls playerControls)
     {
         Debug.Log("[Register] InputHandler_Combat");
-        _playerControls.Combat_Touch.Enable();
-        _playerControls.Combat_Touch.Touch.started += OnTouchStart;
-        _playerControls.Combat_Touch.Touch.canceled += OnTouchEnd;
-        _playerControls.Combat_Touch.Position.performed += OnTouchMove;
+        _playerControls = playerControls;
+        playerControls.Combat_Touch.Enable();
+        playerControls.Combat_Touch.Touch.started += OnTouchStart;
+        playerControls.Combat_Touch.Touch.canceled += OnTouchEnd;
+        playerControls.Combat_Touch.Position.performed += OnTouchMove;
+        playerControls.Combat_Touch.Dodge.performed += OnDodge;
     }
 
-    public void Unregister()
+    public void Unregister(PlayerControls playerControls)
     {
         Debug.Log("[Unregister] InputHandler_Combat");
-        _playerControls.Combat_Touch.Disable();
-        _playerControls.Combat_Touch.Touch.started -= OnTouchStart;
-        _playerControls.Combat_Touch.Touch.canceled -= OnTouchEnd;
-        _playerControls.Combat_Touch.Position.performed -= OnTouchMove;
+        _playerControls = null;
+        playerControls.Combat_Touch.Disable();
+        playerControls.Combat_Touch.Touch.started -= OnTouchStart;
+        playerControls.Combat_Touch.Touch.canceled -= OnTouchEnd;
+        playerControls.Combat_Touch.Position.performed -= OnTouchMove;
+        playerControls.Combat_Touch.Dodge.performed -= OnDodge;
     }
     
-    public void EnableInput()
-    {
-        Debug.Log("[Enable] InputHandler_Combat");
-        _playerControls.Combat_Touch.Enable();
-    }
-
-    public void DisableInput()
-    {
-        Debug.Log("[Disable] InputHandler_Combat");
-        _playerControls.Combat_Touch.Disable();
-    }
     
     private void OnTouchStart(InputAction.CallbackContext context)
     {
@@ -74,7 +62,7 @@ public class InputHandler_CombatSwipe : MonoBehaviour, InputHandlerManager.IInpu
         // _isSwiping이 true일 때만 위치 업데이트
         if (_isSwiping && _currentSwipeTrail != null)
         {
-            Vector2 screenPos = _playerControls.Combat_Touch.Position.ReadValue<Vector2>();
+            Vector2 screenPos = context.ReadValue<Vector2>();
             UpdateTrailPosition(screenPos);
         }
     }
@@ -164,6 +152,12 @@ public class InputHandler_CombatSwipe : MonoBehaviour, InputHandlerManager.IInpu
 
     private void PlayAnimation(Dir dir)
     {
-        _playerManager.playerAnimatorManager.PlayDirAttackAnimation(dir);
+        _playerManager.playerCombatManager.Attack(dir);
+    }
+
+    private void OnDodge(InputAction.CallbackContext context)
+    {
+        var dir = context.ReadValue<float>();
+        _playerManager.playerCombatManager.Dodge(dir);
     }
 }

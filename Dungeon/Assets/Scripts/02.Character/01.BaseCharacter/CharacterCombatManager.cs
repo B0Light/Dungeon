@@ -38,36 +38,11 @@ public class CharacterCombatManager : MonoBehaviour
     
     private const float ChallengeDistance = 2.0f;
 
+    private Dir _curDodgeDir;
+
     protected virtual void Awake()
     {
         character = GetComponent<CharacterManager>();
-    }
-    
-    
-    
-    #region public Method
-    
-    public virtual void SetTarget(CharacterManager newTarget)
-    {
-        if(currentTarget == newTarget) return;
-        
-        if(newTarget != null)
-        {
-            currentTarget = newTarget;
-            character.characterVariableManager.CLVM.isSprinting = true;
-            Debug.Log("SET TARGET : " + newTarget.name);
-        }
-        else
-        {
-            currentTarget = null;
-            character.characterVariableManager.CLVM.isSprinting = false;
-            Debug.Log("RESET TARGET");
-        }
-    }
-
-    public void ReactToSound(CharacterManager source)
-    {
-        currentTarget = source;
     }
     
     public void ChallengeTarget()
@@ -86,7 +61,25 @@ public class CharacterCombatManager : MonoBehaviour
         character.CurrentTarget.isBattle.Value = true;
         Debug.Log("On Battle");
     }
+
+    public void Attack(Dir dir)
+    {
+        character.characterAnimatorManager.PlayDirAttackAnimation(dir);
+    }
+
+    public void Dodge(float dir)
+    {
+        // 공격 방향 == 회피방향 : 회피
+        _curDodgeDir = dir > 0 ? Dir.Right : Dir.Left;
+        character.characterAnimatorManager.PlayDodgeAnimation(_curDodgeDir);
+    }
     
+    public void ReactToSound(CharacterManager source)
+    {
+        currentTarget = source;
+    }
+    
+    #region public Animation Method
     public void EnableIsInvulnerable()
     {
         character.characterVariableManager.isInvulnerable.Value = true;

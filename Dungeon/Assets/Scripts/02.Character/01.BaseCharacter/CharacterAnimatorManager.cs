@@ -18,32 +18,32 @@ public class CharacterAnimatorManager : MonoBehaviour
 
     [Header("Flags")]
     public bool applyRootMotion = false;
-    public int lastDamageAnimationPlayed;
     #region Animation Hash
     private readonly int _dead = Animator.StringToHash("Dead");
     // Hit Action
-    public readonly int hitForward  = Animator.StringToHash("hit_Forward_Medium_01");
-    public readonly int hitBackward = Animator.StringToHash("hit_Backward_Medium_01");
-    public readonly int hitLeft     = Animator.StringToHash("hit_Left_Medium_01");
-    public readonly int hitRight    = Animator.StringToHash("hit_Right_Medium_01");
+    private readonly int hitForward  = Animator.StringToHash("hit_Forward_Medium_01");
+    private readonly int hitBackward = Animator.StringToHash("hit_Backward_Medium_01");
+    private readonly int hitLeft     = Animator.StringToHash("hit_Left_Medium_01");
+    private readonly int hitRight    = Animator.StringToHash("hit_Right_Medium_01");
     // Block Action
-    public readonly int blockForward  = Animator.StringToHash("A_Blocking_F_Sword");
-    public readonly int blockLeft     = Animator.StringToHash("A_Blocking_L_Sword");
-    public readonly int blockRight    = Animator.StringToHash("A_Blocking_R_Sword");
+    private readonly int blockForward  = Animator.StringToHash("A_Blocking_F_Sword");
+    private readonly int blockLeft     = Animator.StringToHash("A_Blocking_L_Sword");
+    private readonly int blockRight    = Animator.StringToHash("A_Blocking_R_Sword");
     // AttackAction
-    public readonly int AttackUp = Animator.StringToHash("Attack_Up");
-    public readonly int AttackUpRight = Animator.StringToHash("Attack_Up_Right");
-    public readonly int AttackRight = Animator.StringToHash("Attack_Right");
-    public readonly int AttackDownRight = Animator.StringToHash("Attack_Down_Right");
-    public readonly int AttackDown = Animator.StringToHash("Attack_Down");
-    public readonly int AttackDownLeft = Animator.StringToHash("Attack_Down_Left");
-    public readonly int AttackLeft = Animator.StringToHash("Attack_Left");
-    public readonly int AttackUpLeft = Animator.StringToHash("Attack_Up_Left");
-    
-    
+    private readonly int _attackUp = Animator.StringToHash("Attack_Up");
+    private readonly int _attackUpRight = Animator.StringToHash("Attack_Up_Right");
+    private readonly int _attackRight = Animator.StringToHash("Attack_Right");
+    private readonly int _attackDownRight = Animator.StringToHash("Attack_Down_Right");
+    private readonly int _attackDown = Animator.StringToHash("Attack_Down");
+    private readonly int _attackDownLeft = Animator.StringToHash("Attack_Down_Left");
+    private readonly int _attackLeft = Animator.StringToHash("Attack_Left");
+    private readonly int _attackUpLeft = Animator.StringToHash("Attack_Up_Left");
+
+    private readonly int _dodgeLeft = Animator.StringToHash("Dodge_L");
+    private readonly int _dodgeRight = Animator.StringToHash("Dodge_R");
     
     // ETC
-    public readonly int groggy        = Animator.StringToHash("Groggy");
+    public readonly int groggy = Animator.StringToHash("Groggy");
     public readonly int criticalFrontVictim = Animator.StringToHash("criticalAttack_Front_Victim");
     public readonly int criticalBackVictim  = Animator.StringToHash("criticalAttack_Back_Victim");
     
@@ -97,35 +97,60 @@ public class CharacterAnimatorManager : MonoBehaviour
         switch (dir)
         {
             case Dir.Up:
-                targetAnimation = AttackUp;
+                targetAnimation = _attackUp;
                 break;
             case Dir.UpRight:
-                targetAnimation = AttackUpRight;
+                targetAnimation = _attackUpRight;
                 break;
             case Dir.Right:
-                targetAnimation = AttackRight;
+                targetAnimation = _attackRight;
                 break;
             case Dir.DownRight:
-                targetAnimation = AttackDownRight;
+                targetAnimation = _attackDownRight;
                 break;
             case Dir.Down:
-                targetAnimation = AttackDown;
+                targetAnimation = _attackDown;
                 break;
             case Dir.DownLeft:
-                targetAnimation = AttackDownLeft;
+                targetAnimation = _attackDownLeft;
                 break;
             case Dir.Left:
-                targetAnimation = AttackLeft;
+                targetAnimation = _attackLeft;
                 break;
             case Dir.UpLeft:
-                targetAnimation = AttackUpLeft;
+                targetAnimation = _attackUpLeft;
                 break;
             default:
-                targetAnimation = AttackDown;
+                targetAnimation = _attackDown;
                 break;
             
         }
         PlayTargetAttackActionAnimation(targetAnimation, 0, true, false, false, false);
+    }
+    
+    public void PlayDirectionalHitAnimation(float angle, bool isBlock)
+    {
+        int animationValue = 0;
+        // 각도에 따른 피격 방향 결정
+        if ((angle >= 145 && angle <= 180) || (angle >= -180 && angle <= -145))
+            animationValue =  isBlock ? blockForward : hitForward;
+        
+        if (angle >= -45 && angle <= 45) // 뒤에서 떄리는 건 가드 불가 
+            animationValue =  hitBackward;
+        
+        if (angle >= -144 && angle <= -46)
+            animationValue =  isBlock ? blockLeft : hitLeft;
+        
+        if (angle >= 46 && angle <= 144)
+            animationValue =  isBlock ? blockRight : hitRight;
+
+        PlayTargetActionAnimation(animationValue);
+    }
+
+    public void PlayDodgeAnimation(Dir dir)
+    {
+        var dodgeDir = dir == Dir.Left ? _dodgeLeft : _dodgeRight;
+        PlayTargetActionAnimation(dodgeDir);
     }
     
     public void PlayDeadAnimation()

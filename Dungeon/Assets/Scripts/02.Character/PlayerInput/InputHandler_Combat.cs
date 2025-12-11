@@ -4,56 +4,40 @@ using UnityEngine.InputSystem;
 public class InputHandler_Combat : MonoBehaviour, InputHandlerManager.IInputHandler
 {
     private PlayerManager _playerManager;
-    private PlayerControls _playerControls;
-    
-    private void Awake()
-    {
-        _playerControls = new PlayerControls();
-    }
     
     public void SetPlayer(PlayerManager playerManager)
     {
         _playerManager = playerManager;
     }
     
-    public void Register()
+    public void Register(PlayerControls playerControls)
     {
         
-        _playerControls.PlayerCombat.Enable();
-        _playerControls.PlayerCombat.LightAttack.performed += OnLightAttack;
-        _playerControls.PlayerCombat.HeavyAttack.performed += OnHeavyAttack;
-        _playerControls.PlayerCombat.ChargeAttack.performed += OnChargeAttack;
-        _playerControls.PlayerCombat.ChargeAttack.canceled += CloseChargeAttack;
+        playerControls.PlayerCombat.Enable();
+        playerControls.PlayerCombat.LightAttack.performed += OnLightAttack;
+        playerControls.PlayerCombat.HeavyAttack.performed += OnHeavyAttack;
+        playerControls.PlayerCombat.ChargeAttack.performed += OnChargeAttack;
+        playerControls.PlayerCombat.ChargeAttack.canceled += CloseChargeAttack;
 
-        _playerControls.PlayerCombat.Parry.performed += OnParry;
-        _playerControls.PlayerCombat.Block.performed += OnBlock;
-        _playerControls.PlayerCombat.Block.canceled += CloseBlock;
-        _playerControls.PlayerCombat.Skill.performed += OnSkill;
+        playerControls.PlayerCombat.Parry.performed += OnParry;
+        playerControls.PlayerCombat.Block.performed += OnBlock;
+        playerControls.PlayerCombat.Block.canceled += CloseBlock;
+        playerControls.PlayerCombat.Skill.performed += OnSkill;
     }
 
-    public void Unregister()
+    public void Unregister(PlayerControls playerControls)
     {
         
-        _playerControls.PlayerCombat.LightAttack.performed -= OnLightAttack;
-        _playerControls.PlayerCombat.HeavyAttack.performed -= OnHeavyAttack;
-        _playerControls.PlayerCombat.ChargeAttack.performed -= OnChargeAttack;
-        _playerControls.PlayerCombat.ChargeAttack.canceled -= CloseChargeAttack;
+        playerControls.PlayerCombat.LightAttack.performed -= OnLightAttack;
+        playerControls.PlayerCombat.HeavyAttack.performed -= OnHeavyAttack;
+        playerControls.PlayerCombat.ChargeAttack.performed -= OnChargeAttack;
+        playerControls.PlayerCombat.ChargeAttack.canceled -= CloseChargeAttack;
 
-        _playerControls.PlayerCombat.Parry.performed -= OnParry;
-        _playerControls.PlayerCombat.Block.performed -= OnBlock;
-        _playerControls.PlayerCombat.Block.canceled -= CloseBlock;
-        _playerControls.PlayerCombat.Skill.performed -= OnSkill;
-        _playerControls.PlayerCombat.Disable();
-    }
-    
-    public void EnableInput()
-    {
-        _playerControls.PlayerCombat.Enable();
-    }
-
-    public void DisableInput()
-    {
-        _playerControls.PlayerCombat.Disable();
+        playerControls.PlayerCombat.Parry.performed -= OnParry;
+        playerControls.PlayerCombat.Block.performed -= OnBlock;
+        playerControls.PlayerCombat.Block.canceled -= CloseBlock;
+        playerControls.PlayerCombat.Skill.performed -= OnSkill;
+        playerControls.PlayerCombat.Disable();
     }
     
     private void OnDestroy()

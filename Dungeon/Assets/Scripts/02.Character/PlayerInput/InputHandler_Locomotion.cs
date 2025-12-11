@@ -6,76 +6,53 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
 {
     private PlayerManager _playerManager;
     private CharacterLocomotionVariableManager CLVM => _playerManager.characterVariableManager.CLVM;
-    
-    private PlayerControls _playerControls;
-
-    public float movementInputDuration;
 
     private bool _isSprinting = false;
-    
-    private readonly float _buttonHoldThreshold = 0.05f;
 
-    private void Awake()
-    {
-        _playerControls = new PlayerControls();
-    }
+    private bool _isEnable = false;
 
     public void SetPlayer(PlayerManager playerManager)
     {
         _playerManager = playerManager;
     }
     
-    public void Register()
+    public void Register(PlayerControls playerControls)
     {
         Debug.Log("[Register] InputHandler_Locomotion");
-        _playerControls.PlayerLocomotion.Enable();
-        _playerControls.PlayerLocomotion.Move.started += OnMoveStarted;
-        _playerControls.PlayerLocomotion.Move.performed += OnMovePerformed;
-        _playerControls.PlayerLocomotion.Move.canceled += OnMoveCanceled;
-        _playerControls.PlayerLocomotion.Jump.performed += OnJumpPerformed;
-        _playerControls.PlayerLocomotion.ToggleWalk.performed += OnToggleWalkPerformed;
-        _playerControls.PlayerLocomotion.Sprint.performed += OnSprintPerformed;
-        _playerControls.PlayerLocomotion.Sprint.canceled += OnSprintCanceled;
-        _playerControls.PlayerLocomotion.ToggleCrouch.performed += OnToggleCrouchPerformed;
-        _playerControls.PlayerLocomotion.LockOn.performed += OnLockOnPerformed;
+        playerControls.PlayerLocomotion.Enable();
+        playerControls.PlayerLocomotion.Move.performed += OnMovePerformed;
+        playerControls.PlayerLocomotion.Jump.performed += OnJumpPerformed;
+        playerControls.PlayerLocomotion.ToggleWalk.performed += OnToggleWalkPerformed;
+        playerControls.PlayerLocomotion.Sprint.performed += OnSprintPerformed;
+        playerControls.PlayerLocomotion.Sprint.canceled += OnSprintCanceled;
+        playerControls.PlayerLocomotion.ToggleCrouch.performed += OnToggleCrouchPerformed;
+        playerControls.PlayerLocomotion.LockOn.performed += OnLockOnPerformed;
         
-        _playerControls.PlayerActions.Enable();
-        _playerControls.PlayerActions.Interact.performed += OnInteractPerformed;
-        _playerControls.PlayerActions.Roll.performed += OnRollPerformed;
+        playerControls.PlayerActions.Enable();
+        playerControls.PlayerActions.Interact.performed += OnInteractPerformed;
+        playerControls.PlayerActions.Roll.performed += OnRollPerformed;
+
+        _isEnable = true;
     }
 
-    public void Unregister()
+    public void Unregister(PlayerControls playerControls)
     {
         Debug.Log("[Unregister] InputHandler_Locomotion");
-        _playerControls.PlayerLocomotion.Move.started -= OnMoveStarted;
-        _playerControls.PlayerLocomotion.Move.performed -= OnMovePerformed;
-        _playerControls.PlayerLocomotion.Move.canceled -= OnMoveCanceled;
-        _playerControls.PlayerLocomotion.Jump.performed -= OnJumpPerformed;
-        _playerControls.PlayerLocomotion.ToggleWalk.performed -= OnToggleWalkPerformed;
-        _playerControls.PlayerLocomotion.Sprint.performed -= OnSprintPerformed;
-        _playerControls.PlayerLocomotion.Sprint.canceled -= OnSprintCanceled;
-        _playerControls.PlayerLocomotion.ToggleCrouch.performed -= OnToggleCrouchPerformed;
-        _playerControls.PlayerLocomotion.LockOn.performed -= OnLockOnPerformed;
+        playerControls.PlayerLocomotion.Move.performed -= OnMovePerformed;
+        playerControls.PlayerLocomotion.Jump.performed -= OnJumpPerformed;
+        playerControls.PlayerLocomotion.ToggleWalk.performed -= OnToggleWalkPerformed;
+        playerControls.PlayerLocomotion.Sprint.performed -= OnSprintPerformed;
+        playerControls.PlayerLocomotion.Sprint.canceled -= OnSprintCanceled;
+        playerControls.PlayerLocomotion.ToggleCrouch.performed -= OnToggleCrouchPerformed;
+        playerControls.PlayerLocomotion.LockOn.performed -= OnLockOnPerformed;
 
-        _playerControls.PlayerActions.Interact.performed -= OnInteractPerformed;
-        _playerControls.PlayerActions.Roll.performed -= OnRollPerformed;
+        playerControls.PlayerActions.Interact.performed -= OnInteractPerformed;
+        playerControls.PlayerActions.Roll.performed -= OnRollPerformed;
         
-        _playerControls.PlayerLocomotion.Disable();
-        _playerControls.PlayerActions.Disable();
-    }
-    
-    public void EnableInput()
-    {
-        Debug.Log("[Enable] InputHandler_Locomotion");
-        _playerControls.PlayerLocomotion.Enable();
-        _playerControls.PlayerActions.Enable();
-    }
+        playerControls.PlayerLocomotion.Disable();
+        playerControls.PlayerActions.Disable();
 
-    public void DisableInput()
-    {
-        Debug.Log("[Disable] InputHandler_Locomotion");
-        _playerControls.PlayerLocomotion.Disable();
-        _playerControls.PlayerActions.Disable();
+        _isEnable = false;
     }
     
     private void OnDestroy()
@@ -85,59 +62,31 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
             InputHandlerManager.Instance.UnregisterAndDisableHandler(this);
         }
     }
-
-    private void OnApplicationFocus(bool focus)
-    {
-        if(!enabled) return;
-        
-        if(focus)
-        {
-            _playerControls.Enable();
-        }
-        else
-        {
-            _playerControls.Disable();
-        }
-        
-    }
-
+    
     private void Update()
     {
-        if (_playerControls.PlayerLocomotion.Move.IsInProgress())
+        if (_isEnable)
         {
-            movementInputDuration += Time.deltaTime;
-            
-            CLVM.movementInputTapped = movementInputDuration == 0;
-            CLVM.movementInputPressed = movementInputDuration > 0 && movementInputDuration < _buttonHoldThreshold;
-            CLVM.movementInputHeld = movementInputDuration >= _buttonHoldThreshold;
-
-            Vector3 moveDirection = 
+            CLVM.moveDirection = 
                 (PlayerCameraController.Instance.GetCameraForwardZeroedYNormalized() * CLVM.moveComposite.y) +
                 (PlayerCameraController.Instance.GetCameraRightZeroedYNormalized() * CLVM.moveComposite.x);
-                
-            CLVM.moveDirection = moveDirection;
         }
     }
 
     #region Event CallBack
 
     // Locomotion
-
-    private void OnMoveStarted(InputAction.CallbackContext context)
+    private void OnMovePerformed(InputAction.CallbackContext context)
     {
-        movementInputDuration = 0;
-        CLVM.movementInputTapped = true;
-    }
-    private void OnMovePerformed(InputAction.CallbackContext context) => CLVM.moveComposite = context.ReadValue<Vector2>();
-    
-    private void OnMoveCanceled(InputAction.CallbackContext context)
-    {
-        CLVM.moveComposite = Vector2.zero;
-        movementInputDuration = 0;
-        CLVM.movementInputTapped = false;
-        CLVM.movementInputPressed = false;
-        CLVM.movementInputHeld = false;
-    }
+        CLVM.moveComposite = context.ReadValue<Vector2>();
+        
+        Vector3 moveDirection = 
+            (PlayerCameraController.Instance.GetCameraForwardZeroedYNormalized() * CLVM.moveComposite.y) +
+            (PlayerCameraController.Instance.GetCameraRightZeroedYNormalized() * CLVM.moveComposite.x);
+                
+        CLVM.moveDirection = moveDirection;
+        CLVM.movementInputHeld = moveDirection.magnitude > 0;
+    } 
 
     private void OnJumpPerformed(InputAction.CallbackContext context)
     {
