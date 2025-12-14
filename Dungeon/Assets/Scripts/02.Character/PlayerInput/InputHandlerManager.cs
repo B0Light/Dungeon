@@ -27,7 +27,12 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
         base.Awake();
         _playerControls = new PlayerControls();
     }
-    
+
+    private void OnEnable()
+    {
+        WorldSceneChangeManager.OnSceneEndPhase += () => SetInputMode(InputMode.Exit);
+    }
+
     public void SetPlayer(PlayerManager playerManager)
     {
         _playerManager = playerManager;
@@ -60,12 +65,11 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
     public void SetLastInputMode()
     {
         SetInputMode(_lastInputMode);
-        
     }
     
     public void SetInputMode(InputMode mode)
     {
-        Debug.Log($"Input Mode : {mode}");
+        if(_curInputMode == mode) return;
         _lastInputMode = _curInputMode;
         _curInputMode = mode;
         switch (mode)
