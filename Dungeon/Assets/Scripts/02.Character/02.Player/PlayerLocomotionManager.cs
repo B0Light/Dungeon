@@ -78,56 +78,80 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         CLVM.strafeAngle = characterForward != directionForward ? Vector3.SignedAngle(characterForward, directionForward, Vector3.up) : 0f;
 
         CLVM.isTurningInPlace = false;
-        
-        if (CLVM.moveDirection.magnitude > 0.01)
+
+        if (CLVM.isLockedOn)
         {
-            if (_cameraForward != Vector3.zero)
+            if (CLVM.moveDirection.magnitude > 0.01)
             {
-                CLVM.shuffleDirectionZ = Vector3.Dot(characterForward, directionForward);
-                CLVM.shuffleDirectionX = Vector3.Dot(characterRight, directionForward);
-
-                UpdateStrafeDirection(
-                    Vector3.Dot(characterForward, directionForward),
-                    Vector3.Dot(characterRight, directionForward)
-                );
-                _cameraRotationOffset = Mathf.Lerp(_cameraRotationOffset, 0f, CLVM.rotationSmoothing * Time.unscaledDeltaTime);
-
-                float targetValue = CLVM.strafeAngle > CLVM.forwardStrafeMinThreshold && CLVM.strafeAngle < CLVM.forwardStrafeMaxThreshold ? 1f : 0f;
-
-                if (Mathf.Abs(CLVM.forwardStrafe - targetValue) <= 0.001f)
+                if (_cameraForward != Vector3.zero)
                 {
-                    CLVM.forwardStrafe = targetValue;
+                    CLVM.shuffleDirectionZ = Vector3.Dot(characterForward, directionForward);
+                    CLVM.shuffleDirectionX = Vector3.Dot(characterRight, directionForward);
+
+                    UpdateStrafeDirection(
+                        Vector3.Dot(characterForward, directionForward),
+                        Vector3.Dot(characterRight, directionForward)
+                    );
+                    _cameraRotationOffset = Mathf.Lerp(_cameraRotationOffset, 0f, CLVM.rotationSmoothing * Time.unscaledDeltaTime);
+
+                    float targetValue = CLVM.strafeAngle > CLVM.forwardStrafeMinThreshold && CLVM.strafeAngle < CLVM.forwardStrafeMaxThreshold ? 1f : 0f;
+
+                    if (Mathf.Abs(CLVM.forwardStrafe - targetValue) <= 0.001f)
+                    {
+                        CLVM.forwardStrafe = targetValue;
+                    }
+                    else
+                    {
+                        float t = Mathf.Clamp01(_STRAFE_DIRECTION_DAMP_TIME * Time.unscaledDeltaTime);
+                        CLVM.forwardStrafe = Mathf.SmoothStep(CLVM.forwardStrafe, targetValue, t);
+                    }
                 }
-                else
+
+                transform.rotation = Quaternion.Slerp(transform.rotation, strafingTargetRotation, CLVM.rotationSmoothing * Time.unscaledDeltaTime);
+            }
+            else
+            {
+                UpdateStrafeDirection(1f, 0f);
+
+                float t = 20 * Time.unscaledDeltaTime;
+                float newOffset = 0f;
+
+                if (characterForward != _cameraForward)
                 {
-                    float t = Mathf.Clamp01(_STRAFE_DIRECTION_DAMP_TIME * Time.unscaledDeltaTime);
-                    CLVM.forwardStrafe = Mathf.SmoothStep(CLVM.forwardStrafe, targetValue, t);
+                    newOffset = Vector3.SignedAngle(characterForward, _cameraForward, Vector3.up);
+                }
+
+                _cameraRotationOffset = Mathf.Lerp(_cameraRotationOffset, newOffset, t);
+
+                if (Mathf.Abs(_cameraRotationOffset) > 10)
+                {
+                    CLVM.isTurningInPlace = true;
                 }
             }
-
-            transform.rotation = Quaternion.Slerp(transform.rotation, strafingTargetRotation, CLVM.rotationSmoothing * Time.unscaledDeltaTime);
         }
         else
         {
             UpdateStrafeDirection(1f, 0f);
+            _cameraRotationOffset = Mathf.Lerp(_cameraRotationOffset, 0f, CLVM.rotationSmoothing * Time.unscaledDeltaTime);
 
-            float t = 20 * Time.unscaledDeltaTime;
-            float newOffset = 0f;
+            CLVM.shuffleDirectionZ = 1;
+            CLVM.shuffleDirectionX = 0;
 
-            if (characterForward != _cameraForward)
+            Vector3 faceDirection = new Vector3(CLVM.velocity.x, 0f, CLVM.velocity.z);
+
+            if (faceDirection == Vector3.zero)
             {
-                newOffset = Vector3.SignedAngle(characterForward, _cameraForward, Vector3.up);
+                return;
             }
 
-            _cameraRotationOffset = Mathf.Lerp(_cameraRotationOffset, newOffset, t);
-
-            if (Mathf.Abs(_cameraRotationOffset) > 10)
-            {
-                CLVM.isTurningInPlace = true;
-            }
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                Quaternion.LookRotation(faceDirection),
+                CLVM.rotationSmoothing * Time.unscaledDeltaTime
+            );
         }
-        
     }
+
 
     #region UseController
 

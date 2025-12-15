@@ -155,6 +155,13 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     }
 
     public Vector3 GetPlayerDir => _curDirection.normalized;
+    
+    public Vector3 GetPlayerRightDir()
+    {
+        Vector3 upAxis = Vector3.up;
+        Vector3 rightVector = Vector3.Cross(upAxis, _curDirection.normalized);
+        return rightVector.normalized;
+    }
 
     public void TurnOffCamera()
     {

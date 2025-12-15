@@ -28,6 +28,8 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         playerControls.PlayerLocomotion.Sprint.performed += OnSprintPerformed;
         playerControls.PlayerLocomotion.Sprint.canceled += OnSprintCanceled;
         playerControls.PlayerLocomotion.ToggleCrouch.performed += OnToggleCrouchPerformed;
+        playerControls.PlayerLocomotion.LockOn.performed += OnLockOnPerformed;
+        playerControls.PlayerLocomotion.LockOn.canceled += OnLockOnPerformed;
         
         playerControls.PlayerActions.Enable();
         playerControls.PlayerActions.Interact.performed += OnInteractPerformed;
@@ -47,7 +49,9 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         playerControls.PlayerLocomotion.Sprint.performed -= OnSprintPerformed;
         playerControls.PlayerLocomotion.Sprint.canceled -= OnSprintCanceled;
         playerControls.PlayerLocomotion.ToggleCrouch.performed -= OnToggleCrouchPerformed;
-
+        playerControls.PlayerLocomotion.LockOn.performed -= OnLockOnPerformed;
+        playerControls.PlayerLocomotion.LockOn.canceled -= OnLockOnPerformed;
+        
         playerControls.PlayerActions.Interact.performed -= OnInteractPerformed;
         playerControls.PlayerActions.Roll.performed -= OnRollPerformed;
         
@@ -75,9 +79,20 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
 
     private void UpdateMoveDir()
     {
-        CLVM.moveDirection = 
-            (Vector3.forward * CLVM.moveComposite.y) +
-            (Vector3.right * CLVM.moveComposite.x);
+        Vector3 moveDir;
+        if (CLVM.isLockedOn)
+        {
+            moveDir =
+                (PlayerCameraController.Instance.GetPlayerDir * CLVM.moveComposite.y) +
+                (PlayerCameraController.Instance.GetPlayerRightDir() * CLVM.moveComposite.x);
+        }
+        else
+        {
+            moveDir =
+                (Vector3.forward * CLVM.moveComposite.y) +
+                (Vector3.right * CLVM.moveComposite.x);
+        }
+        CLVM.moveDirection = moveDir;
     }
 
     #region Event CallBack
@@ -85,14 +100,9 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
     // Locomotion
     private void OnMovePerformed(InputAction.CallbackContext context)
     {
-        CLVM.moveComposite = context.ReadValue<Vector2>();
-        
-        Vector3 moveDirection = 
-            (Vector3.forward * CLVM.moveComposite.y) +
-            (Vector3.right * CLVM.moveComposite.x);
-                
-        CLVM.moveDirection = moveDirection;
-        CLVM.movementInputHeld = moveDirection.magnitude > 0;
+        var inputVector = context.ReadValue<Vector2>();
+        CLVM.moveComposite = inputVector;
+        CLVM.movementInputHeld = inputVector.magnitude > 0;
     } 
     
     private void OnLookPerformed(InputAction.CallbackContext context)
@@ -140,6 +150,13 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
             _playerManager.playerLocomotionManager.AttemptToToggleCrouch();
             _isSprinting = false;
         }
+    }
+
+    private void OnLockOnPerformed(InputAction.CallbackContext context)
+    {
+        var isPressed = context.ReadValue<float>();
+        Debug.Log($"isPress : {isPressed}");
+        CLVM.isLockedOn = (isPressed >= 0.5f);
     }
     
     // Player Actions

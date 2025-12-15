@@ -6,7 +6,9 @@ public class PlayerInteractionManager : MonoBehaviour
 {
     private PlayerManager _player;
     
-    private float _rayDistance = 6.5f; // 레이의 최대 거리
+    private float _sphereRadius = 1f;
+    private int _maxColliders = 10;
+    private Collider[] _overlapResults;
     [SerializeField] private LayerMask interactableLayerMask;
     private Interactable _interactable;
     private List<Interactable> currentInteractableActions;
@@ -14,6 +16,7 @@ public class PlayerInteractionManager : MonoBehaviour
     private void Awake()
     {
         _player = GetComponent<PlayerManager>();
+        _overlapResults = new Collider[_maxColliders];
     }
 
     private void Start()
@@ -29,7 +32,7 @@ public class PlayerInteractionManager : MonoBehaviour
         }
         else
         {
-            CastRay();
+            CastOverlapSphere();
             if (GUIController.Instance.currentOpenGUI == null && !GUIController.Instance.popUpWindowIsOpen)
             {
                 CheckForInteractable();
@@ -37,35 +40,41 @@ public class PlayerInteractionManager : MonoBehaviour
         }
     }
     
-    private void CastRay()
+    private void CastOverlapSphere()
     {
-        if(Camera.main == null) return;
-        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)); 
-        RaycastHit hit;
+        int numHits = Physics.OverlapSphereNonAlloc(
+            _player.transform.position,
+            _sphereRadius,
+            _overlapResults,
+            interactableLayerMask
+        );
 
-        Debug.DrawRay(ray.origin, ray.direction * _rayDistance, Color.red);
-        if (Physics.Raycast(ray, out hit, _rayDistance, interactableLayerMask))
+        List<Interactable> detectedInteractables = new List<Interactable>();
+
+        for (int i = 0; i < numHits; i++)
         {
-            _interactable = hit.collider.GetComponentInParent<Interactable>();
-            if (_interactable != null)
+            Collider hitCollider = _overlapResults[i];
+            Interactable interactableObject = hitCollider.GetComponentInParent<Interactable>();
+
+            if (interactableObject != null)
             {
-                AddInteractionToList(_interactable);
-                return;
+                detectedInteractables.Add(interactableObject); 
             }
+        
+            _overlapResults[i] = null; 
         }
-        else
-        {
-            currentInteractableActions.Clear();
-        }
+    
+        currentInteractableActions.Clear();
 
-        if (_interactable != null)
+        foreach (var interactable in detectedInteractables)
         {
-            RemoveInteractionFromList(_interactable);
-            _interactable = null;
+            AddInteractionToList(interactable);
         }
-
-        RefreshInteractionList();
-        GUIController.Instance.playerUIPopUpManager.CloseAllPopUpWindows();
+    
+        if (currentInteractableActions.Count == 0)
+        {
+            GUIController.Instance.playerUIPopUpManager.CloseAllPopUpWindows();
+        }
     }
 
     private void CheckForInteractable()

@@ -45,6 +45,7 @@ public class DungeonManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         // 2단계 : 방 생성 
         GenerateRoom();
+        
         // 3단계 : NavMesh 비동기 빌드
         yield return StartCoroutine(BuildNavMeshAsync());
         // 4단계 : PathFinder 생성

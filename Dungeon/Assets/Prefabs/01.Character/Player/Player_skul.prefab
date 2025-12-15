@@ -2636,7 +2636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d74573df3c6ff04ebf4519f04641c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alwaysStrafe: 1
+  alwaysStrafe: 0
   walkSpeed: 1.4
   runSpeed: 2.5
   sprintSpeed: 6
