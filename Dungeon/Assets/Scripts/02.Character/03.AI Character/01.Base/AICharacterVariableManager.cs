@@ -18,7 +18,6 @@ public class AICharacterVariableManager : CharacterVariableManager
     {
         base.DeathProcess(newValue);
         _aiCharacterManager.aiCharacterDeathInteractable.PerformDeath();
-        _aiCharacterManager.lockOnObject.PerformDeath();
 
         // MapDataManager.Instance.AddKillLog(_aiCharacterManager.characterID);
     }

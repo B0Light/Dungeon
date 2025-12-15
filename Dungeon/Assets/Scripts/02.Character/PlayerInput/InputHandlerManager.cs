@@ -107,8 +107,8 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
         //Debug.Log($"SetControlActive : {isActive}");
         if (isActive)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             
             if(_playerManager != null)
                 _playerManager.playerVariableManager.canControl.Value = true;

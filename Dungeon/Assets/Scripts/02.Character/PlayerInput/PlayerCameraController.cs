@@ -5,7 +5,7 @@ using Unity.Cinemachine;
 
 public class PlayerCameraController : Singleton<PlayerCameraController>
 {
-    private bool _enableOcclusion = false;
+    private bool _enable = false;
     [HideInInspector] public PlayerManager playerManager;
     [SerializeField] private Camera mainCamera;
     private readonly Vector3 _battleCamPosOffset = new Vector3(0, 2.5f, -3.3f);
@@ -15,8 +15,6 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     
     [Header("Cinemachine Cameras")]
     [SerializeField] private CinemachineCamera vCam; 
-    [SerializeField] private CinemachineInputAxisController cameraController;
-    [SerializeField] private CinemachineCamera battleCam;
 
     [Header("Occlusion Settings")] 
     [SerializeField] private bool hideOption = true;
@@ -37,10 +35,15 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     private const int MAX_HITS = 10;
     private RaycastHit[] _raycastHits = new RaycastHit[MAX_HITS];
     
+    // 방향 전환 
+    private Vector2 _mousePositionInput = Vector2.zero;
+    private Vector3 _curDirection;
+    
     public void Update()
     {
-        if(!_enableOcclusion) return;
+        if(!_enable) return;
         HandleOcclusion();
+        UpdateSight();
     }
 
     private void HandleOcclusion()
@@ -103,6 +106,25 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         }
     }
     
+    private void UpdateSight()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(_mousePositionInput);
+		
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero); 
+        if (groundPlane.Raycast(ray, out float distance)) {
+			
+            Vector3 mousePos = ray.GetPoint(distance);
+            Vector3 direction = mousePos - playerManager.transform.position;
+            direction.y = 0;
+            _curDirection = direction;
+            /*
+            Vector3 playerPos = new Vector3(transform.position.x, 0, transform.position.z);
+            fieldOfViewSight.SetAimDirection(mousePos - playerPos);
+            fieldOfViewSight.SetOrigin(playerPos + offset);
+            */
+        }
+    }
+    
     public void SetPlayer(PlayerManager player)
     {
         playerManager = player;
@@ -120,84 +142,19 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         }
         
         TurnOnCamera();
-        _enableOcclusion = true;
+        _enable = true;
         
         // -= 를 먼저 호출하여 중복 구독 방지
         WorldSceneChangeManager.OnSceneEndPhase -= ResetCamOcclusion;
         WorldSceneChangeManager.OnSceneEndPhase += ResetCamOcclusion;
     }
-    
-    public void LockOn(bool enable, Transform newLockOnTarget = null)
+
+    public void SetMousePosition(Vector2 value)
     {
-        var orbitalFollow = vCam.GetComponent<CinemachineOrbitalFollow>();
-        orbitalFollow.RecenteringTarget = CinemachineOrbitalFollow.ReferenceFrames.TrackingTarget;
-        
-        if(playerManager.playerVariableManager.CLVM.isStopped)
-            StartCoroutine(ResetCamCoroutine());
-        else if (enable)
-        {
-            orbitalFollow.HorizontalAxis.Recentering.Wait = 0f;
-            orbitalFollow.HorizontalAxis.Recentering.Time = 0.5f;
-            orbitalFollow.HorizontalAxis.Recentering.Enabled = true;
-            orbitalFollow.VerticalAxis.Recentering.Wait = 0f;
-            orbitalFollow.VerticalAxis.Recentering.Time = 0.5f;
-            orbitalFollow.VerticalAxis.Recentering.Enabled = true;
-            cameraController.enabled = false;
-        }
-        else
-        {
-            orbitalFollow.HorizontalAxis.Recentering.Enabled = false;
-            orbitalFollow.VerticalAxis.Recentering.Enabled = false;
-            cameraController.enabled = true;
-            
-        }
-    }
-    
-    private IEnumerator ResetCamCoroutine()
-    {
-        var orbitalFollow = vCam.GetComponent<CinemachineOrbitalFollow>();
-        orbitalFollow.RecenteringTarget = CinemachineOrbitalFollow.ReferenceFrames.TrackingTarget;
-        
-        orbitalFollow.HorizontalAxis.Recentering.Wait = 0f;
-        orbitalFollow.HorizontalAxis.Recentering.Time = 0.5f;
-        orbitalFollow.HorizontalAxis.Recentering.Enabled = true;
-        orbitalFollow.VerticalAxis.Recentering.Wait = 0f;
-        orbitalFollow.VerticalAxis.Recentering.Time = 0.5f;
-        orbitalFollow.VerticalAxis.Recentering.Enabled = true;
-        cameraController.enabled = false;
-        yield return new WaitForSeconds(1f);
-        orbitalFollow.HorizontalAxis.Recentering.Enabled = false;
-        orbitalFollow.VerticalAxis.Recentering.Enabled = false;
-        cameraController.enabled = true;
-    }
-    
-    
-    public Vector3 GetCameraPosition()
-    {
-        return mainCamera.transform.position;
+        _mousePositionInput = value;
     }
 
-    public Vector3 GetCameraForward()
-    {
-        return mainCamera.transform.forward;
-    }
-
-    public Vector3 GetCameraForwardZeroedYNormalized()
-    {
-        Vector3 forward = new Vector3(mainCamera.transform.forward.x, 0, mainCamera.transform.forward.z);
-        return forward.normalized;
-    }
-    
-    public Vector3 GetCameraRightZeroedYNormalized()
-    {
-        Vector3 right = new Vector3(mainCamera.transform.right.x, 0, mainCamera.transform.right.z);
-        return right.normalized;
-    }
-
-    public float GetCameraTiltX()
-    {
-        return mainCamera.transform.eulerAngles.x;
-    }
+    public Vector3 GetPlayerDir => _curDirection.normalized;
 
     public void TurnOffCamera()
     {
@@ -219,15 +176,9 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         mainCamera.cullingMask = layerBuild;
     }
 
-    public void SetCameraControllerEnable(bool newValue)
-    {
-        if (cameraController != null && cameraController.enabled != newValue)
-            cameraController.enabled = newValue;
-    }
-
     private void ResetCamOcclusion()
     {
-        _enableOcclusion = false;
+        _enable = false;
         // 씬 전환 시 모든 재질 복구
         foreach(var rd in _occludedRenderers.Keys)
         {
@@ -237,17 +188,5 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
             }
         }
         _occludedRenderers.Clear();
-    }
-
-    public void ToggleBattleCam(bool value)
-    {
-        battleCam.gameObject.SetActive(value);
-        
-        if(!value) return;
-        battleCam.transform.LookAt(transform);
-        Vector3 targetForward = playerManager.transform.forward;
-        Vector3 desiredPosition = playerManager.transform.position + _battleCamPosOffset;
-        battleCam.transform.position = desiredPosition;
-        battleCam.transform.rotation = Quaternion.Euler(targetForward + _battleCamRotOffset);
     }
 }

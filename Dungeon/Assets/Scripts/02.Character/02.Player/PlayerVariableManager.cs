@@ -71,11 +71,7 @@ public class PlayerVariableManager : CharacterVariableManager
         }
         
     }
-
-    public void OnControlChange(bool newValue)
-    {
-        PlayerCameraController.Instance.SetCameraControllerEnable(newValue);
-    }
+    
     // isDead = true
     public void OnPlayerDeath(bool newValue)
     {

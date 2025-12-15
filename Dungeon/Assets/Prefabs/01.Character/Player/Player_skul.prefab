@@ -2441,6 +2441,8 @@ MonoBehaviour:
     _value: 0
   isGroggy:
     _value: 0
+  isBattle:
+    _value: 0
   animator: {fileID: 0}
   characterCollider: {fileID: 0}
   characterVariableManager: {fileID: 0}
@@ -2455,8 +2457,7 @@ MonoBehaviour:
   meshTrail: {fileID: 0}
   characterGroup: 0
   isPerformingAction: 0
-  currentTarget: {fileID: 0}
-  detectionRange: 0
+  attackRange: 5
   lockOnPosition: {x: 0, y: 0, z: 0}
   playerAnimatorManager: {fileID: 0}
   playerLocomotionManager: {fileID: 0}
@@ -2601,15 +2602,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   extraDamage:
     _value: 0
-  passivePoise:
-    _value: 10
   basePhysicalAbsorption: 0
   baseMagicalAbsorption: 0
   extraPhysicalAbsorption: 0
   extraMagicalAbsorption: 0
   blockingPhysicalAbsorption: 0
   blockingMagicalAbsorption: 0
-  blockingStability: 0
 --- !u!114 &5850008961258302595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2625,6 +2623,7 @@ MonoBehaviour:
   _targetMaxSpeed: 0
   canMove: 1
   canRotate: 1
+  canLocomotion: 1
 --- !u!114 &7964386575025689121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2637,7 +2636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d74573df3c6ff04ebf4519f04641c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alwaysStrafe: 0
+  alwaysStrafe: 1
   walkSpeed: 1.4
   runSpeed: 2.5
   sprintSpeed: 6
@@ -2857,7 +2856,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   applyRootMotion: 0
-  lastDamageAnimationPlayed: 0
 --- !u!114 &6792154591259707287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2913,7 +2911,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92f6081e726da15489c9fbe5ec0b68dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastInteractable: {fileID: 0}
   interactableLayerMask:
     serializedVersion: 2
     m_Bits: 4096

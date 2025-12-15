@@ -362,7 +362,7 @@ public class CharacterLocomotionManager : MonoBehaviour
 
         CLVM.speed2D = new Vector3(CLVM.velocity.x, 0f, CLVM.velocity.z).magnitude;
         CLVM.speed2D = Mathf.Round(CLVM.speed2D * 1000f) / 1000f;
-        
+
         Vector3 playerForwardVector = transform.forward;
 
         CLVM.newDirectionDifferenceAngle = playerForwardVector != CLVM.moveDirection
@@ -535,12 +535,11 @@ public class CharacterLocomotionManager : MonoBehaviour
 
     #region Lean and Offsets
 
-    protected virtual void CalculateRotationalAdditives(bool leansActivated, bool headLookActivated, bool bodyLookActivated)
+    private void CalculateRotationalAdditives(bool leansActivated, bool headLookActivated, bool bodyLookActivated)
     {
         if (headLookActivated || leansActivated || bodyLookActivated)
         {
-            CLVM.currentRotation = transform.forward;
-
+            CLVM.currentRotation = PlayerCameraController.Instance.GetPlayerDir;
             _rotationRate = CLVM.currentRotation != CLVM.previousRotation
                 ? Vector3.SignedAngle(CLVM.currentRotation, CLVM.previousRotation, Vector3.up) / Time.deltaTime * -1f
                 : 0f;
@@ -599,7 +598,7 @@ public class CharacterLocomotionManager : MonoBehaviour
         CLVM.previousRotation = CLVM.currentRotation;
     }
 
-    protected float CalculateSmoothedValue(
+    private float CalculateSmoothedValue(
         float mainVariable,
         float newValue,
         float maxRateChange,

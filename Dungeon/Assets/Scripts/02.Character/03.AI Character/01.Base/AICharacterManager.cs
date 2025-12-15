@@ -13,7 +13,6 @@ public class AICharacterManager : CharacterManager
     [HideInInspector] public AICharacterPatrolManager aiCharacterPatrolManager;
     [HideInInspector] public AICharacterPursueManager aiCharacterPursueManager;
     [HideInInspector] public AICharacterDeathInteractable aiCharacterDeathInteractable;
-    [HideInInspector] public LockOnObject lockOnObject;
     
     [Header("Navmesh Agent")] 
     public NavMeshAgent navMeshAgent;
@@ -41,7 +40,6 @@ public class AICharacterManager : CharacterManager
         aiCharacterPursueManager = GetComponent<AICharacterPursueManager>();
         
         aiCharacterDeathInteractable = GetComponentInChildren<AICharacterDeathInteractable>();
-        lockOnObject = GetComponentInChildren<LockOnObject>();
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 

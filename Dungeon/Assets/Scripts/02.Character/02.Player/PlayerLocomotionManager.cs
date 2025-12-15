@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 public class PlayerLocomotionManager : CharacterLocomotionManager
 {
@@ -72,159 +71,62 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         Vector3 characterForward = new Vector3(transform.forward.x, 0f, transform.forward.z).normalized;
         Vector3 characterRight = new Vector3(transform.right.x, 0f, transform.right.z).normalized;
         Vector3 directionForward = new Vector3(CLVM.moveDirection.x, 0f, CLVM.moveDirection.z).normalized;
-
-        if (CLVM.isLockedOn && CLVM.currentLockOnTarget)
-        {
-            _cameraForward = (CLVM.currentLockOnTarget.transform.position - this.transform.position).normalized;
-            _cameraForward.y = 0;
-        }
-        else
-        {
-            _cameraForward = PlayerCameraController.Instance.GetCameraForwardZeroedYNormalized();
-        }
+        _cameraForward = PlayerCameraController.Instance.GetPlayerDir;
         
         Quaternion strafingTargetRotation = Quaternion.LookRotation(_cameraForward);
 
         CLVM.strafeAngle = characterForward != directionForward ? Vector3.SignedAngle(characterForward, directionForward, Vector3.up) : 0f;
 
         CLVM.isTurningInPlace = false;
-
-        if (CLVM.isStrafing)
+        
+        if (CLVM.moveDirection.magnitude > 0.01)
         {
-            if (CLVM.moveDirection.magnitude > 0.01)
+            if (_cameraForward != Vector3.zero)
             {
-                if (_cameraForward != Vector3.zero)
+                CLVM.shuffleDirectionZ = Vector3.Dot(characterForward, directionForward);
+                CLVM.shuffleDirectionX = Vector3.Dot(characterRight, directionForward);
+
+                UpdateStrafeDirection(
+                    Vector3.Dot(characterForward, directionForward),
+                    Vector3.Dot(characterRight, directionForward)
+                );
+                _cameraRotationOffset = Mathf.Lerp(_cameraRotationOffset, 0f, CLVM.rotationSmoothing * Time.unscaledDeltaTime);
+
+                float targetValue = CLVM.strafeAngle > CLVM.forwardStrafeMinThreshold && CLVM.strafeAngle < CLVM.forwardStrafeMaxThreshold ? 1f : 0f;
+
+                if (Mathf.Abs(CLVM.forwardStrafe - targetValue) <= 0.001f)
                 {
-                    CLVM.shuffleDirectionZ = Vector3.Dot(characterForward, directionForward);
-                    CLVM.shuffleDirectionX = Vector3.Dot(characterRight, directionForward);
-
-                    UpdateStrafeDirection(
-                        Vector3.Dot(characterForward, directionForward),
-                        Vector3.Dot(characterRight, directionForward)
-                    );
-                    _cameraRotationOffset = Mathf.Lerp(_cameraRotationOffset, 0f, CLVM.rotationSmoothing * Time.unscaledDeltaTime);
-
-                    float targetValue = CLVM.strafeAngle > CLVM.forwardStrafeMinThreshold && CLVM.strafeAngle < CLVM.forwardStrafeMaxThreshold ? 1f : 0f;
-
-                    if (Mathf.Abs(CLVM.forwardStrafe - targetValue) <= 0.001f)
-                    {
-                        CLVM.forwardStrafe = targetValue;
-                    }
-                    else
-                    {
-                        float t = Mathf.Clamp01(_STRAFE_DIRECTION_DAMP_TIME * Time.unscaledDeltaTime);
-                        CLVM.forwardStrafe = Mathf.SmoothStep(CLVM.forwardStrafe, targetValue, t);
-                    }
+                    CLVM.forwardStrafe = targetValue;
                 }
-
-                transform.rotation = Quaternion.Slerp(transform.rotation, strafingTargetRotation, CLVM.rotationSmoothing * Time.unscaledDeltaTime);
-            }
-            else
-            {
-                UpdateStrafeDirection(1f, 0f);
-
-                float t = 20 * Time.unscaledDeltaTime;
-                float newOffset = 0f;
-
-                if (characterForward != _cameraForward)
+                else
                 {
-                    newOffset = Vector3.SignedAngle(characterForward, _cameraForward, Vector3.up);
-                }
-
-                _cameraRotationOffset = Mathf.Lerp(_cameraRotationOffset, newOffset, t);
-
-                if (Mathf.Abs(_cameraRotationOffset) > 10)
-                {
-                    CLVM.isTurningInPlace = true;
+                    float t = Mathf.Clamp01(_STRAFE_DIRECTION_DAMP_TIME * Time.unscaledDeltaTime);
+                    CLVM.forwardStrafe = Mathf.SmoothStep(CLVM.forwardStrafe, targetValue, t);
                 }
             }
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, strafingTargetRotation, CLVM.rotationSmoothing * Time.unscaledDeltaTime);
         }
         else
         {
             UpdateStrafeDirection(1f, 0f);
-            _cameraRotationOffset = Mathf.Lerp(_cameraRotationOffset, 0f, CLVM.rotationSmoothing * Time.unscaledDeltaTime);
 
-            CLVM.shuffleDirectionZ = 1;
-            CLVM.shuffleDirectionX = 0;
+            float t = 20 * Time.unscaledDeltaTime;
+            float newOffset = 0f;
 
-            Vector3 faceDirection = new Vector3(CLVM.velocity.x, 0f, CLVM.velocity.z);
-
-            if (faceDirection == Vector3.zero)
+            if (characterForward != _cameraForward)
             {
-                return;
+                newOffset = Vector3.SignedAngle(characterForward, _cameraForward, Vector3.up);
             }
 
-            transform.rotation = Quaternion.Slerp(
-                transform.rotation,
-                Quaternion.LookRotation(faceDirection),
-                CLVM.rotationSmoothing * Time.unscaledDeltaTime
-            );
-        }
-    }
+            _cameraRotationOffset = Mathf.Lerp(_cameraRotationOffset, newOffset, t);
 
-    protected override void CalculateRotationalAdditives(bool leansActivated, bool headLookActivated, bool bodyLookActivated)
-    {
-        base.CalculateRotationalAdditives(leansActivated, headLookActivated, bodyLookActivated);
-        float cameraTilt = PlayerCameraController.Instance.GetCameraTiltX();
-        cameraTilt = (cameraTilt > 180f ? cameraTilt - 360f : cameraTilt) / -180;
-        cameraTilt = Mathf.Clamp(cameraTilt, -0.1f, 1.0f);
-        CLVM.headLookY = cameraTilt;
-        CLVM.bodyLookY = cameraTilt;
-    }
-
-    protected override void UpdateBestTarget()
-    {
-        GameObject newBestTarget = null;
-    
-        if (CLVM.currentTargetCandidates.Count == 0)
-        {
-            newBestTarget = null;
-        }
-        else if (CLVM.currentTargetCandidates.Count == 1)
-        {
-            newBestTarget = CLVM.currentTargetCandidates[0];
-        }
-        else
-        {
-            float bestTargetScore = 0f;
-
-            foreach (GameObject target in CLVM.currentTargetCandidates)
+            if (Mathf.Abs(_cameraRotationOffset) > 10)
             {
-                target.GetComponent<LockOnObject>().Highlight(false);
-
-                Vector3 targetPos = target.transform.position;
-                float distance = Vector3.Distance(transform.position, targetPos);
-                float distanceScore = 1 / distance * 100;
-
-                Vector3 targetDirection = targetPos - PlayerCameraController.Instance.GetCameraPosition();
-                float angleInView = Vector3.Dot(targetDirection.normalized, PlayerCameraController.Instance.GetCameraForward());
-                float angleScore = angleInView * 40;
-
-                float totalScore = distanceScore + angleScore;
-
-                if (totalScore > bestTargetScore)
-                {
-                    bestTargetScore = totalScore;
-                    newBestTarget = target;
-                }
+                CLVM.isTurningInPlace = true;
             }
         }
-
-        if (!CLVM.isLockedOn)
-        {
-            CLVM.currentLockOnTarget = newBestTarget;
-        }
-        else
-        {
-            if (CLVM.currentTargetCandidates.Contains(CLVM.currentLockOnTarget))
-            {
-                CLVM.currentLockOnTarget.GetComponent<LockOnObject>().Highlight(true);
-            }
-            else
-            {
-                CLVM.currentLockOnTarget = newBestTarget;
-            }
-        }
+        
     }
 
     #region UseController
@@ -265,43 +167,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         );
         CLVM.isGrounded = Physics.CheckSphere(spherePosition, _playerManager.characterController.radius, CLVM.groundLayerMask, QueryTriggerInteraction.Ignore);
         base.GroundedCheck();
-    }
-
-    #endregion
-    
-    #region Lock-on
-    public void AddTargetCandidate(GameObject newTarget)
-    {
-        if (newTarget != null)
-        {
-            CLVM.currentTargetCandidates.Add(newTarget);
-        }
-    }
-    public void RemoveTarget(GameObject targetToRemove)
-    {
-        if (CLVM.currentTargetCandidates.Contains(targetToRemove))
-        {
-            CLVM.currentTargetCandidates.Remove(targetToRemove);
-        }
-        
-        UpdateBestTarget();
-    }
-    
-    private void ToggleLockOn()
-    {
-        UpdateBestTarget();
-        EnableLockOn(CLVM.currentTargetCandidates.Count > 0 && !CLVM.isLockedOn);
-    }
-    
-    private void EnableLockOn(bool enable)
-    {
-        CLVM.isLockedOn = enable;
-        CLVM.isStrafing = enable ? !CLVM.isSprinting : CLVM.alwaysStrafe ;
-        
-        PlayerCameraController.Instance.LockOn(enable, CLVM.targetLockOnPos);
-        
-        if (CLVM.currentLockOnTarget != null)
-            CLVM.currentLockOnTarget.GetComponent<LockOnObject>().Highlight(enable);
     }
 
     #endregion
@@ -423,11 +288,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     private void ExitFallState()
     {
         _canDoubleJump = false;
-    }
-
-    public void AttemptToLockOn()
-    {
-        ToggleLockOn();
     }
     
     public void AttemptToToggleWalk()

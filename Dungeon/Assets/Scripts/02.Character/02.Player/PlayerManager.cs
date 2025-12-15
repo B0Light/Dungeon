@@ -61,10 +61,6 @@ public class PlayerManager : CharacterManager
         playerVariableManager.health.OnValueChanged  += playerStatsManager.SetNewHealthPoint;
         playerVariableManager.stamina.OnValueChanged += playerStatsManager.SetNewStamina;
         
-        
-        //Control
-        playerVariableManager.canControl.OnValueChanged += playerVariableManager.OnControlChange;
-        
         //equip
         playerVariableManager.currentEquippedWeaponID.OnValueChanged += playerVariableManager.CurrentEquippedWeaponIDChange;
         playerVariableManager.currentHelmetID.OnValueChanged += playerVariableManager.CurrentEquippedHelmetIDChange;
@@ -107,8 +103,6 @@ public class PlayerManager : CharacterManager
         
         playerVariableManager.health.OnValueChanged  -= playerStatsManager.SetNewHealthPoint;
         playerVariableManager.stamina.OnValueChanged -= playerStatsManager.SetNewStamina;
-        
-        playerVariableManager.canControl.OnValueChanged -= playerVariableManager.OnControlChange;
         
         //equip
         playerVariableManager.currentEquippedWeaponID.OnValueChanged -= playerVariableManager.CurrentEquippedWeaponIDChange;

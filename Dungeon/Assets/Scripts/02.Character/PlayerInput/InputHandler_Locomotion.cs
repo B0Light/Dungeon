@@ -21,12 +21,13 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         Debug.Log("[Register] InputHandler_Locomotion");
         playerControls.PlayerLocomotion.Enable();
         playerControls.PlayerLocomotion.Move.performed += OnMovePerformed;
+        playerControls.PlayerLocomotion.Look.performed += OnLookPerformed;
+        playerControls.PlayerLocomotion.Look.canceled += OnLookPerformed;
         playerControls.PlayerLocomotion.Jump.performed += OnJumpPerformed;
         playerControls.PlayerLocomotion.ToggleWalk.performed += OnToggleWalkPerformed;
         playerControls.PlayerLocomotion.Sprint.performed += OnSprintPerformed;
         playerControls.PlayerLocomotion.Sprint.canceled += OnSprintCanceled;
         playerControls.PlayerLocomotion.ToggleCrouch.performed += OnToggleCrouchPerformed;
-        playerControls.PlayerLocomotion.LockOn.performed += OnLockOnPerformed;
         
         playerControls.PlayerActions.Enable();
         playerControls.PlayerActions.Interact.performed += OnInteractPerformed;
@@ -39,12 +40,13 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
     {
         Debug.Log("[Unregister] InputHandler_Locomotion");
         playerControls.PlayerLocomotion.Move.performed -= OnMovePerformed;
+        playerControls.PlayerLocomotion.Look.performed -= OnLookPerformed;
+        playerControls.PlayerLocomotion.Look.canceled -= OnLookPerformed;
         playerControls.PlayerLocomotion.Jump.performed -= OnJumpPerformed;
         playerControls.PlayerLocomotion.ToggleWalk.performed -= OnToggleWalkPerformed;
         playerControls.PlayerLocomotion.Sprint.performed -= OnSprintPerformed;
         playerControls.PlayerLocomotion.Sprint.canceled -= OnSprintCanceled;
         playerControls.PlayerLocomotion.ToggleCrouch.performed -= OnToggleCrouchPerformed;
-        playerControls.PlayerLocomotion.LockOn.performed -= OnLockOnPerformed;
 
         playerControls.PlayerActions.Interact.performed -= OnInteractPerformed;
         playerControls.PlayerActions.Roll.performed -= OnRollPerformed;
@@ -67,10 +69,15 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
     {
         if (_isEnable)
         {
-            CLVM.moveDirection = 
-                (PlayerCameraController.Instance.GetCameraForwardZeroedYNormalized() * CLVM.moveComposite.y) +
-                (PlayerCameraController.Instance.GetCameraRightZeroedYNormalized() * CLVM.moveComposite.x);
+            UpdateMoveDir();
         }
+    }
+
+    private void UpdateMoveDir()
+    {
+        CLVM.moveDirection = 
+            (Vector3.forward * CLVM.moveComposite.y) +
+            (Vector3.right * CLVM.moveComposite.x);
     }
 
     #region Event CallBack
@@ -81,12 +88,18 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         CLVM.moveComposite = context.ReadValue<Vector2>();
         
         Vector3 moveDirection = 
-            (PlayerCameraController.Instance.GetCameraForwardZeroedYNormalized() * CLVM.moveComposite.y) +
-            (PlayerCameraController.Instance.GetCameraRightZeroedYNormalized() * CLVM.moveComposite.x);
+            (Vector3.forward * CLVM.moveComposite.y) +
+            (Vector3.right * CLVM.moveComposite.x);
                 
         CLVM.moveDirection = moveDirection;
         CLVM.movementInputHeld = moveDirection.magnitude > 0;
     } 
+    
+    private void OnLookPerformed(InputAction.CallbackContext context)
+    {
+        Vector2 mousePositionInput = context.ReadValue<Vector2>();
+        PlayerCameraController.Instance.SetMousePosition(mousePositionInput);
+    }
 
     private void OnJumpPerformed(InputAction.CallbackContext context)
     {
@@ -129,15 +142,6 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         }
     }
     
-    private void OnLockOnPerformed(InputAction.CallbackContext context)
-    {
-        if (_playerManager.playerVariableManager.canControl.Value)
-        {
-            _playerManager.playerLocomotionManager.AttemptToLockOn();
-            _playerManager.playerLocomotionManager.AttemptToDeactivateSprint();
-        }
-    }
-
     // Player Actions
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {

@@ -12,7 +12,6 @@ public class PlayerStart : MonoBehaviour
         PlayerManager playerManager = GameManager.Instance.SpawnPlayer(gameObject.transform);
         playerManager.LoadGameDataFromCurrentCharacterDataSceneChange(ref WorldSaveGameManager.Instance.currentGameData);
         
-        PlayerCameraController.Instance.LockOn(false);
         InputHandlerManager.Instance.SetInputMode(InputMode.Exploration);
         
         // 추후조정 : 모험시에만 활성화 

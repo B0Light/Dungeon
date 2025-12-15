@@ -132,7 +132,6 @@ public class CharacterManager : MonoBehaviour, IDamageable
     private void OnCharacterBattle(bool value)
     {
         characterLocomotionManager.canLocomotion = !value;
-        PlayerCameraController.Instance.ToggleBattleCam(value);
         InputHandlerManager.Instance.SetInputMode(value ? InputMode.Combat : InputMode.Exploration);
         GUIController.Instance.CloseGUI();
     }
