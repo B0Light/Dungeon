@@ -24,9 +24,9 @@ TagManager:
   - Interactable
   - Trail
   - Tile
-  - GhostTile
+  - Env
   - Selection
-  - LockOn
+  - GhostTile
   - GrassProps
   - Wireframe
   - 

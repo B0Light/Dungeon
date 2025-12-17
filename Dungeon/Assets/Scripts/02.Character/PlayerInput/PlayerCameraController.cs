@@ -8,8 +8,6 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     private bool _enable = false;
     [HideInInspector] public PlayerManager playerManager;
     [SerializeField] private Camera mainCamera;
-    private readonly Vector3 _battleCamPosOffset = new Vector3(0, 2.5f, -3.3f);
-    private readonly Vector3 _battleCamRotOffset = new Vector3(20, 0, 0);
 
     private Transform _playerTarget;
     
@@ -17,9 +15,9 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     [SerializeField] private CinemachineCamera vCam; 
 
     [Header("Occlusion Settings")] 
+    public float occlusionRadius = 5.0f;
     [SerializeField] private bool hideOption = true;
     [SerializeField] private LayerMask occlusionLayer; 
-    [SerializeField] private float raycastDistanceOffset = 0.5f;
 
     [Header("Material Replacement")]
     [SerializeField] private Material replacementMaterial;
@@ -28,11 +26,15 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     [SerializeField] private LayerMask layerExploration;
     [SerializeField] private LayerMask layerBuild;
     
+    [Header("FOG")]
+    [SerializeField] private FieldOfView_Sight fieldOfViewSight;
+    [SerializeField] private Vector3 offset = Vector3.up;
+    
     // 딕셔너리에 원래 재질 정보 저장
     private readonly Dictionary<Renderer, Material[]> _occludedRenderers = new Dictionary<Renderer, Material[]>();
     
     // 최적화: Physics.RaycastNonAlloc()을 위한 배열 사전 할당
-    private const int MAX_HITS = 10;
+    private const int MAX_HITS = 100;
     private RaycastHit[] _raycastHits = new RaycastHit[MAX_HITS];
     
     // 방향 전환 
@@ -50,59 +52,52 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     {
         if(!hideOption) return;
 
-        // 가려져야 할 오브젝트를 추적하기 위한 임시 HashSet
         var currentOccludedRenderers = new HashSet<Renderer>();
 
-        Vector3 direction = (_playerTarget.position - mainCamera.transform.position).normalized;
-        float distance = Vector3.Distance(mainCamera.transform.position, _playerTarget.position) - raycastDistanceOffset;
-        
-        int hitCount = Physics.RaycastNonAlloc(mainCamera.transform.position, direction, _raycastHits, distance, occlusionLayer);
+        Vector3 origin = mainCamera.transform.position;
+        Vector3 direction = (_playerTarget.position - origin).normalized;
+        float distance = Vector3.Distance(origin, _playerTarget.position) - 8f;
+
+        // Physics.RaycastNonAlloc 대신 SphereCastNonAlloc 사용
+        int hitCount = Physics.SphereCastNonAlloc(origin, occlusionRadius, direction, _raycastHits, distance, occlusionLayer);
 
         for (int i = 0; i < hitCount; i++)
         {
             var hit = _raycastHits[i];
-            
-            if (hit.collider.CompareTag("Ignore_CamCollision")) 
+            var rds = hit.collider.GetComponentsInChildren<Renderer>();
+        
+            foreach (var rd in rds)
             {
-                Renderer renderer = hit.collider.GetComponent<Renderer>();
-                if (renderer != null)
+                if (rd != null && !currentOccludedRenderers.Contains(rd))
                 {
-                    currentOccludedRenderers.Add(renderer);
+                    currentOccludedRenderers.Add(rd);
 
-                    if (!_occludedRenderers.ContainsKey(renderer))
+                    if (!_occludedRenderers.ContainsKey(rd))
                     {
-                        // 원본 재질을 저장하고 교체
-                        _occludedRenderers[renderer] = renderer.sharedMaterials;
-                        
-                        Material[] newMaterials = new Material[renderer.sharedMaterials.Length];
+                        _occludedRenderers[rd] = rd.sharedMaterials;
+                        Material[] newMaterials = new Material[rd.sharedMaterials.Length];
                         for (int j = 0; j < newMaterials.Length; j++)
                         {
                             newMaterials[j] = replacementMaterial;
                         }
-                        renderer.materials = newMaterials;
+                        rd.materials = newMaterials;
                     }
                 }
             }
         }
-        
-        // 더 이상 가려지지 않는 오브젝트의 재질을 복원
-        // _occludedRenderers 딕셔너리에서 현재 Raycast에 포함되지 않은 렌더러들을 찾습니다.
+
+        // 복원 로직 (기존과 동일)
         var renderersToRestore = new List<Renderer>();
         foreach(var rd in _occludedRenderers.Keys)
         {
             if(!currentOccludedRenderers.Contains(rd))
-            {
                 renderersToRestore.Add(rd);
-            }
         }
 
         foreach(var rd in renderersToRestore)
         {
-            if (_occludedRenderers.TryGetValue(rd, out Material[] originalMats))
-            {
-                rd.materials = originalMats;
-                _occludedRenderers.Remove(rd);
-            }
+            rd.materials = _occludedRenderers[rd];
+            _occludedRenderers.Remove(rd);
         }
     }
     
@@ -117,11 +112,10 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
             Vector3 direction = mousePos - playerManager.transform.position;
             direction.y = 0;
             _curDirection = direction;
-            /*
-            Vector3 playerPos = new Vector3(transform.position.x, 0, transform.position.z);
+            
+            Vector3 playerPos = new Vector3(playerManager.transform.position.x, 0, playerManager.transform.position.z);
             fieldOfViewSight.SetAimDirection(mousePos - playerPos);
             fieldOfViewSight.SetOrigin(playerPos + offset);
-            */
         }
     }
     
@@ -161,6 +155,16 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         Vector3 upAxis = Vector3.up;
         Vector3 rightVector = Vector3.Cross(upAxis, _curDirection.normalized);
         return rightVector.normalized;
+    }
+
+    public Vector3 GetCamForward()
+    {
+        return vCam.transform.forward;
+    }
+
+    public Vector3 GetCamRight()
+    {
+        return vCam.transform.right;
     }
 
     public void TurnOffCamera()

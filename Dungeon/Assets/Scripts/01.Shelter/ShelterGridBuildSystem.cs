@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class ShelterGridBuildSystem : BaseGridBuildSystem
 {
+    [SerializeField] private Transform envSlot;
     private readonly int _gridWidth = 7;
     private readonly int _gridHeight = 9;
     private readonly int _cellSize = 5;
@@ -131,7 +132,8 @@ public class ShelterGridBuildSystem : BaseGridBuildSystem
         {
             CheckPointList.Add(placedObject.GetEntrance());
         }
-        
+        if(placedObject != null)
+            placedObject.transform.SetParent(envSlot);
         return placedObject;
     }
 

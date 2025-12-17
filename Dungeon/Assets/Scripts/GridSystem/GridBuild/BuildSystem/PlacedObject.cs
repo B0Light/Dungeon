@@ -53,7 +53,7 @@ public class PlacedObject : MonoBehaviour
     {
         // 일단 타일 건설 
         Transform placedObjectTransform = Instantiate(buildObjData.prefab, worldPosition,
-            Quaternion.Euler(0, buildObjData.GetRotationAngle(dir), 0));
+            Quaternion.Euler(0, buildObjData.GetRotationAngle(dir), 0 ));
         PlacedObject placedObject = placedObjectTransform.GetComponent<PlacedObject>();
         
         // 데이터 갱신 

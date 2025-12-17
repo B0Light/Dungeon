@@ -89,8 +89,8 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         else
         {
             moveDir =
-                (Vector3.forward * CLVM.moveComposite.y) +
-                (Vector3.right * CLVM.moveComposite.x);
+                (PlayerCameraController.Instance.GetCamForward() * CLVM.moveComposite.y) +
+                (PlayerCameraController.Instance.GetCamRight() * CLVM.moveComposite.x);
         }
         CLVM.moveDirection = moveDir;
     }
