@@ -539,7 +539,7 @@ public class CharacterLocomotionManager : MonoBehaviour
     {
         if (headLookActivated || leansActivated || bodyLookActivated)
         {
-            CLVM.currentRotation = PlayerCameraController.Instance.GetPlayerDir;
+            CLVM.currentRotation = transform.forward;
             _rotationRate = CLVM.currentRotation != CLVM.previousRotation
                 ? Vector3.SignedAngle(CLVM.currentRotation, CLVM.previousRotation, Vector3.up) / Time.deltaTime * -1f
                 : 0f;

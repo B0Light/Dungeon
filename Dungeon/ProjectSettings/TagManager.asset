@@ -5,9 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - PlayerStart
-  - FxTemporaire
-  - Ignore_CamCollision
-  - Animal
+  - Transparent
   layers:
   - Default
   - TransparentFX
@@ -28,7 +26,7 @@ TagManager:
   - Selection
   - GhostTile
   - GrassProps
-  - Wireframe
+  - Transparent
   - 
   - Projectile
   - 

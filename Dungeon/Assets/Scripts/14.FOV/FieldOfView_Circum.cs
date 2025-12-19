@@ -29,8 +29,6 @@ public class FieldOfView_Circum : FieldOfView_Base
                 _visibleTarget.Add(target); 
                 Debug.Log($"FindTarget : {target.name}");
             }
-            
         }
-        
     }
 }

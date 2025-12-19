@@ -12,7 +12,7 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
     private InputMode _lastInputMode = InputMode.Exit;
     private InputMode _curInputMode;
     [SerializeField] private InputHandler_Locomotion movementHandler;
-    [SerializeField] private InputHandler_CombatSwipe combatHandler;
+    [SerializeField] private InputHandler_Combat combatHandler;
     [SerializeField] private InputHandler_UI uiHandler;
     
     public interface IInputHandler

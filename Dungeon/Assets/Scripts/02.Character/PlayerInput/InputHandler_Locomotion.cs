@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +7,7 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
     private CharacterLocomotionVariableManager CLVM => _playerManager.characterVariableManager.CLVM;
 
     private bool _isSprinting = false;
-
+    private float _targetSize = 3.5f;
     private bool _isEnable = false;
 
     public void SetPlayer(PlayerManager playerManager)
@@ -34,6 +33,9 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         playerControls.PlayerActions.Enable();
         playerControls.PlayerActions.Interact.performed += OnInteractPerformed;
         playerControls.PlayerActions.Roll.performed += OnRollPerformed;
+        
+        playerControls.CamControl.Enable();
+        playerControls.CamControl.Zoom.performed += OnZoom;
 
         _isEnable = true;
     }
@@ -55,8 +57,12 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         playerControls.PlayerActions.Interact.performed -= OnInteractPerformed;
         playerControls.PlayerActions.Roll.performed -= OnRollPerformed;
         
+        
+        playerControls.CamControl.Zoom.performed -= OnZoom;
+        
         playerControls.PlayerLocomotion.Disable();
         playerControls.PlayerActions.Disable();
+        playerControls.CamControl.Disable();
 
         _isEnable = false;
     }
@@ -74,6 +80,7 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         if (_isEnable)
         {
             UpdateMoveDir();
+            UpdateZoom();
         }
     }
 
@@ -83,7 +90,7 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         if (CLVM.isLockedOn)
         {
             moveDir =
-                (PlayerCameraController.Instance.GetPlayerDir * CLVM.moveComposite.y) +
+                (PlayerCameraController.Instance.GetPlayerOrthographicDir * CLVM.moveComposite.y) +
                 (PlayerCameraController.Instance.GetPlayerRightDir() * CLVM.moveComposite.x);
         }
         else
@@ -93,6 +100,11 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
                 (PlayerCameraController.Instance.GetCamRight() * CLVM.moveComposite.x);
         }
         CLVM.moveDirection = moveDir;
+    }
+
+    private void UpdateZoom()
+    {
+        PlayerCameraController.Instance.SetOrthographicTargetSize(_targetSize);
     }
 
     #region Event CallBack
@@ -170,6 +182,14 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
     {
         if (_playerManager.playerVariableManager.canControl.Value)
             _playerManager.playerLocomotionManager.AttemptToRoll();
+    }
+    
+    public void OnZoom(InputAction.CallbackContext context)
+    {
+        Vector2 scrollValue = context.ReadValue<Vector2>();
+    
+        _targetSize -= scrollValue.y * 0.1f;
+        _targetSize = Mathf.Clamp(_targetSize, 1, 10);
     }
 
     #endregion

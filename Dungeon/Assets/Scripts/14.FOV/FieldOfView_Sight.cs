@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class FieldOfView_Sight : FieldOfView_Base
 {
-    private float _fov = 110f;
-    
+    [SerializeField] private float fov = 110f;
+    [SerializeField] private float multiple = 2f;
     private Mesh _mesh;
 
     protected override void Start()
@@ -26,11 +26,11 @@ public class FieldOfView_Sight : FieldOfView_Base
     }
     
     private void UpdateMesh() {
-        int rayCount = 90;
+        int rayCount = (int)(fov*multiple);
         float angle = _startingAngle;
-        float angleIncrease = _fov / rayCount;
+        float angleIncrease = fov / rayCount;
 
-        Vector3[] vertices = new Vector3[rayCount + 1 + 1];
+        Vector3[] vertices = new Vector3[rayCount + 2];
         Vector2[] uv = new Vector2[vertices.Length];
         int[] triangles = new int[rayCount * 3];
 
@@ -87,7 +87,7 @@ public class FieldOfView_Sight : FieldOfView_Base
             Vector3 dirToTarget = (targetPosition - _origin).normalized;
             
             float angleToTarget = Vector3.Angle(_aimDirection , dirToTarget);
-            if (angleToTarget < _fov / 2f)
+            if (angleToTarget < fov / 2f)
             {
                 ControlTargetViewMeshRenderer(target, true);
                 float distanceToTarget = Vector3.Distance(_origin, targetPosition);
@@ -104,7 +104,7 @@ public class FieldOfView_Sight : FieldOfView_Base
     public void SetAimDirection(Vector3 aimDirection)
     {
         var viewAngle = GetAngleFromVectorFloat(aimDirection);
-        _startingAngle = viewAngle + _fov / 2f;
+        _startingAngle = viewAngle; // + _fov / 2f;
         _aimDirection = GetVectorFromAngle(viewAngle).normalized;
     }
     
@@ -128,7 +128,7 @@ public class FieldOfView_Sight : FieldOfView_Base
     // --- public Method ---
     
     public void SetFoV(float fov) {
-        this._fov = fov;
+        this.fov = fov;
     }
 
     public void SetViewDistance(float distanceValue) {

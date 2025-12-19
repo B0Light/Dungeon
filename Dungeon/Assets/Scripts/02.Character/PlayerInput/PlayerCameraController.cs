@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Cinemachine;
+using UnityEngine.Serialization;
 
 public class PlayerCameraController : Singleton<PlayerCameraController>
 {
@@ -15,12 +16,14 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     [SerializeField] private CinemachineCamera vCam; 
 
     [Header("Occlusion Settings")] 
-    public float occlusionRadius = 5.0f;
+    private readonly float _occlusionRadius = 5.0f;
     [SerializeField] private bool hideOption = true;
     [SerializeField] private LayerMask occlusionLayer; 
 
     [Header("Material Replacement")]
+    [SerializeField] private Material transparentMaterial;
     [SerializeField] private Material replacementMaterial;
+    
 
     [Header("Cam Mode Culling Mask")]
     [SerializeField] private LayerMask layerExploration;
@@ -28,7 +31,8 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     
     [Header("FOG")]
     [SerializeField] private FieldOfView_Sight fieldOfViewSight;
-    [SerializeField] private Vector3 offset = Vector3.up;
+    [SerializeField] private FieldOfView_Sight playerSight;
+    [SerializeField] private Vector3 offset = new Vector3(0,0.1f,0);
     
     // 딕셔너리에 원래 재질 정보 저장
     private readonly Dictionary<Renderer, Material[]> _occludedRenderers = new Dictionary<Renderer, Material[]>();
@@ -39,13 +43,17 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     
     // 방향 전환 
     private Vector2 _mousePositionInput = Vector2.zero;
-    private Vector3 _curDirection;
+    private Vector3 _curOrthographicDirection;
+    private Vector3 _curDir;
+    private float _targetSize = 3.5f;
     
     public void Update()
     {
         if(!_enable) return;
         HandleOcclusion();
         UpdateSight();
+        UpdateDir();
+        UpdateCamZoom();
     }
 
     private void HandleOcclusion()
@@ -56,19 +64,20 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
 
         Vector3 origin = mainCamera.transform.position;
         Vector3 direction = (_playerTarget.position - origin).normalized;
-        float distance = Vector3.Distance(origin, _playerTarget.position) - 8f;
+        float distance = Vector3.Distance(origin, _playerTarget.position) - 6f;
 
         // Physics.RaycastNonAlloc 대신 SphereCastNonAlloc 사용
-        int hitCount = Physics.SphereCastNonAlloc(origin, occlusionRadius, direction, _raycastHits, distance, occlusionLayer);
+        int hitCount = Physics.SphereCastNonAlloc(origin, _occlusionRadius, direction, _raycastHits, distance, occlusionLayer);
 
         for (int i = 0; i < hitCount; i++)
         {
             var hit = _raycastHits[i];
             var rds = hit.collider.GetComponentsInChildren<Renderer>();
-        
+
+            var targetMat = hit.collider.CompareTag("Transparent") ? transparentMaterial : replacementMaterial;
             foreach (var rd in rds)
             {
-                if (rd != null && !currentOccludedRenderers.Contains(rd))
+                if (rd != null)
                 {
                     currentOccludedRenderers.Add(rd);
 
@@ -78,7 +87,7 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
                         Material[] newMaterials = new Material[rd.sharedMaterials.Length];
                         for (int j = 0; j < newMaterials.Length; j++)
                         {
-                            newMaterials[j] = replacementMaterial;
+                            newMaterials[j] = targetMat;
                         }
                         rd.materials = newMaterials;
                     }
@@ -86,7 +95,6 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
             }
         }
 
-        // 복원 로직 (기존과 동일)
         var renderersToRestore = new List<Renderer>();
         foreach(var rd in _occludedRenderers.Keys)
         {
@@ -101,22 +109,39 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         }
     }
     
+    // Orthographic 상황에서 방향지시 -> 2d 시야 확보
     private void UpdateSight()
     {
+        Vector3 screenPlayerPos = mainCamera.WorldToScreenPoint(playerManager.transform.position + offset);
+        Vector2 directionOnScreen = (Vector2)_mousePositionInput - (Vector2)screenPlayerPos;
+        Vector3 worldDirection = new Vector3(directionOnScreen.x, 0, directionOnScreen.y);
+        if (worldDirection.sqrMagnitude > 0.001f)
+        {
+            _curOrthographicDirection = worldDirection.normalized;
+            var pos = playerManager.transform.position + offset;
+            fieldOfViewSight.SetAimDirection(_curOrthographicDirection);
+            fieldOfViewSight.SetOrigin(pos);
+            playerSight.SetOrigin(pos);
+        }
+    }
+    
+    // 3D 방식에서 방향지시 -> 3d 캐릭터가 바라보는 방향 
+    private void UpdateDir()
+    {
         Ray ray = mainCamera.ScreenPointToRay(_mousePositionInput);
-		
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero); 
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
         if (groundPlane.Raycast(ray, out float distance)) {
-			
             Vector3 mousePos = ray.GetPoint(distance);
             Vector3 direction = mousePos - playerManager.transform.position;
             direction.y = 0;
-            _curDirection = direction;
-            
-            Vector3 playerPos = new Vector3(playerManager.transform.position.x, 0, playerManager.transform.position.z);
-            fieldOfViewSight.SetAimDirection(mousePos - playerPos);
-            fieldOfViewSight.SetOrigin(playerPos + offset);
+            _curDir = direction;
         }
+    }
+
+
+    private void UpdateCamZoom()
+    {
+        vCam.Lens.OrthographicSize = Mathf.Lerp(vCam.Lens.OrthographicSize, _targetSize, Time.deltaTime * 10f);
     }
     
     public void SetPlayer(PlayerManager player)
@@ -143,17 +168,23 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         WorldSceneChangeManager.OnSceneEndPhase += ResetCamOcclusion;
     }
 
+    public void SetOrthographicTargetSize(float value)
+    {
+        _targetSize = value;
+    }
+
     public void SetMousePosition(Vector2 value)
     {
         _mousePositionInput = value;
     }
 
-    public Vector3 GetPlayerDir => _curDirection.normalized;
+    public Vector3 GetPlayerOrthographicDir => _curOrthographicDirection.normalized;
+    public Vector3 GetPlayerPerspectiveDir => _curDir.normalized;
     
     public Vector3 GetPlayerRightDir()
     {
         Vector3 upAxis = Vector3.up;
-        Vector3 rightVector = Vector3.Cross(upAxis, _curDirection.normalized);
+        Vector3 rightVector = Vector3.Cross(upAxis, _curOrthographicDirection.normalized);
         return rightVector.normalized;
     }
 

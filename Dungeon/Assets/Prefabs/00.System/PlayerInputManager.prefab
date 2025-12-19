@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 9063099454750857880}
   - component: {fileID: 5830492181409566351}
   - component: {fileID: 8812809754783629819}
-  - component: {fileID: 6852881400135177166}
   - component: {fileID: 2601997912078010502}
+  - component: {fileID: 1013911219894315182}
   m_Layer: 0
   m_Name: PlayerInputManager
   m_TagString: Untagged
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputHandlerManager
   movementHandler: {fileID: 8812809754783629819}
-  combatHandler: {fileID: 6852881400135177166}
+  combatHandler: {fileID: 0}
   uiHandler: {fileID: 2601997912078010502}
 --- !u!114 &8812809754783629819
 MonoBehaviour:
@@ -62,20 +62,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15d62a56be25e548b1da01b57d2a0c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputHandler_Locomotion
-  movementInputDuration: 0
---- !u!114 &6852881400135177166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3986854940711249001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13298593b7d854c49a569820407ead31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InputHandler_CombatSwipe
-  swipeTrailPrefab: {fileID: 1140693730846073405, guid: 955ca6596ec70774a990bb95bb5f48ba, type: 3}
 --- !u!114 &2601997912078010502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,3 +74,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412435f5bdb9bea4592ef6ed69418030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputHandler_UI
+--- !u!114 &1013911219894315182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3986854940711249001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5dab819a54bb0946bdfde93104556af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputHandler_Combat

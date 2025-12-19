@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7301821315709871501}
   - component: {fileID: 5389856202729178202}
-  m_Layer: 14
+  m_Layer: 19
   m_Name: Mesh
-  m_TagString: Untagged
+  m_TagString: Transparent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 8097001597190008803}
   m_Layer: 0
   m_Name: Dungeon_PathWall
-  m_TagString: Untagged
+  m_TagString: Transparent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,6 +239,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_03
       objectReference: {fileID: 0}
+    - target: {fileID: 245062780840991087, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 245062780840991087, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_TagString
+      value: Transparent
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228627003607596065, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228627003607596065, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_TagString
+      value: Transparent
+      objectReference: {fileID: 0}
     - target: {fileID: 1279438074464577157, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -279,6 +295,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3883452976838460346, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883452976838460346, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_TagString
+      value: Transparent
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764872871375683851, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764872871375683851, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_TagString
+      value: Transparent
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -300,6 +332,22 @@ PrefabInstance:
     - target: {fileID: 245062780840991087, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
       propertyPath: m_Name
       value: Wall_03 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 245062780840991087, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 245062780840991087, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_TagString
+      value: Transparent
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228627003607596065, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228627003607596065, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_TagString
+      value: Transparent
       objectReference: {fileID: 0}
     - target: {fileID: 1279438074464577157, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
       propertyPath: m_LocalPosition.x
@@ -341,6 +389,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3883452976838460346, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883452976838460346, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_TagString
+      value: Transparent
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764872871375683851, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764872871375683851, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_TagString
+      value: Transparent
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -362,6 +426,22 @@ PrefabInstance:
     - target: {fileID: 245062780840991087, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
       propertyPath: m_Name
       value: Wall_03 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 245062780840991087, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 245062780840991087, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_TagString
+      value: Transparent
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228627003607596065, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228627003607596065, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_TagString
+      value: Transparent
       objectReference: {fileID: 0}
     - target: {fileID: 1279438074464577157, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
       propertyPath: m_LocalPosition.x
@@ -403,6 +483,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3883452976838460346, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883452976838460346, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_TagString
+      value: Transparent
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764872871375683851, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764872871375683851, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_TagString
+      value: Transparent
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -424,6 +520,22 @@ PrefabInstance:
     - target: {fileID: 245062780840991087, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
       propertyPath: m_Name
       value: Wall_03 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 245062780840991087, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 245062780840991087, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_TagString
+      value: Transparent
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228627003607596065, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228627003607596065, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_TagString
+      value: Transparent
       objectReference: {fileID: 0}
     - target: {fileID: 1279438074464577157, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
       propertyPath: m_LocalPosition.x
@@ -464,6 +576,22 @@ PrefabInstance:
     - target: {fileID: 1279438074464577157, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883452976838460346, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883452976838460346, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_TagString
+      value: Transparent
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764872871375683851, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764872871375683851, guid: 0d6abc186068cff458d34e80854ce802, type: 3}
+      propertyPath: m_TagString
+      value: Transparent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
