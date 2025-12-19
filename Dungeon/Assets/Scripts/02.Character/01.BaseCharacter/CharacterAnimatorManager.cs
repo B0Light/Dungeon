@@ -87,7 +87,7 @@ public class CharacterAnimatorManager : MonoBehaviour
         bool canRotate = false,
         bool canMove = false)
     {
-        characterManager.characterStatsManager.UseStamina(staminaValue);
+        if(!characterManager.characterStatsManager.UseStamina(staminaValue)) return;
         characterManager.characterCombatManager.lastAttackAction = targetAnimation;
         PlayTargetActionAnimation(targetAnimation, isPerformingAction, rootMotion, canRotate, canMove);
     }
