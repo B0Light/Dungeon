@@ -81,15 +81,18 @@ public class CharacterAnimatorManager : MonoBehaviour
     
     public void PlayTargetAttackActionAnimation(
         int targetAnimation,
-        float actionPoint = 1f,
+        float staminaValue = 1f,
         bool isPerformingAction = true,
         bool rootMotion = true,
         bool canRotate = false,
         bool canMove = false)
     {
+        characterManager.characterStatsManager.UseStamina(staminaValue);
         characterManager.characterCombatManager.lastAttackAction = targetAnimation;
         PlayTargetActionAnimation(targetAnimation, isPerformingAction, rootMotion, canRotate, canMove);
     }
+
+    #region Dir Attack Version
 
     public void PlayDirAttackAnimation(Dir dir)
     {
@@ -152,6 +155,8 @@ public class CharacterAnimatorManager : MonoBehaviour
         var dodgeDir = dir == Dir.Left ? _dodgeLeft : _dodgeRight;
         PlayTargetActionAnimation(dodgeDir);
     }
+
+    #endregion
     
     public void PlayDeadAnimation()
     {

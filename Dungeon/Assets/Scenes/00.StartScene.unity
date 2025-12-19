@@ -705,10 +705,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerInputManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5830492181409566351, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
-      propertyPath: combatHandler
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 9063099454750857880, guid: ce884c496ee0eed41af37f1afb319115, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

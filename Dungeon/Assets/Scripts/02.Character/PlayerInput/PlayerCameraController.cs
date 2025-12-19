@@ -129,12 +129,21 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     private void UpdateDir()
     {
         Ray ray = mainCamera.ScreenPointToRay(_mousePositionInput);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-        if (groundPlane.Raycast(ray, out float distance)) {
+
+        Plane groundPlane = new Plane(Vector3.up, Vector3.up * playerManager.transform.position.y); 
+
+        if (groundPlane.Raycast(ray, out float distance)) 
+        {
             Vector3 mousePos = ray.GetPoint(distance);
-            Vector3 direction = mousePos - playerManager.transform.position;
+        
+            Vector3 originPos = playerManager.transform.position;
+            Vector3 direction = mousePos - originPos;
             direction.y = 0;
-            _curDir = direction;
+
+            if (direction.sqrMagnitude > 0.001f)
+            {
+                _curDir = direction.normalized;
+            }
         }
     }
 

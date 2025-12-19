@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputHandlerManager
   movementHandler: {fileID: 8812809754783629819}
-  combatHandler: {fileID: 0}
+  combatHandler: {fileID: 1013911219894315182}
   uiHandler: {fileID: 2601997912078010502}
 --- !u!114 &8812809754783629819
 MonoBehaviour:

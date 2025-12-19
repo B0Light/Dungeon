@@ -82,7 +82,7 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
                 break;
             case InputMode.Combat:
                 SetControlActive(false);
-                UnregisterAndDisableHandler(movementHandler); 
+                RegisterAndEnableHandler(movementHandler); 
                 RegisterAndEnableHandler(combatHandler); 
                 RegisterAndEnableHandler(uiHandler);
                 break;

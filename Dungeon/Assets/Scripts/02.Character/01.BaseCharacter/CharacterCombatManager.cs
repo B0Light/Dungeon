@@ -35,31 +35,12 @@ public class CharacterCombatManager : MonoBehaviour
     public BaseAttackAction_Heavy heavyAttackAction;
     public BaseAttackAction_Skill skillAction;
     public BlockAction blockAction;
-    
-    private const float ChallengeDistance = 2.0f;
 
     private Dir _curDodgeDir;
 
     protected virtual void Awake()
     {
         character = GetComponent<CharacterManager>();
-    }
-    
-    public void ChallengeTarget()
-    {
-        CharacterManager target = character.CurrentTarget;
-        if(target == null) return;
-        target.transform.LookAt(transform);
-        Vector3 targetForward = target.transform.forward;
-        Vector3 desiredPosition = target.transform.position + targetForward * ChallengeDistance;
-        desiredPosition.y = target.transform.position.y;
-        transform.position = desiredPosition;
-        character.characterVariableManager.CLVM.isCrouching = false;
-        target.characterVariableManager.CLVM.isCrouching = false;
-        target.characterLocomotionManager.StopLocomotion();
-        character.isBattle.Value = true;
-        character.CurrentTarget.isBattle.Value = true;
-        Debug.Log("On Battle");
     }
 
     public void Attack(Dir dir)

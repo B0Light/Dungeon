@@ -20,11 +20,6 @@ public class CombatStanceState : AIState
     [Header("전투 거리 설정")]
     [SerializeField] public float maximumEngagementDistance = 5; // 이 거리보다 멀어지면 추적 상태로 전환
 
-    public override void OnEnterState(AICharacterManager aiCharacter)
-    {
-        aiCharacter.characterCombatManager.ChallengeTarget();
-    }
-
     public override AIState Tick(AICharacterManager aiCharacter)
     {
         // 조건 검사를 통한 조기 반환

@@ -51,29 +51,34 @@ public class InputHandler_Combat : MonoBehaviour, InputHandlerManager.IInputHand
 
     private void OnLightAttack(InputAction.CallbackContext context)
     {
+        if(!context.performed) return;
         _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.LightAttack);
     }
     
     private void OnHeavyAttack(InputAction.CallbackContext context)
     {
+        if(!context.performed) return;
         _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.HeavyAttack);
         _playerManager.playerVariableManager.isCharging.Value = false;
     }
     
     private void OnChargeAttack(InputAction.CallbackContext context)
     {
+        if(!context.performed) return;
         _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.HeavyAttack);
         _playerManager.playerVariableManager.isCharging.Value = true;
     }
     
     private void CloseChargeAttack(InputAction.CallbackContext context)
     {
+        if(!context.performed) return;
         _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.HeavyAttack);
         _playerManager.playerVariableManager.isCharging.Value = false;
     }
     
     private void OnParry(InputAction.CallbackContext context)
     {
+        if(!context.performed) return;
         _playerManager.playerCombatManager.PerformWeaponBasedAction(AttackType.Block);
     }
     

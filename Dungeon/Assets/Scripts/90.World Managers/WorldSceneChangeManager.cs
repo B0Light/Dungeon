@@ -22,6 +22,7 @@ public class WorldSceneChangeManager : Singleton<WorldSceneChangeManager>
     private float _currentDisplayProgress = 0f; // 현재 표시되는 진행률
     [SerializeField] private string titleSceneName = "01.TitleScene";
     [SerializeField] private string shelterSceneName = "03.Shelter";
+    private string _targetScene;
     public static event Action OnSceneEndPhase;
     public static event Action OnSceneChanged;
 
@@ -53,6 +54,7 @@ public class WorldSceneChangeManager : Singleton<WorldSceneChangeManager>
     private IEnumerator LoadSceneCoroutine(string sceneToLoad)
     {
         // 씬을 정수 코드로 로드
+        _targetScene = sceneToLoad;
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneToLoad);
         OnSceneEndPhase?.Invoke();
         yield return StartCoroutine(HandleSceneLoading(asyncOperation, sceneToLoad));
@@ -202,7 +204,7 @@ public class WorldSceneChangeManager : Singleton<WorldSceneChangeManager>
         _canvasGroup.interactable = false;
         _canvasGroup.blocksRaycasts = false;
         
-        InputHandlerManager.Instance.SetInputMode(InputMode.Exploration);
+        InputHandlerManager.Instance.SetInputMode(_targetScene == shelterSceneName ? InputMode.Exploration : InputMode.Combat);
         OnSceneChanged?.Invoke();
     }
 }
