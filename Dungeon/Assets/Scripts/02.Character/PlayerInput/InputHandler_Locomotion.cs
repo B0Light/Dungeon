@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,7 +27,8 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         playerControls.PlayerLocomotion.ToggleWalk.performed += OnToggleWalkPerformed;
         playerControls.PlayerLocomotion.Sprint.performed += OnSprintPerformed;
         playerControls.PlayerLocomotion.Sprint.canceled += OnSprintCanceled;
-        playerControls.PlayerLocomotion.ToggleCrouch.performed += OnToggleCrouchPerformed;
+        playerControls.PlayerLocomotion.Crouch.performed += OnCrouchPerformed;
+        playerControls.PlayerLocomotion.Crouch.canceled += OnCrouchPerformed;
         playerControls.PlayerLocomotion.LockOn.performed += OnLockOnPerformed;
         playerControls.PlayerLocomotion.LockOn.canceled += OnLockOnPerformed;
         
@@ -50,7 +52,8 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         playerControls.PlayerLocomotion.ToggleWalk.performed -= OnToggleWalkPerformed;
         playerControls.PlayerLocomotion.Sprint.performed -= OnSprintPerformed;
         playerControls.PlayerLocomotion.Sprint.canceled -= OnSprintCanceled;
-        playerControls.PlayerLocomotion.ToggleCrouch.performed -= OnToggleCrouchPerformed;
+        playerControls.PlayerLocomotion.Crouch.performed -= OnCrouchPerformed;
+        playerControls.PlayerLocomotion.Crouch.canceled -= OnCrouchPerformed;
         playerControls.PlayerLocomotion.LockOn.performed -= OnLockOnPerformed;
         playerControls.PlayerLocomotion.LockOn.canceled -= OnLockOnPerformed;
         
@@ -137,6 +140,7 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
     
     private void OnSprintPerformed(InputAction.CallbackContext context)
     {
+        Debug.Log($"[BTN INPUT] can Control : {_playerManager.playerVariableManager.canControl.Value}");
         if (_playerManager.playerVariableManager.canControl.Value)
         {
             if (_isSprinting) return;
@@ -155,12 +159,20 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         }
     }
     
-    private void OnToggleCrouchPerformed(InputAction.CallbackContext context)
+    private void OnCrouchPerformed(InputAction.CallbackContext context)
     {
         if (_playerManager.playerVariableManager.canControl.Value)
         {
-            _playerManager.playerLocomotionManager.AttemptToToggleCrouch();
-            _isSprinting = false;
+            var value = context.ReadValue<float>();
+            if (value >= 0.5f)
+            {
+                _playerManager.playerLocomotionManager.AttemptToToggleCrouch();
+                _isSprinting = false;
+            }
+            else
+            {
+                _playerManager.playerLocomotionManager.AttemptToToggleCrouch();
+            }
         }
     }
 
@@ -193,6 +205,4 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
     }
 
     #endregion
-    
-    
 }

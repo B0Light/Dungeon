@@ -12,7 +12,7 @@ public class InputHandler_Combat : MonoBehaviour, InputHandlerManager.IInputHand
     
     public void Register(PlayerControls playerControls)
     {
-        
+        Debug.Log("[Register] InputHandler_Combat");
         playerControls.PlayerCombat.Enable();
         playerControls.PlayerCombat.LightAttack.performed += OnLightAttack;
         playerControls.PlayerCombat.HeavyAttack.performed += OnHeavyAttack;
@@ -27,7 +27,7 @@ public class InputHandler_Combat : MonoBehaviour, InputHandlerManager.IInputHand
 
     public void Unregister(PlayerControls playerControls)
     {
-        
+        Debug.Log("[Unregister] InputHandler_Combat");
         playerControls.PlayerCombat.LightAttack.performed -= OnLightAttack;
         playerControls.PlayerCombat.HeavyAttack.performed -= OnHeavyAttack;
         playerControls.PlayerCombat.ChargeAttack.performed -= OnChargeAttack;

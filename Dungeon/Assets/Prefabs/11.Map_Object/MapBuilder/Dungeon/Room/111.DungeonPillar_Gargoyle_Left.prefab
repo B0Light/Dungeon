@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 7657832559751335352}
   - component: {fileID: 8491808262198294998}
   - component: {fileID: 2532025583906938315}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: SM_Bld_Pillar_05 (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1011,7 +1011,7 @@ GameObject:
   - component: {fileID: 1283692512517186603}
   - component: {fileID: 4459390059747852539}
   - component: {fileID: 9211109084302743045}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: SM_Bld_Pillar_05 (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1286,7 +1286,7 @@ GameObject:
   - component: {fileID: 4628919323112330054}
   - component: {fileID: 3416059152038477086}
   - component: {fileID: 658010881458719848}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: SM_Bld_Wall_Archway_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1841,7 +1841,7 @@ GameObject:
   - component: {fileID: 3816387274664883025}
   - component: {fileID: 1974119712626612929}
   - component: {fileID: 6269756865386816812}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: SM_Bld_Wall_Archway_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2559,7 +2559,7 @@ GameObject:
   - component: {fileID: 2510532408298142673}
   - component: {fileID: 6241480889891694805}
   - component: {fileID: 7615918087634336306}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: SM_Bld_Wall_Archway_02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3114,7 +3114,7 @@ GameObject:
   - component: {fileID: 3382939348429834280}
   - component: {fileID: 1022428153725103203}
   - component: {fileID: 2704239208899519723}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: SM_Bld_Pillar_05 (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3222,7 +3222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6506163337205343376}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3265,7 +3265,7 @@ GameObject:
   - component: {fileID: 6450176222563899068}
   - component: {fileID: 3893132345335825608}
   - component: {fileID: 1088956119236668155}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: SM_Bld_Pillar_05 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3500,6 +3500,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Gargoyle_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1298760010518328800, guid: 7e946b0d447110f43a83bcaa8ee3811b, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 1823342078178701146, guid: 7e946b0d447110f43a83bcaa8ee3811b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6999999
@@ -3607,6 +3611,10 @@ PrefabInstance:
     - target: {fileID: 1298760010518328800, guid: 7e946b0d447110f43a83bcaa8ee3811b, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Gargoyle_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298760010518328800, guid: 7e946b0d447110f43a83bcaa8ee3811b, type: 3}
+      propertyPath: m_Layer
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 1823342078178701146, guid: 7e946b0d447110f43a83bcaa8ee3811b, type: 3}
       propertyPath: m_LocalScale.x

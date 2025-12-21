@@ -489,7 +489,7 @@ Transform:
   - {fileID: 4623503692576691588}
   - {fileID: 1482456905951311423}
   - {fileID: 6887929973100849399}
-  m_Father: {fileID: 3427504189417138149}
+  m_Father: {fileID: 1206953179583623421}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3560583127639997674
 GameObject:
@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 8253414187887912826}
   - component: {fileID: 8858163145561418696}
   - component: {fileID: 4838915555179427277}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -524,7 +524,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6799893984413710252}
+  - {fileID: 713566459151902830}
   m_Father: {fileID: 3427504189417138149}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4021375102746834552
@@ -661,8 +663,6 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 6799893984413710252}
-  - {fileID: 713566459151902830}
   - {fileID: 1206953179583623421}
   m_Father: {fileID: 4692749212210486327}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -963,7 +963,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4683726562853667115}
-  m_Father: {fileID: 3427504189417138149}
+  m_Father: {fileID: 1206953179583623421}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8620262854170665450
 GameObject:

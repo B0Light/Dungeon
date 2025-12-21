@@ -81,7 +81,7 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
                 RegisterAndEnableHandler(uiHandler);
                 break;
             case InputMode.Combat:
-                SetControlActive(false);
+                SetControlActive(true);
                 RegisterAndEnableHandler(movementHandler); 
                 RegisterAndEnableHandler(combatHandler); 
                 RegisterAndEnableHandler(uiHandler);
@@ -105,22 +105,9 @@ public class InputHandlerManager : Singleton<InputHandlerManager>
     private void SetControlActive(bool isActive)
     {
         //Debug.Log($"SetControlActive : {isActive}");
-        if (isActive)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
             
-            if(_playerManager != null)
-                _playerManager.playerVariableManager.canControl.Value = true;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            
-            if(_playerManager != null)
-                _playerManager.playerVariableManager.canControl.Value = false;
-        }
+        if(_playerManager != null)
+            _playerManager.playerVariableManager.canControl.Value = isActive;
     }
 
     private void ResetLocomotion()

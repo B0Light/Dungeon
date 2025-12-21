@@ -138,7 +138,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ToggleCrouch"",
+                    ""name"": ""Crouch"",
                     ""type"": ""Button"",
                     ""id"": ""3b7f7c28-af37-4490-b362-e3ef591a78e9"",
                     ""expectedControlType"": """",
@@ -362,7 +362,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse;Keyboard"",
-                    ""action"": ""ToggleCrouch"",
+                    ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -373,7 +373,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""ToggleCrouch"",
+                    ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1320,7 +1320,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerLocomotion_Move = m_PlayerLocomotion.FindAction("Move", throwIfNotFound: true);
         m_PlayerLocomotion_Sprint = m_PlayerLocomotion.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerLocomotion_ToggleWalk = m_PlayerLocomotion.FindAction("ToggleWalk", throwIfNotFound: true);
-        m_PlayerLocomotion_ToggleCrouch = m_PlayerLocomotion.FindAction("ToggleCrouch", throwIfNotFound: true);
+        m_PlayerLocomotion_Crouch = m_PlayerLocomotion.FindAction("Crouch", throwIfNotFound: true);
         m_PlayerLocomotion_LockOn = m_PlayerLocomotion.FindAction("LockOn", throwIfNotFound: true);
         // Player Actions
         m_PlayerActions = asset.FindActionMap("Player Actions", throwIfNotFound: true);
@@ -1454,7 +1454,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerLocomotion_Move;
     private readonly InputAction m_PlayerLocomotion_Sprint;
     private readonly InputAction m_PlayerLocomotion_ToggleWalk;
-    private readonly InputAction m_PlayerLocomotion_ToggleCrouch;
+    private readonly InputAction m_PlayerLocomotion_Crouch;
     private readonly InputAction m_PlayerLocomotion_LockOn;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player Locomotion".
@@ -1488,9 +1488,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @ToggleWalk => m_Wrapper.m_PlayerLocomotion_ToggleWalk;
         /// <summary>
-        /// Provides access to the underlying input action "PlayerLocomotion/ToggleCrouch".
+        /// Provides access to the underlying input action "PlayerLocomotion/Crouch".
         /// </summary>
-        public InputAction @ToggleCrouch => m_Wrapper.m_PlayerLocomotion_ToggleCrouch;
+        public InputAction @Crouch => m_Wrapper.m_PlayerLocomotion_Crouch;
         /// <summary>
         /// Provides access to the underlying input action "PlayerLocomotion/LockOn".
         /// </summary>
@@ -1536,9 +1536,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @ToggleWalk.started += instance.OnToggleWalk;
             @ToggleWalk.performed += instance.OnToggleWalk;
             @ToggleWalk.canceled += instance.OnToggleWalk;
-            @ToggleCrouch.started += instance.OnToggleCrouch;
-            @ToggleCrouch.performed += instance.OnToggleCrouch;
-            @ToggleCrouch.canceled += instance.OnToggleCrouch;
+            @Crouch.started += instance.OnCrouch;
+            @Crouch.performed += instance.OnCrouch;
+            @Crouch.canceled += instance.OnCrouch;
             @LockOn.started += instance.OnLockOn;
             @LockOn.performed += instance.OnLockOn;
             @LockOn.canceled += instance.OnLockOn;
@@ -1568,9 +1568,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @ToggleWalk.started -= instance.OnToggleWalk;
             @ToggleWalk.performed -= instance.OnToggleWalk;
             @ToggleWalk.canceled -= instance.OnToggleWalk;
-            @ToggleCrouch.started -= instance.OnToggleCrouch;
-            @ToggleCrouch.performed -= instance.OnToggleCrouch;
-            @ToggleCrouch.canceled -= instance.OnToggleCrouch;
+            @Crouch.started -= instance.OnCrouch;
+            @Crouch.performed -= instance.OnCrouch;
+            @Crouch.canceled -= instance.OnCrouch;
             @LockOn.started -= instance.OnLockOn;
             @LockOn.performed -= instance.OnLockOn;
             @LockOn.canceled -= instance.OnLockOn;
@@ -2505,12 +2505,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnToggleWalk(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "ToggleCrouch" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Crouch" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnToggleCrouch(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "LockOn" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
