@@ -66,6 +66,8 @@ MonoBehaviour:
   fieldOfViewSight: {fileID: 8256650720012876613}
   playerSight: {fileID: 3958496975726156510}
   offset: {x: 0, y: 0.1, z: 0}
+  cinemachineFollow: {fileID: 6729786967311888689}
+  viewDistance: 8.15
 --- !u!1 &2989519601473984899
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,11 +117,12 @@ MonoBehaviour:
   viewDistance: 10
   obstacleLayerMask:
     serializedVersion: 2
-    m_Bits: 524288
+    m_Bits: 524289
   searchLayerMask:
     serializedVersion: 2
     m_Bits: 0
   fov: 110
+  multiple: 3
 --- !u!33 &8495210121175994270
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -225,11 +228,12 @@ MonoBehaviour:
   viewDistance: 1
   obstacleLayerMask:
     serializedVersion: 2
-    m_Bits: 524288
+    m_Bits: 524289
   searchLayerMask:
     serializedVersion: 2
     m_Bits: 0
   fov: 360
+  multiple: 3
 --- !u!33 &3880087568202843211
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -313,7 +317,7 @@ Transform:
   m_GameObject: {fileID: 6334847189324910192}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -12.469999, y: 21.32, z: -26.28}
+  m_LocalPosition: {x: 1.5300002, y: 11.32, z: -12.280001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -348,7 +352,7 @@ MonoBehaviour:
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
-    ModeOverride: 1
+    ModeOverride: 2
     PhysicalProperties:
       GateFit: 2
       SensorSize: {x: 21.946, y: 16.002}
@@ -380,7 +384,7 @@ MonoBehaviour:
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
-  FollowOffset: {x: -20, y: 16, z: -20}
+  FollowOffset: {x: -6, y: 6, z: -6}
 --- !u!1 &9199361991902289494
 GameObject:
   m_ObjectHideFlags: 0

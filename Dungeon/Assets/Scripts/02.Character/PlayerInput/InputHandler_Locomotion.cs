@@ -8,7 +8,7 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
     private CharacterLocomotionVariableManager CLVM => _playerManager.characterVariableManager.CLVM;
 
     private bool _isSprinting = false;
-    private float _targetSize = 3.5f;
+    private float _targetSize = 6;
     private bool _isEnable = false;
 
     public void SetPlayer(PlayerManager playerManager)
@@ -93,7 +93,7 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         if (CLVM.isLockedOn)
         {
             moveDir =
-                (PlayerCameraController.Instance.GetPlayerOrthographicDir * CLVM.moveComposite.y) +
+                (PlayerCameraController.Instance.GetPlayerPerspectiveDir * CLVM.moveComposite.y) +
                 (PlayerCameraController.Instance.GetPlayerRightDir() * CLVM.moveComposite.x);
         }
         else
@@ -107,7 +107,7 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
 
     private void UpdateZoom()
     {
-        PlayerCameraController.Instance.SetOrthographicTargetSize(_targetSize);
+        PlayerCameraController.Instance.ZoomController(_targetSize);
     }
 
     #region Event CallBack
@@ -201,7 +201,7 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         Vector2 scrollValue = context.ReadValue<Vector2>();
     
         _targetSize -= scrollValue.y * 0.1f;
-        _targetSize = Mathf.Clamp(_targetSize, 1, 10);
+        _targetSize = Mathf.Clamp(_targetSize, 1, 15);
     }
 
     #endregion

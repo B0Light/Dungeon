@@ -1537,14 +1537,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCamera
       objectReference: {fileID: 0}
-    - target: {fileID: 3958496975726156510, guid: 5b14166f698c58b4785abbbfc4f6a763, type: 3}
-      propertyPath: multiple
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3958496975726156510, guid: 5b14166f698c58b4785abbbfc4f6a763, type: 3}
-      propertyPath: obstacleLayerMask.m_Bits
-      value: 524289
-      objectReference: {fileID: 0}
     - target: {fileID: 8031455538994303664, guid: 5b14166f698c58b4785abbbfc4f6a763, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1584,14 +1576,6 @@ PrefabInstance:
     - target: {fileID: 8031455538994303664, guid: 5b14166f698c58b4785abbbfc4f6a763, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256650720012876613, guid: 5b14166f698c58b4785abbbfc4f6a763, type: 3}
-      propertyPath: multiple
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256650720012876613, guid: 5b14166f698c58b4785abbbfc4f6a763, type: 3}
-      propertyPath: obstacleLayerMask.m_Bits
-      value: 524289
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

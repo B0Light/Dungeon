@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Cinemachine;
-using UnityEngine.Serialization;
 
 public class PlayerCameraController : Singleton<PlayerCameraController>
 {
@@ -33,7 +31,8 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     [SerializeField] private FieldOfView_Sight fieldOfViewSight;
     [SerializeField] private FieldOfView_Sight playerSight;
     [SerializeField] private Vector3 offset = new Vector3(0,0.1f,0);
-    
+    [SerializeField] private CinemachineFollow cinemachineFollow;
+    [SerializeField] private float viewDistance = 8.15f;
     // 딕셔너리에 원래 재질 정보 저장
     private readonly Dictionary<Renderer, Material[]> _occludedRenderers = new Dictionary<Renderer, Material[]>();
     
@@ -64,7 +63,7 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
 
         Vector3 origin = mainCamera.transform.position;
         Vector3 direction = (_playerTarget.position - origin).normalized;
-        float distance = Vector3.Distance(origin, _playerTarget.position) - 6f;
+        float distance = Vector3.Distance(origin, _playerTarget.position) - viewDistance;
 
         // Physics.RaycastNonAlloc 대신 SphereCastNonAlloc 사용
         int hitCount = Physics.SphereCastNonAlloc(origin, _occlusionRadius, direction, _raycastHits, distance, occlusionLayer);
@@ -177,9 +176,9 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         WorldSceneChangeManager.OnSceneEndPhase += ResetCamOcclusion;
     }
 
-    public void SetOrthographicTargetSize(float value)
+    public void ZoomController(float value)
     {
-        _targetSize = value;
+        cinemachineFollow.FollowOffset = new Vector3(-value, value, -value);
     }
 
     public void SetMousePosition(Vector2 value)
@@ -193,7 +192,7 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     public Vector3 GetPlayerRightDir()
     {
         Vector3 upAxis = Vector3.up;
-        Vector3 rightVector = Vector3.Cross(upAxis, _curOrthographicDirection.normalized);
+        Vector3 rightVector = Vector3.Cross(upAxis, _curDir.normalized);
         return rightVector.normalized;
     }
 
