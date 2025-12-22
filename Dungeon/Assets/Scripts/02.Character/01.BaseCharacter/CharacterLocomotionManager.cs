@@ -8,6 +8,7 @@ public class CharacterLocomotionManager : MonoBehaviour
     protected CharacterManager characterManager;
     
     protected float _cameraRotationOffset = 0f;
+    private float _buttonHoldThreshold = 0.15f;
 
     #region Animation Variable Hashes
 
@@ -316,6 +317,40 @@ public class CharacterLocomotionManager : MonoBehaviour
     {
         CLVM.previousRotation = transform.forward;
     }
+    
+    private void CalculateInput()
+    {
+        if (CLVM.movementInputDetected)
+        {
+            if (CLVM.movementInputDuration == 0)
+            {
+                CLVM.movementInputTapped = true;
+            }
+            else if (CLVM.movementInputDuration > 0 && CLVM.movementInputDuration < _buttonHoldThreshold)
+            {
+                CLVM.movementInputTapped = false;
+                CLVM.movementInputPressed = true;
+                CLVM.movementInputHeld = false;
+            }
+            else
+            {
+                CLVM.movementInputTapped = false;
+                CLVM.movementInputPressed = false;
+                CLVM.movementInputHeld = true;
+            }
+
+            CLVM.movementInputDuration += Time.deltaTime;
+        }
+        else
+        {
+            CLVM.movementInputDuration = 0;
+            CLVM.movementInputTapped = false;
+            CLVM.movementInputPressed = false;
+            CLVM.movementInputHeld = false;
+        }
+        
+        // 이동 방향은 input handler_locomotion의 UpdateMoveDir에서 결정 
+    }
 
     #endregion
     
@@ -333,6 +368,8 @@ public class CharacterLocomotionManager : MonoBehaviour
 
     protected virtual void CalculateMoveDirection()
     {
+        CalculateInput();
+        
         // 지면에 있지 않음 
         if (!CLVM.isGrounded)
         {

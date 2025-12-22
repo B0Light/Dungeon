@@ -99,8 +99,8 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
         else
         {
             moveDir =
-                (PlayerCameraController.Instance.GetCamForward() * CLVM.moveComposite.y) +
-                (PlayerCameraController.Instance.GetCamRight() * CLVM.moveComposite.x);
+                (PlayerCameraController.Instance.GetCameraForward() * CLVM.moveComposite.y) +
+                (PlayerCameraController.Instance.GetCameraRight() * CLVM.moveComposite.x);
         }
         CLVM.moveDirection = moveDir;
     }
@@ -117,7 +117,7 @@ public class InputHandler_Locomotion : MonoBehaviour, InputHandlerManager.IInput
     {
         var inputVector = context.ReadValue<Vector2>();
         CLVM.moveComposite = inputVector;
-        CLVM.movementInputHeld = inputVector.magnitude > 0;
+        CLVM.movementInputDetected = inputVector.magnitude > 0;
     } 
     
     private void OnLookPerformed(InputAction.CallbackContext context)

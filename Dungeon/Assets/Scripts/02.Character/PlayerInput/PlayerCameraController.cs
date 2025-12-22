@@ -196,12 +196,12 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         return rightVector.normalized;
     }
 
-    public Vector3 GetCamForward()
+    public Vector3 GetCameraForward()
     {
         return vCam.transform.forward;
     }
 
-    public Vector3 GetCamRight()
+    public Vector3 GetCameraRight()
     {
         return vCam.transform.right;
     }

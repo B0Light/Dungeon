@@ -72,6 +72,8 @@ public class CharacterLocomotionVariableManager : MonoBehaviour
     [HideInInspector] public bool movementInputHeld;
     [HideInInspector] public bool movementInputPressed;
     [HideInInspector] public bool movementInputTapped;
+    [HideInInspector] public float movementInputDuration;
+    [HideInInspector] public bool movementInputDetected;
     
     [HideInInspector] public float currentMaxSpeed;
     [HideInInspector] public float locomotionStartDirection;
