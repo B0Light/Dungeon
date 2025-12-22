@@ -234,7 +234,7 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
         // NavMeshAgent의 desired velocity를 이동 방향으로 설정
         Vector3 desiredVelocity = navAgent.desiredVelocity.normalized;
         CLVM.moveDirection = desiredVelocity;
-        CLVM.movementInputHeld = desiredVelocity.magnitude > 0.1f;
+        CLVM.movementInputDetected = desiredVelocity.magnitude > 0.1f;
         
         // 베이스 클래스의 속도 계산 로직 호출
         base.CalculateMoveDirection();

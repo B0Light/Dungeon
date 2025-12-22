@@ -71,7 +71,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         Vector3 characterForward = new Vector3(transform.forward.x, 0f, transform.forward.z).normalized;
         Vector3 characterRight = new Vector3(transform.right.x, 0f, transform.right.z).normalized;
         Vector3 directionForward = new Vector3(CLVM.moveDirection.x, 0f, CLVM.moveDirection.z).normalized;
-        _cameraForward = PlayerCameraController.Instance.GetCameraForward();
+        _cameraForward = PlayerCameraController.Instance.GetPlayerPerspectiveDir;
         
         Quaternion strafingTargetRotation = Quaternion.LookRotation(_cameraForward);
 
